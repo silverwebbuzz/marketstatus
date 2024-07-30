@@ -1,0 +1,4988 @@
+[
+   {
+       "name": "AARTIIND",
+       "date": "25-JUL-2024",
+       "marginrate": "21.5",
+       "Lot Size": "1000",
+       "margin": "151807",
+       "MIS margin": "68313",
+       "Price": "705.65"
+   },
+   {
+       "name": "AARTIIND",
+       "date": "29-AUG-2024",
+       "marginrate": "21.5",
+       "Lot Size": "1000",
+       "margin": "152827",
+       "MIS margin": "68772",
+       "Price": "709.35"
+   },
+   {
+       "name": "AARTIIND",
+       "date": "26-SEP-2024",
+       "marginrate": "21.5",
+       "Lot Size": "1000",
+       "margin": "153710",
+       "MIS margin": "69169",
+       "Price": "714"
+   },
+   {
+       "name": "ABB",
+       "date": "25-JUL-2024",
+       "marginrate": "22.5",
+       "Lot Size": "125",
+       "margin": "226879",
+       "MIS margin": "102095",
+       "Price": "7901.35"
+   },
+   {
+       "name": "ABB",
+       "date": "29-AUG-2024",
+       "marginrate": "22.5",
+       "Lot Size": "125",
+       "margin": "228443",
+       "MIS margin": "102799",
+       "Price": "7950.4"
+   },
+   {
+       "name": "ABB",
+       "date": "26-SEP-2024",
+       "marginrate": "22.5",
+       "Lot Size": "125",
+       "margin": "229801",
+       "MIS margin": "103410",
+       "Price": "8012.65"
+   },
+   {
+       "name": "ABBOTINDIA",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "20",
+       "margin": "101964",
+       "MIS margin": "45883",
+       "Price": "28395.6"
+   },
+   {
+       "name": "ABBOTINDIA",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "20",
+       "margin": "102682",
+       "MIS margin": "46207",
+       "Price": "28599.7"
+   },
+   {
+       "name": "ABBOTINDIA",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "20",
+       "margin": "103233",
+       "MIS margin": "46454",
+       "Price": "28723.65"
+   },
+   {
+       "name": "ABCAPITAL",
+       "date": "25-JUL-2024",
+       "marginrate": "26",
+       "Lot Size": "5400",
+       "margin": "315795",
+       "MIS margin": "142107",
+       "Price": "223.58"
+   },
+   {
+       "name": "ABCAPITAL",
+       "date": "29-AUG-2024",
+       "marginrate": "26",
+       "Lot Size": "5400",
+       "margin": "317880",
+       "MIS margin": "143046",
+       "Price": "224.81"
+   },
+   {
+       "name": "ABCAPITAL",
+       "date": "26-SEP-2024",
+       "marginrate": "26",
+       "Lot Size": "5400",
+       "margin": "319958",
+       "MIS margin": "143981",
+       "Price": "226.88"
+   },
+   {
+       "name": "ABFRL",
+       "date": "25-JUL-2024",
+       "marginrate": "29.75",
+       "Lot Size": "2600",
+       "margin": "252409",
+       "MIS margin": "113584",
+       "Price": "324.35"
+   },
+   {
+       "name": "ABFRL",
+       "date": "29-AUG-2024",
+       "marginrate": "29.75",
+       "Lot Size": "2600",
+       "margin": "253521",
+       "MIS margin": "114084",
+       "Price": "323.75"
+   },
+   {
+       "name": "ABFRL",
+       "date": "26-SEP-2024",
+       "marginrate": "30.75",
+       "Lot Size": "2600",
+       "margin": "253738",
+       "MIS margin": "114182",
+       "Price": "320.25"
+   },
+   {
+       "name": "ACC",
+       "date": "25-JUL-2024",
+       "marginrate": "22.5",
+       "Lot Size": "300",
+       "margin": "179155",
+       "MIS margin": "80620",
+       "Price": "2694.45"
+   },
+   {
+       "name": "ACC",
+       "date": "29-AUG-2024",
+       "marginrate": "22.5",
+       "Lot Size": "300",
+       "margin": "180396",
+       "MIS margin": "81178",
+       "Price": "2712.05"
+   },
+   {
+       "name": "ACC",
+       "date": "26-SEP-2024",
+       "marginrate": "22.5",
+       "Lot Size": "300",
+       "margin": "181416",
+       "MIS margin": "81637",
+       "Price": "2728"
+   },
+   {
+       "name": "ADANIENT",
+       "date": "25-JUL-2024",
+       "marginrate": "32.5",
+       "Lot Size": "300",
+       "margin": "299712",
+       "MIS margin": "134870",
+       "Price": "3097.75"
+   },
+   {
+       "name": "ADANIENT",
+       "date": "29-AUG-2024",
+       "marginrate": "32.5",
+       "Lot Size": "300",
+       "margin": "301810",
+       "MIS margin": "135814",
+       "Price": "3119"
+   },
+   {
+       "name": "ADANIENT",
+       "date": "26-SEP-2024",
+       "marginrate": "32.5",
+       "Lot Size": "300",
+       "margin": "303576",
+       "MIS margin": "136609",
+       "Price": "3143.45"
+   },
+   {
+       "name": "ADANIPORTS",
+       "date": "25-JUL-2024",
+       "marginrate": "27.5",
+       "Lot Size": "400",
+       "margin": "164095",
+       "MIS margin": "73843",
+       "Price": "1496.85"
+   },
+   {
+       "name": "ADANIPORTS",
+       "date": "29-AUG-2024",
+       "marginrate": "27.5",
+       "Lot Size": "400",
+       "margin": "165241",
+       "MIS margin": "74358",
+       "Price": "1506.95"
+   },
+   {
+       "name": "ADANIPORTS",
+       "date": "26-SEP-2024",
+       "marginrate": "27.5",
+       "Lot Size": "400",
+       "margin": "166188",
+       "MIS margin": "74784",
+       "Price": "1516.6"
+   },
+   {
+       "name": "ALKEM",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "100",
+       "margin": "93613",
+       "MIS margin": "42126",
+       "Price": "5274.4"
+   },
+   {
+       "name": "ALKEM",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "100",
+       "margin": "94244",
+       "MIS margin": "42409",
+       "Price": "5304.1"
+   },
+   {
+       "name": "ALKEM",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "100",
+       "margin": "94763",
+       "MIS margin": "42643",
+       "Price": "5331.1"
+   },
+   {
+       "name": "AMBUJACEM",
+       "date": "25-JUL-2024",
+       "marginrate": "24.5",
+       "Lot Size": "900",
+       "margin": "151766",
+       "MIS margin": "68294",
+       "Price": "691.7"
+   },
+   {
+       "name": "AMBUJACEM",
+       "date": "29-AUG-2024",
+       "marginrate": "24.5",
+       "Lot Size": "900",
+       "margin": "152817",
+       "MIS margin": "68767",
+       "Price": "696.2"
+   },
+   {
+       "name": "AMBUJACEM",
+       "date": "26-SEP-2024",
+       "marginrate": "24.5",
+       "Lot Size": "900",
+       "margin": "153673",
+       "MIS margin": "69153",
+       "Price": "699.95"
+   },
+   {
+       "name": "APOLLOHOSP",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "125",
+       "margin": "144701",
+       "MIS margin": "65115",
+       "Price": "6518.45"
+   },
+   {
+       "name": "APOLLOHOSP",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "125",
+       "margin": "145667",
+       "MIS margin": "65550",
+       "Price": "6552.95"
+   },
+   {
+       "name": "APOLLOHOSP",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "125",
+       "margin": "146505",
+       "MIS margin": "65927",
+       "Price": "6594.7"
+   },
+   {
+       "name": "APOLLOTYRE",
+       "date": "25-JUL-2024",
+       "marginrate": "19.5",
+       "Lot Size": "1700",
+       "margin": "183588",
+       "MIS margin": "82614",
+       "Price": "550.95"
+   },
+   {
+       "name": "APOLLOTYRE",
+       "date": "29-AUG-2024",
+       "marginrate": "19.5",
+       "Lot Size": "1700",
+       "margin": "184832",
+       "MIS margin": "83174",
+       "Price": "554.15"
+   },
+   {
+       "name": "APOLLOTYRE",
+       "date": "26-SEP-2024",
+       "marginrate": "19.5",
+       "Lot Size": "1700",
+       "margin": "185718",
+       "MIS margin": "83573",
+       "Price": "554.75"
+   },
+   {
+       "name": "ASHOKLEY",
+       "date": "25-JUL-2024",
+       "marginrate": "24",
+       "Lot Size": "5000",
+       "margin": "274114",
+       "MIS margin": "123351",
+       "Price": "228.47"
+   },
+   {
+       "name": "ASHOKLEY",
+       "date": "29-AUG-2024",
+       "marginrate": "24",
+       "Lot Size": "5000",
+       "margin": "275996",
+       "MIS margin": "124198",
+       "Price": "229.99"
+   },
+   {
+       "name": "ASHOKLEY",
+       "date": "26-SEP-2024",
+       "marginrate": "24",
+       "Lot Size": "5000",
+       "margin": "277975",
+       "MIS margin": "125088",
+       "Price": "232.5"
+   },
+   {
+       "name": "ASIANPAINT",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "200",
+       "margin": "104126",
+       "MIS margin": "46857",
+       "Price": "2936.1"
+   },
+   {
+       "name": "ASIANPAINT",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "200",
+       "margin": "104815",
+       "MIS margin": "47166",
+       "Price": "2950.75"
+   },
+   {
+       "name": "ASIANPAINT",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "200",
+       "margin": "105405",
+       "MIS margin": "47432",
+       "Price": "2967.65"
+   },
+   {
+       "name": "ASTRAL",
+       "date": "25-JUL-2024",
+       "marginrate": "19.5",
+       "Lot Size": "367",
+       "margin": "158609",
+       "MIS margin": "71374",
+       "Price": "2255.1"
+   },
+   {
+       "name": "ASTRAL",
+       "date": "29-AUG-2024",
+       "marginrate": "19.5",
+       "Lot Size": "367",
+       "margin": "159558",
+       "MIS margin": "71801",
+       "Price": "2258.1"
+   },
+   {
+       "name": "ASTRAL",
+       "date": "26-SEP-2024",
+       "marginrate": "19.5",
+       "Lot Size": "367",
+       "margin": "160372",
+       "MIS margin": "72167",
+       "Price": "2264.6"
+   },
+   {
+       "name": "ATUL",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "100",
+       "margin": "126565",
+       "MIS margin": "56954",
+       "Price": "7148.95"
+   },
+   {
+       "name": "ATUL",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "100",
+       "margin": "127407",
+       "MIS margin": "57333",
+       "Price": "7186.15"
+   },
+   {
+       "name": "ATUL",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "100",
+       "margin": "128012",
+       "MIS margin": "57605",
+       "Price": "7195"
+   },
+   {
+       "name": "AUBANK",
+       "date": "25-JUL-2024",
+       "marginrate": "19.5",
+       "Lot Size": "1000",
+       "margin": "126909",
+       "MIS margin": "57109",
+       "Price": "635.7"
+   },
+   {
+       "name": "AUBANK",
+       "date": "29-AUG-2024",
+       "marginrate": "20.5",
+       "Lot Size": "1000",
+       "margin": "127216",
+       "MIS margin": "57247",
+       "Price": "623.6"
+   },
+   {
+       "name": "AUBANK",
+       "date": "26-SEP-2024",
+       "marginrate": "20.5",
+       "Lot Size": "1000",
+       "margin": "127608",
+       "MIS margin": "57423",
+       "Price": "617.95"
+   },
+   {
+       "name": "AUROPHARMA",
+       "date": "25-JUL-2024",
+       "marginrate": "19.5",
+       "Lot Size": "550",
+       "margin": "144770",
+       "MIS margin": "65146",
+       "Price": "1339.1"
+   },
+   {
+       "name": "AUROPHARMA",
+       "date": "29-AUG-2024",
+       "marginrate": "19.5",
+       "Lot Size": "550",
+       "margin": "145739",
+       "MIS margin": "65582",
+       "Price": "1346.05"
+   },
+   {
+       "name": "AUROPHARMA",
+       "date": "26-SEP-2024",
+       "marginrate": "19.5",
+       "Lot Size": "550",
+       "margin": "146542",
+       "MIS margin": "65944",
+       "Price": "1352.9"
+   },
+   {
+       "name": "AXISBANK",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "625",
+       "margin": "145337",
+       "MIS margin": "65402",
+       "Price": "1311.45"
+   },
+   {
+       "name": "AXISBANK",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "625",
+       "margin": "146353",
+       "MIS margin": "65859",
+       "Price": "1320.45"
+   },
+   {
+       "name": "AXISBANK",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "625",
+       "margin": "147199",
+       "MIS margin": "66239",
+       "Price": "1328.85"
+   },
+   {
+       "name": "BAJAJ-AUTO",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "75",
+       "margin": "128189",
+       "MIS margin": "57685",
+       "Price": "9630.1"
+   },
+   {
+       "name": "BAJAJ-AUTO",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "75",
+       "margin": "129073",
+       "MIS margin": "58082",
+       "Price": "9691.9"
+   },
+   {
+       "name": "BAJAJ-AUTO",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "75",
+       "margin": "129818",
+       "MIS margin": "58418",
+       "Price": "9754.3"
+   },
+   {
+       "name": "BAJAJFINSV",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "500",
+       "margin": "146585",
+       "MIS margin": "65963",
+       "Price": "1651.45"
+   },
+   {
+       "name": "BAJAJFINSV",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "500",
+       "margin": "147609",
+       "MIS margin": "66424",
+       "Price": "1662.8"
+   },
+   {
+       "name": "BAJAJFINSV",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "500",
+       "margin": "148449",
+       "MIS margin": "66802",
+       "Price": "1672.85"
+   },
+   {
+       "name": "BAJFINANCE",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "125",
+       "margin": "159643",
+       "MIS margin": "71839",
+       "Price": "7128.05"
+   },
+   {
+       "name": "BAJFINANCE",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "125",
+       "margin": "160753",
+       "MIS margin": "72339",
+       "Price": "7175.75"
+   },
+   {
+       "name": "BAJFINANCE",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "125",
+       "margin": "161691",
+       "MIS margin": "72761",
+       "Price": "7224.4"
+   },
+   {
+       "name": "BALKRISIND",
+       "date": "25-JUL-2024",
+       "marginrate": "19.5",
+       "Lot Size": "300",
+       "margin": "186599",
+       "MIS margin": "83969",
+       "Price": "3169.05"
+   },
+   {
+       "name": "BALKRISIND",
+       "date": "29-AUG-2024",
+       "marginrate": "19.5",
+       "Lot Size": "300",
+       "margin": "187838",
+       "MIS margin": "84527",
+       "Price": "3184.85"
+   },
+   {
+       "name": "BALKRISIND",
+       "date": "26-SEP-2024",
+       "marginrate": "19.5",
+       "Lot Size": "300",
+       "margin": "188874",
+       "MIS margin": "84993",
+       "Price": "3200.9"
+   },
+   {
+       "name": "BALRAMCHIN",
+       "date": "25-JUL-2024",
+       "marginrate": "32",
+       "Lot Size": "1600",
+       "margin": "230179",
+       "MIS margin": "103580",
+       "Price": "449.3"
+   },
+   {
+       "name": "BALRAMCHIN",
+       "date": "29-AUG-2024",
+       "marginrate": "32",
+       "Lot Size": "1600",
+       "margin": "231696",
+       "MIS margin": "104263",
+       "Price": "452"
+   },
+   {
+       "name": "BALRAMCHIN",
+       "date": "26-SEP-2024",
+       "marginrate": "32",
+       "Lot Size": "1600",
+       "margin": "232913",
+       "MIS margin": "104811",
+       "Price": "454.15"
+   },
+   {
+       "name": "BANDHANBNK",
+       "date": "25-JUL-2024",
+       "marginrate": "33",
+       "Lot Size": "2800",
+       "margin": "180830",
+       "MIS margin": "81373",
+       "Price": "196.16"
+   },
+   {
+       "name": "BANDHANBNK",
+       "date": "29-AUG-2024",
+       "marginrate": "33",
+       "Lot Size": "2800",
+       "margin": "181699",
+       "MIS margin": "81764",
+       "Price": "196.52"
+   },
+   {
+       "name": "BANDHANBNK",
+       "date": "26-SEP-2024",
+       "marginrate": "33",
+       "Lot Size": "2800",
+       "margin": "182828",
+       "MIS margin": "82272",
+       "Price": "197.9"
+   },
+   {
+       "name": "BANKBARODA",
+       "date": "25-JUL-2024",
+       "marginrate": "25.25",
+       "Lot Size": "2925",
+       "margin": "193082",
+       "MIS margin": "86886",
+       "Price": "256.4"
+   },
+   {
+       "name": "BANKBARODA",
+       "date": "29-AUG-2024",
+       "marginrate": "26.25",
+       "Lot Size": "2925",
+       "margin": "194410",
+       "MIS margin": "87484",
+       "Price": "258"
+   },
+   {
+       "name": "BANKBARODA",
+       "date": "26-SEP-2024",
+       "marginrate": "25.25",
+       "Lot Size": "2925",
+       "margin": "195656",
+       "MIS margin": "88045",
+       "Price": "260.4"
+   },
+   {
+       "name": "BANKNIFTY",
+       "date": "31-JUL-2024",
+       "marginrate": "13",
+       "Lot Size": "15",
+       "margin": "105505",
+       "MIS margin": "36926",
+       "Price": "52670.35"
+   },
+   {
+       "name": "BANKNIFTY",
+       "date": "28-AUG-2024",
+       "marginrate": "13",
+       "Lot Size": "15",
+       "margin": "106056",
+       "MIS margin": "37119",
+       "Price": "52829.9"
+   },
+   {
+       "name": "BANKNIFTY",
+       "date": "25-SEP-2024",
+       "marginrate": "13",
+       "Lot Size": "15",
+       "margin": "106645",
+       "MIS margin": "37326",
+       "Price": "53108.9"
+   },
+   {
+       "name": "BATAINDIA",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "375",
+       "margin": "101947",
+       "MIS margin": "45876",
+       "Price": "1534.55"
+   },
+   {
+       "name": "BATAINDIA",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "375",
+       "margin": "102499",
+       "MIS margin": "46124",
+       "Price": "1532.95"
+   },
+   {
+       "name": "BATAINDIA",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "375",
+       "margin": "103081",
+       "MIS margin": "46386",
+       "Price": "1542.15"
+   },
+   {
+       "name": "BEL",
+       "date": "25-JUL-2024",
+       "marginrate": "24.5",
+       "Lot Size": "2850",
+       "margin": "220567",
+       "MIS margin": "99255",
+       "Price": "314.35"
+   },
+   {
+       "name": "BEL",
+       "date": "29-AUG-2024",
+       "marginrate": "24.5",
+       "Lot Size": "2850",
+       "margin": "222057",
+       "MIS margin": "99925",
+       "Price": "315.85"
+   },
+   {
+       "name": "BEL",
+       "date": "26-SEP-2024",
+       "marginrate": "24.5",
+       "Lot Size": "2850",
+       "margin": "223350",
+       "MIS margin": "100507",
+       "Price": "318.25"
+   },
+   {
+       "name": "BERGEPAINT",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "1320",
+       "margin": "122171",
+       "MIS margin": "54977",
+       "Price": "521.55"
+   },
+   {
+       "name": "BERGEPAINT",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "1320",
+       "margin": "122712",
+       "MIS margin": "55220",
+       "Price": "518.4"
+   },
+   {
+       "name": "BERGEPAINT",
+       "date": "26-SEP-2024",
+       "marginrate": "18.5",
+       "Lot Size": "1320",
+       "margin": "123167",
+       "MIS margin": "55425",
+       "Price": "516.25"
+   },
+   {
+       "name": "BHARATFORG",
+       "date": "25-JUL-2024",
+       "marginrate": "21.5",
+       "Lot Size": "500",
+       "margin": "178840",
+       "MIS margin": "80478",
+       "Price": "1626.6"
+   },
+   {
+       "name": "BHARATFORG",
+       "date": "29-AUG-2024",
+       "marginrate": "22.5",
+       "Lot Size": "500",
+       "margin": "180071",
+       "MIS margin": "81032",
+       "Price": "1636.65"
+   },
+   {
+       "name": "BHARATFORG",
+       "date": "26-SEP-2024",
+       "marginrate": "21.5",
+       "Lot Size": "500",
+       "margin": "181098",
+       "MIS margin": "81494",
+       "Price": "1646.75"
+   },
+   {
+       "name": "BHARTIARTL",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "475",
+       "margin": "125117",
+       "MIS margin": "56303",
+       "Price": "1483.6"
+   },
+   {
+       "name": "BHARTIARTL",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "475",
+       "margin": "125861",
+       "MIS margin": "56637",
+       "Price": "1485.75"
+   },
+   {
+       "name": "BHARTIARTL",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "475",
+       "margin": "126570",
+       "MIS margin": "56956",
+       "Price": "1494.4"
+   },
+   {
+       "name": "BHEL",
+       "date": "25-JUL-2024",
+       "marginrate": "34",
+       "Lot Size": "2625",
+       "margin": "276029",
+       "MIS margin": "124213",
+       "Price": "309.2"
+   },
+   {
+       "name": "BHEL",
+       "date": "29-AUG-2024",
+       "marginrate": "34",
+       "Lot Size": "2625",
+       "margin": "277937",
+       "MIS margin": "125071",
+       "Price": "311.3"
+   },
+   {
+       "name": "BHEL",
+       "date": "26-SEP-2024",
+       "marginrate": "34",
+       "Lot Size": "2625",
+       "margin": "279566",
+       "MIS margin": "125804",
+       "Price": "313.45"
+   },
+   {
+       "name": "BIOCON",
+       "date": "25-JUL-2024",
+       "marginrate": "28.5",
+       "Lot Size": "2500",
+       "margin": "248115",
+       "MIS margin": "111652",
+       "Price": "344.25"
+   },
+   {
+       "name": "BIOCON",
+       "date": "29-AUG-2024",
+       "marginrate": "28.5",
+       "Lot Size": "2500",
+       "margin": "249766",
+       "MIS margin": "112395",
+       "Price": "346.35"
+   },
+   {
+       "name": "BIOCON",
+       "date": "26-SEP-2024",
+       "marginrate": "28.5",
+       "Lot Size": "2500",
+       "margin": "251428",
+       "MIS margin": "113142",
+       "Price": "349.25"
+   },
+   {
+       "name": "BOSCHLTD",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "25",
+       "margin": "155828",
+       "MIS margin": "70123",
+       "Price": "34943.3"
+   },
+   {
+       "name": "BOSCHLTD",
+       "date": "29-AUG-2024",
+       "marginrate": "18.5",
+       "Lot Size": "25",
+       "margin": "156363",
+       "MIS margin": "70363",
+       "Price": "34549.45"
+   },
+   {
+       "name": "BOSCHLTD",
+       "date": "26-SEP-2024",
+       "marginrate": "18.5",
+       "Lot Size": "25",
+       "margin": "157183",
+       "MIS margin": "70732",
+       "Price": "34678.35"
+   },
+   {
+       "name": "BPCL",
+       "date": "25-JUL-2024",
+       "marginrate": "21.5",
+       "Lot Size": "1800",
+       "margin": "123147",
+       "MIS margin": "55416",
+       "Price": "318.15"
+   },
+   {
+       "name": "BPCL",
+       "date": "29-AUG-2024",
+       "marginrate": "21.5",
+       "Lot Size": "1800",
+       "margin": "124011",
+       "MIS margin": "55805",
+       "Price": "320.15"
+   },
+   {
+       "name": "BPCL",
+       "date": "26-SEP-2024",
+       "marginrate": "21.5",
+       "Lot Size": "1800",
+       "margin": "124716",
+       "MIS margin": "56122",
+       "Price": "322.2"
+   },
+   {
+       "name": "BRITANNIA",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "200",
+       "margin": "208602",
+       "MIS margin": "93871",
+       "Price": "5890.95"
+   },
+   {
+       "name": "BRITANNIA",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "200",
+       "margin": "209509",
+       "MIS margin": "94279",
+       "Price": "5852.8"
+   },
+   {
+       "name": "BRITANNIA",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "200",
+       "margin": "210661",
+       "MIS margin": "94797",
+       "Price": "5882.25"
+   },
+   {
+       "name": "BSOFT",
+       "date": "25-JUL-2024",
+       "marginrate": "23.25",
+       "Lot Size": "1000",
+       "margin": "175878",
+       "MIS margin": "79145",
+       "Price": "749.3"
+   },
+   {
+       "name": "BSOFT",
+       "date": "29-AUG-2024",
+       "marginrate": "23.25",
+       "Lot Size": "1000",
+       "margin": "177056",
+       "MIS margin": "79675",
+       "Price": "753.65"
+   },
+   {
+       "name": "BSOFT",
+       "date": "26-SEP-2024",
+       "marginrate": "23.25",
+       "Lot Size": "1000",
+       "margin": "178104",
+       "MIS margin": "80147",
+       "Price": "758.95"
+   },
+   {
+       "name": "CANBK",
+       "date": "25-JUL-2024",
+       "marginrate": "27",
+       "Lot Size": "6750",
+       "margin": "211962",
+       "MIS margin": "95383",
+       "Price": "116.17"
+   },
+   {
+       "name": "CANBK",
+       "date": "29-AUG-2024",
+       "marginrate": "27",
+       "Lot Size": "6750",
+       "margin": "213383",
+       "MIS margin": "96022",
+       "Price": "116.89"
+   },
+   {
+       "name": "CANBK",
+       "date": "26-SEP-2024",
+       "marginrate": "27",
+       "Lot Size": "6750",
+       "margin": "214605",
+       "MIS margin": "96572",
+       "Price": "117.62"
+   },
+   {
+       "name": "CANFINHOME",
+       "date": "25-JUL-2024",
+       "marginrate": "23.25",
+       "Lot Size": "975",
+       "margin": "200952",
+       "MIS margin": "90428",
+       "Price": "878"
+   },
+   {
+       "name": "CANFINHOME",
+       "date": "29-AUG-2024",
+       "marginrate": "23.25",
+       "Lot Size": "975",
+       "margin": "202318",
+       "MIS margin": "91043",
+       "Price": "883.35"
+   },
+   {
+       "name": "CANFINHOME",
+       "date": "26-SEP-2024",
+       "marginrate": "23.25",
+       "Lot Size": "975",
+       "margin": "203453",
+       "MIS margin": "91554",
+       "Price": "888.2"
+   },
+   {
+       "name": "CHAMBLFERT",
+       "date": "25-JUL-2024",
+       "marginrate": "31",
+       "Lot Size": "1900",
+       "margin": "299969",
+       "MIS margin": "134986",
+       "Price": "513.55"
+   },
+   {
+       "name": "CHAMBLFERT",
+       "date": "29-AUG-2024",
+       "marginrate": "31",
+       "Lot Size": "1900",
+       "margin": "301683",
+       "MIS margin": "135757",
+       "Price": "514.3"
+   },
+   {
+       "name": "CHAMBLFERT",
+       "date": "26-SEP-2024",
+       "marginrate": "31",
+       "Lot Size": "1900",
+       "margin": "302349",
+       "MIS margin": "136057",
+       "Price": "509.45"
+   },
+   {
+       "name": "CHOLAFIN",
+       "date": "25-JUL-2024",
+       "marginrate": "20.5",
+       "Lot Size": "625",
+       "margin": "189005",
+       "MIS margin": "85052",
+       "Price": "1450.8"
+   },
+   {
+       "name": "CHOLAFIN",
+       "date": "29-AUG-2024",
+       "marginrate": "20.5",
+       "Lot Size": "625",
+       "margin": "190308",
+       "MIS margin": "85638",
+       "Price": "1459.8"
+   },
+   {
+       "name": "CHOLAFIN",
+       "date": "26-SEP-2024",
+       "marginrate": "20.5",
+       "Lot Size": "625",
+       "margin": "191355",
+       "MIS margin": "86109",
+       "Price": "1467.1"
+   },
+   {
+       "name": "CIPLA",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "650",
+       "margin": "173976",
+       "MIS margin": "78289",
+       "Price": "1511.3"
+   },
+   {
+       "name": "CIPLA",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "650",
+       "margin": "174879",
+       "MIS margin": "78695",
+       "Price": "1507.85"
+   },
+   {
+       "name": "CIPLA",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "650",
+       "margin": "175915",
+       "MIS margin": "79162",
+       "Price": "1518.85"
+   },
+   {
+       "name": "COALINDIA",
+       "date": "25-JUL-2024",
+       "marginrate": "21.5",
+       "Lot Size": "2100",
+       "margin": "230760",
+       "MIS margin": "103842",
+       "Price": "505.6"
+   },
+   {
+       "name": "COALINDIA",
+       "date": "29-AUG-2024",
+       "marginrate": "21.5",
+       "Lot Size": "2100",
+       "margin": "232026",
+       "MIS margin": "104411",
+       "Price": "504.25"
+   },
+   {
+       "name": "COALINDIA",
+       "date": "26-SEP-2024",
+       "marginrate": "21.5",
+       "Lot Size": "2100",
+       "margin": "233331",
+       "MIS margin": "104999",
+       "Price": "507.15"
+   },
+   {
+       "name": "COFORGE",
+       "date": "25-JUL-2024",
+       "marginrate": "21.5",
+       "Lot Size": "150",
+       "margin": "195399",
+       "MIS margin": "87929",
+       "Price": "5982.15"
+   },
+   {
+       "name": "COFORGE",
+       "date": "29-AUG-2024",
+       "marginrate": "22.5",
+       "Lot Size": "150",
+       "margin": "196252",
+       "MIS margin": "88313",
+       "Price": "5925.5"
+   },
+   {
+       "name": "COFORGE",
+       "date": "26-SEP-2024",
+       "marginrate": "22.5",
+       "Lot Size": "150",
+       "margin": "197039",
+       "MIS margin": "88667",
+       "Price": "5899.05"
+   },
+   {
+       "name": "COLPAL",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "350",
+       "margin": "194102",
+       "MIS margin": "87346",
+       "Price": "3132.85"
+   },
+   {
+       "name": "COLPAL",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "350",
+       "margin": "195386",
+       "MIS margin": "87923",
+       "Price": "3148.5"
+   },
+   {
+       "name": "COLPAL",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "350",
+       "margin": "196406",
+       "MIS margin": "88382",
+       "Price": "3160"
+   },
+   {
+       "name": "CONCOR",
+       "date": "25-JUL-2024",
+       "marginrate": "26.5",
+       "Lot Size": "1000",
+       "margin": "274029",
+       "MIS margin": "123313",
+       "Price": "1043.7"
+   },
+   {
+       "name": "CONCOR",
+       "date": "29-AUG-2024",
+       "marginrate": "26.5",
+       "Lot Size": "1000",
+       "margin": "275820",
+       "MIS margin": "124119",
+       "Price": "1047.45"
+   },
+   {
+       "name": "CONCOR",
+       "date": "26-SEP-2024",
+       "marginrate": "26.5",
+       "Lot Size": "1000",
+       "margin": "277367",
+       "MIS margin": "124815",
+       "Price": "1053.35"
+   },
+   {
+       "name": "COROMANDEL",
+       "date": "25-JUL-2024",
+       "marginrate": "18.5",
+       "Lot Size": "700",
+       "margin": "205594",
+       "MIS margin": "92517",
+       "Price": "1598.2"
+   },
+   {
+       "name": "COROMANDEL",
+       "date": "29-AUG-2024",
+       "marginrate": "18.5",
+       "Lot Size": "700",
+       "margin": "206213",
+       "MIS margin": "92796",
+       "Price": "1575.75"
+   },
+   {
+       "name": "COROMANDEL",
+       "date": "26-SEP-2024",
+       "marginrate": "18.5",
+       "Lot Size": "700",
+       "margin": "206617",
+       "MIS margin": "92978",
+       "Price": "1553.95"
+   },
+   {
+       "name": "CROMPTON",
+       "date": "25-JUL-2024",
+       "marginrate": "20.5",
+       "Lot Size": "1800",
+       "margin": "156316",
+       "MIS margin": "70342",
+       "Price": "431.5"
+   },
+   {
+       "name": "CROMPTON",
+       "date": "29-AUG-2024",
+       "marginrate": "20.5",
+       "Lot Size": "1800",
+       "margin": "157379",
+       "MIS margin": "70820",
+       "Price": "433.8"
+   },
+   {
+       "name": "CROMPTON",
+       "date": "26-SEP-2024",
+       "marginrate": "20.5",
+       "Lot Size": "1800",
+       "margin": "158313",
+       "MIS margin": "71241",
+       "Price": "437.2"
+   },
+   {
+       "name": "CUB",
+       "date": "25-JUL-2024",
+       "marginrate": "21.5",
+       "Lot Size": "5000",
+       "margin": "169803",
+       "MIS margin": "76411",
+       "Price": "159.16"
+   },
+   {
+       "name": "CUB",
+       "date": "29-AUG-2024",
+       "marginrate": "21.5",
+       "Lot Size": "5000",
+       "margin": "170778",
+       "MIS margin": "76850",
+       "Price": "159.02"
+   },
+   {
+       "name": "CUB",
+       "date": "26-SEP-2024",
+       "marginrate": "21.5",
+       "Lot Size": "5000",
+       "margin": "171744",
+       "MIS margin": "77285",
+       "Price": "159.97"
+   },
+   {
+       "name": "CUMMINSIND",
+       "date": "25-JUL-2024",
+       "marginrate": "20.5",
+       "Lot Size": "300",
+       "margin": "236079",
+       "MIS margin": "106235",
+       "Price": "3787.45"
+   },
+   {
+       "name": "CUMMINSIND",
+       "date": "29-AUG-2024",
+       "marginrate": "20.5",
+       "Lot Size": "300",
+       "margin": "237688",
+       "MIS margin": "106959",
+       "Price": "3809.55"
+   },
+   {
+       "name": "CUMMINSIND",
+       "date": "26-SEP-2024",
+       "marginrate": "20.5",
+       "Lot Size": "300",
+       "margin": "238698",
+       "MIS margin": "107414",
+       "Price": "3800"
+   },
+   {
+       "name": "DABUR",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "1250",
+       "margin": "143081",
+       "MIS margin": "64386",
+       "Price": "644.15"
+   },
+   {
+       "name": "DABUR",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "1250",
+       "margin": "144056",
+       "MIS margin": "64825",
+       "Price": "648.15"
+   },
+   {
+       "name": "DABUR",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "1250",
+       "margin": "144912",
+       "MIS margin": "65210",
+       "Price": "652.85"
+   },
+   {
+       "name": "DALBHARAT",
+       "date": "25-JUL-2024",
+       "marginrate": "19.5",
+       "Lot Size": "275",
+       "margin": "104328",
+       "MIS margin": "46947",
+       "Price": "1922.75"
+   },
+   {
+       "name": "DALBHARAT",
+       "date": "29-AUG-2024",
+       "marginrate": "19.5",
+       "Lot Size": "275",
+       "margin": "105050",
+       "MIS margin": "47272",
+       "Price": "1935.15"
+   },
+   {
+       "name": "DALBHARAT",
+       "date": "26-SEP-2024",
+       "marginrate": "19.5",
+       "Lot Size": "275",
+       "margin": "105675",
+       "MIS margin": "47553",
+       "Price": "1949.8"
+   },
+   {
+       "name": "DEEPAKNTR",
+       "date": "25-JUL-2024",
+       "marginrate": "19.5",
+       "Lot Size": "300",
+       "margin": "168958",
+       "MIS margin": "76031",
+       "Price": "2831.6"
+   },
+   {
+       "name": "DEEPAKNTR",
+       "date": "29-AUG-2024",
+       "marginrate": "19.5",
+       "Lot Size": "300",
+       "margin": "170022",
+       "MIS margin": "76510",
+       "Price": "2839.75"
+   },
+   {
+       "name": "DEEPAKNTR",
+       "date": "26-SEP-2024",
+       "marginrate": "19.5",
+       "Lot Size": "300",
+       "margin": "170966",
+       "MIS margin": "76934",
+       "Price": "2854.8"
+   },
+   {
+       "name": "DIVISLAB",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "200",
+       "margin": "162884",
+       "MIS margin": "73297",
+       "Price": "4596.9"
+   },
+   {
+       "name": "DIVISLAB",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "200",
+       "margin": "163797",
+       "MIS margin": "73708",
+       "Price": "4596.45"
+   },
+   {
+       "name": "DIVISLAB",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "200",
+       "margin": "164742",
+       "MIS margin": "74134",
+       "Price": "4626.05"
+   },
+   {
+       "name": "DIXON",
+       "date": "25-JUL-2024",
+       "marginrate": "23.5",
+       "Lot Size": "100",
+       "margin": "280749",
+       "MIS margin": "126337",
+       "Price": "11989.65"
+   },
+   {
+       "name": "DIXON",
+       "date": "29-AUG-2024",
+       "marginrate": "23.5",
+       "Lot Size": "100",
+       "margin": "282660",
+       "MIS margin": "127197",
+       "Price": "12056.9"
+   },
+   {
+       "name": "DIXON",
+       "date": "26-SEP-2024",
+       "marginrate": "23.5",
+       "Lot Size": "100",
+       "margin": "284250",
+       "MIS margin": "127912",
+       "Price": "12126.2"
+   },
+   {
+       "name": "DLF",
+       "date": "25-JUL-2024",
+       "marginrate": "21.5",
+       "Lot Size": "825",
+       "margin": "147415",
+       "MIS margin": "66337",
+       "Price": "845.6"
+   },
+   {
+       "name": "DLF",
+       "date": "29-AUG-2024",
+       "marginrate": "21.5",
+       "Lot Size": "825",
+       "margin": "148298",
+       "MIS margin": "66734",
+       "Price": "846.45"
+   },
+   {
+       "name": "DLF",
+       "date": "26-SEP-2024",
+       "marginrate": "21.5",
+       "Lot Size": "825",
+       "margin": "149145",
+       "MIS margin": "67115",
+       "Price": "851.8"
+   },
+   {
+       "name": "DRREDDY",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "125",
+       "margin": "148023",
+       "MIS margin": "66610",
+       "Price": "6679.75"
+   },
+   {
+       "name": "DRREDDY",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "125",
+       "margin": "148868",
+       "MIS margin": "66990",
+       "Price": "6682.4"
+   },
+   {
+       "name": "DRREDDY",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "125",
+       "margin": "149611",
+       "MIS margin": "67325",
+       "Price": "6699"
+   },
+   {
+       "name": "EICHERMOT",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "175",
+       "margin": "153451",
+       "MIS margin": "69053",
+       "Price": "4930.2"
+   },
+   {
+       "name": "EICHERMOT",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "175",
+       "margin": "154151",
+       "MIS margin": "69368",
+       "Price": "4903.35"
+   },
+   {
+       "name": "EICHERMOT",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "175",
+       "margin": "155057",
+       "MIS margin": "69775",
+       "Price": "4937.5"
+   },
+   {
+       "name": "ESCORTS",
+       "date": "25-JUL-2024",
+       "marginrate": "18.5",
+       "Lot Size": "275",
+       "margin": "201484",
+       "MIS margin": "90667",
+       "Price": "4005.15"
+   },
+   {
+       "name": "ESCORTS",
+       "date": "29-AUG-2024",
+       "marginrate": "18.5",
+       "Lot Size": "275",
+       "margin": "202830",
+       "MIS margin": "91273",
+       "Price": "4026.4"
+   },
+   {
+       "name": "ESCORTS",
+       "date": "26-SEP-2024",
+       "marginrate": "18.5",
+       "Lot Size": "275",
+       "margin": "203998",
+       "MIS margin": "91799",
+       "Price": "4052.05"
+   },
+   {
+       "name": "EXIDEIND",
+       "date": "25-JUL-2024",
+       "marginrate": "24.25",
+       "Lot Size": "1800",
+       "margin": "245745",
+       "MIS margin": "110585",
+       "Price": "554.2"
+   },
+   {
+       "name": "EXIDEIND",
+       "date": "29-AUG-2024",
+       "marginrate": "24.25",
+       "Lot Size": "1800",
+       "margin": "247426",
+       "MIS margin": "111341",
+       "Price": "557.7"
+   },
+   {
+       "name": "EXIDEIND",
+       "date": "26-SEP-2024",
+       "marginrate": "24.25",
+       "Lot Size": "1800",
+       "margin": "248850",
+       "MIS margin": "111982",
+       "Price": "561.15"
+   },
+   {
+       "name": "FEDERALBNK",
+       "date": "25-JUL-2024",
+       "marginrate": "18.5",
+       "Lot Size": "5000",
+       "margin": "178953",
+       "MIS margin": "80528",
+       "Price": "196.59"
+   },
+   {
+       "name": "FEDERALBNK",
+       "date": "29-AUG-2024",
+       "marginrate": "18.5",
+       "Lot Size": "5000",
+       "margin": "179988",
+       "MIS margin": "80994",
+       "Price": "196.79"
+   },
+   {
+       "name": "FEDERALBNK",
+       "date": "26-SEP-2024",
+       "marginrate": "18.5",
+       "Lot Size": "5000",
+       "margin": "180947",
+       "MIS margin": "81426",
+       "Price": "197.7"
+   },
+   {
+       "name": "FINNIFTY",
+       "date": "30-JUL-2024",
+       "marginrate": "13",
+       "Lot Size": "25",
+       "margin": "79461",
+       "MIS margin": "27811",
+       "Price": "23802.15"
+   },
+   {
+       "name": "FINNIFTY",
+       "date": "27-AUG-2024",
+       "marginrate": "13",
+       "Lot Size": "25",
+       "margin": "79887",
+       "MIS margin": "27960",
+       "Price": "23895.95"
+   },
+   {
+       "name": "FINNIFTY",
+       "date": "24-SEP-2024",
+       "marginrate": "13",
+       "Lot Size": "25",
+       "margin": "80257",
+       "MIS margin": "28089",
+       "Price": "23872.5"
+   },
+   {
+       "name": "GAIL",
+       "date": "25-JUL-2024",
+       "marginrate": "24.5",
+       "Lot Size": "4575",
+       "margin": "256080",
+       "MIS margin": "115236",
+       "Price": "229.54"
+   },
+   {
+       "name": "GAIL",
+       "date": "29-AUG-2024",
+       "marginrate": "24.5",
+       "Lot Size": "4575",
+       "margin": "257866",
+       "MIS margin": "116040",
+       "Price": "230.98"
+   },
+   {
+       "name": "GAIL",
+       "date": "26-SEP-2024",
+       "marginrate": "24.5",
+       "Lot Size": "4575",
+       "margin": "259353",
+       "MIS margin": "116708",
+       "Price": "232.55"
+   },
+   {
+       "name": "GLENMARK",
+       "date": "25-JUL-2024",
+       "marginrate": "35.5",
+       "Lot Size": "725",
+       "margin": "366157",
+       "MIS margin": "164770",
+       "Price": "1411"
+   },
+   {
+       "name": "GLENMARK",
+       "date": "29-AUG-2024",
+       "marginrate": "35.5",
+       "Lot Size": "725",
+       "margin": "368363",
+       "MIS margin": "165763",
+       "Price": "1418.2"
+   },
+   {
+       "name": "GLENMARK",
+       "date": "26-SEP-2024",
+       "marginrate": "35.5",
+       "Lot Size": "725",
+       "margin": "370537",
+       "MIS margin": "166741",
+       "Price": "1426.95"
+   },
+   {
+       "name": "GMRINFRA",
+       "date": "25-JUL-2024",
+       "marginrate": "35.5",
+       "Lot Size": "11250",
+       "margin": "378331",
+       "MIS margin": "170249",
+       "Price": "95.9"
+   },
+   {
+       "name": "GMRINFRA",
+       "date": "29-AUG-2024",
+       "marginrate": "35.5",
+       "Lot Size": "11250",
+       "margin": "381083",
+       "MIS margin": "171487",
+       "Price": "96.61"
+   },
+   {
+       "name": "GMRINFRA",
+       "date": "26-SEP-2024",
+       "marginrate": "35.5",
+       "Lot Size": "11250",
+       "margin": "383348",
+       "MIS margin": "172506",
+       "Price": "97.29"
+   },
+   {
+       "name": "GNFC",
+       "date": "25-JUL-2024",
+       "marginrate": "28.75",
+       "Lot Size": "1300",
+       "margin": "252293",
+       "MIS margin": "113532",
+       "Price": "681.85"
+   },
+   {
+       "name": "GNFC",
+       "date": "29-AUG-2024",
+       "marginrate": "28.75",
+       "Lot Size": "1300",
+       "margin": "254442",
+       "MIS margin": "114499",
+       "Price": "690"
+   },
+   {
+       "name": "GNFC",
+       "date": "26-SEP-2024",
+       "marginrate": "28.75",
+       "Lot Size": "1300",
+       "margin": "254065",
+       "MIS margin": "114329",
+       "Price": "678"
+   },
+   {
+       "name": "GODREJCP",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "500",
+       "margin": "130039",
+       "MIS margin": "58517",
+       "Price": "1463.7"
+   },
+   {
+       "name": "GODREJCP",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "500",
+       "margin": "130906",
+       "MIS margin": "58907",
+       "Price": "1471.5"
+   },
+   {
+       "name": "GODREJCP",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "500",
+       "margin": "131382",
+       "MIS margin": "59122",
+       "Price": "1465"
+   },
+   {
+       "name": "GODREJPROP",
+       "date": "25-JUL-2024",
+       "marginrate": "24.5",
+       "Lot Size": "225",
+       "margin": "184269",
+       "MIS margin": "82921",
+       "Price": "3361"
+   },
+   {
+       "name": "GODREJPROP",
+       "date": "29-AUG-2024",
+       "marginrate": "24.5",
+       "Lot Size": "225",
+       "margin": "185519",
+       "MIS margin": "83483",
+       "Price": "3379.15"
+   },
+   {
+       "name": "GODREJPROP",
+       "date": "26-SEP-2024",
+       "marginrate": "24.5",
+       "Lot Size": "225",
+       "margin": "186552",
+       "MIS margin": "83948",
+       "Price": "3397.15"
+   },
+   {
+       "name": "GRANULES",
+       "date": "25-JUL-2024",
+       "marginrate": "22.25",
+       "Lot Size": "2000",
+       "margin": "232100",
+       "MIS margin": "104445",
+       "Price": "519.05"
+   },
+   {
+       "name": "GRANULES",
+       "date": "29-AUG-2024",
+       "marginrate": "22.25",
+       "Lot Size": "2000",
+       "margin": "233545",
+       "MIS margin": "105095",
+       "Price": "521"
+   },
+   {
+       "name": "GRANULES",
+       "date": "26-SEP-2024",
+       "marginrate": "22.25",
+       "Lot Size": "2000",
+       "margin": "234854",
+       "MIS margin": "105684",
+       "Price": "523.95"
+   },
+   {
+       "name": "GRASIM",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "250",
+       "margin": "124005",
+       "MIS margin": "55802",
+       "Price": "2802"
+   },
+   {
+       "name": "GRASIM",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "250",
+       "margin": "124718",
+       "MIS margin": "56123",
+       "Price": "2803.8"
+   },
+   {
+       "name": "GRASIM",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "250",
+       "margin": "125480",
+       "MIS margin": "56466",
+       "Price": "2826.6"
+   },
+   {
+       "name": "GUJGASLTD",
+       "date": "25-JUL-2024",
+       "marginrate": "20.5",
+       "Lot Size": "1250",
+       "margin": "165147",
+       "MIS margin": "74316",
+       "Price": "635.95"
+   },
+   {
+       "name": "GUJGASLTD",
+       "date": "29-AUG-2024",
+       "marginrate": "21.5",
+       "Lot Size": "1250",
+       "margin": "165484",
+       "MIS margin": "74468",
+       "Price": "621.65"
+   },
+   {
+       "name": "GUJGASLTD",
+       "date": "26-SEP-2024",
+       "marginrate": "21.5",
+       "Lot Size": "1250",
+       "margin": "165750",
+       "MIS margin": "74587",
+       "Price": "610"
+   },
+   {
+       "name": "HAL",
+       "date": "25-JUL-2024",
+       "marginrate": "36",
+       "Lot Size": "300",
+       "margin": "543609",
+       "MIS margin": "244624",
+       "Price": "5020.15"
+   },
+   {
+       "name": "HAL",
+       "date": "29-AUG-2024",
+       "marginrate": "36",
+       "Lot Size": "300",
+       "margin": "546921",
+       "MIS margin": "246114",
+       "Price": "5043.45"
+   },
+   {
+       "name": "HAL",
+       "date": "26-SEP-2024",
+       "marginrate": "36",
+       "Lot Size": "300",
+       "margin": "550159",
+       "MIS margin": "247571",
+       "Price": "5075.75"
+   },
+   {
+       "name": "HAVELLS",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "500",
+       "margin": "165454",
+       "MIS margin": "74454",
+       "Price": "1868.55"
+   },
+   {
+       "name": "HAVELLS",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "500",
+       "margin": "166580",
+       "MIS margin": "74961",
+       "Price": "1879.75"
+   },
+   {
+       "name": "HAVELLS",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "500",
+       "margin": "167353",
+       "MIS margin": "75309",
+       "Price": "1881.05"
+   },
+   {
+       "name": "HCLTECH",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "350",
+       "margin": "98940",
+       "MIS margin": "44523",
+       "Price": "1582.75"
+   },
+   {
+       "name": "HCLTECH",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "350",
+       "margin": "99627",
+       "MIS margin": "44832",
+       "Price": "1593.45"
+   },
+   {
+       "name": "HCLTECH",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "350",
+       "margin": "100220",
+       "MIS margin": "45099",
+       "Price": "1604.95"
+   },
+   {
+       "name": "HDFCAMC",
+       "date": "25-JUL-2024",
+       "marginrate": "21.5",
+       "Lot Size": "150",
+       "margin": "135714",
+       "MIS margin": "61071",
+       "Price": "4169.75"
+   },
+   {
+       "name": "HDFCAMC",
+       "date": "29-AUG-2024",
+       "marginrate": "21.5",
+       "Lot Size": "150",
+       "margin": "136647",
+       "MIS margin": "61491",
+       "Price": "4195.6"
+   },
+   {
+       "name": "HDFCAMC",
+       "date": "26-SEP-2024",
+       "marginrate": "21.5",
+       "Lot Size": "150",
+       "margin": "137343",
+       "MIS margin": "61804",
+       "Price": "4205.5"
+   },
+   {
+       "name": "HDFCBANK",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "550",
+       "margin": "157790",
+       "MIS margin": "71005",
+       "Price": "1620.35"
+   },
+   {
+       "name": "HDFCBANK",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "550",
+       "margin": "158879",
+       "MIS margin": "71495",
+       "Price": "1630.9"
+   },
+   {
+       "name": "HDFCBANK",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "550",
+       "margin": "159768",
+       "MIS margin": "71895",
+       "Price": "1639.95"
+   },
+   {
+       "name": "HDFCLIFE",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "1100",
+       "margin": "126801",
+       "MIS margin": "57060",
+       "Price": "650.7"
+   },
+   {
+       "name": "HDFCLIFE",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "1100",
+       "margin": "127667",
+       "MIS margin": "57450",
+       "Price": "654.9"
+   },
+   {
+       "name": "HDFCLIFE",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "1100",
+       "margin": "128412",
+       "MIS margin": "57785",
+       "Price": "659.1"
+   },
+   {
+       "name": "HEROMOTOCO",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "150",
+       "margin": "146624",
+       "MIS margin": "65981",
+       "Price": "5520.2"
+   },
+   {
+       "name": "HEROMOTOCO",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "150",
+       "margin": "147426",
+       "MIS margin": "66341",
+       "Price": "5515.5"
+   },
+   {
+       "name": "HEROMOTOCO",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "150",
+       "margin": "148326",
+       "MIS margin": "66747",
+       "Price": "5560.75"
+   },
+   {
+       "name": "HINDALCO",
+       "date": "25-JUL-2024",
+       "marginrate": "20.5",
+       "Lot Size": "1400",
+       "margin": "198516",
+       "MIS margin": "89332",
+       "Price": "691.65"
+   },
+   {
+       "name": "HINDALCO",
+       "date": "29-AUG-2024",
+       "marginrate": "20.5",
+       "Lot Size": "1400",
+       "margin": "199732",
+       "MIS margin": "89879",
+       "Price": "692.75"
+   },
+   {
+       "name": "HINDALCO",
+       "date": "26-SEP-2024",
+       "marginrate": "20.5",
+       "Lot Size": "1400",
+       "margin": "200869",
+       "MIS margin": "90391",
+       "Price": "697.1"
+   },
+   {
+       "name": "HINDCOPPER",
+       "date": "25-JUL-2024",
+       "marginrate": "39.5",
+       "Lot Size": "2650",
+       "margin": "332934",
+       "MIS margin": "149820",
+       "Price": "321.1"
+   },
+   {
+       "name": "HINDCOPPER",
+       "date": "29-AUG-2024",
+       "marginrate": "39.5",
+       "Lot Size": "2650",
+       "margin": "335172",
+       "MIS margin": "150827",
+       "Price": "323.05"
+   },
+   {
+       "name": "HINDCOPPER",
+       "date": "26-SEP-2024",
+       "marginrate": "39.5",
+       "Lot Size": "2650",
+       "margin": "337107",
+       "MIS margin": "151698",
+       "Price": "325.05"
+   },
+   {
+       "name": "HINDPETRO",
+       "date": "25-JUL-2024",
+       "marginrate": "26.5",
+       "Lot Size": "2025",
+       "margin": "190298",
+       "MIS margin": "85634",
+       "Price": "358.7"
+   },
+   {
+       "name": "HINDPETRO",
+       "date": "29-AUG-2024",
+       "marginrate": "26.5",
+       "Lot Size": "2025",
+       "margin": "191639",
+       "MIS margin": "86237",
+       "Price": "361.05"
+   },
+   {
+       "name": "HINDPETRO",
+       "date": "26-SEP-2024",
+       "marginrate": "26.5",
+       "Lot Size": "2025",
+       "margin": "192737",
+       "MIS margin": "86731",
+       "Price": "363.4"
+   },
+   {
+       "name": "HINDUNILVR",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "300",
+       "margin": "145863",
+       "MIS margin": "65638",
+       "Price": "2739.45"
+   },
+   {
+       "name": "HINDUNILVR",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "300",
+       "margin": "146883",
+       "MIS margin": "66097",
+       "Price": "2758.3"
+   },
+   {
+       "name": "HINDUNILVR",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "300",
+       "margin": "147719",
+       "MIS margin": "66473",
+       "Price": "2775.05"
+   },
+   {
+       "name": "ICICIBANK",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "700",
+       "margin": "155423",
+       "MIS margin": "69940",
+       "Price": "1251.8"
+   },
+   {
+       "name": "ICICIBANK",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "700",
+       "margin": "156234",
+       "MIS margin": "70305",
+       "Price": "1249.2"
+   },
+   {
+       "name": "ICICIBANK",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "700",
+       "margin": "157121",
+       "MIS margin": "70704",
+       "Price": "1256.55"
+   },
+   {
+       "name": "ICICIGI",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "500",
+       "margin": "169709",
+       "MIS margin": "76369",
+       "Price": "1916.85"
+   },
+   {
+       "name": "ICICIGI",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "500",
+       "margin": "170889",
+       "MIS margin": "76900",
+       "Price": "1929.7"
+   },
+   {
+       "name": "ICICIGI",
+       "date": "26-SEP-2024",
+       "marginrate": "18.5",
+       "Lot Size": "500",
+       "margin": "171169",
+       "MIS margin": "77026",
+       "Price": "1901.7"
+   },
+   {
+       "name": "ICICIPRULI",
+       "date": "25-JUL-2024",
+       "marginrate": "18.5",
+       "Lot Size": "1500",
+       "margin": "178401",
+       "MIS margin": "80280",
+       "Price": "656.4"
+   },
+   {
+       "name": "ICICIPRULI",
+       "date": "29-AUG-2024",
+       "marginrate": "18.5",
+       "Lot Size": "1500",
+       "margin": "179571",
+       "MIS margin": "80807",
+       "Price": "659.55"
+   },
+   {
+       "name": "ICICIPRULI",
+       "date": "26-SEP-2024",
+       "marginrate": "18.5",
+       "Lot Size": "1500",
+       "margin": "180142",
+       "MIS margin": "81064",
+       "Price": "655"
+   },
+   {
+       "name": "IDEA",
+       "date": "25-JUL-2024",
+       "marginrate": "70",
+       "Lot Size": "40000",
+       "margin": "456080",
+       "MIS margin": "205236",
+       "Price": "16.3"
+   },
+   {
+       "name": "IDEA",
+       "date": "29-AUG-2024",
+       "marginrate": "70",
+       "Lot Size": "40000",
+       "margin": "459208",
+       "MIS margin": "206643",
+       "Price": "16.43"
+   },
+   {
+       "name": "IDEA",
+       "date": "26-SEP-2024",
+       "marginrate": "70",
+       "Lot Size": "40000",
+       "margin": "461824",
+       "MIS margin": "207820",
+       "Price": "16.54"
+   },
+   {
+       "name": "IDFC",
+       "date": "25-JUL-2024",
+       "marginrate": "19.5",
+       "Lot Size": "5000",
+       "margin": "115613",
+       "MIS margin": "52025",
+       "Price": "115.79"
+   },
+   {
+       "name": "IDFC",
+       "date": "29-AUG-2024",
+       "marginrate": "19.5",
+       "Lot Size": "5000",
+       "margin": "116413",
+       "MIS margin": "52386",
+       "Price": "116.65"
+   },
+   {
+       "name": "IDFC",
+       "date": "26-SEP-2024",
+       "marginrate": "19.5",
+       "Lot Size": "5000",
+       "margin": "117130",
+       "MIS margin": "52708",
+       "Price": "117.6"
+   },
+   {
+       "name": "IDFCFIRSTB",
+       "date": "25-JUL-2024",
+       "marginrate": "30",
+       "Lot Size": "7500",
+       "margin": "174187",
+       "MIS margin": "78384",
+       "Price": "77.75"
+   },
+   {
+       "name": "IDFCFIRSTB",
+       "date": "29-AUG-2024",
+       "marginrate": "30",
+       "Lot Size": "7500",
+       "margin": "175146",
+       "MIS margin": "78815",
+       "Price": "78.02"
+   },
+   {
+       "name": "IDFCFIRSTB",
+       "date": "26-SEP-2024",
+       "marginrate": "30",
+       "Lot Size": "7500",
+       "margin": "175891",
+       "MIS margin": "79151",
+       "Price": "78.23"
+   },
+   {
+       "name": "IEX",
+       "date": "25-JUL-2024",
+       "marginrate": "30.5",
+       "Lot Size": "3750",
+       "margin": "199308",
+       "MIS margin": "89688",
+       "Price": "173.8"
+   },
+   {
+       "name": "IEX",
+       "date": "29-AUG-2024",
+       "marginrate": "30.5",
+       "Lot Size": "3750",
+       "margin": "200718",
+       "MIS margin": "90323",
+       "Price": "175"
+   },
+   {
+       "name": "IEX",
+       "date": "26-SEP-2024",
+       "marginrate": "30.5",
+       "Lot Size": "3750",
+       "margin": "201996",
+       "MIS margin": "90898",
+       "Price": "176.34"
+   },
+   {
+       "name": "IGL",
+       "date": "25-JUL-2024",
+       "marginrate": "20.5",
+       "Lot Size": "1375",
+       "margin": "151089",
+       "MIS margin": "67990",
+       "Price": "533.8"
+   },
+   {
+       "name": "IGL",
+       "date": "29-AUG-2024",
+       "marginrate": "20.5",
+       "Lot Size": "1375",
+       "margin": "152065",
+       "MIS margin": "68429",
+       "Price": "535.8"
+   },
+   {
+       "name": "IGL",
+       "date": "26-SEP-2024",
+       "marginrate": "20.5",
+       "Lot Size": "1375",
+       "margin": "152814",
+       "MIS margin": "68766",
+       "Price": "536.5"
+   },
+   {
+       "name": "INDHOTEL",
+       "date": "25-JUL-2024",
+       "marginrate": "19.5",
+       "Lot Size": "1000",
+       "margin": "115871",
+       "MIS margin": "52142",
+       "Price": "584.05"
+   },
+   {
+       "name": "INDHOTEL",
+       "date": "29-AUG-2024",
+       "marginrate": "19.5",
+       "Lot Size": "1000",
+       "margin": "116678",
+       "MIS margin": "52505",
+       "Price": "587.95"
+   },
+   {
+       "name": "INDHOTEL",
+       "date": "26-SEP-2024",
+       "marginrate": "19.5",
+       "Lot Size": "1000",
+       "margin": "117361",
+       "MIS margin": "52812",
+       "Price": "592.05"
+   },
+   {
+       "name": "INDIACEM",
+       "date": "25-JUL-2024",
+       "marginrate": "40",
+       "Lot Size": "2900",
+       "margin": "399263",
+       "MIS margin": "179668",
+       "Price": "346.05"
+   },
+   {
+       "name": "INDIACEM",
+       "date": "29-AUG-2024",
+       "marginrate": "40",
+       "Lot Size": "2900",
+       "margin": "402076",
+       "MIS margin": "180934",
+       "Price": "348.55"
+   },
+   {
+       "name": "INDIAMART",
+       "date": "25-JUL-2024",
+       "marginrate": "20.5",
+       "Lot Size": "300",
+       "margin": "180045",
+       "MIS margin": "81020",
+       "Price": "2928.35"
+   },
+   {
+       "name": "INDIAMART",
+       "date": "29-AUG-2024",
+       "marginrate": "20.5",
+       "Lot Size": "300",
+       "margin": "180930",
+       "MIS margin": "81418",
+       "Price": "2912.9"
+   },
+   {
+       "name": "INDIAMART",
+       "date": "26-SEP-2024",
+       "marginrate": "20.5",
+       "Lot Size": "300",
+       "margin": "181701",
+       "MIS margin": "81765",
+       "Price": "2906"
+   },
+   {
+       "name": "INDIGO",
+       "date": "25-JUL-2024",
+       "marginrate": "19.5",
+       "Lot Size": "300",
+       "margin": "257847",
+       "MIS margin": "116031",
+       "Price": "4417.8"
+   },
+   {
+       "name": "INDIGO",
+       "date": "29-AUG-2024",
+       "marginrate": "19.5",
+       "Lot Size": "300",
+       "margin": "259628",
+       "MIS margin": "116832",
+       "Price": "4446.25"
+   },
+   {
+       "name": "INDIGO",
+       "date": "26-SEP-2024",
+       "marginrate": "19.5",
+       "Lot Size": "300",
+       "margin": "261183",
+       "MIS margin": "117532",
+       "Price": "4480.65"
+   },
+   {
+       "name": "INDUSINDBK",
+       "date": "25-JUL-2024",
+       "marginrate": "19.5",
+       "Lot Size": "500",
+       "margin": "139161",
+       "MIS margin": "62622",
+       "Price": "1457.5"
+   },
+   {
+       "name": "INDUSINDBK",
+       "date": "29-AUG-2024",
+       "marginrate": "19.5",
+       "Lot Size": "500",
+       "margin": "140133",
+       "MIS margin": "63060",
+       "Price": "1467.65"
+   },
+   {
+       "name": "INDUSINDBK",
+       "date": "26-SEP-2024",
+       "marginrate": "19.5",
+       "Lot Size": "500",
+       "margin": "140951",
+       "MIS margin": "63428",
+       "Price": "1477.5"
+   },
+   {
+       "name": "INDUSTOWER",
+       "date": "25-JUL-2024",
+       "marginrate": "31.75",
+       "Lot Size": "3400",
+       "margin": "451670",
+       "MIS margin": "203251",
+       "Price": "419.25"
+   },
+   {
+       "name": "INDUSTOWER",
+       "date": "29-AUG-2024",
+       "marginrate": "31.75",
+       "Lot Size": "3400",
+       "margin": "454890",
+       "MIS margin": "204700",
+       "Price": "422.3"
+   },
+   {
+       "name": "INDUSTOWER",
+       "date": "26-SEP-2024",
+       "marginrate": "31.75",
+       "Lot Size": "3400",
+       "margin": "457841",
+       "MIS margin": "206028",
+       "Price": "426.05"
+   },
+   {
+       "name": "INFY",
+       "date": "25-JUL-2024",
+       "marginrate": "17.5",
+       "Lot Size": "400",
+       "margin": "124910",
+       "MIS margin": "56209",
+       "Price": "1762.15"
+   },
+   {
+       "name": "INFY",
+       "date": "29-AUG-2024",
+       "marginrate": "17.5",
+       "Lot Size": "400",
+       "margin": "125764",
+       "MIS margin": "56593",
+       "Price": "1773.15"
+   },
+   {
+       "name": "INFY",
+       "date": "26-SEP-2024",
+       "marginrate": "17.5",
+       "Lot Size": "400",
+       "margin": "126479",
+       "MIS margin": "56915",
+       "Price": "1783.7"
+   },
+   {
+       "name": "IOC",
+       "date": "25-JUL-2024",
+       "marginrate": "21.5",
+       "Lot Size": "4875",
+       "margin": "178670",
+       "MIS margin": "80401",
+       "Price": "170.01"
+    },
+    {
+        "name": "IOC",
+        "date": "29-AUG-2024",
+        "marginrate": "21.5",
+        "Lot Size": "4875",
+        "margin": "179898",
+        "MIS margin": "80954",
+        "Price": "171.21"
+    },
+    {
+        "name": "IOC",
+        "date": "26-SEP-2024",
+        "marginrate": "21.5",
+        "Lot Size": "4875",
+        "margin": "181005",
+        "MIS margin": "81452",
+        "Price": "172.55"
+    },
+    {
+        "name": "IPCALAB",
+        "date": "25-JUL-2024",
+        "marginrate": "18.5",
+        "Lot Size": "650",
+        "margin": "145916",
+        "MIS margin": "65662",
+        "Price": "1223.35"
+    },
+    {
+        "name": "IPCALAB",
+        "date": "29-AUG-2024",
+        "marginrate": "18.5",
+        "Lot Size": "650",
+        "margin": "146715",
+        "MIS margin": "66022",
+        "Price": "1221.9"
+    },
+    {
+        "name": "IPCALAB",
+        "date": "26-SEP-2024",
+        "marginrate": "18.5",
+        "Lot Size": "650",
+        "margin": "147440",
+        "MIS margin": "66348",
+        "Price": "1224.6"
+    },
+    {
+        "name": "IRCTC",
+        "date": "25-JUL-2024",
+        "marginrate": "29.5",
+        "Lot Size": "875",
+        "margin": "263694",
+        "MIS margin": "118662",
+        "Price": "1011.1"
+    },
+    {
+        "name": "IRCTC",
+        "date": "29-AUG-2024",
+        "marginrate": "29.5",
+        "Lot Size": "875",
+        "margin": "265274",
+        "MIS margin": "119373",
+        "Price": "1015.25"
+    },
+    {
+        "name": "IRCTC",
+        "date": "26-SEP-2024",
+        "marginrate": "29.5",
+        "Lot Size": "875",
+        "margin": "266866",
+        "MIS margin": "120090",
+        "Price": "1022.1"
+    },
+    {
+        "name": "ITC",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "1600",
+        "margin": "133654",
+        "MIS margin": "60144",
+        "Price": "471.55"
+    },
+    {
+        "name": "ITC",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "1600",
+        "margin": "134588",
+        "MIS margin": "60564",
+        "Price": "474.8"
+    },
+    {
+        "name": "ITC",
+        "date": "26-SEP-2024",
+        "marginrate": "17.5",
+        "Lot Size": "1600",
+        "margin": "135314",
+        "MIS margin": "60891",
+        "Price": "476.9"
+    },
+    {
+        "name": "JINDALSTEL",
+        "date": "25-JUL-2024",
+        "marginrate": "21.5",
+        "Lot Size": "625",
+        "margin": "136252",
+        "MIS margin": "61313",
+        "Price": "992.1"
+    },
+    {
+        "name": "JINDALSTEL",
+        "date": "29-AUG-2024",
+        "marginrate": "22.5",
+        "Lot Size": "625",
+        "margin": "137157",
+        "MIS margin": "61720",
+        "Price": "996.9"
+    },
+    {
+        "name": "JINDALSTEL",
+        "date": "26-SEP-2024",
+        "marginrate": "21.5",
+        "Lot Size": "625",
+        "margin": "137950",
+        "MIS margin": "62077",
+        "Price": "1003.45"
+    },
+    {
+        "name": "JKCEMENT",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "125",
+        "margin": "98270",
+        "MIS margin": "44221",
+        "Price": "4388.1"
+    },
+    {
+        "name": "JKCEMENT",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "125",
+        "margin": "98884",
+        "MIS margin": "44498",
+        "Price": "4401.7"
+    },
+    {
+        "name": "JKCEMENT",
+        "date": "26-SEP-2024",
+        "marginrate": "18.5",
+        "Lot Size": "125",
+        "margin": "99323",
+        "MIS margin": "44695",
+        "Price": "4399.9"
+    },
+    {
+        "name": "JSWSTEEL",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "675",
+        "margin": "112866",
+        "MIS margin": "50789",
+        "Price": "931.4"
+    },
+    {
+        "name": "JSWSTEEL",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "675",
+        "margin": "113648",
+        "MIS margin": "51141",
+        "Price": "937.65"
+    },
+    {
+        "name": "JSWSTEEL",
+        "date": "26-SEP-2024",
+        "marginrate": "17.5",
+        "Lot Size": "675",
+        "margin": "114337",
+        "MIS margin": "51451",
+        "Price": "945.1"
+    },
+    {
+        "name": "JUBLFOOD",
+        "date": "25-JUL-2024",
+        "marginrate": "18.5",
+        "Lot Size": "1250",
+        "margin": "131678",
+        "MIS margin": "59255",
+        "Price": "569.5"
+    },
+    {
+        "name": "JUBLFOOD",
+        "date": "29-AUG-2024",
+        "marginrate": "18.5",
+        "Lot Size": "1250",
+        "margin": "131968",
+        "MIS margin": "59385",
+        "Price": "559"
+    },
+    {
+        "name": "JUBLFOOD",
+        "date": "26-SEP-2024",
+        "marginrate": "19.5",
+        "Lot Size": "1250",
+        "margin": "132284",
+        "MIS margin": "59527",
+        "Price": "552.5"
+    },
+    {
+        "name": "KOTAKBANK",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "400",
+        "margin": "129702",
+        "MIS margin": "58365",
+        "Price": "1825"
+    },
+    {
+        "name": "KOTAKBANK",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "400",
+        "margin": "130602",
+        "MIS margin": "58770",
+        "Price": "1837"
+    },
+    {
+        "name": "KOTAKBANK",
+        "date": "26-SEP-2024",
+        "marginrate": "17.5",
+        "Lot Size": "400",
+        "margin": "131376",
+        "MIS margin": "59119",
+        "Price": "1850.35"
+    },
+    {
+        "name": "LALPATHLAB",
+        "date": "25-JUL-2024",
+        "marginrate": "19.5",
+        "Lot Size": "300",
+        "margin": "175233",
+        "MIS margin": "78854",
+        "Price": "2995.45"
+    },
+    {
+        "name": "LALPATHLAB",
+        "date": "29-AUG-2024",
+        "marginrate": "19.5",
+        "Lot Size": "300",
+        "margin": "176369",
+        "MIS margin": "79366",
+        "Price": "3007.7"
+    },
+    {
+        "name": "LALPATHLAB",
+        "date": "26-SEP-2024",
+        "marginrate": "19.5",
+        "Lot Size": "300",
+        "margin": "177329",
+        "MIS margin": "79798",
+        "Price": "3021.65"
+    },
+    {
+        "name": "LAURUSLABS",
+        "date": "25-JUL-2024",
+        "marginrate": "20.5",
+        "Lot Size": "1700",
+        "margin": "157573",
+        "MIS margin": "70907",
+        "Price": "458"
+    },
+    {
+        "name": "LAURUSLABS",
+        "date": "29-AUG-2024",
+        "marginrate": "20.5",
+        "Lot Size": "1700",
+        "margin": "158663",
+        "MIS margin": "71398",
+        "Price": "460.9"
+    },
+    {
+        "name": "LAURUSLABS",
+        "date": "26-SEP-2024",
+        "marginrate": "20.5",
+        "Lot Size": "1700",
+        "margin": "159590",
+        "MIS margin": "71815",
+        "Price": "464.2"
+    },
+    {
+        "name": "LICHSGFIN",
+        "date": "25-JUL-2024",
+        "marginrate": "24.25",
+        "Lot Size": "1000",
+        "margin": "195057",
+        "MIS margin": "87775",
+        "Price": "797.85"
+    },
+    {
+        "name": "LICHSGFIN",
+        "date": "29-AUG-2024",
+        "marginrate": "24.25",
+        "Lot Size": "1000",
+        "margin": "196034",
+        "MIS margin": "88215",
+        "Price": "795.9"
+    },
+    {
+        "name": "LICHSGFIN",
+        "date": "26-SEP-2024",
+        "marginrate": "24.25",
+        "Lot Size": "1000",
+        "margin": "197099",
+        "MIS margin": "88694",
+        "Price": "799.8"
+    },
+    {
+        "name": "LT",
+        "date": "25-JUL-2024",
+        "marginrate": "18.5",
+        "Lot Size": "150",
+        "margin": "99236",
+        "MIS margin": "44656",
+        "Price": "3662.5"
+    },
+    {
+        "name": "LT",
+        "date": "29-AUG-2024",
+        "marginrate": "18.5",
+        "Lot Size": "150",
+        "margin": "99928",
+        "MIS margin": "44967",
+        "Price": "3687.5"
+    },
+    {
+        "name": "LT",
+        "date": "26-SEP-2024",
+        "marginrate": "18.5",
+        "Lot Size": "150",
+        "margin": "100510",
+        "MIS margin": "45229",
+        "Price": "3712"
+    },
+    {
+        "name": "LTF",
+        "date": "25-JUL-2024",
+        "marginrate": "32",
+        "Lot Size": "4462",
+        "margin": "267106",
+        "MIS margin": "120197",
+        "Price": "184.66"
+    },
+    {
+        "name": "LTF",
+        "date": "29-AUG-2024",
+        "marginrate": "32",
+        "Lot Size": "4462",
+        "margin": "268982",
+        "MIS margin": "121042",
+        "Price": "185.95"
+    },
+    {
+        "name": "LTF",
+        "date": "26-SEP-2024",
+        "marginrate": "32",
+        "Lot Size": "4462",
+        "margin": "270730",
+        "MIS margin": "121828",
+        "Price": "187.39"
+    },
+    {
+        "name": "LTIM",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "150",
+        "margin": "154213",
+        "MIS margin": "69395",
+        "Price": "5776.25"
+    },
+    {
+        "name": "LTIM",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "150",
+        "margin": "155267",
+        "MIS margin": "69870",
+        "Price": "5811.25"
+    },
+    {
+        "name": "LTIM",
+        "date": "26-SEP-2024",
+        "marginrate": "17.5",
+        "Lot Size": "150",
+        "margin": "156163",
+        "MIS margin": "70273",
+        "Price": "5848.85"
+    },
+    {
+        "name": "LTTS",
+        "date": "25-JUL-2024",
+        "marginrate": "21.25",
+        "Lot Size": "100",
+        "margin": "100227",
+        "MIS margin": "45102",
+        "Price": "4736.8"
+    },
+    {
+        "name": "LTTS",
+        "date": "29-AUG-2024",
+        "marginrate": "21.25",
+        "Lot Size": "100",
+        "margin": "100463",
+        "MIS margin": "45208",
+        "Price": "4681.1"
+    },
+    {
+        "name": "LTTS",
+        "date": "26-SEP-2024",
+        "marginrate": "21.25",
+        "Lot Size": "100",
+        "margin": "100798",
+        "MIS margin": "45359",
+        "Price": "4663.95"
+    },
+    {
+        "name": "LUPIN",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "425",
+        "margin": "137916",
+        "MIS margin": "62062",
+        "Price": "1823.4"
+    },
+    {
+        "name": "LUPIN",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "425",
+        "margin": "138868",
+        "MIS margin": "62490",
+        "Price": "1835.4"
+    },
+    {
+        "name": "LUPIN",
+        "date": "26-SEP-2024",
+        "marginrate": "17.5",
+        "Lot Size": "425",
+        "margin": "139639",
+        "MIS margin": "62837",
+        "Price": "1844.95"
+    },
+    {
+        "name": "M&M",
+        "date": "25-JUL-2024",
+        "marginrate": "19.5",
+        "Lot Size": "350",
+        "margin": "191018",
+        "MIS margin": "85958",
+        "Price": "2819.95"
+    },
+    {
+        "name": "M&M",
+        "date": "29-AUG-2024",
+        "marginrate": "19.5",
+        "Lot Size": "350",
+        "margin": "192337",
+        "MIS margin": "86551",
+        "Price": "2837.85"
+    },
+    {
+        "name": "M&M",
+        "date": "26-SEP-2024",
+        "marginrate": "19.5",
+        "Lot Size": "350",
+        "margin": "193434",
+        "MIS margin": "87045",
+        "Price": "2855.4"
+    },
+    {
+        "name": "M&MFIN",
+        "date": "25-JUL-2024",
+        "marginrate": "21.5",
+        "Lot Size": "2000",
+        "margin": "124969",
+        "MIS margin": "56236",
+        "Price": "294.7"
+    },
+    {
+        "name": "M&MFIN",
+        "date": "29-AUG-2024",
+        "marginrate": "21.5",
+        "Lot Size": "2000",
+        "margin": "125331",
+        "MIS margin": "56398",
+        "Price": "289.3"
+    },
+    {
+        "name": "M&MFIN",
+        "date": "26-SEP-2024",
+        "marginrate": "21.5",
+        "Lot Size": "2000",
+        "margin": "125669",
+        "MIS margin": "56551",
+        "Price": "285.85"
+    },
+    {
+        "name": "MANAPPURAM",
+        "date": "25-JUL-2024",
+        "marginrate": "30.75",
+        "Lot Size": "3000",
+        "margin": "209761",
+        "MIS margin": "94392",
+        "Price": "228.35"
+    },
+    {
+        "name": "MANAPPURAM",
+        "date": "29-AUG-2024",
+        "marginrate": "30.75",
+        "Lot Size": "3000",
+        "margin": "211014",
+        "MIS margin": "94956",
+        "Price": "229.12"
+    },
+    {
+        "name": "MANAPPURAM",
+        "date": "26-SEP-2024",
+        "marginrate": "30.75",
+        "Lot Size": "3000",
+        "margin": "212239",
+        "MIS margin": "95507",
+        "Price": "230.59"
+    },
+    {
+        "name": "MARICO",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "1200",
+        "margin": "145897",
+        "MIS margin": "65653",
+        "Price": "684.6"
+    },
+    {
+        "name": "MARICO",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "1200",
+        "margin": "146883",
+        "MIS margin": "66097",
+        "Price": "688.65"
+    },
+    {
+        "name": "MARICO",
+        "date": "26-SEP-2024",
+        "marginrate": "17.5",
+        "Lot Size": "1200",
+        "margin": "147691",
+        "MIS margin": "66461",
+        "Price": "691.9"
+    },
+    {
+        "name": "MARUTI",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "50",
+        "margin": "112274",
+        "MIS margin": "50523",
+        "Price": "12661.95"
+    },
+    {
+        "name": "MARUTI",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "50",
+        "margin": "112842",
+        "MIS margin": "50779",
+        "Price": "12625.65"
+    },
+    {
+        "name": "MARUTI",
+        "date": "26-SEP-2024",
+        "marginrate": "17.5",
+        "Lot Size": "50",
+        "margin": "113502",
+        "MIS margin": "51076",
+        "Price": "12711.6"
+    },
+    {
+        "name": "MCX",
+        "date": "25-JUL-2024",
+        "marginrate": "25.5",
+        "Lot Size": "200",
+        "margin": "212186",
+        "MIS margin": "95483",
+        "Price": "4082.65"
+    },
+    {
+        "name": "MCX",
+        "date": "29-AUG-2024",
+        "marginrate": "26.5",
+        "Lot Size": "200",
+        "margin": "213649",
+        "MIS margin": "96142",
+        "Price": "4107.7"
+    },
+    {
+        "name": "MCX",
+        "date": "26-SEP-2024",
+        "marginrate": "26.5",
+        "Lot Size": "200",
+        "margin": "214756",
+        "MIS margin": "96640",
+        "Price": "4117.55"
+    },
+    {
+        "name": "METROPOLIS",
+        "date": "25-JUL-2024",
+        "marginrate": "21.5",
+        "Lot Size": "400",
+        "margin": "176398",
+        "MIS margin": "79379",
+        "Price": "2040.45"
+    },
+    {
+        "name": "METROPOLIS",
+        "date": "29-AUG-2024",
+        "marginrate": "21.5",
+        "Lot Size": "400",
+        "margin": "177567",
+        "MIS margin": "79905",
+        "Price": "2049.95"
+    },
+    {
+        "name": "METROPOLIS",
+        "date": "26-SEP-2024",
+        "marginrate": "21.5",
+        "Lot Size": "400",
+        "margin": "178348",
+        "MIS margin": "80256",
+        "Price": "2046"
+    },
+    {
+        "name": "MFSL",
+        "date": "25-JUL-2024",
+        "marginrate": "19.5",
+        "Lot Size": "800",
+        "margin": "161998",
+        "MIS margin": "72899",
+        "Price": "1037.65"
+    },
+    {
+        "name": "MFSL",
+        "date": "29-AUG-2024",
+        "marginrate": "19.5",
+        "Lot Size": "800",
+        "margin": "163110",
+        "MIS margin": "73399",
+        "Price": "1043.95"
+    },
+    {
+        "name": "MFSL",
+        "date": "26-SEP-2024",
+        "marginrate": "20.5",
+        "Lot Size": "800",
+        "margin": "162352",
+        "MIS margin": "73058",
+        "Price": "990"
+    },
+    {
+        "name": "MGL",
+        "date": "25-JUL-2024",
+        "marginrate": "23.5",
+        "Lot Size": "400",
+        "margin": "161319",
+        "MIS margin": "72593",
+        "Price": "1733.4"
+    },
+    {
+        "name": "MGL",
+        "date": "29-AUG-2024",
+        "marginrate": "23.5",
+        "Lot Size": "400",
+        "margin": "162126",
+        "MIS margin": "72956",
+        "Price": "1722.15"
+    },
+    {
+        "name": "MGL",
+        "date": "26-SEP-2024",
+        "marginrate": "23.5",
+        "Lot Size": "400",
+        "margin": "162716",
+        "MIS margin": "73222",
+        "Price": "1709.2"
+    },
+    {
+        "name": "MIDCPNIFTY",
+        "date": "29-JUL-2024",
+        "marginrate": "13",
+        "Lot Size": "50",
+        "margin": "78219",
+        "MIS margin": "27376",
+        "Price": "12477.1"
+    },
+    {
+        "name": "MIDCPNIFTY",
+        "date": "26-AUG-2024",
+        "marginrate": "13",
+        "Lot Size": "50",
+        "margin": "78588",
+        "MIS margin": "27505",
+        "Price": "12477.2"
+    },
+    {
+        "name": "MIDCPNIFTY",
+        "date": "30-SEP-2024",
+        "marginrate": "13",
+        "Lot Size": "50",
+        "margin": "79066",
+        "MIS margin": "27673",
+        "Price": "12492.4"
+    },
+    {
+        "name": "MOTHERSON",
+        "date": "25-JUL-2024",
+        "marginrate": "20.5",
+        "Lot Size": "7100",
+        "margin": "303199",
+        "MIS margin": "136439",
+        "Price": "205.26"
+    },
+    {
+        "name": "MOTHERSON",
+        "date": "29-AUG-2024",
+        "marginrate": "20.5",
+        "Lot Size": "7100",
+        "margin": "305100",
+        "MIS margin": "137295",
+        "Price": "205.77"
+    },
+    {
+        "name": "MOTHERSON",
+        "date": "26-SEP-2024",
+        "marginrate": "20.5",
+        "Lot Size": "7100",
+        "margin": "306689",
+        "MIS margin": "138010",
+        "Price": "206.45"
+    },
+    {
+        "name": "MPHASIS",
+        "date": "25-JUL-2024",
+        "marginrate": "19.5",
+        "Lot Size": "275",
+        "margin": "152477",
+        "MIS margin": "68614",
+        "Price": "2836.4"
+    },
+    {
+        "name": "MPHASIS",
+        "date": "29-AUG-2024",
+        "marginrate": "19.5",
+        "Lot Size": "275",
+        "margin": "153505",
+        "MIS margin": "69077",
+        "Price": "2852.05"
+    },
+    {
+        "name": "MPHASIS",
+        "date": "26-SEP-2024",
+        "marginrate": "19.5",
+        "Lot Size": "275",
+        "margin": "154403",
+        "MIS margin": "69481",
+        "Price": "2871.95"
+    },
+    {
+        "name": "MRF",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "5",
+        "margin": "117494",
+        "MIS margin": "52872",
+        "Price": "132584.35"
+    },
+    {
+        "name": "MRF",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "5",
+        "margin": "118278",
+        "MIS margin": "53225",
+        "Price": "133289.3"
+    },
+    {
+        "name": "MRF",
+        "date": "26-SEP-2024",
+        "marginrate": "17.5",
+        "Lot Size": "5",
+        "margin": "118953",
+        "MIS margin": "53528",
+        "Price": "134100"
+    },
+    {
+        "name": "MUTHOOTFIN",
+        "date": "25-JUL-2024",
+        "marginrate": "18.5",
+        "Lot Size": "550",
+        "margin": "191155",
+        "MIS margin": "86019",
+        "Price": "1855.3"
+    },
+    {
+        "name": "MUTHOOTFIN",
+        "date": "29-AUG-2024",
+        "marginrate": "18.5",
+        "Lot Size": "550",
+        "margin": "192360",
+        "MIS margin": "86562",
+        "Price": "1861.3"
+    },
+    {
+        "name": "MUTHOOTFIN",
+        "date": "26-SEP-2024",
+        "marginrate": "18.5",
+        "Lot Size": "550",
+        "margin": "193303",
+        "MIS margin": "86986",
+        "Price": "1864.6"
+    },
+    {
+        "name": "NATIONALUM",
+        "date": "25-JUL-2024",
+        "marginrate": "44.5",
+        "Lot Size": "3750",
+        "margin": "318666",
+        "MIS margin": "143399",
+        "Price": "192.15"
+    },
+    {
+        "name": "NATIONALUM",
+        "date": "29-AUG-2024",
+        "marginrate": "44.5",
+        "Lot Size": "3750",
+        "margin": "320878",
+        "MIS margin": "144395",
+        "Price": "193.5"
+    },
+    {
+        "name": "NATIONALUM",
+        "date": "26-SEP-2024",
+        "marginrate": "44.5",
+        "Lot Size": "3750",
+        "margin": "322372",
+        "MIS margin": "145067",
+        "Price": "194.14"
+    },
+    {
+        "name": "NAUKRI",
+        "date": "25-JUL-2024",
+        "marginrate": "20.5",
+        "Lot Size": "150",
+        "margin": "212828",
+        "MIS margin": "95772",
+        "Price": "6951.85"
+    },
+    {
+        "name": "NAUKRI",
+        "date": "29-AUG-2024",
+        "marginrate": "20.5",
+        "Lot Size": "150",
+        "margin": "214232",
+        "MIS margin": "96404",
+        "Price": "6983.65"
+    },
+    {
+        "name": "NAUKRI",
+        "date": "26-SEP-2024",
+        "marginrate": "20.5",
+        "Lot Size": "150",
+        "margin": "215384",
+        "MIS margin": "96922",
+        "Price": "7013.3"
+    },
+    {
+        "name": "NAVINFLUOR",
+        "date": "25-JUL-2024",
+        "marginrate": "20.5",
+        "Lot Size": "175",
+        "margin": "128714",
+        "MIS margin": "57921",
+        "Price": "3675.45"
+    },
+    {
+        "name": "NAVINFLUOR",
+        "date": "29-AUG-2024",
+        "marginrate": "20.5",
+        "Lot Size": "175",
+        "margin": "129560",
+        "MIS margin": "58302",
+        "Price": "3691.95"
+    },
+    {
+        "name": "NAVINFLUOR",
+        "date": "26-SEP-2024",
+        "marginrate": "20.5",
+        "Lot Size": "175",
+        "margin": "130223",
+        "MIS margin": "58600",
+        "Price": "3702.4"
+    },
+    {
+        "name": "NESTLEIND",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "200",
+        "margin": "93341",
+        "MIS margin": "42003",
+        "Price": "2635.65"
+    },
+    {
+        "name": "NESTLEIND",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "200",
+        "margin": "93978",
+        "MIS margin": "42290",
+        "Price": "2651.75"
+    },
+    {
+        "name": "NESTLEIND",
+        "date": "26-SEP-2024",
+        "marginrate": "17.5",
+        "Lot Size": "200",
+        "margin": "94530",
+        "MIS margin": "42538",
+        "Price": "2670"
+    },
+    {
+        "name": "NIFTY",
+        "date": "25-JUL-2024",
+        "marginrate": "11",
+        "Lot Size": "25",
+        "margin": "70372",
+        "MIS margin": "24630",
+        "Price": "24809.05"
+    },
+    {
+        "name": "NIFTY",
+        "date": "29-AUG-2024",
+        "marginrate": "11",
+        "Lot Size": "25",
+        "margin": "70836",
+        "MIS margin": "24792",
+        "Price": "24924.15"
+    },
+    {
+        "name": "NIFTY",
+        "date": "26-SEP-2024",
+        "marginrate": "11",
+        "Lot Size": "25",
+        "margin": "71223",
+        "MIS margin": "24928",
+        "Price": "25044.05"
+    },
+    {
+        "name": "NIFTYNXT50",
+        "date": "26-JUL-2024",
+        "marginrate": "12",
+        "Lot Size": "10",
+        "margin": "90274",
+        "MIS margin": "31596",
+        "Price": "73264.65"
+    },
+    {
+        "name": "NIFTYNXT50",
+        "date": "30-AUG-2024",
+        "marginrate": "12",
+        "Lot Size": "10",
+        "margin": "90864",
+        "MIS margin": "31802",
+        "Price": "73561.35"
+    },
+    {
+        "name": "NIFTYNXT50",
+        "date": "27-SEP-2024",
+        "marginrate": "12",
+        "Lot Size": "10",
+        "margin": "91374",
+        "MIS margin": "31981",
+        "Price": "73976.2"
+    },
+    {
+        "name": "NMDC",
+        "date": "25-JUL-2024",
+        "marginrate": "34",
+        "Lot Size": "4500",
+        "margin": "374009",
+        "MIS margin": "168304",
+        "Price": "241.88"
+    },
+    {
+        "name": "NMDC",
+        "date": "29-AUG-2024",
+        "marginrate": "34",
+        "Lot Size": "4500",
+        "margin": "376515",
+        "MIS margin": "169432",
+        "Price": "243.43"
+    },
+    {
+        "name": "NMDC",
+        "date": "26-SEP-2024",
+        "marginrate": "34",
+        "Lot Size": "4500",
+        "margin": "378072",
+        "MIS margin": "170132",
+        "Price": "243.9"
+    },
+    {
+        "name": "NTPC",
+        "date": "25-JUL-2024",
+        "marginrate": "20.5",
+        "Lot Size": "1500",
+        "margin": "116052",
+        "MIS margin": "52223",
+        "Price": "378.8"
+    },
+    {
+        "name": "NTPC",
+        "date": "29-AUG-2024",
+        "marginrate": "20.5",
+        "Lot Size": "1500",
+        "margin": "116698",
+        "MIS margin": "52514",
+        "Price": "378.25"
+    },
+    {
+        "name": "NTPC",
+        "date": "26-SEP-2024",
+        "marginrate": "20.5",
+        "Lot Size": "1500",
+        "margin": "117389",
+        "MIS margin": "52825",
+        "Price": "380.85"
+    },
+    {
+        "name": "OBEROIRLTY",
+        "date": "25-JUL-2024",
+        "marginrate": "21.5",
+        "Lot Size": "700",
+        "margin": "256707",
+        "MIS margin": "115518",
+        "Price": "1718.15"
+    },
+    {
+        "name": "OBEROIRLTY",
+        "date": "29-AUG-2024",
+        "marginrate": "21.5",
+        "Lot Size": "700",
+        "margin": "258451",
+        "MIS margin": "116303",
+        "Price": "1727.9"
+    },
+    {
+        "name": "OBEROIRLTY",
+        "date": "26-SEP-2024",
+        "marginrate": "21.5",
+        "Lot Size": "700",
+        "margin": "259742",
+        "MIS margin": "116883",
+        "Price": "1731.15"
+    },
+    {
+        "name": "OFSS",
+        "date": "25-JUL-2024",
+        "marginrate": "27",
+        "Lot Size": "100",
+        "margin": "302257",
+        "MIS margin": "136015",
+        "Price": "10996.45"
+    },
+    {
+        "name": "OFSS",
+        "date": "29-AUG-2024",
+        "marginrate": "28",
+        "Lot Size": "100",
+        "margin": "304245",
+        "MIS margin": "136910",
+        "Price": "11054.8"
+    },
+    {
+        "name": "OFSS",
+        "date": "26-SEP-2024",
+        "marginrate": "28",
+        "Lot Size": "100",
+        "margin": "305832",
+        "MIS margin": "137624",
+        "Price": "11099.7"
+    },
+    {
+        "name": "ONGC",
+        "date": "25-JUL-2024",
+        "marginrate": "22.5",
+        "Lot Size": "1925",
+        "margin": "145369",
+        "MIS margin": "65416",
+        "Price": "331.9"
+    },
+    {
+        "name": "ONGC",
+        "date": "29-AUG-2024",
+        "marginrate": "22.5",
+        "Lot Size": "1925",
+        "margin": "146199",
+        "MIS margin": "65789",
+        "Price": "331.65"
+    },
+    {
+        "name": "ONGC",
+        "date": "26-SEP-2024",
+        "marginrate": "22.5",
+        "Lot Size": "1925",
+        "margin": "147036",
+        "MIS margin": "66166",
+        "Price": "333.5"
+    },
+    {
+        "name": "PAGEIND",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "15",
+        "margin": "106934",
+        "MIS margin": "48120",
+        "Price": "40198.65"
+    },
+    {
+        "name": "PAGEIND",
+        "date": "29-AUG-2024",
+        "marginrate": "18.5",
+        "Lot Size": "15",
+        "margin": "107227",
+        "MIS margin": "48252",
+        "Price": "39608.95"
+    },
+    {
+        "name": "PAGEIND",
+        "date": "26-SEP-2024",
+        "marginrate": "18.5",
+        "Lot Size": "15",
+        "margin": "107665",
+        "MIS margin": "48449",
+        "Price": "39519.4"
+    },
+    {
+        "name": "PEL",
+        "date": "25-JUL-2024",
+        "marginrate": "30.5",
+        "Lot Size": "750",
+        "margin": "219797",
+        "MIS margin": "98908",
+        "Price": "962.7"
+    },
+    {
+        "name": "PEL",
+        "date": "29-AUG-2024",
+        "marginrate": "30.5",
+        "Lot Size": "750",
+        "margin": "221192",
+        "MIS margin": "99536",
+        "Price": "967.65"
+    },
+    {
+        "name": "PEL",
+        "date": "26-SEP-2024",
+        "marginrate": "30.5",
+        "Lot Size": "750",
+        "margin": "221793",
+        "MIS margin": "99807",
+        "Price": "964.9"
+    },
+    {
+        "name": "PERSISTENT",
+        "date": "25-JUL-2024",
+        "marginrate": "20.5",
+        "Lot Size": "200",
+        "margin": "203952",
+        "MIS margin": "91778",
+        "Price": "4904.6"
+    },
+    {
+        "name": "PERSISTENT",
+        "date": "29-AUG-2024",
+        "marginrate": "20.5",
+        "Lot Size": "200",
+        "margin": "205269",
+        "MIS margin": "92371",
+        "Price": "4922.75"
+    },
+    {
+        "name": "PERSISTENT",
+        "date": "26-SEP-2024",
+        "marginrate": "20.5",
+        "Lot Size": "200",
+        "margin": "206208",
+        "MIS margin": "92793",
+        "Price": "4920"
+    },
+    {
+        "name": "PETRONET",
+        "date": "25-JUL-2024",
+        "marginrate": "20.5",
+        "Lot Size": "3000",
+        "margin": "214440",
+        "MIS margin": "96498",
+        "Price": "348"
+    },
+    {
+        "name": "PETRONET",
+        "date": "29-AUG-2024",
+        "marginrate": "20.5",
+        "Lot Size": "3000",
+        "margin": "215895",
+        "MIS margin": "97153",
+        "Price": "350.15"
+    },
+    {
+        "name": "PETRONET",
+        "date": "26-SEP-2024",
+        "marginrate": "20.5",
+        "Lot Size": "3000",
+        "margin": "217078",
+        "MIS margin": "97685",
+        "Price": "351.7"
+    },
+    {
+        "name": "PFC",
+        "date": "25-JUL-2024",
+        "marginrate": "30.5",
+        "Lot Size": "1300",
+        "margin": "217700",
+        "MIS margin": "97965",
+        "Price": "548.35"
+    },
+    {
+        "name": "PFC",
+        "date": "29-AUG-2024",
+        "marginrate": "30.5",
+        "Lot Size": "1300",
+        "margin": "219105",
+        "MIS margin": "98597",
+        "Price": "549.5"
+    },
+    {
+        "name": "PFC",
+        "date": "26-SEP-2024",
+        "marginrate": "30.5",
+        "Lot Size": "1300",
+        "margin": "220286",
+        "MIS margin": "99128",
+        "Price": "551.75"
+    },
+    {
+        "name": "PIDILITIND",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "250",
+        "margin": "141612",
+        "MIS margin": "63725",
+        "Price": "3178.85"
+    },
+    {
+        "name": "PIDILITIND",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "250",
+        "margin": "142594",
+        "MIS margin": "64167",
+        "Price": "3199.6"
+    },
+    {
+        "name": "PIDILITIND",
+        "date": "26-SEP-2024",
+        "marginrate": "17.5",
+        "Lot Size": "250",
+        "margin": "143493",
+        "MIS margin": "64572",
+        "Price": "3229"
+    },
+    {
+        "name": "PIIND",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "250",
+        "margin": "173360",
+        "MIS margin": "78012",
+        "Price": "3909.75"
+    },
+    {
+        "name": "PIIND",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "250",
+        "margin": "174484",
+        "MIS margin": "78518",
+        "Price": "3926.55"
+    },
+    {
+        "name": "PIIND",
+        "date": "26-SEP-2024",
+        "marginrate": "17.5",
+        "Lot Size": "250",
+        "margin": "175527",
+        "MIS margin": "78987",
+        "Price": "3956"
+    },
+    {
+        "name": "PNB",
+        "date": "25-JUL-2024",
+        "marginrate": "30.75",
+        "Lot Size": "8000",
+        "margin": "288807",
+        "MIS margin": "129963",
+        "Price": "119.21"
+    },
+    {
+        "name": "PNB",
+        "date": "29-AUG-2024",
+        "marginrate": "30.75",
+        "Lot Size": "8000",
+        "margin": "290765",
+        "MIS margin": "130844",
+        "Price": "119.95"
+    },
+    {
+        "name": "PNB",
+        "date": "26-SEP-2024",
+        "marginrate": "30.75",
+        "Lot Size": "8000",
+        "margin": "292525",
+        "MIS margin": "131636",
+        "Price": "120.75"
+    },
+    {
+        "name": "POLYCAB",
+        "date": "25-JUL-2024",
+        "marginrate": "24.25",
+        "Lot Size": "125",
+        "margin": "203144",
+        "MIS margin": "91415",
+        "Price": "6568.75"
+    },
+    {
+        "name": "POLYCAB",
+        "date": "29-AUG-2024",
+        "marginrate": "25.25",
+        "Lot Size": "125",
+        "margin": "204540",
+        "MIS margin": "92043",
+        "Price": "6610.4"
+    },
+    {
+        "name": "POLYCAB",
+        "date": "26-SEP-2024",
+        "marginrate": "24.25",
+        "Lot Size": "125",
+        "margin": "205730",
+        "MIS margin": "92578",
+        "Price": "6654"
+    },
+    {
+        "name": "POWERGRID",
+        "date": "25-JUL-2024",
+        "marginrate": "19.5",
+        "Lot Size": "3600",
+        "margin": "245034",
+        "MIS margin": "110265",
+        "Price": "342.15"
+    },
+    {
+        "name": "POWERGRID",
+        "date": "29-AUG-2024",
+        "marginrate": "20.5",
+        "Lot Size": "3600",
+        "margin": "246411",
+        "MIS margin": "110885",
+        "Price": "341.65"
+    },
+    {
+        "name": "POWERGRID",
+        "date": "26-SEP-2024",
+        "marginrate": "20.5",
+        "Lot Size": "3600",
+        "margin": "247761",
+        "MIS margin": "111492",
+        "Price": "343.5"
+    },
+    {
+        "name": "PVRINOX",
+        "date": "25-JUL-2024",
+        "marginrate": "25.5",
+        "Lot Size": "407",
+        "margin": "143155",
+        "MIS margin": "64419",
+        "Price": "1401.55"
+    },
+    {
+        "name": "PVRINOX",
+        "date": "29-AUG-2024",
+        "marginrate": "25.5",
+        "Lot Size": "407",
+        "margin": "143478",
+        "MIS margin": "64565",
+        "Price": "1395.5"
+    },
+    {
+        "name": "PVRINOX",
+        "date": "26-SEP-2024",
+        "marginrate": "25.5",
+        "Lot Size": "407",
+        "margin": "144042",
+        "MIS margin": "64819",
+        "Price": "1397.65"
+    },
+    {
+        "name": "RAMCOCEM",
+        "date": "25-JUL-2024",
+        "marginrate": "25.5",
+        "Lot Size": "850",
+        "margin": "170556",
+        "MIS margin": "76750",
+        "Price": "785.95"
+    },
+    {
+        "name": "RAMCOCEM",
+        "date": "29-AUG-2024",
+        "marginrate": "25.5",
+        "Lot Size": "850",
+        "margin": "171413",
+        "MIS margin": "77136",
+        "Price": "787.65"
+    },
+    {
+        "name": "RAMCOCEM",
+        "date": "26-SEP-2024",
+        "marginrate": "25.5",
+        "Lot Size": "850",
+        "margin": "172362",
+        "MIS margin": "77563",
+        "Price": "791.9"
+    },
+    {
+        "name": "RBLBANK",
+        "date": "25-JUL-2024",
+        "marginrate": "32.75",
+        "Lot Size": "2500",
+        "margin": "197509",
+        "MIS margin": "88879",
+        "Price": "242.9"
+    },
+    {
+        "name": "RBLBANK",
+        "date": "29-AUG-2024",
+        "marginrate": "32.75",
+        "Lot Size": "2500",
+        "margin": "198950",
+        "MIS margin": "89527",
+        "Price": "244.8"
+    },
+    {
+        "name": "RBLBANK",
+        "date": "26-SEP-2024",
+        "marginrate": "31.75",
+        "Lot Size": "2500",
+        "margin": "201371",
+        "MIS margin": "90617",
+        "Price": "252.1"
+    },
+    {
+        "name": "RECLTD",
+        "date": "25-JUL-2024",
+        "marginrate": "31.5",
+        "Lot Size": "2000",
+        "margin": "385056",
+        "MIS margin": "173275",
+        "Price": "611.95"
+    },
+    {
+        "name": "RECLTD",
+        "date": "29-AUG-2024",
+        "marginrate": "31.5",
+        "Lot Size": "2000",
+        "margin": "387596",
+        "MIS margin": "174418",
+        "Price": "613.95"
+    },
+    {
+        "name": "RECLTD",
+        "date": "26-SEP-2024",
+        "marginrate": "31.5",
+        "Lot Size": "2000",
+        "margin": "389799",
+        "MIS margin": "175409",
+        "Price": "617.7"
+    },
+    {
+        "name": "RELIANCE",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "250",
+        "margin": "140926",
+        "MIS margin": "63416",
+        "Price": "3182.15"
+    },
+    {
+        "name": "RELIANCE",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "250",
+        "margin": "141813",
+        "MIS margin": "63815",
+        "Price": "3192.95"
+    },
+    {
+        "name": "RELIANCE",
+        "date": "26-SEP-2024",
+        "marginrate": "17.5",
+        "Lot Size": "250",
+        "margin": "142636",
+        "MIS margin": "64186",
+        "Price": "3213.9"
+    },
+    {
+        "name": "SAIL",
+        "date": "25-JUL-2024",
+        "marginrate": "44.5",
+        "Lot Size": "4000",
+        "margin": "262979",
+        "MIS margin": "118340",
+        "Price": "147.81"
+    },
+    {
+        "name": "SAIL",
+        "date": "29-AUG-2024",
+        "marginrate": "44.5",
+        "Lot Size": "4000",
+        "margin": "264725",
+        "MIS margin": "119126",
+        "Price": "148.71"
+    },
+    {
+        "name": "SAIL",
+        "date": "26-SEP-2024",
+        "marginrate": "44.5",
+        "Lot Size": "4000",
+        "margin": "265757",
+        "MIS margin": "119591",
+        "Price": "148.97"
+    },
+    {
+        "name": "SBICARD",
+        "date": "25-JUL-2024",
+        "marginrate": "19.25",
+        "Lot Size": "800",
+        "margin": "114377",
+        "MIS margin": "51469",
+        "Price": "731.85"
+    },
+    {
+        "name": "SBICARD",
+        "date": "29-AUG-2024",
+        "marginrate": "19.25",
+        "Lot Size": "800",
+        "margin": "114749",
+        "MIS margin": "51637",
+        "Price": "726.6"
+    },
+    {
+        "name": "SBICARD",
+        "date": "26-SEP-2024",
+        "marginrate": "20.25",
+        "Lot Size": "800",
+        "margin": "115175",
+        "MIS margin": "51828",
+        "Price": "725.5"
+    },
+    {
+        "name": "SBILIFE",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "375",
+        "margin": "110494",
+        "MIS margin": "49722",
+        "Price": "1658.95"
+    },
+    {
+        "name": "SBILIFE",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "375",
+        "margin": "111259",
+        "MIS margin": "50066",
+        "Price": "1669.8"
+    },
+    {
+        "name": "SBILIFE",
+        "date": "26-SEP-2024",
+        "marginrate": "17.5",
+        "Lot Size": "375",
+        "margin": "111836",
+        "MIS margin": "50326",
+        "Price": "1675.45"
+    },
+    {
+        "name": "SBIN",
+        "date": "25-JUL-2024",
+        "marginrate": "19.5",
+        "Lot Size": "750",
+        "margin": "129282",
+        "MIS margin": "58176",
+        "Price": "893.6"
+    },
+    {
+        "name": "SBIN",
+        "date": "29-AUG-2024",
+        "marginrate": "19.5",
+        "Lot Size": "750",
+        "margin": "130176",
+        "MIS margin": "58579",
+        "Price": "899.4"
+    },
+    {
+        "name": "SBIN",
+        "date": "26-SEP-2024",
+        "marginrate": "19.5",
+        "Lot Size": "750",
+        "margin": "130908",
+        "MIS margin": "58908",
+        "Price": "904.7"
+    },
+    {
+        "name": "SHREECEM",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "25",
+        "margin": "124536",
+        "MIS margin": "56041",
+        "Price": "28043.1"
+    },
+    {
+        "name": "SHREECEM",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "25",
+        "margin": "125398",
+        "MIS margin": "56429",
+        "Price": "28226.4"
+    },
+    {
+        "name": "SHREECEM",
+        "date": "26-SEP-2024",
+        "marginrate": "17.5",
+        "Lot Size": "25",
+        "margin": "126097",
+        "MIS margin": "56743",
+        "Price": "28380"
+    },
+    {
+        "name": "SHRIRAMFIN",
+        "date": "25-JUL-2024",
+        "marginrate": "22.5",
+        "Lot Size": "300",
+        "margin": "189225",
+        "MIS margin": "85151",
+        "Price": "2853.5"
+    },
+    {
+        "name": "SHRIRAMFIN",
+        "date": "29-AUG-2024",
+        "marginrate": "22.5",
+        "Lot Size": "300",
+        "margin": "190536",
+        "MIS margin": "85741",
+        "Price": "2872.05"
+    },
+    {
+        "name": "SHRIRAMFIN",
+        "date": "26-SEP-2024",
+        "marginrate": "22.5",
+        "Lot Size": "300",
+        "margin": "191615",
+        "MIS margin": "86226",
+        "Price": "2889.1"
+    },
+    {
+        "name": "SIEMENS",
+        "date": "25-JUL-2024",
+        "marginrate": "20.5",
+        "Lot Size": "150",
+        "margin": "219592",
+        "MIS margin": "98816",
+        "Price": "7134.05"
+    },
+    {
+        "name": "SIEMENS",
+        "date": "29-AUG-2024",
+        "marginrate": "20.5",
+        "Lot Size": "150",
+        "margin": "221130",
+        "MIS margin": "99508",
+        "Price": "7183.45"
+    },
+    {
+        "name": "SIEMENS",
+        "date": "26-SEP-2024",
+        "marginrate": "20.5",
+        "Lot Size": "150",
+        "margin": "222432",
+        "MIS margin": "100094",
+        "Price": "7235.8"
+    },
+    {
+        "name": "SRF",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "375",
+        "margin": "160116",
+        "MIS margin": "72052",
+        "Price": "2406.75"
+    },
+    {
+        "name": "SRF",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "375",
+        "margin": "161123",
+        "MIS margin": "72505",
+        "Price": "2414.65"
+    },
+    {
+        "name": "SRF",
+        "date": "26-SEP-2024",
+        "marginrate": "17.5",
+        "Lot Size": "375",
+        "margin": "162028",
+        "MIS margin": "72912",
+        "Price": "2428.45"
+    },
+    {
+        "name": "SUNPHARMA",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "350",
+        "margin": "99077",
+        "MIS margin": "44584",
+        "Price": "1595.1"
+    },
+    {
+        "name": "SUNPHARMA",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "350",
+        "margin": "99774",
+        "MIS margin": "44898",
+        "Price": "1606.55"
+    },
+    {
+        "name": "SUNPHARMA",
+        "date": "26-SEP-2024",
+        "marginrate": "17.5",
+        "Lot Size": "350",
+        "margin": "100345",
+        "MIS mamargin": "116329",
+        "Price": "801.15"
+    },
+    {
+        "name": "SYNGENE",
+        "date": "25-JUL-2024",
+        "marginrate": "18.5",
+        "Lot Size": "1000",
+        "margin": "135238",
+        "MIS margin": "60857",
+        "Price": "742.25"
+    },
+    {
+        "name": "SYNGENE",
+        "date": "29-AUG-2024",
+        "marginrate": "18.5",
+        "Lot Size": "1000",
+        "margin": "135451",
+        "MIS margin": "60952",
+        "Price": "726.6"
+    },
+    {
+        "name": "SYNGENE",
+        "date": "26-SEP-2024",
+        "marginrate": "18.5",
+        "Lot Size": "1000",
+        "margin": "135784",
+        "MIS margin": "61102",
+        "Price": "718.4"
+    },
+    {
+        "name": "TATACHEM",
+        "date": "25-JUL-2024",
+        "marginrate": "28.5",
+        "Lot Size": "550",
+        "margin": "168102",
+        "MIS margin": "75646",
+        "Price": "1061.15"
+    },
+    {
+        "name": "TATACHEM",
+        "date": "29-AUG-2024",
+        "marginrate": "28.5",
+        "Lot Size": "550",
+        "margin": "169015",
+        "MIS margin": "76056",
+        "Price": "1064"
+    },
+    {
+        "name": "TATACHEM",
+        "date": "26-SEP-2024",
+        "marginrate": "28.5",
+        "Lot Size": "550",
+        "margin": "169882",
+        "MIS margin": "76447",
+        "Price": "1068.55"
+    },
+    {
+        "name": "TATACOMM",
+        "date": "25-JUL-2024",
+        "marginrate": "18.5",
+        "Lot Size": "500",
+        "margin": "175489",
+        "MIS margin": "78970",
+        "Price": "1872.85"
+    },
+    {
+        "name": "TATACOMM",
+        "date": "29-AUG-2024",
+        "marginrate": "18.5",
+        "Lot Size": "500",
+        "margin": "176760",
+        "MIS margin": "79542",
+        "Price": "1888.3"
+    },
+    {
+        "name": "TATACOMM",
+        "date": "26-SEP-2024",
+        "marginrate": "18.5",
+        "Lot Size": "500",
+        "margin": "177762",
+        "MIS margin": "79993",
+        "Price": "1899.3"
+    },
+    {
+        "name": "TATACONSUM",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "450",
+        "margin": "95343",
+        "MIS margin": "42904",
+        "Price": "1193.3"
+    },
+    {
+        "name": "TATACONSUM",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "450",
+        "margin": "95999",
+        "MIS margin": "43199",
+        "Price": "1200.95"
+    },
+    {
+        "name": "TATACONSUM",
+        "date": "26-SEP-2024",
+        "marginrate": "17.5",
+        "Lot Size": "450",
+        "margin": "96539",
+        "MIS margin": "43442",
+        "Price": "1207.8"
+    },
+    {
+        "name": "TATAMOTORS",
+        "date": "25-JUL-2024",
+        "marginrate": "18.5",
+        "Lot Size": "550",
+        "margin": "105888",
+        "MIS margin": "47649",
+        "Price": "1027.25"
+    },
+    {
+        "name": "TATAMOTORS",
+        "date": "29-AUG-2024",
+        "marginrate": "18.5",
+        "Lot Size": "550",
+        "margin": "106618",
+        "MIS margin": "47978",
+        "Price": "1034.05"
+    },
+    {
+        "name": "TATAMOTORS",
+        "date": "26-SEP-2024",
+        "marginrate": "18.5",
+        "Lot Size": "550",
+        "margin": "107223",
+        "MIS margin": "48250",
+        "Price": "1040.05"
+    },
+    {
+        "name": "TATAPOWER",
+        "date": "25-JUL-2024",
+        "marginrate": "22.5",
+        "Lot Size": "1350",
+        "margin": "129332",
+        "MIS margin": "58199",
+        "Price": "430.05"
+    },
+    {
+        "name": "TATAPOWER",
+        "date": "29-AUG-2024",
+        "marginrate": "22.5",
+        "Lot Size": "1350",
+        "margin": "130248",
+        "MIS margin": "58611",
+        "Price": "433.15"
+    },
+    {
+        "name": "TATAPOWER",
+        "date": "26-SEP-2024",
+        "marginrate": "22.5",
+        "Lot Size": "1350",
+        "margin": "131014",
+        "MIS margin": "58956",
+        "Price": "436.5"
+    },
+    {
+        "name": "TATASTEEL",
+        "date": "25-JUL-2024",
+        "marginrate": "19.5",
+        "Lot Size": "5500",
+        "margin": "182757",
+        "MIS margin": "82241",
+        "Price": "166.82"
+    },
+    {
+        "name": "TATASTEEL",
+        "date": "29-AUG-2024",
+        "marginrate": "19.5",
+        "Lot Size": "5500",
+        "margin": "184075",
+        "MIS margin": "82833",
+        "Price": "167.95"
+    },
+    {
+        "name": "TATASTEEL",
+        "date": "26-SEP-2024",
+        "marginrate": "19.5",
+        "Lot Size": "5500",
+        "margin": "185135",
+        "MIS margin": "83310",
+        "Price": "169.17"
+    },
+    {
+        "name": "TCS",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "175",
+        "margin": "134033",
+        "MIS margin": "60314",
+        "Price": "4307.55"
+    },
+    {
+        "name": "TCS",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "175",
+        "margin": "134962",
+        "MIS margin": "60733",
+        "Price": "4336.15"
+    },
+    {
+        "name": "TCS",
+        "date": "26-SEP-2024",
+        "marginrate": "17.5",
+        "Lot Size": "175",
+        "margin": "135727",
+        "MIS margin": "61077",
+        "Price": "4361.55"
+    },
+    {
+        "name": "TECHM",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "600",
+        "margin": "161690",
+        "MIS margin": "72760",
+        "Price": "1544.4"
+    },
+    {
+        "name": "TECHM",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "600",
+        "margin": "162805",
+        "MIS margin": "73262",
+        "Price": "1554.35"
+    },
+    {
+        "name": "TECHM",
+        "date": "26-SEP-2024",
+        "marginrate": "17.5",
+        "Lot Size": "600",
+        "margin": "163741",
+        "MIS margin": "73683",
+        "Price": "1564.05"
+    },
+    {
+        "name": "TITAN",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "175",
+        "margin": "101363",
+        "MIS margin": "45613",
+        "Price": "3263.65"
+    },
+    {
+        "name": "TITAN",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "175",
+        "margin": "102074",
+        "MIS margin": "45933",
+        "Price": "3286.7"
+    },
+    {
+        "name": "TITAN",
+        "date": "26-SEP-2024",
+        "marginrate": "17.5",
+        "Lot Size": "175",
+        "margin": "102673",
+        "MIS margin": "46202",
+        "Price": "3309.55"
+    },
+    {
+        "name": "TORNTPHARM",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "250",
+        "margin": "135711",
+        "MIS margin": "61070",
+        "Price": "3054.7"
+    },
+    {
+        "name": "TORNTPHARM",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "250",
+        "margin": "136655",
+        "MIS margin": "61495",
+        "Price": "3075.25"
+    },
+    {
+        "name": "TORNTPHARM",
+        "date": "26-SEP-2024",
+        "marginrate": "17.5",
+        "Lot Size": "250",
+        "margin": "137436",
+        "MIS margin": "61846",
+        "Price": "3094.15"
+    },
+    {
+        "name": "TRENT",
+        "date": "25-JUL-2024",
+        "marginrate": "20.5",
+        "Lot Size": "200",
+        "margin": "223431",
+        "MIS margin": "100544",
+        "Price": "5323.05"
+    },
+    {
+        "name": "TRENT",
+        "date": "29-AUG-2024",
+        "marginrate": "20.5",
+        "Lot Size": "200",
+        "margin": "224986",
+        "MIS margin": "101244",
+        "Price": "5358.7"
+    },
+    {
+        "name": "TRENT",
+        "date": "26-SEP-2024",
+        "marginrate": "20.5",
+        "Lot Size": "200",
+        "margin": "226346",
+        "MIS margin": "101855",
+        "Price": "5402.6"
+    },
+    {
+        "name": "TVSMOTOR",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "350",
+        "margin": "149682",
+        "MIS margin": "67357",
+        "Price": "2413.85"
+    },
+    {
+        "name": "TVSMOTOR",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "350",
+        "margin": "150710",
+        "MIS margin": "67819",
+        "Price": "2429.2"
+    },
+    {
+        "name": "TVSMOTOR",
+        "date": "26-SEP-2024",
+        "marginrate": "17.5",
+        "Lot Size": "350",
+        "margin": "151564",
+        "MIS margin": "68204",
+        "Price": "2443.5"
+    },
+    {
+        "name": "UBL",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "400",
+        "margin": "148486",
+        "MIS margin": "66818",
+        "Price": "2086.75"
+    },
+    {
+        "name": "UBL",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "400",
+        "margin": "149118",
+        "MIS margin": "67103",
+        "Price": "2072.15"
+    },
+    {
+        "name": "UBL",
+        "date": "26-SEP-2024",
+        "marginrate": "18.5",
+        "Lot Size": "400",
+        "margin": "149628",
+        "MIS margin": "67333",
+        "Price": "2060.35"
+    },
+    {
+        "name": "ULTRACEMCO",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "100",
+        "margin": "206917",
+        "MIS margin": "93112",
+        "Price": "11684.3"
+    },
+    {
+        "name": "ULTRACEMCO",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "100",
+        "margin": "208083",
+        "MIS margin": "93637",
+        "Price": "11684.75"
+    },
+    {
+        "name": "ULTRACEMCO",
+        "date": "26-SEP-2024",
+        "marginrate": "17.5",
+        "Lot Size": "100",
+        "margin": "209153",
+        "MIS margin": "94119",
+        "Price": "11722.7"
+    },
+    {
+        "name": "UNITDSPR",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "700",
+        "margin": "161530",
+        "MIS margin": "72688",
+        "Price": "1300.8"
+    },
+    {
+        "name": "UNITDSPR",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "700",
+        "margin": "162658",
+        "MIS margin": "73196",
+        "Price": "1309.7"
+    },
+    {
+        "name": "UNITDSPR",
+        "date": "26-SEP-2024",
+        "marginrate": "17.5",
+        "Lot Size": "700",
+        "margin": "163538",
+        "MIS margin": "73592",
+        "Price": "1315.6"
+    },
+    {
+        "name": "UPL",
+        "date": "25-JUL-2024",
+        "marginrate": "19.5",
+        "Lot Size": "1300",
+        "margin": "141728",
+        "MIS margin": "63778",
+        "Price": "560.35"
+    },
+    {
+        "name": "UPL",
+        "date": "29-AUG-2024",
+        "marginrate": "19.5",
+        "Lot Size": "1300",
+        "margin": "142698",
+        "MIS margin": "64214",
+        "Price": "563.65"
+    },
+    {
+        "name": "UPL",
+        "date": "26-SEP-2024",
+        "marginrate": "19.5",
+        "Lot Size": "1300",
+        "margin": "143520",
+        "MIS margin": "64584",
+        "Price": "567.45"
+    },
+    {
+        "name": "VEDL",
+        "date": "25-JUL-2024",
+        "marginrate": "35.5",
+        "Lot Size": "2300",
+        "margin": "364290",
+        "MIS margin": "163930",
+        "Price": "452.45"
+    },
+    {
+        "name": "VEDL",
+        "date": "29-AUG-2024",
+        "marginrate": "35.5",
+        "Lot Size": "2300",
+        "margin": "366869",
+        "MIS margin": "165091",
+        "Price": "455.7"
+    },
+    {
+        "name": "VEDL",
+        "date": "26-SEP-2024",
+        "marginrate": "35.5",
+        "Lot Size": "2300",
+        "margin": "368366",
+        "MIS margin": "165765",
+        "Price": "455.9"
+    },
+    {
+        "name": "VOLTAS",
+        "date": "25-JUL-2024",
+        "marginrate": "19.5",
+        "Lot Size": "600",
+        "margin": "172662",
+        "MIS margin": "77698",
+        "Price": "1498.3"
+    },
+    {
+        "name": "VOLTAS",
+        "date": "29-AUG-2024",
+        "marginrate": "19.5",
+        "Lot Size": "600",
+        "margin": "173829",
+        "MIS margin": "78223",
+        "Price": "1506.75"
+    },
+    {
+        "name": "VOLTAS",
+        "date": "26-SEP-2024",
+        "marginrate": "19.5",
+        "Lot Size": "600",
+        "margin": "174781",
+        "MIS margin": "78651",
+        "Price": "1514.05"
+    },
+    {
+        "name": "WIPRO",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "1500",
+        "margin": "152656",
+        "MIS margin": "68695",
+        "Price": "573.45"
+    },
+    {
+        "name": "WIPRO",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "1500",
+        "margin": "153681",
+        "MIS margin": "69156",
+        "Price": "576.4"
+    },
+    {
+        "name": "WIPRO",
+        "date": "26-SEP-2024",
+        "marginrate": "17.5",
+        "Lot Size": "1500",
+        "margin": "154494",
+        "MIS margin": "69522",
+        "Price": "578.75"
+    },
+    {
+        "name": "ZYDUSLIFE",
+        "date": "25-JUL-2024",
+        "marginrate": "17.5",
+        "Lot Size": "900",
+        "margin": "190140",
+        "MIS margin": "85563",
+        "Price": "1186.5"
+    },
+    {
+        "name": "ZYDUSLIFE",
+        "date": "29-AUG-2024",
+        "marginrate": "17.5",
+        "Lot Size": "900",
+        "margin": "191355",
+        "MIS margin": "86109",
+        "Price": "1191.05"
+    },
+    {
+        "name": "ZYDUSLIFE",
+        "date": "26-SEP-2024",
+        "marginrate": "17.5",
+        "Lot Size": "900",
+        "margin": "192414",
+        "MIS margin": "86586",
+        "Price": "1197.25"
+    }
+]

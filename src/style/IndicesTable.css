@@ -1,0 +1,212 @@
+.App {
+  font-family: var(--primary_font);
+
+}
+
+.toggle-button {
+  display: flex;
+  justify-content: flex-start;
+  
+}
+
+thead tr th {
+  padding: 25px 15px;
+  border-radius: 10px;
+}
+
+.heading {
+  font-size: 30px;
+  color: #13131f;
+  margin-bottom: 20px;
+  margin-top: 0;
+
+}
+
+.heading_row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.heading_row p {
+  color: #acacac;
+}
+
+.toggle-button button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+  outline: none;
+}
+
+.toggle-button .active {
+  background-color: #698192de;
+  color: white;
+  border: none;
+}
+
+table {
+  width: 100%;
+
+}
+
+th,
+td {
+
+  border: 0px;
+  text-align: center;
+}
+
+th {
+  background-color: #ffff;
+  font-size: 16px;
+  color: #39393a;
+}
+
+td {
+  font-size: 14px;
+  color: #424242;
+  padding: 15px 3px;
+}
+
+tbody {
+  border-spacing: 0 13px;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+thead {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  border-spacing: 0 38px;
+}
+
+.but_cover {
+  box-shadow: 2px 3px 3.7px 0px #00000060;
+  display: flex;
+}
+
+tr {
+  box-shadow: 0px 4px 6.7px 0px #00000040;
+  border-radius: 10px;
+  transition: all 0.4s ease;
+}
+
+tr:hover {
+  box-shadow: rgba(58, 32, 74, 0.6) 0px 5px 15px 0px;
+}
+
+thead tr:hover {
+  box-shadow: 2px 4px 28px 0px #00000040;
+}
+
+thead tr {
+  box-shadow: 2px 4px 28px 0px #00000040;
+}
+
+img {
+  width: 100px;
+  height: auto;
+}
+
+
+@media (max-width: 991px) {
+
+
+  .toggle-button {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .toggle-button button {
+    width: 100%;
+  }
+
+  .heading {
+    font-size: 28px;
+  }
+
+  th,
+  td {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+
+
+  .heading_row {
+    display: block;
+  }
+
+  table {
+    width: 1000px;
+    border-collapse: collapse;
+  }
+
+  .toggle-button {
+    margin: 10px 0px;
+  }
+
+  h1.heading {
+    margin: 0;
+  }
+
+  thead {
+    border-spacing: 0 18px;
+  }
+
+  thead tr th {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+
+
+  td {
+    padding: 10px;
+    font-size: 11px;
+    text-align: center;
+  }
+
+  .table_ind {
+    overflow: auto;
+  }
+
+  th:first-child {
+    position: sticky;
+    left: 0;
+    text-align: left;
+    background: #fff;
+    z-index: 2;
+  }
+
+  td:first-child {
+    position: sticky;
+    left: 0;
+    text-align: left;
+    background: #fff;
+    z-index: 2;
+  }
+
+  tr {
+    box-shadow: none;
+    border-bottom: 1px solid #ccc;
+  }
+
+  tr:hover {
+    box-shadow: none;
+  }
+
+  thead tr {
+    box-shadow: none;
+  }
+
+  thead tr:hover {
+    box-shadow: none;
+  }
+}

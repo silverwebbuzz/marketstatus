@@ -1,0 +1,348 @@
+{"mutual_fund_companies": [
+        {
+
+            "rank_by_aum": 1,
+            "amc_name": "ICICI Prudential Mutual Fund",
+            "aum_in_cr": 758545.97,
+            "funds": 90,
+            "amc_age": 31,
+            "logo": "icici.png"
+        },
+        {
+            "rank_by_aum": 2,
+            "amc_name": "SBI Mutual Fund",
+            "aum_in_cr": 727561.1,
+            "funds": 61,
+            "amc_age": 32,
+            "logo":"sbimf.png"
+        },
+        {
+            "rank_by_aum": 3,
+            "amc_name": "HDFC Mutual Fund",
+            "aum_in_cr": 718234.42,
+            "funds": 68,
+            "amc_age": 25,
+            "logo":"hdfcmutualfund.png"
+        },
+        {
+            "rank_by_aum": 4,
+            "amc_name": "Kotak Mahindra Mutual Fund",
+            "aum_in_cr": 444269.27,
+            "funds": 63,
+            "amc_age": 30,
+            "logo":"kotakmahindramf.png"
+        },
+        {
+            "rank_by_aum": 5,
+            "amc_name": "Nippon India Mutual Fund",
+            "aum_in_cr": 443115.82,
+            "funds": 59,
+            "amc_age": 29,
+            "logo":"nipponimf.png"
+        },
+        {
+            "rank_by_aum": 6,
+            "amc_name": "Aditya Birla Sun Life Mutual Fund",
+            "aum_in_cr": 373105.9,
+            "funds": 79,
+            "amc_age": 30,
+            "logo":"adityabirlasunlifemf.png"
+        },
+        {
+            "rank_by_aum": 7,
+            "amc_name": "Axis Mutual Fund",
+            "aum_in_cr": 300338.87,
+            "funds": 60,
+            "amc_age": 15,
+            "logo":"axismf.png"
+        },
+        {
+            "rank_by_aum": 8,
+            "amc_name": "UTI Mutual Fund",
+            "aum_in_cr": 232198.4,
+            "funds": 55,
+            "amc_age": 22,
+            "logo":"utimf.png"
+        },
+        {
+            "rank_by_aum": 9,
+            "amc_name": "Mirae Asset Mutual Fund",
+            "aum_in_cr": 179049.0,
+            "funds": 33,
+            "amc_age": 18,
+            "logo":"miraeassetmf.png"
+        },
+        {
+            "rank_by_aum": 10,
+            "amc_name": "Tata Mutual Fund",
+            "aum_in_cr": 171156.28,
+            "funds": 53,
+            "amc_age": 30,
+            "logo":"tatamf.png"
+        },
+        {
+            "rank_by_aum": 11,
+            "amc_name": "DSP Mutual Fund",
+            "aum_in_cr": 169938.39,
+            "funds": 50,
+            "amc_age": 28,
+            "logo":"dspmf.png"
+        },
+        {
+            "rank_by_aum": 12,
+            "amc_name": "Bandhan Mutual Fund",
+            "aum_in_cr": 153104.85,
+            "funds": 56,
+            "amc_age": 25,
+            "logo":"bandhanmf.png"
+        },
+        {
+            "rank_by_aum": 13,
+            "amc_name": "HSBC Mutual Fund",
+            "aum_in_cr": 123745.1,
+            "funds": 42,
+            "amc_age": 23,
+            "logo":"hsbcmf.png"
+        },
+        {
+            "rank_by_aum": 14,
+            "amc_name": "Franklin Templeton Mutual Fund",
+            "aum_in_cr": 105034.07,
+            "funds": 30,
+            "amc_age": 29,
+            "logo":"franklinmf.png"
+        },
+        {
+            "rank_by_aum": 15,
+            "amc_name": "Canara Robeco Mutual Fund",
+            "aum_in_cr": 102614.23,
+            "funds": 25,
+            "amc_age": 31,
+            "logo":"canararobecomf.png"
+        },
+        {
+            "rank_by_aum": 16,
+            "amc_name": "Edelweiss Mutual Fund",
+            "aum_in_cr": 99805.8,
+            "funds": 48,
+            "amc_age": 17,
+            "logo":"edelweissmf.png"
+        },
+        {
+            "rank_by_aum": 17,
+            "amc_name": "Quant Mutual Fund",
+            "aum_in_cr": 90625.88,
+            "funds": 27,
+            "amc_age": 29,
+            "logo":"quantmmf.png"
+        },
+        {
+            "rank_by_aum": 18,
+            "amc_name": "Invesco Mutual Fund",
+            "aum_in_cr": 87539.92,
+            "funds": 34,
+            "amc_age": 19,
+            "logo":"invescomf.png"
+        },
+        {
+            "rank_by_aum": 19,
+            "amc_name": "PPFAS Mutual Fund",
+            "aum_in_cr": 81162.79,
+            "funds": 6,
+            "amc_age": 13,
+            "logo":"ppfasmf.png"
+        },
+        {
+            "rank_by_aum": 20,
+            "amc_name": "Sundaram Mutual Fund",
+            "aum_in_cr": 64239.07,
+            "funds": 31,
+            "amc_age": 28,
+            "logo":"sundarammf.png"
+        },
+        {
+            "rank_by_aum": 21,
+            "amc_name": "Motilal Oswal Mutual Fund",
+            "aum_in_cr": 57925.52,
+            "funds": 32,
+            "amc_age": 16,
+            "logo":"motilaloswalmf.png"
+        },
+        {
+            "rank_by_aum": 22,
+            "amc_name": "Baroda BNP Paribas Mutual Fund",
+            "aum_in_cr": 39957.27,
+            "funds": 38,
+            "amc_age": 32,
+            "logo":"barodabnpmf.png"
+        },
+        {
+            "rank_by_aum": 23,
+            "amc_name": "LIC Mutual Fund",
+            "aum_in_cr": 27591.04,
+            "funds": 31,
+            "amc_age": 30,
+            "logo":"licmf.png"
+        },
+        {
+            "rank_by_aum": 24,
+            "amc_name": "Mahindra Manulife Mutual Fund",
+            "aum_in_cr": 25561.53,
+            "funds": 23,
+            "amc_age": 8,
+            "logo":"mahindramanulifemf.png"
+        },
+        {
+            "rank_by_aum": 25,
+            "amc_name": "PGIM India Mutual Fund",
+            "aum_in_cr": 25356.23,
+            "funds": 22,
+            "amc_age": 16,
+            "logo":"pgimindiamf.png"
+        },
+        {
+            "rank_by_aum": 26,
+            "amc_name": "Union Mutual Fund",
+            "aum_in_cr": 16853.05,
+            "funds": 23,
+            "amc_age": 15,
+            "logo":"unionmf.png"
+        },
+        {
+            "rank_by_aum": 27,
+            "amc_name": "Bajaj Finserv Mutual Fund",
+            "aum_in_cr": 11942.51,
+            "funds": 9,
+            "amc_age": 3,
+            "logo":"bajajfinservmf.png"
+        },
+        {
+            "rank_by_aum": 28,
+            "amc_name": "WhiteOak Capital Mutual Fund",
+            "aum_in_cr": 11878.37,
+            "funds": 14,
+            "amc_age": 7,
+            "logo":"whiteoakcapitalmf.png"
+        },
+        {
+            "rank_by_aum": 29,
+            "amc_name": "360 ONE Mutual Fund",
+            "aum_in_cr": 11391.24,
+            "funds": 7,
+            "amc_age": 14,
+            "logo":"360onemf.png"
+        },
+        {
+            "rank_by_aum": 30,
+            "amc_name": "JM Financial Mutual Fund",
+            "aum_in_cr": 9923.7,
+            "funds": 15,
+            "amc_age": 30,
+            "logo":"jmfinancialmf.png"
+        },
+        {
+            "rank_by_aum": 31,
+            "amc_name": "Bank of India Mutual Fund",
+            "aum_in_cr": 9097.1,
+            "funds": 16,
+            "amc_age": 17,
+            "logo":"bankoimf.png"
+        },
+        {
+            "rank_by_aum": 32,
+            "amc_name": "ITI Mutual Fund",
+            "aum_in_cr": 8307.48,
+            "funds": 17,
+            "amc_age": 16,
+            "logo":"itimf.png"
+        },
+        {
+            "rank_by_aum": 33,
+            "amc_name": "Navi Mutual Fund",
+            "aum_in_cr": 6319.26,
+            "funds": 15,
+            "amc_age": 15,
+            "logo":"navimf.png"
+        },
+        {
+            "rank_by_aum": 34,
+            "amc_name": "NJ Mutual Fund",
+            "aum_in_cr": 6181.4,
+            "funds": 5,
+            "amc_age": 19,
+            "logo":"njmf.png"
+        },
+        {
+            "rank_by_aum": 35,
+            "amc_name": "Quantum Mutual Fund",
+            "aum_in_cr": 2504.21,
+            "funds": 11,
+            "amc_age": 19,
+            "logo":"quantmf.png"
+        },
+        {
+            "rank_by_aum": 36,
+            "amc_name": "Samco Mutual Fund",
+            "aum_in_cr": 2437.41,
+            "funds": 6,
+            "amc_age": 5,
+            "logo":"samcomf.png"
+        },
+        {
+            "rank_by_aum": 37,
+            "amc_name": "Zerodha Mutual Fund",
+            "aum_in_cr": 2091.64,
+            "funds": 2,
+            "amc_age": 1,
+            "logo":"zerodhamf.png"
+        },
+        {
+            "rank_by_aum": 38,
+            "amc_name": "Helios Mutual fund",
+            "aum_in_cr": 1964.3,
+            "funds": 4,
+            "amc_age": 3,
+            "logo":"heliosmf.png"
+        },
+        {
+            "rank_by_aum": 39,
+            "amc_name": "Trust Mutual Fund",
+            "aum_in_cr": 1339.5,
+            "funds": 7,
+            "amc_age": 7,
+            "logo":"trustmf.png"
+        },
+        {
+            "rank_by_aum": 40,
+            "amc_name": "Groww Mutual Fund",
+            "aum_in_cr": 859.74,
+            "funds": 12,
+            "amc_age": 16,
+            "logo":"growwmf.png"
+        },
+        {
+            "rank_by_aum": 41,
+            "amc_name": "Taurus Mutual Fund",
+            "aum_in_cr": 851.14,
+            "funds": 8,
+            "amc_age": 31,
+            "logo":"taurusmf.png"
+        },
+        {
+            "rank_by_aum": 42,
+            "amc_name": "Shriram Mutual Fund",
+            "aum_in_cr": 689.93,
+            "funds": 6,
+            "amc_age": 30,
+            "logo":"shrirammf.png"
+        },
+        {
+            "rank_by_aum": 43,
+            "amc_name": "Old Bridge Mutual Fund",
+            "aum_in_cr": 468.43,
+            "funds": 1,
+            "amc_age": 1,
+            "logo":"oldbridgemf.png"
+        }
+    ]
+}

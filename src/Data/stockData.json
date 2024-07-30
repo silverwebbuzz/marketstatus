@@ -1,0 +1,1227 @@
+{
+    "nifty50": {
+        "value": 24315.95,
+        "change": "-8.50",
+        "percentage": -0.03,
+        "updated": "18-jul-2024 13:12 IST",
+        "advances": "28",
+        "declines": "22",
+        "unchanged": "0",
+        "open": 24400.00,
+        "high": 24500.00,
+        "low": 24300.00,
+        "chartData": {
+            "1D": {
+                "labels": [
+                    "9",
+                    "10",
+                    "11",
+                    "12",
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "values": [
+                    24315.95,
+                    24320.00,
+                    24318.50,
+                    24322.30,
+                    24325.10,
+                    24323.50,
+                    24324.80,
+                    24326.00
+                ]
+            },
+            "1W": {
+                "labels": [
+                    "Jul 9",
+                    "Jul 10",
+                    "Jul 11",
+                    "Jul 12",
+                    "Jul 13",
+                    "Jul 14",
+                    "Jul 15"
+                ],
+                "values": [
+                    24000,
+                    24100,
+                    24200,
+                    24300,
+                    24250,
+                    24280,
+                    24315.95
+                ]
+            },
+            "1M": {
+                "labels": [
+                    "Jun 15",
+                    "Jun 16",
+                    "Jun 17",
+                    "Jun 18",
+                    "Jun 19",
+                    "Jun 20",
+                    "Jun 21",
+                    "Jun 22",
+                    "Jun 23",
+                    "Jun 24",
+                    "Jun 25",
+                    "Jun 26",
+                    "Jun 27",
+                    "Jun 28",
+                    "Jun 29",
+                    "Jun 30",
+                    "Jul 1",
+                    "Jul 2",
+                    "Jul 3",
+                    "Jul 4",
+                    "Jul 5",
+                    "Jul 6",
+                    "Jul 7",
+                    "Jul 8",
+                    "Jul 9",
+                    "Jul 10",
+                    "Jul 11",
+                    "Jul 12",
+                    "Jul 13",
+                    "Jul 14",
+                    "Jul 15"
+                ],
+                "values": [
+                    23000,
+                    23100,
+                    23200,
+                    23300,
+                    23400,
+                    23500,
+                    23600,
+                    23700,
+                    23800,
+                    23900,
+                    24000,
+                    24100,
+                    24200,
+                    24300,
+                    24250,
+                    24280,
+                    24315.95,
+                    24290,
+                    24260,
+                    24270,
+                    24280,
+                    24250,
+                    24300,
+                    24310,
+                    24250,
+                    24280,
+                    24315.95,
+                    24290,
+                    24260,
+                    24270,
+                    24315.95
+                ]
+            },
+            "1Y": {
+                "labels": [
+                    "Jul '23",
+                    "Aug '23",
+                    "Sep '23",
+                    "Oct '23",
+                    "Nov '23",
+                    "Dec '23",
+                    "Jan '24",
+                    "Feb '24",
+                    "Mar '24",
+                    "Apr '24",
+                    "May '24",
+                    "Jun '24",
+                    "Jul '24"
+                ],
+                "values": [
+                    20000,
+                    20500,
+                    21000,
+                    21500,
+                    22000,
+                    22500,
+                    23000,
+                    23500,
+                    24000,
+                    24500,
+                    24300,
+                    24250,
+                    24315.95
+                ]
+            }
+        }
+    },
+    "niftyBank": {
+        "value": 52270.65,
+        "change": "+81.35",
+        "percentage": 0.16,
+        "updated": "18-jul-2024 13:12 IST",
+        "advances": "23",
+        "declines": "27",
+        "unchanged": "0",
+        "open": 24400.00,
+        "high": 24500.00,
+        "low": 24300.00,
+        "chartData": {
+            "1D": {
+                "labels": [
+                    "9",
+                    "10",
+                    "11",
+                    "12",
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "values": [
+                    52270.65,
+                    52272.00,
+                    52273.50,
+                    52274.30,
+                    52275.10,
+                    52276.50,
+                    52277.80,
+                    52278.00
+                ]
+            },
+            "1W": {
+                "labels": [
+                    "Jul 9",
+                    "Jul 10",
+                    "Jul 11",
+                    "Jul 12",
+                    "Jul 13",
+                    "Jul 14",
+                    "Jul 15"
+                ],
+                "values": [
+                    52000,
+                    52100,
+                    52200,
+                    52300,
+                    52250,
+                    52280,
+                    52270.65
+                ]
+            },
+            "1M": {
+                "labels": [
+                    "Jun 15",
+                    "Jun 16",
+                    "Jun 17",
+                    "Jun 18",
+                    "Jun 19",
+                    "Jun 20",
+                    "Jun 21",
+                    "Jun 22",
+                    "Jun 23",
+                    "Jun 24",
+                    "Jun 25",
+                    "Jun 26",
+                    "Jun 27",
+                    "Jun 28",
+                    "Jun 29",
+                    "Jun 30",
+                    "Jul 1",
+                    "Jul 2",
+                    "Jul 3",
+                    "Jul 4",
+                    "Jul 5",
+                    "Jul 6",
+                    "Jul 7",
+                    "Jul 8",
+                    "Jul 9",
+                    "Jul 10",
+                    "Jul 11",
+                    "Jul 12",
+                    "Jul 13",
+                    "Jul 14",
+                    "Jul 15"
+                ],
+                "values": [
+                    51000,
+                    51100,
+                    51200,
+                    51300,
+                    51400,
+                    51500,
+                    51600,
+                    51700,
+                    51800,
+                    51900,
+                    52000,
+                    52100,
+                    52200,
+                    52300,
+                    52250,
+                    52280,
+                    52270.65,
+                    52290,
+                    52260,
+                    52270,
+                    52280,
+                    52250,
+                    52300,
+                    52310,
+                    52250,
+                    52280,
+                    52270.65,
+                    52290,
+                    52260,
+                    52270,
+                    52270.65
+                ]
+            },
+            "1Y": {
+                "labels": [
+                    "Jul '23",
+                    "Aug '23",
+                    "Sep '23",
+                    "Oct '23",
+                    "Nov '23",
+                    "Dec '23",
+                    "Jan '24",
+                    "Feb '24",
+                    "Mar '24",
+                    "Apr '24",
+                    "May '24",
+                    "Jun '24",
+                    "Jul '24"
+                ],
+                "values": [
+                    50000,
+                    50500,
+                    51000,
+                    51500,
+                    52000,
+                    52500,
+                    53000,
+                    53500,
+                    54000,
+                    54500,
+                    55000,
+                    55500,
+                    52270.65
+                ]
+            }
+        }
+    },
+    "sensex": {
+        "value": 79897.34,
+        "change": "-27.43",
+        "percentage": -0.03,
+        "updated": "18-jul-2024 13:12 IST",
+        "advances": "18",
+        "declines": "12",
+        "unchanged": "0",
+        "open": 24400.00,
+        "high": 24500.00,
+        "low": 24300.00,
+        "chartData": {
+            "1D": {
+                "labels": [
+                    "9",
+                    "10",
+                    "11",
+                    "12",
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ],
+                "values": [
+                    79897.34,
+                    79895.00,
+                    79892.50,
+                    79890.30,
+                    79888.10,
+                    79885.50,
+                    79883.80,
+                    79882.00
+                ]
+            },
+            "1W": {
+                "labels": [
+                    "Jul 9",
+                    "Jul 10",
+                    "Jul 11",
+                    "Jul 12",
+                    "Jul 13",
+                    "Jul 14",
+                    "Jul 15"
+                ],
+                "values": [
+                    79000,
+                    79100,
+                    79200,
+                    79300,
+                    79250,
+                    79280,
+                    79897.34
+                ]
+            },
+            "1M": {
+                "labels": [
+                    "Jun 15",
+                    "Jun 16",
+                    "Jun 17",
+                    "Jun 18",
+                    "Jun 19",
+                    "Jun 20",
+                    "Jun 21",
+                    "Jun 22",
+                    "Jun 23",
+                    "Jun 24",
+                    "Jun 25",
+                    "Jun 26",
+                    "Jun 27",
+                    "Jun 28",
+                    "Jun 29",
+                    "Jun 30",
+                    "Jul 1",
+                    "Jul 2",
+                    "Jul 3",
+                    "Jul 4",
+                    "Jul 5",
+                    "Jul 6",
+                    "Jul 7",
+                    "Jul 8",
+                    "Jul 9",
+                    "Jul 10",
+                    "Jul 11",
+                    "Jul 12",
+                    "Jul 13",
+                    "Jul 14",
+                    "Jul 15"
+                ],
+                "values": [
+                    78000,
+                    78100,
+                    78200,
+                    78300,
+                    78400,
+                    78500,
+                    78600,
+                    78700,
+                    78800,
+                    78900,
+                    79000,
+                    79100,
+                    79200,
+                    79300,
+                    79250,
+                    79280,
+                    79897.34,
+                    79290,
+                    79260,
+                    79270,
+                    79280,
+                    79250,
+                    79300,
+                    79310,
+                    79250,
+                    79280,
+                    79897.34,
+                    79290,
+                    79260,
+                    79270,
+                    79897.34
+                ]
+            },
+            "1Y": {
+                "labels": [
+                    "Jul '23",
+                    "Aug '23",
+                    "Sep '23",
+                    "Oct '23",
+                    "Nov '23",
+                    "Dec '23",
+                    "Jan '24",
+                    "Feb '24",
+                    "Mar '24",
+                    "Apr '24",
+                    "May '24",
+                    "Jun '24",
+                    "Jul '24"
+                ],
+                "values": [
+                    75000,
+                    75500,
+                    76000,
+                    76500,
+                    77000,
+                    77500,
+                    78000,
+                    78500,
+                    79000,
+                    79500,
+                    79000,
+                    79250,
+                    79897.34
+                ]
+            }
+        }
+    },
+    "smallBoxes": [
+        {
+            "name": "India VIX",
+            "value": 14.19,
+            "change": "0.46",
+            "percentage": 3.33,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    14.1,
+                    13.5,
+                    14.2,
+                    13.8,
+                    14.0,
+                    14.3,
+                    14.2
+                ]
+            }
+        },
+        {
+            "name": "Nifty Realty",
+            "value": 1107.90,
+            "change": "-14.70",
+            "percentage": 1.34,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    1100,
+                    1120,
+                    1080,
+                    1095,
+                    1105,
+                    1110,
+                    1107.9
+                ]
+            }
+        },
+        {
+            "name": "Nifty Media",
+            "value": 2105.80,
+            "change": "31.65",
+            "percentage": 1.53,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    2100,
+                    2110,
+                    2090,
+                    2100,
+                    2102,
+                    2104,
+                    2105.8
+                ]
+            }
+        },
+        {
+            "name": "Nifty CPSE",
+            "value": 79897.34,
+            "change": "-27.43",
+            "percentage": -0.03,
+            "time": "04:14 PM",
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "june",
+                    "july"
+                ],
+                "values": [
+                    24340,
+                    34543,
+                    24870,
+                    14560,
+                    24315.95,
+                    65439.08,
+                    43216.32
+                ]
+            }
+        },
+        {
+            "name": "Nifty PSU Bank",
+            "value": 7423.85,
+            "change": "220.85",
+            "percentage": 3.07,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    7400,
+                    7410,
+                    7430,
+                    7405,
+                    7415,
+                    7420,
+                    7423.85
+                ]
+            }
+        },
+        {
+            "name": "Nifty Infra",
+            "value": 9343.70,
+            "change": "-67.40",
+            "percentage": 0.73,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    9300,
+                    9320,
+                    9310,
+                    9330,
+                    9340,
+                    9345,
+                    9343.7
+                ]
+            }
+        },
+        {
+            "name": "Nifty Commodities",
+            "value": 9457.25,
+            "change": "-78.10",
+            "percentage": 0.83,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    9400,
+                    9430,
+                    9440,
+                    9420,
+                    9450,
+                    9455,
+                    9457.25
+                ]
+            }
+        },
+        {
+            "name": "Nifty Metal",
+            "value": 9729.60,
+            "change": "21.40",
+            "percentage": 0.22,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    9700,
+                    9710,
+                    9720,
+                    9715,
+                    9730,
+                    9735,
+                    9729.6
+                ]
+            }
+        },
+        {
+            "name": "Nifty Consumption",
+            "value": 11425.20,
+            "change": "77.70",
+            "percentage": 0.68,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    11400,
+                    11410,
+                    11420,
+                    11415,
+                    11430,
+                    11435,
+                    11425.2
+                ]
+            }
+        },
+        {
+            "name": "Nifty PSE",
+            "value": 11514.35,
+            "change": "139.55",
+            "percentage": 1.23,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    11500,
+                    11510,
+                    11520,
+                    11515,
+                    11530,
+                    11535,
+                    11514.35
+                ]
+            }
+        },
+        {
+            "name": "Nifty Midcap Sel",
+            "value": 12525.15,
+            "change": "65.55",
+            "percentage": 0.53,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    12500,
+                    12510,
+                    12520,
+                    12515,
+                    12530,
+                    12535,
+                    12525.15
+                ]
+            }
+        },
+        {
+            "name": "Nifty Midcap 50",
+            "value": 16088.45,
+            "change": "133.55",
+            "percentage": 0.84,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    16000,
+                    16010,
+                    16020,
+                    16015,
+                    16030,
+                    16035,
+                    16088.45
+                ]
+            }
+        },
+        {
+            "name": "Nifty MNC",
+            "value": 31047.20,
+            "change": "177.30",
+            "percentage": 0.57,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    31000,
+                    31010,
+                    31020,
+                    31015,
+                    31030,
+                    31035,
+                    31047.2
+                ]
+            }
+        },
+        {
+            "name": "Nifty Next 50",
+            "value": 74367.35,
+            "change": "635.25",
+            "percentage": 0.86,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    74000,
+                    74100,
+                    74200,
+                    74150,
+                    74250,
+                    74300,
+                    74367.35
+                ]
+            }
+        },
+        {
+            "name": "Nifty Pharma",
+            "value": 20844.55,
+            "change": "231.90",
+            "percentage": 1.13,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    20800,
+                    20810,
+                    20820,
+                    20815,
+                    20830,
+                    20835,
+                    20844.55
+                ]
+            }
+        },
+        {
+            "name": "Nifty Services",
+            "value": 31116.70,
+            "change": "-125.35",
+            "percentage": 0.40,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    31100,
+                    31110,
+                    31120,
+                    31115,
+                    31130,
+                    31135,
+                    31116.7
+                ]
+            }
+        },
+        {
+            "name": "Nifty Small 100",
+            "value": 19047.70,
+            "change": "98.65",
+            "percentage": 0.52,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    19000,
+                    19010,
+                    19020,
+                    19015,
+                    19030,
+                    19035,
+                    19047.7
+                ]
+            }
+        },
+        {
+            "name": "India VIX",
+            "value": 14.19,
+            "change": "0.46",
+            "percentage": 3.33,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    14.1,
+                    13.5,
+                    14.2,
+                    13.8,
+                    14.0,
+                    14.3,
+                    14.2
+                ]
+            }
+        },
+        {
+            "name": "Nfty Commodities",
+            "value": 9457.25,
+            "change": "78.10",
+            "percentage": 0.83,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    9400,
+                    9430,
+                    9440,
+                    9420,
+                    9450,
+                    9455,
+                    9457.25
+                ]
+            }
+        },
+        {
+            "name": "Nifty 100",
+            "value": 25696.05,
+            "change": "118.75",
+            "percentage": 0.46,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    25600,
+                    25610,
+                    25620,
+                    25615,
+                    25630,
+                    25635,
+                    25696.05
+                ]
+            }
+        },
+        {
+            "name": "Nifty 200",
+            "value": 13968.65,
+            "change": "73.35",
+            "percentage": 0.53,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    13900,
+                    13910,
+                    13920,
+                    13915,
+                    13930,
+                    13935,
+                    13968.65
+                ]
+            }
+        },
+        {
+            "name": "Nifty 50",
+            "value": 24586.70,
+            "change": "84.55",
+            "percentage": 0.35,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    24500,
+                    24510,
+                    24520,
+                    24515,
+                    24530,
+                    24535,
+                    24586.7
+                ]
+            }
+        },
+        {
+            "name": "Nifty 500",
+            "value": 23209.85,
+            "change": "114.40",
+            "percentage": 0.50,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    23200,
+                    23210,
+                    23220,
+                    23215,
+                    23230,
+                    23235,
+                    23209.85
+                ]
+            }
+        },
+        {
+            "name": "Nifty Auto",
+            "value": 25419.80,
+            "change": "274.35",
+            "percentage": 1.09,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    25400,
+                    25410,
+                    25420,
+                    25415,
+                    25430,
+                    25435,
+                    25419.8
+                ]
+            }
+        },
+        {
+            "name": "Nifty Bank",
+            "value": 52455.90,
+            "change": "177.00",
+            "percentage": 0.34,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    52400,
+                    52410,
+                    52420,
+                    52415,
+                    52430,
+                    52435,
+                    52455.9
+                ]
+            }
+        },
+        {
+            "name": "Nifty CPSE",
+            "value": 7420.10,
+            "change": "111.00",
+            "percentage": 1.52,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    7400,
+                    7450,
+                    7380,
+                    7405,
+                    7410,
+                    7425,
+                    7420.1
+                ]
+            }
+        },
+        {
+            "name": "Nifty Energy",
+            "value": 43303.00,
+            "change": "456.65",
+            "percentage": 1.07,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    43300,
+                    43310,
+                    43320,
+                    43315,
+                    43330,
+                    43335,
+                    43303
+                ]
+            }
+        },
+        {
+            "name": "Nifty Financial",
+            "value": 23691.85,
+            "change": "87.45",
+            "percentage": 0.37,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    23600,
+                    23610,
+                    23620,
+                    23615,
+                    23630,
+                    23635,
+                    23691.85
+                ]
+            }
+        },
+        {
+            "name": "Nifty Consumption",
+            "value": 11425.20,
+            "change": "77.70",
+            "percentage": 0.68,
+            "chartData": {
+                "labels": [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "June",
+                    "July"
+                ],
+                "values": [
+                    11400,
+                    11410,
+                    11420,
+                    11415,
+                    11430,
+                    11435,
+                    11425.2
+                ]
+            }
+        }
+    ]
+}
