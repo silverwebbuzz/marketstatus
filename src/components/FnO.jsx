@@ -41,6 +41,8 @@ const FnO = () => {
             />
             <button onClick={handleSearch}>Find</button>
           </div>
+          <div className="table_ind">
+
           <table>
             <thead>
               <tr>
@@ -71,6 +73,7 @@ const FnO = () => {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       </div>
     </section>
