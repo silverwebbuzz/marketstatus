@@ -8,14 +8,14 @@ function Footer() {
         <div className="footer_row">
           <div className="footer_left">
             <div className="footer_content">
-              <p>Copyright 2024<a href="https://silverwebbuzz.com/">©Silverwebbuzz</a> . All rights reserved.</p>
+              <p>Copyright 2024<a href="https://silverwebbuzz.com/" target="/">©Silverwebbuzz</a> . All rights reserved.</p>
             </div>
           </div>
           <div className="footer_right">
             <div className="bottom_socialicon">
               <ul>
                 <li className="social_icon">
-                  <a className="si" href="https://in.linkedin.com/">
+                  <a className="si" href="https://www.linkedin.com/company/market-status/" target="/">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -41,14 +41,14 @@ function Footer() {
                   </a>
                 </li>
                 <li className="social_icon">
-                  <a className="si" href="https://twitter.com/">
+                  <a className="si" href="https://x.com/MarketStat82237" target="/">
                     <span>
                     <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 512 512"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
                     </span>
                   </a>
                 </li>
                 <li className="social_icon">
-                  <a className="si" href="https://www.instagram.com/">
+                  <a className="si" href="https://www.instagram.com/marketstatus_in/" target="/">
                     <span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"

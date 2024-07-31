@@ -1,4 +1,6 @@
+/* src/components/MutualFund.css */
 
+  
   .card {
     border: 1px solid #e0e0e0;
     border-radius: 8px;
@@ -8,7 +10,6 @@
   }
   
   .card-header_mf {
-    background-color: #f5f5f5;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,6 +22,7 @@
     padding: 4px 8px;
     border-radius: 4px;
     font-weight: bold;
+    font-size: 12px;
     
   }
 
@@ -30,11 +32,11 @@
 }
 
 .card_mf:hover {
-    box-shadow: rgba(195, 42, 70, 0.4) 0px 2px 4px, rgba(192, 42, 70, 0.3) 0px 7px 13px -3px, rgba(192, 42, 70, 0.2) 0px -3px 0px inset;
+  box-shadow: rgba(58, 32, 74, 0.6) 0px 5px 15px 0px;
 }
 
   .amc-logo {
-    width: 40px; 
+    width: 40px; /* adjust size as needed */
     height: auto;
     margin-right: 10px;
     vertical-align: middle;
@@ -59,6 +61,7 @@
   .card_row {
     display: flex;
     flex-flow: wrap;
+    /* margin: 0-20px; */
 }
 
 .card_mf {
@@ -76,4 +79,21 @@
     display: flex;
     font-size: 14px;
     justify-content: space-between;
+    /* border-radius: 10px; */
+}
+
+@media (max-width: 991px){
+  .card_mf {
+    width: calc(50% - 20px);
+    padding: 10px;
+  }
+  .amc-name {
+    font-size: 14px;
+}
+}
+@media (max-width: 767px){
+  .card_mf {
+    width: 100%;
+    padding: 10px;
+  }
 }

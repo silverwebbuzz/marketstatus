@@ -1,5 +1,5 @@
 .dashboard {
- 
+  /* background-color: white; */
   display: flex;
   justify-content: center;
   width: 70%;
@@ -30,31 +30,24 @@
 
 .adv{
   width: 30%;
-  padding-left: 20px;
-  border-radius: 10px;
-  border: 1px solid rgb(230, 230, 230);
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* padding-left: 20px; */
+ overflow-y: scroll;
+ scrollbar-width: none;
+ height: 729px;
 }
 
 .dashboard_row{
-  display: flex;
-
+  display: flex ;
 }
 
 
-
-@media (max-width: 991px){
-  
-}
 
 
 @media (max-width: 991px) {
+  
   .dashboard {
-    flex-direction: column;
-   
-  }
-
+    width: 100%;
+}
   .stock-boxes {
     flex-flow: wrap;
     margin: 0;
@@ -63,22 +56,22 @@
 
   .smallbox_row {
    flex-flow: wrap;
+   /* justify-content: flex-start; */
   }
 
   .container {
     padding: 0 10px;
   }
-
 }
 
 @media (max-width: 767px) {
- 
-  .smallbox_row {
-    
-    margin: 10px;
-  }
-
-  .container {
-    padding: 0 10px;
-  }
+  .dashboard_row {
+    display: block;
+   }
+   .dashboard{
+    padding: 0;
+   }
+   .adv{
+    width: 100%;
+   }
 }
