@@ -46,14 +46,21 @@ const Dashboard = () => {
               <StockBox title="NIFTYBANK" />
               <StockBox title="SENSEX" />
               <div className="stock-box adv_box">
-                <img src={advImg} alt='adv'></img>
+                <div className="adverstiment">
+                  <img src={advImg} alt='adv'></img>
+                </div>
                 <a href='https://yfobs.in' target='/'>yfobs</a>
               </div>
             </div>
           </div>
-          <div className="adv">
-          <TopMF data ={data.mutualFunds}/>
+         <div className='adv'>
+          <div>
+            <h4>Top Ranked Mutual Funds</h4>
+            </div>
+          <div className="trmfl">
+            <TopMF data ={data.mutualFunds}/>
           </div>
+         </div>
           </div>
         </div>
       </section>

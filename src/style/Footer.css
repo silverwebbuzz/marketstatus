@@ -1,7 +1,7 @@
 footer {
-   background: #272727;
+   background: black;
    padding: 10px 0px;
-   margin-top: 100px;
+   margin-top: 60px;
 }
 
 .footer_row {
@@ -63,3 +63,8 @@ a.si span svg path {
    }
 }
 
+@media (max-width:768px){
+   footer {
+      margin-top: 30px;
+  }
+}

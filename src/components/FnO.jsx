@@ -57,13 +57,14 @@ const FnO = () => {
             <tbody>
               {filteredData.map((item, index) => (
                 <tr key={index} className="t_row">
+                  
                   <td>
-                    {item.name} {item.date}
+                    {item.scrip} {item.expiry}
                   </td>
-                  <td>{item.Price}</td>
-                  <td>{item["Lot Size"]}</td>
+                  <td>{item.price}</td>
+                  <td>{item["lot_size"]}</td>
+                  <td>{item.nrml_margin}</td>
                   <td>{item.margin}</td>
-                  <td>{item.marginrate}</td>
                   <td>
                     {funds
                       ? Math.floor(parseFloat(funds) / parseFloat(item.margin))
@@ -81,3 +82,5 @@ const FnO = () => {
 };
 
 export default FnO;
+
+

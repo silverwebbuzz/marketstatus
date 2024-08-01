@@ -225,7 +225,7 @@ img {
     left: 0;
     text-align: left;
     background: #fff;
-    z-index: 2;
+    z-index: 0;
   }
 
   td:first-child {
@@ -233,7 +233,7 @@ img {
     left: 0;
     text-align: left;
     background: #fff;
-    z-index: 2;
+    z-index: 0;
   }
 
   tr {

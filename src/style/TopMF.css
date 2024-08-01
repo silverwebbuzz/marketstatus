@@ -13,10 +13,17 @@
    border: 1px solid #e0e0e0;
    border-radius: 8px;
    width: 300px;
-   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
    overflow: hidden;
  }
- 
+ .trmfl {
+  overflow-y: scroll;
+  scrollbar-width: none;
+  height: 603px;
+}
+
+.adv div h4 {
+  margin: 0;
+}
  .tmf_card-header_mf {
    display: flex;
    justify-content: space-between;
@@ -60,7 +67,9 @@
    padding-top: 16px;
    color: #302c2c;
  }
- 
+ .f_return{
+  color: rgb(5, 92, 30)
+ }
  .tmf_details div {
    margin-bottom: 8px;
  }
@@ -70,8 +79,8 @@
  margin: 5px auto;
  padding: 10px;
  border-radius: 10px;
- border: 1px solid rgb(230, 230, 230);
  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ border: 1px solid rgb(230, 230, 230);
 
 }
 
@@ -81,6 +90,7 @@
    justify-content: space-between; 
     border-radius: 10px; 
     font-weight: 300;
+   
     margin-top: 10px;
  } 
 
@@ -100,4 +110,11 @@ h3.trmf {
 span.trmf {
  margin-top: 16px;
  font-size: 21px;
+}
+
+@media (max-width: 768px){
+  .tmf_details{
+    gap: 5px;
+    font-size: 12px;
+  }
 }

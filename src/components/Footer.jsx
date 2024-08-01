@@ -56,14 +56,14 @@ function Footer() {
                         width="24"
                         height="24"
                         viewBox="0 0 1024 1024"
-                        class="icon"
+                        className="icon"
                       >
-                        <g id="SVGRepo_bgCarrier" stroke-width="0" />
+                        <g id="SVGRepo_bgCarrier" strokeWidth="0" />
 
                         <g
                           id="SVGRepo_tracerCarrier"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         />
 
                         <g id="SVGRepo_iconCarrier">

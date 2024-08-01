@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from './components/Header';
-import Navbar from './components/Navbar';
+//import Navbar from './components/Navbar';
 import Dashboard from './components/Dashboard';
 import IndicesTable from './components/IndicesTable';
 import FnO from './components/FnO';
 import MutualFund from './components/MutualFund';
 import MutualData from './Data/mutualData.json'; // Adjust the path as necessary
 import Footer from './components/Footer';
+import Ipo from './components/Ipo';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 
@@ -29,19 +30,18 @@ const AppContent = () => {
   usePageTracking();
 
   return (
-    <div className="App">
-     
+    <>
         <Header />
-        <Navbar />
+        {/* <Navbar /> */}
         <Routes>
           <Route path="/indices" element={<IndicesTable />} />
           <Route path="/" element={<Dashboard />} />
           <Route path="/fnO" element={<FnO />} />
-          <Route path="/mutualFunds" element={<MutualFund data={MutualData} />} /> {/* New Route */}
+          <Route path="/ipo" element={<Ipo />} />
+          <Route path="/mutualFunds" element={<MutualFund data={MutualData} />} /> 
         </Routes>
-        <Footer />
-     
-    </div>
+        <Footer />     
+    </>
   );
 }
 

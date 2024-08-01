@@ -1,0 +1,185 @@
+[
+    {
+        "logo": "AKUMS.png",
+        "close_date": "Thu, 01 Aug 2024 ",
+        "company_name": "Akums Drugs & Pharmaceuticals Ltd",
+        "id": 1,
+        "ipo_switch": ["MAINBOARD"],
+        "issue_size": "1856.74 Cr",
+        "min_investment": "14938",
+        "open_date": "Tue, 31 Jul 2024 ",
+        "price_band": "646 - 679",
+        "times_subscribed": "-"
+    },
+    {
+        "logo": "CIL.png",
+        "close_date": "Mon, 05 Aug 2024 ",
+        "company_name": "Ceigall India Ltd",
+        "id": 2,
+        "ipo_switch": ["MAINBOARD"],
+        "issue_size": "1222.89 Cr",
+        "min_investment": "14837",
+        "open_date": "Thu, 01 Aug 2024 ",
+        "price_band": "380 - 401",
+        "times_subscribed": "-"
+    },
+    {
+        "logo": "OLA.jpg",
+        "close_date": "Tue, 06 Aug 2024 ",
+        "company_name": "Ola Electric Mobility Ltd",
+        "id": 3,
+        "ipo_switch": ["MAINBOARD"],
+        "issue_size": "6145.56 Cr",
+        "min_investment": "14820",
+        "open_date": "Fri, 02 Aug 2024 ",
+        "price_band": "72 - 76",
+        "times_subscribed": "-"
+    },
+    
+    
+    
+    {
+        "logo": "ESPRIT.png",
+        "close_date": "Tue, 30 Jul 2024 ",
+        "company_name": "Esprit Stones Ltd",
+        "id": 4,
+        "ipo_switch": ["SME"],
+        "issue_size": "50.42 Cr",
+        "min_investment": "139200",
+        "open_date": "Fri, 26 Jul 2024 ",
+        "price_band": "82 - 87",
+        "times_subscribed": "-"
+    },
+    {
+        "logo": "SATECH.png",
+        "close_date": "Tue, 30 Jul 2024 ",
+        "company_name": "S A Tech Software India Ltd",
+        "id": 5,
+        "ipo_switch": ["SME"],
+        "issue_size": "23.01 Cr",
+        "min_investment": "118000",
+        "open_date": "Fri, 26 Jul 2024 ",
+        "price_band": "56 - 59",
+        "times_subscribed": "-"
+    },
+    {
+        "logo": "APRAMEYA.png",
+        "close_date": "Mon, 29 Jul 2024 ",
+        "company_name": "Aprameya Engineering Ltd",
+        "id": 6,
+        "ipo_switch": ["SME"],
+        "issue_size": "29.23 Cr",
+        "min_investment": "116000",
+        "open_date": "Thu, 25 Jul 2024 ",
+        "price_band": "56 - 58",
+        "times_subscribed": "-"
+    },
+    {
+        "logo": "CTL.png",
+        "close_date": "Mon, 29 Jul 2024 ",
+        "company_name": "Clinitech Laboratory Ltd",
+        "id": 7,
+        "ipo_switch": ["SME"],
+        "issue_size": "5.78 Cr",
+        "min_investment": "115200",
+        "open_date": "Thu, 25 Jul 2024 ",
+        "price_band": "56 - 58",
+        "times_subscribed": "-"
+    },
+    {
+        "logo": "TROM.png",
+        "close_date": "Mon, 29 Jul 2024 ",
+        "company_name": "Trom Industries Ltd",
+        "id": 8,
+        "ipo_switch": ["SME"],
+        "issue_size": "31.37 Cr",
+        "min_investment": "138000",
+        "open_date": "Thu, 25 Jul 2024 ",
+        "price_band": "110 - 115",
+        "times_subscribed": "-"
+    },
+    {
+        "logo": "MG.png",
+        "close_date": "Fri, 26 Jul 2024 ",
+        "company_name": "Manglam Infra & Engineering Ltd",
+        "id": 9,
+        "ipo_switch": ["SME"],
+        "issue_size": "27.62 Cr",
+        "min_investment": "112000",
+        "open_date": "Wed, 24 Jul 2024 ",
+        "price_band": "53 - 56",
+        "times_subscribed": "-"
+    },
+    {
+        "logo": "KIZI.png",
+        "close_date": "Thu, 01 Aug 2024 ",
+        "company_name": "Kizi Apparels Ltd",
+        "id": 10,
+        "ipo_switch": ["SME"],
+        "issue_size": "5.58 Cr",
+        "min_investment": "126000",
+        "open_date": "Tue, 30 Jul 2024 ",
+        "price_band": "53 - 56",
+        "times_subscribed": "-"
+    },
+    {
+        "logo": "BULKCORP.png",
+        "close_date": "Thu, 01 Aug 2024 ",
+        "company_name": "Bulkcorp International Ltd",
+        "id": 11,
+        "ipo_switch": ["SME"],
+        "issue_size": "20.78 Cr",
+        "min_investment": "126000",
+        "open_date": "Tue, 30 Jul 2024 ",
+        "price_band": "100 - 105",
+        "times_subscribed": "-"
+    },
+    {
+        "logo": "RAJINDLTD.png",
+        "close_date": "Thu, 01 Aug 2024 ",
+        "company_name": "Rajputana Industries Ltd",
+        "id": 12,
+        "ipo_switch": ["SME"],
+        "issue_size": "23.88 Cr",
+        "min_investment": "114000",
+        "open_date": "Tue, 30 Jul 2024 ",
+        "price_band": "36 - 38",
+        "times_subscribed": "-"
+    },
+    {
+        "logo": "ASHALOG.png",
+        "close_date": "Thu, 01 Aug 2024 ",
+        "company_name": "Ashapura Logistics Ltd",
+        "id": 13,
+        "ipo_switch": ["SME"],
+        "issue_size": "52.66 Cr",
+        "min_investment": "144000",
+        "open_date": "Tue, 30 Jul 2024 ",
+        "price_band": "136 - 144",
+        "times_subscribed": "-"
+    },
+    {
+        "logo": "SSEGL.png",
+        "close_date": "Thu, 01 Aug 2024 ",
+        "company_name": "Sathlokhar Synergys E&C Global Ltd",
+        "id": 14,
+        "ipo_switch": ["SME"],
+        "issue_size": "92.93 Cr",
+        "min_investment": "140000",
+        "open_date": "Tue, 30 Jul 2024 ",
+        "price_band": "133 - 140",
+        "times_subscribed": "-"
+    },
+    {
+        "logo": "UTSAV.png",
+        "close_date": "Fri, 02 Aug 2024 ",
+        "company_name": "Utssav CZ Gold Jewels Ltd",
+        "id": 15,
+        "ipo_switch": ["SME"],
+        "issue_size": "69.5 Cr",
+        "min_investment": "132000",
+        "open_date": "Wed, 31 Jul 2024 ",
+        "price_band": "104 - 110",
+        "times_subscribed": "-"
+    }
+]

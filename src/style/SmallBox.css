@@ -59,7 +59,7 @@
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .small-box {
     width: calc(100% / 2 - 20px);
     margin: 10px ;

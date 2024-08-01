@@ -38,11 +38,11 @@
    font-size: 20px;
    font-weight: 600;
   }
-  
+/*   
   .change_perc{
     color: rgb(29, 164, 29);
     font-size: 15px;
-  }
+  } */
   .stock-box p {
     margin: 5px 0;
   }
@@ -200,15 +200,13 @@ font-weight: 400;
 .adv_box img {
   width: 100%;
   display: block;
-  object-fit: contain;
-  height: 280px;
+  object-fit: fill;
+  height: 275px;
 }
-.adv_box {
+.adverstiment {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: none;
-  box-shadow: none;
 }
 .adv_box a {
   position: absolute;
@@ -240,10 +238,10 @@ font-weight: 400;
 
   .chart-container {
     height:170px;
-    
-
   }
-
+  .adv_box img {
+    height: 300px;
+  }
   .period-selector {
     flex-direction: column;
     align-items: flex-end;
@@ -262,23 +260,22 @@ font-weight: 400;
   .updated {
     justify-content: flex-start;
   }
-  li.advances {
+  /* li.advances {
     font-size: 14px;
+  }
+  li.declines {
+    font-size: 14px;
+  }
+
+  li.unchanged {
+    font-size: 14px;
+  }
+  li.fc {
+    font-size: 16px;
+  } */
 }
 
-li.declines {
-    font-size: 14px;
-}
-
-li.unchanged {
-    font-size: 14px;
-}
-li.fc {
-  font-size: 16px;
-}
-}
-
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .stock-box {
     width: 100% ;
     margin: 10px 0;
@@ -286,15 +283,15 @@ li.fc {
   /* .adv {
     display: none;
 } */
-  .box_top, .box_bottom {
-    
+  /* .box_top, .box_bottom {
     align-items: flex-start;
+  } */
+.change_perc {
+    font-size: 12px;
   }
-
-  .box_top h2, .box_top p, .d-value, .change_perc, .stock-box p, .period-selector button {
-    font-size: 16px;
-  }
-
+  li.fc {
+    font-size: 12px;
+}
   .chart-container {
     height: 150px;
   }

@@ -74,6 +74,7 @@ const IndicesTable = () => {
               </button>
             </div>
           </div>
+          <div className="table_ind">
           <table>
             <thead>
               <tr>
@@ -114,6 +115,7 @@ const IndicesTable = () => {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       </div>
     </section>
