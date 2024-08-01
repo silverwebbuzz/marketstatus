@@ -240,11 +240,6 @@ section.Nav_top {
     padding: 15px;
   }
 
-  /* .Nav_bottom .navbar .nav_ul {
-    flex-direction: column;
-    gap: 5px;
-  } */
-
   .headerleft_cover {
     width: 70%;
     flex-flow: nowrap;

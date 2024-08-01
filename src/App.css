@@ -90,12 +90,7 @@
   font-style: normal;
   font-display: swap;
 }
-/* @media only screen and (max-width: 768px) {
-  .stock-box{
-  
-    width: 100%;
-  }
-} */
+
 
 :root{
   --primary_font:"Circular Std";

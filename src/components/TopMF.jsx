@@ -17,12 +17,10 @@ const images = importAll(require.context('../assets', false, /\.(png|jpe?g|svg)$
 const TopMF = ({ data }) => {
     if (!data || !data.top_mutual_fund_companies) return null;
 
-    // Removed the line that slices the data array to limit it to top 5 entries
     const allFunds = data.top_mutual_fund_companies;
 
     return (
         <div>
-            {/* <span className='trmf'>Top Ranked Mutual Funds</span> */}
             <div className="tmf_card_row">
                 {allFunds.map((fund, index) => (
                     <div className="tmf_card_mf" key={index}>

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../style/Header.css";
-//import "../style/Navbar.css";
 import headerlogo from "../images/Component 42.svg";
 import { Link } from "react-router-dom";
 
@@ -122,7 +121,6 @@ const Header = () => {
               <li><Link to="/fnO">Future & Options</Link></li>
               <li><Link to="/ipo">IPO</Link></li>
               <li><Link to="/mutualFunds">Mutual Funds</Link></li>
-              <li><Link to="/sipcal">SIP Calculator</Link></li>
             </ul>
           </nav>
         </div>

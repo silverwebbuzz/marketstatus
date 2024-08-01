@@ -1,6 +1,5 @@
 .App {
   font-family: var(--primary_font);
-
 }
 
 .toggle-button {
@@ -25,7 +24,6 @@ tbody tr td:first-child {
   color: #13131f;
   margin-bottom: 20px;
   margin-top: 0;
-
 }
 
 .heading_row {
@@ -44,14 +42,12 @@ tbody tr td:first-child {
   background-color: #fff;
   cursor: pointer;
   outline: none;
-  /* border-radius: 18px 0px; */
 }
 
 .toggle-button .active {
   background-color: #698192de;
   color: white;
   border: none;
-  /* border-radius: 18px 0px; */
 }
 
 table {
@@ -93,11 +89,8 @@ thead {
 }
 
 .but_cover {
-  /* border: 3px solid #0602B0; */
-  /* background-color: var(--btn_color); */
   box-shadow: 2px 3px 3.7px 0px #00000060;
   display: flex;
-  /* border-radius: 18px 0px; */
 }
 
 tr {
@@ -123,13 +116,8 @@ img {
   height: auto;
 }
 
-/* / Responsive styles for tablets  */
 @media (max-width: 991px) {
 
-  /* .App {
-   padding: 15px;
- }
-  */
   .toggle-button {
     flex-direction: column;
     align-items: flex-start;
@@ -137,7 +125,6 @@ img {
 
   .toggle-button button {
     width: 100%;
-    /* margin-bottom: 10px; */
   }
 
   .heading {
@@ -151,36 +138,8 @@ img {
   }
 }
 
-/* / Responsive styles for mobile devices / */
 @media (max-width: 768px) {
 
-  /* .App {
-   padding: 10px;
- }
- .Indices {overflow: scroll;}
- 
- .toggle-button {
-   flex-direction: column;
-   align-items: flex-start;
- }
- 
- .toggle-button button {
-   width: 100%;
-   margin-bottom: 10px;
- }
- 
- .heading {
-   font-size: 24px;
- }
- 
- th, td {
-   padding: 5px 8px;
-   font-size: 12px;
- }
- 
- img {
-   width: 80px;
- } */
   .heading_row {
     display: block;
   }
@@ -191,7 +150,6 @@ img {
   }
 
   .toggle-button {
-    /* display: block; */
     margin: 10px 0px;
   }
 

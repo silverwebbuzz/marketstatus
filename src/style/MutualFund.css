@@ -1,6 +1,4 @@
-/* src/components/MutualFund.css */
 
-  
   .card {
     border: 1px solid #e0e0e0;
     border-radius: 8px;
@@ -36,7 +34,7 @@
 }
 
   .amc-logo {
-    width: 40px; /* adjust size as needed */
+    width: 40px; 
     height: auto;
     margin-right: 10px;
     vertical-align: middle;
@@ -61,7 +59,6 @@
   .card_row {
     display: flex;
     flex-flow: wrap;
-    /* margin: 0-20px; */
 }
 
 .card_mf {
@@ -79,7 +76,6 @@
     display: flex;
     font-size: 14px;
     justify-content: space-between;
-    /* border-radius: 10px; */
 }
 
 @media (max-width: 991px){

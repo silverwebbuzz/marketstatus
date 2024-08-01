@@ -4,17 +4,14 @@ import SmallBox from './SmallBox';
 import '../style/Dashboard.css';
 import advImg from '../images/YFOBS.png'
 import TopMF from './TopMF';
-// import stockData from '../Data/stockData.json';
 
 const Dashboard = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    // You can fetch other data for small boxes or other components if needed
     const fetchSmallBoxesData = async () => {
       try {
-        // Add your fetching logic here if you need to fetch small boxes data
-        const smallBoxesData = []; // Replace with actual fetched data
+        const smallBoxesData = [];
         setData({ smallBoxes: smallBoxesData });
       } catch (error) {
         console.error("Error fetching small boxes data:", error);
@@ -22,7 +19,7 @@ const Dashboard = () => {
     };
     const fetchMutualFundsData = async () => {
       try {
-        const response = await fetch('/topMD.json'); // Replace with actual path to your JSON file
+        const response = await fetch('/topMD.json'); 
         const mutualFundsData = await response.json();
         setData((prevState) => ({ ...prevState, mutualFunds: mutualFundsData }));
       } catch (error) {

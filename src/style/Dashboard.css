@@ -1,5 +1,4 @@
 .dashboard {
-  /* background-color: white; */
   display: flex;
   justify-content: center;
   width: 70%;
@@ -38,8 +37,6 @@
 }
 
 
-
-
 @media (max-width: 991px) {
   
   .dashboard {
@@ -53,7 +50,6 @@
 
   .smallbox_row {
    flex-flow: wrap;
-   /* justify-content: flex-start; */
   }
 
   .container {

@@ -61,10 +61,10 @@ const FnO = () => {
                   <td>
                     {item.scrip} {item.expiry}
                   </td>
-                  <td>{item.price}</td>
+                  <td>₹ {item.price}</td>
                   <td>{item["lot_size"]}</td>
-                  <td>{item.nrml_margin}</td>
-                  <td>{item.margin}</td>
+                  <td>₹ {item.nrml_margin}</td>
+                  <td>{item.margin} %</td>
                   <td>
                     {funds
                       ? Math.floor(parseFloat(funds) / parseFloat(item.margin))

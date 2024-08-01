@@ -2,13 +2,7 @@
    display: flex;
    flex-flow: column;
 }
-/* 
-.container {
-   display: flex;
-   flex-wrap: wrap;
-   gap: 16px;
- }
-  */
+
  .tmf_card {
    border: 1px solid #e0e0e0;
    border-radius: 8px;
@@ -45,12 +39,8 @@
    align-items: center;
 }
 
-/* .tmf_card_mf:hover {
-   box-shadow: rgba(58, 32, 74, 0.6) 0px 5px 15px 0px;
-} */
 
  .tmf_amc-logo {
-   /* width: 40px; / adjust size as needed / */
     height: auto;
    margin-right: 10px;
    vertical-align: middle;
