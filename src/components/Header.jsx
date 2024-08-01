@@ -16,7 +16,10 @@ const Header = () => {
         <div className="container header_row">
           <div className="headerleft_cover">
             <div className="header-left">
-              <img src={headerlogo} alt="" />
+              <img src={headerlogo} alt="headerlogo" />
+              <a href="https://marketstatus.in/" >
+                marketstatus
+              </a>
             </div>
             <div className="create">
               <p>Powered By:</p>
@@ -116,11 +119,11 @@ const Header = () => {
         <div className="navbar">
           <nav className="Nav">
             <ul className="nav_ul">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/indices">Indices</Link></li>
-              <li><Link to="/fnO">Future & Options</Link></li>
-              <li><Link to="/ipo">IPO</Link></li>
-              <li><Link to="/mutualFunds">Mutual Funds</Link></li>
+              <li><Link to="/" onClick={() => setShowMenu(!showMenu)}>Home</Link></li>
+              <li><Link to="/indices" onClick={() => setShowMenu(!showMenu)}>Indices</Link></li>
+              <li><Link to="/fnO" onClick={() => setShowMenu(!showMenu)}>Future & Options</Link></li>
+              <li><Link to="/ipo" onClick={() => setShowMenu(!showMenu)}>IPO</Link></li>
+              <li><Link to="/mutualFunds" onClick={() => setShowMenu(!showMenu)}>Mutual Funds</Link></li>
             </ul>
           </nav>
         </div>

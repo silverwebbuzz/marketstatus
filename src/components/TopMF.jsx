@@ -2,27 +2,19 @@ import React from 'react';
 import '../style/MutualFund.css';
 import '../style/TopMF.css';
 
-const importAll = (r) => {
-    let images = {};
-    r.keys().forEach((item, index) => { images[item.replace('./', '')] = r(item); });
-    return images;
-};
-
 const formatNumber = (num) => {
     return parseFloat(num).toFixed(2);
 };
 
-const images = importAll(require.context('../assets', false, /\.(png|jpe?g|svg)$/));
-
 const TopMF = ({ data }) => {
     if (!data || !data.top_mutual_fund_companies) return null;
 
-    const allFunds = data.top_mutual_fund_companies;
+    const topFiveFunds = data.top_mutual_fund_companies.slice(0, 5);
 
     return (
         <div>
             <div className="tmf_card_row">
-                {allFunds.map((fund, index) => (
+                {topFiveFunds.map((fund, index) => (
                     <div className="tmf_card_mf" key={index}>
                         <div className="tmf_card-header_mf">
                             <div className='tmf_img_name'>

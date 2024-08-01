@@ -193,10 +193,9 @@ font-weight: 400;
 .adv_box img {
   width: 100%;
   display: block;
-  object-fit: fill;
-  height: 275px;
+  object-fit: cover;
 }
-.adverstiment {
+.adv_box {
   display: flex;
   justify-content: center;
   align-items: center;

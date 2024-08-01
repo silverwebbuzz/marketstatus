@@ -20,7 +20,7 @@ const IpoDashboard = () => {
                 const filteredIpos = data.filter(ipo => {
                     const openDate = new Date(ipo.open_date);
                     const closeDate = new Date(ipo.close_date);
-                    return openDate <= currentDate && currentDate <= closeDate.setHours(23, 59, 59, 999);
+                    return openDate <= currentDate && currentDate <= closeDate.setHours(16, 59, 59, 999);
                 });
                 setIpos(filteredIpos);
             })

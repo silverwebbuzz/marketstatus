@@ -2,6 +2,20 @@
   margin-bottom: 20px;
 }
 
+.header-left a {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0;
+}
+
+.header-left {
+  position: relative;
+}
+
+
 .top_header {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
   padding: 10px 0px;
@@ -239,6 +253,7 @@ section.Nav_top {
     z-index: 1;
     padding: 15px;
   }
+
 
   .headerleft_cover {
     width: 70%;

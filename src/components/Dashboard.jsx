@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import StockBox from './StockBox';
-import SmallBox from './SmallBox';
 import '../style/Dashboard.css';
 import advImg from '../images/YFOBS.png'
 import TopMF from './TopMF';
@@ -9,14 +8,6 @@ const Dashboard = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    const fetchSmallBoxesData = async () => {
-      try {
-        const smallBoxesData = [];
-        setData({ smallBoxes: smallBoxesData });
-      } catch (error) {
-        console.error("Error fetching small boxes data:", error);
-      }
-    };
     const fetchMutualFundsData = async () => {
       try {
         const response = await fetch('/topMD.json'); 
@@ -26,7 +17,7 @@ const Dashboard = () => {
         console.error("Error fetching mutual funds data:", error);
       }
     };
-    fetchSmallBoxesData();
+   
     fetchMutualFundsData();
   }, []);
 
@@ -58,15 +49,6 @@ const Dashboard = () => {
             <TopMF data ={data.mutualFunds}/>
           </div>
          </div>
-          </div>
-        </div>
-      </section>
-      <section>
-        <div className="container">
-          <div className="smallbox_row">
-            {data.smallBoxes.map((box, index) => (
-              <SmallBox key={index} data={box} />
-            ))}
           </div>
         </div>
       </section>
