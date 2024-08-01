@@ -16,8 +16,18 @@ const IpoDashboard = () => {
                 }
                 return response.json();
             })
-            .then(data => setIpos(data))
+            .then(data => {
+                const currentDate = new Date();
+                const filteredIpos = data.filter(ipo => {
+                    const openDate = new Date(ipo.open_date);
+                    const closeDate = new Date(ipo.close_date);
+                    return openDate <= currentDate && currentDate <= closeDate.setHours(23, 59, 59, 999);
+                });
+                setIpos(filteredIpos);
+            })
+
             .catch(error => console.error('Error fetching IPO data:', error));
+            
     }, []);
 
     useEffect(() => {
@@ -72,20 +82,22 @@ const IpoDashboard = () => {
                             <tr key={index}>
                                 <td>
                                     <div className="company-logo">
-                                        <img src={images[ipo.logo]} alt={`${ipo.amc_name} logo`} className="amc-logo" />
-                                        <span>{ipo.company_name}</span>
-                                        <div className="exchange-tags">
+                                        <div className="companylogo_inner">
+                                            <span>{ipo.company_name}</span>
                                             {ipo.ipo_switch.map((ex, i) => (
-                                                <div key={i} className="exchange-tag">{ex}</div>
+                                                <p key={i}>{ex}</p>
                                             ))}
+                                        </div>
+                                        <div className="exchange-tags">
+                                            <img src={images[ipo.logo]} alt={`${ipo.amc_name} logo`} className="amc-logo" />
                                         </div>
                                     </div>
                                 </td>
                                 <td>{ipo.open_date}</td>
                                 <td>{ipo.close_date}</td>
-                                <td className='text-right'>{ipo.issue_size}</td>
-                                <td className='text-right'>{ipo.price_band}</td>
-                                <td className='text-right'>{ipo.min_investment}</td>
+                                <td className='text-right'>₹ {ipo.issue_size}</td>
+                                <td className='text-right'>₹ {ipo.price_band}</td>
+                                <td className='text-right'>₹ {ipo.min_investment}</td>
                             </tr>
                         ))}
                     </tbody>
@@ -115,11 +127,11 @@ const IpoDashboard = () => {
                                             <span>{ipo.company_name}</span>
                                         </td>
                                         <td>{ipo.listing_date}</td>
-                                        <td className='text-right'>{ipo.offer_price}</td>
-                                        <td className='text-right'>{ipo.listing_price}</td>
-                                        <td className='text-right'>{ipo.ltp}</td>
-                                        <td className='text-right' style={{ color: getColor(ipo.changes) }}>{ipo.changes}</td>
-                                        <td className='text-right' style={{ color: getColor(ipo.listing_gain) }}>{ipo.listing_gain}</td>
+                                        <td className='text-right'>₹ {ipo.offer_price}</td>
+                                        <td className='text-right'>₹ {ipo.listing_price}</td>
+                                        <td className='text-right'>₹ {ipo.ltp}</td>
+                                        <td className='text-right' style={{ color: getColor(ipo.changes) }}> {ipo.changes}</td>
+                                        <td className='text-right' style={{ color: getColor(ipo.listing_gain) }}> {ipo.listing_gain}</td>
                                     </tr>
                                 ))}
                             </tbody>

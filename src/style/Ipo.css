@@ -1,6 +1,8 @@
 .company-logo {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    flex-flow: row-reverse;
+    justify-content: left;
 }
 .exchange-tag {
     display: inline-block;
@@ -19,5 +21,17 @@ thead.thead-list{
     top: -40px;
     
 }
+.companylogo_inner p {
+    font-size: 10px;
+    padding: 4px;
+    background: #ffbd4f;
+    margin-top: 10px;
+    border-radius: 8px;
+    width: fit-content;
+}
 
+.companylogo_inner {
+    display: flex;
+    flex-direction: column;
+}
 
