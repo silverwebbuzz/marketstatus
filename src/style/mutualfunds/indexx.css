@@ -1,0 +1,110 @@
+img.sticker1 {
+    width: 100%;
+    height: 105px;
+    padding-top: 23px;
+}
+
+.Index_description {
+    width: 55%;
+}
+
+h1.Indexheader {
+    color: #413b3b;
+    font-size: 45px;
+    margin: 0;
+    padding-top: 20px;
+}
+
+.Index_img {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
+}
+
+.Index_screen {
+    display: flex;
+    flex-flow: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Index_img img {
+    width: 70%;
+}
+
+p.Index_p {
+    color: #9e9b9b;
+    font-size: 15px;
+    padding-top: 20px;
+}
+
+.Index_ul_li {
+    display: flex;
+    flex-flow: row;
+    padding-left: 40px;
+    color: #545454;
+    padding-top: 27px;
+    gap: 70px;
+}
+
+ul.Index_list1 {
+    display: flex;
+    flex-flow: column;
+}
+
+ul.Index_list2 {
+    display: flex;
+    flex-flow: column;
+    
+}
+
+.Index_list2 ul {
+    display: block;
+}
+
+.Index_list1 ul li {
+    padding: 10px 0px;
+}
+
+.Index_list2 ul li {
+    padding: 10px 0px;
+}
+
+.Index_list1 {
+    width: 30%;
+}
+
+.Index_list1 ul {
+    display: block;
+}
+
+@media (max-width: 768px){
+
+.Index_screen {
+    flex-flow: column-reverse;
+}
+
+.Index_description {
+    width: 100%;
+}
+
+.Index_ul_li {
+    padding: 0;
+}
+
+.Index_list1 {
+    width: 50%;
+}
+
+.Index_list2 {
+    width: 50%;
+}
+
+.Index_img {
+    padding: 0;
+    width: 100%;
+}
+}

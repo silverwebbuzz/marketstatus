@@ -1,0 +1,99 @@
+img.sticker1 {
+    width: 100%;
+    height: 105px;
+    padding-top: 23px;
+}
+
+.equity_description {
+    width: 55%;
+}
+
+h1.equityheader {
+    color: #413b3b;
+    font-size: 45px;
+    margin: 0;
+    padding-top: 20px;
+}
+
+.quity_img {
+    width: 40%;
+}
+
+.equity_screen {
+    display: flex;
+    flex-flow: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.quity_img img {
+    width: 70%;
+}
+
+p.equity_p {
+    color: #9e9b9b;
+    font-size: 15px;
+    padding-top: 20px;
+}
+
+.equity_ul_li {
+    display: flex;
+    flex-flow: row;
+    padding-left: 40px;
+    color: #545454;
+    padding-top: 27px;
+}
+
+ul.equity_list1 {
+    display: flex;
+    flex-flow: column;
+}
+
+ul.equity_list2 {
+    display: flex;
+    flex-flow: column;
+    
+}
+
+.equity_list2 ul {
+    display: block;
+}
+
+.equity_list1 ul li {
+    padding: 10px 0px;
+}
+
+.equity_list2 ul li {
+    padding: 10px 0px;
+}
+
+.equity_list1 {
+    width: 30%;
+}
+
+.equity_list1 ul {
+    display: block;
+}
+@media (max-width: 768px){
+    
+    .equity_description {
+        width: 100%;
+    }
+    
+    .equity_list1 {
+        width: 50%;
+    }
+    
+    .equity_ul_li {
+        padding: 0;
+    }
+    
+    .quity_img {
+        width: 100%;
+        text-align: center;
+    }
+    
+    img.sticker1 {
+        display: none;
+    }
+}
