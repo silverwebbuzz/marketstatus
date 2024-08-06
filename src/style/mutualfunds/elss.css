@@ -32,7 +32,7 @@ h1.elssheader {
 }
 
 .elss_img img {
-    width: 70%;
+    width: 100%;
 }
 
 p.elss_p {
@@ -44,7 +44,6 @@ p.elss_p {
 .elss_ul_li {
     display: flex;
     flex-flow: row;
-    padding-left: 40px;
     color: #545454;
     padding-top: 27px;
 }

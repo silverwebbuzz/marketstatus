@@ -21,7 +21,7 @@ function Debt() {
                     <div className='debt_ul_li'>
                    <div className='debt_list1'>
                    <ul>
-                        <li>Liquid Funds</li>
+                        <li className='ni ni-check-bold'>Liquid Funds</li>
                         <li>Banking & PSU Funds</li>
                         <li>Corporate Bond Funds</li>
                         <li>Dynamic Bond Funds</li>

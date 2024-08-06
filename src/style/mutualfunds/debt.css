@@ -43,7 +43,6 @@ p.debt_p {
 .debt_ul_li {
     display: flex;
     flex-flow: row;
-    padding-left: 40px;
     color: #545454;
     padding-top: 27px;
     gap: 70px;

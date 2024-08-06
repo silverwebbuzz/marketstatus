@@ -32,7 +32,7 @@ h1.hybridheader {
 }
 
 .hybrid_img img {
-    width: 70%;
+    width: 100%;
 }
 
 p.hybrid_p {
@@ -44,7 +44,6 @@ p.hybrid_p {
 .hybrid_ul_li {
     display: flex;
     flex-flow: row;
-    padding-left: 40px;
     color: #545454;
     padding-top: 27px;
 }

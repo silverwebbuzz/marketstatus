@@ -114,7 +114,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div>
+      <div className="navbar_row">
       <div className={`container Nav_bottom ${showMenu ? "open" : ""}`}>
         <div className="navbar">
           <nav className="Nav">

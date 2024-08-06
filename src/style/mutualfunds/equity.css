@@ -27,7 +27,7 @@ h1.equityheader {
 }
 
 .quity_img img {
-    width: 70%;
+    width: 80%;
 }
 
 p.equity_p {
@@ -39,7 +39,6 @@ p.equity_p {
 .equity_ul_li {
     display: flex;
     flex-flow: row;
-    padding-left: 40px;
     color: #545454;
     padding-top: 27px;
 }

@@ -1,5 +1,9 @@
 .header {
   margin-bottom: 20px;
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
+  z-index: 9;
 }
 
 .header-left a {
@@ -9,6 +13,12 @@
   top: 0;
   bottom: 0;
   opacity: 0;
+}
+
+.navbar_row{
+  background-color: #636363;
+  height: 40px;
+
 }
 
 .header-left {
@@ -143,7 +153,7 @@ ul.nav_ul li {
 
 ul.nav_ul li a {
   text-decoration: none;
-  color: #444547;
+  color: #ffffff;
   font-weight: 600;
 }
 

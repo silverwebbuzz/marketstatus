@@ -10,6 +10,8 @@ import Debt from './MutualFunds/Debt';
 import Hybrid from './MutualFunds/Hybrid';
 import Index from './MutualFunds/Index';
 import ELSS from './MutualFunds/ELSS';
+import SipCalculator from './Calculators/SIP';
+import EmiCalculator from './Calculators/EMI';
 
 const Dashboard = () => {
   const [data, setData] = useState(null);
@@ -87,6 +89,12 @@ const Dashboard = () => {
         </div>
         <div>
           <ELSS />
+        </div>
+        <div>
+          <SipCalculator/>
+        </div>
+        <div>
+          <EmiCalculator/>
         </div>
       </section>
     </>
