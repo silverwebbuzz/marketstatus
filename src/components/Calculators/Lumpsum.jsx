@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../style/calculators/emi.css";
+import "../../style/calculators/lumpsum.css";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import {
@@ -11,8 +11,8 @@ import {
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const marksEmiAmount = [
-  { value: 100000, label: "₹ 100000" },
+const marksLumpsumAmount = [
+  { value: 500, label: "₹ 500" },
   { value: 10000000, label: "₹ 1,00,00,000" },
 ];
 
@@ -26,13 +26,13 @@ const marksLoanTenure = [
   { value: 40, label: "40 yr" },
 ];
 
-const EmiCalculator = () => {
-  const [emiAmount, setEmiAmount] = useState(100000);
+const LumpsumCalculator = () => {
+  const [lumpsumAmount, setLumpsumAmount] = useState(25000);
   const [returnRate, setReturnRate] = useState(10);
-  const [emiTenure, setLoanTenure] = useState(1);
+  const [lumpsumTenure, setLoanTenure] = useState(1);
 
-  const handleEmiAmountChange = (event, newValue) => {
-    setEmiAmount(newValue);
+  const handleLumpsumAmountChange = (event, newValue) => {
+    setLumpsumAmount(newValue);
   };
 
   const handleInterestRateChange = (event, newValue) => {
@@ -43,22 +43,20 @@ const EmiCalculator = () => {
     setLoanTenure(newValue);
   };
 
-  const calculateEmi = (amount, rate, tenure) => {
-    const monthlyRate = rate / 12 / 100;
-    const numOfMonths = tenure * 12;
-    const emi = (amount * monthlyRate * Math.pow(1 + monthlyRate, numOfMonths)) / (Math.pow(1 + monthlyRate, numOfMonths) - 1);
-    return emi.toFixed(2);
+  const calculateLumpsum = (amount, rate, tenure) => {
+    const annualRate = rate / 100;
+    const futureValue = amount * Math.pow(1 + annualRate, tenure);
+    return futureValue.toFixed(2);
   };
 
-  const emi = calculateEmi(emiAmount, returnRate, emiTenure);
-  const totalPayment = (emi * emiTenure * 12).toFixed(2);
-  const totalInterest = (totalPayment - emiAmount).toFixed(2);
+  const lumpsum = calculateLumpsum(lumpsumAmount, returnRate, lumpsumTenure);
+  const totalInterest = (lumpsum - lumpsumAmount).toFixed(2);
 
   const data = {
     labels: ["Principal Loan Amount", "Total Interest"],
     datasets: [
       {
-        data: [emiAmount, totalInterest],
+        data: [lumpsumAmount, totalInterest],
         backgroundColor: ["#9f9f9f", "#2c9430"],
         hoverBackgroundColor: ["#666667", "#265628"],
       },
@@ -75,32 +73,32 @@ const EmiCalculator = () => {
 
   return (
     <div className="container">
-      <div className="emicalculator_row">
-        <h1 className="emi_h1">EMI Calculator</h1>
+      <div className="lumpsumcalculator_row">
+        <h1 className="lumpsum_h1">Lumpsum Calculator</h1>
         <div className="calculator_box">
           <div className="calculator_container_box">
-            <div className="emi_calculator_top">
+            <div className="lumpsum_calculator_top">
               <Box>
                 <div className="input-group">
-                  <label>Loan Amount</label>
+                  <label>Total Investment</label>
                   <TextField
                     type="number"
-                    value={emiAmount}
-                    onChange={(e) => setEmiAmount(Number(e.target.value))}
+                    value={lumpsumAmount}
+                    onChange={(e) => setLumpsumAmount(Number(e.target.value))}
                     size="small"
                   />
                   <Slider
-                    value={emiAmount}
-                    onChange={handleEmiAmountChange}
-                    min={100000}
+                    value={lumpsumAmount}
+                    onChange={handleLumpsumAmountChange}
+                    min={500}
                     max={10000000}
                     step={10000}
-                    marks={marksEmiAmount}
+                    marks={marksLumpsumAmount}
                     valueLabelDisplay="auto"
                   />
                 </div>
                 <div className="input-group">
-                  <label>Rate of Interest (p.a)</label>
+                  <label>Expected Return Rate (p.a)</label>
                   <TextField
                     type="number"
                     value={returnRate}
@@ -118,15 +116,15 @@ const EmiCalculator = () => {
                   />
                 </div>
                 <div className="input-group">
-                  <label>Loan Tenure</label>
+                  <label>Time Period</label>
                   <TextField
                     type="number"
-                    value={emiTenure}
+                    value={lumpsumTenure}
                     onChange={(e) => setLoanTenure(Number(e.target.value))}
                     size="small"
                   />
                   <Slider
-                    value={emiTenure}
+                    value={lumpsumTenure}
                     onChange={handleLoanTenureChange}
                     min={1}
                     max={40}
@@ -137,12 +135,12 @@ const EmiCalculator = () => {
                 </div>
               </Box>
               <div className="results">
-                <Typography>Monthly EMI:<br/> ₹{formatNumber(emi)}</Typography>
-                <Typography>Total Interest:<br/> ₹{formatNumber(totalInterest)}</Typography>
-                <Typography>Total Payment:<br/><div className="value-color"> ₹{formatNumber(totalPayment)}</div></Typography>
+                <Typography>Investment Amount:<br /> ₹{formatNumber(lumpsumAmount)}</Typography>
+                <Typography>Estimated Returns:<br /> ₹{formatNumber(totalInterest)}</Typography>
+                <Typography>Maturity Value:<br /><div className="value-color"> ₹{formatNumber(lumpsum)}</div></Typography>
               </div>
             </div>
-            <div className="chart-container-emi">
+            <div className="chart-container-lumpsum">
               <Doughnut data={data} options={options} />
             </div>
           </div>
@@ -152,4 +150,4 @@ const EmiCalculator = () => {
   );
 };
 
-export default EmiCalculator;
+export default LumpsumCalculator;

@@ -18,23 +18,23 @@ function Equity() {
                     <div className='equity_ul_li'>
                    <div className='equity_list1'>
                    <ul>
-                        <li>Large Cap Funds</li>
-                        <li>Mid Cap Funds</li>
-                        <li>Small Cap Funds</li>
-                        <li>Large & Mid Cap Funds</li>
-                        <li>Flexi Cap Funds</li>
-                        <li>Multi Cap Funds</li>
-                        <li>Divided Yield Funds</li>
+                        <li><div className='equity_list_item'>Large Cap Funds</div></li>
+                        <li><div className='equity_list_item'>Mid Cap Funds</div></li>
+                        <li><div className='equity_list_item'>Small Cap Funds</div></li>
+                        <li><div className='equity_list_item'>Large & Mid Cap Funds</div></li>
+                        <li><div className='equity_list_item'>Flexi Cap Funds</div></li>
+                        <li><div className='equity_list_item'>Multi Cap Funds</div></li>
+                        <li><div className='equity_list_item'>Divided Yield Funds</div></li>
                     </ul>
                     </div> 
                    <div className='equity_list2'>
                    <ul>
-                        <li>Bluechip Funds</li>
-                        <li>Focused Funds</li>
-                        <li>Sectoral Funds</li>
-                        <li>International Funds</li>
-                        <li>Vlaue Funds</li>
-                        <li>Contra Funds</li>
+                        <li><div className='equity_list_item'>Bluechip Funds</div></li>
+                        <li><div className='equity_list_item'>Focused Funds</div></li>
+                        <li><div className='equity_list_item'>Sectoral Funds</div></li>
+                        <li><div className='equity_list_item'>International Funds</div></li>
+                        <li><div className='equity_list_item'>Vlaue Funds</div></li>
+                        <li><div className='equity_list_item'>Contra Funds</div></li>
                     </ul>
                    </div>
                 </div>

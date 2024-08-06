@@ -18,16 +18,16 @@ function Index() {
                     <div className='Index_ul_li'>
                         <div className='Index_list1'>
                             <ul>
-                                <li>Nifty 50 Funds</li>
-                                <li>Nifty Small Cap Funds</li>
-                                <li>Nifty Bank Funds</li>
+                                <li> <div className='index_list_item'>Nifty 50 Funds</div></li>
+                                <li><div className='index_list_item'>Nifty Small Cap Funds</div></li>
+                                <li><div className='index_list_item'>Nifty Bank Funds</div></li>
                             </ul>
                         </div>
                         <div className='Index_list2'>
                             <ul>
-                                <li>Nifty Next 50 Funds</li>
-                                <li>Nifty Mid Cap Funds</li>
-                                <li>Sensex Funds</li>
+                                <li><div className='index_list_item'>Nifty Next 50 Funds</div></li>
+                                <li><div className='index_list_item'>Nifty Mid Cap Funds</div></li>
+                                <li><div className='index_list_item'>Sensex Funds</div></li>
                             </ul>
                         </div>
                     </div>

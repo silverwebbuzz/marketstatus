@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../style/calculators/sip.css";
+import "../../style/calculators/fd.css";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import {
@@ -13,8 +13,8 @@ import {
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const marksSipAmount = [
-  { value: 100, label: "₹ 100" },
+const marksFdAmount = [
+  { value: 500, label: "₹ 500" },
   { value: 1000000, label: "₹ 10,00,000" },
 ];
 
@@ -28,18 +28,18 @@ const marksLoanTenure = [
   { value: 40, label: "40 yr" },
 ];
 
-const SipCalculator = () => {
-  const [sipFrequency, setSipFrequency] = useState("Monthly");
-  const [sipAmount, setSipAmount] = useState(100);
+const FdCalculator = () => {
+  const [fdFrequency, setFdFrequency] = useState("Monthly");
+  const [fdAmount, setFdAmount] = useState(500);
   const [returnRate, setReturnRate] = useState(10);
-  const [sipTenure, setLoanTenure] = useState(1);
+  const [fdTenure, setLoanTenure] = useState(1);
 
-  const handleSipFrequencyChange = (event, newFrequency) => {
-    setSipFrequency(newFrequency);
+  const handleFdFrequencyChange = (event, newFrequency) => {
+    setFdFrequency(newFrequency);
   };
 
-  const handleSipAmountChange = (event, newValue) => {
-    setSipAmount(newValue);
+  const handleFdAmountChange = (event, newValue) => {
+    setFdAmount(newValue);
   };
 
   const handleInterestRateChange = (event, newValue) => {
@@ -50,43 +50,39 @@ const SipCalculator = () => {
     setLoanTenure(newValue);
   };
 
-  const calculateSip = (amount, rate, tenure, frequency) => {
-    const monthlyRate = rate / 12 / 100;
-    const numOfMonths = tenure * 12;
-    const periods =
-      frequency === "Monthly"
-        ? numOfMonths
-        : frequency === "Quarterly"
-        ? numOfMonths / 3
-        : numOfMonths / 6;
-    const periodRate =
-      monthlyRate *
-      (frequency === "Monthly" ? 1 : frequency === "Quarterly" ? 3 : 6);
+  const calculateFd = (amount, rate, tenure, frequency) => {
+    const annualRate = rate / 100;
+    let n;
+    switch (frequency) {
+      case "Monthly":
+        n = 12;
+        break;
+      case "Quarterly":
+        n = 4;
+        break;
+      case "Half Yearly":
+        n = 2;
+        break;
+      case "Yearly":
+        n = 1;
+        break;
+      default:
+        n = 1;
+    }
 
-    const futureValue =
-      amount *
-      ((Math.pow(1 + periodRate, periods) - 1) / periodRate) *
-      (1 + periodRate);
+    const futureValue = amount * Math.pow(1 + annualRate / n, n * tenure);
     return futureValue.toFixed(2);
   };
 
-  const futureValue = calculateSip(
-    sipAmount,
-    returnRate,
-    sipTenure,
-    sipFrequency
-  );
-  const investedAmount =
-    sipAmount *
-    sipTenure *
-    (sipFrequency === "Monthly" ? 12 : sipFrequency === "Quarterly" ? 4 : 2);
+  const futureValue = calculateFd(fdAmount, returnRate, fdTenure, fdFrequency);
+  const investedAmount = fdAmount;
   const totalReturn = (futureValue - investedAmount).toFixed(2);
 
   const data = {
-    labels: ["Investment Amount", "Maturity Value"],
+    labels: ["Investment Amount", "Returns"],
     datasets: [
       {
-        data: [investedAmount, futureValue],
+        data: [investedAmount, totalReturn],
         backgroundColor: ["#9f9f9f", "#2c9430"],
         hoverBackgroundColor: ["#666667", "#265628"],
       },
@@ -94,7 +90,7 @@ const SipCalculator = () => {
   };
 
   const options = {
-    cutout: '80%', // Increase this value to increase the inner radius
+    cutout: "80%", // Increase this value to increase the inner radius
   };
 
   const formatNumber = (number) => {
@@ -103,38 +99,40 @@ const SipCalculator = () => {
 
   return (
     <div className="container">
-      <div className="sipcalculator_row">
-        <h1 className="sip-h1">SIP Calculator</h1>
+      <div className="fdcalculator_row">
+        <h1 className="fd_h1">FD Calculator</h1>
         <div className="calculator_box">
           <ToggleButtonGroup
             color="primary"
-            value={sipFrequency}
+            value={fdFrequency}
             exclusive
-            onChange={handleSipFrequencyChange}
-            aria-label="SIP Frequency"
+            onChange={handleFdFrequencyChange}
+            aria-label="FD Frequency"
           >
             <ToggleButton value="Monthly">Monthly</ToggleButton>
             <ToggleButton value="Quarterly">Quarterly</ToggleButton>
             <ToggleButton value="Half Yearly">Half Yearly</ToggleButton>
+            <ToggleButton value="Yearly">Yearly</ToggleButton>
+
           </ToggleButtonGroup>
           <div className="calculator_container_box">
-            <div className="sip_calculator_top">
+            <div className="fd_calculator_top">
               <Box>
                 <div className="input-group">
-                  <label>SIP Investment</label>
+                  <label>FD Investment</label>
                   <TextField
                     type="number"
-                    value={sipAmount}
-                    onChange={(e) => setSipAmount(Number(e.target.value))}
+                    value={fdAmount}
+                    onChange={(e) => setFdAmount(Number(e.target.value))}
                     size="small"
                   />
                   <Slider
-                    value={sipAmount}
-                    onChange={handleSipAmountChange}
-                    min={100}
+                    value={fdAmount}
+                    onChange={handleFdAmountChange}
+                    min={500}
                     max={1000000}
-                    step={100}
-                    marks={marksSipAmount}
+                    step={500}
+                    marks={marksFdAmount}
                     valueLabelDisplay="auto"
                   />
                 </div>
@@ -160,12 +158,12 @@ const SipCalculator = () => {
                   <label>Time Period</label>
                   <TextField
                     type="number"
-                    value={sipTenure}
+                    value={fdTenure}
                     onChange={(e) => setLoanTenure(Number(e.target.value))}
                     size="small"
                   />
                   <Slider
-                    value={sipTenure}
+                    value={fdTenure}
                     onChange={handleLoanTenureChange}
                     min={1}
                     max={40}
@@ -181,7 +179,7 @@ const SipCalculator = () => {
                 <Typography>Maturity Value:<br /><div className="value-color"> ₹{formatNumber(futureValue)}</div></Typography>
               </div>
             </div>
-            <div className="chart-container-sip">
+            <div className="chart-container-fd">
               <Doughnut data={data} options={options} />
             </div>
           </div>
@@ -191,4 +189,4 @@ const SipCalculator = () => {
   );
 };
 
-export default SipCalculator;
+export default FdCalculator;

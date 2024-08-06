@@ -12,6 +12,10 @@ import Index from './MutualFunds/Index';
 import ELSS from './MutualFunds/ELSS';
 import SipCalculator from './Calculators/SIP';
 import EmiCalculator from './Calculators/EMI';
+import FdCalculator from './Calculators/FD';
+import LumpsumCalculator from './Calculators/Lumpsum';
+import CalculatorCard from './Calculators/CalculatorCard';
+
 
 const Dashboard = () => {
   const [data, setData] = useState(null);
@@ -90,12 +94,11 @@ const Dashboard = () => {
         <div>
           <ELSS />
         </div>
+        <section className='calc_card_dash'>
         <div>
-          <SipCalculator/>
-        </div>
-        <div>
-          <EmiCalculator/>
-        </div>
+          <CalculatorCard/>
+          </div>
+        </section>
       </section>
     </>
   );

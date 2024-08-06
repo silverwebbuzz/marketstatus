@@ -121,7 +121,7 @@ const Header = () => {
             <ul className="nav_ul">
               <li><Link to="/" onClick={() => setShowMenu(!showMenu)}>Home</Link></li>
               <li><Link to="/indices" onClick={() => setShowMenu(!showMenu)}>Indices</Link></li>
-              <li><Link to="/fnO" onClick={() => setShowMenu(!showMenu)}>Future & Options</Link></li>
+              <li><Link to="/futures-options" onClick={() => setShowMenu(!showMenu)}>Future & Options</Link></li>
               <li><Link to="/ipo" onClick={() => setShowMenu(!showMenu)}>IPO</Link></li>
               <li><Link to="/mutualFunds" onClick={() => setShowMenu(!showMenu)}>Mutual Funds</Link></li>
             </ul>

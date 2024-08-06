@@ -8,8 +8,29 @@ img.sticker1 {
     width: 55%;
 }
 
+.index_list_item {
+    list-style: none;
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.index_list_item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 35px;
+    background-image: url('../../images/Indexicon.png'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 h1.Indexheader {
-    color: #413b3b;
+    color: #636363;
     font-size: 45px;
     margin: 0;
     padding-top: 20px;
@@ -73,7 +94,7 @@ ul.Index_list2 {
 }
 
 .Index_list1 {
-    width: 30%;
+    width: 40%;
 }
 
 .Index_list1 ul {

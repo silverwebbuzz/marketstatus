@@ -15,20 +15,20 @@ function ELSS() {
                     <div className='elss_ul_li'>
                    <div className='elss_list1'>
                    <ul>
-                   <li>Growth Funds</li>
-                                <li>Dividend Funds</li>
-                                <li>Tax-Saving Funds</li>
-                                <li>Long-Term Funds</li>
-                                <li>Multi-Cap Funds</li>
+                   <li><div className='elss_list_item'>Growth Funds</div></li>
+                                <li><div className='elss_list_item'>Dividend Funds</div></li>
+                                <li><div className='elss_list_item'>Tax-Saving Funds</div></li>
+                                <li><div className='elss_list_item'>Long-Term Funds</div></li>
+                                <li><div className='elss_list_item'>Multi-Cap Funds</div></li>
                     </ul>
                     </div> 
                    <div className='elss_list2'>
                    <ul>
-                   <li>Large-Cap Funds</li>
-                                <li>Mid-Cap Funds</li>
-                                <li>Small-Cap Funds</li>
-                                <li>Equity-Debt Funds</li>
-                                <li>Sectoral Funds</li>
+                   <li><div className='elss_list_item'>Large-Cap Funds</div></li>
+                                <li><div className='elss_list_item'>Mid-Cap Funds</div></li>
+                                <li><div className='elss_list_item'>Small-Cap Funds</div></li>
+                                <li><div className='elss_list_item'>Equity-Debt Funds</div></li>
+                                <li><div className='elss_list_item'>Sectoral Funds</div></li>
                     </ul>
                    </div>
                 </div>

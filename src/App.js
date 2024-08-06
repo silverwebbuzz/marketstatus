@@ -8,6 +8,11 @@ import MutualFund from './components/MutualFund';
 import MutualData from './Data/mutualData.json';
 import Footer from './components/Footer';
 import Ipo from './components/Ipo';
+import SIP from './components/Calculators/SIP';
+import EMI from './components/Calculators/EMI';
+import FD from './components/Calculators/FD';
+import Lumpsum from './components/Calculators/Lumpsum';
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 
@@ -33,8 +38,12 @@ const AppContent = () => {
         <Routes>
           <Route path="/indices" element={<IndicesTable />} />
           <Route path="/" element={<Dashboard />} />
-          <Route path="/fnO" element={<FnO />} />
+          <Route path="/futures-options" element={<FnO />} />
           <Route path="/ipo" element={<Ipo />} />
+          <Route path="/sip-calculator" element={<SIP />} />
+          <Route path="/emi-calculator" element={<EMI />} />
+          <Route path="/fd-calculator" element={<FD />} />
+          <Route path="/lumpsum-calculator" element={<Lumpsum />} />
           <Route path="/mutualFunds" element={<MutualFund data={MutualData} />} /> 
         </Routes>
         <Footer />     

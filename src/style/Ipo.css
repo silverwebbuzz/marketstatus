@@ -35,3 +35,6 @@ thead.thead-list{
     flex-direction: column;
 }
 
+.no-latest-ipos{
+    color: rgb(108, 109, 109);
+}

@@ -1,10 +1,10 @@
 .chart-container-sip {
     width: 30%;
   }
-  
+
   .calculator_box {
     padding: 20px;
-    background-color: #f5f5f5;
+    background-color: #fffbf8;
     border-radius: 10px;
     border: 1px solid #d7d7d766;
   }
@@ -66,4 +66,13 @@
   
   .sip_calculator_top {
     width: 44%;
+    color: #9d9d9d;
+    font-size: 14px;
+}
+  
+.sip-h1{
+color: #313131;
+}
+  .value-color{
+    color: #2c9430;
   }

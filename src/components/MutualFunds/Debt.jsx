@@ -21,26 +21,26 @@ function Debt() {
                     <div className='debt_ul_li'>
                    <div className='debt_list1'>
                    <ul>
-                        <li className='ni ni-check-bold'>Liquid Funds</li>
-                        <li>Banking & PSU Funds</li>
-                        <li>Corporate Bond Funds</li>
-                        <li>Dynamic Bond Funds</li>
-                        <li>Overnight Funds</li>
-                        <li>Ultra Short Duration Funds</li>
-                        <li>Short Duration Funds</li>
-                        <li>Low Duration Funds</li>
+                        <li><div className='debt_list_item'>Liquid Funds</div></li>
+                        <li><div className='debt_list_item'>Banking & PSU Funds</div></li>
+                        <li><div className='debt_list_item'>Corporate Bond Funds</div></li>
+                        <li><div className='debt_list_item'>Dynamic Bond Funds</div></li>
+                        <li><div className='debt_list_item'>Overnight Funds</div></li>
+                        <li><div className='debt_list_item'>Ultra Short Duration Funds</div></li>
+                        <li><div className='debt_list_item'>Short Duration Funds</div></li>
+                        <li><div className='debt_list_item'>Low Duration Funds</div></li>
                     </ul>
                     </div> 
                    <div className='debt_list2'>
                    <ul>
-                   <li>Credit Risk Funds</li>
-                        <li>Gilt Funds</li>
-                        <li>10 Year Guilt</li>
-                        <li>Money Market Funds</li>
-                        <li>Floater Funds</li>
-                        <li>Medium Duration Funds</li>
-                        <li>Medium long Duration Funds</li>
-                        <li>Long Duration Funds</li>
+                   <li><div className='debt_list_item'>Credit Risk Funds</div></li>
+                        <li><div className='debt_list_item'>Gilt Funds</div></li>
+                        <li><div className='debt_list_item'>10 Year Guilt</div></li>
+                        <li><div className='debt_list_item'>Money Market Funds</div></li>
+                        <li><div className='debt_list_item'>Floater Funds</div></li>
+                        <li><div className='debt_list_item'>Medium Duration Funds</div></li>
+                        <li><div className='debt_list_item'>Medium long Duration Funds</div></li>
+                        <li><div className='debt_list_item'>Long Duration Funds</div></li>
                     </ul>
                    </div>
                 </div>
