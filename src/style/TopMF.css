@@ -101,7 +101,7 @@ span.trmf {
  font-size: 21px;
 }
 
-@media (max-width: 768px){
+@media (max-width: 767px){
   .tmf_details{
     gap: 5px;
     font-size: 12px;

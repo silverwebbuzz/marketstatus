@@ -1,3 +1,43 @@
+.faq-section {
+    margin-top: 30px;
+  }
+  
+  .faq-item {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px 0px;
+    border-radius: 10px;
+  }
+  
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+
+  .faq-section h2 {
+    color: #353535;
+    padding-bottom: 10px;
+}
+  
+  .faq-question h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #545454;
+    font-weight: 400;
+  }
+  
+  .faq-answer {
+    margin-top: 10px;
+
+  }
+  
+  .faq-answer p {
+    margin: 0;
+    font-size: 14px;
+    color: #8d8d8d;
+  }
+  
 .company-logo {
     display: flex;
     align-items: center;
@@ -35,6 +75,33 @@ thead.thead-list{
     flex-direction: column;
 }
 
-.no-latest-ipos{
-    color: rgb(108, 109, 109);
+.ipo-list p {
+  color: grey;
+}
+
+.ipo-list h2 {
+  margin: 30px 0px 10px 0px;
+  color: #161616;
+}
+
+.listed-ipo h2 {
+  margin: 40px 0px 10px 0px;
+  color: #161616;
+}
+
+
+
+.listed-ipo p {
+  color: grey;
+}
+
+@media (max-width: 767px){
+
+  .ipo-list p {
+    text-align: justify;
+}
+
+.listed-ipo p{
+   text-align: justify;
+}
 }

@@ -2,6 +2,23 @@
   padding: 8px 16px;
 }
 
+
+h1.FM_h1 {
+  color: #3c3f57;
+  font-size: 65px;
+  text-shadow: 1.5px 1.5px #9ba4af91;
+  margin: 0;
+}
+
+p.FM_p {
+  font-size: 14px;
+  color: #ababab;
+}
+
+.FM_header {
+  text-align: center;
+}
+
 .search-container {
   margin-bottom: 20px;
   display: flex;
@@ -13,6 +30,7 @@
 .search_row {
   display: flex;
   flex-flow: row-reverse;
+  padding-top: 40px;
 }
 
 .search-container input {
@@ -125,7 +143,7 @@ p {
   cursor: not-allowed;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .dashboard_FnO {
     overflow: scroll;
   }

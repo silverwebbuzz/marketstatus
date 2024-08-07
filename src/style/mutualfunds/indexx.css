@@ -101,7 +101,7 @@ ul.Index_list2 {
     display: block;
 }
 
-@media (max-width: 768px){
+@media (max-width: 767px){
 
 .Index_screen {
     flex-flow: column-reverse;
@@ -110,9 +110,16 @@ ul.Index_list2 {
 .Index_description {
     width: 100%;
 }
+h1.Indexheader {
+    font-size: 30px;
+}
+
+.index_list_item {
+    font-size: 14px;
+}
 
 .Index_ul_li {
-    padding: 0;
+    padding-top: 15px;
 }
 
 .Index_list1 {

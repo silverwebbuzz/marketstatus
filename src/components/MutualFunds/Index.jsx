@@ -13,8 +13,7 @@ function Index() {
                 <div className='Index_description'>
                     <h1 className='Indexheader'>Index Funds</h1>
                     <p className='Index_p'>
-                        An index fund is a mutual fund that aims to replicate the performance of a specific market index, such as the S&P 500. It provides a low-cost way for investors to gain broad market exposure and achieve returns that match the index's performance.
-                    </p>
+                        An index fund is a type of mutual fund designed to mirror the performance of a particular market index, such as the S&P 500. It offers an affordable way for investors to obtain extensive market exposure and realize returns that align with the performance of the index.</p>
                     <div className='Index_ul_li'>
                         <div className='Index_list1'>
                             <ul>

@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import "../../style/calculators/sip.css";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChartLine, faMoneyCheckAlt, faCalculator } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 import {
   Slider,
   Box,
@@ -10,6 +13,7 @@ import {
   ToggleButton,
   ToggleButtonGroup,
 } from "@mui/material";
+
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -30,9 +34,9 @@ const marksLoanTenure = [
 
 const SipCalculator = () => {
   const [sipFrequency, setSipFrequency] = useState("Monthly");
-  const [sipAmount, setSipAmount] = useState(100);
-  const [returnRate, setReturnRate] = useState(10);
-  const [sipTenure, setLoanTenure] = useState(1);
+  const [sipAmount, setSipAmount] = useState(10000);
+  const [returnRate, setReturnRate] = useState(15);
+  const [sipTenure, setLoanTenure] = useState(3);
 
   const handleSipFrequencyChange = (event, newFrequency) => {
     setSipFrequency(newFrequency);
@@ -94,11 +98,19 @@ const SipCalculator = () => {
   };
 
   const options = {
-    cutout: '80%', // Increase this value to increase the inner radius
+    cutout: '80%',
   };
 
   const formatNumber = (number) => {
     return new Intl.NumberFormat('en-IN').format(number);
+  };
+
+
+  const scrollToTop = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+    });
   };
 
   return (
@@ -187,8 +199,38 @@ const SipCalculator = () => {
           </div>
         </div>
       </div>
+
+
+
+      <div className="similar-calculators">
+        <h2>Similar Calculators</h2>
+        <Link onClick={scrollToTop} to="/emi-calculator" className="card-link">
+          <div className="sip_card">
+            <FontAwesomeIcon icon={faChartLine} size="2x" className="icon" style={{color: "#33a7ff",}} />
+            <h3>EMI Calculator</h3>
+          </div>
+        </Link>
+        <Link onClick={scrollToTop} to="/fd-calculator" className="card-link">
+          <div className="sip_card">
+            <FontAwesomeIcon icon={faMoneyCheckAlt} size="2x" className="icon" style={{color: "#33a7ff",}}/>
+            <h3>FD Calculator</h3>
+          </div>
+        </Link>
+        <Link onClick={scrollToTop} to="/lumpsum-calculator" className="card-link">
+          <div className="sip_card">
+            <FontAwesomeIcon icon={faCalculator} size="2x" className="icon" style={{color: "#33a7ff",}}/>
+            <h3>Lumpsum Calculator</h3>
+          </div>
+        </Link>
+      </div>
+
+
+
+
+
     </div>
   );
 };
 
 export default SipCalculator;
+

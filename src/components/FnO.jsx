@@ -35,6 +35,10 @@ const FnO = () => {
     <section>
       <div className="container">
         <div className="dashboard_FnO">
+          <div className="FM_header">
+            <h1 className="FM_h1">Future Margin</h1>
+            <p className="FM_p">Elevate your equity game with smart margins</p>
+          </div>
           <div className="search_row">
           <div className="search-container">
             <input

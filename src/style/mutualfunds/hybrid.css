@@ -102,15 +102,21 @@ ul.hybrid_list2 {
     display: block;
 }
 
-@media (max-width: 768px){
+@media (max-width: 767px){
     .hybrid_description {
         width: 100%;
     }
     
     .hybrid_ul_li {
-        padding: 0;
+        padding-top: 15px;
+    }
+    h1.hybridheader {
+        font-size: 30px;
     }
     
+    .hybrid_list_item {
+        font-size: 14px;
+    }
     .hybrid_list1 {
         width: 50%;
     }
@@ -124,9 +130,3 @@ ul.hybrid_list2 {
         padding: 0;
     }
 }
-
-
-
-
-
-

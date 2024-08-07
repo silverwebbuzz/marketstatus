@@ -250,7 +250,7 @@ font-weight: 400;
 
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .stock-box {
     width: 100% ;
     margin: 10px 0;

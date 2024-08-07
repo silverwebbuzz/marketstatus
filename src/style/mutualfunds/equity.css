@@ -95,7 +95,7 @@ ul.equity_list2 {
 .equity_list1 ul {
     display: block;
 }
-@media (max-width: 768px){
+@media (max-width: 767px){
     
     .equity_description {
         width: 100%;
@@ -106,7 +106,7 @@ ul.equity_list2 {
     }
     
     .equity_ul_li {
-        padding: 0;
+        padding-top: 15px;
     }
     
     .quity_img {
@@ -116,5 +116,12 @@ ul.equity_list2 {
     
     img.sticker1 {
         display: none;
+    }
+    h1.equityheader {
+        font-size: 30px;
+    }
+    
+    .equity_list_item {
+        font-size: 14px;
     }
 }

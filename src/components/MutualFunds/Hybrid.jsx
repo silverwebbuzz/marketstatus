@@ -9,8 +9,7 @@ function Hybrid() {
                 <div className='hybrid_description'>
                     <h1 className='hybridheader'>Hybrid Funds</h1>
                     <p className='hybrid_p'>
-                    A hybrid fund is a mutual fund that combines investments in both stocks and bonds, offering a balanced approach to growth and income. It seeks to provide a mix of stability and potential for higher returns, making it ideal for investors looking for a diversified portfolio.
-                    </p>
+                        A hybrid fund is a mutual fund that integrates investments in both equities and bonds, presenting a balanced strategy for growth and income. It aims to deliver a combination of stability and the potential for enhanced returns, making it suitable for investors seeking a diversified investment portfolio.</p>
                     <div className='hybrid_ul_li'>
                         <div className='hybrid_list1'>
                             <ul>
@@ -18,7 +17,7 @@ function Hybrid() {
                                 <li><div className='hybrid_list_item'>Balanced Funds</div></li>
                                 <li> <div className='hybrid_list_item'>Equity Savings Funds</div></li>
                             </ul>
-                        </div> 
+                        </div>
                         <div className='hybrid_list2'>
                             <ul>
                                 <li><div className='hybrid_list_item'>Aggressive Funds</div></li>

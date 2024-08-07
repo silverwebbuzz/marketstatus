@@ -104,7 +104,7 @@ ul.debt_list2 {
 @media (max-width: 991px){
 
 }
-@media (max-width: 768px){
+@media (max-width: 767px){
     .debt_img {
         width: 100%;
     }
@@ -116,7 +116,13 @@ ul.debt_list2 {
     .debt_description {
         width: 100%;
     }
+    h1.debtheader {
+        font-size: 30px;
+    }
     
+    .debt_list_item {
+        font-size: 14px;
+    }
     .debt_list1 {
         width: 50%;
     }
@@ -126,6 +132,6 @@ ul.debt_list2 {
     }
     
     .debt_ul_li {
-        padding: 0;
+        padding-top: 15px;
     }
 }
