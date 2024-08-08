@@ -7,10 +7,14 @@ import FnO from './components/FnO';
 import Footer from './components/Footer';
 import Ipo from './components/Ipo';
 import SIP from './components/Calculators/SIP';
+import YRSIP from './components/Calculators/YRSIP';
 import EMI from './components/Calculators/EMI';
 import FD from './components/Calculators/FD';
 import Lumpsum from './components/Calculators/Lumpsum';
 import AMC from './components/MutualFunds/AMC'
+import CAGR from './components/Calculators/CAGR';
+
+
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
@@ -40,6 +44,8 @@ const AppContent = () => {
           <Route path="/futures-margins" element={<FnO />} />
           <Route path="/ipo" element={<Ipo />} />
           <Route path="/sip-calculator" element={<SIP />} />
+          <Route path="/yearly-sip-calculator" element={<YRSIP />} />
+          <Route path="/cagr-calculator" element={<CAGR />} />
           <Route path="/emi-calculator" element={<EMI />} />
           <Route path="/fd-calculator" element={<FD />} />
           <Route path="/lumpsum-calculator" element={<Lumpsum />} />

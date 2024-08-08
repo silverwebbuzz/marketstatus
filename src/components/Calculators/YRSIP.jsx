@@ -1,23 +1,21 @@
 import React, { useState } from "react";
-import "../../style/calculators/fd.css";
+import "../../style/calculators/yrsip.css";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChartLine, faHandshake, faCalculator, faCalendarDays, faMoneyBillTrendUp } from '@fortawesome/free-solid-svg-icons';
+import { faChartLine, faMoneyCheckAlt, faCalculator, faHandshake, faMoneyBillTrendUp} from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import {
   Slider,
   Box,
   Typography,
   TextField,
-  ToggleButton,
-  ToggleButtonGroup,
 } from "@mui/material";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const marksFdAmount = [
-  { value: 500, label: "₹ 500" },
+const marksSipAmount = [
+  { value: 100, label: "₹ 100" },
   { value: 1000000, label: "₹ 10,00,000" },
 ];
 
@@ -31,18 +29,13 @@ const marksLoanTenure = [
   { value: 40, label: "40 yr" },
 ];
 
-const FdCalculator = () => {
-  const [fdFrequency, setFdFrequency] = useState("Monthly");
-  const [fdAmount, setFdAmount] = useState(500);
-  const [returnRate, setReturnRate] = useState(10);
-  const [fdTenure, setLoanTenure] = useState(1);
+const YRSIP = () => {
+  const [sipAmount, setSipAmount] = useState(10000);
+  const [returnRate, setReturnRate] = useState(15);
+  const [sipTenure, setLoanTenure] = useState(3);
 
-  const handleFdFrequencyChange = (event, newFrequency) => {
-    setFdFrequency(newFrequency);
-  };
-
-  const handleFdAmountChange = (event, newValue) => {
-    setFdAmount(newValue);
+  const handleSipAmountChange = (event, newValue) => {
+    setSipAmount(newValue);
   };
 
   const handleInterestRateChange = (event, newValue) => {
@@ -53,39 +46,21 @@ const FdCalculator = () => {
     setLoanTenure(newValue);
   };
 
-  const calculateFd = (amount, rate, tenure, frequency) => {
+  const calculateSip = (amount, rate, tenure) => {
     const annualRate = rate / 100;
-    let n;
-    switch (frequency) {
-      case "Monthly":
-        n = 12;
-        break;
-      case "Quarterly":
-        n = 4;
-        break;
-      case "Half Yearly":
-        n = 2;
-        break;
-      case "Yearly":
-        n = 1;
-        break;
-      default:
-        n = 1;
-    }
-
-    const futureValue = amount * Math.pow(1 + annualRate / n, n * tenure);
+    const futureValue = amount * ((Math.pow(1 + annualRate, tenure) - 1) / annualRate) * (1 + annualRate);
     return futureValue.toFixed(2);
   };
 
-  const futureValue = calculateFd(fdAmount, returnRate, fdTenure, fdFrequency);
-  const investedAmount = fdAmount;
+  const futureValue = calculateSip(sipAmount, returnRate, sipTenure);
+  const investedAmount = sipAmount * sipTenure;
   const totalReturn = (futureValue - investedAmount).toFixed(2);
 
   const data = {
-    labels: ["Investment Amount", "Returns"],
+    labels: ["Investment Amount", "Maturity Value"],
     datasets: [
       {
-        data: [investedAmount, totalReturn],
+        data: [investedAmount, futureValue],
         backgroundColor: ["#9f9f9f", "#2c9430"],
         hoverBackgroundColor: ["#666667", "#265628"],
       },
@@ -93,7 +68,7 @@ const FdCalculator = () => {
   };
 
   const options = {
-    cutout: "80%",  
+    cutout: '80%',
   };
 
   const formatNumber = (number) => {
@@ -102,46 +77,34 @@ const FdCalculator = () => {
 
   const scrollToTop = () => {
     window.scrollTo({
-      top: 0,
-      behavior: "smooth",
+        top: 0,
+        behavior: "smooth",
     });
   };
 
   return (
     <div className="container">
-      <div className="fdcalculator_row">
-        <h1 className="fd_h1">FD Calculator</h1>
+      <div className="YRSIP_row">
+        <h1 className="sip-h1">Yearly SIP Calculator</h1>
         <div className="calculator_box">
-          <ToggleButtonGroup
-            color="primary"
-            value={fdFrequency}
-            exclusive
-            onChange={handleFdFrequencyChange}
-            aria-label="FD Frequency"
-          >
-            <ToggleButton value="Monthly">Monthly</ToggleButton>
-            <ToggleButton value="Quarterly">Quarterly</ToggleButton>
-            <ToggleButton value="Half Yearly">Half Yearly</ToggleButton>
-            <ToggleButton value="Yearly">Yearly</ToggleButton>
-          </ToggleButtonGroup>
           <div className="calculator_container_box">
-            <div className="fd_calculator_top">
+            <div className="sip_calculator_top">
               <Box>
                 <div className="input-group">
-                  <label>FD Investment</label>
+                  <label>SIP Investment</label>
                   <TextField
                     type="number"
-                    value={fdAmount}
-                    onChange={(e) => setFdAmount(Number(e.target.value))}
+                    value={sipAmount}
+                    onChange={(e) => setSipAmount(Number(e.target.value))}
                     size="small"
                   />
                   <Slider
-                    value={fdAmount}
-                    onChange={handleFdAmountChange}
-                    min={500}
+                    value={sipAmount}
+                    onChange={handleSipAmountChange}
+                    min={100}
                     max={1000000}
-                    step={500}
-                    marks={marksFdAmount}
+                    step={100}
+                    marks={marksSipAmount}
                     valueLabelDisplay="auto"
                   />
                 </div>
@@ -167,12 +130,12 @@ const FdCalculator = () => {
                   <label>Time Period</label>
                   <TextField
                     type="number"
-                    value={fdTenure}
+                    value={sipTenure}
                     onChange={(e) => setLoanTenure(Number(e.target.value))}
                     size="small"
                   />
                   <Slider
-                    value={fdTenure}
+                    value={sipTenure}
                     onChange={handleLoanTenureChange}
                     min={1}
                     max={40}
@@ -183,12 +146,12 @@ const FdCalculator = () => {
                 </div>
               </Box>
               <div className="results">
-                <Typography>Investment Amount:<br /> ₹{formatNumber(investedAmount)}</Typography>
-                <Typography>Estimated Returns:<br /> ₹{formatNumber(totalReturn)}</Typography>
-                <Typography>Maturity Value:<br /> <span className="value-color">₹{formatNumber(futureValue)}</span></Typography>
+                <Typography component="div">Investment Amount:<br /> ₹{formatNumber(investedAmount)}</Typography>
+                <Typography component="div">Estimated Returns:<br /> ₹{formatNumber(totalReturn)}</Typography>
+                <Typography component="div">Maturity Value:<br /><span className="value-color"> ₹{formatNumber(futureValue)}</span></Typography>
               </div>
             </div>
-            <div className="chart-container-fd">
+            <div className="chart-container-sip">
               <Doughnut data={data} options={options} />
             </div>
           </div>
@@ -198,16 +161,28 @@ const FdCalculator = () => {
       <div className="similar_calculators">
         <h2>Similar Calculators</h2>
         <div className="calculator_grid">
-          <div className="calculator_card_fd">
+          <div className="calculator_card_yrsip">
+            <Link onClick={scrollToTop} to="/emi-calculator" className="card_link">
+              <FontAwesomeIcon icon={faChartLine} size="2x" className="icon"/>
+              <h4>EMI Calculator</h4>
+            </Link>
+          </div>
+          <div className="calculator_card_yrsip">
+            <Link onClick={scrollToTop} to="/fd-calculator" className="card_link">
+              <FontAwesomeIcon icon={faMoneyCheckAlt} size="2x" className="icon" />
+              <h4>FD Calculator</h4>
+            </Link>
+          </div>
+          <div className="calculator_card_yrsip">
+            <Link onClick={scrollToTop} to="/lumpsum-calculator" className="card_link">
+              <FontAwesomeIcon icon={faCalculator} size="2x" className="icon" />
+              <h4>Lumpsum Calculator</h4>
+            </Link>
+          </div>
+          <div className="calculator_card_yrsip">
             <Link onClick={scrollToTop} to="/sip-calculator" className="card_link">
               <FontAwesomeIcon icon={faHandshake} size="2x" className="icon" />
               <h4>SIP Calculator</h4>
-            </Link>
-          </div>
-          <div className="calculator_card_fd">
-            <Link onClick={scrollToTop} to="/emi-calculator" className="card_link">
-              <FontAwesomeIcon icon={faChartLine} size="2x" className="icon" />
-              <h4>EMI Calculator</h4>
             </Link>
           </div>
           <div className="calculator_card_lump">
@@ -216,22 +191,10 @@ const FdCalculator = () => {
               <h4>CAGR Calculator</h4>
             </Link>
           </div>
-          <div className="calculator_card_fd">
-            <Link onClick={scrollToTop} to="/lumpsum-calculator" className="card_link">
-              <FontAwesomeIcon icon={faCalculator} size="2x" className="icon" />
-              <h4>Lumpsum Calculator</h4>
-            </Link>
-          </div>
-          <div className="calculator_card_fd">
-            <Link onClick={scrollToTop} to="/yearly-sip-calculator" className="card_link">
-              <FontAwesomeIcon icon={faCalendarDays} size="2x" className="icon" />
-              <h4>Yearly SIP Calculator</h4>
-            </Link>
-          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default FdCalculator;
+export default YRSIP;

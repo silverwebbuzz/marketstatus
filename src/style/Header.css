@@ -177,7 +177,7 @@ section.Nav_top {
 
 .dropdown-menu {
   display: none;
-  background-color: #4d4d4d;
+  background-color: #636363;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   min-width: 150px;
   list-style-type: none;
@@ -243,11 +243,32 @@ li a.active {
     display: flex;
   }
 
+  li.dropdown {
+    padding: 10px;
+}
+element.style {
+  margin-left: -10px;
+}
+ul.dropdown-menu {
+  margin: 0;
+}
+
+li.dropmenu-li {
+  border: 0 !important;
+  min-height: 10px !important;
+}
+
+.dropmenu-li a {
+  padding: 0 !important;
+}
   ul.nav_ul li a {
     display: block;
     padding: 10px;
+    color: black;
   }
-
+  .navbar_row {
+    height: 0 !important;
+}
   ul.nav_ul {
 
     flex-direction: column;
@@ -263,6 +284,10 @@ li a.active {
     text-align: left;
     border: 1px solid #ccc;
   }
+
+  ul.nav_ul li {
+    color: #000000;
+}
 
   section.Nav_bottom,
   section.Nav_top {

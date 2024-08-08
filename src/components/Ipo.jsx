@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../style/Ipo.css";
 
-const IpoDashboard = () => {
+const IPO = () => {
   const [ipos, setIpos] = useState([]);
   const [listedIpos, setListedIpos] = useState([]);
   const [faqOpen, setFaqOpen] = useState(null); // State to manage open FAQ
@@ -118,32 +118,26 @@ const IpoDashboard = () => {
                 </tr>
               </thead>
               <tbody className="ipo_tablebody">
-                {ipos.map((ipo, index) => (
-                  <tr className="ipo_tablebody_tablerow" key={index}>
+              {ipos.map((ipo, index) => (
+                <tr key={index}>
                     <td>
-                      <div className="company-logo">
-                        <div className="companylogo_inner">
-                          <span>{ipo.company_name}</span>
-                          {ipo.ipo_switch && Array.isArray(ipo.ipo_switch)
-                            ? ipo.ipo_switch.map((ex, i) => <p key={i}>{ex}</p>)
-                            : null}
+                        <div className="company-logo">
+                            <div className="companylogo_inner">
+                                <span>{ipo.company_name}</span>
+                                <p>{ipo.ipo_switch}</p>
+                            </div>
+                            <div className="exchange-tags">
+                                <img src={images[ipo.logo]} alt={`${ipo.amc_name} logo`} className="amc-logo" />
+                            </div>
                         </div>
-                        <div className="exchange-tags">
-                          <img
-                            src={images[ipo.logo]}
-                            alt={`${ipo.amc_name} logo`}
-                            className="amc-logo"
-                          />
-                        </div>
-                      </div>
                     </td>
                     <td>{ipo.open_date}</td>
                     <td>{ipo.close_date}</td>
-                    <td className="text-right">₹ {ipo.issue_size}</td>
-                    <td className="text-right">₹ {ipo.price_band}</td>
-                    <td className="text-right">₹ {ipo.min_investment}</td>
-                  </tr>
-                ))}
+                    <td className='text-right'>₹ {ipo.issue_size}</td>
+                    <td className='text-right'>₹ {ipo.price_band}</td>
+                    <td className='text-right'>₹ {ipo.min_investment}</td>
+                </tr>
+            ))}
               </tbody>
             </table>
           </div>
@@ -229,4 +223,4 @@ const IpoDashboard = () => {
   );
 };
 
-export default IpoDashboard;
+export default IPO;

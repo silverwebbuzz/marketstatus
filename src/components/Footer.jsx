@@ -34,22 +34,32 @@ function Footer() {
                   <ul>
                     <li className="footercard_links">
                       <a href="https://marketstatus.in/sip-calculator">
-                        Sip Calculator
+                        SIP Calculator
                       </a>
                     </li>
                     <li className="footercard_links">
                       <a href="https://marketstatus.in/emi-calculator">
-                        Emi Calculator
+                        EMI Calculator
                       </a>
                     </li>
                     <li className="footercard_links">
                       <a href="https://marketstatus.in/fd-calculator">
-                        Fd Calculator
+                        FD Calculator
                       </a>
                     </li>
                     <li className="footercard_links">
                       <a href="https://marketstatus.in/lumpsum-calculator">
                         Lumpsum Calculatoe
+                      </a>
+                    </li>
+                    <li className="footercard_links">
+                      <a href="https://marketstatus.in/yearly-sip-calculator">
+                        Yearly Sip Calculator
+                      </a>
+                    </li>
+                    <li className="footercard_links">
+                      <a href="https://marketstatus.in/cagr-calculator">
+                        CAGR Calculator
                       </a>
                     </li>
                   </ul>

@@ -137,24 +137,6 @@ const Header = () => {
                     <li className="dropmenu-li">
                       <Link to="/mutual-funds/amc" onClick={() => setShowMenu(!showMenu)}>AMC Funds</Link>
                     </li>
-                  {/* <li className="dropmenu-li">
-                      <Link to="/mf" onClick={() => setShowMenu(!showMenu)}>All About MF</Link>
-                    </li> */}
-                    {/* <li className="dropmenu-li">
-                      <Link to="/equity" onClick={() => setShowMenu(!showMenu)}>Equity Funds</Link>
-                    </li>
-                    <li className="dropmenu-li">
-                      <Link to="/debt" onClick={() => setShowMenu(!showMenu)}>Debt Funds</Link>
-                    </li>
-                    <li className="dropmenu-li">
-                      <Link to="/hybrid" onClick={() => setShowMenu(!showMenu)}>Hybrid Funds</Link>
-                    </li>
-                    <li className="dropmenu-li">
-                      <Link to="/hybrid" onClick={() => setShowMenu(!showMenu)}>Index Funds</Link>
-                    </li>
-                    <li className="dropmenu-li">
-                      <Link to="/elss" onClick={() => setShowMenu(!showMenu)}>ELSS Funds</Link>
-                    </li> */}
                   </ul>
                 </li>
               </ul>
