@@ -1,6 +1,7 @@
 import React from 'react';
 import Debtimg from '../../images/Debtimg.jpg';
 import '../../style/mutualfunds/debt.css';
+import { Link } from 'react-router-dom';
 
 
 function Debt() {
@@ -32,7 +33,7 @@ function Debt() {
                             <ul>
                                 <li><div className='debt_list_item'>Credit Risk Funds</div></li>
                                 <li><div className='debt_list_item'>Gilt Funds</div></li>
-                                <li><div className='debt_list_item'>10 Year Guilt</div></li>
+                                <li className='debt_list_item'><Link to="/debt_funds/10_year_guilt_fund">10 Year Guilt</Link></li>
                                 <li><div className='debt_list_item'>Money Market Funds</div></li>
                                 <li><div className='debt_list_item'>Floater Funds</div></li>
                                 <li><div className='debt_list_item'>Medium Duration Funds</div></li>

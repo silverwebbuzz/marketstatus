@@ -56,34 +56,4 @@
   color: #9d9d9d;
   font-size: 14px;
   }
-
-
-  .calculator_card_lump {
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 8px;
-    margin: 10px;
-    text-align: left;
-    transition: transform 0.2s;
-    width: 180px;
-    height: 100px;
-  }
-  
-  .calculator_card_lump:hover {
-    transform: translateY(-10px);
-  }
-  .card_link {
-    text-decoration: none;
-  }
-  .calculator_grid {
-    justify-content: space-around;
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .icon {
-    color: #33a7ff;
-    margin-bottom: 5px;
-  }
   

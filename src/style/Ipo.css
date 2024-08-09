@@ -75,8 +75,77 @@ thead.thead-list{
     flex-direction: column;
 }
 
+.ipo_table {
+  width: 100%;
+}
+
+thead.ipo_thead {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  border-spacing: 0 38px;
+}
+
+.ipo_thead.ipo_thead_tablerow {
+  box-shadow: 2px 4px 28px 0px #00000040;
+}
+.ipo_thead_tablerow th:first-child {
+  text-align: left;
+}
+.ipo_thead_tablerow th {
+  padding: 25px 15px;
+}
+tr.ipo_tablebody_tablerow {
+  box-shadow: 0px 4px 6.7px 0px #00000040;
+  border-radius: 10px;
+  transition: all 0.4s ease;
+}
+.ipo_tablebody_tablerow td:first-child{
+  text-align: left;
+}
+.ipo_tablebody_tablerow td {
+  font-size: 14px;
+  color: #424242;
+  padding: 15px;
+}
+.ipo_thead_tablerow {
+  box-shadow: 0px 4px 6.7px 0px #00000040;
+  border-radius: 10px;
+  transition: all 0.4s ease;
+}
+
+tbody.ipo_tablebody {
+  border-spacing: 0 13px;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.table_main {
+  height: 400px;
+  overflow-y: auto;
+}
+
+thead.thead-list {
+  position: sticky;
+  top: -40px;
+
+}
+tr.text-center {
+  box-shadow: 2px 4px 28px 0px #00000040;
+}
+
+tr.text-center th:first-child {
+  text-align: left;
+}
+
+tr.text-center th {
+  padding: 25px 15px;
+  border-radius: 10px;
+}
+
 .ipo-list p {
-  color: rgb(78, 78, 78);
+  color: grey;
 }
 
 .ipo-list h2 {
@@ -89,10 +158,16 @@ thead.thead-list{
   color: #161616;
 }
 
-
-
 .listed-ipo p {
   color: grey;
+}
+
+tbody.ipo_tablebody tr td:first-child {
+  width: 300px;
+}
+
+tr.ipo_thead_tablerow th:first-child {
+  width: 300px;
 }
 
 @media (max-width: 767px){

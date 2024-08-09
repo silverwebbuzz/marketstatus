@@ -1,4 +1,4 @@
-[
+{"contra_fund":[
     {
         "additional_purchase_amt_multiple": "1000.0000",
         "amc_address": "9th Floor,Crescenzo, C-39&39,G Block, Bandra kurla complex,Bandra (east), Mumbai-400 051.",
@@ -444,3 +444,4 @@
         "vr_rating": 0
     }
 ]
+}

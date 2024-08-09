@@ -1,0 +1,7 @@
+tr.subcat_tbody_tr td:first-child {
+    width: 417px;
+}
+
+tr.subcat_thead_tr th:first-child {
+    width: 417px;
+}

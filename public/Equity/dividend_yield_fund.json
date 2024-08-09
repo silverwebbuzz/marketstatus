@@ -1,4 +1,4 @@
-[
+{"dividend_yield_fund":[
     {
         "additional_purchase_amt_multiple": "1000.0000",
         "amc_address": "One BKC, A-Wing, 13th Floor,Bandra Kurla Complex,Mumbai 400051",
@@ -1331,4 +1331,4 @@
         "three_year_min_abs_cat_retrn": "80.60912",
         "vr_rating": 0
     }
-]
+]}

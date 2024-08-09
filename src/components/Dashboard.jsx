@@ -10,10 +10,6 @@ import Debt from './MutualFunds/Debt';
 import Hybrid from './MutualFunds/Hybrid';
 import Index from './MutualFunds/Index';
 import ELSS from './MutualFunds/ELSS';
-import SipCalculator from './Calculators/SIP';
-import EmiCalculator from './Calculators/EMI';
-import FdCalculator from './Calculators/FD';
-import LumpsumCalculator from './Calculators/Lumpsum';
 import CalculatorCard from './Calculators/CalculatorCard';
 
 

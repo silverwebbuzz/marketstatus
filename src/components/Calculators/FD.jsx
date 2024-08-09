@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import "../../style/calculators/fd.css";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChartLine, faHandshake, faCalculator, faCalendarDays, faMoneyBillTrendUp } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
 import {
   Slider,
   Box,
@@ -93,18 +90,11 @@ const FdCalculator = () => {
   };
 
   const options = {
-    cutout: "80%",  
+    cutout: "80%", // Increase this value to increase the inner radius
   };
 
   const formatNumber = (number) => {
     return new Intl.NumberFormat('en-IN').format(number);
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
   };
 
   return (
@@ -123,6 +113,7 @@ const FdCalculator = () => {
             <ToggleButton value="Quarterly">Quarterly</ToggleButton>
             <ToggleButton value="Half Yearly">Half Yearly</ToggleButton>
             <ToggleButton value="Yearly">Yearly</ToggleButton>
+
           </ToggleButtonGroup>
           <div className="calculator_container_box">
             <div className="fd_calculator_top">
@@ -185,48 +176,12 @@ const FdCalculator = () => {
               <div className="results">
                 <Typography>Investment Amount:<br /> ₹{formatNumber(investedAmount)}</Typography>
                 <Typography>Estimated Returns:<br /> ₹{formatNumber(totalReturn)}</Typography>
-                <Typography>Maturity Value:<br /> <span className="value-color">₹{formatNumber(futureValue)}</span></Typography>
+                <Typography>Maturity Value:<br /><div className="value-color"> ₹{formatNumber(futureValue)}</div></Typography>
               </div>
             </div>
             <div className="chart-container-fd">
               <Doughnut data={data} options={options} />
             </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="similar_calculators">
-        <h2>Similar Calculators</h2>
-        <div className="calculator_grid">
-          <div className="calculator_card_fd">
-            <Link onClick={scrollToTop} to="/sip-calculator" className="card_link">
-              <FontAwesomeIcon icon={faHandshake} size="2x" className="icon" />
-              <h4>SIP Calculator</h4>
-            </Link>
-          </div>
-          <div className="calculator_card_fd">
-            <Link onClick={scrollToTop} to="/emi-calculator" className="card_link">
-              <FontAwesomeIcon icon={faChartLine} size="2x" className="icon" />
-              <h4>EMI Calculator</h4>
-            </Link>
-          </div>
-          <div className="calculator_card_lump">
-            <Link onClick={scrollToTop} to="/cagr-calculator" className="card_link">
-              <FontAwesomeIcon icon={faMoneyBillTrendUp} size="2x" className="icon" />
-              <h4>CAGR Calculator</h4>
-            </Link>
-          </div>
-          <div className="calculator_card_fd">
-            <Link onClick={scrollToTop} to="/lumpsum-calculator" className="card_link">
-              <FontAwesomeIcon icon={faCalculator} size="2x" className="icon" />
-              <h4>Lumpsum Calculator</h4>
-            </Link>
-          </div>
-          <div className="calculator_card_fd">
-            <Link onClick={scrollToTop} to="/yearly-sip-calculator" className="card_link">
-              <FontAwesomeIcon icon={faCalendarDays} size="2x" className="icon" />
-              <h4>Yearly SIP Calculator</h4>
-            </Link>
           </div>
         </div>
       </div>

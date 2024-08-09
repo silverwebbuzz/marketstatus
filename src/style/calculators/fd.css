@@ -56,33 +56,4 @@
   .value-color{
     color: #4caf50;
 }
-
-.calculator_card_fd {
-  background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 8px;
-    margin: 10px;
-    text-align: left;
-    transition: transform 0.2s;
-    width: 180px;
-    height: 100px;
-}
-
-.calculator_card_fd:hover {
-  transform: translateY(-10px);
-}
-.card_link {
-  text-decoration: none;
-}
-.calculator_grid {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-.icon {
-  color: #33a7ff;
-  margin-bottom: 5px;
-}
   

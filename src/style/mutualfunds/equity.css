@@ -15,8 +15,16 @@ img.sticker1 {
     margin-bottom: 10px;
     font-size: 18px;
 }
+ul li.equity_list_item {
+    padding-left: 35px !important;
+}
 
-.equity_list_item::before {
+li.equity_list_item a {
+    color: #545454;
+    text-decoration: none;
+}
+
+.equity_list_item::after {
     content: '';
     position: absolute;
     left: 0;

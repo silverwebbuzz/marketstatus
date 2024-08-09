@@ -3,7 +3,7 @@ import "../../style/calculators/sip.css";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChartLine, faMoneyCheckAlt, faCalculator, faCalendarDays, faMoneyBillTrendUp } from '@fortawesome/free-solid-svg-icons';
+import { faChartLine, faMoneyCheckAlt, faCalculator } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import {
   Slider,
@@ -13,6 +13,7 @@ import {
   ToggleButton,
   ToggleButtonGroup,
 } from "@mui/material";
+
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -104,6 +105,7 @@ const SipCalculator = () => {
     return new Intl.NumberFormat('en-IN').format(number);
   };
 
+
   const scrollToTop = () => {
     window.scrollTo({
         top: 0,
@@ -186,9 +188,9 @@ const SipCalculator = () => {
                 </div>
               </Box>
               <div className="results">
-                <Typography component="div">Investment Amount:<br /> ₹{formatNumber(investedAmount)}</Typography>
-                <Typography component="div">Estimated Returns:<br /> ₹{formatNumber(totalReturn)}</Typography>
-                <Typography component="div">Maturity Value:<br /><span className="value-color"> ₹{formatNumber(futureValue)}</span></Typography>
+                <Typography>Investment Amount:<br /> ₹{formatNumber(investedAmount)}</Typography>
+                <Typography>Estimated Returns:<br /> ₹{formatNumber(totalReturn)}</Typography>
+                <Typography>Maturity Value:<br /><div className="value-color"> ₹{formatNumber(futureValue)}</div></Typography>
               </div>
             </div>
             <div className="chart-container-sip">
@@ -198,43 +200,37 @@ const SipCalculator = () => {
         </div>
       </div>
 
-      <div className="similar_calculators">
+
+
+      <div className="similar-calculators">
         <h2>Similar Calculators</h2>
-        <div className="calculator_grid">
-          <div className="calculator_card_sip">
-            <Link onClick={scrollToTop} to="/emi-calculator" className="card_link">
-              <FontAwesomeIcon icon={faChartLine} size="2x" className="icon"/>
-              <h4>EMI Calculator</h4>
-            </Link>
+        <Link onClick={scrollToTop} to="/emi-calculator" className="card-link">
+          <div className="sip_card">
+            <FontAwesomeIcon icon={faChartLine} size="2x" className="icon" style={{color: "#33a7ff",}} />
+            <h3>EMI Calculator</h3>
           </div>
-          <div className="calculator_card_sip">
-            <Link onClick={scrollToTop} to="/fd-calculator" className="card_link">
-              <FontAwesomeIcon icon={faMoneyCheckAlt} size="2x" className="icon" />
-              <h4>FD Calculator</h4>
-            </Link>
+        </Link>
+        <Link onClick={scrollToTop} to="/fd-calculator" className="card-link">
+          <div className="sip_card">
+            <FontAwesomeIcon icon={faMoneyCheckAlt} size="2x" className="icon" style={{color: "#33a7ff",}}/>
+            <h3>FD Calculator</h3>
           </div>
-          <div className="calculator_card_lump">
-            <Link onClick={scrollToTop} to="/cagr-calculator" className="card_link">
-              <FontAwesomeIcon icon={faMoneyBillTrendUp} size="2x" className="icon" />
-              <h4>CAGR Calculator</h4>
-            </Link>
+        </Link>
+        <Link onClick={scrollToTop} to="/lumpsum-calculator" className="card-link">
+          <div className="sip_card">
+            <FontAwesomeIcon icon={faCalculator} size="2x" className="icon" style={{color: "#33a7ff",}}/>
+            <h3>Lumpsum Calculator</h3>
           </div>
-          <div className="calculator_card_sip">
-            <Link onClick={scrollToTop} to="/lumpsum-calculator" className="card_link">
-              <FontAwesomeIcon icon={faCalculator} size="2x" className="icon" />
-              <h4>Lumpsum Calculator</h4>
-            </Link>
-          </div>
-          <div className="calculator_card_sip">
-            <Link onClick={scrollToTop} to="/yearly-sip-calculator" className="card_link">
-              <FontAwesomeIcon icon={faCalendarDays} size="2x" className="icon" />
-              <h4>Yearly SIP Calculator</h4>
-            </Link>
-          </div>
-        </div>
+        </Link>
       </div>
+
+
+
+
+
     </div>
   );
 };
 
 export default SipCalculator;
+

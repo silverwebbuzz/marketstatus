@@ -1,4 +1,4 @@
-[
+{"large_cap_fund":[
     {
         "additional_purchase_amt_multiple": "100.0000",
         "amc_address": "One BKC, A-Wing, 13th Floor,Bandra Kurla Complex,Mumbai 400051",
@@ -4588,3 +4588,4 @@
         "vr_rating": 0
     }
 ]
+}

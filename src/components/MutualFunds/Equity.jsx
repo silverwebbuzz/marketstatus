@@ -1,6 +1,7 @@
 import React from 'react';
 import Equitymain from '../../images/Equitymain.jpg';
 import '../../style/mutualfunds/equity.css';
+import { Link } from 'react-router-dom';
 
 
 function Equity() {
@@ -15,23 +16,23 @@ function Equity() {
                     <div className='equity_ul_li'>
                         <div className='equity_list1'>
                             <ul>
-                                <li><div className='equity_list_item'>Large Cap Funds</div></li>
-                                <li><div className='equity_list_item'>Mid Cap Funds</div></li>
-                                <li><div className='equity_list_item'>Small Cap Funds</div></li>
-                                <li><div className='equity_list_item'>Large & Mid Cap Funds</div></li>
-                                <li><div className='equity_list_item'>Flexi Cap Funds</div></li>
-                                <li><div className='equity_list_item'>Multi Cap Funds</div></li>
-                                <li><div className='equity_list_item'>Divided Yield Funds</div></li>
+                                <li className='equity_list_item'><Link to="/funds/large_cap_fund">Large Cap Fund</Link></li>
+                                <li className='equity_list_item'><Link to="/funds/mid_cap_fund">Mid Cap Fund</Link></li>
+                                <li className='equity_list_item'><Link to="/funds/small_cap_fund">Small Cap Funds</Link></li>
+                                <li className='equity_list_item'><Link to="/funds/large_mid_cap_fund">Large & Mid Cap Funds</Link></li>
+                                <li className='equity_list_item'><Link to="/funds/flexi_cap_fund">Flexi Cap Funds</Link></li>
+                                <li className='equity_list_item'><Link to="/funds/multi_cap_fund">Multi Cap Funds</Link></li>
+                                <li className='equity_list_item'><Link to="/funds/dividend_yield_fund">Dividend Yield Funds</Link></li>
                             </ul>
                         </div>
                         <div className='equity_list2'>
                             <ul>
-                                <li><div className='equity_list_item'>Bluechip Funds</div></li>
-                                <li><div className='equity_list_item'>Focused Funds</div></li>
-                                <li><div className='equity_list_item'>Sectoral Funds</div></li>
-                                <li><div className='equity_list_item'>International Funds</div></li>
-                                <li><div className='equity_list_item'>Vlaue Funds</div></li>
-                                <li><div className='equity_list_item'>Contra Funds</div></li>
+                                <li className='equity_list_item'><Link to="/funds/bluechip_fund">Bluechip Funds</Link></li>
+                                <li className='equity_list_item'><Link to="/funds/focused_fund">Focused Funds</Link></li>
+                                <li className='equity_list_item'><Link to="/funds/sectoral_fund">Sectoral Funds</Link></li>
+                                <li className='equity_list_item'><Link to="/funds/international_fund">International Funds</Link></li>
+                                <li className='equity_list_item'><Link to="/funds/value_fund">Value Funds</Link></li>
+                                <li className='equity_list_item'><Link to="/funds/contra_fund">Contra Funds</Link></li>
                             </ul>
                         </div>
                     </div>

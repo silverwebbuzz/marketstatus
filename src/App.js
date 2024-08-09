@@ -1,22 +1,18 @@
 import React, { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Dashboard from './components/Dashboard';
 import IndicesTable from './components/IndicesTable';
 import FnO from './components/FnO';
 import Footer from './components/Footer';
-import Ipo from './components/Ipo';
 import SIP from './components/Calculators/SIP';
-import YRSIP from './components/Calculators/YRSIP';
 import EMI from './components/Calculators/EMI';
 import FD from './components/Calculators/FD';
 import Lumpsum from './components/Calculators/Lumpsum';
-import AMC from './components/MutualFunds/AMC'
-import CAGR from './components/Calculators/CAGR';
-
-
-
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import AMC from './components/MutualFunds/AMC';
+import Subcategory from './components/Subcategory';
+import IPO from './components/Ipo';
+import IndicesCategory from './components/IndicesCategory';
 import './App.css';
 
 const usePageTracking = () => {
@@ -37,25 +33,24 @@ const AppContent = () => {
 
   return (
     <>
-        <Header />
-        <Routes>
-          <Route path="/indices" element={<IndicesTable />} />
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/futures-margins" element={<FnO />} />
-          <Route path="/ipo" element={<Ipo />} />
-          <Route path="/sip-calculator" element={<SIP />} />
-          <Route path="/yearly-sip-calculator" element={<YRSIP />} />
-          <Route path="/cagr-calculator" element={<CAGR />} />
-          <Route path="/emi-calculator" element={<EMI />} />
-          <Route path="/fd-calculator" element={<FD />} />
-          <Route path="/lumpsum-calculator" element={<Lumpsum />} />
-          <Route path="/mutual-funds/amc" element={<AMC />} />
-        </Routes>
-        <Footer />     
+      <Header />
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/indices" element={<IndicesTable />} />
+        <Route path="/futures-margins" element={<FnO />} />
+        <Route path="/ipo" element={<IPO />} />
+        <Route path="/sip-calculator" element={<SIP />} />
+        <Route path="/emi-calculator" element={<EMI />} />
+        <Route path="/fd-calculator" element={<FD />} />
+        <Route path="/lumpsum-calculator" element={<Lumpsum />} />
+        <Route path="/mutual-funds/amc" element={<AMC />} />
+        <Route path="/funds/:subcategory" element={<Subcategory />} /> 
+        <Route path="/nifty_50" element={<IndicesCategory />} />
+      </Routes>
+      <Footer />
     </>
   );
-}
-
+};
 
 function App() {
   return (

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "../style/IndicesTable.css";
 
 const IndicesTable = () => {
@@ -92,7 +93,7 @@ const IndicesTable = () => {
             <tbody>
               {data.map((item, index) => (
                 <tr key={index}>
-                  <td>{item.name}</td>
+                  <td><Link to="/nifty_50">{item.name}</Link></td>
                   <td>{item.price}</td>
                   <td style={{ color: getColor(item.netChange) }}>
                     {item.netChange}

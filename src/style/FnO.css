@@ -111,37 +111,69 @@ p {
   color: #323232;
 }
 
-.pagination {
-  display: flex;
-  justify-content: right;
-  margin-top: 20px;
+
+table.futureoption_table {
+  width: 100%;
 }
 
-.pagination button {
-  padding: 10px 15px;
-  border: none;
-  margin: 0 5px;
-  background-color: #ccc;
-  color: black;
-  border-radius: 5px;
-  cursor: pointer;
+thead.futureoption_thead {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  border-spacing: 0 38px;
 }
 
-.pagination button.active {
-  background-color: #877b9f;
-  color: white;
+tbody.futureoption_tbody {
+  border-spacing: 0 13px;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
 }
 
-.pagination button:hover {
-  background-color: #877b9f;
-  color: white;
+
+
+thead.futureoption_thead tr.futureoption_thead_trow {
+  box-shadow: 2px 4px 28px 0px #00000040;
 }
 
-.pagination button:disabled {
-  background-color: #f1f1f1;
-  color: #ccc;
-  cursor: not-allowed;
+tr.futureoption_thead_trow th:first-child {text-align: left;}
+
+thead.futureoption_thead tr.futureoption_thead_trow th {
+  padding: 25px 15px;
 }
+
+
+tr.futureoption_thead_trow th {
+  background-color: #ffff;
+  font-size: 16px;
+  color: #39393a;
+}
+
+tr.futureoption_tbody_trow {
+  box-shadow: 0px 4px 6.7px 0px #00000040;
+  border-radius: 10px;
+  transition: all 0.4s ease;
+}
+
+tr.futureoption_tbody_trow td:first-child {
+  text-align: left;
+}
+
+tr.futureoption_tbody_trow td {
+  font-size: 14px;
+  color: #424242;
+  padding: 15px;
+}
+
+
+tr.futureoption_tbody_trow td:first-child {
+  width: 350px;
+}
+
+tr.futureoption_thead_trow th:first-child {
+  width: 350px;
+}
+
 
 @media (max-width: 767px) {
   .dashboard_FnO {
