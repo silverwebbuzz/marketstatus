@@ -1,91 +1,74 @@
 import React, { useState } from "react";
-import "../../style/calculators/fd.css";
+import "../../style/calculators/cagr.css";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChartLine, faHandshake, faCalculator, faCalendarDays, faMoneyBillTrendUp,faCommentsDollar,faHandHoldingDollar, faCoins, faMoneyBillTransfer} from '@fortawesome/free-solid-svg-icons';
+import {
+  faChartLine,
+  faCommentsDollar,
+  faMoneyCheckAlt,
+  faCalculator,
+  faHandHoldingDollar,
+  faHandshake,
+  faCalendarDays,
+  faCoins,
+  faMoneyBillTransfer,
+} from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
 import {
   Slider,
   Box,
   Typography,
   TextField,
-  ToggleButton,
-  ToggleButtonGroup,
 } from "@mui/material";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const marksFdAmount = [
-  { value: 500, label: "₹ 500" },
+const marksInitialAmount = [
+  { value: 1000, label: "₹ 1000" },
   { value: 1000000, label: "₹ 10,00,000" },
 ];
 
-const marksInterestRate = [
-  { value: 1, label: "1%" },
-  { value: 30, label: "30%" },
+const marksFinalAmount = [
+  { value: 1000, label: "₹ 1000" },
+  { value: 5000000, label: "₹ 50,00,000" },
 ];
 
-const marksLoanTenure = [
+const marksTenure = [
   { value: 1, label: "1 yr" },
   { value: 40, label: "40 yr" },
 ];
 
-const FdCalculator = () => {
-  const [fdFrequency, setFdFrequency] = useState("Monthly");
-  const [fdAmount, setFdAmount] = useState(500);
-  const [returnRate, setReturnRate] = useState(10);
-  const [fdTenure, setLoanTenure] = useState(1);
+const CAGR = () => {
+  const [initialAmount, setInitialAmount] = useState(10000);
+  const [finalAmount, setFinalAmount] = useState(20000);
+  const [cagrTenure, setTenure] = useState(3);
 
-  const handleFdFrequencyChange = (event, newFrequency) => {
-    setFdFrequency(newFrequency);
+  const handleInitialAmountChange = (event, newValue) => {
+    setInitialAmount(newValue);
   };
 
-  const handleFdAmountChange = (event, newValue) => {
-    setFdAmount(newValue);
+  const handleFinalAmountChange = (event, newValue) => {
+    setFinalAmount(newValue);
   };
 
-  const handleInterestRateChange = (event, newValue) => {
-    setReturnRate(newValue);
+  const handleTenureChange = (event, newValue) => {
+    setTenure(newValue);
   };
 
-  const handleLoanTenureChange = (event, newValue) => {
-    setLoanTenure(newValue);
+  const calculateCagr = (initialValue, finalValue, tenure) => {
+    if (initialValue <= 0 || finalValue <= 0 || tenure <= 0) return 0;
+    const cagr = Math.pow(finalValue / initialValue, 1 / tenure) - 1;
+    return (cagr * 100).toFixed(2);
   };
 
-  const calculateFd = (amount, rate, tenure, frequency) => {
-    const annualRate = rate / 100;
-    let n;
-    switch (frequency) {
-      case "Monthly":
-        n = 12;
-        break;
-      case "Quarterly":
-        n = 4;
-        break;
-      case "Half Yearly":
-        n = 2;
-        break;
-      case "Yearly":
-        n = 1;
-        break;
-      default:
-        n = 1;
-    }
-
-    const futureValue = amount * Math.pow(1 + annualRate / n, n * tenure);
-    return futureValue.toFixed(2);
-  };
-
-  const futureValue = calculateFd(fdAmount, returnRate, fdTenure, fdFrequency);
-  const investedAmount = fdAmount;
-  const totalReturn = (futureValue - investedAmount).toFixed(2);
+  const cagr = calculateCagr(initialAmount, finalAmount, cagrTenure);
 
   const data = {
-    labels: ["Investment Amount", "Returns"],
+    labels: ["Initial Investment", "Final Value"],
     datasets: [
       {
-        data: [investedAmount, totalReturn],
+        data: [initialAmount, finalAmount],
         backgroundColor: ["#9f9f9f", "#2c9430"],
         hoverBackgroundColor: ["#666667", "#265628"],
       },
@@ -93,7 +76,7 @@ const FdCalculator = () => {
   };
 
   const options = {
-    cutout: "80%",  
+    cutout: '80%',
   };
 
   const formatNumber = (number) => {
@@ -109,57 +92,45 @@ const FdCalculator = () => {
 
   return (
     <div className="container">
-      <div className="fdcalculator_row">
-        <h1 className="fd_h1">FD Calculator</h1>
+      <div className="YRCAGR_row">
+        <h1 className="cagr-h1">CAGR Calculator</h1>
         <div className="calculator_box">
-          <ToggleButtonGroup
-            color="primary"
-            value={fdFrequency}
-            exclusive
-            onChange={handleFdFrequencyChange}
-            aria-label="FD Frequency"
-          >
-            <ToggleButton value="Monthly">Monthly</ToggleButton>
-            <ToggleButton value="Quarterly">Quarterly</ToggleButton>
-            <ToggleButton value="Half Yearly">Half Yearly</ToggleButton>
-            <ToggleButton value="Yearly">Yearly</ToggleButton>
-          </ToggleButtonGroup>
           <div className="calculator_container_box">
-            <div className="fd_calculator_top">
+            <div className="cagr_calculator_top">
               <Box>
                 <div className="input-group">
-                  <label>FD Investment</label>
+                  <label>Initial Investment</label>
                   <TextField
                     type="number"
-                    value={fdAmount}
-                    onChange={(e) => setFdAmount(Number(e.target.value))}
+                    value={initialAmount}
+                    onChange={(e) => setInitialAmount(Number(e.target.value))}
                     size="small"
                   />
                   <Slider
-                    value={fdAmount}
-                    onChange={handleFdAmountChange}
-                    min={500}
+                    value={initialAmount}
+                    onChange={handleInitialAmountChange}
+                    min={1000}
                     max={1000000}
-                    step={500}
-                    marks={marksFdAmount}
+                    step={1000}
+                    marks={marksInitialAmount}
                     valueLabelDisplay="auto"
                   />
                 </div>
                 <div className="input-group">
-                  <label>Expected Return Rate (p.a)</label>
+                  <label>Final Value</label>
                   <TextField
                     type="number"
-                    value={returnRate}
-                    onChange={(e) => setReturnRate(Number(e.target.value))}
+                    value={finalAmount}
+                    onChange={(e) => setFinalAmount(Number(e.target.value))}
                     size="small"
                   />
                   <Slider
-                    value={returnRate}
-                    onChange={handleInterestRateChange}
-                    min={1}
-                    max={30}
-                    step={0.1}
-                    marks={marksInterestRate}
+                    value={finalAmount}
+                    onChange={handleFinalAmountChange}
+                    min={1000}
+                    max={5000000}
+                    step={100}
+                    marks={marksFinalAmount}
                     valueLabelDisplay="auto"
                   />
                 </div>
@@ -167,40 +138,38 @@ const FdCalculator = () => {
                   <label>Time Period</label>
                   <TextField
                     type="number"
-                    value={fdTenure}
-                    onChange={(e) => setLoanTenure(Number(e.target.value))}
+                    value={cagrTenure}
+                    onChange={(e) => setTenure(Number(e.target.value))}
                     size="small"
                   />
                   <Slider
-                    value={fdTenure}
-                    onChange={handleLoanTenureChange}
+                    value={cagrTenure}
+                    onChange={handleTenureChange}
                     min={1}
                     max={40}
                     step={1}
-                    marks={marksLoanTenure}
+                    marks={marksTenure}
                     valueLabelDisplay="auto"
                   />
                 </div>
               </Box>
               <div className="results">
-                <Typography>
-                  Investment Amount:
-                  <br /> ₹{formatNumber(investedAmount)}
+                <Typography component="div">
+                  Initial Investment:
+                  <br /> ₹{formatNumber(initialAmount)}
                 </Typography>
-                <Typography>
-                  Estimated Returns:
-                  <br /> ₹{formatNumber(totalReturn)}
+                <Typography component="div">
+                  Final Value:
+                  <br /> ₹{formatNumber(finalAmount)}
                 </Typography>
-                <Typography>
-                  Maturity Value:
-                  <br />{" "}
-                  <span className="value-color">
-                    ₹{formatNumber(futureValue)}
-                  </span>
+                <Typography component="div">
+                  CAGR:
+                  <br />
+                  <span className="value-color">{cagr}%</span>
                 </Typography>
               </div>
             </div>
-            <div className="chart-container-fd">
+            <div className="chart-container-cagr">
               <Doughnut data={data} options={options} />
             </div>
           </div>
@@ -242,6 +211,44 @@ const FdCalculator = () => {
           </div>
           <div className="calculator_card">
             <div>
+              <FontAwesomeIcon
+                icon={faMoneyCheckAlt}
+                size="3x"
+                className="icon"
+              />
+              <h3>FD Calculator</h3>
+              <p className="calc_description">
+                Calculate investment returns and maturity value earned on FD
+                schemes in India with our fixed deposit calculator.
+              </p>
+            </div>
+            <Link
+              onClick={scrollToTop}
+              to="/fd-calculator"
+              className="card_link"
+            ></Link>
+          </div>
+          <div className="calculator_card">
+            <div>
+              <FontAwesomeIcon
+                icon={faHandHoldingDollar}
+                size="3x"
+                className="icon"
+              />
+              <h3>Simple Interest Calculator</h3>
+              <p className="calc_description">
+                Calculate and understand the fixed interest amount on your
+                invested or deposit amount.
+              </p>
+            </div>
+            <Link
+              onClick={scrollToTop}
+              to="/si-calculator"
+              className="card_link"
+            ></Link>
+          </div>
+          <div className="calculator_card">
+            <div>
               <FontAwesomeIcon icon={faCalculator} size="3x" className="icon" />
               <h3>Lumpsum Calculator</h3>
               <p className="calc_description">
@@ -271,44 +278,6 @@ const FdCalculator = () => {
             <Link
               onClick={scrollToTop}
               to="/yearly-sip-calculator"
-              className="card_link"
-            ></Link>
-          </div>
-          <div className="calculator_card">
-            <div>
-              <FontAwesomeIcon
-                icon={faMoneyBillTrendUp}
-                size="3x"
-                className="icon"
-              />
-              <h3>CAGR Calculator</h3>
-              <p className="calc_description">
-                Compound Annual Growth Rate (CAGR) measures the mean annual
-                growth rate of an investment over a specified time period.
-              </p>
-            </div>
-            <Link
-              onClick={scrollToTop}
-              to="/cagr-calculator"
-              className="card_link"
-            ></Link>
-          </div>
-          <div className="calculator_card">
-            <div>
-              <FontAwesomeIcon
-                icon={faHandHoldingDollar}
-                size="3x"
-                className="icon"
-              />
-              <h3>Simple Interest Calculator</h3>
-              <p className="calc_description">
-                Calculate and understand the fixed interest amount on your
-                invested or deposit amount.
-              </p>
-            </div>
-            <Link
-              onClick={scrollToTop}
-              to="/si-calculator"
               className="card_link"
             ></Link>
           </div>
@@ -373,4 +342,4 @@ const FdCalculator = () => {
   );
 };
 
-export default FdCalculator;
+export default CAGR;

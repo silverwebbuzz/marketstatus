@@ -1,32 +1,184 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useState } from "react";
+import "../../style/calculators/ci.css";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Doughnut } from "react-chartjs-2";
+import { Box, Typography, TextField, Slider } from "@mui/material";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHandshake,
-  faChartLine,
   faMoneyCheckAlt,
   faCalculator,
   faCalendarDays,
+  faHandHoldingDollar,
   faMoneyBillTrendUp,
   faCoins,
-  faHandHoldingDollar,
+  faChartLine,
   faMoneyBillTransfer,
-  faCommentsDollar
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from 'react-router-dom';
-import '../../style/calculators/calculatorcard.css';
 
-const scrollToTop = () => {
-  window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-  });
-};
+ChartJS.register(ArcElement, Tooltip, Legend);
 
-function Calculate() {
+const marksCiAmount = [
+  { value: 100, label: "₹ 100" },
+  { value: 1000000, label: "₹ 10,00,000" },
+];
+
+const marksInterestRate = [
+  { value: 1, label: "1%" },
+  { value: 30, label: "30%" },
+];
+
+const marksLoanTenure = [
+  { value: 1, label: "1 yr" },
+  { value: 40, label: "40 yr" },
+];
+
+const CompoundInterestCalculator = () => {
+  const [principal, setPrincipal] = useState(10000);
+  const [annualRate, setAnnualRate] = useState(15);
+  const [years, setYears] = useState(3);
+
+  const handlePrincipalChange = (event, newValue) => {
+    setPrincipal(newValue);
+  };
+
+  const handleAnnualRateChange = (event, newValue) => {
+    setAnnualRate(newValue);
+  };
+
+  const handleYearsChange = (event, newValue) => {
+    setYears(newValue);
+  };
+
+  const calculateCompoundInterest = (principal, rate, time) => {
+    const annualRate = rate / 100;
+    const futureValue = principal * Math.pow(1 + annualRate, time);
+    return futureValue.toFixed(2);
+  };
+
+  const futureValue = calculateCompoundInterest(principal, annualRate, years);
+  const investedAmount = principal;
+  const totalReturn = (futureValue - investedAmount).toFixed(2);
+
+  const data = {
+    labels: ["Invested Amount", "Maturity Value"],
+    datasets: [
+      {
+        data: [investedAmount, futureValue],
+        backgroundColor: ["#9f9f9f", "#2c9430"],
+        hoverBackgroundColor: ["#666667", "#265628"],
+      },
+    ],
+  };
+
+  const options = {
+    cutout: "80%",
+  };
+
+  const formatNumber = (number) => {
+    return new Intl.NumberFormat("en-IN").format(number);
+  };
+
+
+   const scrollToTop = () => {
+     window.scrollTo({
+       top: 0,
+       behavior: "smooth",
+     });
+   };
+
   return (
     <div className="container">
-      <div className="calculator-container">
-        <h1 className="calculator-name">Calculator</h1>
+      <div className="CI_row">
+        <h1 className="ci-h1">Compound Interest Calculator</h1>
+        <div className="calculator_box">
+          <div className="calculator_container_box">
+            <div className="ci_calculator_top">
+              <Box>
+                <div className="input-group">
+                  <label> Principal Amount</label>
+                  <TextField
+                    type="number"
+                    value={principal}
+                    onChange={(e) => setPrincipal(Number(e.target.value))}
+                    size="small"
+                  />
+                  <Slider
+                    value={principal}
+                    onChange={handlePrincipalChange}
+                    min={100}
+                    max={1000000}
+                    step={100}
+                    marks={marksCiAmount}
+                    valueLabelDisplay="auto"
+                  />
+                </div>
+                <div className="input-group">
+                  <label>Annual Interest Rate</label>
+                  <TextField
+                    type="number"
+                    value={annualRate}
+                    onChange={(e) => setAnnualRate(Number(e.target.value))}
+                    size="small"
+                  />
+                  <Slider
+                    value={annualRate}
+                    onChange={handleAnnualRateChange}
+                    min={1}
+                    max={30}
+                    step={0.1}
+                    marks={marksInterestRate}
+                    valueLabelDisplay="auto"
+                  />
+                </div>
+                <div className="input-group">
+                  <label>Time Period (years)</label>
+                  <TextField
+                    type="number"
+                    value={years}
+                    onChange={(e) => setYears(Number(e.target.value))}
+                    size="small"
+                  />
+                  <Slider
+                    value={years}
+                    onChange={handleYearsChange}
+                    min={1}
+                    max={40}
+                    step={1}
+                    marks={marksLoanTenure}
+                    valueLabelDisplay="auto"
+                  />
+                </div>
+              </Box>
+              <div className="results">
+                <Typography component="div">
+                  Principal Amount:
+                  <br /> ₹{formatNumber(investedAmount)}
+                </Typography>
+                <Typography component="div">
+                  Estimated Returns:
+                  <br /> ₹{formatNumber(totalReturn)}
+                </Typography>
+                <Typography component="div">
+                  Maturity Value:
+                  <br />
+                  <span className="value-color">
+                    {" "}
+                    ₹{formatNumber(futureValue)}
+                  </span>
+                </Typography>
+              </div>
+            </div>
+            <div className="chart-container-ci">
+              <Doughnut data={data} options={options} />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="similar_calculators">
+        <h2>Similar Calculators</h2>
         <div className="calculator-grid">
           <div className="calculator_card">
             <div>
@@ -169,25 +321,6 @@ function Calculate() {
           <div className="calculator_card">
             <div>
               <FontAwesomeIcon
-                icon={faCommentsDollar}
-                size="3x"
-                className="icon"
-              />
-              <h3>Compound Interest Calculator</h3>
-              <p className="calc_description">
-                Calculate and understand your investment returns over a period
-                of time with our online compound return calculator in minutes!
-              </p>
-            </div>
-            <Link
-              onClick={scrollToTop}
-              to="/ci-calculator"
-              className="card_link"
-            ></Link>
-          </div>
-          <div className="calculator_card">
-            <div>
-              <FontAwesomeIcon
                 icon={faHandHoldingDollar}
                 size="3x"
                 className="icon"
@@ -208,6 +341,6 @@ function Calculate() {
       </div>
     </div>
   );
-}
+};
 
-export default Calculate;
+export default CompoundInterestCalculator;

@@ -1,91 +1,67 @@
 import React, { useState } from "react";
-import "../../style/calculators/fd.css";
+import "../../style/calculators/ppf.css";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChartLine, faHandshake, faCalculator, faCalendarDays, faMoneyBillTrendUp,faCommentsDollar,faHandHoldingDollar, faCoins, faMoneyBillTransfer} from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  Slider,
-  Box,
-  Typography,
-  TextField,
-  ToggleButton,
-  ToggleButtonGroup,
-} from "@mui/material";
+  faChartLine,
+  faMoneyCheckAlt,
+  faCalculator,
+  faHandHoldingDollar,
+  faHandshake,
+  faMoneyBillTrendUp,
+  faCommentsDollar,
+  faCalendarDays,
+  faCoins,
+} from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+import { Slider, Box, Typography, TextField } from "@mui/material";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const marksFdAmount = [
+const marksPpfAmount = [
   { value: 500, label: "₹ 500" },
-  { value: 1000000, label: "₹ 10,00,000" },
+  { value: 150000, label: "₹ 1,50,000" },
 ];
 
-const marksInterestRate = [
-  { value: 1, label: "1%" },
-  { value: 30, label: "30%" },
+const marksPpfTenure = [
+  { value: 15, label: "15 Years" },
+  { value: 50, label: "50 Years" },
 ];
 
-const marksLoanTenure = [
-  { value: 1, label: "1 yr" },
-  { value: 40, label: "40 yr" },
-];
+const PPF = () => {
+  const [ppfAmount, setPpfAmount] = useState(50000);
+  const [ppfTenure, setPpfTenure] = useState(15);
+  const returnRate = 7.1;
 
-const FdCalculator = () => {
-  const [fdFrequency, setFdFrequency] = useState("Monthly");
-  const [fdAmount, setFdAmount] = useState(500);
-  const [returnRate, setReturnRate] = useState(10);
-  const [fdTenure, setLoanTenure] = useState(1);
-
-  const handleFdFrequencyChange = (event, newFrequency) => {
-    setFdFrequency(newFrequency);
+  const handlePpfAmountChange = (event, newValue) => {
+    setPpfAmount(newValue);
   };
 
-  const handleFdAmountChange = (event, newValue) => {
-    setFdAmount(newValue);
+  const handlePpfTenureChange = (event, newValue) => {
+    setPpfTenure(newValue);
   };
 
-  const handleInterestRateChange = (event, newValue) => {
-    setReturnRate(newValue);
-  };
+  const calculatePpf = (annualInvestment, rate, tenureYears) => {
+    const yearlyRate = rate / 100;
+    let maturityValue = 0;
 
-  const handleLoanTenureChange = (event, newValue) => {
-    setLoanTenure(newValue);
-  };
-
-  const calculateFd = (amount, rate, tenure, frequency) => {
-    const annualRate = rate / 100;
-    let n;
-    switch (frequency) {
-      case "Monthly":
-        n = 12;
-        break;
-      case "Quarterly":
-        n = 4;
-        break;
-      case "Half Yearly":
-        n = 2;
-        break;
-      case "Yearly":
-        n = 1;
-        break;
-      default:
-        n = 1;
+    for (let i = 0; i < tenureYears; i++) {
+      maturityValue = (maturityValue + annualInvestment) * (1 + yearlyRate);
     }
 
-    const futureValue = amount * Math.pow(1 + annualRate / n, n * tenure);
-    return futureValue.toFixed(2);
+    return maturityValue.toFixed(2);
   };
 
-  const futureValue = calculateFd(fdAmount, returnRate, fdTenure, fdFrequency);
-  const investedAmount = fdAmount;
+  const futureValue = calculatePpf(ppfAmount, returnRate, ppfTenure);
+  const investedAmount = ppfAmount * ppfTenure;
   const totalReturn = (futureValue - investedAmount).toFixed(2);
 
   const data = {
-    labels: ["Investment Amount", "Returns"],
+    labels: ["Investment Amount", "Maturity Value"],
     datasets: [
       {
-        data: [investedAmount, totalReturn],
+        data: [investedAmount, futureValue],
         backgroundColor: ["#9f9f9f", "#2c9430"],
         hoverBackgroundColor: ["#666667", "#265628"],
       },
@@ -93,11 +69,11 @@ const FdCalculator = () => {
   };
 
   const options = {
-    cutout: "80%",  
+    cutout: "80%",
   };
 
   const formatNumber = (number) => {
-    return new Intl.NumberFormat('en-IN').format(number);
+    return new Intl.NumberFormat("en-IN").format(number);
   };
 
   const scrollToTop = () => {
@@ -109,98 +85,79 @@ const FdCalculator = () => {
 
   return (
     <div className="container">
-      <div className="fdcalculator_row">
-        <h1 className="fd_h1">FD Calculator</h1>
+      <div className="PPF_row">
+        <h1 className="ppf-h1">PPF Calculator</h1>
         <div className="calculator_box">
-          <ToggleButtonGroup
-            color="primary"
-            value={fdFrequency}
-            exclusive
-            onChange={handleFdFrequencyChange}
-            aria-label="FD Frequency"
-          >
-            <ToggleButton value="Monthly">Monthly</ToggleButton>
-            <ToggleButton value="Quarterly">Quarterly</ToggleButton>
-            <ToggleButton value="Half Yearly">Half Yearly</ToggleButton>
-            <ToggleButton value="Yearly">Yearly</ToggleButton>
-          </ToggleButtonGroup>
           <div className="calculator_container_box">
-            <div className="fd_calculator_top">
+            <div className="ppf_calculator_top">
               <Box>
                 <div className="input-group">
-                  <label>FD Investment</label>
+                  <label>Yearly PPF Investment</label>
                   <TextField
                     type="number"
-                    value={fdAmount}
-                    onChange={(e) => setFdAmount(Number(e.target.value))}
+                    value={ppfAmount}
+                    onChange={(e) => setPpfAmount(Number(e.target.value))}
                     size="small"
                   />
                   <Slider
-                    value={fdAmount}
-                    onChange={handleFdAmountChange}
+                    value={ppfAmount}
+                    onChange={handlePpfAmountChange}
                     min={500}
-                    max={1000000}
-                    step={500}
-                    marks={marksFdAmount}
+                    max={150000}
+                    step={100}
+                    marks={marksPpfAmount}
                     valueLabelDisplay="auto"
                   />
                 </div>
+
                 <div className="input-group">
-                  <label>Expected Return Rate (p.a)</label>
+                  <label>Time Period (in years)</label>
                   <TextField
                     type="number"
-                    value={returnRate}
-                    onChange={(e) => setReturnRate(Number(e.target.value))}
+                    value={ppfTenure}
+                    onChange={(e) => setPpfTenure(Number(e.target.value))}
                     size="small"
                   />
                   <Slider
-                    value={returnRate}
-                    onChange={handleInterestRateChange}
-                    min={1}
-                    max={30}
-                    step={0.1}
-                    marks={marksInterestRate}
-                    valueLabelDisplay="auto"
-                  />
-                </div>
-                <div className="input-group">
-                  <label>Time Period</label>
-                  <TextField
-                    type="number"
-                    value={fdTenure}
-                    onChange={(e) => setLoanTenure(Number(e.target.value))}
-                    size="small"
-                  />
-                  <Slider
-                    value={fdTenure}
-                    onChange={handleLoanTenureChange}
-                    min={1}
-                    max={40}
+                    value={ppfTenure}
+                    onChange={handlePpfTenureChange}
+                    min={15}
+                    max={50}
                     step={1}
-                    marks={marksLoanTenure}
+                    marks={marksPpfTenure}
                     valueLabelDisplay="auto"
+                  />
+                </div>
+                <div className="input-group">
+                  <label>Current Rate of Interest</label>
+                  <TextField
+                    type="number"
+                    value={returnRate}
+                    InputProps={{ readOnly: true }}
+                    size="small"
                   />
                 </div>
               </Box>
               <div className="results">
-                <Typography>
+                <Typography component="div">
                   Investment Amount:
                   <br /> ₹{formatNumber(investedAmount)}
                 </Typography>
-                <Typography>
+                <Typography component="div">
                   Estimated Returns:
                   <br /> ₹{formatNumber(totalReturn)}
                 </Typography>
-                <Typography>
+                <Typography component="div">
                   Maturity Value:
-                  <br />{" "}
+                  <br />
                   <span className="value-color">
+                    {" "}
                     ₹{formatNumber(futureValue)}
                   </span>
                 </Typography>
               </div>
             </div>
-            <div className="chart-container-fd">
+            <div className="chart-container-ppf">
               <Doughnut data={data} options={options} />
             </div>
           </div>
@@ -237,6 +194,44 @@ const FdCalculator = () => {
             <Link
               onClick={scrollToTop}
               to="/emi-calculator"
+              className="card_link"
+            ></Link>
+          </div>
+          <div className="calculator_card">
+            <div>
+              <FontAwesomeIcon
+                icon={faHandHoldingDollar}
+                size="3x"
+                className="icon"
+              />
+              <h3>Simple Interest Calculator</h3>
+              <p className="calc_description">
+                Calculate and understand the fixed interest amount on your
+                invested or deposit amount.
+              </p>
+            </div>
+            <Link
+              onClick={scrollToTop}
+              to="/si-calculator"
+              className="card_link"
+            ></Link>
+          </div>
+          <div className="calculator_card">
+            <div>
+              <FontAwesomeIcon
+                icon={faMoneyCheckAlt}
+                size="3x"
+                className="icon"
+              />
+              <h3>FD Calculator</h3>
+              <p className="calc_description">
+                Calculate investment returns and maturity value earned on FD
+                schemes in India with our fixed deposit calculator.
+              </p>
+            </div>
+            <Link
+              onClick={scrollToTop}
+              to="/fd-calculator"
               className="card_link"
             ></Link>
           </div>
@@ -295,25 +290,6 @@ const FdCalculator = () => {
           </div>
           <div className="calculator_card">
             <div>
-              <FontAwesomeIcon
-                icon={faHandHoldingDollar}
-                size="3x"
-                className="icon"
-              />
-              <h3>Simple Interest Calculator</h3>
-              <p className="calc_description">
-                Calculate and understand the fixed interest amount on your
-                invested or deposit amount.
-              </p>
-            </div>
-            <Link
-              onClick={scrollToTop}
-              to="/si-calculator"
-              className="card_link"
-            ></Link>
-          </div>
-          <div className="calculator_card">
-            <div>
               <FontAwesomeIcon icon={faCoins} size="3x" className="icon" />
               <h3>RD Calculator</h3>
               <p className="calc_description">
@@ -325,26 +301,6 @@ const FdCalculator = () => {
             <Link
               onClick={scrollToTop}
               to="/rd-calculator"
-              className="card_link"
-            ></Link>
-          </div>
-          <div className="calculator_card">
-            <div>
-              <FontAwesomeIcon
-                icon={faMoneyBillTransfer}
-                size="3x"
-                className="icon"
-              />
-              <h3>PPF Calculator</h3>
-              <p className="calc_description">
-                Calculate and understand the amount of money you will accumulate
-                in your public provident fund account with our PPF return
-                calculator.
-              </p>
-            </div>
-            <Link
-              onClick={scrollToTop}
-              to="/ppf-calculator"
               className="card_link"
             ></Link>
           </div>
@@ -373,4 +329,4 @@ const FdCalculator = () => {
   );
 };
 
-export default FdCalculator;
+export default PPF;

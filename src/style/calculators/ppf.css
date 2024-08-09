@@ -5,6 +5,7 @@
     border: 1px solid #d7d7d766;
   }
 
+  
   .input-group {
     display: flex;
     align-items: center;
@@ -12,10 +13,13 @@
     padding-bottom: 10px;
   }
 
-  .lumpsum_calculator_top {
+  .ppf_calculator_top {
     width: 44%;
+    color: #9d9d9d;
+    font-size: 14px;
 }
 
+  
   .input-group label {
     padding-right: 15px;
   }
@@ -26,7 +30,7 @@
   
   .MuiOutlinedInput-root {
     width: 150px;
-    border-radius: 7px;
+    boppfer-radius: 7px;
   }
   
   .results {
@@ -40,19 +44,15 @@
     font-weight: bold;
   }
   
-  .chart-container-lumpsum {
+  .chart-container-ppf {
     width: 30%;
   }
-  .value-color{
-    color: #4caf50;
-}
-
-.lumpsum_h1{
-  color: #313131;
-}
-
-.lumpsum_calculator_top {
-  width: 44%;
-  color: #9d9d9d;
-  font-size: 14px;
+  
+  .ppf_h1{
+    color: #313131;
   }
+  .value-color{
+    color: #2c9430;
+  }
+
+  

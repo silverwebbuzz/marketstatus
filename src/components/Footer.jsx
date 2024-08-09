@@ -20,7 +20,7 @@ function Footer() {
                       </a>
                     </li>
                     <li className="footercard_links">
-                      <a href="https://marketstatus.in/ipo">Ipo</a>
+                      <a href="https://marketstatus.in/ipo">IPO</a>
                     </li>
                     <li className="footercard_links">
                       <a href="https://marketstatus.in/mutualFunds">
@@ -34,22 +34,42 @@ function Footer() {
                   <ul>
                     <li className="footercard_links">
                       <a href="https://marketstatus.in/sip-calculator">
-                        Sip Calculator
+                        SIP Calculator
                       </a>
                     </li>
                     <li className="footercard_links">
                       <a href="https://marketstatus.in/emi-calculator">
-                        Emi Calculator
+                        EMI Calculator
                       </a>
                     </li>
                     <li className="footercard_links">
                       <a href="https://marketstatus.in/fd-calculator">
-                        Fd Calculator
+                        FD Calculator
                       </a>
                     </li>
                     <li className="footercard_links">
                       <a href="https://marketstatus.in/lumpsum-calculator">
                         Lumpsum Calculatoe
+                      </a>
+                    </li>
+                    <li className="footercard_links">
+                      <a href="https://marketstatus.in/yearly-sip-calculator">
+                        Yearly Sip Calculator
+                      </a>
+                    </li>
+                    <li className="footercard_links">
+                      <a href="https://marketstatus.in/cagr-calculator">
+                        CAGR Calculator
+                      </a>
+                    </li>
+                    <li className="footercard_links">
+                      <a href="https://marketstatus.in/rd-calculator">
+                        RD Calculator
+                      </a>
+                    </li>
+                    <li className="footercard_links">
+                      <a href="https://marketstatus.in/ppf-calculator">
+                        PPF Calculator
                       </a>
                     </li>
                   </ul>
@@ -58,19 +78,19 @@ function Footer() {
                   <h3>Mutual Funds</h3>
                   <ul>
                     <li className="footercard_links">
-                      <a href="">Equity Funds</a>
+                      <a href="/">Equity Funds</a>
                     </li>
                     <li className="footercard_links">
-                      <a href="">Debt Funds</a>
+                      <a href="/">Debt Funds</a>
                     </li>
                     <li className="footercard_links">
-                      <a href="">Hybrid Funds</a>
+                      <a href="/">Hybrid Funds</a>
                     </li>
                     <li className="footercard_links">
-                      <a href="">Index Funds</a>
+                      <a href="/">Index Funds</a>
                     </li>
                     <li className="footercard_links">
-                      <a href="">Elss Funds</a>
+                      <a href="/">Elss Funds</a>
                     </li>
                   </ul>
                 </div>
@@ -78,7 +98,7 @@ function Footer() {
                   <h3>General Link</h3>
                   <ul>
                     <li className="footercard_links">
-                      <a href="">Holidays list</a>
+                      <a href="/">Holidays list</a>
                     </li>
                   </ul>
                 </div>
@@ -169,7 +189,6 @@ function Footer() {
                             strokeLinejoin="round"
                           ></g>
                           <g id="SVGRepo_iconCarrier">
-                          
                             <path
                               fillRule="evenodd"
                               clipRule="evenodd"
