@@ -12,7 +12,6 @@ import Lumpsum from './components/Calculators/Lumpsum';
 import AMC from './components/MutualFunds/AMC';
 import Subcategory from './components/Subcategory';
 import IPO from './components/Ipo';
-import IndicesCategory from './components/IndicesCategory';
 import './App.css';
 
 const usePageTracking = () => {
@@ -45,7 +44,6 @@ const AppContent = () => {
         <Route path="/lumpsum-calculator" element={<Lumpsum />} />
         <Route path="/mutual-funds/amc" element={<AMC />} />
         <Route path="/funds/:subcategory" element={<Subcategory />} /> 
-        <Route path="/nifty_50" element={<IndicesCategory />} />
       </Routes>
       <Footer />
     </>

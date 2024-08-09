@@ -89,34 +89,24 @@ class StockBox extends Component {
   fetchData = async (title) => {
     const apiUrls = {
       'NIFTY 50': 'https://devapi.marketstatus.in/sm/indicesApiHandler.php?indices=nifty50',
-      'NIFTYBANK': 'https://devapi.marketstatus.in/sm/indicesApiHandler.php?indices=niftybank',
+      'NIFTYBANK': 'https://devapi.marketstatus.in/sm/indicesApiHandler.php?indices=niftyBank',
       'SENSEX': 'https://devapi.marketstatus.in/sm/indicesApiHandler.php?indices=sensex',
+    };
+
+    const dataKeys = {
+      'NIFTY 50': 'today_stock_data',
+      'NIFTYBANK': 'today_stock_data_bn',
+      'SENSEX': 'today_stocks_sx_data',
     };
 
     try {
       const response = await fetch(apiUrls[title]);
       const result = await response.json();
 
-      const parsedData = result.data.map(item => ({
-        time: item.time,  // Adjust this according to the new API's structure
-        value: item.price, // Adjust this according to the new API's structure
-      }));
-
-      const marketSentiment = {
-        indiceSnapData: {
-          ltp: result.ltp,  // Replace with correct path from the new API
-          price_change: result.price_change,
-          price_change_per: result.price_change_per,
-          today_open: result.today_open,
-          day_high: result.day_high,
-          day_low: result.day_low,
-        },
-      };
-
       this.setState({
-        data: parsedData,
+        data: result.data[dataKeys[title]],
         loading: false,
-        marketSentiment,
+        marketSentiment: result.data,
       }, this.updateChart);
     } catch (error) {
       this.setState({ error, loading: false });
