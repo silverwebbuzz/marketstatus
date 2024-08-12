@@ -1,19 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import "../style/subcategory.css";
 
 const getColor = (value) =>
     parseFloat(value) >= 0 ? "rgb(16, 145, 33)" : "rgb(192, 9, 9)";
 
+// Utility function to format string: capitalize first letter and replace underscores with spaces
+const formatString = (str) => {
+    if (!str) return '';
+    const stringWithSpaces = str.replace(/_/g, ' ');
+    return stringWithSpaces.charAt(0).toUpperCase() + stringWithSpaces.slice(1);
+};
+
 const Subcategory = () => {
-    const { subcategory } = useParams(); 
+    const { category, subcategory } = useParams(); 
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`/equity/${subcategory}.json`);
+                const response = await fetch(`/mutualfunds/${category}/${subcategory}.json`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -25,13 +32,21 @@ const Subcategory = () => {
             }
         };
         fetchData();
-    }, [subcategory]);
+    }, [category, subcategory]);
 
     if (error) return <div>Error: {error}</div>;
     if (!data || !data[subcategory]) return <div>Loading...</div>;
 
     return (
         <div className='container'>
+            <div className='breadcrumb_subcategory'>
+                <Link to="/">Mutual Funds</Link> &gt; 
+                <span> {formatString(category)} Funds</span> &gt; 
+                <span>
+                    {data[subcategory].length ? <span>{formatString(subcategory)}</span> : ''}
+                </span>
+            </div>
+            <div className="table_ind">
             <table className='subcat_table'>
                 <thead className='subcat_thead'>
                     <tr className='subcat_thead_tr'>
@@ -58,6 +73,7 @@ const Subcategory = () => {
                     ))}
                 </tbody>
             </table>
+            </div>
         </div>
     );
 };

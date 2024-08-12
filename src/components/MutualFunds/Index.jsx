@@ -1,6 +1,7 @@
 import React from 'react';
 import Indexmain from '../../images/Indexmain.png';
 import '../../style/mutualfunds/indexx.css';
+import { Link } from 'react-router-dom';
 
 
 function Index() {
@@ -17,16 +18,16 @@ function Index() {
                     <div className='Index_ul_li'>
                         <div className='Index_list1'>
                             <ul>
-                                <li> <div className='index_list_item'>Nifty 50 Funds</div></li>
-                                <li><div className='index_list_item'>Nifty Small Cap Funds</div></li>
-                                <li><div className='index_list_item'>Nifty Bank Funds</div></li>
+                                <li className='index_list_item'><Link to="/mutualfunds/index/nifty_50_fund" > Nifty 50 Funds </Link></li>
+                                <li className='index_list_item'><Link to="/mutualfunds/index/nifty_small_cap_fund" >Nifty Small Cap Funds</Link></li>
+                                <li className='index_list_item'><Link to="/mutualfunds/index/nifty_bank_fund" >Nifty Bank Funds</Link></li>
                             </ul>
                         </div>
                         <div className='Index_list2'>
                             <ul>
-                                <li><div className='index_list_item'>Nifty Next 50 Funds</div></li>
-                                <li><div className='index_list_item'>Nifty Mid Cap Funds</div></li>
-                                <li><div className='index_list_item'>Sensex Funds</div></li>
+                                <li className='index_list_item'><Link to="/mutualfunds/index/nifty_next_50_fund" >Nifty Next 50 Funds</Link></li>
+                                <li className='index_list_item'><Link to="/mutualfunds/index/nifty_mid_cap_fund" >Nifty Mid Cap Funds</Link></li>
+                                <li className='index_list_item'><Link to="/mutualfunds/index/sensex_fund" >Sensex Funds</Link></li>
                             </ul>
                         </div>
                     </div>

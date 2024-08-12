@@ -1,7 +1,7 @@
 import React from 'react';
 import ELSSimg from '../../images/ELSSimg.png';
 import '../../style/mutualfunds/elss.css';
-
+import { Link } from 'react-router-dom';
 
 function ELSS() {
     return (
@@ -14,20 +14,16 @@ function ELSS() {
                     <div className='elss_ul_li'>
                         <div className='elss_list1'>
                             <ul>
-                                <li><div className='elss_list_item'>Growth Funds</div></li>
-                                <li><div className='elss_list_item'>Dividend Funds</div></li>
-                                <li><div className='elss_list_item'>Tax-Saving Funds</div></li>
-                                <li><div className='elss_list_item'>Long-Term Funds</div></li>
-                                <li><div className='elss_list_item'>Multi-Cap Funds</div></li>
+                                <li className='elss_list_item'><Link to="/mutualfunds/elss/growth_fund">Growth Funds</Link></li>
+                                <li className='elss_list_item'><Link to="/mutualfunds/elss/sectoral_fund">Sectoral Funds</Link></li>
+                                <li className='elss_list_item'><Link to="/mutualfunds/elss/multi_cap_fund">Multi-Cap Funds</Link></li>
                             </ul>
                         </div>
                         <div className='elss_list2'>
                             <ul>
-                                <li><div className='elss_list_item'>Large-Cap Funds</div></li>
-                                <li><div className='elss_list_item'>Mid-Cap Funds</div></li>
-                                <li><div className='elss_list_item'>Small-Cap Funds</div></li>
-                                <li><div className='elss_list_item'>Equity-Debt Funds</div></li>
-                                <li><div className='elss_list_item'>Sectoral Funds</div></li>
+                                <li className='elss_list_item'><Link to="/mutualfunds/elss/large_cap_fund">Large-Cap Funds</Link></li>
+                                <li className='elss_list_item'><Link to="/mutualfunds/elss/mid_cap_fund">Mid-Cap Funds</Link></li>
+                                <li className='elss_list_item'><Link to="/mutualfunds/elss/small_cap_fund">Small-Cap Funds</Link></li>
                             </ul>
                         </div>
                     </div>

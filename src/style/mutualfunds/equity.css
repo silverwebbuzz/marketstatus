@@ -54,6 +54,7 @@ h1.equityheader {
     flex-flow: wrap;
     gap: 20px;
     justify-content: space-between;
+    align-items: center;
 }
 
 .quity_img img {

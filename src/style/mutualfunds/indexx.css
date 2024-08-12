@@ -15,18 +15,27 @@ img.sticker1 {
     margin-bottom: 10px;
     font-size: 18px;
 }
+ul li.index_list_item {
+    padding-left: 35px !important;
+}
 
-.index_list_item::before {
+li.index_list_item a {
+    color: #545454;
+    text-decoration: none;
+}
+
+.index_list_item::after {
     content: '';
     position: absolute;
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: 30px;
-    height: 35px;
+    width: 22px;
+    height: 25px;
     background-image: url('../../images/Indexicon.png'); 
     background-size: contain;
     background-repeat: no-repeat;
+    padding-bottom: 6px; ;
 }
 
 h1.Indexheader {
@@ -38,10 +47,6 @@ h1.Indexheader {
 
 .Index_img {
     width: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 40px;
 }
 
 .Index_screen {
@@ -67,7 +72,6 @@ p.Index_p {
     flex-flow: row;
     color: #545454;
     padding-top: 27px;
-    gap: 70px;
 }
 
 ul.Index_list1 {

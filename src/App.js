@@ -5,20 +5,13 @@ import Dashboard from './components/Dashboard';
 import IndicesTable from './components/IndicesTable';
 import FnO from './components/FnO';
 import Footer from './components/Footer';
+import SIP from './components/Calculators/SIP';
+import EMI from './components/Calculators/EMI';
+import FD from './components/Calculators/FD';
+import Lumpsum from './components/Calculators/Lumpsum';
 import AMC from './components/MutualFunds/AMC';
 import Subcategory from './components/Subcategory';
 import IPO from './components/Ipo';
-import CAGR from "./components/Calculators/CAGR";
-import RD from "./components/Calculators/RD";
-import PPF from "./components/Calculators/PPF";
-import CI from "./components/Calculators/CI";
-import SI from "./components/Calculators/SI";
-import SIP from "./components/Calculators/SIP";
-import YRSIP from "./components/Calculators/YRSIP";
-import EMI from "./components/Calculators/EMI";
-import FD from "./components/Calculators/FD";
-import Lumpsum from "./components/Calculators/Lumpsum";
-
 import './App.css';
 
 const usePageTracking = () => {
@@ -46,18 +39,11 @@ const AppContent = () => {
         <Route path="/futures-margins" element={<FnO />} />
         <Route path="/ipo" element={<IPO />} />
         <Route path="/sip-calculator" element={<SIP />} />
-        <Route path="/yearly-sip-calculator" element={<YRSIP />} />
-        <Route path="/cagr-calculator" element={<CAGR />} />
         <Route path="/emi-calculator" element={<EMI />} />
         <Route path="/fd-calculator" element={<FD />} />
-        <Route path="/rd-calculator" element={<RD />} />
-        <Route path="/ci-calculator" element={<CI />} />
-        <Route path="/ppf-calculator" element={<PPF />} />
-        <Route path="/si-calculator" element={<SI />} />
         <Route path="/lumpsum-calculator" element={<Lumpsum />} />
         <Route path="/mutual-funds/amc" element={<AMC />} />
-        <Route path="/mutual-funds/amc" element={<AMC />} />
-        <Route path="/funds/:subcategory" element={<Subcategory />} />
+        <Route path="/mutualfunds/:category/:subcategory" element={<Subcategory />} />
       </Routes>
       <Footer />
     </>

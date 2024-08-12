@@ -128,8 +128,12 @@ tbody.ipo_tablebody {
 
 thead.thead-list {
   position: sticky;
-  top: -40px;
+  top: 0px;
+  
 
+}
+thead.thead-list {
+  border-spacing: 0;
 }
 tr.text-center {
   box-shadow: 2px 4px 28px 0px #00000040;
@@ -169,14 +173,54 @@ tbody.ipo_tablebody tr td:first-child {
 tr.ipo_thead_tablerow th:first-child {
   width: 300px;
 }
+@media (max-width:991px) {
+  tr.ipo_thead_tablerow th:first-child {
+    width: 230px;
+  }
+  
+  tbody.ipo_tablebody tr td:first-child {
+    width: 230px;
+  }
+}
+
 
 @media (max-width: 767px){
-
+  thead.thead-list{
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 9;
+  }
   .ipo-list p {
     text-align: justify;
 }
-
+tr.text-center {
+  box-shadow: none;
+}
+/* thead.thead-list tr.text-center {
+  position: sticky;
+  top: -10px;
+} */
+/*
+tr.text-center th:first-child {
+  z-index: -1;
+} */
 .listed-ipo p{
    text-align: justify;
+}
+table.ipo_table {
+  width: 1000px;
+}
+
+tr.ipo_thead_tablerow {
+  box-shadow: none;
+}
+
+tr.ipo_thead_tablerow th:first-child {
+  width: 200px;
+}
+
+tbody.ipo_tablebody tr td:first-child {
+  width: 200px;
 }
 }

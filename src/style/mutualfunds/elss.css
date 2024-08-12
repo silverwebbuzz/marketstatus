@@ -15,18 +15,27 @@ img.sticker1 {
     margin-bottom: 10px;
     font-size: 18px;
 }
+ul li.elss_list_item {
+    padding-left: 35px !important;
+}
 
-.elss_list_item::before {
+li.elss_list_item a {
+    color: #545454;
+    text-decoration: none;
+}
+
+.elss_list_item::after {
     content: '';
     position: absolute;
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: 30px;
-    height: 35px;
+    width: 22px;
+    height: 25px;
     background-image: url('../../images/ELSSicon.png'); 
     background-size: contain;
     background-repeat: no-repeat;
+    padding-bottom: 6px; ;
 }
 
 h1.elssheader {
@@ -37,11 +46,7 @@ h1.elssheader {
 }
 
 .elss_img {
-     width: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 40px;
+    width: 40%;
 }
 
 .elss_screen {
@@ -57,7 +62,7 @@ h1.elssheader {
 }
 
 p.elss_p {
-    color:#9e9b9b;
+    color: #9e9b9b;
     font-size: 15px;
     padding-top: 20px;
 }
@@ -99,9 +104,6 @@ ul.elss_list2 {
 .elss_list1 ul {
     display: block;
 }
-
-
-
 
 @media (max-width: 767px){
     .elss_description {

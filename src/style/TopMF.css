@@ -100,10 +100,39 @@ span.trmf {
  margin-top: 16px;
  font-size: 21px;
 }
+@media (max-width: 991px) {
+
+
+.tmf_amc-name {
+    font-size: 12px;
+}
+
+.Aum_Nav {
+    font-size: 10px;
+}
+
+.tmf_details {
+    font-size: 10px;
+}
+}
+
 
 @media (max-width: 767px){
   .tmf_details{
     gap: 5px;
-    font-size: 12px;
+    font-size: 14px;
   }
+  .adv div h4 {
+    margin: 10px 0px;
+}
+
+.tmf_amc-name {
+    font-size: 16px;
+}
+
+.Aum_Nav {
+    font-size: 16px;
+}
+
+
 }

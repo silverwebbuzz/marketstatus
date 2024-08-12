@@ -57,3 +57,18 @@
   .value-color{
     color: #4caf50;
 }
+@media (max-width:767px) {
+
+
+.fd_calculator_top {
+    width: 92% !important;
+}
+
+.chart-container-fd {
+    width: 100% !important;
+    padding-top: 15px;
+    height: 300px;
+    text-align: -webkit-center;
+}
+
+}

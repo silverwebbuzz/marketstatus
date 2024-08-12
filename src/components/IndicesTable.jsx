@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../style/IndicesTable.css";
+import { Link } from "react-router-dom";
 
 const IndicesTable = () => {
-  const [isNSE, setIsNSE] = useState(true);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -16,24 +16,28 @@ const IndicesTable = () => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      const exchange = isNSE ? "NSE" : "BSE";
       try {
         const response = await fetch(
-          `https://www.research360.in/ajax/markets/majorIndicesApiHandler.php?table_flag=majorIndices&exchangeName=${exchange}&_=1721813024`
+          `https://devapi.marketstatus.in/sm/indiceslistApiHandler.php?exchangeName=NSE`
         );
         const result = await response.json();
-        const formattedData = result.data.map((item) => ({
-          name: item[0].replace(/<\/?[^>]+(>|$)/g, ""),
-          price: item[3].replace(/<\/?[^>]+(>|$)/g, ""),
-          netChange: item[5].replace(/<\/?[^>]+(>|$)/g, ""),
-          oneDayPercent: item[6].replace(/<\/?[^>]+(>|$)/g, ""),
-          oneDayHighLow: item[8].replace(/<\/?[^>]+(>|$)/g, ""),
-          fiftyTwoWHighLow: item[10].replace(/<\/?[^>]+(>|$)/g, ""),
-          threeMPercent: item[11].replace(/<\/?[^>]+(>|$)/g, ""),
-          sixMPercent: item[12].replace(/<\/?[^>]+(>|$)/g, ""),
-          oneYPercent: item[13].replace(/<\/?[^>]+(>|$)/g, ""),
-        }));
-        setData(formattedData);
+
+        if (result && result.data && Array.isArray(result.data)) {
+          const formattedData = result.data.map((item) => ({
+            name: (item.indexSymbol) ,
+            price: (item.last) ,
+            Change: (item.percentChange) ,
+            open: (item.open) ,
+            high: (item.high) ,
+            low: (item.low),
+            close: (item.previousClose) ,
+            yearHigh: (item.yearHigh) ,
+            yearLow: (item.yearLow) ,
+          }));
+          setData(formattedData);
+        } else {
+          setError(new Error("Invalid data structure"));
+        }
         setLoading(false);
       } catch (err) {
         setError(err);
@@ -41,11 +45,11 @@ const IndicesTable = () => {
       }
     };
     fetchData();
-  }, [isNSE]);
+  }, []);
 
   const getColor = (value) =>
     parseFloat(value) >= 0 ? "rgb(16, 145, 33)" : "rgb(192, 9, 9)";
-  
+
   if (error) return <div>Error: {error.message}</div>;
 
   return (
@@ -55,66 +59,43 @@ const IndicesTable = () => {
           <div className="heading_row">
             <h1 className="heading">MAJOR INDICES</h1>
             <p>
-              Last Updated:{" "} {unixTimestamp ? new Date(unixTimestamp * 1000).toLocaleString(): "Fetching..."}
+              Last Updated:{" "}
+              {unixTimestamp
+                ? new Date(unixTimestamp * 1000).toLocaleString()
+                : "Fetching..."}
             </p>
           </div>
-          <div className="toggle-button">
-            <div className="but_cover">
-              <button
-                onClick={() => setIsNSE(true)}
-                className={isNSE ? "active" : ""}
-              >
-                NSE
-              </button>
-              <button
-                onClick={() => setIsNSE(false)}
-                className={!isNSE ? "active" : ""}
-              >
-                BSE
-              </button>
-            </div>
-          </div>
           <div className="table_ind">
-          <table>
-            <thead>
-              <tr>
-                <th>Indices</th>
-                <th>Price</th>
-                <th>Net Change</th>
-                <th>1D%</th>
-                <th>1D High-Low</th>
-                <th>52W High-Low</th>
-                <th>3M%</th>
-                <th>6M%</th>
-                <th>1Y%</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.map((item, index) => (
-                <tr key={index}>
-                  <td>{item.name}</td>
-                  <td>{item.price}</td>
-                  <td style={{ color: getColor(item.netChange) }}>
-                    {item.netChange}
-                  </td>
-                  <td style={{ color: getColor(item.oneDayPercent) }}>
-                    {item.oneDayPercent}
-                  </td>
-                  <td>{item.oneDayHighLow}</td>
-                  <td>{item.fiftyTwoWHighLow}</td>
-                  <td style={{ color: getColor(item.threeMPercent) }}>
-                    {item.threeMPercent}
-                  </td>
-                  <td style={{ color: getColor(item.sixMPercent) }}>
-                    {item.sixMPercent}
-                  </td>
-                  <td style={{ color: getColor(item.oneYPercent) }}>
-                    {item.oneYPercent}
-                  </td>
+            <table>
+              <thead>
+                <tr>
+                  <th>Index</th>
+                  <th>Current</th>
+                  <th>% Change</th>
+                  <th>Open</th>
+                  <th>High</th>
+                  <th>Low</th>
+                  <th>Prev close</th>
+                  <th>52W H</th>
+                  <th>52W L</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {data.map((item, index) => (
+                  <tr key={index}>
+                    <td>{item.name}</td>
+                    <td>{item.price}</td>
+                    <td style={{ color: getColor(item.Change) }}> {item.Change}</td>
+                    <td>{item.open}</td>
+                    <td>{item.high}</td>
+                    <td>{item.low}</td>
+                    <td >{item.close}</td>
+                    <td > {item. yearHigh}</td>
+                    <td > {item.yearLow} </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

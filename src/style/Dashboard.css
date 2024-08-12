@@ -45,6 +45,7 @@
   
   .dashboard {
     width: 100%;
+    padding-right: 10px;
 }
   .stock-boxes {
     flex-flow: wrap;

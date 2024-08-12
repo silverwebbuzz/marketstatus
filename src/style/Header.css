@@ -132,6 +132,7 @@
   width: 40%;
   display: flex;
   flex-flow: wrap;
+  align-items: center;
 }
 ul.nav_ul {
   padding: 0;
@@ -246,8 +247,11 @@ li a.active {
   ul.nav_ul li a {
     display: block;
     padding: 10px;
+    color: #000;
   }
-
+  .navbar_row {
+    height: 0;
+}
   ul.nav_ul {
 
     flex-direction: column;
@@ -262,8 +266,11 @@ li a.active {
     margin: 5px 0;
     text-align: left;
     border: 1px solid #ccc;
+    color: #000;
   }
-
+  li.dropdown {
+    padding: 10px;
+}
   section.Nav_bottom,
   section.Nav_top {
     padding: 10px 0;
@@ -308,7 +315,15 @@ li a.active {
     z-index: 1;
     padding: 15px;
   }
-
+  ul.dropdown-menu {
+    margin: 0;
+    background: none;
+    box-shadow: none;
+}
+li.dropmenu-li {
+    width: 97%;
+    padding: 0;
+}
 
   .headerleft_cover {
     width: 70%;

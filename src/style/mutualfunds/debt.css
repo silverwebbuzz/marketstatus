@@ -16,18 +16,27 @@ img.sticker1 {
     margin-bottom: 10px;
     font-size: 18px;
 }
+ul li.debt_list_item {
+    padding-left: 35px !important;
+}
 
-.debt_list_item::before {
+li.debt_list_item a {
+    color: #545454;
+    text-decoration: none;
+}
+
+.debt_list_item::after {
     content: '';
     position: absolute;
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: 30px;
-    height: 35px;
+    width: 22px;
+    height: 25px;
     background-image: url('../../images/Debticon.png'); 
     background-size: contain;
     background-repeat: no-repeat;
+    padding-bottom: 6px; ;
 }
 
 h1.debtheader {
@@ -39,9 +48,6 @@ h1.debtheader {
 
 .debt_img {
     width: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .debt_screen {
@@ -67,7 +73,6 @@ p.debt_p {
     flex-flow: row;
     color: #545454;
     padding-top: 27px;
-    gap: 70px;
 }
 
 ul.debt_list1 {
@@ -100,7 +105,6 @@ ul.debt_list2 {
 .debt_list1 ul {
     display: block;
 }
-
 @media (max-width: 991px){
 
 }

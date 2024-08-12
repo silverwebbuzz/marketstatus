@@ -15,20 +15,28 @@ img.sticker1 {
     margin-bottom: 10px;
     font-size: 18px;
 }
+ul li.hybrid_list_item {
+    padding-left: 35px !important;
+}
 
-.hybrid_list_item::before {
+li.hybrid_list_item a {
+    color: #545454;
+    text-decoration: none;
+}
+
+.hybrid_list_item::after {
     content: '';
     position: absolute;
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: 30px;
-    height: 35px;
-    background-image: url('../../images/Hybridicon.png');
+    width: 22px;
+    height: 25px;
+    background-image: url('../../images/Hybridicon.png'); 
     background-size: contain;
     background-repeat: no-repeat;
+    padding-bottom: 6px; ;
 }
-
 
 h1.hybridheader {
     color: #636363;
@@ -39,10 +47,6 @@ h1.hybridheader {
 
 .hybrid_img {
     width: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 50px;
 }
 
 .hybrid_screen {
@@ -92,7 +96,6 @@ ul.hybrid_list2 {
 .hybrid_list2 ul li {
     padding: 10px 0px;
 }
-
 
 .hybrid_list1 {
     width: 40%;

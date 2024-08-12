@@ -1,7 +1,7 @@
 import React from 'react';
 import Debtimg from '../../images/Debtimg.jpg';
 import '../../style/mutualfunds/debt.css';
-
+import { Link } from 'react-router-dom';
 
 function Debt() {
     return (
@@ -18,31 +18,30 @@ function Debt() {
                     <div className='debt_ul_li'>
                         <div className='debt_list1'>
                             <ul>
-                                <li><div className='debt_list_item'>Liquid Funds</div></li>
-                                <li><div className='debt_list_item'>Banking & PSU Funds</div></li>
-                                <li><div className='debt_list_item'>Corporate Bond Funds</div></li>
-                                <li><div className='debt_list_item'>Dynamic Bond Funds</div></li>
-                                <li><div className='debt_list_item'>Overnight Funds</div></li>
-                                <li><div className='debt_list_item'>Ultra Short Duration Funds</div></li>
-                                <li><div className='debt_list_item'>Short Duration Funds</div></li>
-                                <li><div className='debt_list_item'>Low Duration Funds</div></li>
+                                <li className='debt_list_item'><Link to="/mutualfunds/debt/liquid_fund">Liquid Funds</Link></li>
+                                <li className='debt_list_item'><Link to="/mutualfunds/debt/banking_psu_fund">Banking & PSU Funds</Link></li>
+                                <li className='debt_list_item'><Link to="/mutualfunds/debt/corporate_bond_fund">Corporate Bond Funds</Link></li>
+                                <li className='debt_list_item'><Link to="/mutualfunds/debt/dynamic_bond">Dynamic Bond Funds</Link></li>
+                                <li className='debt_list_item'><Link to="/mutualfunds/debt/overnight_fund">Overnight Funds</Link></li>
+                                <li className='debt_list_item'><Link to="/mutualfunds/debt/ultra_short_duration_fund">Ultra Short Duration Funds</Link></li>
+                                <li className='debt_list_item'><Link to="/mutualfunds/debt/short_duration_fund">Short Duration Funds</Link></li>
+                                <li className='debt_list_item'><Link to="/mutualfunds/debt/low_duration_fund">Low Duration Funds</Link></li>
                             </ul>
                         </div>
                         <div className='debt_list2'>
                             <ul>
-                                <li><div className='debt_list_item'>Credit Risk Funds</div></li>
-                                <li><div className='debt_list_item'>Gilt Funds</div></li>
-                                <li><div className='debt_list_item'>10 year Guilt</div></li>
-                                <li><div className='debt_list_item'>Money Market Funds</div></li>
-                                <li><div className='debt_list_item'>Floater Funds</div></li>
-                                <li><div className='debt_list_item'>Medium Duration Funds</div></li>
-                                <li><div className='debt_list_item'>Medium long Duration Funds</div></li>
-                                <li><div className='debt_list_item'>Long Duration Funds</div></li>
+                                <li className='debt_list_item'><Link to="/mutualfunds/debt/credit_risk_fund">Credit Risk Funds</Link></li>
+                                <li className='debt_list_item'><Link to="/mutualfunds/debt/gilt_fund">Gilt Funds</Link></li>
+                                <li className='debt_list_item'><Link to="/mutualfunds/debt/10year_guilt_fund">10 Year Guilt</Link></li>
+                                <li className='debt_list_item'><Link to="/mutualfunds/debt/money_market_fund">Money Market Funds</Link></li>
+                                <li className='debt_list_item'><Link to="/mutualfunds/debt/floater_fund">Floater Funds</Link></li>
+                                <li className='debt_list_item'><Link to="/mutualfunds/debt/medium_duration_fund">Medium Duration Funds</Link></li>
+                                <li className='debt_list_item'><Link to="/mutualfunds/debt/medium_long_duration_fund">Medium Long Duration Funds</Link></li>
+                                <li className='debt_list_item'><Link to="/mutualfunds/debt/long_duration_fund">Long Duration Funds</Link></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     )

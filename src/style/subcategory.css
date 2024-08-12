@@ -5,3 +5,27 @@ tr.subcat_tbody_tr td:first-child {
 tr.subcat_thead_tr th:first-child {
     width: 417px;
 }
+
+.breadcrumb_subcategory {
+    color: #a7a7a7;
+}
+
+.breadcrumb_subcategory a {
+    text-decoration: none;
+    color: #a7a7a7;
+}
+
+@media (max-width: 767px) {
+    tr.subcat_thead_tr th:first-child {
+        width: 200px;
+    }
+    
+    tr.subcat_tbody_tr td:first-child {
+        width: 200px;
+    }
+    
+    .breadcrumb_subcategory {
+        margin-bottom: 15px;
+        font-size: 14px;
+    }
+}
