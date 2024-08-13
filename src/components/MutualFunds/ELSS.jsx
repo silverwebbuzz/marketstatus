@@ -14,16 +14,16 @@ function ELSS() {
                     <div className='elss_ul_li'>
                         <div className='elss_list1'>
                             <ul>
-                                <li className='elss_list_item'><Link to="/mutualfunds/elss/growth_fund">Growth Funds</Link></li>
-                                <li className='elss_list_item'><Link to="/mutualfunds/elss/sectoral_fund">Sectoral Funds</Link></li>
-                                <li className='elss_list_item'><Link to="/mutualfunds/elss/multi_cap_fund">Multi-Cap Funds</Link></li>
+                                <li className='elss_list_item'><Link className='after_Line' to="/mutualfunds/elss/growth_fund">Growth Funds</Link></li>
+                                <li className='elss_list_item'><Link className='after_Line' to="/mutualfunds/elss/sectoral_fund">Sectoral Funds</Link></li>
+                                <li className='elss_list_item'><Link className='after_Line' to="/mutualfunds/elss/multi_cap_fund">Multi-Cap Funds</Link></li>
                             </ul>
                         </div>
                         <div className='elss_list2'>
                             <ul>
-                                <li className='elss_list_item'><Link to="/mutualfunds/elss/large_cap_fund">Large-Cap Funds</Link></li>
-                                <li className='elss_list_item'><Link to="/mutualfunds/elss/mid_cap_fund">Mid-Cap Funds</Link></li>
-                                <li className='elss_list_item'><Link to="/mutualfunds/elss/small_cap_fund">Small-Cap Funds</Link></li>
+                                <li className='elss_list_item'><Link className='after_Line' to="/mutualfunds/elss/large_cap_fund">Large-Cap Funds</Link></li>
+                                <li className='elss_list_item'><Link className='after_Line' to="/mutualfunds/elss/mid_cap_fund">Mid-Cap Funds</Link></li>
+                                <li className='elss_list_item'><Link className='after_Line'to="/mutualfunds/elss/small_cap_fund">Small-Cap Funds</Link></li>
                             </ul>
                         </div>
                     </div>

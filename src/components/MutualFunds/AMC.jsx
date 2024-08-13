@@ -28,7 +28,11 @@ const AMC = () => {
 
     return (
         <div className="container">
+            <div className='amc_header'>
             <h2>AMC Funds</h2>
+            <p>
+            In the share market, AMC refers to an Asset Management Company. An AMC oversees investment funds by gathering capital from investors and allocating it across different assets such as stocks and bonds. They are responsible for managing investment portfolios, ensuring diversification, and tracking performance to assist investors in reaching their financial objectives.</p>
+            </div>
             <div className="card_row">
                 {data.mutual_fund_companies.map((fund, index) => (
                     <div className="card_mf" key={index}>

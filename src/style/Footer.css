@@ -3,6 +3,22 @@ footer {
    padding: 10px 0px;
    margin-top: 60px;
 }
+.footer_after_Line{ position: relative;}
+.footer_after_Line:after {
+    position: absolute;
+    content: "";
+    bottom: -7px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-bottom: 1px solid#d8d5d5;
+    width: 0;
+    transition: all 0.4s ease;
+    margin: 0 auto;
+}
+
+.footer_after_Line:hover:after {
+    width: 100%;
+}
 .footer_top {display: flex;flex-flow: wrap; border-bottom: 1px solid #ffff;align-items: center;}
 .footertop_left { width: 100%; }
 

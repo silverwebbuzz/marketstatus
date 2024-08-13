@@ -11,9 +11,6 @@ class StockBox extends Component {
       chartData: { labels: [], values: [] },
       loading: true,
       error: null,
-      advances: 0,
-      declines: 0,
-      unchanged: 0,
       options: {
         chart: {
           id: 'stock-chart',
@@ -76,13 +73,11 @@ class StockBox extends Component {
 
   componentDidMount() {
     this.fetchData(this.props.title);
-    this.fetchMarketSentiment();
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.title !== this.props.title) {
       this.fetchData(this.props.title);
-      this.fetchMarketSentiment();
     }
   }
 
@@ -108,26 +103,6 @@ class StockBox extends Component {
         loading: false,
         marketSentiment: result.data,
       }, this.updateChart);
-    } catch (error) {
-      this.setState({ error, loading: false });
-    }
-  };
-
-  fetchMarketSentiment = async () => {
-    try {
-      const response = await fetch('https://www.research360.in/ajax/markets/indexApiHandler.php?tbl_flag=marketSentimentAdv');
-      const result = await response.json();
-
-      const parsedData = JSON.parse(result.data.getIndexAdvDec);
-      const marketSentiment = parsedData.find(item => item.index_name === this.props.title);
-
-      if (marketSentiment) {
-        this.setState({
-          advances: marketSentiment.advances,
-          declines: marketSentiment.declines,
-          unchanged: marketSentiment.unchanged,
-        });
-      }
     } catch (error) {
       this.setState({ error, loading: false });
     }
@@ -169,7 +144,7 @@ class StockBox extends Component {
   };
 
   render() {
-    const { data, marketSentiment, loading, error} = this.state;
+    const { marketSentiment, loading, error } = this.state;
     const isMarketUp = marketSentiment && parseFloat(marketSentiment.indiceSnapData.price_change) >= 0;
     const chartColor = isMarketUp ? 'rgb(16, 145, 33)' : 'rgb(192, 9, 9)';
     const textColor = { color: chartColor };

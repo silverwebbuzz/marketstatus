@@ -24,15 +24,15 @@ const IndicesTable = () => {
 
         if (result && result.data && Array.isArray(result.data)) {
           const formattedData = result.data.map((item) => ({
-            name: (item.indexSymbol) ,
-            price: (item.last) ,
-            Change: (item.percentChange) ,
-            open: (item.open) ,
-            high: (item.high) ,
-            low: (item.low),
-            close: (item.previousClose) ,
-            yearHigh: (item.yearHigh) ,
-            yearLow: (item.yearLow) ,
+            name: item.indexSymbol,
+            price: item.last,
+            Change: item.percentChange,
+            open: item.open,
+            high: item.high,
+            low: item.low,
+            close: item.previousClose,
+            yearHigh: item.yearHigh,
+            yearLow: item.yearLow,
           }));
           setData(formattedData);
         } else {
@@ -83,15 +83,19 @@ const IndicesTable = () => {
               <tbody>
                 {data.map((item, index) => (
                   <tr key={index}>
-                    <td>{item.name}</td>
+                    <td>
+                      <Link to={`/index/${item.name}`}>{item.name}</Link>
+                    </td>
                     <td>{item.price}</td>
-                    <td style={{ color: getColor(item.Change) }}> {item.Change}</td>
+                    <td style={{ color: getColor(item.Change) }}>
+                      {item.Change}
+                    </td>
                     <td>{item.open}</td>
                     <td>{item.high}</td>
                     <td>{item.low}</td>
-                    <td >{item.close}</td>
-                    <td > {item. yearHigh}</td>
-                    <td > {item.yearLow} </td>
+                    <td>{item.close}</td>
+                    <td>{item.yearHigh}</td>
+                    <td>{item.yearLow}</td>
                   </tr>
                 ))}
               </tbody>

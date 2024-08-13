@@ -3,14 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import "../style/subcategory.css";
 
 const getColor = (value) =>
-    parseFloat(value) >= 0 ? "rgb(16, 145, 33)" : "rgb(192, 9, 9)";
-
-// Utility function to format string: capitalize first letter and replace underscores with spaces
-const formatString = (str) => {
-    if (!str) return '';
-    const stringWithSpaces = str.replace(/_/g, ' ');
-    return stringWithSpaces.charAt(0).toUpperCase() + stringWithSpaces.slice(1);
-};
+    parseFloat(value).toFixed(2) >= 0 ? "rgb(16, 145, 33)" : "rgb(192, 9, 9)";
 
 const Subcategory = () => {
     const { category, subcategory } = useParams(); 
@@ -41,12 +34,9 @@ const Subcategory = () => {
         <div className='container'>
             <div className='breadcrumb_subcategory'>
                 <Link to="/">Mutual Funds</Link> &gt; 
-                <span> {formatString(category)} Funds</span> &gt; 
-                <span>
-                    {data[subcategory].length ? <span>{formatString(subcategory)}</span> : ''}
-                </span>
+                <Link to={`/mutualfunds/${category}`}> {category.charAt(0).toUpperCase() + category.slice(1)} Funds</Link> &gt; 
+                {data[subcategory].length ? <span>{data[subcategory][0].subcategory_name}</span> : ''}
             </div>
-            <div className="table_ind">
             <table className='subcat_table'>
                 <thead className='subcat_thead'>
                     <tr className='subcat_thead_tr'>
@@ -63,17 +53,22 @@ const Subcategory = () => {
                     {data[subcategory].map((item, index) => (
                         <tr key={index} className='subcat_tbody_tr'>
                             <td>{item.scheme_name}</td>
-                            <td>₹{item.lumsum_minimum_amt}</td>
-                            <td>₹{item.scheme_aum}</td>
+                            <td>₹{parseFloat(item.lumsum_minimum_amt).toFixed(2)}</td>
+                            <td>₹{parseFloat(item.scheme_aum).toFixed(2)}</td>
                             <td>{item.ms_rating}⭐</td>
-                            <td style={{ color: getColor(item.scheme_1_year_return) }}>{item.scheme_1_year_return}%</td>
-                            <td style={{ color: getColor(item.scheme_3_year_return) }}>{item.scheme_3_year_return}%</td>
-                            <td style={{ color: getColor(item.scheme_5_year_return) }}>{item.scheme_5_year_return}%</td>
+                            <td style={{ color: getColor(item.scheme_1_year_return) }}>
+                                {parseFloat(item.scheme_1_year_return).toFixed(2)}%
+                            </td>
+                            <td style={{ color: getColor(item.scheme_3_year_return) }}>
+                                {parseFloat(item.scheme_3_year_return).toFixed(2)}%
+                            </td>
+                            <td style={{ color: getColor(item.scheme_5_year_return) }}>
+                                {parseFloat(item.scheme_5_year_return).toFixed(2)}%
+                            </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
-            </div>
         </div>
     );
 };

@@ -1,0 +1,38 @@
+
+tr.nseholidays_tr th:first-child {
+    width: 100px;
+}
+
+tr.nseholidays_tbody_tr td:first-child {
+    width: 100px;
+}
+
+table.nas_Holidays {
+    width: 100%;
+}
+
+.nseholidays_header h1 {
+    color: #3e3d3d;
+    font-size: 30px;
+    margin: 5px 0px 10px 5px;
+}
+
+.nseholidays_header p {
+    color: grey;
+    margin: 5px 0px 5px 5px;
+}
+
+.nseholidays_header h3 {
+    color: #434343;
+    font-size: 20px;
+    margin: 24px 0px 0px 5px;
+}
+@media (max-width: 767px){
+    tr.nseholidays_tr th:first-child {
+        width: 50px;
+    }
+    
+    tr.nseholidays_tbody_tr td:first-child {
+        width: 50px;
+    }  
+}

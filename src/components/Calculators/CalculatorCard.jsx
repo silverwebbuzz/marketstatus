@@ -200,7 +200,7 @@ function Calculate() {
             </div>
             <Link
               onClick={scrollToTop}
-              to="/si-calculator"
+              to="/emi-calculator"
               className="card_link"
             ></Link>
           </div>

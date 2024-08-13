@@ -11,8 +11,10 @@ import FD from './components/Calculators/FD';
 import Lumpsum from './components/Calculators/Lumpsum';
 import AMC from './components/MutualFunds/AMC';
 import Subcategory from './components/Subcategory';
+import StockData from './components/StockData';
 import IPO from './components/Ipo';
 import './App.css';
+import NseHolidays from './components/NseHolidays';
 
 const usePageTracking = () => {
   const location = useLocation();
@@ -44,6 +46,8 @@ const AppContent = () => {
         <Route path="/lumpsum-calculator" element={<Lumpsum />} />
         <Route path="/mutual-funds/amc" element={<AMC />} />
         <Route path="/mutualfunds/:category/:subcategory" element={<Subcategory />} />
+        <Route path="/index/:indexSymbol" element={<StockData />} />
+        <Route path="/holidays" element={<NseHolidays />} />
       </Routes>
       <Footer />
     </>

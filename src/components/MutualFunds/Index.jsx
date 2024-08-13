@@ -18,16 +18,16 @@ function Index() {
                     <div className='Index_ul_li'>
                         <div className='Index_list1'>
                             <ul>
-                                <li className='index_list_item'><Link to="/mutualfunds/index/nifty_50_fund" > Nifty 50 Funds </Link></li>
-                                <li className='index_list_item'><Link to="/mutualfunds/index/nifty_small_cap_fund" >Nifty Small Cap Funds</Link></li>
-                                <li className='index_list_item'><Link to="/mutualfunds/index/nifty_bank_fund" >Nifty Bank Funds</Link></li>
+                                <li className='index_list_item'><Link className='after_Line' to="/mutualfunds/index/nifty_50_fund" > Nifty 50 Funds </Link></li>
+                                <li className='index_list_item'><Link className='after_Line' to="/mutualfunds/index/nifty_small_cap_fund" >Nifty Small Cap Funds</Link></li>
+                                <li className='index_list_item'><Link className='after_Line' to="/mutualfunds/index/nifty_bank_fund" >Nifty Bank Funds</Link></li>
                             </ul>
                         </div>
                         <div className='Index_list2'>
                             <ul>
-                                <li className='index_list_item'><Link to="/mutualfunds/index/nifty_next_50_fund" >Nifty Next 50 Funds</Link></li>
-                                <li className='index_list_item'><Link to="/mutualfunds/index/nifty_mid_cap_fund" >Nifty Mid Cap Funds</Link></li>
-                                <li className='index_list_item'><Link to="/mutualfunds/index/sensex_fund" >Sensex Funds</Link></li>
+                                <li className='index_list_item'><Link className='after_Line' to="/mutualfunds/index/nifty_next_50_fund" >Nifty Next 50 Funds</Link></li>
+                                <li className='index_list_item'><Link className='after_Line' to="/mutualfunds/index/nifty_mid_cap_fund" >Nifty Mid Cap Funds</Link></li>
+                                <li className='index_list_item'><Link className='after_Line' to="/mutualfunds/index/sensex_fund" >Sensex Funds</Link></li>
                             </ul>
                         </div>
                     </div>

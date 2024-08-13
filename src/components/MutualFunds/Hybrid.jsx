@@ -15,16 +15,16 @@ function Hybrid() {
                     <div className='hybrid_ul_li'>
                         <div className='hybrid_list1'>
                             <ul>
-                                <li className='hybrid_list_item'><Link to="/mutualfunds/hybrid/conservative_fund">Conservative Funds</Link></li>
-                                <li className='hybrid_list_item'><Link to="/mutualfunds/hybrid/balanced_fund">Balanced Funds</Link></li>
-                                <li className='hybrid_list_item'><Link to="/mutualfunds/hybrid/equity_savings_fund">Equity Savings Funds</Link></li>
+                                <li className='hybrid_list_item'><Link className='after_Line' to="/mutualfunds/hybrid/conservative_fund">Conservative Funds</Link></li>
+                                <li className='hybrid_list_item'><Link className='after_Line' to="/mutualfunds/hybrid/balanced_fund">Balanced Funds</Link></li>
+                                <li className='hybrid_list_item'><Link className='after_Line' to="/mutualfunds/hybrid/equity_savings_fund">Equity Savings Funds</Link></li>
                             </ul>
                         </div>
                         <div className='hybrid_list2'>
                             <ul>
-                                <li className='hybrid_list_item'><Link to="/mutualfunds/hybrid/aggresive_fund">Aggressive Funds</Link></li>
-                                <li className='hybrid_list_item'><Link to="/mutualfunds/hybrid/arbitrage_fund">Arbitrage Funds</Link></li>
-                                <li className='hybrid_list_item'><Link to="/mutualfunds/hybrid/multi_asset_allocation_fund">Multi Asset Allocation Funds</Link></li>
+                                <li className='hybrid_list_item'><Link className='after_Line' to="/mutualfunds/hybrid/aggresive_fund">Aggressive Funds</Link></li>
+                                <li className='hybrid_list_item'><Link className='after_Line' to="/mutualfunds/hybrid/arbitrage_fund">Arbitrage Funds</Link></li>
+                                <li className='hybrid_list_item'><Link className='after_Line' to="/mutualfunds/hybrid/multi_asset_allocation_fund">Multi Asset Allocation Funds</Link></li>
                             </ul>
                         </div>
                     </div>
