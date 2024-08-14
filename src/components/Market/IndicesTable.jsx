@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../style/IndicesTable.css";
+import "../../style/IndicesTable.css";
 import { Link } from "react-router-dom";
 
 const IndicesTable = () => {

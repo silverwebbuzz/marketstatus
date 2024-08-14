@@ -20,12 +20,11 @@ function Equity() {
                                 <li className='equity_list_item'><Link className='after_Line' to="/mutualfunds/equity/small_cap_fund">Small Cap Funds</Link></li>
                                 <li className='equity_list_item'><Link className='after_Line' to="/mutualfunds/equity/large_mid_cap_fund">Large & Mid Cap Funds</Link></li>
                                 <li className='equity_list_item'><Link className='after_Line' to="/mutualfunds/equity/flexi_cap_fund">Flexi Cap Funds</Link></li>
-                                <li className='equity_list_item'><Link className='after_Line' to="/mutualfunds/equity/multi_cap_fund">Multi Cap Funds</Link></li>
                             </ul>
                         </div>
                         <div className='equity_list2'>
                             <ul>
-                                <li className='equity_list_item'><Link className='after_Line' to="/mutualfunds/equity/sectoral_fund">Sectoral Funds</Link></li>
+                            <li className='equity_list_item'><Link className='after_Line' to="/mutualfunds/equity/multi_cap_fund">Multi Cap Funds</Link></li>
                                 <li className='equity_list_item'><Link className='after_Line' to="/mutualfunds/equity/international_fund">International Funds</Link></li>
                                 <li className='equity_list_item'><Link className='after_Line' to="/mutualfunds/equity/value_fund">Value Funds</Link></li>
                                 <li className='equity_list_item'><Link className='after_Line' to="/mutualfunds/equity/contra_fund">Contra Funds</Link></li>

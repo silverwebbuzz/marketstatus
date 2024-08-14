@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../style/FnO.css";
+import "../../style/FnO.css";
 
 const FnO = () => {
   const [data, setData] = useState([]);

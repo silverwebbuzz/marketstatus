@@ -3,8 +3,8 @@ footer {
    padding: 10px 0px;
    margin-top: 60px;
 }
-.footer_after_Line{ position: relative;}
-.footer_after_Line:after {
+.footer_after_line{ position: relative;}
+.footer_after_line:after {
     position: absolute;
     content: "";
     bottom: -7px;
@@ -16,7 +16,7 @@ footer {
     margin: 0 auto;
 }
 
-.footer_after_Line:hover:after {
+.footer_after_line:hover:after {
     width: 100%;
 }
 .footer_top {display: flex;flex-flow: wrap; border-bottom: 1px solid #ffff;align-items: center;}

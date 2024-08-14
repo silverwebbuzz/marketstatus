@@ -1,5 +1,26 @@
+
+li.dropdown {
+  position: relative;
+}
+.Navbar1 {
+  padding: 15px 0px;
+}
+
+.Navbar2 {
+  padding-bottom: 15px;
+}
+ul.nav_ul li a {
+  text-decoration: none;
+  color: #000;
+}
+
+ul.nav_ul {
+  justify-content: flex-start;
+  gap: 40px;
+}
+
 .header {
-  margin-bottom: 20px;
+  
   position: sticky;
   top: 0;
   background-color: #ffffff;
@@ -15,11 +36,6 @@
   opacity: 0;
 }
 
-.navbar_row{
-  background-color: #636363;
-  height: 40px;
-
-}
 
 .header-left {
   position: relative;
@@ -38,13 +54,10 @@
   color: rgb(57, 56, 56);
 }
 
-.header_right {
+.Nav_toggle {
   display: none;
 }
 
-.Nav_bottom .navbar {
-  padding-top: 10px;
-}
 
 .header-left img {
   display: block;
@@ -134,38 +147,7 @@
   flex-flow: wrap;
   align-items: center;
 }
-ul.nav_ul {
-  padding: 0;
-  margin: 0;
-  justify-content: flex-start;
-}
 
-.nav_ul {
-  color: rgb(85, 138, 139);
-}
-
-ul.nav_ul li {
-  display: inline-block;
-  padding-right: 50px;
-  list-style: none;
-}
-
-ul.nav_ul li a {
-  text-decoration: none;
-  color: #ffffff;
-  font-weight: 600;
-}
-ul.nav_ul li{
-  color: #ffffff;
-}
-
-section.Nav_bottom {
-  margin: 20px 0px;
-}
-
-section.Nav_top {
-  padding: 5px 0px;
-}
 
 .menu-toggle {
   display: none;
@@ -178,12 +160,15 @@ section.Nav_top {
 
 .dropdown-menu {
   display: none;
-  background-color: #4d4d4d;
+  background-color: white;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  min-width: 150px;
+  min-width: max-content;
   list-style-type: none;
   padding: 0;
-  margin: 10px;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 23px;
   flex-direction: column;
 }
 
@@ -211,12 +196,6 @@ li.dropmenu-li{
 li a.active {
   color: #f89264 !important;
 }
-
-
-
-
-
-
 
 @media (max-width: 991px) {
 
@@ -258,6 +237,7 @@ li a.active {
     width: 100%;
     padding: 10px 0;
     background-color: #f8f8f8;
+    gap: 10px;
   }
 
   ul.nav_ul li {
@@ -292,8 +272,12 @@ li a.active {
   section.Indices {
     padding-top: 20px;
   }
-  .header_right {
+  .Nav_toggle{
     display: block;
+    position: absolute;
+    right: 10px;
+    top: 25px;
+    z-index: 10;
   }
 
   .Nav_bottom {
@@ -313,12 +297,14 @@ li a.active {
     height: auto;
     background: #fff;
     z-index: 1;
-    padding: 15px;
+   
   }
   ul.dropdown-menu {
     margin: 0;
-    background: none;
+    background: #ffffff;
     box-shadow: none;
+    z-index: 2;
+    top: 46px;
 }
 li.dropmenu-li {
     width: 97%;
@@ -333,5 +319,11 @@ li.dropmenu-li {
   .header-left img {
     width: 130px;
   }
+  .Navbar1 {
+    padding: 0;
+}
 
+.Navbar2 {
+    padding: 0;
+}
 }

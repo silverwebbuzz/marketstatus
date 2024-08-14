@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import "../style/StockData.css";
+import "../../style/StockData.css";
 
 // Function to format numbers with commas and two decimal places
 const formatNumber = (num) => {

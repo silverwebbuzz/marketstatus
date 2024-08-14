@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../style/Ipo.css";
+import "../../style/Ipo.css";
 
 const IPO = () => {
   const [ipos, setIpos] = useState([]);
@@ -57,7 +57,7 @@ const IPO = () => {
   };
 
   const images = importAll(
-    require.context("../assets", false, /\.(png|jpe?g|svg)$/)
+    require.context("../../assets", false, /\.(png|jpe?g|svg)$/)
   );
 
   // Handle FAQ toggle
