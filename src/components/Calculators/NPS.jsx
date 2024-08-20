@@ -1,73 +1,77 @@
 import React, { useState } from "react";
-import "../../style/calculators/ci.css";
+import "../../style/calculators/nps.css";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import { Box, Typography, TextField, Slider } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Slider, Box, Typography, TextField } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faHandshake,
+  faChartLine,
   faMoneyCheckAlt,
   faCalculator,
-  faMagnifyingGlassDollar,
-  faCalendarDays,
-  faCircleDollarToSlot,
   faHandHoldingDollar,
-  faMoneyBillTrendUp,
+  faCircleDollarToSlot,
+  faHandshake,
   faCoins,
-  faChartLine,
+  faMoneyBillTrendUp,
+  faCalendarDays,
+  faCommentsDollar,
   faMoneyBillTransfer,
 } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const marksCiAmount = [
-  { value: 100, label: "₹ 100" },
-  { value: 1000000, label: "₹ 10,00,000" },
+const marksInvestmentAmount = [
+  { value: 1000, label: "₹ 1,000" },
+  { value: 100000000, label: "₹ 1,00,00,000" },
 ];
 
-const marksInterestRate = [
-  { value: 1, label: "1%" },
-  { value: 30, label: "30%" },
-];
-
-const marksLoanTenure = [
+const marksDuration = [
   { value: 1, label: "1 yr" },
-  { value: 40, label: "40 yr" },
+  { value: 40, label: "40 yrs" },
 ];
 
-const CompoundInterestCalculator = () => {
-  const [principal, setPrincipal] = useState(10000);
-  const [annualRate, setAnnualRate] = useState(15);
-  const [years, setYears] = useState(3);
+const NPS = () => {
+  const [investmentAmount, setInvestmentAmount] = useState(5000);
+  const [maturityValue, setMaturityValue] = useState(25000);
+  const [duration, setDuration] = useState(10);
 
-  const handlePrincipalChange = (event, newValue) => {
-    setPrincipal(newValue);
+  const handleInvestmentAmountChange = (event, newValue) => {
+    setInvestmentAmount(newValue);
   };
 
-  const handleAnnualRateChange = (event, newValue) => {
-    setAnnualRate(newValue);
+  const handleMaturityValueChange = (event, newValue) => {
+    setMaturityValue(newValue);
   };
 
-  const handleYearsChange = (event, newValue) => {
-    setYears(newValue);
+  const handleDurationChange = (event, newValue) => {
+    setDuration(newValue);
   };
 
-  const calculateCompoundInterest = (principal, rate, time) => {
-    const annualRate = rate / 100;
-    const futureValue = principal * Math.pow(1 + annualRate, time);
-    return futureValue.toFixed(2);
+  const calculateGainLoss = (maturityValue, investmentAmount) => {
+    return maturityValue - investmentAmount;
   };
 
-  const futureValue = calculateCompoundInterest(principal, annualRate, years);
-  const investedAmount = principal;
-  const totalReturn = (futureValue - investedAmount).toFixed(2);
+  const calculateNPS = (gainLoss, investmentAmount) => {
+    return ((gainLoss / investmentAmount) * 100).toFixed(2);
+  };
+
+  const calculateCAGR = (maturityValue, investmentAmount, duration) => {
+    return (
+      (Math.pow(maturityValue / investmentAmount, 1 / duration) - 1) *
+      100
+    ).toFixed(2);
+  };
+
+  const gainLoss = calculateGainLoss(maturityValue, investmentAmount);
+  const nps = calculateNPS(gainLoss, investmentAmount);
+  const cagr = calculateCAGR(maturityValue, investmentAmount, duration);
 
   const data = {
-    labels: ["Invested Amount", "Maturity Value"],
+    labels: ["Investment Amount", "Maturity Value"],
     datasets: [
       {
-        data: [investedAmount, futureValue],
+        data: [investmentAmount, maturityValue],
         backgroundColor: ["#9f9f9f", "#2c9430"],
         hoverBackgroundColor: ["#666667", "#265628"],
       },
@@ -82,103 +86,100 @@ const CompoundInterestCalculator = () => {
     return new Intl.NumberFormat("en-IN").format(number);
   };
 
-
-   const scrollToTop = () => {
-     window.scrollTo({
-       top: 0,
-       behavior: "smooth",
-     });
-   };
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <div className="container">
-      <div className="CI_row">
-        <h1 className="ci-h1">Compound Interest Calculator</h1>
+      <div className="NPS_row">
+        <h1 className="nps-h1">NPS Calculator</h1>
         <div className="calculator_box">
           <div className="calculator_container_box">
-            <div className="ci_calculator_top">
+            <div className="nps_calculator_top">
               <Box>
                 <div className="input-group">
-                  <label> Principal Amount</label>
+                  <label>Initial Investment</label>
                   <TextField
                     type="number"
-                    value={principal}
-                    onChange={(e) => setPrincipal(Number(e.target.value))}
+                    value={investmentAmount}
+                    onChange={(e) =>
+                      setInvestmentAmount(Number(e.target.value))
+                    }
                     size="small"
                   />
                   <Slider
-                    value={principal}
-                    onChange={handlePrincipalChange}
-                    min={100}
-                    max={1000000}
-                    step={100}
-                    marks={marksCiAmount}
+                    value={investmentAmount}
+                    onChange={handleInvestmentAmountChange}
+                    min={1000}
+                    max={100000000}
+                    step={1000}
+                    marks={marksInvestmentAmount}
                     valueLabelDisplay="auto"
                   />
                 </div>
                 <div className="input-group">
-                  <label>Annual Interest Rate</label>
+                  <label>Maturity Value</label>
                   <TextField
                     type="number"
-                    value={annualRate}
-                    onChange={(e) => setAnnualRate(Number(e.target.value))}
+                    value={maturityValue}
+                    onChange={(e) => setMaturityValue(Number(e.target.value))}
                     size="small"
                   />
                   <Slider
-                    value={annualRate}
-                    onChange={handleAnnualRateChange}
-                    min={1}
-                    max={30}
-                    step={0.1}
-                    marks={marksInterestRate}
+                    value={maturityValue}
+                    onChange={handleMaturityValueChange}
+                    min={1000}
+                    max={100000000}
+                    step={1000}
+                    marks={marksInvestmentAmount}
                     valueLabelDisplay="auto"
                   />
                 </div>
                 <div className="input-group">
-                  <label>Time Period (years)</label>
+                  <label>Duration of Investment (in years)</label>
                   <TextField
                     type="number"
-                    value={years}
-                    onChange={(e) => setYears(Number(e.target.value))}
+                    value={duration}
+                    onChange={(e) => setDuration(Number(e.target.value))}
                     size="small"
                   />
                   <Slider
-                    value={years}
-                    onChange={handleYearsChange}
+                    value={duration}
+                    onChange={handleDurationChange}
                     min={1}
                     max={40}
                     step={1}
-                    marks={marksLoanTenure}
+                    marks={marksDuration}
                     valueLabelDisplay="auto"
                   />
                 </div>
               </Box>
               <div className="results">
                 <Typography component="div">
-                  Principal Amount:
-                  <br /> ₹{formatNumber(investedAmount)}
+                  Gain / Loss:
+                  <br /> ₹{formatNumber(gainLoss)}
                 </Typography>
                 <Typography component="div">
-                  Estimated Returns:
-                  <br /> ₹{formatNumber(totalReturn)}
-                </Typography>
-                <Typography component="div">
-                  Maturity Value:
+                  Return on Investment:
                   <br />
-                  <span className="value-color">
-                    {" "}
-                    ₹{formatNumber(futureValue)}
-                  </span>
+                  <span className="value-color">{nps}%</span>
+                </Typography>
+                <Typography component="div">
+                  Annual Growth:
+                  <br /> {cagr}%
                 </Typography>
               </div>
             </div>
-            <div className="chart-container-ci">
+            <div className="chart-container-nps">
               <Doughnut data={data} options={options} />
             </div>
           </div>
         </div>
       </div>
-
       <div className="similar_calculators">
         <h2>Similar Calculators</h2>
         <div className="calculator-grid">
@@ -233,6 +234,25 @@ const CompoundInterestCalculator = () => {
           </div>
           <div className="calculator_card">
             <div>
+              <FontAwesomeIcon
+                icon={faHandHoldingDollar}
+                size="3x"
+                className="icon"
+              />
+              <h3>Simple Interest Calculator</h3>
+              <p className="calc_description">
+                Calculate and understand the fixed interest amount on your
+                invested or deposit amount.
+              </p>
+            </div>
+            <Link
+              onClick={scrollToTop}
+              to="/si-calculator"
+              className="card_link"
+            ></Link>
+          </div>
+          <div className="calculator_card">
+            <div>
               <FontAwesomeIcon icon={faCalculator} size="3x" className="icon" />
               <h3>Lumpsum Calculator</h3>
               <p className="calc_description">
@@ -281,25 +301,6 @@ const CompoundInterestCalculator = () => {
             <Link
               onClick={scrollToTop}
               to="/roi-calculator"
-              className="card_link"
-            ></Link>
-          </div>
-          <div className="calculator_card">
-            <div>
-              <FontAwesomeIcon
-                icon={faMagnifyingGlassDollar}
-                size="3x"
-                className="icon"
-              />
-              <h3>NPS Calculator</h3>
-              <p className="calc_description">
-                Calculate monthly pension and lumpsum amount to be received on
-                retirement with our online national pension scheme calculator.
-              </p>
-            </div>
-            <Link
-              onClick={scrollToTop}
-              to="/nps-calculator"
               className="card_link"
             ></Link>
           </div>
@@ -361,19 +362,19 @@ const CompoundInterestCalculator = () => {
           <div className="calculator_card">
             <div>
               <FontAwesomeIcon
-                icon={faHandHoldingDollar}
+                icon={faCommentsDollar}
                 size="3x"
                 className="icon"
               />
-              <h3>Simple Interest Calculator</h3>
+              <h3>Compound Interest Calculator</h3>
               <p className="calc_description">
-                Calculate and understand the fixed interest amount on your
-                invested or deposit amount.
+                Calculate and understand your investment returns over a period
+                of time with our online compound return calculator in minutes!
               </p>
             </div>
             <Link
               onClick={scrollToTop}
-              to="/si-calculator"
+              to="/ci-calculator"
               className="card_link"
             ></Link>
           </div>
@@ -383,4 +384,4 @@ const CompoundInterestCalculator = () => {
   );
 };
 
-export default CompoundInterestCalculator;
+export default NPS;

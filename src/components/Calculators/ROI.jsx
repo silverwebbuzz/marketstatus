@@ -1,79 +1,77 @@
 import React, { useState } from "react";
-import "../../style/calculators/emi.css";
+import "../../style/calculators/roi.css";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Slider, Box, Typography, TextField } from "@mui/material";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faHandshake,
+  faChartLine,
   faMoneyCheckAlt,
   faCalculator,
-  faCalendarDays,
-  faCircleDollarToSlot,
   faHandHoldingDollar,
-  faMoneyBillTrendUp,
-  faCoins,
+  faHandshake,
   faMagnifyingGlassDollar,
-  faMoneyBillTransfer,
+  faCoins,
+  faMoneyBillTrendUp,
+  faCalendarDays,
   faCommentsDollar,
+  faMoneyBillTransfer,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from 'react-router-dom';
-import {
-  Slider,
-  Box,
-  Typography,
-  TextField,
-} from "@mui/material";
+import { Link } from "react-router-dom";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const marksEmiAmount = [
-  { value: 100000, label: "₹ 100000" },
-  { value: 10000000, label: "₹ 1,00,00,000" },
+const marksInvestmentAmount = [
+  { value: 1000, label: "₹ 1,000" },
+  { value: 100000000, label: "₹ 1,00,00,000" },
 ];
 
-const marksInterestRate = [
-  { value: 1, label: "1%" },
-  { value: 30, label: "30%" },
-];
-
-const marksLoanTenure = [
+const marksDuration = [
   { value: 1, label: "1 yr" },
-  { value: 40, label: "40 yr" },
+  { value: 40, label: "40 yrs" },
 ];
 
-const EmiCalculator = () => {
-  const [emiAmount, setEmiAmount] = useState(100000);
-  const [returnRate, setReturnRate] = useState(10);
-  const [emiTenure, setLoanTenure] = useState(1);
+const ROI = () => {
+  const [investmentAmount, setInvestmentAmount] = useState(5000);
+  const [maturityValue, setMaturityValue] = useState(25000);
+  const [duration, setDuration] = useState(10);
 
-  const handleEmiAmountChange = (event, newValue) => {
-    setEmiAmount(newValue);
+  const handleInvestmentAmountChange = (event, newValue) => {
+    setInvestmentAmount(newValue);
   };
 
-  const handleInterestRateChange = (event, newValue) => {
-    setReturnRate(newValue);
+  const handleMaturityValueChange = (event, newValue) => {
+    setMaturityValue(newValue);
   };
 
-  const handleLoanTenureChange = (event, newValue) => {
-    setLoanTenure(newValue);
+  const handleDurationChange = (event, newValue) => {
+    setDuration(newValue);
   };
 
-  const calculateEmi = (amount, rate, tenure) => {
-    const monthlyRate = rate / 12 / 100;
-    const numOfMonths = tenure * 12;
-    const emi = (amount * monthlyRate * Math.pow(1 + monthlyRate, numOfMonths)) / (Math.pow(1 + monthlyRate, numOfMonths) - 1);
-    return emi.toFixed(2);
+  const calculateGainLoss = (maturityValue, investmentAmount) => {
+    return maturityValue - investmentAmount;
   };
 
-  const emi = calculateEmi(emiAmount, returnRate, emiTenure);
-  const totalPayment = (emi * emiTenure * 12).toFixed(2);
-  const totalInterest = (totalPayment - emiAmount).toFixed(2);
+  const calculateROI = (gainLoss, investmentAmount) => {
+    return ((gainLoss / investmentAmount) * 100).toFixed(2);
+  };
+
+  const calculateCAGR = (maturityValue, investmentAmount, duration) => {
+    return (
+      (Math.pow(maturityValue / investmentAmount, 1 / duration) - 1) *
+      100
+    ).toFixed(2);
+  };
+
+  const gainLoss = calculateGainLoss(maturityValue, investmentAmount);
+  const roi = calculateROI(gainLoss, investmentAmount);
+  const cagr = calculateCAGR(maturityValue, investmentAmount, duration);
 
   const data = {
-    labels: ["Principal Loan Amount", "Total Interest"],
+    labels: ["Investment Amount", "Maturity Value"],
     datasets: [
       {
-        data: [emiAmount, totalInterest],
+        data: [investmentAmount, maturityValue],
         backgroundColor: ["#9f9f9f", "#2c9430"],
         hoverBackgroundColor: ["#666667", "#265628"],
       },
@@ -81,103 +79,102 @@ const EmiCalculator = () => {
   };
 
   const options = {
-    cutout: '80%', 
+    cutout: "80%",
   };
 
   const formatNumber = (number) => {
-    return new Intl.NumberFormat('en-IN').format(number);
+    return new Intl.NumberFormat("en-IN").format(number);
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-    });
-  };
-
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
 
   return (
     <div className="container">
-      <div className="emicalculator_row">
-        <h1 className="emi_h1">EMI Calculator</h1>
+      <div className="ROI_row">
+        <h1 className="roi-h1">ROI Calculator</h1>
         <div className="calculator_box">
           <div className="calculator_container_box">
-            <div className="emi_calculator_top">
+            <div className="roi_calculator_top">
               <Box>
                 <div className="input-group">
-                  <label>Loan Amount</label>
+                  <label>Initial Investment</label>
                   <TextField
                     type="number"
-                    value={emiAmount}
-                    onChange={(e) => setEmiAmount(Number(e.target.value))}
+                    value={investmentAmount}
+                    onChange={(e) =>
+                      setInvestmentAmount(Number(e.target.value))
+                    }
                     size="small"
                   />
                   <Slider
-                    value={emiAmount}
-                    onChange={handleEmiAmountChange}
-                    min={100000}
-                    max={10000000}
-                    step={10000}
-                    marks={marksEmiAmount}
+                    value={investmentAmount}
+                    onChange={handleInvestmentAmountChange}
+                    min={1000}
+                    max={100000000}
+                    step={1000}
+                    marks={marksInvestmentAmount}
                     valueLabelDisplay="auto"
                   />
                 </div>
                 <div className="input-group">
-                  <label>Rate of Interest (p.a)</label>
+                  <label>Maturity Value</label>
                   <TextField
                     type="number"
-                    value={returnRate}
-                    onChange={(e) => setReturnRate(Number(e.target.value))}
+                    value={maturityValue}
+                    onChange={(e) => setMaturityValue(Number(e.target.value))}
                     size="small"
                   />
                   <Slider
-                    value={returnRate}
-                    onChange={handleInterestRateChange}
-                    min={1}
-                    max={30}
-                    step={0.5}
-                    marks={marksInterestRate}
+                    value={maturityValue}
+                    onChange={handleMaturityValueChange}
+                    min={1000}
+                    max={100000000}
+                    step={1000}
+                    marks={marksInvestmentAmount}
                     valueLabelDisplay="auto"
                   />
                 </div>
                 <div className="input-group">
-                  <label>Loan Tenure</label>
+                  <label>Duration of Investment (in years)</label>
                   <TextField
                     type="number"
-                    value={emiTenure}
-                    onChange={(e) => setLoanTenure(Number(e.target.value))}
+                    value={duration}
+                    onChange={(e) => setDuration(Number(e.target.value))}
                     size="small"
                   />
                   <Slider
-                    value={emiTenure}
-                    onChange={handleLoanTenureChange}
+                    value={duration}
+                    onChange={handleDurationChange}
                     min={1}
                     max={40}
                     step={1}
-                    marks={marksLoanTenure}
+                    marks={marksDuration}
                     valueLabelDisplay="auto"
                   />
                 </div>
               </Box>
               <div className="results">
-                <Typography>
-                  Monthly EMI:
-                  <br /> ₹{formatNumber(emi)}
+                <Typography component="div">
+                  Gain / Loss:
+                  <br /> ₹{formatNumber(gainLoss)}
                 </Typography>
-                <Typography>
-                  Total Interest:
-                  <br /> ₹{formatNumber(totalInterest)}
+                <Typography component="div">
+                  Return on Investment:
+                  <br />
+                  <span className="value-color">{roi}%</span>
                 </Typography>
-                <Typography>
-                  Total Payment:
-                  <br />{" "}
-                  <span className="value-color">
-                    ₹{formatNumber(totalPayment)}
-                  </span>
+                <Typography component="div">
+                  Annual Growth:
+                  <br /> {cagr}%
                 </Typography>
               </div>
             </div>
-            <div className="chart-container-emi">
+            <div className="chart-container-roi">
               <Doughnut data={data} options={options} />
             </div>
           </div>
@@ -204,6 +201,21 @@ const EmiCalculator = () => {
           </div>
           <div className="calculator_card">
             <div>
+              <FontAwesomeIcon icon={faChartLine} size="3x" className="icon" />
+              <h3>EMI Calculator</h3>
+              <p className="calc_description">
+                Calculate estimate of your monthly EMI amount and interest paid
+                with our loan EMI calculator online.
+              </p>
+            </div>
+            <Link
+              onClick={scrollToTop}
+              to="/emi-calculator"
+              className="card_link"
+            ></Link>
+          </div>
+          <div className="calculator_card">
+            <div>
               <FontAwesomeIcon
                 icon={faMoneyCheckAlt}
                 size="3x"
@@ -218,6 +230,44 @@ const EmiCalculator = () => {
             <Link
               onClick={scrollToTop}
               to="/fd-calculator"
+              className="card_link"
+            ></Link>
+          </div>
+          <div className="calculator_card">
+            <div>
+              <FontAwesomeIcon
+                icon={faMagnifyingGlassDollar}
+                size="3x"
+                className="icon"
+              />
+              <h3>NPS Calculator</h3>
+              <p className="calc_description">
+                Calculate monthly pension and lumpsum amount to be received on
+                retirement with our online national pension scheme calculator.
+              </p>
+            </div>
+            <Link
+              onClick={scrollToTop}
+              to="/nps-calculator"
+              className="card_link"
+            ></Link>
+          </div>
+          <div className="calculator_card">
+            <div>
+              <FontAwesomeIcon
+                icon={faHandHoldingDollar}
+                size="3x"
+                className="icon"
+              />
+              <h3>Simple Interest Calculator</h3>
+              <p className="calc_description">
+                Calculate and understand the fixed interest amount on your
+                invested or deposit amount.
+              </p>
+            </div>
+            <Link
+              onClick={scrollToTop}
+              to="/si-calculator"
               className="card_link"
             ></Link>
           </div>
@@ -329,86 +379,10 @@ const EmiCalculator = () => {
               className="card_link"
             ></Link>
           </div>
-          <div className="calculator_card">
-            <div>
-              <FontAwesomeIcon
-                icon={faCommentsDollar}
-                size="3x"
-                className="icon"
-              />
-              <h3>Compound Interest Calculator</h3>
-              <p className="calc_description">
-                Calculate and understand your investment returns over a period
-                of time with our online compound return calculator in minutes!
-              </p>
-            </div>
-            <Link
-              onClick={scrollToTop}
-              to="/ci-calculator"
-              className="card_link"
-            ></Link>
-          </div>
-          <div className="calculator_card">
-            <div>
-              <FontAwesomeIcon
-                icon={faCircleDollarToSlot}
-                size="3x"
-                className="icon"
-              />
-              <h3>ROI Calculator</h3>
-              <p className="calc_description">
-                Calculate absolue return and annual return on your investments
-                using this ROI calculator.
-              </p>
-            </div>
-            <Link
-              onClick={scrollToTop}
-              to="/roi-calculator"
-              className="card_link"
-            ></Link>
-          </div>
-          <div className="calculator_card">
-            <div>
-              <FontAwesomeIcon
-                icon={faMagnifyingGlassDollar}
-                size="3x"
-                className="icon"
-              />
-              <h3>NPS Calculator</h3>
-              <p className="calc_description">
-                Calculate monthly pension and lumpsum amount to be received on
-                retirement with our online national pension scheme calculator.
-              </p>
-            </div>
-            <Link
-              onClick={scrollToTop}
-              to="/nps-calculator"
-              className="card_link"
-            ></Link>
-          </div>
-          <div className="calculator_card">
-            <div>
-              <FontAwesomeIcon
-                icon={faHandHoldingDollar}
-                size="3x"
-                className="icon"
-              />
-              <h3>Simple Interest Calculator</h3>
-              <p className="calc_description">
-                Calculate and understand the fixed interest amount on your
-                invested or deposit amount.
-              </p>
-            </div>
-            <Link
-              onClick={scrollToTop}
-              to="/si-calculator"
-              className="card_link"
-            ></Link>
-          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default EmiCalculator;
+export default ROI;

@@ -65,19 +65,13 @@ const Navbar = () => {
           </button>
         </div>
             <div className="Navbar1">
-                <div className={`container Nav_bottom ${showMenu ? "open" : ""}`}>
-                    <ul className="nav_ul">
-                        <li>
-                            <NavLink to="/" onClick={() => setShowMenu(!showMenu)}>Home</NavLink>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div className="Navbar2">
-                <div className={`container Nav_bottom ${showMenu ? "open" : ""}`}>
+                <div className={` Nav_bottom ${showMenu ? "open" : ""}`}>
                     <div className="navbar">
                         <nav className="Nav">
                             <ul className="nav_ul">
+                            <li className='dropdown'>
+                            <NavLink to="/" onClick={() => setShowMenu(!showMenu)}>Home</NavLink>
+                        </li>
                                 <li className='dropdown'>
                                     Market
                                     <FontAwesomeIcon className="faCaretDown" icon={faCaretDown} />
@@ -104,7 +98,7 @@ const Navbar = () => {
                                 </li>
                                 <li className='dropdown'>
                                     Mutual Funds
-                                    <FontAwesomeIcon className="faCaretDown" icon={faCaretDown} />
+                                    <FontAwesomeIcon className="faCaretDown" icon={faCaretDown}/>
                                     <ul className='dropdown-menu'>
                                         <li className='dropmenu-li'>
                                             <NavLink to="/mutual-funds/amc" onClick={() => setShowMenu(!showMenu)}>AMC Funds</NavLink>
@@ -193,30 +187,154 @@ const Navbar = () => {
                                     News
                                     <FontAwesomeIcon className="faCaretDown" icon={faCaretDown} />
                                 </li>
-                                <li className='dropdown'>
-                                    Calculators
-                                    <FontAwesomeIcon className="faCaretDown" icon={faCaretDown} />
-                                    <ul className='dropdown-menu'>
-                                        <li className='dropmenu-li'>
-                                            <NavLink to="/sip-calculator" onClick={() => setShowMenu(!showMenu)}>SPI Calculator</NavLink>
-                                        </li>
-                                        <li className='dropmenu-li'>
-                                            <NavLink to="/emi-calculator" onClick={() => setShowMenu(!showMenu)}>EMI Calculator</NavLink>
-                                        </li>
-                                        <li className='dropmenu-li'>
-                                            <NavLink to="/lumpsum-calculator" onClick={() => setShowMenu(!showMenu)}>Lumpsum Calculator</NavLink>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
+                  <li className="dropdown">
+                    Calculators
+                    <FontAwesomeIcon
+                      className="faCaretDown"
+                      icon={faCaretDown}
+                    />
+                    <ul className="dropdown-menu">
+                      <li className="dropmenu-li">
+                        <NavLink
+                          to="/sip-calculator"
+                          onClick={() => {
+                            scrollToTop();
+                            setShowMenu(!showMenu);
+                          }}
+                        >
+                          SPI Calculator
+                        </NavLink>
+                      </li>
+                      <li className="dropmenu-li">
+                        <NavLink
+                          to="/emi-calculator"
+                          onClick={() => {
+                            scrollToTop();
+                            setShowMenu(!showMenu);
+                          }}
+                        >
+                          EMI Calculator
+                        </NavLink>
+                      </li>
+                      <li className="dropmenu-li">
+                        <NavLink
+                          to="/lumpsum-calculator"
+                          onClick={() => {
+                            scrollToTop();
+                            setShowMenu(!showMenu);
+                          }}
+                        >
+                          Lumpsum Calculator
+                        </NavLink>
+                      </li>
+                      <li className="dropmenu-li">
+                        <NavLink
+                          to="/fd-calculator"
+                          onClick={() => {
+                            scrollToTop();
+                            setShowMenu(!showMenu);
+                          }}
+                        >
+                          FD Calculator
+                        </NavLink>
+                      </li>
+                      <li className="dropmenu-li">
+                        <NavLink
+                          to="/yearly-sip-calculator"
+                          onClick={() => {
+                            scrollToTop();
+                            setShowMenu(!showMenu);
+                          }}
+                        >
+                          Yearly SIP Calculator
+                        </NavLink>
+                      </li>
+                      <li className="dropmenu-li">
+                        <NavLink
+                          to="/cagr-calculator"
+                          onClick={() => {
+                            scrollToTop();
+                            setShowMenu(!showMenu);
+                          }}
+                        >
+                          CAGR Calculator
+                        </NavLink>
+                      </li>
+                      <li className="dropmenu-li">
+                        <NavLink
+                          to="/rd-calculator"
+                          onClick={() => {
+                            scrollToTop();
+                            setShowMenu(!showMenu);
+                          }}
+                        >
+                          RD Calculator
+                        </NavLink>
+                      </li>
+                      <li className="dropmenu-li">
+                        <NavLink
+                          to="/ppf-calculator"
+                          onClick={() => {
+                            scrollToTop();
+                            setShowMenu(!showMenu);
+                          }}
+                        >
+                          PPF Calculator
+                        </NavLink>
+                      </li>
+                      <li className="dropmenu-li">
+                        <NavLink
+                          to="/ci-calculator"
+                          onClick={() => {
+                            scrollToTop();
+                            setShowMenu(!showMenu);
+                          }}
+                        >
+                          Compound Interest Calculator
+                        </NavLink>
+                      </li>
+                      <li className="dropmenu-li">
+                        <NavLink
+                          to="/si-calculator"
+                          onClick={() => {
+                            scrollToTop();
+                            setShowMenu(!showMenu);
+                          }}
+                        >
+                          Simple Interest Calculator
+                        </NavLink>
+                      </li>
+                      <li className="dropmenu-li">
+                        <NavLink
+                          to="/roi-calculator"
+                          onClick={() => {
+                            scrollToTop();
+                            setShowMenu(!showMenu);
+                          }}
+                        >
+                          ROI Calculator
+                        </NavLink>
+                      </li>
+                      <li className="dropmenu-li">
+                        <NavLink
+                          to="/nps-calculator"
+                          onClick={() => {
+                            scrollToTop();
+                            setShowMenu(!showMenu);
+                          }}
+                        >
+                          NPS Calculator
+                        </NavLink>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
             </div>
+          </div>
         </div>
-
-
-    )
+      </div>
+    );
 }
 
 export default Navbar;

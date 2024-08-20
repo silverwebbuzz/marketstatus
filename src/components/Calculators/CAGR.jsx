@@ -2,25 +2,22 @@ import React, { useState } from "react";
 import "../../style/calculators/cagr.css";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChartLine,
   faCommentsDollar,
+  faMagnifyingGlassDollar,
   faMoneyCheckAlt,
   faCalculator,
   faHandHoldingDollar,
+  faCircleDollarToSlot,
   faHandshake,
   faCalendarDays,
   faCoins,
   faMoneyBillTransfer,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from 'react-router-dom';
-import {
-  Slider,
-  Box,
-  Typography,
-  TextField,
-} from "@mui/material";
+import { Link } from "react-router-dom";
+import { Slider, Box, Typography, TextField } from "@mui/material";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -45,15 +42,21 @@ const CAGR = () => {
   const [cagrTenure, setTenure] = useState(3);
 
   const handleInitialAmountChange = (event, newValue) => {
-    setInitialAmount(newValue);
+    if (newValue >= 1000 && newValue <= 1000000) {
+      setInitialAmount(newValue);
+    }
   };
 
   const handleFinalAmountChange = (event, newValue) => {
-    setFinalAmount(newValue);
+    if (newValue >= 1000 && newValue <= 5000000) {
+      setFinalAmount(newValue);
+    }
   };
 
   const handleTenureChange = (event, newValue) => {
-    setTenure(newValue);
+    if (newValue >= 1 && newValue <= 40) {
+      setTenure(newValue);
+    }
   };
 
   const calculateCagr = (initialValue, finalValue, tenure) => {
@@ -76,11 +79,11 @@ const CAGR = () => {
   };
 
   const options = {
-    cutout: '80%',
+    cutout: "80%",
   };
 
   const formatNumber = (number) => {
-    return new Intl.NumberFormat('en-IN').format(number);
+    return new Intl.NumberFormat("en-IN").format(number);
   };
 
   const scrollToTop = () => {
@@ -103,7 +106,9 @@ const CAGR = () => {
                   <TextField
                     type="number"
                     value={initialAmount}
-                    onChange={(e) => setInitialAmount(Number(e.target.value))}
+                    onChange={(e) =>
+                      handleInitialAmountChange(e, Number(e.target.value))
+                    }
                     size="small"
                   />
                   <Slider
@@ -121,7 +126,9 @@ const CAGR = () => {
                   <TextField
                     type="number"
                     value={finalAmount}
-                    onChange={(e) => setFinalAmount(Number(e.target.value))}
+                    onChange={(e) =>
+                      handleFinalAmountChange(e, Number(e.target.value))
+                    }
                     size="small"
                   />
                   <Slider
@@ -139,7 +146,9 @@ const CAGR = () => {
                   <TextField
                     type="number"
                     value={cagrTenure}
-                    onChange={(e) => setTenure(Number(e.target.value))}
+                    onChange={(e) =>
+                      handleTenureChange(e, Number(e.target.value))
+                    }
                     size="small"
                   />
                   <Slider
@@ -175,7 +184,6 @@ const CAGR = () => {
           </div>
         </div>
       </div>
-
       <div className="similar_calculators">
         <h2>Similar Calculators</h2>
         <div className="calculator-grid">
@@ -278,6 +286,44 @@ const CAGR = () => {
             <Link
               onClick={scrollToTop}
               to="/yearly-sip-calculator"
+              className="card_link"
+            ></Link>
+          </div>
+          <div className="calculator_card">
+            <div>
+              <FontAwesomeIcon
+                icon={faCircleDollarToSlot}
+                size="3x"
+                className="icon"
+              />
+              <h3>ROI Calculator</h3>
+              <p className="calc_description">
+                Calculate absolue return and annual return on your investments
+                using this ROI calculator.
+              </p>
+            </div>
+            <Link
+              onClick={scrollToTop}
+              to="/roi-calculator"
+              className="card_link"
+            ></Link>
+          </div>
+          <div className="calculator_card">
+            <div>
+              <FontAwesomeIcon
+                icon={faMagnifyingGlassDollar}
+                size="3x"
+                className="icon"
+              />
+              <h3>NPS Calculator</h3>
+              <p className="calc_description">
+                Calculate monthly pension and lumpsum amount to be received on
+                retirement with our online national pension scheme calculator.
+              </p>
+            </div>
+            <Link
+              onClick={scrollToTop}
+              to="/nps-calculator"
               className="card_link"
             ></Link>
           </div>

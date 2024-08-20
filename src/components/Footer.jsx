@@ -21,18 +21,34 @@ function Footer() {
                   <h3>Quick links</h3>
                   <ul>
                     <li className="footercard_links">
-                      <a className="footer_after_line" href="https://marketstatus.in/indices">Indices</a>
+                      <a
+                        className="footer_after_line"
+                        href="https://marketstatus.in/indices"
+                      >
+                        Indices
+                      </a>
                     </li>
                     <li className="footercard_links">
-                      <a className="footer_after_line" href="https://marketstatus.in/futures-options">
+                      <a
+                        className="footer_after_line"
+                        href="https://marketstatus.in/futures-options"
+                      >
                         Future Margin
                       </a>
                     </li>
                     <li className="footercard_links">
-                      <a className="footer_after_line" href="https://marketstatus.in/ipo">IPO</a>
+                      <a
+                        className="footer_after_line"
+                        href="https://marketstatus.in/ipo"
+                      >
+                        IPO
+                      </a>
                     </li>
                     <li className="footercard_links">
-                      <a  className="footer_after_line"href="https://marketstatus.in/mutualFunds">
+                      <a
+                        className="footer_after_line"
+                        href="https://marketstatus.in/mutualFunds"
+                      >
                         Mutual Funds
                       </a>
                     </li>
@@ -42,43 +58,99 @@ function Footer() {
                   <h3>Calculater</h3>
                   <ul>
                     <li className="footercard_links">
-                      <a className="footer_after_line" href="https://marketstatus.in/sip-calculator">
+                      <a
+                        className="footer_after_line"
+                        href="https://marketstatus.in/sip-calculator"
+                      >
                         SIP Calculator
                       </a>
                     </li>
                     <li className="footercard_links">
-                      <a  className="footer_after_line" href="https://marketstatus.in/emi-calculator">
+                      <a
+                        className="footer_after_line"
+                        href="https://marketstatus.in/emi-calculator"
+                      >
                         EMI Calculator
                       </a>
                     </li>
                     <li className="footercard_links">
-                      <a className="footer_after_line" href="https://marketstatus.in/fd-calculator">
+                      <a
+                        className="footer_after_line"
+                        href="https://marketstatus.in/fd-calculator"
+                      >
                         FD Calculator
                       </a>
                     </li>
                     <li className="footercard_links">
-                      <a className="footer_after_line" href="https://marketstatus.in/lumpsum-calculator">
+                      <a
+                        className="footer_after_line"
+                        href="https://marketstatus.in/lumpsum-calculator"
+                      >
                         Lumpsum Calculatoe
                       </a>
                     </li>
                     <li className="footercard_links">
-                      <a className="footer_after_line" href="https://marketstatus.in/yearly-sip-calculator">
+                      <a
+                        className="footer_after_line"
+                        href="https://marketstatus.in/yearly-sip-calculator"
+                      >
                         Yearly Sip Calculator
                       </a>
                     </li>
                     <li className="footercard_links">
-                      <a className="footer_after_line" href="https://marketstatus.in/cagr-calculator">
+                      <a
+                        className="footer_after_line"
+                        href="https://marketstatus.in/cagr-calculator"
+                      >
                         CAGR Calculator
                       </a>
                     </li>
                     <li className="footercard_links">
-                      <a className="footer_after_line" href="https://marketstatus.in/rd-calculator">
+                      <a
+                        className="footer_after_line"
+                        href="https://marketstatus.in/rd-calculator"
+                      >
                         RD Calculator
                       </a>
                     </li>
                     <li className="footercard_links">
-                      <a className="footer_after_line" href="https://marketstatus.in/ppf-calculator">
+                      <a
+                        className="footer_after_line"
+                        href="https://marketstatus.in/ppf-calculator"
+                      >
                         PPF Calculator
+                      </a>
+                    </li>
+                    <li className="footercard_links">
+                      <a
+                        className="footer_after_line"
+                        href="https://marketstatus.in/si-calculator"
+                      >
+                        Simple Interest Calculator
+                      </a>
+                    </li>
+                    <li className="footercard_links">
+                      <a
+                        className="footer_after_line"
+                        href="https://marketstatus.in/ci-calculator"
+                      >
+                        Compound Interest Calculator
+                      </a>
+                    </li>
+                    <li className="footercard_links">
+                      <a
+                        className="footer_after_line"
+                        href="https://marketstatus.in/roi-calculator"
+                      >
+                        ROI Calculator
+                      </a>
+                    </li>
+                    <li className="footercard_links">
+                      <a
+                        className="footer_after_line"
+                        href="https://marketstatus.in/nps-calculator"
+                      >
+                        NPS Calculator
                       </a>
                     </li>
                   </ul>
@@ -87,27 +159,43 @@ function Footer() {
                   <h3>Mutual Funds</h3>
                   <ul>
                     <li className="footercard_links">
-                      <a className="footer_after_line" href="/">Equity Funds</a>
+                      <a className="footer_after_line" href="/">
+                        Equity Funds
+                      </a>
                     </li>
                     <li className="footercard_links">
-                      <a className="footer_after_line" href="/">Debt Funds</a>
+                      <a className="footer_after_line" href="/">
+                        Debt Funds
+                      </a>
                     </li>
                     <li className="footercard_links">
-                      <a className="footer_after_line" href="/">Hybrid Funds</a>
+                      <a className="footer_after_line" href="/">
+                        Hybrid Funds
+                      </a>
                     </li>
                     <li className="footercard_links">
-                      <a className="footer_after_line" href="/">Index Funds</a>
+                      <a className="footer_after_line" href="/">
+                        Index Funds
+                      </a>
                     </li>
                     <li className="footercard_links">
-                      <a className="footer_after_line" href="/">Elss Funds</a>
+                      <a className="footer_after_line" href="/">
+                        Elss Funds
+                      </a>
                     </li>
                   </ul>
                 </div>
                 <div className="footer_card">
                   <h3>General Link</h3>
                   <ul>
-                  <li className="footercard_links">
-                      <Link className="footer_after_line" to="/holidays" onClick={scrollToTop} >Holidays list</Link>
+                    <li className="footercard_links">
+                      <Link
+                        className="footer_after_line"
+                        to="/holidays"
+                        onClick={scrollToTop}
+                      >
+                        Holidays list
+                      </Link>
                     </li>
                   </ul>
                 </div>

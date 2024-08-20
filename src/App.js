@@ -9,6 +9,14 @@ import SIP from './components/Calculators/SIP';
 import EMI from './components/Calculators/EMI';
 import FD from './components/Calculators/FD';
 import Lumpsum from './components/Calculators/Lumpsum';
+import YRSIP from "./components/Calculators/YRSIP";
+import CAGR from "./components/Calculators/CAGR";
+import RD from "./components/Calculators/RD";
+import PPF from "./components/Calculators/PPF";
+import CI from "./components/Calculators/CI";
+import SI from "./components/Calculators/SI";
+import ROI from "./components/Calculators/ROI";
+import NPS from "./components/Calculators/NPS";
 import AMC from './components/MutualFunds/AMC';
 import Subcategory from './components/Subcategory';
 import StockData from './components/Market/StockData';
@@ -67,36 +75,78 @@ const AppContent = () => {
         <Route path="/emi-calculator" element={<EMI />} />
         <Route path="/fd-calculator" element={<FD />} />
         <Route path="/lumpsum-calculator" element={<Lumpsum />} />
+        <Route path="/yearly-sip-calculator" element={<YRSIP />} />
+        <Route path="/roi-calculator" element={<ROI />} />
+        <Route path="/cagr-calculator" element={<CAGR />} />
+        <Route path="/rd-calculator" element={<RD />} />
+        <Route path="/ppf-calculator" element={<PPF />} />
+        <Route path="/ci-calculator" element={<CI />} />
+        <Route path="/si-calculator" element={<SI />} />
+        <Route path="/nps-calculator" element={<NPS />} />
+
         <Route path="/mutual-funds/amc" element={<AMC />} />
-        <Route path="/mutualfunds/:category/:subcategory" element={<Subcategory />} />
+        <Route
+          path="/mutualfunds/:category/:subcategory"
+          element={<Subcategory />}
+        />
         <Route path="/index/:indexSymbol" element={<StockData />} />
         <Route path="/holidays" element={<NseHolidays />} />
-        <Route path="/finance-companies/analysis-companies" element={<Analysis_companies/>} />
-        <Route path="/finance-companies/broker-companies" element={<Broker_Companies/>} />
-        <Route path="/finance-companies/crypto-currency-companies" element={<Crypto_currency_companies/>} />
-        <Route path="/finance-companies/fintech-company" element={<Fintech_company/>} />
-        <Route path="/finance-companies/bank" element={<Bank/>} />
-        <Route path="/finance-companies/investment-management-companies" element={<Investment_management_companies/>} />
-        <Route path="/finance-companies/funding-companies-list" element={<Funding_Companies/>} />
-        <Route path="/finance-companies/CA-companies" element={<CA_companies/>} />
-        <Route path="/finance-companies/CS-companies" element={<CS_companies/>} />
-        <Route path="/finance-companies/international-money-transfer-companies" element={<International_money_transfer_companies/>} />
-        <Route path="/finance-companies/small-finance-companies" element={<Small_Finance_companies/>} />
-        <Route path="/market/cryptocurrency" element={<Crypto_currency/>} />
-        <Route path="/market/forex" element={<Forex/>} />
-        <Route path="/mutual-funds/equity-fund" element={<Equity/>} />
-        <Route path="/mutual-funds/debt-fund" element={<Debt/>} />
-        <Route path="/mutual-funds/hybrid-fund" element={<Hybrid/>} />
-        <Route path="/mutual-funds/index-fund" element={<Index/>} />
-        <Route path="/mutual-funds/elss-fund" element={<ELSS/>} />
-        <Route path="/Insurance/general-insurance" element={<General_Insurance/>} />
-        <Route path="Loans/personal_loan" element={<Personal_loan/>} />
-        <Route path="Loans/home_loan" element={<Home_loan/>} />
-        <Route path="Loans/car_loan" element={<Car_loan/>} />
-        <Route path="market/worldindices" element={<WorldIndices/>} />
-        
-        
-        
+        <Route
+          path="/finance-companies/analysis-companies"
+          element={<Analysis_companies />}
+        />
+        <Route
+          path="/finance-companies/broker-companies"
+          element={<Broker_Companies />}
+        />
+        <Route
+          path="/finance-companies/crypto-currency-companies"
+          element={<Crypto_currency_companies />}
+        />
+        <Route
+          path="/finance-companies/fintech-company"
+          element={<Fintech_company />}
+        />
+        <Route path="/finance-companies/bank" element={<Bank />} />
+        <Route
+          path="/finance-companies/investment-management-companies"
+          element={<Investment_management_companies />}
+        />
+        <Route
+          path="/finance-companies/funding-companies-list"
+          element={<Funding_Companies />}
+        />
+        <Route
+          path="/finance-companies/CA-companies"
+          element={<CA_companies />}
+        />
+        <Route
+          path="/finance-companies/CS-companies"
+          element={<CS_companies />}
+        />
+        <Route
+          path="/finance-companies/international-money-transfer-companies"
+          element={<International_money_transfer_companies />}
+        />
+        <Route
+          path="/finance-companies/small-finance-companies"
+          element={<Small_Finance_companies />}
+        />
+        <Route path="/market/cryptocurrency" element={<Crypto_currency />} />
+        <Route path="/market/forex" element={<Forex />} />
+        <Route path="/mutual-funds/equity-fund" element={<Equity />} />
+        <Route path="/mutual-funds/debt-fund" element={<Debt />} />
+        <Route path="/mutual-funds/hybrid-fund" element={<Hybrid />} />
+        <Route path="/mutual-funds/index-fund" element={<Index />} />
+        <Route path="/mutual-funds/elss-fund" element={<ELSS />} />
+        <Route
+          path="/Insurance/general-insurance"
+          element={<General_Insurance />}
+        />
+        <Route path="Loans/personal_loan" element={<Personal_loan />} />
+        <Route path="Loans/home_loan" element={<Home_loan />} />
+        <Route path="Loans/car_loan" element={<Car_loan />} />
+        <Route path="market/worldindices" element={<WorldIndices />} />
       </Routes>
       <Footer />
     </>

@@ -7,12 +7,14 @@ import {
   faChartLine,
   faMoneyCheckAlt,
   faCalculator,
+  faMagnifyingGlassDollar,
   faCalendarDays,
   faHandHoldingDollar,
   faMoneyBillTrendUp,
+  faCircleDollarToSlot,
   faCoins,
   faCommentsDollar,
-  faMoneyBillTransfer
+  faMoneyBillTransfer,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import {
@@ -362,6 +364,44 @@ const SipCalculator = () => {
             <Link
               onClick={scrollToTop}
               to="/ppf-calculator"
+              className="card_link"
+            ></Link>
+          </div>
+          <div className="calculator_card">
+            <div>
+              <FontAwesomeIcon
+                icon={faCircleDollarToSlot}
+                size="3x"
+                className="icon"
+              />
+              <h3>ROI Calculator</h3>
+              <p className="calc_description">
+                Calculate absolue return and annual return on your investments
+                using this ROI calculator.
+              </p>
+            </div>
+            <Link
+              onClick={scrollToTop}
+              to="/roi-calculator"
+              className="card_link"
+            ></Link>
+          </div>
+          <div className="calculator_card">
+            <div>
+              <FontAwesomeIcon
+                icon={faMagnifyingGlassDollar}
+                size="3x"
+                className="icon"
+              />
+              <h3>NPS Calculator</h3>
+              <p className="calc_description">
+                Calculate monthly pension and lumpsum amount to be received on
+                retirement with our online national pension scheme calculator.
+              </p>
+            </div>
+            <Link
+              onClick={scrollToTop}
+              to="/nps-calculator"
               className="card_link"
             ></Link>
           </div>

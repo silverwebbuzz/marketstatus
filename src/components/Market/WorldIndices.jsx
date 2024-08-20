@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import "../style/WorldIndices.css";
+ import "../../style/WorldIndices.css";
 
 const formatNumber = (num) => {
   if (!num && num !== 0) return "-";  // Handling undefined or null numbers
@@ -25,6 +25,7 @@ const WorldIndices = () => {
 
         const formattedData = result.data.map((item) => ({
           name: item[0].replace(/<\/?[^>]+(>|$)/g, "").trim(), // Extracting and cleaning the index name
+          countryImg: item[0].match(/src=['"]([^'"]+)['"]/)?.[1] || "", // Extracting the image URL
           price: parseFloat(item[1].replace(/<\/?[^>]+(>|$)/g, "").trim()), // Current price
           netChange: parseFloat(item[2].replace(/<\/?[^>]+(>|$)/g, "").trim()), // Net change
           oneDayPercent: parseFloat(item[3].replace(/<\/?[^>]+(>|$)/g, "").trim()), // 1-day percent change
@@ -49,12 +50,13 @@ const WorldIndices = () => {
   return (
     <section>
       <div className="container">
-          <h1>World Indices</h1>
+        <h1>World Indices</h1>
         <div className="table_ind">
-          <table className="World_indices_table" >
-            <thead className="World_indices_thead" >
+          <table className="World_indices_table">
+            <thead className="World_indices_thead">
               <tr className="World_indices_thead_tr">
                 <th>Index</th>
+                {/* {/ <th>Country</th> /} */}
                 <th>Price</th>
                 <th>Change</th>
                 <th>% Change</th>
@@ -66,7 +68,12 @@ const WorldIndices = () => {
             <tbody className="World_indices_tbody">
               {indicesData.map((item, index) => (
                 <tr className="World_indices_tbody_tr" key={index}>
+                  <div >
+                  <td className="padding_right">
+                    {item.countryImg && <img src={item.countryImg} alt="Country flag" style={{ width: '20px', height: 'auto' }} />}
+                  </td>
                   <td>{item.name}</td>
+                  </div>
                   <td>{formatNumber(item.price)}</td>
                   <td style={{ color: item.netChange > 0 ? 'green' : 'red' }}>
                     {formatNumber(item.netChange)}
