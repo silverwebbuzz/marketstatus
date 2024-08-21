@@ -43,9 +43,27 @@ import ELSS from './components/MutualFunds/ELSS';
 import Forex from './components/Market/Forex';
 import Personal_loan from './components/Loans/Personal_loan';
 import Home_loan from './components/Loans/Home_loan';
-import Car_loan from './components/Loans/Car_loan';
 import General_Insurance from './components/Insurance/General_Insurance';
 import WorldIndices from './components/Market/WorldIndices';
+import Life_Insurance from './components/Insurance/Life_Insurance';
+import Health_Insurance from './components/Insurance/Health_Insurance';
+import Car_Insurance from './components/Insurance/Car_Insurance';
+import Bike_Insurance from './components/Insurance/Bike_Insurance';
+import Term_Insurance from './components/Insurance/Term_Insurance';
+import Travel_Insurance from './components/Insurance/Travel_Insurance';
+import Business_Insurance from './components/Insurance/Business_Insurance';
+import Pet_Insurance from './components/Insurance/Pet_Insurance';
+import Fire_Insurance from './components/Insurance/Fire_Insurance';
+import Gold_loan from './components/Loans/Gold_loan';
+import Auto_loan from './components/Loans/Auto_loan';
+import Business_loan from './components/Loans/Business_loan';
+import Mortgage_loan from './components/Loans/Mortgage_loan';
+import Student_loan from './components/Loans/Student_loan';
+import Business_news from './components/News/Business_news';
+import Economy_news from './components/News/Economy_news';
+import Political_news from './components/News/Political_news';
+import World_news from './components/News/World_news';
+import Insurance_companies from './components/FinanceCompanies/Insurance_companies';
 
 const usePageTracking = () => {
   const location = useLocation();
@@ -143,10 +161,31 @@ const AppContent = () => {
           path="/Insurance/general-insurance"
           element={<General_Insurance />}
         />
-        <Route path="Loans/personal_loan" element={<Personal_loan />} />
-        <Route path="Loans/home_loan" element={<Home_loan />} />
-        <Route path="Loans/car_loan" element={<Car_loan />} />
+        <Route path="/loans/personal_loan" element={<Personal_loan />} />
+        <Route path="/loans/home_loan" element={<Home_loan />} />
         <Route path="market/worldindices" element={<WorldIndices />} />
+        <Route path="/Insurance/life-insurance" element={<Life_Insurance />} />
+        <Route path="/Insurance/health-insurance" element={<Health_Insurance />} />
+        <Route path="/Insurance/car-insurance" element={<Car_Insurance />} />
+        <Route path="/Insurance/bike-insurance" element={<Bike_Insurance />} />
+        <Route path="/Insurance/term-insurance" element={<Term_Insurance/>} />
+        <Route path="/Insurance/travel-insurance" element={<Travel_Insurance/>} />
+        <Route path="/Insurance/business-insurance" element={<Business_Insurance/>} />
+        <Route path="/Insurance/pet-insurance" element={<Pet_Insurance/>} />
+        <Route path="/Insurance/fire-insurance" element={<Fire_Insurance/>} />
+        <Route path="/loans/gold_loan" element={<Gold_loan/>} />
+        <Route path="/loans/auto_loan" element={<Auto_loan/>} />
+        <Route path="/loans/business_loan" element={<Business_loan/>} />
+        <Route path="/loans/mortgage_loan" element={<Mortgage_loan/>} />
+        <Route path="/loans/student_loan" element={<Student_loan/>} />
+        <Route path="/news/business_news" element={<Business_news/>} />
+        <Route path="/news/economy_news" element={<Economy_news/>} />
+        <Route path="/news/political_news" element={<Political_news/>} />
+        <Route path="/news/world_news" element={<World_news/>} />
+        <Route path="/finance-companies/insurance-companies" element={<Insurance_companies/>} />
+        
+
+
       </Routes>
       <Footer />
     </>

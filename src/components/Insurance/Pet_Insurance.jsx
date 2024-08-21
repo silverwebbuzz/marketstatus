@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Car_loan() {
+function Pet_Insurance() {
   return (
     <div>
       <h3>Coming soon !! 😄</h3>
@@ -8,4 +8,4 @@ function Car_loan() {
   )
 }
 
-export default Car_loan
+export default Pet_Insurance

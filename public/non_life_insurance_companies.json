@@ -1,0 +1,373 @@
+[
+    {
+        "id": 1,
+        "company": "Life Insurance Corporation of India",
+        "sector": "Govt.",
+        "headquarters": "Mumbai",
+        "founded": "1956"
+    },
+    {
+        "id": 2,
+        "company": "HDFC Life Insurance Co. Ltd.",
+        "sector": "Private",
+        "headquarters": "Mumbai",
+        "founded": "2000"
+    },
+    {
+        "id": 3,
+        "company": "Max Life Insurance Co. Ltd.",
+        "sector": "Private",
+        "headquarters": "Delhi",
+        "founded": "2000"
+    },
+    {
+        "id": 4,
+        "company": "ICICI Prudential Life Insurance Co. Ltd.",
+        "sector": "Private",
+        "headquarters": "Mumbai",
+        "founded": "2000"
+    },
+    {
+        "id": 5,
+        "company": "Kotak Mahindra Life Insurance Co. Ltd.",
+        "sector": "Private",
+        "headquarters": "Mumbai",
+        "founded": "2001"
+    },
+    {
+        "id": 6,
+        "company": "Aditya Birla Sun Life Insurance Co. Ltd.",
+        "sector": "Private",
+        "headquarters": "Mumbai",
+        "founded": "2001"
+    },
+    {
+        "id": 7,
+        "company": "TATA AIA Life Insurance Co. Ltd.",
+        "sector": "Private",
+        "headquarters": "Mumbai",
+        "founded": "2001"
+    },
+    {
+        "id": 8,
+        "company": "SBI Life Insurance Co. Ltd.",
+        "sector": "Public",
+        "headquarters": "Mumbai",
+        "founded": "2001"
+    },
+    {
+        "id": 9,
+        "company": "Bajaj Allianz Life Insurance Co. Ltd.",
+        "sector": "Private",
+        "headquarters": "Pune",
+        "founded": "2001"
+    },
+    {
+        "id": 10,
+        "company": "PNB MetLife India Insurance Co. Ltd.",
+        "sector": "Private",
+        "headquarters": "Mumbai",
+        "founded": "2001"
+    },
+    {
+        "id": 11,
+        "company": "Reliance Nippon Life Insurance Company",
+        "sector": "Private",
+        "headquarters": "Mumbai",
+        "founded": "2001"
+    },
+    {
+        "id": 12,
+        "company": "Aviva Life Insurance Company India Ltd.",
+        "sector": "Private",
+        "headquarters": "Gurugram",
+        "founded": "2002"
+    },
+    {
+        "id": 13,
+        "company": "Sahara India Life Insurance Co. Ltd.",
+        "sector": "Private",
+        "headquarters": "Lucknow",
+        "founded": "2004"
+    },
+    {
+        "id": 14,
+        "company": "Shriram Life Insurance Co. Ltd.",
+        "sector": "Private",
+        "headquarters": "Hyderabad",
+        "founded": "2005"
+    },
+    {
+        "id": 15,
+        "company": "Bharti AXA Life Insurance Co. Ltd.",
+        "sector": "Private",
+        "headquarters": "Mumbai",
+        "founded": "2006"
+    },
+    {
+        "id": 16,
+        "company": "Future Generali India Life Insurance Co. Ltd.",
+        "sector": "Private",
+        "headquarters": "Mumbai",
+        "founded": "2007"
+    },
+    {
+        "id": 17,
+        "company": "Ageas Federal Life Insurance Co. Ltd.",
+        "sector": "Private",
+        "headquarters": "Mumbai",
+        "founded": "2008"
+    },
+    {
+        "id": 18,
+        "company": "Canara HSBC Life Insurance Co. Ltd.",
+        "sector": "Private",
+        "headquarters": "Gurugram",
+        "founded": "2008"
+    },
+    {
+        "id": 19,
+        "company": "Bandhan Life Insurance Co. Ltd.",
+        "sector": "Private",
+        "headquarters": "Mumbai",
+        "founded": "2008"
+    },
+    {
+        "id": 20,
+        "company": "Pramerica Life Insurance Co. Ltd.",
+        "sector": "Private",
+        "headquarters": "Mumbai",
+        "founded": "2008"
+    },
+    {
+        "id": 21,
+        "company": "Star Union Dai-ichi Life Insurance",
+        "sector": "Private",
+        "headquarters": "Mumbai",
+        "founded": "2008"
+    },
+    {
+        "id": 22,
+        "company": "IndiaFirst Life Insurance Co. Ltd.",
+        "sector": "Private",
+        "headquarters": "Mumbai",
+        "founded": "2009"
+    },
+    {
+        "id": 23,
+        "company": "Edelweiss Tokio Life Insurance Co. Ltd.",
+        "sector": "Private",
+        "headquarters": "Mumbai",
+        "founded": "2011"
+    },
+    {
+        "id": 24,
+        "company": "Credit Access Life Insurance Limited",
+        "sector": "Private",
+        "headquarters": "Bengaluru",
+        "founded": "2023"
+    },
+    {
+        "id": 25,
+        "company": "Acko Life Insurance Limited",
+        "sector": "Private",
+        "headquarters": "Bengaluru",
+        "founded": "2023"
+    },
+    {
+        "id": 26,
+        "company": "Go Digit Life Insurance Limited",
+        "sector": "Private",
+        "headquarters": "Pune",
+        "founded": "2023"
+    },
+    {
+        "id": 27,
+        "company": "Acko General Insurance",
+        "sector": "Private",
+        "headquarters": "Mumbai",
+        "founded": "2016"
+    },
+    {
+        "id": 28,
+        "company": "Aditya Birla Health Insurance",
+        "sector": "Private",
+        "headquarters": "Mumbai",
+        "founded": "2015"
+    },
+    {
+        "id": 29,
+        "company": "Agriculture Insurance Company of India",
+        "sector": "Govt.",
+        "headquarters": "New Delhi",
+        "founded": "2002"
+    },
+    {
+        "id": 30,
+        "company": "Bajaj Allianz General Insurance",
+        "sector": "Private",
+        "headquarters": "Pune",
+        "founded": "2001"
+    },
+    {
+        "id": 31,
+        "company": "Cholamandalam MS General Insurance",
+        "sector": "Private",
+        "headquarters": "Chennai",
+        "founded": "2001"
+    },
+    {
+        "id": 32,
+        "company": "Manipal Cigna Health Insurance Company Limited",
+        "sector": "Private",
+        "headquarters": "Mumbai",
+        "founded": "2014"
+    },
+    {
+        "id": 33,
+        "company": "Navi General Insurance Limited",
+        "sector": "Private",
+        "headquarters": "Bengaluru",
+        "founded": "2016"
+    },
+    {
+        "id": 34,
+        "company": "Go Digit Insurance",
+        "sector": "Private",
+        "headquarters": "Pune",
+        "founded": "2017"
+    },
+    {
+        "id": 35,
+        "company": "Zuno General Insurance",
+        "sector": "Private",
+        "headquarters": "Mumbai",
+        "founded": "2017"
+    },
+    {
+        "id": 36,
+        "company": "Export Credit Guarantee Corporation of India",
+        "sector": "Govt.",
+        "headquarters": "Mumbai",
+        "founded": "1957"
+    },
+    {
+        "id": 37,
+        "company": "Future Generali India Insurance",
+        "sector": "Private",
+        "headquarters": "Mumbai",
+        "founded": "2007"
+    },
+    {
+        "id": 38,
+        "company": "HDFC ERGO General Insurance Company",
+        "sector": "Private",
+        "headquarters": "Mumbai",
+        "founded": "2002"
+    },
+    {
+        "id": 39,
+        "company": "ICICI Lombard",
+        "sector": "Private",
+        "headquarters": "Mumbai",
+        "founded": "2001"
+    },
+    {
+        "id": 40,
+        "company": "IFFCO TOKIO General Insurance",
+        "sector": "Private",
+        "headquarters": "Gurugram",
+        "founded": "2000"
+    },
+    {
+        "id": 41,
+        "company": "Kotak Mahindra General Insurance",
+        "sector": "Private",
+        "headquarters": "Mumbai",
+        "founded": "2015"
+    },
+    {
+        "id": 42,
+        "company": "Liberty General Insurance",
+        "sector": "Private",
+        "headquarters": "Mumbai",
+        "founded": "2013"
+    },
+    {
+        "id": 43,
+        "company": "Magma HDI General Insurance",
+        "sector": "Private",
+        "headquarters": "Kolkata",
+        "founded": "2013"
+    },
+    {
+        "id": 44,
+        "company": "New India Assurance",
+        "sector": "Govt.",
+        "headquarters": "Mumbai",
+        "founded": "1919"
+    },
+    {
+        "id": 45,
+        "company": "National Insurance Company Limited",
+        "sector": "Govt.",
+        "headquarters": "Kolkata",
+        "founded": "1906"
+    },
+    {
+        "id": 46,
+        "company": "Oriental Insurance Company",
+        "sector": "Govt.",
+        "headquarters": "New Delhi",
+        "founded": "1947"
+    },
+    {
+        "id": 47,
+        "company": "Reliance General Insurance",
+        "sector": "Private",
+        "headquarters": "Mumbai",
+        "founded": "2000"
+    },
+    {
+        "id": 48,
+        "company": "Royal Sundaram General Insurance",
+        "sector": "Private",
+        "headquarters": "Chennai",
+        "founded": "2000"
+    },
+    {
+        "id": 49,
+        "company": "SBI General Insurance",
+        "sector": "Public",
+        "headquarters": "Mumbai",
+        "founded": "2010"
+    },
+    {
+        "id": 50,
+        "company": "Shriram General Insurance",
+        "sector": "Private",
+        "headquarters": "Jaipur",
+        "founded": "2008"
+    },
+    {
+        "id": 51,
+        "company": "Tata AIG General Insurance",
+        "sector": "Private",
+        "headquarters": "Mumbai",
+        "founded": "2001"
+    },
+    {
+        "id": 52,
+        "company": "United India Insurance Company",
+        "sector": "Govt.",
+        "headquarters": "Chennai",
+        "founded": "1938"
+    },
+    {
+        "id": 53,
+        "company": "Universal Sompo General Insurance",
+        "sector": "Private",
+        "headquarters": "Mumbai",
+        "founded": "2007"
+    }
+]

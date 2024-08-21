@@ -1,19 +1,11 @@
-td.padding_right {
-    padding-right: 0;
-    padding-top: 0;
-    padding-bottom: 0;
- }
+
  
- .World_indices_tbody_tr div {
+ .padding_right {
     align-items: center;
     display: flex;
  }
- 
- .World_indices_tbody_tr div td {
-    text-align: left !important;
-    line-height: 1.5;
- }
- 
- td.padding_right img {
+
+ .padding_right img {
     display: block;
+    margin-right: 15px;
  }

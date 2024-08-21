@@ -68,12 +68,12 @@ const WorldIndices = () => {
             <tbody className="World_indices_tbody">
               {indicesData.map((item, index) => (
                 <tr className="World_indices_tbody_tr" key={index}>
-                  <div >
-                  <td className="padding_right">
+                  <td >
+                  <div className="padding_right">
                     {item.countryImg && <img src={item.countryImg} alt="Country flag" style={{ width: '20px', height: 'auto' }} />}
-                  </td>
-                  <td>{item.name}</td>
+                    <p>{item.name}</p>
                   </div>
+                  </td>
                   <td>{formatNumber(item.price)}</td>
                   <td style={{ color: item.netChange > 0 ? 'green' : 'red' }}>
                     {formatNumber(item.netChange)}

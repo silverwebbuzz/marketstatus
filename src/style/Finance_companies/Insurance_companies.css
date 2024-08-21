@@ -1,0 +1,21 @@
+
+
+tr.Insurance_com_td td:first-child {
+    width: 65px;
+}
+
+tr.Insurance_com_tr th:first-child {
+    width: 65px;}
+
+
+
+@media (max-width: 767px){
+
+tr.Insurance_com_td td:first-child {
+    width: 26px;
+}
+
+tr.Insurance_com_tr th:first-child {
+    width: 26px;
+}
+}
