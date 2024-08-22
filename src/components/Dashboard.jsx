@@ -90,12 +90,8 @@ const Dashboard = () => {
         <div>
           <ELSS />
         </div>
-        <section className='calc_card_dash'>
-        <div>
-          <CalculatorCard/>
-          </div>
-        </section>
       </section>
+      <CalculatorCard/>  
     </>
   );
 };
