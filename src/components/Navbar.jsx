@@ -201,7 +201,7 @@ const Navbar = () => {
                     <li className='dropmenu-li'><NavLink to="/loans/student_loan">Student Loan</NavLink></li>
                   </ul>
                 </li>
-                <li className='dropdown'>
+                {/* <li className='dropdown'>
                   News
                   <FontAwesomeIcon className="faCaretDown" icon={faCaretDown} />
                   <ul className='dropdown-menu'>
@@ -210,7 +210,7 @@ const Navbar = () => {
                     <li className='dropmenu-li'><NavLink to="/news/economy_news">Economy News</NavLink></li>
                     <li className='dropmenu-li'><NavLink to="/news/world_news">World News</NavLink></li>
                   </ul>
-                </li>
+                </li> */}
                 <li className="dropdown">
                   Calculators
                   <FontAwesomeIcon
@@ -226,7 +226,7 @@ const Navbar = () => {
                           setShowMenu(!showMenu);
                         }}
                       >
-                        SPI Calculator
+                        SIP Calculator
                       </NavLink>
                     </li>
                     <li className="dropmenu-li">

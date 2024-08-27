@@ -1,0 +1,116 @@
+.insurance-page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.insurance-page h1 {
+    color: #0056b3;
+    text-align: center;
+}
+
+section.details-section h2 {
+    color: #0056b3;
+    text-align: center;
+}
+
+.intro-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 77px;
+}
+
+.intro-image {
+    width: 25%;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.intro-text {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.details-section {
+    margin-bottom: 30px;
+}
+
+.insurance-list {
+    padding: 20px 20px 0px 20px;
+    gap: 30px;
+}
+
+.insurance-list li {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.faq-section {
+    margin-top: 30px;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+}
+
+.faq-item h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.faq-item p {
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+@media (max-width: 767px) {
+
+    .insurance-page h1 {
+        font-size: 25px;
+    }
+
+    .intro-image {
+        width: 100%;
+        text-align: center;
+    }
+
+    .intro-text {
+        font-size: 15px;
+        line-height: 1;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .intro-section {
+        display: inline-block;
+        align-items: center;
+        margin: 0;
+
+    }
+
+    .insurance-list li {
+        margin-bottom: 10px;
+        font-size: 16px;
+        padding: 5px;
+
+    }
+
+    .insurance-list {
+        display: inline-block;
+        margin: 0;
+    }
+
+    .faq-section {
+        margin: 0;
+    }
+
+    .details-section {
+        margin: -37px;
+    }
+
+    section.details-section h2 {
+        text-align: center;
+    }
+}
