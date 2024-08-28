@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
-
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -10,7 +9,6 @@ const Navbar = () => {
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
-
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -20,7 +18,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className='container'>
+    <div className="container">
       <div className="Nav_toggle">
         <button
           className="navbar-burger self-center xl:hidden"
@@ -76,129 +74,307 @@ const Navbar = () => {
           <div className="navbar">
             <nav className="Nav">
               <ul className="nav_ul">
-                <li className='dropdown'>
-                  <NavLink to="/" onClick={() => setShowMenu(!showMenu)}>Home</NavLink>
+                <li className="dropdown">
+                  <NavLink to="/" onClick={() => setShowMenu(!showMenu)}>
+                    Home
+                  </NavLink>
                 </li>
-                <li className='dropdown'>
+                <li className="dropdown">
                   Market
                   <FontAwesomeIcon className="faCaretDown" icon={faCaretDown} />
-                  <ul className='dropdown-menu'>
-                    <li className='dropmenu-li'>
-                      <NavLink to="/indices" onClick={() => setShowMenu(!showMenu)}>Indices</NavLink>
+                  <ul className="dropdown-menu">
+                    <li className="dropmenu-li">
+                      <NavLink
+                        to="/indices"
+                        onClick={() => setShowMenu(!showMenu)}
+                      >
+                        Indices
+                      </NavLink>
                     </li>
-                    <li className='dropmenu-li'>
-                      <NavLink to="/market/worldindices" onClick={() => setShowMenu(!showMenu)}>World Indices</NavLink>
+                    <li className="dropmenu-li">
+                      <NavLink
+                        to="/market/worldindices"
+                        onClick={() => setShowMenu(!showMenu)}
+                      >
+                        World Indices
+                      </NavLink>
                     </li>
-                    <li className='dropmenu-li'>
-                      <NavLink to="/futures-margins" onClick={() => setShowMenu(!showMenu)}>Future Margin</NavLink>
+                    <li className="dropmenu-li">
+                      <NavLink
+                        to="/futures-margins"
+                        onClick={() => setShowMenu(!showMenu)}
+                      >
+                        Future Margin
+                      </NavLink>
                     </li>
-                    <li className='dropmenu-li'>
-                      <NavLink to="/ipo" onClick={() => setShowMenu(!showMenu)}>IPO</NavLink>
+                    <li className="dropmenu-li">
+                      <NavLink to="/ipo" onClick={() => setShowMenu(!showMenu)}>
+                        IPO
+                      </NavLink>
                     </li>
-                    <li className='dropmenu-li'>
-                      <NavLink to="/market/cryptocurrency" onClick={() => setShowMenu(!showMenu)}>Crypto Currency</NavLink>
+                    <li className="dropmenu-li">
+                      <NavLink
+                        to="/market/cryptocurrency"
+                        onClick={() => setShowMenu(!showMenu)}
+                      >
+                        Crypto Currency
+                      </NavLink>
                     </li>
-                    <li className='dropmenu-li'>
-                      <NavLink to="/market/forex" onClick={() => setShowMenu(!showMenu)}>Forex</NavLink>
+                    <li className="dropmenu-li">
+                      <NavLink
+                        to="/market/forex"
+                        onClick={() => setShowMenu(!showMenu)}
+                      >
+                        Forex
+                      </NavLink>
                     </li>
                   </ul>
                 </li>
-                <li className='dropdown'>
+                <li className="dropdown">
                   Mutual Funds
                   <FontAwesomeIcon className="faCaretDown" icon={faCaretDown} />
-                  <ul className='dropdown-menu'>
-                    <li className='dropmenu-li'>
-                      <NavLink to="/mutual-funds/amc" onClick={() => setShowMenu(!showMenu)}>AMC Funds</NavLink>
+                  <ul className="dropdown-menu">
+                    <li className="dropmenu-li">
+                      <NavLink
+                        to="/mutual-funds/amc"
+                        onClick={() => setShowMenu(!showMenu)}
+                      >
+                        AMC Funds
+                      </NavLink>
                     </li>
-                    <li className='dropmenu-li'>
-                      <NavLink to="/mutual-funds/equity-fund" onClick={() => setShowMenu(!showMenu)}>Equity Fund</NavLink>
+                    <li className="dropmenu-li">
+                      <NavLink
+                        to="/mutual-funds/equity-fund"
+                        onClick={() => setShowMenu(!showMenu)}
+                      >
+                        Equity Fund
+                      </NavLink>
                     </li>
-                    <li className='dropmenu-li'>
-                      <NavLink to="/mutual-funds/debt-fund" onClick={() => setShowMenu(!showMenu)}>Debt Fund</NavLink>
+                    <li className="dropmenu-li">
+                      <NavLink
+                        to="/mutual-funds/debt-fund"
+                        onClick={() => setShowMenu(!showMenu)}
+                      >
+                        Debt Fund
+                      </NavLink>
                     </li>
-                    <li className='dropmenu-li'>
-                      <NavLink to="/mutual-funds/hybrid-fund" onClick={() => setShowMenu(!showMenu)}>Hybrid Fund</NavLink>
+                    <li className="dropmenu-li">
+                      <NavLink
+                        to="/mutual-funds/hybrid-fund"
+                        onClick={() => setShowMenu(!showMenu)}
+                      >
+                        Hybrid Fund
+                      </NavLink>
                     </li>
-                    <li className='dropmenu-li'>
-                      <NavLink to="/mutual-funds/index-fund" onClick={() => setShowMenu(!showMenu)}>Index Fund</NavLink>
+                    <li className="dropmenu-li">
+                      <NavLink
+                        to="/mutual-funds/index-fund"
+                        onClick={() => setShowMenu(!showMenu)}
+                      >
+                        Index Fund
+                      </NavLink>
                     </li>
-                    <li className='dropmenu-li'>
-                      <NavLink to="/mutual-funds/elss-fund" onClick={() => setShowMenu(!showMenu)}>ELSS Fund</NavLink>
+                    <li className="dropmenu-li">
+                      <NavLink
+                        to="/mutual-funds/elss-fund"
+                        onClick={() => setShowMenu(!showMenu)}
+                      >
+                        ELSS Fund
+                      </NavLink>
                     </li>
                   </ul>
                 </li>
-                <li className='dropdown'>
+                <li className="dropdown">
                   Insurance
                   <FontAwesomeIcon className="faCaretDown" icon={faCaretDown} />
-                  <ul className='dropdown-menu'>
-                    <li className='dropmenu-li'><NavLink to="/Insurance/general-insurance">General Insurance</NavLink></li>
-                    <li className='dropmenu-li'><NavLink to="/Insurance/life-insurance">Life Insurance</NavLink></li>
-                    <li className='dropmenu-li'><NavLink to="/Insurance/health-insurance">Health Insurance</NavLink></li>
-                    <li className='dropmenu-li'><NavLink to="/Insurance/car-insurance">Car Insurance</NavLink></li>
-                    <li className='dropmenu-li'><NavLink to="/Insurance/bike-insurance">Bike Insurance</NavLink></li>
-                    <li className='dropmenu-li'><NavLink to="/Insurance/term-insurance">Term Insurance</NavLink></li>
-                    <li className='dropmenu-li'><NavLink to="/Insurance/travel-insurance">Travel Insurance</NavLink></li>
-                    <li className='dropmenu-li'><NavLink to="/Insurance/business-insurance">Business Insurance</NavLink></li>
-                    <li className='dropmenu-li'><NavLink to="/Insurance/pet-insurance">Pet Insurance</NavLink></li>
-                    <li className='dropmenu-li'><NavLink to="/Insurance/fire-insurance">Fire Insurance</NavLink></li>
+                  <ul className="dropdown-menu">
+                    <li className="dropmenu-li">
+                      <NavLink to="/Insurance/general-insurance">
+                        General Insurance
+                      </NavLink>
+                    </li>
+                    <li className="dropmenu-li">
+                      <NavLink to="/Insurance/life-insurance">
+                        Life Insurance
+                      </NavLink>
+                    </li>
+                    <li className="dropmenu-li">
+                      <NavLink to="/Insurance/health-insurance">
+                        Health Insurance
+                      </NavLink>
+                    </li>
+                    <li className="dropmenu-li">
+                      <NavLink to="/Insurance/car-insurance">
+                        Car Insurance
+                      </NavLink>
+                    </li>
+                    <li className="dropmenu-li">
+                      <NavLink to="/Insurance/bike-insurance">
+                        Bike Insurance
+                      </NavLink>
+                    </li>
+                    <li className="dropmenu-li">
+                      <NavLink to="/Insurance/term-insurance">
+                        Term Insurance
+                      </NavLink>
+                    </li>
+                    <li className="dropmenu-li">
+                      <NavLink to="/Insurance/travel-insurance">
+                        Travel Insurance
+                      </NavLink>
+                    </li>
+                    <li className="dropmenu-li">
+                      <NavLink to="/Insurance/business-insurance">
+                        Business Insurance
+                      </NavLink>
+                    </li>
+                    <li className="dropmenu-li">
+                      <NavLink to="/Insurance/pet-insurance">
+                        Pet Insurance
+                      </NavLink>
+                    </li>
+                    <li className="dropmenu-li">
+                      <NavLink to="/Insurance/fire-insurance">
+                        Fire Insurance
+                      </NavLink>
+                    </li>
                   </ul>
                 </li>
-                <li className='dropdown'>
+                <li className="dropdown">
                   Finance Institutes
                   <FontAwesomeIcon className="faCaretDown" icon={faCaretDown} />
-                  <ul className='dropdown-menu'>
-                    <li className='dropmenu-li'>
-                      <NavLink to="/finance-companies/insurance-companies" onClick={() => setShowMenu(!showMenu)}>Insurance Companies</NavLink>
+                  <ul className="dropdown-menu">
+                    <li className="dropmenu-li">
+                      <NavLink
+                        to="/finance-companies/insurance-companies"
+                        onClick={() => setShowMenu(!showMenu)}
+                      >
+                        Insurance Companies
+                      </NavLink>
                     </li>
-                    <li className='dropmenu-li'>
-                      <NavLink to="/finance-companies/broker-companies" onClick={() => setShowMenu(!showMenu)}>Broker Companies list</NavLink>
+                    <li className="dropmenu-li">
+                      <NavLink
+                        to="/finance-companies/broker-companies"
+                        onClick={() => setShowMenu(!showMenu)}
+                      >
+                        Broker Companies list
+                      </NavLink>
                     </li>
-                    <li className='dropmenu-li'>
-                      <NavLink to="/finance-companies/crypto-currency-companies" onClick={() => setShowMenu(!showMenu)}>Crypto Currency Companies</NavLink>
+                    <li className="dropmenu-li">
+                      <NavLink
+                        to="/finance-companies/fintech-company"
+                        onClick={() => setShowMenu(!showMenu)}
+                      >
+                        Fintech Companies list
+                      </NavLink>
                     </li>
-                    <li className='dropmenu-li'>
-                      <NavLink to="/finance-companies/fintech-company" onClick={() => setShowMenu(!showMenu)}>Fintech Companies list</NavLink>
+                    <li className="dropmenu-li">
+                      <NavLink
+                        to="/finance-companies/crypto-currency-companies"
+                        onClick={() => setShowMenu(!showMenu)}
+                      >
+                        Crypto Currency Companies
+                      </NavLink>
                     </li>
-                    <li className='dropmenu-li'>
-                      <NavLink to="/finance-companies/bank" onClick={() => setShowMenu(!showMenu)}>Banks</NavLink>
+                    <li className="dropmenu-li">
+                      <NavLink
+                        to="/finance-companies/bank"
+                        onClick={() => setShowMenu(!showMenu)}
+                      >
+                        Banks
+                      </NavLink>
                     </li>
-                    <li className='dropmenu-li'>
-                      <NavLink to="/finance-companies/small-finance-companies" onClick={() => setShowMenu(!showMenu)}>Small Finance Companies</NavLink>
+                    <li className="dropmenu-li">
+                      <NavLink
+                        to="/finance-companies/small-finance-companies"
+                        onClick={() => setShowMenu(!showMenu)}
+                      >
+                        Small Finance Companies
+                      </NavLink>
                     </li>
-                    <li className='dropmenu-li'>
-                      <NavLink to="/finance-companies/investment-management-companies" onClick={() => setShowMenu(!showMenu)}>Investment Management Companies</NavLink>
+                    <li className="dropmenu-li">
+                      <NavLink
+                        to="/finance-companies/investment-management-companies"
+                        onClick={() => setShowMenu(!showMenu)}
+                      >
+                        Investment Management Companies
+                      </NavLink>
                     </li>
-                    <li className='dropmenu-li'>
-                      <NavLink to="/finance-companies/analysis-companies" onClick={() => setShowMenu(!showMenu)}>Analysis Companies</NavLink>
+                    <li className="dropmenu-li">
+                      <NavLink
+                        to="/finance-companies/analysis-companies"
+                        onClick={() => setShowMenu(!showMenu)}
+                      >
+                        Analysis Companies
+                      </NavLink>
                     </li>
-                    <li className='dropmenu-li'>
-                      <NavLink to="/finance-companies/funding-companies-list" onClick={() => setShowMenu(!showMenu)}>Funding Companies list</NavLink>
+                    <li className="dropmenu-li">
+                      <NavLink
+                        to="/finance-companies/funding-companies-list"
+                        onClick={() => setShowMenu(!showMenu)}
+                      >
+                        Funding Companies list
+                      </NavLink>
                     </li>
-                    <li className='dropmenu-li'>
-                      <NavLink to="/finance-companies/CA-companies" onClick={() => setShowMenu(!showMenu)}>CA Companies</NavLink>
+                    <li className="dropmenu-li">
+                      <NavLink
+                        to="/finance-companies/CA-companies"
+                        onClick={() => setShowMenu(!showMenu)}
+                      >
+                        CA Companies
+                      </NavLink>
                     </li>
-                    <li className='dropmenu-li'>
-                      <NavLink to="finance-companies/CS-companies" onClick={() => setShowMenu(!showMenu)}>CS Companies</NavLink>
+                    <li className="dropmenu-li">
+                      <NavLink
+                        to="finance-companies/CS-companies"
+                        onClick={() => setShowMenu(!showMenu)}
+                      >
+                        CS Companies
+                      </NavLink>
                     </li>
-                    <li className='dropmenu-li'>
-                      <NavLink to="/finance-companies/international-money-transfer-companies" onClick={() => setShowMenu(!showMenu)}>International Money Transfer Companies</NavLink>
+                    <li className="dropmenu-li">
+                      <NavLink
+                        to="/finance-companies/international-money-transfer-companies"
+                        onClick={() => setShowMenu(!showMenu)}
+                      >
+                        International Money Transfer Companies
+                      </NavLink>
                     </li>
-                    <li className='dropmenu-li'>
-                      <NavLink to="/finance-companies/payment-gateways" onClick={() => setShowMenu(!showMenu)}>Payment Gateways </NavLink>
+                    <li className="dropmenu-li">
+                      <NavLink
+                        to="/finance-companies/payment-gateways"
+                        onClick={() => setShowMenu(!showMenu)}
+                      >
+                        Payment Gateways{" "}
+                      </NavLink>
                     </li>
                   </ul>
                 </li>
-                <li className='dropdown'>
+                <li className="dropdown">
                   Loans
                   <FontAwesomeIcon className="faCaretDown" icon={faCaretDown} />
-                  <ul className='dropdown-menu'>
-                    <li className='dropmenu-li'><NavLink to="/loans/personal_loan">Personal Loan</NavLink></li>
-                    <li className='dropmenu-li'><NavLink to="/loans/home_loan">Home Loan</NavLink></li>
-                    <li className='dropmenu-li'><NavLink to="/loans/gold_loan">Gold Loan</NavLink></li>
-                    <li className='dropmenu-li'><NavLink to="/loans/auto_loan">Auto Loan</NavLink></li>
-                    <li className='dropmenu-li'><NavLink to="/loans/business_loan">Business Loan</NavLink></li>
-                    <li className='dropmenu-li'><NavLink to="/loans/mortgage_loan">Mortgage Loan</NavLink></li>
-                    <li className='dropmenu-li'><NavLink to="/loans/student_loan">Student Loan</NavLink></li>
+                  <ul className="dropdown-menu">
+                    <li className="dropmenu-li">
+                      <NavLink to="/loans/personal_loan">Personal Loan</NavLink>
+                    </li>
+                    <li className="dropmenu-li">
+                      <NavLink to="/loans/home_loan">Home Loan</NavLink>
+                    </li>
+                    <li className="dropmenu-li">
+                      <NavLink to="/loans/gold_loan">Gold Loan</NavLink>
+                    </li>
+                    <li className="dropmenu-li">
+                      <NavLink to="/loans/auto_loan">Auto Loan</NavLink>
+                    </li>
+                    <li className="dropmenu-li">
+                      <NavLink to="/loans/business_loan">Business Loan</NavLink>
+                    </li>
+                    <li className="dropmenu-li">
+                      <NavLink to="/loans/mortgage_loan">Mortgage Loan</NavLink>
+                    </li>
+                    <li className="dropmenu-li">
+                      <NavLink to="/loans/student_loan">Student Loan</NavLink>
+                    </li>
                   </ul>
                 </li>
                 {/* <li className='dropdown'>
@@ -213,10 +389,7 @@ const Navbar = () => {
                 </li> */}
                 <li className="dropdown">
                   Calculators
-                  <FontAwesomeIcon
-                    className="faCaretDown"
-                    icon={faCaretDown}
-                  />
+                  <FontAwesomeIcon className="faCaretDown" icon={faCaretDown} />
                   <ul className="dropdown-menu">
                     <li className="dropmenu-li">
                       <NavLink
@@ -359,7 +532,6 @@ const Navbar = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Navbar;
-

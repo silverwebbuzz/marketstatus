@@ -1,0 +1,162 @@
+[
+  {
+    "name": "Stripe",
+    "location": "San Francisco, CA",
+    "industry": "Payments",
+    "founded": "2010",
+    "ceo": "Patrick Collison",
+    "website": "https://stripe.com"
+  },
+  {
+    "name": "PayPal",
+    "location": "San Jose, CA",
+    "industry": "Payments",
+    "founded": "1998",
+    "ceo": "Dan Schulman",
+    "website": "https://www.paypal.com"
+  },
+  {
+    "name": "Square",
+    "location": "San Francisco, CA",
+    "industry": "Payments",
+    "founded": "2009",
+    "ceo": "Jack Dorsey",
+    "website": "https://squareup.com"
+  },
+  {
+    "name": "Robinhood",
+    "location": "Menlo Park, CA",
+    "industry": "Investing",
+    "founded": "2013",
+    "ceo": "Vladimir Tenev",
+    "website": "https://robinhood.com"
+  },
+  {
+    "name": "SoFi",
+    "location": "San Francisco, CA",
+    "industry": "Lending",
+    "founded": "2011",
+    "ceo": "Anthony Noto",
+    "website": "https://www.sofi.com"
+  },
+  {
+    "name": "Coinbase",
+    "location": "San Francisco, CA",
+    "industry": "Cryptocurrency",
+    "founded": "2012",
+    "ceo": "Brian Armstrong",
+    "website": "https://www.coinbase.com"
+  },
+  {
+    "name": "Revolut",
+    "location": "London, UK",
+    "industry": "Neobank",
+    "founded": "2015",
+    "ceo": "Nikolay Storonsky",
+    "website": "https://www.revolut.com"
+  },
+  {
+    "name": "Klarna",
+    "location": "Stockholm, Sweden",
+    "industry": "Payments",
+    "founded": "2005",
+    "ceo": "Sebastian Siemiatkowski",
+    "website": "https://www.klarna.com"
+  },
+  {
+    "name": "Chime",
+    "location": "San Francisco, CA",
+    "industry": "Neobank",
+    "founded": "2013",
+    "ceo": "Chris Britt",
+    "website": "https://www.chime.com"
+  },
+  {
+    "name": "Plaid",
+    "location": "San Francisco, CA",
+    "industry": "Data Aggregation",
+    "founded": "2013",
+    "ceo": "Zach Perret",
+    "website": "https://plaid.com"
+  },
+  {
+    "name": "N26",
+    "location": "Berlin, Germany",
+    "industry": "Neobank",
+    "founded": "2013",
+    "ceo": "Valentin Stalf",
+    "website": "https://n26.com"
+  },
+  {
+    "name": "Adyen",
+    "location": "Amsterdam, Netherlands",
+    "industry": "Payments",
+    "founded": "2006",
+    "ceo": "Pieter van der Does",
+    "website": "https://www.adyen.com"
+  },
+  {
+    "name": "TransferWise",
+    "location": "London, UK",
+    "industry": "Money Transfer",
+    "founded": "2010",
+    "ceo": "Kristo Käärmann",
+    "website": "https://wise.com"
+  },
+  {
+    "name": "Betterment",
+    "location": "New York, NY",
+    "industry": "Wealth Management",
+    "founded": "2008",
+    "ceo": "Sarah Levy",
+    "website": "https://www.betterment.com"
+  },
+  {
+    "name": "Wealthfront",
+    "location": "Palo Alto, CA",
+    "industry": "Wealth Management",
+    "founded": "2008",
+    "ceo": "David Fortunato",
+    "website": "https://www.wealthfront.com"
+  },
+  {
+    "name": "Lemonade",
+    "location": "New York, NY",
+    "industry": "Insurtech",
+    "founded": "2015",
+    "ceo": "Daniel Schreiber",
+    "website": "https://www.lemonade.com"
+  },
+  {
+    "name": "Ant Financial",
+    "location": "Hangzhou, China",
+    "industry": "Payments",
+    "founded": "2014",
+    "ceo": "Eric Jing",
+    "website": "https://www.antgroup.com"
+  },
+  {
+    "name": "Affirm",
+    "location": "San Francisco, CA",
+    "industry": "Lending",
+    "founded": "2012",
+    "ceo": "Max Levchin",
+    "website": "https://www.affirm.com"
+  },
+  {
+    "name": "Zopa",
+    "location": "London, UK",
+    "industry": "Lending",
+    "founded": "2005",
+    "ceo": "Jaidev Janardana",
+    "website": "https://www.zopa.com"
+  },
+  {
+    "name": "Brex",
+    "location": "San Francisco, CA",
+    "industry": "Corporate Cards",
+    "founded": "2017",
+    "ceo": "Henrique Dubugras",
+    "website": "https://www.brex.com"
+  }
+]
