@@ -91,7 +91,7 @@ const SimpleInterestCalculator = () => {
                       <TextField
                         type="number"
                         value={principal}
-                        onChange={(e) => setPrincipal(Number(e.target.value))}
+                        onChange={(e) => setPrincipal((e.target.value))}
                         size="small"
                       />
                       <Slider
@@ -109,7 +109,7 @@ const SimpleInterestCalculator = () => {
                       <TextField
                         type="number"
                         value={annualRate}
-                        onChange={(e) => setAnnualRate(Number(e.target.value))}
+                        onChange={(e) => setAnnualRate((e.target.value))}
                         size="small"
                       />
                       <Slider
@@ -127,7 +127,7 @@ const SimpleInterestCalculator = () => {
                       <TextField
                         type="number"
                         value={years}
-                        onChange={(e) => setYears(Number(e.target.value))}
+                        onChange={(e) => setYears((e.target.value))}
                         size="small"
                       />
                       <Slider

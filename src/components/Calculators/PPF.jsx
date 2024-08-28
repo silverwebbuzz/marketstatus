@@ -86,7 +86,7 @@ const PPF = () => {
                       <TextField
                         type="number"
                         value={ppfAmount}
-                        onChange={(e) => setPpfAmount(Number(e.target.value))}
+                        onChange={(e) => setPpfAmount((e.target.value))}
                         size="small"
                       />
                       <Slider
@@ -105,7 +105,7 @@ const PPF = () => {
                       <TextField
                         type="number"
                         value={ppfTenure}
-                        onChange={(e) => setPpfTenure(Number(e.target.value))}
+                        onChange={(e) => setPpfTenure((e.target.value))}
                         size="small"
                       />
                       <Slider

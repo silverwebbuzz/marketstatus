@@ -95,7 +95,7 @@ const LumpsumCalculator = () => {
                   <TextField
                     type="number"
                     value={lumpsumAmount}
-                    onChange={(e) => setLumpsumAmount(Number(e.target.value))}
+                    onChange={(e) => setLumpsumAmount((e.target.value))}
                     size="small"
                   />
                   <Slider
@@ -113,7 +113,7 @@ const LumpsumCalculator = () => {
                   <TextField
                     type="number"
                     value={returnRate}
-                    onChange={(e) => setReturnRate(Number(e.target.value))}
+                    onChange={(e) => setReturnRate((e.target.value))}
                     size="small"
                   />
                   <Slider
@@ -131,7 +131,7 @@ const LumpsumCalculator = () => {
                   <TextField
                     type="number"
                     value={lumpsumTenure}
-                    onChange={(e) => setLoanTenure(Number(e.target.value))}
+                    onChange={(e) => setLoanTenure((e.target.value))}
                     size="small"
                   />
                   <Slider

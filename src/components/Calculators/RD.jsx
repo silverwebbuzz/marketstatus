@@ -94,7 +94,7 @@ const calculateRd = (monthlyInvestment, rate, tenureMonths) => {
                       <TextField
                         type="number"
                         value={rdAmount}
-                        onChange={(e) => setRdAmount(Number(e.target.value))}
+                        onChange={(e) => setRdAmount((e.target.value))}
                         size="small"
                       />
                       <Slider
@@ -112,7 +112,7 @@ const calculateRd = (monthlyInvestment, rate, tenureMonths) => {
                       <TextField
                         type="number"
                         value={returnRate}
-                        onChange={(e) => setReturnRate(Number(e.target.value))}
+                        onChange={(e) => setReturnRate((e.target.value))}
                         size="small"
                       />
                       <Slider
@@ -130,7 +130,7 @@ const calculateRd = (monthlyInvestment, rate, tenureMonths) => {
                       <TextField
                         type="number"
                         value={rdTenure}
-                        onChange={(e) => setRdTenure(Number(e.target.value))}
+                        onChange={(e) => setRdTenure((e.target.value))}
                         size="small"
                       />
                       <Slider

@@ -97,7 +97,7 @@ const EmiCalculator = () => {
                       <TextField
                         type="number"
                         value={emiAmount}
-                        onChange={(e) => setEmiAmount(Number(e.target.value))}
+                        onChange={(e) => setEmiAmount((e.target.value))}
                         size="small"
                       />
                       <Slider
@@ -115,7 +115,7 @@ const EmiCalculator = () => {
                       <TextField
                         type="number"
                         value={returnRate}
-                        onChange={(e) => setReturnRate(Number(e.target.value))}
+                        onChange={(e) => setReturnRate((e.target.value))}
                         size="small"
                       />
                       <Slider
@@ -133,7 +133,7 @@ const EmiCalculator = () => {
                       <TextField
                         type="number"
                         value={emiTenure}
-                        onChange={(e) => setLoanTenure(Number(e.target.value))}
+                        onChange={(e) => setLoanTenure((e.target.value))}
                         size="small"
                       />
                       <Slider

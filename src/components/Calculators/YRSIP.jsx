@@ -86,17 +86,17 @@ const YRSIP = () => {
                   <Box>
                     <div className="input-group">
                       <label>SIP Investment</label>
-                      <TextField type="number" value={sipAmount} onChange={(e) => setSipAmount(Number(e.target.value))} size="small"/>
+                      <TextField type="number" value={sipAmount} onChange={(e) => setSipAmount((e.target.value))} size="small"/>
                       <Slider value={sipAmount} onChange={handleSipAmountChange} min={100} max={1000000} step={100} marks={marksSipAmount} valueLabelDisplay="auto" />
                     </div>
                     <div className="input-group">
                       <label>Expected Return Rate (p.a)</label>
-                      <TextField type="number" value={returnRate} onChange={(e) => setReturnRate(Number(e.target.value))} size="small"/>
+                      <TextField type="number" value={returnRate} onChange={(e) => setReturnRate((e.target.value))} size="small"/>
                       <Slider value={returnRate} onChange={handleInterestRateChange} min={1} max={30} step={0.1} marks={marksInterestRate} valueLabelDisplay="auto" />
                     </div>
                     <div className="input-group">
                       <label>Time Period</label>
-                      <TextField type="number" value={sipTenure} onChange={(e) => setLoanTenure(Number(e.target.value))} size="small" />
+                      <TextField type="number" value={sipTenure} onChange={(e) => setLoanTenure((e.target.value))} size="small" />
                       <Slider value={sipTenure} onChange={handleLoanTenureChange} min={1} max={40} step={1} marks={marksLoanTenure} valueLabelDisplay="auto"/>
                     </div>
                   </Box>

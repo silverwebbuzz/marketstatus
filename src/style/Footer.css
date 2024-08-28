@@ -24,7 +24,7 @@ footer {
 .footer_top {
   display: flex;
   flex-flow: wrap;
-  border-bottom: 1px solid #ffffff;
+  border-bottom: 1px solid #ffff;
   align-items: center;
 }
 .footertop_left {
@@ -59,9 +59,10 @@ footer {
 }
 
 .footer_card {
-  margin: 20px;
-  width: calc(100% / 7 - 20px);
-  padding: 0px 0px;
+  margin: 10px;
+  width: calc(100% / 5 - 20px);
+
+  padding: 0px 20px;
 }
 
 .footer_card ul {
@@ -72,7 +73,7 @@ footer {
 li.footercard_links a {
   text-decoration: none;
   transition: all 0.4s ease;
-  color: #e0e0e0;
+  color: white;
   font-size: 14px;
 }
 li.social_icon a span {
@@ -85,7 +86,7 @@ li.footercard_links {
 }
 
 .footer_card h3 {
-  color: rgb(229, 229, 229);
+  color: white;
   margin: 0;
   border-bottom: 1px solid;
   width: fit-content;

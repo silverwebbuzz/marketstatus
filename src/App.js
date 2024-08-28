@@ -165,27 +165,36 @@ const AppContent = () => {
         <Route path="/loans/home_loan" element={<Home_loan />} />
         <Route path="market/worldindices" element={<WorldIndices />} />
         <Route path="/Insurance/life-insurance" element={<Life_Insurance />} />
-        <Route path="/Insurance/health-insurance" element={<Health_Insurance />} />
+        <Route
+          path="/Insurance/health-insurance"
+          element={<Health_Insurance />}
+        />
         <Route path="/Insurance/car-insurance" element={<Car_Insurance />} />
         <Route path="/Insurance/bike-insurance" element={<Bike_Insurance />} />
-        <Route path="/Insurance/term-insurance" element={<Term_Insurance/>} />
-        <Route path="/Insurance/travel-insurance" element={<Travel_Insurance/>} />
-        <Route path="/Insurance/business-insurance" element={<Business_Insurance/>} />
-        <Route path="/Insurance/pet-insurance" element={<Pet_Insurance/>} />
-        <Route path="/Insurance/fire-insurance" element={<Fire_Insurance/>} />
-        <Route path="/loans/gold_loan" element={<Gold_loan/>} />
-        <Route path="/loans/auto_loan" element={<Auto_loan/>} />
-        <Route path="/loans/business_loan" element={<Business_loan/>} />
-        <Route path="/loans/mortgage_loan" element={<Mortgage_loan/>} />
-        <Route path="/loans/student_loan" element={<Student_loan/>} />
-        <Route path="/news/business_news" element={<Business_news/>} />
-        <Route path="/news/economy_news" element={<Economy_news/>} />
-        <Route path="/news/political_news" element={<Political_news/>} />
-        <Route path="/news/world_news" element={<World_news/>} />
-        <Route path="/finance-companies/insurance-companies" element={<Insurance_companies/>} />
-        
-
-
+        <Route path="/Insurance/term-insurance" element={<Term_Insurance />} />
+        <Route
+          path="/Insurance/travel-insurance"
+          element={<Travel_Insurance />}
+        />
+        <Route
+          path="/Insurance/business-insurance"
+          element={<Business_Insurance />}
+        />
+        <Route path="/Insurance/pet-insurance" element={<Pet_Insurance />} />
+        <Route path="/Insurance/fire-insurance" element={<Fire_Insurance />} />
+        <Route path="/loans/gold_loan" element={<Gold_loan />} />
+        <Route path="/loans/auto_loan" element={<Auto_loan />} />
+        <Route path="/loans/business_loan" element={<Business_loan />} />
+        <Route path="/loans/mortgage_loan" element={<Mortgage_loan />} />
+        <Route path="/loans/student_loan" element={<Student_loan />} />
+        <Route path="/news/business_news" element={<Business_news />} />
+        <Route path="/news/economy_news" element={<Economy_news />} />
+        <Route path="/news/political_news" element={<Political_news />} />
+        <Route path="/news/world_news" element={<World_news />} />
+        <Route
+          path="/finance-companies/insurance-companies"
+          element={<Insurance_companies />}
+        />
       </Routes>
       <Footer />
     </>

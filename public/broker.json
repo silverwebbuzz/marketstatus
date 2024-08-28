@@ -1,0 +1,129 @@
+{"companies":[
+  {
+    "logo": "GROWW.jpeg",
+    "broker_name": "Groww",
+    "rating": "3.1",
+    "open_charge": "Free",
+    "maintenance_charge": "Free",
+    "delivery_brokerage": "0.05%",
+    "intraday_brokerage": "0.05%"
+  },
+  {
+    "logo": "ZERODHA.png",
+    "broker_name": "Zerodha",
+    "rating": "3.8",
+    "open_charge": "Free",
+    "maintenance_charge": "₹ 300",
+    "delivery_brokerage": "Zero",
+    "intraday_brokerage": "0.03%"
+  },
+  {
+    "logo": "ANGEL.jpg",
+    "broker_name": "Angel One",
+    "rating": "3.2",
+    "open_charge": "Free",
+    "maintenance_charge": "₹ 240",
+    "delivery_brokerage": "Zero",
+    "intraday_brokerage": "0.03%"
+  },
+  {
+    "logo": "UPSTOCK.jpg",
+    "broker_name": "Upstox",
+    "rating": "3.4",
+    "open_charge": "Free",
+    "maintenance_charge": "Free",
+    "delivery_brokerage": "2.5%",
+    "intraday_brokerage": "0.05%"
+  },
+  {
+    "logo": "ICICI.jpg",
+    "broker_name": "ICICI Direct",
+    "rating": "3.0",
+    "open_charge": "Free",
+    "maintenance_charge": "₹ 700",
+    "delivery_brokerage": "0.18%",
+    "intraday_brokerage": "0.018%"
+  },
+  {
+    "logo": "HDFC.jpg",
+    "broker_name": "HDFC Securities ",
+    "rating": "3.1",
+    "open_charge": "Free",
+    "maintenance_charge": "Free",
+    "delivery_brokerage": "0.15%",
+    "intraday_brokerage": "0.015%"
+  },
+  {
+    "logo": "KOTAK.jpg",
+    "broker_name": "Kotak Securities",
+    "rating": "3.1",
+    "open_charge": "Free",
+    "maintenance_charge": "₹ 600",
+    "delivery_brokerage": "Zero",
+    "intraday_brokerage": "Zero"
+  },
+  {
+    "logo": "MOTILAL.jpg",
+    "broker_name": "Motilal Oswal",
+    "rating": "3.8",
+    "open_charge": "Free",
+    "maintenance_charge": "₹ 199",
+    "delivery_brokerage": "0.20%",
+    "intraday_brokerage": "0.02%"
+  },
+  {
+    "logo": "PAYTM.jpg",
+    "broker_name": "Paytm Money",
+    "rating": "3.0",
+    "open_charge": "Free",
+    "maintenance_charge": "Free",
+    "delivery_brokerage": "₹ 20",
+    "intraday_brokerage": "0.05%"
+  },
+  {
+    "logo": "5PAISA.jpg",
+    "broker_name": "5paisa",
+    "rating": "3.0",
+    "open_charge": "Free",
+    "maintenance_charge": "₹ 300",
+    "delivery_brokerage": "₹ 10",
+    "intraday_brokerage": "₹ 10"
+  },
+  {
+    "logo": "IIFL.jpg",
+    "broker_name": "IIFL",
+    "rating": "2.8",
+    "open_charge": "Free",
+    "maintenance_charge": "₹ 250",
+    "delivery_brokerage": "Zero",
+    "intraday_brokerage": "₹ 20"
+  },
+  {
+    "logo": "AXIS.jpg",
+    "broker_name": "Axis Direct",
+    "rating": "3.3",
+    "open_charge": "₹ 499",
+    "maintenance_charge": "₹ 790",
+    "delivery_brokerage": "0.50%",
+    "intraday_brokerage": "0.05%"
+  },
+  {
+    "logo": "DHAN.jpg",
+    "broker_name": "Dhan",
+    "rating": "3.7",
+    "open_charge": "Free",
+    "maintenance_charge": "Free",
+    "delivery_brokerage": "Zero",
+    "intraday_brokerage": "0.03%"
+  },
+  {
+    "logo": "CHOICE.jpg",
+    "broker_name": "Choice",
+    "rating": "3.4",
+    "open_charge": "Free",
+    "maintenance_charge": "₹ 200",
+    "delivery_brokerage": "0.20%",
+    "intraday_brokerage": "0.02%"
+  }
+]
+}

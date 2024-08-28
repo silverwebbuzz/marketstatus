@@ -132,7 +132,7 @@ const FdCalculator = () => {
                       <TextField
                         type="number"
                         value={fdAmount}
-                        onChange={(e) => setFdAmount(Number(e.target.value))}
+                        onChange={(e) => setFdAmount((e.target.value))}
                         size="small"
                       />
                       <Slider
@@ -150,7 +150,7 @@ const FdCalculator = () => {
                       <TextField
                         type="number"
                         value={returnRate}
-                        onChange={(e) => setReturnRate(Number(e.target.value))}
+                        onChange={(e) => setReturnRate((e.target.value))}
                         size="small"
                       />
                       <Slider
@@ -168,7 +168,7 @@ const FdCalculator = () => {
                       <TextField
                         type="number"
                         value={fdTenure}
-                        onChange={(e) => setLoanTenure(Number(e.target.value))}
+                        onChange={(e) => setLoanTenure((e.target.value))}
                         size="small"
                       />
                       <Slider

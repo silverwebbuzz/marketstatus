@@ -96,7 +96,7 @@ const CAGR = () => {
                         type="number"
                         value={initialAmount}
                         onChange={(e) =>
-                          handleInitialAmountChange(e, Number(e.target.value))
+                          handleInitialAmountChange(e, (e.target.value))
                         }
                         size="small"
                       />
@@ -116,7 +116,7 @@ const CAGR = () => {
                         type="number"
                         value={finalAmount}
                         onChange={(e) =>
-                          handleFinalAmountChange(e, Number(e.target.value))
+                          handleFinalAmountChange(e, (e.target.value))
                         }
                         size="small"
                       />
@@ -136,7 +136,7 @@ const CAGR = () => {
                         type="number"
                         value={cagrTenure}
                         onChange={(e) =>
-                          handleTenureChange(e, Number(e.target.value))
+                          handleTenureChange(e, (e.target.value))
                         }
                         size="small"
                       />

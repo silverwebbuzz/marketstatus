@@ -97,7 +97,7 @@ const NPS = () => {
                         type="number"
                         value={investmentAmount}
                         onChange={(e) =>
-                          setInvestmentAmount(Number(e.target.value))
+                          setInvestmentAmount((e.target.value))
                         }
                         size="small"
                       />
@@ -116,7 +116,7 @@ const NPS = () => {
                       <TextField
                         type="number"
                         value={maturityValue}
-                        onChange={(e) => setMaturityValue(Number(e.target.value))}
+                        onChange={(e) => setMaturityValue((e.target.value))}
                         size="small"
                       />
                       <Slider
@@ -134,7 +134,7 @@ const NPS = () => {
                       <TextField
                         type="number"
                         value={duration}
-                        onChange={(e) => setDuration(Number(e.target.value))}
+                        onChange={(e) => setDuration((e.target.value))}
                         size="small"
                       />
                       <Slider

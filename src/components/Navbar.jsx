@@ -154,10 +154,10 @@ const Navbar = () => {
                       <NavLink to="/finance-companies/broker-companies" onClick={() => setShowMenu(!showMenu)}>Broker Companies list</NavLink>
                     </li>
                     <li className='dropmenu-li'>
-                      <NavLink to="/finance-companies/fintech-company" onClick={() => setShowMenu(!showMenu)}>Fintech Companies list</NavLink>
+                      <NavLink to="/finance-companies/crypto-currency-companies" onClick={() => setShowMenu(!showMenu)}>Crypto Currency Companies</NavLink>
                     </li>
                     <li className='dropmenu-li'>
-                      <NavLink to="/finance-companies/crypto-currency-companies" onClick={() => setShowMenu(!showMenu)}>Crypto Currency Companies</NavLink>
+                      <NavLink to="/finance-companies/fintech-company" onClick={() => setShowMenu(!showMenu)}>Fintech Companies list</NavLink>
                     </li>
                     <li className='dropmenu-li'>
                       <NavLink to="/finance-companies/bank" onClick={() => setShowMenu(!showMenu)}>Banks</NavLink>
