@@ -18,4 +18,10 @@ tr.Insurance_com_td td:first-child {
 tr.Insurance_com_tr th:first-child {
     width: 26px;
 }
+
+.fintech_companies p {
+    padding-bottom: 12px;
+    font-size: 12px;
+}
+
 }

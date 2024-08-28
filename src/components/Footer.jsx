@@ -18,7 +18,7 @@ function Footer() {
             <div className="footertop_left">
               <div className="footer_links">
                 <div className="footer_card">
-                  <h3>Calculater</h3>
+                  <h3>Calculators</h3>
                   <ul>
                     <li className="footercard_links">
                       <Link
@@ -131,6 +131,101 @@ function Footer() {
                   </ul>
                 </div>
                 <div className="footer_card">
+                  <h3>Insurance</h3>
+                  <ul>
+                    <li className="footercard_links">
+                      <Link
+                        className="footer_after_line"
+                        to="/Insurance/general-insurance"
+                        onClick={scrollToTop}
+                      >
+                        General Insurance
+                      </Link>
+                    </li>
+                    <li className="footercard_links">
+                      <Link
+                        className="footer_after_line"
+                        to="/Insurance/life-insurance"
+                        onClick={scrollToTop}
+                      >
+                        Life Insurance
+                      </Link>
+                    </li>
+                    <li className="footercard_links">
+                      <Link
+                        className="footer_after_line"
+                        to="/Insurance/health-insurance"
+                        onClick={scrollToTop}
+                      >
+                        Health Insurance
+                      </Link>
+                    </li>
+                    <li className="footercard_links">
+                      <Link
+                        className="footer_after_line"
+                        to="/Insurance/car-insurance"
+                        onClick={scrollToTop}
+                      >
+                        Car Insurance
+                      </Link>
+                    </li>
+                    <li className="footercard_links">
+                      <Link
+                        className="footer_after_line"
+                        to="/Insurance/bike-insurance"
+                        onClick={scrollToTop}
+                      >
+                       Bike Insurance
+                      </Link>
+                    </li>
+                    <li className="footercard_links">
+                      <Link
+                        className="footer_after_line"
+                        to="/Insurance/term-insurance"
+                        onClick={scrollToTop}
+                      >
+                        Term Insurance
+                      </Link>
+                    </li>
+                    <li className="footercard_links">
+                      <Link
+                        className="footer_after_line"
+                        to="/Insurance/travel-insurance"
+                        onClick={scrollToTop}
+                      >
+                        Travel Insurance
+                      </Link>
+                    </li>
+                    <li className="footercard_links">
+                      <Link
+                        className="footer_after_line"
+                        to="/Insurance/business-insurance"
+                        onClick={scrollToTop}
+                      >
+                        Business Insurance
+                      </Link>
+                    </li>
+                    <li className="footercard_links">
+                      <Link
+                        className="footer_after_line"
+                        to="/Insurance/pet-insurance"
+                        onClick={scrollToTop}
+                      >
+                        Pet Insurance
+                      </Link>
+                    </li>
+                    <li className="footercard_links">
+                      <Link
+                        className="footer_after_line"
+                        to="/Insurance/fire-insurance"
+                        onClick={scrollToTop}
+                      >
+                        Fire Insurance
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+                <div className="footer_card">
                   <h3>Loan</h3>
                   <ul>
                     <li className="footercard_links">
@@ -199,49 +294,6 @@ function Footer() {
                   </ul>
                 </div>
                 <div className="footer_card">
-                  <h3>Quick links</h3>
-                  <ul>
-                    <li className="footercard_links">
-                      <Link
-                        className="footer_after_line"
-                        to="/indices"
-                        onClick={scrollToTop}
-                      >
-                        {" "}
-                        Indices
-                      </Link>
-                    </li>
-                    <li className="footercard_links">
-                      <Link
-                        className="footer_after_line"
-                        to="/market/worldindices"
-                        onClick={scrollToTop}
-                      >
-                        World Indices
-                      </Link>
-                    </li>
-                    <li className="footercard_links">
-                      <Link
-                        className="footer_after_line"
-                        to="/futures-margins"
-                        onClick={scrollToTop}
-                      >
-                        {" "}
-                        Future Margin
-                      </Link>
-                    </li>
-                    <li className="footercard_links">
-                      <Link
-                        className="footer_after_line"
-                        to="/ipo"
-                        onClick={scrollToTop}
-                      >
-                        IPO
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-                <div className="footer_card">
                   <h3>Mutual Funds</h3>
                   <ul>
                     <li className="footercard_links">
@@ -292,6 +344,49 @@ function Footer() {
                   </ul>
                 </div>
                 <div className="footer_card">
+                  <h3>Quick links</h3>
+                  <ul>
+                    <li className="footercard_links">
+                      <Link
+                        className="footer_after_line"
+                        to="/indices"
+                        onClick={scrollToTop}
+                      >
+                        {" "}
+                        Indices
+                      </Link>
+                    </li>
+                    <li className="footercard_links">
+                      <Link
+                        className="footer_after_line"
+                        to="/market/worldindices"
+                        onClick={scrollToTop}
+                      >
+                        World Indices
+                      </Link>
+                    </li>
+                    <li className="footercard_links">
+                      <Link
+                        className="footer_after_line"
+                        to="/futures-margins"
+                        onClick={scrollToTop}
+                      >
+                        {" "}
+                        Future Margin
+                      </Link>
+                    </li>
+                    <li className="footercard_links">
+                      <Link
+                        className="footer_after_line"
+                        to="/ipo"
+                        onClick={scrollToTop}
+                      >
+                        IPO
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+                <div className="footer_card">
                   <h3>General Link</h3>
                   <ul>
                     <li className="footercard_links">
@@ -306,7 +401,6 @@ function Footer() {
                     </li>
                   </ul>
                 </div>
-                {/* </div> */}
               </div>
             </div>
           </div>

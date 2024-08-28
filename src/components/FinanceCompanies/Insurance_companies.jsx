@@ -23,6 +23,7 @@ function Insurance_companies() {
     return (
         <div className='container'>
             <h2>Life Insurance Companies in India</h2>
+            <p>Explore our curated list of top insurance companies known for their reliable coverage, customer service, and financial stability. Whether you're seeking life, health, or property insurance, these companies offer a range of policies to meet your needs and ensure peace of mind.</p>
             <div className='table_ind'>
             <table className="Insurance_com_table">
                 <thead className='Insurance_com_thead'>
