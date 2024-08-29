@@ -34,7 +34,7 @@ import CA_companies from './components/FinanceCompanies/CA_companies';
 import CS_companies from './components/FinanceCompanies/CS_companies';
 import International_money_transfer_companies from './components/FinanceCompanies/International_money_transfer_companies';
 import Crypto_currency_companies from './components/FinanceCompanies/Crypto_currency_companies';
-import Small_Finance_companies from './components/FinanceCompanies/Small_finance_companies';
+import Micro_Finance_companies from './components/FinanceCompanies/Micro_finance_companies';
 import Equity from './components/MutualFunds/Equity';
 import Debt from './components/MutualFunds/Debt';
 import Hybrid from './components/MutualFunds/Hybrid';
@@ -64,6 +64,7 @@ import Economy_news from './components/News/Economy_news';
 import Political_news from './components/News/Political_news';
 import World_news from './components/News/World_news';
 import Insurance_companies from './components/FinanceCompanies/Insurance_companies';
+import PaymentGateways from './components/FinanceCompanies/Payment_gateways';
 
 const usePageTracking = () => {
   const location = useLocation();
@@ -147,8 +148,12 @@ const AppContent = () => {
           element={<International_money_transfer_companies />}
         />
         <Route
-          path="/finance-companies/small-finance-companies"
-          element={<Small_Finance_companies />}
+          path="/finance-companies/micro-finance-companies"
+          element={<Micro_Finance_companies />}
+        />
+        <Route
+          path="/finance-companies/payment-gateways"
+          element={<PaymentGateways />}
         />
         <Route path="/market/cryptocurrency" element={<Crypto_currency />} />
         <Route path="/market/forex" element={<Forex />} />

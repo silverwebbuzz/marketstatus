@@ -9,7 +9,7 @@
     text-align: center;
 }
 
-section.details-section h2 {
+.details-section h2 {
     color: #0056b3;
     text-align: center;
 }
@@ -37,10 +37,14 @@ section.details-section h2 {
 }
 
 .insurance-list {
-    padding: 20px 20px 0px 20px;
-    gap: 30px;
+    display: flex;
+    flex-flow: wrap;
+    margin: 0 -20px;
 }
-
+.insurance-list div {
+    margin: 10px;
+    width: calc(100% / 4 - 20px);
+}
 .insurance-list li {
     margin-bottom: 10px;
     font-size: 16px;
@@ -96,9 +100,12 @@ section.details-section h2 {
         padding: 5px;
 
     }
-
+    
+    .insurance-list div {
+        width: calc(100% / 2 - 20px);
+    }
     .insurance-list {
-        display: inline-block;
+        display: flex;
         margin: 0;
     }
 
@@ -110,7 +117,7 @@ section.details-section h2 {
         margin: -37px;
     }
 
-    section.details-section h2 {
+    .details-section h2 {
         text-align: center;
     }
 }

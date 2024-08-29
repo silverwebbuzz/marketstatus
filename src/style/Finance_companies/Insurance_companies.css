@@ -1,27 +1,109 @@
-
-
 tr.Insurance_com_td td:first-child {
     width: 65px;
+  }
+  
+  tr.Insurance_com_tr th:first-child {
+    width: 65px;
+  }
+
+    /* / ----------------MICRO CSS START  ---------------  / */
+
+  img.microfinanceheaderimg {
+    width: 100%;
 }
 
-tr.Insurance_com_tr th:first-child {
-    width: 65px;}
-
-
-
-@media (max-width: 767px){
-
-tr.Insurance_com_td td:first-child {
-    width: 26px;
+img.mfc-logo {
+  width: 68px;
+  height: 33px;
 }
 
-tr.Insurance_com_tr th:first-child {
-    width: 26px;
+tbody.gateways-tbody tr td {
+  text-align: left;
 }
-
-.fintech_companies p {
-    padding-bottom: 12px;
-    font-size: 12px;
-}
-
-}
+  
+  /* / ----------------BROKER CSS START  ---------------  / */
+  .broker_header p {
+    font-size: 14px;
+    color: #323232;
+  }
+  .broker-logo {
+    width: 45px;
+    height: auto;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  .broker-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #302c2c;
+  }
+  .ranks {
+    display: flex;
+  }
+  .rank_rating {
+    padding-right: 10px;
+  }
+  .stars {
+    color: gold;
+    display: flex;
+    align-items: center;
+  }
+  .stars svg {
+    margin-right: 10px;
+  }
+  .card_tbl {
+    width: 100%;
+    border: 1px solid;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid rgb(230, 230, 230);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+  }
+  /*----------------- BROKER CSS END ----------------*/
+  
+  
+  
+  /* / ----------------PAYMENT GATEWAYS CSS START  ---------------  / */
+  .gateway_header p {
+    font-size: 14px;
+    color: #323232;
+  }
+  .card-header-gateways {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+  .img-name {
+    display: flex;
+    align-items: center;
+  }
+  .gateway-name {
+    margin-left: 10px;
+  }
+  .gateway-logo {
+    width: 60px;
+    height: 60px;
+  }
+  .td-left {
+    text-align: left !important;
+  }
+  /* / ----------------PAYMENT GATEWAYS CSS END  ---------------  / */
+  
+  @media (max-width: 767px) {
+    tr.Insurance_com_td td:first-child {
+      width: 26px;
+    }
+  
+    tr.Insurance_com_tr th:first-child {
+      width: 26px;
+    }
+  
+    .fintech_companies p {
+      padding-bottom: 12px;
+      font-size: 12px;
+    }
+  }
+  

@@ -214,6 +214,9 @@ li a.active {
   section.Nav_top {
     padding: 10px;
   }
+  ul.nav_ul {
+    gap: 30px;
+}
 }
 
 @media (max-width: 767px) {

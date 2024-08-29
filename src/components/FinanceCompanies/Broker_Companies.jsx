@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../../style/Finance_companies/broker_companies.css";
+import "../../style/Finance_companies/Insurance_companies.css";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
 const importAll = (r) => {
@@ -66,7 +66,7 @@ const Broker_Companies = () => {
       </div>
       <div className="card_row">
         {data.companies.map((broker, index) => (
-          <div className="card_mf" key={index}>
+          <div className="card_tbl" key={index}>
             <div className="card-header_mf">
               <div className="img_name">
                 <img

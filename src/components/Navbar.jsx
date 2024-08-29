@@ -286,10 +286,10 @@ const Navbar = () => {
                     </li>
                     <li className="dropmenu-li">
                       <NavLink
-                        to="/finance-companies/small-finance-companies"
+                        to="/finance-companies/micro-finance-companies"
                         onClick={() => setShowMenu(!showMenu)}
                       >
-                        Small Finance Companies
+                       Micro Finance Companies
                       </NavLink>
                     </li>
                     <li className="dropmenu-li">
