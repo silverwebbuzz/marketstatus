@@ -120,6 +120,13 @@ tbody.gateways-tbody tr td {
     display: flex;
     flex-flow: wrap;
   }
+.img_name img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    display: block;
+}
+
   .gateway_header p {
     font-size: 14px;
     color: #323232;
@@ -137,10 +144,7 @@ tbody.gateways-tbody tr td {
   .gateway_name {
     margin-left: 10px;
   }
-  .gateway_logo {
-    width: 60px;
-    height: 60px;
-  }
+  
   .td_left {
     text-align: left !important;
   }
