@@ -47,19 +47,19 @@ function Fire_Insurance() {
           <div className="details-section">
             <h2>Types of Fire Insurance</h2>
             <div className="insurance-list">
-              <div>
+              <div className="insurance_list_box">
                 <strong> Specific Fire Insurance Policy:</strong>
                 <p>Provides coverage for a specific asset or property against fire risk. The coverage is limited to the amount insured or the actual loss, whichever is lower.</p>
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Valued Fire Insurance Policy:</strong>
                 <p>Provides coverage based on a pre-agreed value of the property, not the market value at the time of the loss. The sum insured is paid irrespective of the actual loss suffered.</p>
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Floating Fire Insurance Policy:</strong>
                 <p> Designed for businesses with properties or goods located at multiple locations. Provides coverage for fire risk across various locations under a single policy.</p>
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Mortgage Fire Insurance Policy:</strong>
                 <p>: Required by lenders, this policy protects the mortgage lender's interest in a property. It typically covers the structure of the property against fire damage.</p>
               </div>

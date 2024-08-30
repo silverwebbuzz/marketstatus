@@ -47,19 +47,19 @@ function Travel_Insurance() {
           <div className="details-section">
             <h2>Types of Travel Insurance</h2>
             <div className="insurance-list">
-              <div>
+              <div className="insurance_list_box">
                 <strong>Single Trip Insurance:</strong>
                 <p>  Provides coverage for one specific trip, including medical emergencies, trip cancellations, delays, lost luggage, and other unforeseen events.</p>
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Multi-Trip Insurance:</strong>
                 <p>Covers multiple trips within a specified period, usually one year. It includes the same protections as single trip insurance, such as medical expenses, trip cancellations, and lost luggage.</p>
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Student Travel Insurance:</strong>
                 <p> Tailored for students studying abroad. It includes medical expenses, loss of passport, emergency evacuation, sponsor protection, study interruption, and compassionate visits.</p>
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Student Travel Insurance:</strong>
                 <p> Tailored for students studying abroad. It includes medical expenses, loss of passport, emergency evacuation, sponsor protection, study interruption, and compassionate visits.</p>
               </div>

@@ -46,19 +46,19 @@ function Business_Insurance() {
           <div className="details-section">
             <h2>Types of Business Insurance</h2>
             <div className="insurance-list">
-              <div>
+              <div className="insurance_list_box">
                 <strong>Commercial Property Insurance:</strong>
                 <p>Protects a business’s physical assets, including buildings, equipment, inventory, furniture, and fixtures, against risks such as fire, theft, vandalism, and natural disasters.</p>
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Liability Insurance:</strong>
                 <p>Protects against claims of bodily injury, property damage, and personal or advertising injury caused by the business’s operations, products, or services.</p>
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Workers' Compensation Insurance:</strong> 
                 <p> Provides benefits to employees who suffer work-related injuries or illnesses, including medical expenses, lost wages, and rehabilitation costs.</p>
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Commercial Umbrella Insurance:</strong> 
                 <p>Provides additional liability coverage above the limits of existing primary policies, like general liability or commercial auto insurance.</p>
               </div>

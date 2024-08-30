@@ -50,19 +50,19 @@ function Life_Insurance() {
           <div className="details-section">
             <h2>Types of Life Insurance</h2>
             <div className="insurance-list">
-              <div>
+              <div className="insurance_list_box">
                 <strong>Term Life Insurance:</strong>
                 <p>Provides coverage for a specific term (e.g., 10, 20, 30 years). Pays a death benefit if the insured person dies during the term.</p>
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Whole Life Insurance:</strong>
                 <p> Provides lifetime coverage with a guaranteed death benefit. Includes a savings component (cash value) that grows over time.</p>
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Universal Life Insurance (UL):</strong>
                 <p>Offers lifelong protection with flexible premiums and adjustable death benefits. Includes a cash value component that earns interest.</p>
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Simplified Issue Life Insurance:</strong>
                 <p>Provides life insurance with minimal medical underwriting, usually just a short health questionnaire.</p>
               </div>

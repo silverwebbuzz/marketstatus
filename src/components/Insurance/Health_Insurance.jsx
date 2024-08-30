@@ -48,19 +48,19 @@ function Health_Insurance() {
           <div className="details-section">
             <h2>Types of Health Insurance</h2>
             <div className="insurance-list">
-              <div>
+              <div className="insurance_list_box">
                 <strong>Individual Health Insurance:</strong>
                 <p>Provides coverage for a single person. It includes hospitalization, pre- and post-hospitalization expenses, surgical procedures, and sometimes outpatient expenses, depending on the policy.</p>
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Family Floater Policy:</strong>
                 <p>A single plan that covers all family members (like spouse, children, and sometimes parents) under one sum insured. The sum insured can be used by any family member as needed.</p>
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Critical Illness Policy:</strong>
                 <p> Provides a lump sum amount upon the diagnosis of specified critical illnesses, such as cancer, stroke, heart attack, kidney failure, etc. The payout can be used for treatment or other expenses.</p>
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Personal Accident Insurance:</strong>
                 <p> Provides compensation in case of accidental death, permanent total disability, partial disability, and temporary total disability due to an accident. Some policies also cover hospitalization expenses due to an accident.</p>
               </div>

@@ -45,10 +45,9 @@ const Micro_finance_companies = () => {
       <p>Financing to the group directly</p>
       <p>Financing to the individual in the groups</p>
       <br />
-      <h1>Best Micro Finance Companies in India Working as Banks</h1>
       </div>
-
       <div className="card_row">
+      <h1>Best Micro Finance Companies in India Working as Banks</h1>
         {/* for first company */}
         <div className="card_tbl">
           <div className="card-header-gateways" onClick={() => toggleExpand(0)}>
@@ -284,42 +283,6 @@ const Micro_finance_companies = () => {
                     <td>Cons of Bank:</td>
                     <td>
                       <li>Operates majorly in the east and north-east India</li>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          )}
-        </div>
-        {/* for 8th company */}
-        <div className="card_tbl">
-          <div className="card-header-gateways" onClick={() => toggleExpand(7)}>
-            <div className="img-name">
-              <img src={images["muthootbc.png"]} className="mfc-logo" alt=''/>
-              <div className="gateway-name">Muthoot Microfin Limited</div>
-            </div>
-          </div>
-          {expandedCard === 7 && (
-            <div className="card-body-gateways">
-              <table className="details-table-gateways">
-                <tbody className="gateways-tbody">
-                  <tr>
-                    <td>About</td>
-                    <td>Muthoot Microfin Limited is the microfinance arm of the large Muthoot Pappachan Group. The microfinance company provides micro-loans to women entrepreneurs with a focus on rural areas of the country.</td>
-                  </tr>
-                  <tr>
-                    <td>Pros Of Bank:</td>
-                    <td>
-                      <li>Income-generating loans like for dairy</li>
-                      <li>Life betterment loans like education, mobile, solar loans</li>
-                      <li>Health and hygiene loans like water and sanitation loans</li>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Cons of Bank:</td>
-                    <td>
-                      <li>Part of Muthoot  Pappachan Group</li>
-                      <li>Focused on rural women entrepreneurs</li>
                     </td>
                   </tr>
                 </tbody>

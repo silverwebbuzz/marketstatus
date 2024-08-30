@@ -47,19 +47,19 @@ function Term_Insurance() {
           <div className="details-section">
             <h2>Types of Term Insurance</h2>
             <div className="insurance-list">
-              <div>
+              <div className="insurance_list_box">
                 <strong>Level Term Insurance:</strong>
                 <p>Provides a fixed sum assured for a specific period (term). The premium amount and coverage remain constant throughout the policy term.</p> 
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Increasing Term Insurance:</strong> 
                 <p>The sum assured increases at a predetermined rate (usually 5% or 10% per annum) to keep up with inflation and rising expenses.</p>
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Decreasing Term Insurance:</strong>
                 <p> The sum assured decreases over the policy term, usually aligned with a decreasing financial obligation, such as a mortgage or loan.</p>
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Whole Life Term Insurance:</strong>
                 <p> Technically, it provides coverage for the entire lifetime of the policyholder but works on a term basis for premium payments (limited to a certain age, like 85 or 100).</p>
               </div>

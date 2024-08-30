@@ -1,12 +1,9 @@
-.insurance-page {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    color: #333;
-}
+
 
 .insurance-page h1 {
     color: #0056b3;
     text-align: center;
+    margin: 0;
 }
 
 .details-section h2 {
@@ -16,34 +13,47 @@
 
 .intro-section {
     display: flex;
-    align-items: center;
-    margin-bottom: 30px;
-    gap: 77px;
+   flex-flow: wrap;
+   align-items: center;
 }
 
-.intro-image {
-    width: 25%;
-    margin-right: 20px;
-    border-radius: 10px;
+.intro-section img {
+    width: 30%;
+    display: block;
+    padding-right: 40px;
 }
-
-.intro-text {
+.intro-section p.intro-text {
     font-size: 18px;
     line-height: 1.6;
+    width: 70%;
+    padding-left: 50px;
+    text-align: justify;
 }
 
 .details-section {
     margin-bottom: 30px;
 }
+.insurance_list_box strong {
+    font-size: 16px ;
+}
 
+.insurance_list_box p {
+    font-size: 16px;
+    padding-top: 14px;
+    line-height: 1.4;
+    text-align: justify;
+}
 .insurance-list {
     display: flex;
     flex-flow: wrap;
-    margin: 0 -20px;
+    margin: 0 -10px;
 }
-.insurance-list div {
+.insurance-list .insurance_list_box {
     margin: 10px;
     width: calc(100% / 4 - 20px);
+    border: 1px solid #65606080;
+    padding: 15px;
+    border-radius: 12px;
 }
 .insurance-list li {
     margin-bottom: 10px;
@@ -60,13 +70,26 @@
 
 .faq-item h3 {
     font-size: 18px;
-    color: #333;
-    margin-bottom: 10px;
 }
 
 .faq-item p {
     font-size: 16px;
     line-height: 1.7;
+}
+
+@media (max-width: 991px){
+    .insurance-list .insurance_list_box {
+        width: calc(100% / 2 - 20px);
+    }
+    .intro-section p.intro-text {
+        width: 50%;
+        padding-left: 25px;
+    }
+    
+    .intro-section img {
+        width: 50%;
+        padding-right: 20px;
+    }
 }
 
 @media (max-width: 767px) {
@@ -75,14 +98,14 @@
         font-size: 25px;
     }
 
-    .intro-image {
+    .intro-section img {
         width: 100%;
-        text-align: center;
+       padding-right: 0;
     }
 
-    .intro-text {
-        font-size: 15px;
-        line-height: 1;
+    .intro-section p.intro-text {
+        font-size: 16px;
+        padding-left: 0;
         width: 100%;
         margin-top: 10px;
     }
@@ -101,9 +124,10 @@
 
     }
     
-    .insurance-list div {
-        width: calc(100% / 2 - 20px);
+    .insurance-list .insurance_list_box {
+        width: 100%;
     }
+
     .insurance-list {
         display: flex;
         margin: 0;
@@ -111,10 +135,6 @@
 
     .faq-section {
         margin: 0;
-    }
-
-    .details-section {
-        margin: -37px;
     }
 
     .details-section h2 {

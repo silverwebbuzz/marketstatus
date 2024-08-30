@@ -47,19 +47,19 @@ function Pet_Insurance() {
           <div className="details-section">
             <h2>Types of Pet Insurance</h2>
             <div className="insurance-list">
-              <div>
+              <div className="insurance_list_box">
                 <strong>Accident and Illness Coverage:</strong>
                 <p>Provides coverage for accidents and injuries such as fractures, lacerations, or ingestion of foreign objects. It does not cover illnesses or routine care.</p>
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Wellness or Routine Care Pet Insurance:</strong>
                 <p>Focuses on preventive care, such as vaccinations, annual check-ups, flea/tick prevention, spaying/neutering, dental cleanings, and microchipping.</p>
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Accident-Only Pet Insurance:</strong>
                 <p> Provides coverage for accidents and injuries such as fractures, lacerations, or ingestion of foreign objects. It does not cover illnesses or routine care.</p>
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Exotic Pet Insurance:</strong>
                 <p>  Specifically designed for exotic pets such as reptiles, birds, rodents, and other non-traditional pets. It typically covers accidents, illnesses, and sometimes preventive care.</p>
               </div>

@@ -46,19 +46,19 @@ function General_Insurance() {
           <div className="details-section">
             <h2>Types of General Insurance</h2>
             <div className="insurance-list">
-              <div>
+              <div className="insurance_list_box">
                 <strong>Health Insurance:</strong>
                 <p> Covers medical expenses for illnesses, surgeries, and sometimes dental care. </p>
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Motor Insurance:</strong>
                 <p>Provides coverage for cars, bikes, and other vehicles against accidents, theft, and damage.</p> 
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Home Insurance:</strong>
                 <p> Protects your home and its contents against risks like fire, theft, and natural disasters.</p>
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Travel Insurance:</strong>
                 <p> Covers unexpected events while traveling, such as medical emergencies, trip cancellations, and lost luggage.</p>
               </div>

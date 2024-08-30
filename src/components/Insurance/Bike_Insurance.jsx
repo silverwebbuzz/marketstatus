@@ -46,19 +46,19 @@ function Bike_Insurance() {
           <div className="details-section">
             <h2>Types of Bike Insurance</h2>
             <div className="insurance-list">
-              <div>
+              <div className="insurance_list_box">
                 <strong>Third-Party Insurance:</strong>
                 <p>This is the most basic and mandatory type of bike insurance. It covers legal liabilities arising from accidents that cause injury, death, or property damage to a third party.</p> 
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Comprehensive Insurance:</strong>
                 <p>This policy provides extensive coverage, including both third-party liabilities and damages to your own bike due to accidents, theft, natural disasters (like floods, earthquakes), man-made disasters (like vandalism, riots), and personal accidents.</p>
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Zero Depreciation Cover:</strong>
                 <p>An add-on to a comprehensive policy that ensures you get full claim benefits without any depreciation deductions on the bike's parts. Only the compulsory deductibles apply.</p>
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Personal Accident Cover:</strong>
                 <p> This is a mandatory cover for the owner-driver and provides compensation in case of accidental death, permanent total disability, or injuries sustained in a bike accident.</p>
               </div>

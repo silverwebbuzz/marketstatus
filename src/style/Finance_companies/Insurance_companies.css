@@ -10,11 +10,14 @@ tr.Insurance_com_td td:first-child {
 
   img.microfinanceheaderimg {
     width: 100%;
+    display: block;
 }
 
 img.mfc-logo {
   width: 68px;
   height: 33px;
+  object-fit: contain;
+  display: block;
 }
 
 tbody.gateways-tbody tr td {
@@ -26,11 +29,46 @@ tbody.gateways-tbody tr td {
     font-size: 14px;
     color: #323232;
   }
+  .broker_card {
+    border: 1px solid #e6e6e6;
+    border-radius: 12px;
+    margin: 15px 0px;
+    padding: 20px;
+    box-shadow: 0 0 10px #0000001a;
+}
+
+.broker_card_top {
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.broker_company_img {
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+}
+
+.broker_company_img img {
+    display: block;
+}
+
+.broker_card_bottom {
+    display: flex;
+    flex-flow: wrap;
+    padding-top: 20px;
+    justify-content: space-between;
+}
+
+.broker_card_details {
+    font-size: 14px;
+}
   .broker-logo {
     width: 45px;
-    height: auto;
+    display: block;
     margin-right: 10px;
-    vertical-align: middle;
+
   }
   .broker-name {
     font-size: 20px;
@@ -39,18 +77,18 @@ tbody.gateways-tbody tr td {
   }
   .ranks {
     display: flex;
+    flex-flow: wrap;
+    align-items: center;
+    gap: 10px;
   }
-  .rank_rating {
-    padding-right: 10px;
-  }
+ 
   .stars {
     color: gold;
     display: flex;
     align-items: center;
+    gap: 10px;
   }
-  .stars svg {
-    margin-right: 10px;
-  }
+  
   .card_tbl {
     width: 100%;
     border: 1px solid;
@@ -105,5 +143,43 @@ tbody.gateways-tbody tr td {
       padding-bottom: 12px;
       font-size: 12px;
     }
+
+    /* micro insurance */
+
+    table.details-table-gateways {
+      width: 276px;
+  }
+  
+  tbody.gateways-tbody tr td:first-child {
+      width: 90px;
+  }
+  
+  .card_tbl {
+      margin: 0 0 10px 0;
+  }
+  
+  .gateway-name {
+      font-size: 14px;
+  }
+  
+  .card_row h1 {
+      font-size: 16px;
+  }
+  
+  tbody.gateways-tbody tr td li {
+      padding-top: 5px;
+  }
+  /* end micro */
+
+  /* broker company */
+  .broker_card { padding: 10px;}
+  .broker_card_top { flex-flow: nowrap;}
+  .broker_company_img { flex-flow: column;}
+  .ranks { font-size: 12px; gap: 5px;}
+  .stars { gap: 5px;}
+  .broker_card_bottom { padding-top: 10px; margin: 0-5px;}
+  .broker_card_details { width: calc(100% / 2 - 10px); font-size: 10px; margin: 5px;}
+  .broker-name { font-size: 16px; padding-top: 10px;}
+  /* end broker company */
   }
   

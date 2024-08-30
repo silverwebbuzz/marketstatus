@@ -49,19 +49,19 @@ function Car_Insurance() {
           <div className="details-section">
             <h2>Types of Car Insurance</h2>
             <div className="insurance-list">
-              <div>
+              <div className="insurance_list_box">
                 <strong>Third-Party Insurance:</strong>
                 <p>This is the most basic and mandatory type of car insurance. It covers legal liabilities for injuries, death, or property damage caused to a third party by your vehicle.</p>
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Comprehensive Insurance:</strong>
                 <p>This policy provides extensive coverage, including both third-party liabilities and damages to your own car due to accidents, theft, fire, natural disasters (like floods, earthquakes), man-made disasters (like riots, vandalism), and personal accidents.</p>
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong> Zero Depreciation Cover:</strong>
                 <p> An add-on cover with a comprehensive policy that ensures full reimbursement on the value of replaced parts without considering depreciation. Only compulsory deductibles apply. </p>
               </div>
-              <div>
+              <div className="insurance_list_box">
                 <strong>Personal Accident Cover:</strong>
                 <p> Provides compensation for the policyholder in case of accidental death or permanent total disability while driving. This cover is mandatory for the owner-driver. </p>
               </div>
