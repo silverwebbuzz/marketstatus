@@ -326,6 +326,126 @@ const Micro_finance_companies = () => {
             </div>
           )}
         </div>
+        {/* for 9th company */}
+        <div className="card_tbl">
+          <div className="card-header-gateways" onClick={() => toggleExpand(8)}>
+            <div className="img-name">
+              <img src={images["credicaccessbc.png"]} className="mfc-logo" alt=''/>
+              <div className="gateway-name">CreditAccess Grameen Limited</div>
+            </div>
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              size="1x"
+              className="faicon"
+            />
+          </div>
+          {expandedCard === 8 && (
+            <div className="card-body-gateways">
+              <table className="details-table-gateways">
+                <tbody className="gateways-tbody">
+                  <tr>
+                    <td>About</td>
+                    <td>CreditAccess Grameen was first visualized by Mrs. Vinatha M. Reddy and founded in May 1999 as a project under the T. Muniswamappa Trust in South Bangalore.The microfinance company caters to the need for timely and affordable credit to India’s poor and low-income households with a focus on women’s upliftment.CreditAccess Grameen offers income generation loans, home improvement, emergency and family welfare loans.</td>
+                  </tr>
+                  <tr>
+                    <td>Pros Of Bank:</td>
+                    <td>
+                      <li>Offers non-financial assistance like workshops</li>
+                      <li>Dedicated to women upliftment</li>
+                      <li>900+ branches</li>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Cons of Bank:</td>
+                    <td>
+                      <li>Focused only on women entrepreneurship</li>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+        {/* for 10th company */}
+        <div className="card_tbl">
+          <div className="card-header-gateways" onClick={() => toggleExpand(9)}>
+            <div className="img-name">
+              <img src={images["sonatabc.png"]} className="mfc-logo" alt=''/>
+              <div className="gateway-name">Sonata Finance Private Limited </div>
+            </div>
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              size="1x"
+              className="faicon"
+            />
+          </div>
+          {expandedCard === 9 && (
+            <div className="card-body-gateways">
+              <table className="details-table-gateways">
+                <tbody className="gateways-tbody">
+                  <tr>
+                    <td>About</td>
+                    <td>Sonata Finance is a Lucknow based microfinance company providing financial resources to enable poor women of rural, semi-urban and urban communities.The microloans include both individual and group lending for income generation, sanitation, home improvement, two-wheeler and utility loans.</td>
+                  </tr>
+                  <tr>
+                    <td>Pros Of Bank:</td>
+                    <td>
+                      <li>Various microloan products</li>
+                      <li>Focused on women upliftment</li>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Cons of Bank:</td>
+                    <td>
+                      <li>Most of the outlets in the northern part of India</li>
+                      <li>Works only on Joint-liability model</li>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+        {/* for 11th company */}
+        <div className="card_tbl">
+          <div className="card-header-gateways" onClick={() => toggleExpand(10)}>
+            <div className="img-name">
+              <img src={images["fusionbc.png"]} className="mfc-logo" alt=''/>
+              <div className="gateway-name">Fusion Microfinance Private Limited</div>
+            </div>
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              size="1x"
+              className="faicon"
+            />
+          </div>
+          {expandedCard === 10 && (
+            <div className="card-body-gateways">
+              <table className="card-body-gateways">
+                <tbody className="gateways-tbody">
+                  <tr>
+                    <td>About</td>
+                    <td>Fusion Microfinance aims to provide underprivileged women with economic opportunities to transform the quality of their lives.Fusion Microfinance offers income-generating microloans and emergency loans to women living in rural & semi-urban areas. They should belong to the marginalized community, whose annual household income is up to Rs. 2 Lakhs.</td>
+                  </tr>
+                  <tr>
+                    <td>Pros Of Bank:</td>
+                    <td>
+                      <li>Focused on underprivileged women</li>
+                      <li>Offers insurance products & financial literacy programs</li>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Cons of Bank:</td>
+                    <td>
+                      <li>North India based operations</li>
+                      <li>Loan amount limited to Rs. 60,000</li>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
       </div>
     </div>
     </section>
