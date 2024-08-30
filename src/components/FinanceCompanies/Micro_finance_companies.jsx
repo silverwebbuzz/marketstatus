@@ -13,7 +13,7 @@ const importAll = (r) => {
 };
 
 const images = importAll(
-  require.context("../../assets", false, /\.(png|jpe?g|svg|webp)$/)
+  require.context("../../assets/micro_finance_companies", false, /\.(png|jpe?g|svg|webp)$/)
 );
 
 const Micro_finance_companies = () => {
@@ -58,6 +58,11 @@ const Micro_finance_companies = () => {
               <img src={images["bandhanbc.png"]} className="mfc-logo" alt='' />
               <div className="gateway-name">Bandhan Bank Limited</div>
             </div>
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              size="1x"
+              className="faicon"
+            />
           </div>
           {expandedCard === 0 && (
             <div className="card-body-gateways">
@@ -94,6 +99,11 @@ const Micro_finance_companies = () => {
               <img src={images["ujjivanbc.webp"]} className="mfc-logo" alt='' />
               <div className="gateway-name">Ujjivan Small Finance Bank</div>
             </div>
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              size="1x"
+              className="faicon"
+            />
           </div>
           {expandedCard === 1 && (
             <div className="card-body-gateways">
@@ -129,6 +139,11 @@ const Micro_finance_companies = () => {
               <img src={images["equitasbc.png"]} className="mfc-logo" alt='' />
               <div className="gateway-name">Equitas Small Finance Bank</div>
             </div>
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              size="1x"
+              className="faicon"
+            />
           </div>
           {expandedCard === 2 && (
             <div className="card-body-gateways">
@@ -163,6 +178,11 @@ const Micro_finance_companies = () => {
               <img src={images["suryodaybc.jpg"]} className="mfc-logo" alt=''/>
               <div className="gateway-name">Suryoday Small Finance Bank</div>
             </div>
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              size="1x"
+              className="faicon"
+            />
           </div>
           {expandedCard === 3 && (
             <div className="card-body-gateways">
@@ -197,6 +217,11 @@ const Micro_finance_companies = () => {
               <img src={images["satinbc.png"]} className="mfc-logo" alt=''/>
               <div className="gateway-name">Satin Creditcare Network Limited</div>
             </div>
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              size="1x"
+              className="faicon"
+            />
           </div>
           {expandedCard === 4 && (
             <div className="card-body-gateways">
@@ -232,6 +257,11 @@ const Micro_finance_companies = () => {
               <img src={images["annapurnabc.png"]} className="mfc-logo" alt=''/>
               <div className="gateway-name"> Annapurna Finance Pvt. Ltd</div>
             </div>
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              size="1x"
+              className="faicon"
+            />
           </div>
           {expandedCard === 5 && (
             <div className="card-body-gateways">
@@ -266,6 +296,11 @@ const Micro_finance_companies = () => {
               <img src={images["arohan.png"]} className="mfc-logo" alt=''/>
               <div className="gateway-name">Arohan Financial Services Pvt. Ltd</div>
             </div>
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              size="1x"
+              className="faicon"
+            />
           </div>
           {expandedCard === 6 && (
             <div className="card-body-gateways">
@@ -300,6 +335,11 @@ const Micro_finance_companies = () => {
               <img src={images["muthootbc.png"]} className="mfc-logo" alt=''/>
               <div className="gateway-name">Muthoot Microfin Limited</div>
             </div>
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              size="1x"
+              className="faicon"
+            />
           </div>
           {expandedCard === 7 && (
             <div className="card-body-gateways">
