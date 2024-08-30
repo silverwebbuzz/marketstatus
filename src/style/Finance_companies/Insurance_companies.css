@@ -12,6 +12,18 @@ tr.Insurance_com_td td:first-child {
     width: 100%;
     display: block;
 }
+.img-name {
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+    gap: 10px;
+}
+.card-header-gateways {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 
 img.mfc-logo {
   width: 68px;
