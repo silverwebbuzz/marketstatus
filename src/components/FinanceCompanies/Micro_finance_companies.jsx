@@ -1,5 +1,8 @@
 import React,{ useState } from 'react'
 import microfinanceheader from '../../assets/microfianceheader.png'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+
 
 const importAll = (r) => {
   let images = {};
