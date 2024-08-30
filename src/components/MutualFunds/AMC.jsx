@@ -7,7 +7,7 @@ const importAll = (r) => {
     return images;
 };
 
-const images = importAll(require.context('../../assets', false, /\.(png|jpe?g|svg)$/));
+const images = importAll(require.context('../../assets/amc_fund_companies', false, /\.(png|jpe?g|svg)$/));
 
 const AMC = () => {
     const [data, setData] = useState(null);
