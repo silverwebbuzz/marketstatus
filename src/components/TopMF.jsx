@@ -1,5 +1,4 @@
 import React from 'react';
-import '../style/MutualFund.css';
 import '../style/TopMF.css';
 
 const formatNumber = (num) => {
