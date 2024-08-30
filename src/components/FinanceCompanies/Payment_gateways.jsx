@@ -1,7 +1,3 @@
-
-
-
-
 import React, { useState } from "react";
 import "../../style/Finance_companies/Insurance_companies.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
