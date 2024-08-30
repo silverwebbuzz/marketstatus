@@ -370,17 +370,6 @@ const Micro_finance_companies = () => {
             </div>
           )}
         </div>
-<<<<<<< Updated upstream
-        {/* for 8th company */}
-        <div className="card_tbl">
-          <div className="card-header-gateways" onClick={() => toggleExpand(7)}>
-            <div className="img-name">
-              <img src={images["muthootbc.png"]} className="mfc-logo" alt=''/>
-              <div className="gateway-name">Muthoot Microfin Limited</div>
-            </div>
-          </div>
-          {expandedCard === 7 && (
-=======
         {/* for 9th company */}
         <div className="card_tbl">
           <div className="card-header-gateways" onClick={() => toggleExpand(8)}>
@@ -395,39 +384,24 @@ const Micro_finance_companies = () => {
             />
           </div>
           {expandedCard === 8 && (
->>>>>>> Stashed changes
             <div className="card-body-gateways">
               <table className="details-table-gateways">
                 <tbody className="gateways-tbody">
                   <tr>
                     <td>About</td>
-<<<<<<< Updated upstream
-                    <td>Muthoot Microfin Limited is the microfinance arm of the large Muthoot Pappachan Group. The microfinance company provides micro-loans to women entrepreneurs with a focus on rural areas of the country.</td>
-=======
                     <td>CreditAccess Grameen was first visualized by Mrs. Vinatha M. Reddy and founded in May 1999 as a project under the T. Muniswamappa Trust in South Bangalore.The microfinance company caters to the need for timely and affordable credit to India’s poor and low-income households with a focus on women’s upliftment.CreditAccess Grameen offers income generation loans, home improvement, emergency and family welfare loans.</td>
->>>>>>> Stashed changes
                   </tr>
                   <tr>
                     <td>Pros Of Bank:</td>
                     <td>
-<<<<<<< Updated upstream
-                      <li>Income-generating loans like for dairy</li>
-                      <li>Life betterment loans like education, mobile, solar loans</li>
-                      <li>Health and hygiene loans like water and sanitation loans</li>
-=======
                       <li>Offers non-financial assistance like workshops</li>
                       <li>Dedicated to women upliftment</li>
                       <li>900+ branches</li>
->>>>>>> Stashed changes
                     </td>
                   </tr>
                   <tr>
                     <td>Cons of Bank:</td>
                     <td>
-<<<<<<< Updated upstream
-                      <li>Part of Muthoot  Pappachan Group</li>
-                      <li>Focused on rural women entrepreneurs</li>
-=======
                       <li>Focused only on women entrepreneurship</li>
                     </td>
                   </tr>
@@ -509,7 +483,6 @@ const Micro_finance_companies = () => {
                     <td>
                       <li>North India based operations</li>
                       <li>Loan amount limited to Rs. 60,000</li>
->>>>>>> Stashed changes
                     </td>
                   </tr>
                 </tbody>
