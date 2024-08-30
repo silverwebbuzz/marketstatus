@@ -104,28 +104,32 @@ tbody.gateways-tbody tr td {
   
   
   /* / ----------------PAYMENT GATEWAYS CSS START  ---------------  / */
+  .card_row_pty {
+    display: flex;
+    flex-flow: wrap;
+  }
   .gateway_header p {
     font-size: 14px;
     color: #323232;
   }
-  .card-header-gateways {
+  .card_header_gateways {
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
   }
-  .img-name {
+  .img_name {
     display: flex;
     align-items: center;
   }
-  .gateway-name {
+  .gateway_name {
     margin-left: 10px;
   }
-  .gateway-logo {
+  .gateway_logo {
     width: 60px;
     height: 60px;
   }
-  .td-left {
+  .td_left {
     text-align: left !important;
   }
   /* / ----------------PAYMENT GATEWAYS CSS END  ---------------  / */
