@@ -294,6 +294,56 @@ function Footer() {
                   </ul>
                 </div>
                 <div className="footer_card">
+                  <h3>Finance Institutes</h3>
+                  <ul>
+                    <li className="footercard_links">
+                      <Link
+                        className="footer_after_line"
+                        to="/finance-companies/insurance-companies"
+                        onClick={scrollToTop}
+                      >
+                        Insurance Companies
+                      </Link>
+                    </li>
+                    <li className="footercard_links">
+                      <Link
+                        className="footer_after_line"
+                        to="/finance-companies/broker-companies"
+                        onClick={scrollToTop}
+                      >
+                       Broker Companies list
+                      </Link>
+                    </li>
+                    <li className="footercard_links">
+                      <Link
+                        className="footer_after_line"
+                        to="/finance-companies/fintech-company"
+                        onClick={scrollToTop}
+                      >
+                        Fintech Companies list
+                      </Link>
+                    </li>
+                    <li className="footercard_links">
+                      <Link
+                        className="footer_after_line"
+                        to="/finance-companies/micro-finance-companies"
+                        onClick={scrollToTop}
+                      >
+                       Micro Finance Companies
+                      </Link>
+                    </li>
+                    <li className="footercard_links">
+                      <Link
+                        className="footer_after_line"
+                        to="/finance-companies/payment-gateways"
+                        onClick={scrollToTop}
+                      >
+                        Payment Gateways
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+                <div className="footer_card">
                   <h3>Mutual Funds</h3>
                   <ul>
                     <li className="footercard_links">
@@ -339,10 +389,12 @@ function Footer() {
                         onClick={scrollToTop}
                       >
                         Elss Funds
-                      </Link>
+                        </Link>
                     </li>
                   </ul>
                 </div>
+               
+                     
                 <div className="footer_card">
                   <h3>Quick links</h3>
                   <ul>

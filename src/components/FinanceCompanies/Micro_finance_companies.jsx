@@ -1,5 +1,8 @@
-import React,{ useState } from 'react'
-import microfinanceheader from '../../assets/microfianceheader.png'
+import React,{ useState } from 'react';
+import microfinanceheader from '../../assets/microfianceheader.png';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+
 
 const importAll = (r) => {
   let images = {};
@@ -10,7 +13,7 @@ const importAll = (r) => {
 };
 
 const images = importAll(
-  require.context("../../assets", false, /\.(png|jpe?g|svg|webp)$/)
+  require.context("../../assets/micro_finance_companies", false, /\.(png|jpe?g|svg|webp)$/)
 );
 
 const Micro_finance_companies = () => {
@@ -56,6 +59,11 @@ const Micro_finance_companies = () => {
               <img src={images["bandhanbc.png"]} className="mfc-logo" alt='' />
               <div className="gateway-name">Bandhan Bank Limited</div>
             </div>
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              size="1x"
+              className="faicon"
+            />
           </div>
           {expandedCard === 0 && (
             <div className="card-body-gateways">
@@ -92,6 +100,11 @@ const Micro_finance_companies = () => {
               <img src={images["ujjivanbc.webp"]} className="mfc-logo" alt='' />
               <div className="gateway-name">Ujjivan Small Finance Bank</div>
             </div>
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              size="1x"
+              className="faicon"
+            />
           </div>
           {expandedCard === 1 && (
             <div className="card-body-gateways">
@@ -127,6 +140,11 @@ const Micro_finance_companies = () => {
               <img src={images["equitasbc.png"]} className="mfc-logo" alt='' />
               <div className="gateway-name">Equitas Small Finance Bank</div>
             </div>
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              size="1x"
+              className="faicon"
+            />
           </div>
           {expandedCard === 2 && (
             <div className="card-body-gateways">
@@ -161,6 +179,11 @@ const Micro_finance_companies = () => {
               <img src={images["suryodaybc.jpg"]} className="mfc-logo" alt=''/>
               <div className="gateway-name">Suryoday Small Finance Bank</div>
             </div>
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              size="1x"
+              className="faicon"
+            />
           </div>
           {expandedCard === 3 && (
             <div className="card-body-gateways">
@@ -195,6 +218,11 @@ const Micro_finance_companies = () => {
               <img src={images["satinbc.png"]} className="mfc-logo" alt=''/>
               <div className="gateway-name">Satin Creditcare Network Limited</div>
             </div>
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              size="1x"
+              className="faicon"
+            />
           </div>
           {expandedCard === 4 && (
             <div className="card-body-gateways">
@@ -230,6 +258,11 @@ const Micro_finance_companies = () => {
               <img src={images["annapurnabc.png"]} className="mfc-logo" alt=''/>
               <div className="gateway-name"> Annapurna Finance Pvt. Ltd</div>
             </div>
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              size="1x"
+              className="faicon"
+            />
           </div>
           {expandedCard === 5 && (
             <div className="card-body-gateways">
@@ -264,6 +297,11 @@ const Micro_finance_companies = () => {
               <img src={images["arohan.png"]} className="mfc-logo" alt=''/>
               <div className="gateway-name">Arohan Financial Services Pvt. Ltd</div>
             </div>
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              size="1x"
+              className="faicon"
+            />
           </div>
           {expandedCard === 6 && (
             <div className="card-body-gateways">
@@ -298,6 +336,11 @@ const Micro_finance_companies = () => {
               <img src={images["muthootbc.png"]} className="mfc-logo" alt=''/>
               <div className="gateway-name">Muthoot Microfin Limited</div>
             </div>
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              size="1x"
+              className="faicon"
+            />
           </div>
           {expandedCard === 7 && (
             <div className="card-body-gateways">
@@ -327,6 +370,7 @@ const Micro_finance_companies = () => {
             </div>
           )}
         </div>
+<<<<<<< Updated upstream
         {/* for 8th company */}
         <div className="card_tbl">
           <div className="card-header-gateways" onClick={() => toggleExpand(7)}>
@@ -336,26 +380,136 @@ const Micro_finance_companies = () => {
             </div>
           </div>
           {expandedCard === 7 && (
+=======
+        {/* for 9th company */}
+        <div className="card_tbl">
+          <div className="card-header-gateways" onClick={() => toggleExpand(8)}>
+            <div className="img-name">
+              <img src={images["credicaccessbc.png"]} className="mfc-logo" alt=''/>
+              <div className="gateway-name">CreditAccess Grameen Limited</div>
+            </div>
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              size="1x"
+              className="faicon"
+            />
+          </div>
+          {expandedCard === 8 && (
+>>>>>>> Stashed changes
             <div className="card-body-gateways">
               <table className="details-table-gateways">
                 <tbody className="gateways-tbody">
                   <tr>
                     <td>About</td>
+<<<<<<< Updated upstream
                     <td>Muthoot Microfin Limited is the microfinance arm of the large Muthoot Pappachan Group. The microfinance company provides micro-loans to women entrepreneurs with a focus on rural areas of the country.</td>
+=======
+                    <td>CreditAccess Grameen was first visualized by Mrs. Vinatha M. Reddy and founded in May 1999 as a project under the T. Muniswamappa Trust in South Bangalore.The microfinance company caters to the need for timely and affordable credit to India’s poor and low-income households with a focus on women’s upliftment.CreditAccess Grameen offers income generation loans, home improvement, emergency and family welfare loans.</td>
+>>>>>>> Stashed changes
                   </tr>
                   <tr>
                     <td>Pros Of Bank:</td>
                     <td>
+<<<<<<< Updated upstream
                       <li>Income-generating loans like for dairy</li>
                       <li>Life betterment loans like education, mobile, solar loans</li>
                       <li>Health and hygiene loans like water and sanitation loans</li>
+=======
+                      <li>Offers non-financial assistance like workshops</li>
+                      <li>Dedicated to women upliftment</li>
+                      <li>900+ branches</li>
+>>>>>>> Stashed changes
                     </td>
                   </tr>
                   <tr>
                     <td>Cons of Bank:</td>
                     <td>
+<<<<<<< Updated upstream
                       <li>Part of Muthoot  Pappachan Group</li>
                       <li>Focused on rural women entrepreneurs</li>
+=======
+                      <li>Focused only on women entrepreneurship</li>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+        {/* for 10th company */}
+        <div className="card_tbl">
+          <div className="card-header-gateways" onClick={() => toggleExpand(9)}>
+            <div className="img-name">
+              <img src={images["sonatabc.png"]} className="mfc-logo" alt=''/>
+              <div className="gateway-name">Sonata Finance Private Limited </div>
+            </div>
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              size="1x"
+              className="faicon"
+            />
+          </div>
+          {expandedCard === 9 && (
+            <div className="card-body-gateways">
+              <table className="details-table-gateways">
+                <tbody className="gateways-tbody">
+                  <tr>
+                    <td>About</td>
+                    <td>Sonata Finance is a Lucknow based microfinance company providing financial resources to enable poor women of rural, semi-urban and urban communities.The microloans include both individual and group lending for income generation, sanitation, home improvement, two-wheeler and utility loans.</td>
+                  </tr>
+                  <tr>
+                    <td>Pros Of Bank:</td>
+                    <td>
+                      <li>Various microloan products</li>
+                      <li>Focused on women upliftment</li>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Cons of Bank:</td>
+                    <td>
+                      <li>Most of the outlets in the northern part of India</li>
+                      <li>Works only on Joint-liability model</li>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+        {/* for 11th company */}
+        <div className="card_tbl">
+          <div className="card-header-gateways" onClick={() => toggleExpand(10)}>
+            <div className="img-name">
+              <img src={images["fusionbc.png"]} className="mfc-logo" alt=''/>
+              <div className="gateway-name">Fusion Microfinance Private Limited</div>
+            </div>
+            <FontAwesomeIcon
+              icon={faChevronDown}
+              size="1x"
+              className="faicon"
+            />
+          </div>
+          {expandedCard === 10 && (
+            <div className="card-body-gateways">
+              <table className="card-body-gateways">
+                <tbody className="gateways-tbody">
+                  <tr>
+                    <td>About</td>
+                    <td>Fusion Microfinance aims to provide underprivileged women with economic opportunities to transform the quality of their lives.Fusion Microfinance offers income-generating microloans and emergency loans to women living in rural & semi-urban areas. They should belong to the marginalized community, whose annual household income is up to Rs. 2 Lakhs.</td>
+                  </tr>
+                  <tr>
+                    <td>Pros Of Bank:</td>
+                    <td>
+                      <li>Focused on underprivileged women</li>
+                      <li>Offers insurance products & financial literacy programs</li>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Cons of Bank:</td>
+                    <td>
+                      <li>North India based operations</li>
+                      <li>Loan amount limited to Rs. 60,000</li>
+>>>>>>> Stashed changes
                     </td>
                   </tr>
                 </tbody>

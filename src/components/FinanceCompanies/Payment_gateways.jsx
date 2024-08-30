@@ -38,7 +38,11 @@ const PaymentGateways = () => {
         <div className="card_tbl">
           <div className="card-header-gateways" onClick={() => toggleExpand(0)}>
             <div className="img-name">
+<<<<<<< Updated upstream
               <img src={images["CASHFREE.png"]} className="gateway-logo" />
+=======
+              <img src={images["CASHFREE.png"]} className="gateway-logo" alt=""/>
+>>>>>>> Stashed changes
               <div className="gateway-name">Cashfree Payment Gateway</div>
             </div>
             <FontAwesomeIcon
@@ -142,7 +146,11 @@ const PaymentGateways = () => {
         <div className="card_tbl">
           <div className="card-header-gateways" onClick={() => toggleExpand(1)}>
             <div className="img-name">
+<<<<<<< Updated upstream
               <img src={images["PAYU.png"]} className="gateway-logo" />
+=======
+              <img src={images["PAYU.png"]} className="gateway-logo" alt="" />
+>>>>>>> Stashed changes
               <div className="gateway-name">PayU Payment Gateway Service</div>
             </div>
             <FontAwesomeIcon

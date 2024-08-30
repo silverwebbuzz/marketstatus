@@ -270,6 +270,22 @@ const Navbar = () => {
                     </li>
                     <li className="dropmenu-li">
                       <NavLink
+                        to="/finance-companies/micro-finance-companies"
+                        onClick={() => setShowMenu(!showMenu)}
+                      >
+                       Micro Finance Companies
+                      </NavLink>
+                    </li>
+                    <li className="dropmenu-li">
+                      <NavLink
+                        to="/finance-companies/payment-gateways"
+                        onClick={() => setShowMenu(!showMenu)}
+                      >
+                        Payment Gateways{" "}
+                      </NavLink>
+                    </li>
+                    <li className="dropmenu-li">
+                      <NavLink
                         to="/finance-companies/crypto-currency-companies"
                         onClick={() => setShowMenu(!showMenu)}
                       >
@@ -282,14 +298,6 @@ const Navbar = () => {
                         onClick={() => setShowMenu(!showMenu)}
                       >
                         Banks
-                      </NavLink>
-                    </li>
-                    <li className="dropmenu-li">
-                      <NavLink
-                        to="/finance-companies/micro-finance-companies"
-                        onClick={() => setShowMenu(!showMenu)}
-                      >
-                       Micro Finance Companies
                       </NavLink>
                     </li>
                     <li className="dropmenu-li">
@@ -340,14 +348,7 @@ const Navbar = () => {
                         International Money Transfer Companies
                       </NavLink>
                     </li>
-                    <li className="dropmenu-li">
-                      <NavLink
-                        to="/finance-companies/payment-gateways"
-                        onClick={() => setShowMenu(!showMenu)}
-                      >
-                        Payment Gateways{" "}
-                      </NavLink>
-                    </li>
+                    
                   </ul>
                 </li>
                 <li className="dropdown">

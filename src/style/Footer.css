@@ -56,11 +56,12 @@ footer {
 .footer_links {
   display: flex;
   flex-flow: wrap;
+  margin: 0 -20px;
 }
 
 .footer_card {
   margin: 20px;
-  width: calc(100% / 7 - 20px);
+  width: calc(100% / 7 - 40px);
   padding: 0px 0px;
 }
 
