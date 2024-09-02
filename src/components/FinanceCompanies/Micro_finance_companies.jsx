@@ -1,5 +1,5 @@
 import React,{ useState } from 'react'
-import microfinanceheader from '../../assets/microfianceheader.png'
+import microfinanceheader from '../../assets/microfinanceheader.png'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 

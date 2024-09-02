@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../../style/Loans/PersonalLoan.css";
-import autoloan from "../../assets/autoloan.jpg";
+import autoloan from "../../assets/Loan/autoloan.jpg";
 
 function Auto_loan() {
   const [faqOpen, setFaqOpen] = useState(null);
