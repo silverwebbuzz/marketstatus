@@ -132,4 +132,28 @@ ul.elss_list2 {
         padding: 0;
         width: 100%;
     }
+
+    h1.elssheader {
+        font-size: 20px;
+    }
+    
+    .elss_list_item {
+        font-size: 14px;
+    }
+
+    p.elss_p {
+        font-size: 12px;
+        padding-top: 5px;
+    }
+
+    li.elss_list_item a {
+        font-size: 12px;
+    }
+
+    .elss_list_item::after {
+        left: 7px;
+        width: 19px;
+        height: 20px;
+        padding-bottom: 6px;
+    }
 }

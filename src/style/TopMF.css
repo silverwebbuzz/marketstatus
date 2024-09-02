@@ -127,12 +127,18 @@ span.trmf {
 }
 
 .tmf_amc-name {
-    font-size: 16px;
+  font-size: 14px;
 }
 
 .Aum_Nav {
-    font-size: 16px;
+    font-size: 12px;
 }
 
+.tmf_rank {
+  color: black;
+  padding: 3px 3px;
+  border-radius: 4px;
+  font-weight: bold;
+}
 
 }

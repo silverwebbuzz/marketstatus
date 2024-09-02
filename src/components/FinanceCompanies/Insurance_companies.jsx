@@ -29,6 +29,7 @@ function Insurance_companies() {
   return (
     <section>
       <div className="container">
+        <div className="insurance_companies">
         <h2>Life Insurance Companies in India</h2>
         <p>
           Explore our curated list of top insurance companies known for their
@@ -86,6 +87,7 @@ function Insurance_companies() {
             </tbody>
           </table>
         </div>
+      </div>
       </div>
     </section>
   );

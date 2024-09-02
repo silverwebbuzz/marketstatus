@@ -207,4 +207,10 @@ tr.futureoption_thead_trow th:first-child {
   tr.futureoption_tbody_trow {
       box-shadow: none;
   }
+
+  .search_row {
+    display: flex;
+    flex-flow: row-reverse;
+    padding-top: 10px;
+}
 }
