@@ -114,9 +114,6 @@ ul.Index_list2 {
 .Index_description {
     width: 100%;
 }
-h1.Indexheader {
-    font-size: 30px;
-}
 
 .index_list_item {
     font-size: 14px;
@@ -137,5 +134,29 @@ h1.Indexheader {
 .Index_img {
     padding: 0;
     width: 100%;
+}
+
+h1.Indexheader {
+    font-size: 20px;
+}
+
+.index_list_item {
+    font-size: 14px;
+}
+
+p.Index_p {
+    font-size: 12px;
+    padding-top: 5px;
+}
+
+li.index_list_item a {
+    font-size: 12px;
+}
+
+.index_list_item::after {
+    left: 7px;
+    width: 19px;
+    height: 20px;
+    padding-bottom: 6px;
 }
 }

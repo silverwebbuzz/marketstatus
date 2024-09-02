@@ -193,9 +193,18 @@ tr.ipo_thead_tablerow th:first-child {
   }
   .ipo-list p {
     text-align: justify;
+    font-size: 12px;
 }
 tr.text-center {
   box-shadow: none;
+}
+
+.ipo-list h2 {
+  font-size: 17px;
+}
+
+.listed-ipo h2 {
+  font-size: 17px;
 }
 /* thead.thead-list tr.text-center {
   position: sticky;
@@ -207,6 +216,7 @@ tr.text-center th:first-child {
 } */
 .listed-ipo p{
    text-align: justify;
+   font-size: 12px;
 }
 table.ipo_table {
   width: 1000px;

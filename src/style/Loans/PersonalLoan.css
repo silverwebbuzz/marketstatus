@@ -145,6 +145,10 @@ section {
     text-align: justify;
   }
 
+  section {
+    padding: 15px 0px;
+}
+
   /* gold loan */
 
   .loan_criteria_left_cover {

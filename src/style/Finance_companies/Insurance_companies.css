@@ -6,7 +6,14 @@ tr.Insurance_com_td td:first-child {
     width: 65px;
   }
 
+  .gateway-name {
+    font-size: 12px;
+}
+
+
     /* / ----------------MICRO CSS START  ---------------  / */
+
+
 
   img.microfinanceheaderimg {
     width: 100%;
@@ -23,8 +30,6 @@ tr.Insurance_com_td td:first-child {
     justify-content: space-between;
     align-items: center;
 }
-
-
 img.mfc-logo {
   width: 68px;
   height: 33px;
@@ -35,6 +40,21 @@ img.mfc-logo {
 tbody.gateways-tbody tr td {
   text-align: left;
 }
+@media (max-width: 767px) {
+
+.micro_finance_company h1 {
+  font-size: 20px;
+}
+
+.micro_finance_company p {
+font-size: 12px;
+}
+
+.micro_finance_company h2 {
+font-size: 17px;
+}
+}
+
   
   /* / ----------------BROKER CSS START  ---------------  / */
   .broker_header p {
@@ -148,6 +168,28 @@ tbody.gateways-tbody tr td {
   .td_left {
     text-align: left !important;
   }
+
+  @media (max-width: 767px) {
+  .gateway_header h2 {
+    font-size: 17px;
+}
+
+.gateway_header p {
+  font-size: 12px;
+  padding-bottom: 8px;
+}
+
+.img_name {
+  font-size: 14px;
+}
+
+.img_name img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+  display: block;
+}
+  }
   /* / ----------------PAYMENT GATEWAYS CSS END  ---------------  / */
   
   @media (max-width: 767px) {
@@ -164,6 +206,19 @@ tbody.gateways-tbody tr td {
       font-size: 12px;
     }
 
+    
+  .fintech_companies h2 {
+    font-size: 17px;
+}
+
+    .insurance_companies h2 {
+      font-size: 17px;
+  }
+
+  .insurance_companies p {
+    font-size: 12px;
+    padding-bottom: 8px;
+}
     /* micro insurance */
 
     table.details-table-gateways {
@@ -178,10 +233,7 @@ tbody.gateways-tbody tr td {
       margin: 0 0 10px 0;
   }
   
-  .gateway-name {
-      font-size: 14px;
-  }
-  
+ 
   .card_row h1 {
       font-size: 16px;
   }
@@ -200,6 +252,14 @@ tbody.gateways-tbody tr td {
   .broker_card_bottom { padding-top: 10px; margin: 0-5px;}
   .broker_card_details { width: calc(100% / 2 - 10px); font-size: 10px; margin: 5px;}
   .broker-name { font-size: 16px; padding-top: 10px;}
-  /* end broker company */
+  .broker_header h2 {
+    font-size: 17px;
+}
+.broker_header p {
+  font-size: 12px;
+}
+
+
+
   }
   
