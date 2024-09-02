@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../../style/Insurance/general_insurance.css";
-import health_insurance from "../../assets/health_insurance.webp";
+import health_insurance from "../../assets/Insurance/health_insurance.webp";
 
 function Health_Insurance() {
   const [faqOpen, setFaqOpen] = useState(null);

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../../style/Loans/PersonalLoan.css";
-import mortgageloan from "../../assets/mortgageloan.jpg";
+import mortgageloan from "../../assets/Loan/mortgageloan.jpg";
 
 function Mortgage_loan() {
   const [faqOpen, setFaqOpen] = useState(null);

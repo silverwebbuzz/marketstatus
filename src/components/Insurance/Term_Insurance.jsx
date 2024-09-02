@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../../style/Insurance/general_insurance.css";
-import term_insurance from "../../assets/term_insurance.jpg";
+import term_insurance from "../../assets/Insurance/term_insurance.jpg";
 
 function Term_Insurance() {
   const [faqOpen, setFaqOpen] = useState(null);

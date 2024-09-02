@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../../style/Loans/PersonalLoan.css";
-import businessloan from "../../assets/businessloan.jpg";
+import businessloan from "../../assets/Loan/businessloan.jpg";
 
 function Business_loan() {
   const [faqOpen, setFaqOpen] = useState(null);
