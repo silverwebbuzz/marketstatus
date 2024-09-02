@@ -34,11 +34,13 @@ const PaymentGateways = () => {
           right Payment Processing Software is very important.
         </p>
       </div>
+
+      {/* 1- Cashfree Payment Gateway START */}
       <div className="card_row_pty">
         <div className="card_tbl">
           <div className="card_header_gateways" onClick={() => toggleExpand(0)}>
             <div className="img_name">
-              <img src={images["CASHFREE.png"]} className="gateway_logo" />
+              <img src={images["CASHFREE.png"]}/>
               <div className="gateway_name">Cashfree Payment Gateway</div>
             </div>
             <FontAwesomeIcon icon={faChevronDown} size="1x" />
@@ -134,11 +136,12 @@ const PaymentGateways = () => {
           )}
         </div>
       </div>
+      {/* 2- PayU Payment Gateway Service START */}
       <div className="card_row_pty">
         <div className="card_tbl">
           <div className="card_header_gateways" onClick={() => toggleExpand(1)}>
             <div className="img_name">
-              <img src={images["PAYU.png"]} className="gateway_logo" />
+              <img src={images["PAYU.png"]} />
               <div className="gateway_name">PayU Payment Gateway Service</div>
             </div>
             <FontAwesomeIcon icon={faChevronDown} size="1x" />
@@ -210,11 +213,12 @@ const PaymentGateways = () => {
           )}
         </div>
       </div>
+      {/* 3- Razorpay Payment Gateway & Payment Solutions START */}
       <div className="card_row_pty">
         <div className="card_tbl">
           <div className="card_header_gateways" onClick={() => toggleExpand(2)}>
             <div className="img_name">
-              <img src={images["RAZOR.png"]} className="gateway_logo" />
+              <img src={images["RAZOR.png"]}  />
               <div className="gateway_name">
                 Razorpay Payment Gateway & Payment Solutions
               </div>
@@ -300,11 +304,12 @@ const PaymentGateways = () => {
           )}
         </div>
       </div>
+      {/* 4- InstaMojo Payment Gateway India START */}
       <div className="card_row_pty">
         <div className="card_tbl">
           <div className="card_header_gateways" onClick={() => toggleExpand(3)}>
             <div className="img_name">
-              <img src={images["INSTAMOJO.png"]} className="gateway_logo" />
+              <img src={images["INSTAMOJO.png"]}  />
               <div className="gateway_name">
                 InstaMojo Payment Gateway India
               </div>
@@ -384,11 +389,12 @@ const PaymentGateways = () => {
           )}
         </div>
       </div>
+      {/* 5- PayPal Payment Gateway Service START */}
       <div className="card_row_pty">
         <div className="card_tbl">
           <div className="card_header_gateways" onClick={() => toggleExpand(4)}>
             <div className="img_name">
-              <img src={images["PAYPAL.png"]} className="gateway_logo" />
+              <img src={images["PAYPAL.png"]}  />
               <div className="gateway_name">PayPal Payment Gateway Service</div>
             </div>
             <FontAwesomeIcon icon={faChevronDown} size="1x" />
@@ -444,11 +450,12 @@ const PaymentGateways = () => {
           )}
         </div>
       </div>
+      {/* 6- CCAvenue Payment Gateway START */}
       <div className="card_row_pty">
         <div className="card_tbl">
           <div className="card_header_gateways" onClick={() => toggleExpand(5)}>
             <div className="img_name">
-              <img src={images["CC.png"]} className="gateway_logo" />
+              <img src={images["CC.png"]}  />
               <div className="gateway_name">CCAvenue Payment Gateway</div>
             </div>
             <FontAwesomeIcon icon={faChevronDown} size="1x" />
@@ -530,11 +537,12 @@ const PaymentGateways = () => {
           )}
         </div>
       </div>
+      {/* 7- PayUbiz Payment Gateway Service START */}
       <div className="card_row_pty">
         <div className="card_tbl">
           <div className="card_header_gateways" onClick={() => toggleExpand(6)}>
             <div className="img_name">
-              <img src={images["PAYUBIZ.png"]} className="gateway_logo" />
+              <img src={images["PAYUBIZ.png"]}  />
               <div className="gateway_name">
                 PayUbiz Payment Gateway Service
               </div>
@@ -581,11 +589,12 @@ const PaymentGateways = () => {
           )}
         </div>
       </div>
+      {/* 8- Mobikwik Payment Gateway START */}
       <div className="card_row_pty">
         <div className="card_tbl">
           <div className="card_header_gateways" onClick={() => toggleExpand(7)}>
             <div className="img_name">
-              <img src={images["MOBI.jpeg"]} className="gateway_logo" />
+              <img src={images["MOBI.jpeg"]}  />
               <div className="gateway_name">Mobikwik Payment Gateway</div>
             </div>
             <FontAwesomeIcon icon={faChevronDown} size="1x" />
@@ -641,11 +650,12 @@ const PaymentGateways = () => {
           )}
         </div>
       </div>
+      {/* 9- Easebuzz START */}
       <div className="card_row_pty">
         <div className="card_tbl">
           <div className="card_header_gateways" onClick={() => toggleExpand(8)}>
             <div className="img_name">
-              <img src={images["EASE.png"]} className="gateway_logo" />
+              <img src={images["EASE.png"]}  />
               <div className="gateway_name">Easebuzz</div>
             </div>
             <FontAwesomeIcon icon={faChevronDown} size="1x" />
@@ -707,11 +717,12 @@ const PaymentGateways = () => {
           )}
         </div>
       </div>
+      {/* 10- OPEN Payment Gateway START */}
       <div className="card_row_pty">
         <div className="card_tbl">
           <div className="card_header_gateways" onClick={() => toggleExpand(9)}>
             <div className="img_name">
-              <img src={images["OPEN.png"]} className="gateway_logo" />
+              <img src={images["OPEN.png"]}  />
               <div className="gateway_name">OPEN Payment Gateway</div>
             </div>
             <FontAwesomeIcon icon={faChevronDown} size="1x" />

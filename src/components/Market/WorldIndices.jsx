@@ -51,6 +51,12 @@ const WorldIndices = () => {
     <section>
       <div className="container">
         <h1>World Indices</h1>
+        <p>
+          This page features major global indices traded in the India and around
+          the world. In addition to real-time prices, the table provides the
+          high and low prices that in index traded at for the trading day in an
+          easy to read format.
+        </p>
         <div className="table_ind">
           <table className="World_indices_table">
             <thead className="World_indices_thead">
@@ -68,17 +74,25 @@ const WorldIndices = () => {
             <tbody className="World_indices_tbody">
               {indicesData.map((item, index) => (
                 <tr className="World_indices_tbody_tr" key={index}>
-                  <td >
-                  <div className="padding_right">
-                    {item.countryImg && <img src={item.countryImg} alt="Country flag" style={{ width: '20px', height: 'auto' }} />}
-                    <p>{item.name}</p>
-                  </div>
+                  <td>
+                    <div className="padding_right">
+                      {item.countryImg && (
+                        <img
+                          src={item.countryImg}
+                          alt="Country flag"
+                          style={{ width: "20px", height: "auto" }}
+                        />
+                      )}
+                      <p>{item.name}</p>
+                    </div>
                   </td>
                   <td>{formatNumber(item.price)}</td>
-                  <td style={{ color: item.netChange > 0 ? 'green' : 'red' }}>
+                  <td style={{ color: item.netChange > 0 ? "green" : "red" }}>
                     {formatNumber(item.netChange)}
                   </td>
-                  <td style={{ color: item.oneDayPercent > 0 ? 'green' : 'red' }}>
+                  <td
+                    style={{ color: item.oneDayPercent > 0 ? "green" : "red" }}
+                  >
                     {formatNumber(item.oneDayPercent)}%
                   </td>
                   <td>{formatNumber(item.high)}</td>

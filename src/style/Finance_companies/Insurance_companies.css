@@ -150,6 +150,42 @@ tbody.gateways-tbody tr td {
   }
   /* / ----------------PAYMENT GATEWAYS CSS END  ---------------  / */
   
+/* / ----------------International Money Transfer Companies CSS START  ---------------  / */
+.card_row_imtc {
+    display: flex;
+    flex-flow: wrap;
+  }
+.img_name img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    display: block;
+}
+.card_body_imtc p{
+  padding-top: 20px;
+}
+  .imtc_header p {
+    font-size: 14px;
+    color: #323232;
+  }
+  .card_header_imtc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+  .img_name {
+    display: flex;
+    align-items: center;
+  }
+  .imtc_name {
+    margin-left: 10px;
+  }
+  
+/* / ----------------International Money Transfer Companies CSS END  ---------------  / */
+
+
+
   @media (max-width: 767px) {
     tr.Insurance_com_td td:first-child {
       width: 26px;
@@ -168,7 +204,7 @@ tbody.gateways-tbody tr td {
 
     table.details-table-gateways {
       width: 276px;
-  }
+    }
   
   tbody.gateways-tbody tr td:first-child {
       width: 90px;
@@ -191,6 +227,7 @@ tbody.gateways-tbody tr td {
   }
   /* end micro */
 
+
   /* broker company */
   .broker_card { padding: 10px;}
   .broker_card_top { flex-flow: nowrap;}
@@ -202,4 +239,3 @@ tbody.gateways-tbody tr td {
   .broker-name { font-size: 16px; padding-top: 10px;}
   /* end broker company */
   }
-  
