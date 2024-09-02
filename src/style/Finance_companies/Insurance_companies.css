@@ -196,6 +196,10 @@ font-size: 17px;
     tr.Insurance_com_td td:first-child {
       width: 26px;
     }
+
+    .card_body_gateways table {
+      width: 256px;
+  }
   
     tr.Insurance_com_tr th:first-child {
       width: 26px;
