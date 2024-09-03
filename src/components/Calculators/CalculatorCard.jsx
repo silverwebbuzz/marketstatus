@@ -24,7 +24,7 @@ function Calculate() {
     <>
       <section className="calc_card_dash">
         <div className="container">
-          <h1 className="calculator-name">Calculator</h1>
+          <h1 className="calculator-name">Calculators</h1>
           <div className="calculator-grid">
             <div className="calculator_card">
               <FontAwesomeIcon icon={faHandshake} size="3x" className="icon" />
