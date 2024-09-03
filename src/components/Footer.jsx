@@ -1,13 +1,7 @@
 import React from "react";
 import "../style/Footer.css";
 import { Link } from "react-router-dom";
-
-const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-};
+import scrollToTop from "./ScrollToTop";
 
 function Footer() {
   return (
@@ -392,9 +386,7 @@ function Footer() {
                         </Link>
                     </li>
                   </ul>
-                </div>
-               
-                     
+                </div>            
                 <div className="footer_card">
                   <h3>Quick links</h3>
                   <ul>

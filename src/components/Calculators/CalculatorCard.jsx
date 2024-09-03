@@ -1,5 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import scrollToTop from "../ScrollToTop";
 import {
   faHandshake,
   faChartLine,
@@ -17,25 +18,27 @@ import {
 import { Link } from "react-router-dom";
 import "../../style/calculators/calculatorcard.css";
 
-const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-};
 
 function Calculate() {
   return (
     <>
       <section className="calc_card_dash">
         <div className="container">
-          <h1 className="calculator-name">Calculator</h1>
+          <h1 className="calculator-name">Calculators</h1>
           <div className="calculator-grid">
             <div className="calculator_card">
-                  <FontAwesomeIcon icon={faHandshake} size="3x" className="icon"/>
-                  <h3>SIP Calculator</h3>
-                  <p className="calc_description"> Calculate investment returns with SIP return calculator to determine your maturity amount and returns. </p>
-                <Link onClick={scrollToTop} to="/sip-calculator" className="card_link"></Link>
+              <FontAwesomeIcon icon={faHandshake} size="3x" className="icon" />
+              <h3>SIP Calculator</h3>
+              <p className="calc_description">
+                {" "}
+                Calculate investment returns with SIP return calculator to
+                determine your maturity amount and returns.{" "}
+              </p>
+              <Link
+                onClick={scrollToTop}
+                to="/sip-calculator"
+                className="card_link"
+              ></Link>
             </div>
             <div className="calculator_card">
                 <div>
@@ -125,6 +128,7 @@ function Calculate() {
                 </div>
                 <Link onClick={scrollToTop} to="/nps-calculator" className="card_link"></Link>
             </div>
+            
           </div>
         </div>
       </section>

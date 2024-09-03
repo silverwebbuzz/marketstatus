@@ -72,13 +72,6 @@ const calculateRd = (monthlyInvestment, rate, tenureMonths) => {
     return new Intl.NumberFormat("en-IN").format(number);
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
   return (
     <>
       <section>
