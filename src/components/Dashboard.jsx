@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react';
 import StockBox from './StockBox';
 import '../style/Dashboard.css';
 import advImg from '../images/YFOBS.png'
+import sticker1 from '../images/sticker1.png';
 import TopMF from './TopMF';
 import Equity from './MutualFunds/Equity';
-import sticker1 from '../images/sticker1.png';
-import sticker2 from '../images/sticker2.png';
 import Debt from './MutualFunds/Debt';
 import Hybrid from './MutualFunds/Hybrid';
 import Index from './MutualFunds/Index';
@@ -34,7 +33,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <section>
+      <section className="section_gap">
         <div className="container">
           <div className="dashboard_row">
             <div className="dashboard">
@@ -60,37 +59,15 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        <div>
+        <div className="stick">
           <img src={sticker1} alt="sticker" className='sticker1' />
-        </div>
-        <div>
-          <Equity />
-        </div>
-        <div>
-        <img src={sticker2} alt="sticker" className='sticker1' />
-        </div>
-        <div>
-          <Debt />
-        </div>
-        <div>
-          <img src={sticker1} alt="sticker" className='sticker1' />
-        </div>
-        <div>
-          <Hybrid />
-        </div>
-        <div>
-        <img src={sticker2} alt="sticker" className='sticker1' />
-        </div>
-        <div>
-          <Index />
-        </div>
-        <div>
-          <img src={sticker1} alt="sticker" className='sticker1' />
-        </div>
-        <div>
-          <ELSS />
         </div>
       </section>
+      <Equity />
+      <Debt />
+      <Hybrid />
+      <Index />
+      <ELSS />
       <CalculatorCard/>  
     </>
   );

@@ -1,0 +1,60 @@
+/* ----- Equity Fund -----*/
+
+.mutualfunds_coman_links::after { content: '';position: absolute;left: 0; top: 50%; transform: translateY(-50%); width: 22px; height: 25px; background-image: url('../../images/Equityicon.png');  background-size: contain; background-repeat: no-repeat; padding-bottom: 6px; ;}
+.mutualfunds_coman_links { padding: 10px 0px;  position: relative;padding-left: 35px;}
+.mutualfunds_left .after_Line:after { position: absolute; content: ""; bottom: -7px; left: 50%; border-bottom: 1px solid #232323; width: 0; transition: all 0.4s ease; margin: 0 auto; transform: translate(-50%, 0);}
+.mutualfunds_left .after_Line:hover:after { width: 100%;}
+.mutualfunds_coman_links a { color: #545454;text-decoration: none;position: relative;}
+.cover_ul { display: block;}
+.mutualfunds_left p { color: #9e9b9b; font-size: 15px; padding-top: 20px;}
+.mutualfunds_img img { width: 100%; display: block; object-fit: contain;}
+.mutualfunds_left h1 { color: #636363; font-size: 45px; margin: 0; }
+.mutualfunds_left {width: 60%;padding-right: 20px;}
+.mutualfunds_right { width: 40%; padding-left: 20px;}
+.mutualfunds_row { display: flex; flex-flow: wrap; justify-content: space-between; align-items: start;}
+.mutualfunds_left_cover_row { display: flex; flex-flow: wrap; gap: 10px; justify-content: space-between; margin-top: 30px;}
+.left_cover_row_left { width: 45%;}
+.left_cover_row_right { width: 45%;}
+.sticker1{width: 100%; display: block;}
+.stick { padding-top: 20px;}
+
+/* ----- End Equity Fund ----- */
+
+/* ----- Debt Fund -----*/
+
+.debt::after{ background-image: url('../../images/Debticon.png'); }
+.row_reverse { flex-flow: row-reverse;}
+.row_reverse .mutualfunds_left { padding-right: 0 !important; padding-left: 20px;}
+.row_reverse .mutualfunds_right { padding-left: 0; padding-right: 20px;}
+
+/* ----- End Debt Fund ----- */
+
+/* ----- Hybrid Fund -----*/
+
+.hybrid::after{ background-image: url('../../images/Hybridicon.png');  }
+
+/* ----- End Hybrid Fund ----- */
+
+/* ----- Index Fund -----*/
+
+.index::after{ background-image: url('../../images/Indexicon.png');  }
+
+/* ----- End Index Fund ----- */
+
+/* ----- Index Fund -----*/
+
+.elss::after{ background-image: url('../../images/ELSSicon.png');  }
+
+/* ----- End Index Fund ----- */
+
+
+@media (max-width: 767px){
+    .mutualfunds_left { width: 100%; padding-right: 0;}
+    .mutualfunds_left h1 { font-size: 30px;}
+    .mutualfunds_left_cover_row { margin-top: 15px; gap: 0;}
+    .left_cover_row_left { width: 50%; padding-right: 10px;}
+    .left_cover_row_right { width: 50%; padding-left: 10px;}
+    .mutualfunds_coman_links { padding: 5px 0px; font-size: 12px; padding-left: 30px;}
+    .mutualfunds_right { width: 100%; padding-left: 0; margin-top: 10px;}
+    .sticker1{display: none;}
+}
