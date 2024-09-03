@@ -223,7 +223,13 @@ font-size: 17px;
   .imtc_name {
     margin-left: 10px;
   }
-  
+
+ @media (max-width: 767px) {
+  .card_body_imtc p {
+    font-size: 12px;
+  }
+}
+
 /* / ----------------International Money Transfer Companies CSS END  ---------------  / */
 
 

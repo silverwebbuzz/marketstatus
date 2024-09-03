@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../../style/calculators/calculatorComan.css";
-import CalculatorCard from './CalculatorCard';
+import CalculatorCard from "./CalculatorCard";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import {
@@ -91,18 +91,11 @@ const FdCalculator = () => {
   };
 
   const options = {
-    cutout: "80%",  
+    cutout: "80%",
   };
 
   const formatNumber = (number) => {
-    return new Intl.NumberFormat('en-IN').format(number);
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    return new Intl.NumberFormat("en-IN").format(number);
   };
 
   return (
@@ -132,7 +125,7 @@ const FdCalculator = () => {
                       <TextField
                         type="number"
                         value={fdAmount}
-                        onChange={(e) => setFdAmount((e.target.value))}
+                        onChange={(e) => setFdAmount(e.target.value)}
                         size="small"
                       />
                       <Slider
@@ -150,7 +143,7 @@ const FdCalculator = () => {
                       <TextField
                         type="number"
                         value={returnRate}
-                        onChange={(e) => setReturnRate((e.target.value))}
+                        onChange={(e) => setReturnRate(e.target.value)}
                         size="small"
                       />
                       <Slider
@@ -168,7 +161,7 @@ const FdCalculator = () => {
                       <TextField
                         type="number"
                         value={fdTenure}
-                        onChange={(e) => setLoanTenure((e.target.value))}
+                        onChange={(e) => setLoanTenure(e.target.value)}
                         size="small"
                       />
                       <Slider
