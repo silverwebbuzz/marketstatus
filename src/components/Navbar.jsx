@@ -6,7 +6,7 @@ import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState("");
-  // const [open, setOpen] = useState(false);
+
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -21,14 +21,6 @@ const Navbar = () => {
       setActiveDropdown("");
     }
   };
-  //const handleOpen = () => {
-  //  setOpen(!open);
-  //};
-  // const handleOpen = () => {
-  //    if (window.innerWidth <= 767) {
-  //      setOpen(!open);
-  //    }
-  //  };
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -96,7 +88,6 @@ const Navbar = () => {
               <ul className="nav_ul">
                 <li className="dropdown">
                   <NavLink to="/" onClick={closeMenuOnClick}>
-                    {/* onClick={() => setShowMenu(!showMenu)} */}
                     Home
                   </NavLink>
                 </li>
@@ -601,130 +592,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-// import React, { useState } from "react";
-// import { Link, NavLink } from "react-router-dom";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
-
-// const Navbar = () => {
-//   const [showMenu, setShowMenu] = useState(false);
-//   const [activeDropdown, setActiveDropdown] = useState("");
-
-//   const toggleMenu = () => {
-//     setShowMenu(!showMenu);
-//   };
-
-//   const toggleDropdown = (dropdown) => {
-//     setActiveDropdown((prev) => (prev === dropdown ? "" : dropdown));
-//   };
-
-//   const closeMenuOnClick = () => {
-//     if (window.innerWidth <= 767) {
-//       setShowMenu(false);
-//       setActiveDropdown("");
-//     }
-//   };
-
-//   const scrollToTop = () => {
-//     window.scrollTo({
-//       top: 0,
-//       behavior: "smooth",
-//     });
-//   };
-
-//   return (
-//     <div className="container">
-//       {/* Burger Menu Button */}
-//       <div className="Nav_toggle">
-//         <button
-//           className="navbar-burger self-center xl:hidden"
-//           onClick={toggleMenu}
-//           style={{
-//             width: "35px",
-//             height: "35px",
-//             display: "flex",
-//             justifyContent: "center",
-//             alignItems: "center",
-//             padding: "0",
-//           }}
-//         >
-//           {showMenu ? (
-//             <svg
-//               width="12"
-//               height="12"
-//               viewBox="0 0 12 12"
-//               fill="none"
-//               xmlns="http://www.w3.org/2000/svg"
-//             >
-//               {/* SVG path for close icon */}
-//             </svg>
-//           ) : (
-//             <svg
-//               width="35"
-//               height="35"
-//               viewBox="0 0 32 32"
-//               fill="none"
-//               xmlns="http://www.w3.org/2000/svg"
-//             >
-//               {/* SVG path for menu icon */}
-//             </svg>
-//           )}
-//         </button>
-//       </div>
-
-//       {/* Navbar Links */}
-//       <div className="Navbar1">
-//         <div className={`Nav_bottom ${showMenu ? "open" : ""}`}>
-//           <nav className="Nav">
-//             <ul className="nav_ul">
-//               <li>
-//                 <NavLink to="/" onClick={closeMenuOnClick}>
-//                   Home
-//                 </NavLink>
-//               </li>
-
-//               {/* Market Dropdown */}
-//               <li className="dropdown">
-//                 <span onClick={() => toggleDropdown("market")}>
-//                   Market
-//                   <FontAwesomeIcon className="faCaretDown" icon={faCaretDown} />
-//                 </span>
-//                 <ul className={`dropdown-menu ${ activeDropdown === "market" ? "show" : ""}`}>
-//                   {/* List of dropdown items */}
-//                   <li className="dropmenu-li">
-//                     <NavLink to="/indices" onClick={closeMenuOnClick}>
-//                       Indices
-//                     </NavLink>
-//                   </li>
-//                   {/* Add other dropdown items similarly */}
-//                 </ul>
-//               </li>
-
-//               {/* Mutual Funds Dropdown */}
-//               <li className="dropdown">
-//                 <span onClick={() => toggleDropdown("mutualFunds")}>
-//                   Mutual Funds
-//                   <FontAwesomeIcon className="faCaretDown" icon={faCaretDown} />
-//                 </span>
-//                 <ul className={`dropdown-menu ${activeDropdown === "mutualFunds" ? "show" : ""}`}>
-//                   {/* List of dropdown items */}
-//                   <li className="dropmenu-li">
-//                     <NavLink to="/mutual-funds/amc" onClick={closeMenuOnClick}>
-//                       AMC Funds
-//                     </NavLink>
-//                   </li>
-//                   {/* Add other dropdown items similarly */}
-//                 </ul>
-//               </li>
-
-//               {/* Repeat for other dropdown sections like Insurance, Finance Institutes, Loans, etc. */}
-
-//             </ul>
-//           </nav>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Navbar;
