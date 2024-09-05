@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import { useLocation, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Dashboard from './components/Dashboard';
@@ -65,7 +65,7 @@ import Political_news from './components/News/Political_news';
 import World_news from './components/News/World_news';
 import Insurance_companies from './components/FinanceCompanies/Insurance_companies';
 import PaymentGateways from './components/FinanceCompanies/Payment_gateways';
-
+import Preloader from './components/PreLoader';
 const usePageTracking = () => {
   const location = useLocation();
 
@@ -207,6 +207,14 @@ const AppContent = () => {
 };
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 3300);
+  }, []);
+  if (loading) {
+    return <Preloader />;
+  }
   return (
     <div className="App">
       <Router>
