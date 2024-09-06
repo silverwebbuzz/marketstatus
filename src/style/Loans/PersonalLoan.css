@@ -105,7 +105,7 @@ p + p {
 
 /* home loan */
 
-section {
+.section_gap {
   padding: 30px 0px;
 }
 .personalloan_left h2 {
@@ -129,6 +129,9 @@ section {
 /* end home loan */
 
 @media (max-width: 767px) {
+  .section_gap {
+    padding: 15px 0px;
+  }
   .personalloan_row {
     flex-flow: wrap;
   }
