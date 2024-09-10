@@ -96,6 +96,10 @@ const AppContent = () => {
 
   return (
     <>
+    {/* {/ Render the loader, but also render the rest of the app in the background /} */}
+      {loading && <Preloader />}
+      {/* {/ The content is rendered, but may be hidden by the loader /} */}
+      <div style={{ display: loading ? 'none' : 'block' }}>
       <Header />
       <Routes>
         <Route path="/" element={<Dashboard />} />
@@ -214,6 +218,7 @@ const AppContent = () => {
         />
       </Routes>
       <Footer />
+      </div>
     </>
   );
 };

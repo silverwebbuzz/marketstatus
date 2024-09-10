@@ -4,6 +4,7 @@ import { Link ,useParams } from 'react-router-dom'; // Import useParams for dyna
 import AMCcompanies from './AMCcompanies';
 import CalculatorCard from '../Calculators/CalculatorCard'
 import '../../style/mutualfunds/amcsubpage.css';
+import scrollToTop from '../ScrollToTop';
 
 const formatNumber = (num) => {
     return parseFloat(num).toFixed(2);
@@ -72,6 +73,9 @@ function AMCsubPage() {
                     </div>
                 </div>
                 <AMCcompanies/>
+                <div>
+                    <scrollToTop/>
+                </div>
             </div>
         </section>
     );
