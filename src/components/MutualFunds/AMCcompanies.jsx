@@ -37,7 +37,7 @@ const AMCcompanies = () => {
 
     return (
         <section>
-        <div >
+        <div className='container'>
             <div className='amc_header'>
                 <h2> Other AMC Funds</h2>
                 <p>
