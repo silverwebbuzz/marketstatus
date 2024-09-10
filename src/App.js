@@ -1,5 +1,6 @@
 import React, { useEffect,useState } from 'react';
 import { useLocation, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import './App.css';
 import Header from './components/Header';
 import Dashboard from './components/Dashboard';
 import IndicesTable from './components/Market/IndicesTable';
@@ -21,7 +22,6 @@ import AMC from './components/MutualFunds/AMC';
 import Subcategory from './components/Subcategory';
 import StockData from './components/Market/StockData';
 import IPO from './components/Market/Ipo';
-import './App.css';
 import NseHolidays from './components/NseHolidays';
 import Analysis_companies from './components/FinanceCompanies/Analysis_companies';
 import Fintech_company from './components/FinanceCompanies/Fintech_company';
@@ -80,141 +80,96 @@ const usePageTracking = () => {
 };
 
 const AppContent = () => {
+  const [loading, setLoading] = useState(true); // Loader visible initially
+
   usePageTracking();
+
+  useEffect(() => {
+    // Keep the loader visible for 10 seconds
+    const timer = setTimeout(() => setLoading(false), 3000);
+
+    // Clean up timer on unmount
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/indices" element={<IndicesTable />} />
-        <Route path="/futures-margins" element={<FnO />} />
-        <Route path="/ipo" element={<IPO />} />
-        <Route path="/sip-calculator" element={<SIP />} />
-        <Route path="/emi-calculator" element={<EMI />} />
-        <Route path="/fd-calculator" element={<FD />} />
-        <Route path="/lumpsum-calculator" element={<Lumpsum />} />
-        <Route path="/yearly-sip-calculator" element={<YRSIP />} />
-        <Route path="/roi-calculator" element={<ROI />} />
-        <Route path="/cagr-calculator" element={<CAGR />} />
-        <Route path="/rd-calculator" element={<RD />} />
-        <Route path="/ppf-calculator" element={<PPF />} />
-        <Route path="/ci-calculator" element={<CI />} />
-        <Route path="/si-calculator" element={<SI />} />
-        <Route path="/nps-calculator" element={<NPS />} />
-
-        <Route path="/mutual-funds/amc" element={<AMC />} />
-        <Route
-          path="/mutualfunds/:category/:subcategory"
-          element={<Subcategory />}
-        />
-        <Route path="/index/:indexSymbol" element={<StockData />} />
-        <Route path="/holidays" element={<NseHolidays />} />
-        <Route
-          path="/finance-companies/analysis-companies"
-          element={<Analysis_companies />}
-        />
-        <Route
-          path="/finance-companies/broker-companies"
-          element={<Broker_Companies />}
-        />
-        <Route
-          path="/finance-companies/crypto-currency-companies"
-          element={<Crypto_currency_companies />}
-        />
-        <Route
-          path="/finance-companies/fintech-company"
-          element={<Fintech_company />}
-        />
-        <Route path="/finance-companies/bank" element={<Bank />} />
-        <Route
-          path="/finance-companies/investment-management-companies"
-          element={<Investment_management_companies />}
-        />
-        <Route
-          path="/finance-companies/funding-companies-list"
-          element={<Funding_Companies />}
-        />
-        <Route
-          path="/finance-companies/CA-companies"
-          element={<CA_companies />}
-        />
-        <Route
-          path="/finance-companies/CS-companies"
-          element={<CS_companies />}
-        />
-        <Route
-          path="/finance-companies/international-money-transfer-companies"
-          element={<International_money_transfer_companies />}
-        />
-        <Route
-          path="/finance-companies/micro-finance-companies"
-          element={<Micro_Finance_companies />}
-        />
-        <Route
-          path="/finance-companies/payment-gateways"
-          element={<PaymentGateways />}
-        />
-        <Route path="/market/cryptocurrency" element={<Crypto_currency />} />
-        <Route path="/market/forex" element={<Forex />} />
-        <Route path="/mutual-funds/equity-fund" element={<Equity />} />
-        <Route path="/mutual-funds/debt-fund" element={<Debt />} />
-        <Route path="/mutual-funds/hybrid-fund" element={<Hybrid />} />
-        <Route path="/mutual-funds/index-fund" element={<Index />} />
-        <Route path="/mutual-funds/elss-fund" element={<ELSS />} />
-        <Route
-          path="/Insurance/general-insurance"
-          element={<General_Insurance />}
-        />
-        <Route path="/loans/personal_loan" element={<Personal_loan />} />
-        <Route path="/loans/home_loan" element={<Home_loan />} />
-        <Route path="market/worldindices" element={<WorldIndices />} />
-        <Route path="/Insurance/life-insurance" element={<Life_Insurance />} />
-        <Route
-          path="/Insurance/health-insurance"
-          element={<Health_Insurance />}
-        />
-        <Route path="/Insurance/car-insurance" element={<Car_Insurance />} />
-        <Route path="/Insurance/bike-insurance" element={<Bike_Insurance />} />
-        <Route path="/Insurance/term-insurance" element={<Term_Insurance />} />
-        <Route
-          path="/Insurance/travel-insurance"
-          element={<Travel_Insurance />}
-        />
-        <Route
-          path="/Insurance/business-insurance"
-          element={<Business_Insurance />}
-        />
-        <Route path="/Insurance/pet-insurance" element={<Pet_Insurance />} />
-        <Route path="/Insurance/fire-insurance" element={<Fire_Insurance />} />
-        <Route path="/loans/gold_loan" element={<Gold_loan />} />
-        <Route path="/loans/auto_loan" element={<Auto_loan />} />
-        <Route path="/loans/business_loan" element={<Business_loan />} />
-        <Route path="/loans/mortgage_loan" element={<Mortgage_loan />} />
-        <Route path="/loans/student_loan" element={<Student_loan />} />
-        <Route path="/news/business_news" element={<Business_news />} />
-        <Route path="/news/economy_news" element={<Economy_news />} />
-        <Route path="/news/political_news" element={<Political_news />} />
-        <Route path="/news/world_news" element={<World_news />} />
-        <Route
-          path="/finance-companies/insurance-companies"
-          element={<Insurance_companies />}
-        />
-      </Routes>
-      <Footer />
+      {/* Render the loader, but also render the rest of the app in the background */}
+      {loading && <Preloader />}
+      {/* The content is rendered, but may be hidden by the loader */}
+      <div style={{ display: loading ? 'none' : 'block' }}>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/indices" element={<IndicesTable />} />
+          <Route path="/futures-margins" element={<FnO />} />
+          <Route path="/ipo" element={<IPO />} />
+          <Route path="/sip-calculator" element={<SIP />} />
+          <Route path="/emi-calculator" element={<EMI />} />
+          <Route path="/fd-calculator" element={<FD />} />
+          <Route path="/lumpsum-calculator" element={<Lumpsum />} />
+          <Route path="/yearly-sip-calculator" element={<YRSIP />} />
+          <Route path="/roi-calculator" element={<ROI />} />
+          <Route path="/cagr-calculator" element={<CAGR />} />
+          <Route path="/rd-calculator" element={<RD />} />
+          <Route path="/ppf-calculator" element={<PPF />} />
+          <Route path="/ci-calculator" element={<CI />} />
+          <Route path="/si-calculator" element={<SI />} />
+          <Route path="/nps-calculator" element={<NPS />} />
+          <Route path="/mutual-funds/amc" element={<AMC />} />
+          <Route path="/mutualfunds/:category/:subcategory" element={<Subcategory />} />
+          <Route path="/index/:indexSymbol" element={<StockData />} />
+          <Route path="/holidays" element={<NseHolidays />} />
+          <Route path="/finance-companies/analysis-companies" element={<Analysis_companies />} />
+          <Route path="/finance-companies/broker-companies" element={<Broker_Companies />} />
+          <Route path="/finance-companies/crypto-currency-companies" element={<Crypto_currency_companies />} />
+          <Route path="/finance-companies/fintech-company" element={<Fintech_company />} />
+          <Route path="/finance-companies/bank" element={<Bank />} />
+          <Route path="/finance-companies/investment-management-companies" element={<Investment_management_companies />} />
+          <Route path="/finance-companies/funding-companies-list" element={<Funding_Companies />} />
+          <Route path="/finance-companies/CA-companies" element={<CA_companies />} />
+          <Route path="/finance-companies/CS-companies" element={<CS_companies />} />
+          <Route path="/finance-companies/international-money-transfer-companies" element={<International_money_transfer_companies />} />
+          <Route path="/finance-companies/micro-finance-companies" element={<Micro_Finance_companies />} />
+          <Route path="/finance-companies/payment-gateways" element={<PaymentGateways />} />
+          <Route path="/market/cryptocurrency" element={<Crypto_currency />} />
+          <Route path="/market/forex" element={<Forex />} />
+          <Route path="/mutual-funds/equity-fund" element={<Equity />} />
+          <Route path="/mutual-funds/debt-fund" element={<Debt />} />
+          <Route path="/mutual-funds/hybrid-fund" element={<Hybrid />} />
+          <Route path="/mutual-funds/index-fund" element={<Index />} />
+          <Route path="/mutual-funds/elss-fund" element={<ELSS />} />
+          <Route path="/Insurance/general-insurance" element={<General_Insurance />} />
+          <Route path="/loans/personal_loan" element={<Personal_loan />} />
+          <Route path="/loans/home_loan" element={<Home_loan />} />
+          <Route path="market/worldindices" element={<WorldIndices />} />
+          <Route path="/Insurance/life-insurance" element={<Life_Insurance />} />
+          <Route path="/Insurance/health-insurance" element={<Health_Insurance />} />
+          <Route path="/Insurance/car-insurance" element={<Car_Insurance />} />
+          <Route path="/Insurance/bike-insurance" element={<Bike_Insurance />} />
+          <Route path="/Insurance/term-insurance" element={<Term_Insurance />} />
+          <Route path="/Insurance/travel-insurance" element={<Travel_Insurance />} />
+          <Route path="/Insurance/business-insurance" element={<Business_Insurance />} />
+          <Route path="/Insurance/pet-insurance" element={<Pet_Insurance />} />
+          <Route path="/Insurance/fire-insurance" element={<Fire_Insurance />} />
+          <Route path="/loans/gold_loan" element={<Gold_loan />} />
+          <Route path="/loans/auto_loan" element={<Auto_loan />} />
+          <Route path="/loans/business_loan" element={<Business_loan />} />
+          <Route path="/loans/mortgage_loan" element={<Mortgage_loan />} />
+          <Route path="/loans/student_loan" element={<Student_loan />} />
+          <Route path="/news/business_news" element={<Business_news />} />
+          <Route path="/news/economy_news" element={<Economy_news />} />
+          <Route path="/news/political_news" element={<Political_news />} />
+          <Route path="/news/world_news" element={<World_news />} />
+          <Route path="/finance-companies/insurance-companies" element={<Insurance_companies />} />
+        </Routes>
+        <Footer />
+      </div>
     </>
   );
 };
 
 function App() {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 3300);
-  }, []);
-  if (loading) {
-    return <Preloader />;
-  }
   return (
     <div className="App">
       <Router>

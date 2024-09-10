@@ -150,7 +150,7 @@ class StockBox extends Component {
     const textColor = { color: chartColor };
     const arrowClass = isMarketUp ? 'arrowIndicator arrow-up-green' : 'arrowIndicator arrow-down-red';
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return null;
     if (error) return <div>Error: {error.message}</div>;
 
     return (
