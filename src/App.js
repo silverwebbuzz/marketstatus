@@ -1,5 +1,6 @@
 import React, { useEffect,useState } from 'react';
 import { useLocation, BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import './App.css';
 import Header from './components/Header';
 import Dashboard from './components/Dashboard';
 import IndicesTable from './components/Market/IndicesTable';
@@ -21,7 +22,6 @@ import AMC from './components/MutualFunds/AMC';
 import Subcategory from './components/Subcategory';
 import StockData from './components/Market/StockData';
 import IPO from './components/Market/Ipo';
-import './App.css';
 import NseHolidays from './components/NseHolidays';
 import Analysis_companies from './components/FinanceCompanies/Analysis_companies';
 import Fintech_company from './components/FinanceCompanies/Fintech_company';
@@ -82,10 +82,24 @@ const usePageTracking = () => {
 };
 
 const AppContent = () => {
+  const [loading, setLoading] = useState(true); // Loader visible initially
+
   usePageTracking();
+
+  useEffect(() => {
+    // Keep the loader visible for 10 seconds
+    const timer = setTimeout(() => setLoading(false), 3000);
+
+    // Clean up timer on unmount
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
+    {/* {/ Render the loader, but also render the rest of the app in the background /} */}
+      {loading && <Preloader />}
+      {/* {/ The content is rendered, but may be hidden by the loader /} */}
+      <div style={{ display: loading ? 'none' : 'block' }}>
       <Header />
       <Routes>
         <Route path="/" element={<Dashboard />} />
@@ -205,19 +219,12 @@ const AppContent = () => {
         />
       </Routes>
       <Footer />
+      </div>
     </>
   );
 };
 
 function App() {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 3300);
-  }, []);
-  if (loading) {
-    return <Preloader />;
-  }
   return (
     <div className="App">
       <Router>
