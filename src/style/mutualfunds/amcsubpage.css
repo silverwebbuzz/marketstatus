@@ -1,0 +1,5 @@
+.amc_tr {
+    box-shadow: 0px 0.5px 1.5px 0.5px #00000040;
+    border-radius: 10px;
+    transition: all 0.4s ease;
+}

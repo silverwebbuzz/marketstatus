@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import '../../style/mutualfunds/amc.css';
 
 const importAll = (r) => {
@@ -11,6 +12,7 @@ const images = importAll(require.context('../../assets/amc_fund_companies', fals
 
 const AMC = () => {
     const [data, setData] = useState(null);
+    const navigate = useNavigate(); 
 
     useEffect(() => {
         fetch('/mutualData.json')
@@ -26,16 +28,26 @@ const AMC = () => {
 
     if (!data || !data.mutual_fund_companies) return null;
 
+    const handleCardClick = (fund) => {
+        const fundName = fund.amc_name.toLowerCase().replace(/\s+/g, ''); // For example: "ICICI Prudential Mutual Fund" -> "iciciprudentialmutualfund"
+        navigate(`/amc/${fundName}`);
+    };
+
     return (
         <div className="container">
             <div className='amc_header'>
-            <h2>AMC Funds</h2>
-            <p>
-            In the share market, AMC refers to an Asset Management Company. An AMC oversees investment funds by gathering capital from investors and allocating it across different assets such as stocks and bonds. They are responsible for managing investment portfolios, ensuring diversification, and tracking performance to assist investors in reaching their financial objectives.</p>
+                <h2>AMC Funds</h2>
+                <p>
+                    In the share market, AMC refers to an Asset Management Company. An AMC oversees investment funds by gathering capital from investors and allocating it across different assets such as stocks and bonds. They are responsible for managing investment portfolios, ensuring diversification, and tracking performance to assist investors in reaching their financial objectives.
+                </p>
             </div>
             <div className="card_row">
                 {data.mutual_fund_companies.map((fund, index) => (
-                    <div className="card_mf" key={index}>
+                    <div 
+                        className="card_mf" 
+                        key={index} 
+                        onClick={() => handleCardClick(fund)} 
+                    >
                         <div className="card-header_mf">
                             <div className='img_name'>
                                 <img src={images[fund.logo]} alt={`${fund.amc_name} logo`} className="amc-logo" />
