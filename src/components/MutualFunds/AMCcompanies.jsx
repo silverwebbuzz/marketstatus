@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import '../../style/mutualfunds/amccompany.css';
+import scrollToTop from '../ScrollToTop';
 
 const importAll = (r) => {
     let images = {};
@@ -31,11 +32,12 @@ const AMCcompanies = () => {
     const handleCardClick = (fund) => {
         const fundName = fund.amc_name.toLowerCase().replace(/\s+/g, ''); // For example: "ICICI Prudential Mutual Fund" -> "iciciprudentialmutualfund"
         navigate(`/amc/${fundName}`);
+        scrollToTop();
     };
 
     return (
         <section>
-        <div className="container">
+        <div >
             <div className='amc_header'>
                 <h2> Other AMC Funds</h2>
                 <p>
