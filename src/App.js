@@ -120,6 +120,7 @@ const AppContent = () => {
         <Route path="/nps-calculator" element={<NPS />} />
 
         <Route path="/mutual-funds/amc" element={<AMC />} />
+      <Route path="/amc/:amc_name" element={<AMCsubPage />} />
         <Route
           path="/mutualfunds/:category/:subcategory"
           element={<Subcategory />}
