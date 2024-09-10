@@ -1,0 +1,29 @@
+.amccompany_card_mf {
+    width: calc(33.33% - 20px);
+    border: 1px solid;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid rgb(230, 230, 230);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+}
+
+.amccompanycard {
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 991px){
+    .amccompany_card_mf {
+      width: calc(50% - 20px);
+      padding: 10px;
+    }
+   
+  }
+  @media (max-width: 767px){
+    .amccompany_card_mf {
+      width: 100%;
+      padding: 10px;
+    }
+  }  

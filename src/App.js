@@ -66,6 +66,8 @@ import World_news from './components/News/World_news';
 import Insurance_companies from './components/FinanceCompanies/Insurance_companies';
 import PaymentGateways from './components/FinanceCompanies/Payment_gateways';
 import Preloader from './components/PreLoader';
+import AMCsubPage from './components/MutualFunds/AMCsubPage';
+
 const usePageTracking = () => {
   const location = useLocation();
 
@@ -104,6 +106,7 @@ const AppContent = () => {
         <Route path="/nps-calculator" element={<NPS />} />
 
         <Route path="/mutual-funds/amc" element={<AMC />} />
+        <Route path="/amc/:amc_name" element={<AMCsubPage />} />
         <Route
           path="/mutualfunds/:category/:subcategory"
           element={<Subcategory />}
