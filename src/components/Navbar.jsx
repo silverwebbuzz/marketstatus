@@ -10,6 +10,7 @@ const Navbar = () => {
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
+    scrollToTop();
   };
   const toggleDropdown = (dropdown) => {
     setActiveDropdown((prev) => (prev === dropdown ? "" : dropdown));
@@ -80,7 +81,13 @@ const Navbar = () => {
             <nav className="Nav">
               <ul className="nav_ul">
                 <li className="dropdown">
-                  <NavLink to="/" onClick={(closeMenuOnClick, scrollToTop)}>
+                  <NavLink
+                    to="/"
+                    onClick={() => {
+                      setShowMenu(!showMenu);
+                      closeMenuOnClick();
+                    }}
+                  >
                     Home
                   </NavLink>
                 </li>
@@ -93,14 +100,16 @@ const Navbar = () => {
                     />
                   </span>
                   <ul
-                    className={`dropdown-menu ${
-                      activeDropdown === "market" ? "show" : ""
-                    }`}
+                    className={`dropdown-menu ${activeDropdown === "market" ? "show" : ""
+                      }`}
                   >
                     <li className="dropmenu-li">
                       <NavLink
                         to="/indices"
-                        onClick={(closeMenuOnClick, scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Indices
                       </NavLink>
@@ -108,7 +117,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/market/worldindices"
-                        onClick={(closeMenuOnClick, scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         World Indices
                       </NavLink>
@@ -116,7 +128,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/futures-margins"
-                        onClick={(closeMenuOnClick, scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Future Margin
                       </NavLink>
@@ -124,7 +139,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/ipo"
-                        onClick={(closeMenuOnClick, scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         IPO
                       </NavLink>
@@ -132,13 +150,19 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/market/cryptocurrency"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Crypto Currency
                       </NavLink>
                     </li>
                     <li className="dropmenu-li">
-                      <NavLink to="/market/forex" onClick={(closeMenuOnClick ,scrollToTop)}>
+                      <NavLink to="/market/forex" onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}>
                         Forex
                       </NavLink>
                     </li>
@@ -153,14 +177,16 @@ const Navbar = () => {
                     />
                   </span>
                   <ul
-                    className={`dropdown-menu ${
-                      activeDropdown === "mutualFunds" ? "show" : ""
-                    }`}
+                    className={`dropdown-menu ${activeDropdown === "mutualFunds" ? "show" : ""
+                      }`}
                   >
                     <li className="dropmenu-li">
                       <NavLink
                         to="/mutual-funds/amc"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         AMC Funds
                       </NavLink>
@@ -168,7 +194,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/mutual-funds/equity-fund"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Equity Fund
                       </NavLink>
@@ -176,7 +205,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/mutual-funds/debt-fund"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Debt Fund
                       </NavLink>
@@ -184,7 +216,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/mutual-funds/hybrid-fund"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Hybrid Fund
                       </NavLink>
@@ -192,7 +227,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/mutual-funds/index-fund"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Index Fund
                       </NavLink>
@@ -200,7 +238,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/mutual-funds/elss-fund"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         ELSS Fund
                       </NavLink>
@@ -216,15 +257,17 @@ const Navbar = () => {
                     />
                   </span>
                   <ul
-                    className={`dropdown-menu ${
-                      activeDropdown === "Insurance" ? "show" : ""
-                    }`}
+                    className={`dropdown-menu ${activeDropdown === "Insurance" ? "show" : ""
+                      }`}
                   >
                     <li className="dropmenu-li">
                       <NavLink
                         to="/Insurance/general-insurance"
                         smooth={true}
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         General Insurance
                       </NavLink>
@@ -232,7 +275,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/Insurance/life-insurance"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Life Insurance
                       </NavLink>
@@ -240,7 +286,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/Insurance/health-insurance"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Health Insurance
                       </NavLink>
@@ -248,7 +297,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/Insurance/car-insurance"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Car Insurance
                       </NavLink>
@@ -256,7 +308,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/Insurance/bike-insurance"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Bike Insurance
                       </NavLink>
@@ -264,7 +319,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/Insurance/term-insurance"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Term Insurance
                       </NavLink>
@@ -272,7 +330,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/Insurance/travel-insurance"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Travel Insurance
                       </NavLink>
@@ -280,7 +341,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/Insurance/business-insurance"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Business Insurance
                       </NavLink>
@@ -288,7 +352,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/Insurance/pet-insurance"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Pet Insurance
                       </NavLink>
@@ -296,7 +363,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/Insurance/fire-insurance"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Fire Insurance
                       </NavLink>
@@ -312,14 +382,16 @@ const Navbar = () => {
                     />
                   </span>
                   <ul
-                    className={`dropdown-menu ${
-                      activeDropdown === "Finance Institutes" ? "show" : ""
-                    }`}
+                    className={`dropdown-menu ${activeDropdown === "Finance Institutes" ? "show" : ""
+                      }`}
                   >
                     <li className="dropmenu-li">
                       <NavLink
                         to="/finance-companies/insurance-companies"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Insurance Companies
                       </NavLink>
@@ -327,7 +399,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/finance-companies/broker-companies"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Broker Companies list
                       </NavLink>
@@ -335,7 +410,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/finance-companies/fintech-company"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Fintech Companies list
                       </NavLink>
@@ -343,7 +421,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/finance-companies/micro-finance-companies"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Micro Finance Companies
                       </NavLink>
@@ -351,7 +432,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/finance-companies/payment-gateways"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Payment Gateways{" "}
                       </NavLink>
@@ -359,7 +443,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/finance-companies/crypto-currency-companies"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Crypto Currency Companies
                       </NavLink>
@@ -367,7 +454,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/finance-companies/bank"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Banks
                       </NavLink>
@@ -375,7 +465,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/finance-companies/investment-management-companies"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Investment Management Companies
                       </NavLink>
@@ -383,7 +476,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/finance-companies/analysis-companies"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Analysis Companies
                       </NavLink>
@@ -391,7 +487,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/finance-companies/funding-companies-list"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Funding Companies list
                       </NavLink>
@@ -399,7 +498,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/finance-companies/CA-companies"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         CA Companies
                       </NavLink>
@@ -407,7 +509,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="finance-companies/CS-companies"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         CS Companies
                       </NavLink>
@@ -415,7 +520,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/finance-companies/international-money-transfer-companies"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         International Money Transfer Companies
                       </NavLink>
@@ -431,37 +539,51 @@ const Navbar = () => {
                     />
                   </span>
                   <ul
-                    className={`dropdown-menu ${
-                      activeDropdown === "Loans" ? "show" : ""
-                    }`}
+                    className={`dropdown-menu ${activeDropdown === "Loans" ? "show" : ""
+                      }`}
                   >
                     <li className="dropmenu-li">
                       <NavLink
                         to="/loans/personal_loan"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Personal Loan
                       </NavLink>
                     </li>
                     <li className="dropmenu-li">
-                      <NavLink to="/loans/home_loan" onClick={(closeMenuOnClick ,scrollToTop)}>
+                      <NavLink to="/loans/home_loan" onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}>
                         Home Loan
                       </NavLink>
                     </li>
                     <li className="dropmenu-li">
-                      <NavLink to="/loans/gold_loan" onClick={(closeMenuOnClick ,scrollToTop)}>
+                      <NavLink to="/loans/gold_loan" onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}>
                         Gold Loan
                       </NavLink>
                     </li>
                     <li className="dropmenu-li">
-                      <NavLink to="/loans/auto_loan" onClick={(closeMenuOnClick ,scrollToTop)}>
+                      <NavLink to="/loans/auto_loan" onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}>
                         Auto Loan
                       </NavLink>
                     </li>
                     <li className="dropmenu-li">
                       <NavLink
                         to="/loans/business_loan"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Business Loan
                       </NavLink>
@@ -469,7 +591,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/loans/mortgage_loan"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Mortgage Loan
                       </NavLink>
@@ -477,7 +602,10 @@ const Navbar = () => {
                     <li className="dropmenu-li">
                       <NavLink
                         to="/loans/student_loan"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Student Loan
                       </NavLink>
@@ -503,73 +631,108 @@ const Navbar = () => {
                     />
                   </span>
                   <ul
-                    className={`dropdown-menu ${
-                      activeDropdown === "Calculators" ? "show" : ""
-                    }`}
+                    className={`dropdown-menu ${activeDropdown === "Calculators" ? "show" : ""
+                      }`}
                   >
                     <li className="dropmenu-li">
-                      <NavLink to="/sip-calculator" onClick={(closeMenuOnClick ,scrollToTop)}>
+                      <NavLink to="/sip-calculator" onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}>
                         SIP Calculator
                       </NavLink>
                     </li>
                     <li className="dropmenu-li">
-                      <NavLink to="/emi-calculator" onClick={(closeMenuOnClick ,scrollToTop)}>
+                      <NavLink to="/emi-calculator" onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}>
                         EMI Calculator
                       </NavLink>
                     </li>
                     <li className="dropmenu-li">
                       <NavLink
                         to="/lumpsum-calculator"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Lumpsum Calculator
                       </NavLink>
                     </li>
                     <li className="dropmenu-li">
-                      <NavLink to="/fd-calculator" onClick={(closeMenuOnClick ,scrollToTop)}>
+                      <NavLink to="/fd-calculator" onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}>
                         FD Calculator
                       </NavLink>
                     </li>
                     <li className="dropmenu-li">
                       <NavLink
                         to="/yearly-sip-calculator"
-                        onClick={(closeMenuOnClick ,scrollToTop)}
+                        onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}
                       >
                         Yearly SIP Calculator
                       </NavLink>
                     </li>
                     <li className="dropmenu-li">
-                      <NavLink to="/cagr-calculator" onClick={(closeMenuOnClick ,scrollToTop)}>
+                      <NavLink to="/cagr-calculator" onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}>
                         CAGR Calculator
                       </NavLink>
                     </li>
                     <li className="dropmenu-li">
-                      <NavLink to="/rd-calculator" onClick={(closeMenuOnClick ,scrollToTop)}>
+                      <NavLink to="/rd-calculator" onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}>
                         RD Calculator
                       </NavLink>
                     </li>
                     <li className="dropmenu-li">
-                      <NavLink to="/ppf-calculator" onClick={(closeMenuOnClick ,scrollToTop)}>
+                      <NavLink to="/ppf-calculator" onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}>
                         PPF Calculator
                       </NavLink>
                     </li>
                     <li className="dropmenu-li">
-                      <NavLink to="/ci-calculator" onClick={(closeMenuOnClick ,scrollToTop)}>
+                      <NavLink to="/ci-calculator" onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}>
                         Compound Interest Calculator
                       </NavLink>
                     </li>
                     <li className="dropmenu-li">
-                      <NavLink to="/si-calculator" onClick={(closeMenuOnClick ,scrollToTop)}>
+                      <NavLink to="/si-calculator" onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}>
                         Simple Interest Calculator
                       </NavLink>
                     </li>
                     <li className="dropmenu-li">
-                      <NavLink to="/roi-calculator" onClick={(closeMenuOnClick ,scrollToTop)}>
+                      <NavLink to="/roi-calculator" onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}>
                         ROI Calculator
                       </NavLink>
                     </li>
                     <li className="dropmenu-li">
-                      <NavLink to="/nps-calculator" onClick={(closeMenuOnClick ,scrollToTop)}>
+                      <NavLink to="/nps-calculator" onClick={() => {
+                          setShowMenu(!showMenu); 
+                          closeMenuOnClick(); 
+                        }}>
                         NPS Calculator
                       </NavLink>
                     </li>
