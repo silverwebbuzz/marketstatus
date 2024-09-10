@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Link ,useParams } from 'react-router-dom'; // Import useParams for dynamic routing
+import { Link, useParams } from 'react-router-dom'; // Import useParams for dynamic routing
+import SIPAndLumpsumCalculator from '../Calculators/SIPAndLumpsumCalculator';
 
 import AMCcompanies from './AMCcompanies';
 import '../../style/mutualfunds/amcsubpage.css';
@@ -34,6 +35,7 @@ function AMCsubPage() {
     }
 
     return (
+        <>
         <section>
             <div className='container'>
                 <div className="breadcrumb_subcategory">
@@ -70,12 +72,11 @@ function AMCsubPage() {
                     </table>
                     </div>
                 </div>
-                <AMCcompanies/>
-                <div>
-                    <scrollToTop/>
                 </div>
-            </div>
         </section>
+        <AMCcompanies/>
+        <SIPAndLumpsumCalculator/>
+        </>
     );
 }
 
