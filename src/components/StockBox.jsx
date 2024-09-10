@@ -88,6 +88,8 @@ class StockBox extends Component {
       'SENSEX': 'https://devapi.marketstatus.in/sm/indicesApiHandler.php?indices=sensex',
     };
 
+    this.setState({ loading: true, error: null });
+    
     const dataKeys = {
       'NIFTY 50': 'today_stock_data',
       'NIFTYBANK': 'today_stock_data_bn',

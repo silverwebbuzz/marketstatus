@@ -14,7 +14,8 @@ import CalculatorCard from './Calculators/CalculatorCard';
 
 const Dashboard = () => {
   const [data, setData] = useState(null);
-
+  const [loading, setLoading] = useState(false);
+  
   useEffect(() => {
     const fetchMutualFundsData = async () => {
       try {
@@ -27,6 +28,11 @@ const Dashboard = () => {
     };
 
     fetchMutualFundsData();
+  }, []);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => setLoading(false), 1000);
   }, []);
 
   if (!data) return <div>Loading...</div>;
