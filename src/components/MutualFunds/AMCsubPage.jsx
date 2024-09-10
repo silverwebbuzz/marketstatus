@@ -2,10 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link ,useParams } from 'react-router-dom'; // Import useParams for dynamic routing
 
 import AMCcompanies from './AMCcompanies';
-import CalculatorCard from '../Calculators/CalculatorCard'
 import '../../style/mutualfunds/amcsubpage.css';
-import scrollToTop from '../ScrollToTop';
-
 const formatNumber = (num) => {
     return parseFloat(num).toFixed(2);
 };
@@ -17,7 +14,7 @@ function AMCsubPage() {
     useEffect(() => {
         const fetchFundData = async () => {
             try {
-                const response = await fetch(`/amc_companies/${amc_name}.json`);
+                const response = await fetch(`/amccompanies/${amc_name}.json`);
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
