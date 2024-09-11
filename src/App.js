@@ -107,7 +107,7 @@ const AppContent = () => {
         <Route path="/indices" element={<IndicesTable />} />
         <Route path="/futures-margins" element={<FnO />} />
         <Route path="/ipo" element={<IPO />} />
-        <Route path="/ipo/iposubpage" element={<Iposubpage/>} />
+        <Route path="/ipo/:company_name" element={<Iposubpage/>} />
         <Route path="/sip-calculator" element={<SIP />} />
         <Route path="/emi-calculator" element={<EMI />} />
         <Route path="/fd-calculator" element={<FD />} />

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import "../../style/Ipo.css";
 
 const IPO = () => {
   const [ipos, setIpos] = useState([]);
   const [listedIpos, setListedIpos] = useState([]);
-  const [faqOpen, setFaqOpen] = useState(null);
+  const [faqOpen, setFaqOpen] = useState(null); // State to manage open FAQ
   const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
@@ -45,6 +45,7 @@ const IPO = () => {
       );
   }, []);
 
+  // Utility function to determine color based on value
   const getColor = (value) => {
     return parseFloat(value) >= 0 ? "rgb(16, 145, 33)" : "rgb(192, 9, 9)";
   };
@@ -61,13 +62,14 @@ const IPO = () => {
     require.context("../../assets/ipo", false, /\.(png|jpe?g|svg)$/)
   );
 
+  // Handle FAQ toggle
   const handleFaqToggle = (index) => {
     setFaqOpen(faqOpen === index ? null : index);
   };
-
+  
   const handleNavigateToSubpage = (ipo) => {
     // Navigate to the subpage and pass IPO details using state
-    navigate(`/ipo/iposubpage`, { state: { ipo } });
+    navigate(`/ipo/${ipo.company_name}`, { state: { ipo } });
   };
 
   const faqData = [
@@ -124,34 +126,105 @@ const IPO = () => {
               </thead>
               <tbody className="ipo_tablebody">
               {ipos.map((ipo, index) => (
-                <tr key={index} onClick={() => handleNavigateToSubpage(ipo)}>
-                  <td>
-                    <div className="company-logo">
-                      <div className="companylogo_inner">
-                        <span>{ipo.company_name}</span>
-                        <p>{ipo.ipo_switch}</p>
-                      </div>
-                      <div className="exchange-tags">
-                        <img
-                          src={images[ipo.logo]}
-                          alt={`${ipo.amc_name} logo`}
-                          className="amc-logo"
-                        />
-                      </div>
-                    </div>
-                  </td>
-                  <td>{ipo.open_date}</td>
-                  <td>{ipo.close_date}</td>
-                  <td className="text-right">₹ {ipo.issue_size}</td>
-                  <td className="text-right">₹ {ipo.price_band}</td>
-                  <td className="text-right">₹ {ipo.min_investment}</td>
+                 <tr key={index} onClick={() => handleNavigateToSubpage(ipo)}>
+                    <td>
+                        <div className="company-logo">
+                            <div className="companylogo_inner">
+                                <span>{ipo.company_name}</span>
+                                <p>{ipo.ipo_switch}</p>
+                            </div>
+                            <div className="exchange-tags">
+                                <img src={images[ipo.logo]} alt={`${ipo.amc_name} logo`} className="amc-logo" />
+                            </div>
+                        </div>
+                    </td>
+                    <td>{ipo.open_date}</td>
+                    <td>{ipo.close_date}</td>
+                    <td className='text-right'>₹ {ipo.issue_size}</td>
+                    <td className='text-right'>₹ {ipo.price_band}</td>
+                    <td className='text-right'>₹ {ipo.min_investment}</td>
                 </tr>
-              ))}
+            ))}
               </tbody>
             </table>
           </div>
         </div>
-        {/* Rest of your code for FAQ and listed IPOs */}
+        <div className="listed-ipo">
+          <h2>Listed IPOs</h2>
+          <p>
+          Listed IPOs refer to initial public offerings that have
+           finished the subscription phase and are now available
+            for trading on the stock exchange. Once the IPO shares
+             are distributed to investors, the company's stock starts
+              trading publicly, enabling investors to buy and sell 
+              shares on the open market.
+          </p>
+          {listedIpos.length > 0 ? (
+            <div className="table_main">
+              <table className="table-scroll">
+                <thead className="thead-list">
+                  <tr className="text-center">
+                    <th>Company Name</th>
+                    <th>Listing Date</th>
+                    <th>Offer Price</th>
+                    <th>Listing Price</th>
+                    <th>LTP</th>
+                    <th>Changes</th>
+                    <th>Listing Gains</th>
+                  </tr>
+                </thead>
+                <tbody className="tbody-list">
+                  {listedIpos.map((ipo, index) => (
+                    <tr key={index}>
+                      <td>
+                        <span>{ipo.company_name}</span>
+                      </td>
+                      <td>{ipo.listing_date}</td>
+                      <td className="text-right">₹ {ipo.offer_price}</td>
+                      <td className="text-right">₹ {ipo.listing_price}</td>
+                      <td className="text-right">₹ {ipo.ltp}</td>
+                      <td
+                        className="text-right"
+                        style={{ color: getColor(ipo.changes) }}
+                      >
+                        {" "}
+                        {ipo.changes}
+                      </td>
+                      <td
+                        className="text-right"
+                        style={{ color: getColor(ipo.listing_gain) }}
+                      >
+                        {" "}
+                        {ipo.listing_gain}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <div className="no-listed-ipos">No listed IPOs</div>
+          )}
+        </div>
+        <div className="faq-section">
+          <h2>Frequently Asked Questions (FAQ)</h2>
+          {faqData.map((faq, index) => (
+            <div key={index} className="faq-item">
+              <div
+                className="faq-question"
+                onClick={() => handleFaqToggle(index)}
+              >
+                <h3>{faq.question}</h3>
+                <span>{faqOpen === index ? "-" : "+"}</span>
+              </div>
+              {faqOpen === index && (
+                <div className="faq-answer">
+                  <p>{faq.answer}</p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

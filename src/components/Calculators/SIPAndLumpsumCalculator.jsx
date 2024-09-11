@@ -93,6 +93,7 @@ const SIPAndLumpsumCalculator = () => {
 
           <div className="calculator_container_box">
             <div className="calculator_top">
+              <Box>
               {/* Inputs for SIP Calculator */}
               {calculatorType === "sip" && (
                 <>
@@ -206,7 +207,7 @@ const SIPAndLumpsumCalculator = () => {
                   </div>
                 </>
               )}
-
+</Box>
               {/* Results and Chart */}
               <div className="results">
                 <Typography component="div">
