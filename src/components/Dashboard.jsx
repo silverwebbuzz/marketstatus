@@ -15,6 +15,7 @@ import CalculatorCard from './Calculators/CalculatorCard';
 const Dashboard = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [faqOpen, setFaqOpen] = useState(null);
   
   useEffect(() => {
     const fetchMutualFundsData = async () => {
@@ -34,6 +35,39 @@ const Dashboard = () => {
     setLoading(true);
     setTimeout(() => setLoading(false), 1000);
   }, []);
+
+  const handleFaqToggle = (index) => {
+    setFaqOpen(faqOpen === index ? null : index);
+  };
+
+  const faqData = [
+    {
+      question: "What are stocks or shares?",
+      answer:
+        "Stocks, or shares, are small pieces of a company that you can buy. When you own a share, you own a part of that company.",
+    },
+    {
+      question: "How does the stock market work?",
+      answer:
+        "The stock market is where people buy and sell shares of companies. Prices go up or down based on how many people want to buy or sell.",
+    },
+    {
+      question: "How can you pick the right stocks?",
+      answer:
+        "To pick the right stocks, look at how a company is doing, what’s happening in its industry, and what experts are saying. Spreading your investments across different stocks can also reduce risks.",
+    },
+    {
+      question: "What other things can you trade in the stock market?",
+      answer:
+        "Besides shares, you can trade things like bonds, mutual funds, and exchange-traded funds (ETFs). These give you more options to invest.",
+    },
+    {
+      question: "What affects the price of a stock?",
+      answer:
+        "Stock prices change because of things like company performance, news, the economy, and how people feel about the market. It’s all about supply and demand.",
+    },
+  ];
+  
 
   if (!data) return <div>Loading...</div>;
 
@@ -74,7 +108,28 @@ const Dashboard = () => {
       <Hybrid />
       <Index />
       <ELSS />
-      <CalculatorCard/>  
+      <CalculatorCard/>
+      <div className='container'>
+      <div className="faq-section">
+          <h2>Frequently Asked Questions (FAQ)</h2>
+          {faqData.map((faq, index) => (
+            <div key={index} className="faq-item">
+              <div
+                className="faq-question"
+                onClick={() => handleFaqToggle(index)}
+              >
+                <h3>{faq.question}</h3>
+                <span>{faqOpen === index ? "-" : "+"}</span>
+              </div>
+              {faqOpen === index && (
+                <div className="faq-answer">
+                  <p>{faq.answer}</p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+        </div>  
     </>
   );
 };
