@@ -1,0 +1,126 @@
+{
+   "company_name": "Sodhani Academy of Fintech Enablers Ltd",
+   "schemes":[
+      {
+        "AnchorInvestors": "",
+        "BHNI": "",
+        "CategoryForIPOS": "SmeIPO",
+        "DRHPDraft": "https://www.bseindia.com/corporates/download/372577/Draft%20Prospectus%20dated%20July%2012,%202023-%20SAFEL_20230714200255.pdf",
+        "GMP": "10",
+        "IPOAllotmentDate": "2024-09-18",
+        "IPOCloseDate": "2024-09-17",
+        "IPODematTransfer": "2024-09-19",
+        "IPOListingDate": "2024-09-20",
+        "IPOOpenDate": "2024-09-12",
+        "IPORefundsInitiation": "2024-09-19",
+        "IPOstatus": "Live",
+        "ObjectOfIssue": "<p>The company proposes to utilize the Net Proceeds from the Fresh Issue towards funding the following objects:</p><ol><li>Building content Studio and Offline training infrastructure;</li><li>Information Technology (Hardware including Software) Procurement;</li><li>Content Development for course material;</li><li>Enhancement of brand visibility and awareness;</li><li>Learning Management System (LMS) Application development; and</li><li>General Corporate Purpose.</li></ol>",
+        "RHPDraft": "",
+        "Risk": [],
+        "SHNI": "",
+        "Strength": [],
+        "address": "P No. C 373, First Floor,\nC Block Vaishali Nagar,\nJaipur - 302021",
+        "allotmentLink": "https://ipo.cameoindia.com/",
+        "checkAllotment": "https://ipo.cameoindia.com/",
+        "checkLiveSubscriptionUrl": "https://www.bseindia.com/markets/publicIssues/BSEDemandSchedule_FPO.aspx?Scripcode=6758",
+        "companyDescription": "<p>Founded in 2009, Sodhani Academy of Fintech Enablers Limited specializes in financial training, consulting, and learning services.</p><p>The company is dedicated to enhancing financial education and awareness, which encompasses a deep understanding of financial concepts and skills necessary for making informed and responsible financial decisions. This includes effective money management, wise budgeting, prudent saving and investing, and a fundamental grasp of financial products and services.</p><p>Sodhani Academy serves a diverse audience, including students (both actively enrolled and recent graduates), unemployed individuals, and homemakers. Through a range of financial education initiatives such as courses, seminars, events, and educational materials, the academy aims to empower learners with essential financial literacy.</p>",
+        "companyFinancials": [
+          {
+            "assets": 67.17,
+            "period": "2021-03-30",
+            "profit": 3.08,
+            "revenue": 25.29
+          },
+          {
+            "assets": 363.2,
+            "period": "2022-03-30",
+            "profit": 123.91,
+            "revenue": 188.19
+          },
+          {
+            "assets": 501.57,
+            "period": "2023-03-30",
+            "profit": 138.6,
+            "revenue": 203.45
+          }
+        ],
+        "companyName": "Sodhani Academy of Fintech Enablers Limited",
+        "companyPhone": "0141- 2358107",
+        "disclaimer": "<p>No financial information published within this application, including but not limited to information regarding securities or IPOs, should be considered as advice to buy or sell securities or to invest in IPOs, or as a guide to doing so in any way whatsoever. All content published in this application is provided solely for educational and informational purposes, and under no circumstances should it be used for making investment decisions. We are not a SEBI registered analyst.Readers must consult a qualified financial advisor before making any actual investment decisions based on information published in this application. The information in this application is based on information available as of the date of publication, along with market perceptions, and may be subject to change without notice.</p>",
+        "earningPerShare": 3.88,
+        "email": "safe.fintech3105@gmail.com",
+        "faceValue": 10,
+        "file": "https://firebasestorage.googleapis.com/v0/b/ipodekho-19fc1.appspot.com/o/42454b0160f202d033bd16ea842d505c.png?alt=media&token=11c648b5-a554-401c-bc4e-ba9155f29744",
+        "financialLotsize": [
+          {
+            "amount": 120000,
+            "application": "Retail (Min)\t",
+            "lots": 1,
+            "shares": 3000
+          },
+          {
+            "amount": 120000,
+            "application": "Retail (Max)\t",
+            "lots": 1,
+            "shares": 3000
+          },
+          {
+            "amount": 240000,
+            "application": "HNI (Min)",
+            "lots": 2,
+            "shares": 6000
+          }
+        ],
+        "freshIssue": 3.88,
+        "fromPrice": 40,
+        "id": "ETZf3zDboadcQWqVEEBO",
+        "issueSize": 6.12,
+        "issueType": "Fixed Price Issue IPO",
+        "leadManagerName": [
+          {
+            "name": "Srujan Alpha Capital Advisors Llp"
+          }
+        ],
+        "listingAt": [
+          "BSE"
+        ],
+        "listingDate": "2024-09-19",
+        "lotSize": 3000,
+        "netAssetValue": 13.89,
+        "nilQuota": 50,
+        "offerForSale": 2.24,
+        "postIssueShareHolding": "",
+        "preIssueShareHolding": 99.99,
+        "promotersName": [
+          {
+            "name": " Mr. Rajesh Kumar Sodhani"
+          },
+          {
+            "name": "Mrs. Priya Sodhani"
+          },
+          {
+            "name": "Rajesh Kumar Sodhani HUF"
+          }
+        ],
+        "qibQuota": "",
+        "reatailQuota": 50,
+        "registerName": "Cameo Corporate Services Limited",
+        "registerPhone": [
+          {
+            "phone": "+91-44-28460390"
+          }
+        ],
+        "registerWebsite": "https://ipo.cameoindia.com/",
+        "retailApp": "",
+        "returnonNetWorth": 27.91,
+        "shortText": "",
+        "slug": "sodhani-academy-of-fintech-enablers-limited",
+        "toPrice": 40,
+        "toolTipData": [
+          "",
+          "#ff0000"
+        ],
+        "website": "http://www.safefintech.in/"
+      }
+    ]
+}

@@ -1,0 +1,128 @@
+{
+   "company_name": "Excellent Wires and Packaging Ltd",
+   "schemes":[
+      {
+        "AnchorInvestors": "",
+        "BHNI": "",
+        "CategoryForIPOS": "SmeIPO",
+        "DRHPDraft": "https://nsearchives.nseindia.com/emerge/corporates/content/ExcellentWiresandPackagingLimited_DP.zip",
+        "IPOAllotmentDate": "2024-09-16",
+        "IPOCloseDate": "2024-09-13",
+        "IPODematTransfer": "2024-09-17",
+        "IPOListingDate": "2024-09-19",
+        "IPOOpenDate": "2024-09-11",
+        "IPORefundsInitiation": "2024-09-17",
+        "IPOstatus": "Live",
+        "ObjectOfIssue": "<p>The Company plans to utilize the Net Proceeds from the Fresh Issue for the following purposes:</p><p>- Acquisition of land and construction of a building</p><p>- Purchase of plant and machinery</p><p>- Funding additional working capital requirements</p><p>- General corporate purposes</p>",
+        "RHPDraft": "https://nsearchives.nseindia.com/emerge/corporates/content/ExcellentWiresandPackagingLimited_DP.zip",
+        "Risk": [],
+        "SHNI": "",
+        "Strength": [],
+        "address": "Gala No. 1, Jyoti Industrial Estate\nVevoor Village, Ganesh Nagar, Palghar - E,\nThane, Palghar-401404",
+        "allotmentLink": "https://ipo.bigshareonline.com/ipo_status.html",
+        "checkAllotment": "https://ipo.bigshareonline.com/ipo_status.html",
+        "checkLiveSubscriptionUrl": "https://www.nseindia.com/market-data/issue-information?symbol=EXCELLENT&series=SME",
+        "companyDescription": "<p>Founded in March 2021, Excellent Wires and Packaging Limited manufactures a diverse range of wires and wire ropes under the brand name \"Excellent.\" Their product offerings include Spring Steel Wire, High Carbon Wire, Galvanized Wire (GI Wire), and more, serving multiple applications.</p><p>The company's product categories include:</p><p>- Brass Wires &amp; Products</p><p>- Steel Wires &amp; Products</p><p>- Packaging Products</p><p>These products cater to various industries such as packaging, engineering, stationery, imitation jewelry, wires &amp; cables, among others.&nbsp;</p><p>The company is ISO 9001:2015 certified, demonstrating a commitment to effective quality management. As of July 2024, Excellent Wires and Packaging Limited employed 18 people across various departments.</p>",
+        "companyFinancials": [
+          {
+            "assets": 242.63,
+            "period": "2022-03-30",
+            "profit": 4.73,
+            "revenue": 728.85
+          },
+          {
+            "assets": 324.69,
+            "period": "2023-03-30",
+            "profit": 10.43,
+            "revenue": 1448.46
+          },
+          {
+            "assets": 705.08,
+            "period": "2024-03-30",
+            "profit": 82.98,
+            "revenue": 1540.82
+          }
+        ],
+        "companyName": "Excellent Wires and Packaging Limited",
+        "companyPhone": "+91 98202 85767",
+        "disclaimer": "<p>No financial information published within this application, including but not limited to information regarding securities or IPOs, should be considered as advice to buy or sell securities or to invest in IPOs, or as a guide to doing so in any way whatsoever. All content published in this application is provided solely for educational and informational purposes, and under no circumstances should it be used for making investment decisions. We are not a SEBI registered analyst.Readers must consult a qualified financial advisor before making any actual investment decisions based on information published in this application. The information in this application is based on information available as of the date of publication, along with market perceptions, and may be subject to change without notice.</p>",
+        "email": "info@excellentwiresandpackaging.com",
+        "faceValue": 10,
+        "file": "https://firebasestorage.googleapis.com/v0/b/ipodekho-19fc1.appspot.com/o/1c3033ca6d02eba74706bafa763b52f8.png?alt=media&token=11c648b5-a554-401c-bc4e-ba9155f29744",
+        "financialLotsize": [
+          {
+            "amount": 144000,
+            "application": "Retail (Min)\t",
+            "lots": 1,
+            "shares": 1600
+          },
+          {
+            "amount": 144000,
+            "application": "Retail (Max)",
+            "lots": 1,
+            "shares": 1600
+          },
+          {
+            "amount": 288000,
+            "application": "HNI (Min)",
+            "lots": 2,
+            "shares": 3200
+          }
+        ],
+        "freshIssue": 12.6,
+        "fromPrice": 90,
+        "id": "4l1pSiXNpHWKfmpBb7me",
+        "issueSize": 12.6,
+        "issueType": "Fixed Price Issue IPO",
+        "leadManagerName": [
+          {
+            "name": "Inventure Merchant Banker Services Pvt Ltd"
+          }
+        ],
+        "listingAt": [
+          "NSE"
+        ],
+        "listingDate": "2024-09-18T18:30:00.000Z",
+        "lotSize": 1600,
+        "metaImage": "https://firebasestorage.googleapis.com/v0/b/ipodekho-19fc1.appspot.com/o/dc77a03219498c3b4f88b4735290e258.jpg?alt=media&token=11c648b5-a554-401c-bc4e-ba9155f29744",
+        "nilQuota": 50,
+        "nonInstitutionalBuyers": 0.27,
+        "offerForSale": "",
+        "postIssueShareHolding": 63.12,
+        "preIssueShareHolding": 91.9,
+        "promotersName": [
+          {
+            "name": "Bhavya Vasant Shah"
+          },
+          {
+            "name": "Rachit Paresh Masalia"
+          },
+          {
+            "name": "Darshil Hasmukh Shah"
+          }
+        ],
+        "qibQuota": "",
+        "reatailQuota": 50,
+        "registerEmail": "ipo@bigshareonline.com",
+        "registerName": "Bigshare Services Pvt Ltd",
+        "registerPhone": [
+          {
+            "phone": "+91-22-6263 8200"
+          }
+        ],
+        "registerWebsite": "https://ipo.bigshareonline.com/ipo_status.html",
+        "retailApp": "",
+        "retailInvestors": 2.08,
+        "shortText": "",
+        "slug": "excellent-wires-and-packaging-limited",
+        "subscriptionDateAndTime": "Wed Sep 11 2024 17:24:59 GMT+0530 (India Standard Time)",
+        "toPrice": 90,
+        "toolTipData": [
+          "",
+          "#ff0000"
+        ],
+        "total": 1.18,
+        "website": "https://www.excellentwiresandpackaging.com/"
+      }
+    ]
+}

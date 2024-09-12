@@ -1,0 +1,128 @@
+{
+   "company_name": "Innomet Advanced Materials Ltd",
+   "schemes":[
+      {
+        "AnchorInvestors": "",
+        "BHNI": "",
+        "CategoryForIPOS": "SmeIPO",
+        "DRHPDraft": "https://nsearchives.nseindia.com/emerge/corporates/content/InnometAdvancedMaterialsLimited_DP",
+        "GMP": "70",
+        "IPOAllotmentDate": "2024-09-16",
+        "IPOCloseDate": "2024-09-13",
+        "IPODematTransfer": "2024-09-17",
+        "IPOListingDate": "2024-09-18",
+        "IPOOpenDate": "2024-09-11",
+        "IPORefundsInitiation": "2024-09-17",
+        "IPOstatus": "Live",
+        "ObjectOfIssue": "<p>The Company proposes to utilize the funds which are being raised through this Issue (\u201cNet Proceeds\u201d) towards the following object:</p><ol><li>Funding working capital requirements of the Company;</li><li>Funding of capital expenditure requirements of the company towards the purchase of machinery and equipment;</li><li>Repayment or prepayment, in whole or in part, of all or a portion of certain outstanding borrowings availed by the company, from banks and financial institutions;</li><li>General corporate purposes; and</li><li>Issue Expenses</li></ol>",
+        "RHPDraft": "https://archives.nseindia.com/content/ipo/PROSPECTUS_INNOMET",
+        "Risk": [],
+        "SHNI": "",
+        "Strength": [],
+        "address": "B-31, BHEL Ancillary Industrial Estate,\nRamachandrapuram\nMedak, Hyderabad-502032",
+        "allotmentLink": "https://www.skylinerta.com/ipo.php",
+        "checkAllotment": "https://www.skylinerta.com/ipo.php",
+        "checkLiveSubscriptionUrl": "https://www.nseindia.com/market-data/issue-information?symbol=INNOMET&series=SME",
+        "companyDescription": "<p>Incorporated in 1984, Innomet Advanced Materials Limited specializes in the manufacturing of metal powders and tungsten heavy alloys.</p><p>The company operates two divisions:</p><p>- Innomet Powders</p><p>- Innotung</p><p>Innomet adheres to ISO 9001:2015 standards for the manufacturing and supply of ferrous and non-ferrous metal/alloy powders and tungsten heavy alloy components.</p><p>Their product range includes over 20 types of powders, such as copper, bronze, brass, nickel, tin, and stainless steel, catering to various industries. They also specialize in custom grades of metal and alloy powders containing iron, copper, nickel, tin, zinc, and cobalt.</p><p>Innomet supplies products both domestically and internationally, with clients in the US, UK, Germany, Netherlands, Japan, Italy, New Zealand, Lebanon, and Brunei.</p><p>As of March 31, 2024, the company employs 56 people across various departments.</p>",
+        "companyFinancials": [
+          {
+            "assets": 974.01,
+            "period": "2022-03-30",
+            "profit": 55.17,
+            "revenue": 2240.35
+          },
+          {
+            "assets": 1213.68,
+            "period": "2023-03-30",
+            "profit": 321.55,
+            "revenue": 2714.78
+          },
+          {
+            "assets": 3416.76,
+            "period": "2024-03-30",
+            "profit": 251.91,
+            "revenue": 2955.45
+          }
+        ],
+        "companyName": "Innomet Advanced Materials Limited",
+        "companyPhone": "+91 04023021726",
+        "disclaimer": "<p>No financial information published within this application, including but not limited to information regarding securities or IPOs, should be considered as advice to buy or sell securities or to invest in IPOs, or as a guide to doing so in any way whatsoever. All content published in this application is provided solely for educational and informational purposes, and under no circumstances should it be used for making investment decisions. We are not a SEBI registered analyst.Readers must consult a qualified financial advisor before making any actual investment decisions based on information published in this application. The information in this application is based on information available as of the date of publication, along with market perceptions, and may be subject to change without notice.</p>",
+        "email": "cs@innomet.net",
+        "faceValue": 10,
+        "file": "https://firebasestorage.googleapis.com/v0/b/ipodekho-19fc1.appspot.com/o/ddf8fdc637ba66b69bc93ec4cbf87391.png?alt=media&token=11c648b5-a554-401c-bc4e-ba9155f29744",
+        "financialLotsize": [
+          {
+            "amount": 120000,
+            "application": "Retail (Min)",
+            "lots": 1,
+            "shares": 1200
+          },
+          {
+            "amount": 120000,
+            "application": "Retail (Max)",
+            "lots": 1,
+            "shares": 1200
+          },
+          {
+            "amount": 240000,
+            "application": "HNI (Min)",
+            "lots": 2,
+            "shares": 2400
+          }
+        ],
+        "freshIssue": 34.24,
+        "fromPrice": 100,
+        "id": "W4q4JdoY7KsKfcPwVOAQ",
+        "issueSize": 34.24,
+        "issueType": "Fixed Price Issue IPO",
+        "leadManagerName": [
+          {
+            "name": "Expert Global Consultants Private Limited"
+          }
+        ],
+        "listingAt": [
+          "NSE"
+        ],
+        "listingDate": "2024-09-17",
+        "lotSize": 1200,
+        "nilQuota": 50,
+        "nonInstitutionalBuyers": 0.18,
+        "offerForSale": "",
+        "postIssueShareHolding": 54.8,
+        "preIssueShareHolding": 74.52,
+        "promotersName": [
+          {
+            "name": "Lakshmi Kanthamma Chilakapati"
+          },
+          {
+            "name": "Saritha Devi Chilakapati"
+          },
+          {
+            "name": "Vinay Choudhary Chilakapati"
+          }
+        ],
+        "qibQuota": "",
+        "reatailQuota": 50,
+        "registerEmail": "compliances@skylinerta.com",
+        "registerName": "Skyline Financial Services Private Ltd",
+        "registerPhone": [
+          {
+            "phone": "02228511022"
+          }
+        ],
+        "registerWebsite": "https://www.skylinerta.com/ipo.php",
+        "retailApp": "",
+        "retailInvestors": 0.72,
+        "shortText": "",
+        "slug": "innomet-advanced-materials-limited",
+        "subscriptionDateAndTime": "Wed Sep 11 2024 17:24:17 GMT+0530 (India Standard Time)",
+        "toPrice": 100,
+        "toolTipData": [
+          "",
+          "#ff0000"
+        ],
+        "total": 0.45,
+        "website": "https://www.innomet.net/"
+      }
+    ]
+}
