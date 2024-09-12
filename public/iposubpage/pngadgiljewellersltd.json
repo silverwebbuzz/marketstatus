@@ -1,0 +1,166 @@
+{
+  "company_name": "P N Gadgil Jewellers Ltd",
+  "schemes": [
+    {
+      "AnchorInvestors": "https://www.bseindia.com/markets/MarketInfo/DownloadAttach.aspx?id=20240909-68&attachedId=120b135f-5ef6-47df-8958-41de0026f6f0",
+      "BHNI": 5280,
+      "CategoryForIPOS": "MainlineIPO",
+      "DRHPDraft": "https://www.sebi.gov.in/filings/public-issues/mar-2024/p-n-gadgil-jewellers-limited-drhp_82611.html",
+      "GMP": "258",
+      "IPOAllotmentDate": "2024-09-13",
+      "IPOCloseDate": "2024-09-12",
+      "IPODematTransfer": "2024-09-16",
+      "IPOListingDate": "2024-09-17",
+      "IPOOpenDate": "2024-09-10",
+      "IPORefundsInitiation": "2024-09-16",
+      "IPOstatus": "Live",
+      "ObjectOfIssue": "<p>The Company proposes to utilize the Net Proceeds towards funding the following objects:</p><ol><li>Funding expenditure towards setting up 12 new stores in Maharashtra (New Stores);</li><li>Repayment or pre-payment, in full or part, of certain borrowings availed by the Company; and</li><li>General corporate purposes.</li></ol>",
+      "RHPDraft": "",
+      "Risk": [
+        "Poor management or growth strategies could harm store performance and stability.",
+        "Intense competition challenges P N Gadgil Jewellers' market share and profitability.",
+        "Lack of ownership of the \"PNG\" trademark limits branding flexibility.",
+        "Heavy reliance on Maharashtra stores risks business and financial stability."
+      ],
+      "SHNI": 2640,
+      "Strength": [
+        "P N Gadgil Jewellers offers diverse jewelry designs across 33 stores.",
+        "P N Gadgil Jewellers targets growth by expanding into smaller cities.",
+        "P N Gadgil Jewellers offers 38,000+ SKUs across diverse customer preferences.",
+        "Experienced management drives strong financial growth and operational efficiency improvements."
+      ],
+      "address": "694,\nNarayan Peth,\nPune - 411 030",
+      "allotmentLink": "https://ipo.bigshareonline.com/ipo_status.html",
+      "bNII": 2.87,
+      "checkAllotment": "https://ipo.bigshareonline.com/ipo_status.html",
+      "checkLiveSubscriptionUrl": "https://www.nseindia.com/market-data/issue-information?symbol=PNGJL&series=EQ",
+      "companyDescription": "<p>P N Gadgil Jewellers Limited, established in 2013, offers a diverse range of precious metal and jewelry products, including gold, silver, platinum, and diamond jewelry under the brand name \"PNG\" in various designs and price ranges.**</p><p>As of December 31, 2023, the company featured eight sub-brands for gold jewelry collections catering to different occasions: Saptam, Swarajya, Rings of Love, The Golden Katha of Craftmanship, Flip, Litestyle, Pratha, and Yoddha. Additionally, it offers two sub-brands for diamond jewelry\u00e2\u20ac\u201dEiina and PNG Solitaire\u00e2\u20ac\u201dand two for platinum jewelry\u00e2\u20ac\u201dMen of Platinum and Evergreen Love. Customers can also opt for custom-made jewelry.</p><p>By December 31, 2023, P N Gadgil Jewellers had expanded to 33 stores, including 32 locations across 18 cities in Maharashtra and Goa, and one store in the US, with a total retail space of approximately 95,885 sq. ft. All stores are company-managed, with 23 owned by the company and 10 operated under the FOCO (franchisee-owned and company-operated) model. The stores vary in size, with 19 large format (2,500 sq. ft. or more), 11 medium format (1,000\u00e2\u20ac\u201c2,500 sq. ft.), and 3 small format (under 1,000 sq. ft.).</p><p>As of September 30, 2023, the company employed 1,152 people.</p>",
+      "companyFinancials": [
+        {
+          "assets": 1014.15,
+          "period": "2021-03-30",
+          "profit": -6.71,
+          "revenue": 1944.44
+        },
+        {
+          "assets": 1110.24,
+          "period": "2022-03-30",
+          "profit": 69.52,
+          "revenue": 2586.31
+        },
+        {
+          "assets": 1062.55,
+          "period": "2023-03-30",
+          "profit": 93.7,
+          "revenue": 4559.31
+        },
+        {
+          "assets": 1265,
+          "period": "2023-09-29",
+          "profit": 43.75,
+          "revenue": 2631.14
+        }
+      ],
+      "companyName": "P N Gadgil Jewellers Limited",
+      "companyPhone": "+912024478474",
+      "disclaimer": "<p>No financial information published within this application, including but not limited to information regarding securities or IPOs, should be considered as advice to buy or sell securities or to invest in IPOs, or as a guide to doing so in any way whatsoever. All content published in this application is provided solely for educational and informational purposes, and under no circumstances should it be used for making investment decisions. We are not a SEBI registered analyst.Readers must consult a qualified financial advisor before making any actual investment decisions based on information published in this application. The information in this application is based on information available as of the date of publication, along with market perceptions, and may be subject to change without notice.</p>",
+      "email": "secretarial@pngadgil.com",
+      "faceValue": 10,
+      "file": "https://firebasestorage.googleapis.com/v0/b/ipodekho-19fc1.appspot.com/o/16df36be98bb4f19e64cfdf308117096.png?alt=media&token=11c648b5-a554-401c-bc4e-ba9155f29744",
+      "financialLotsize": [
+        {
+          "amount": 14880,
+          "application": "Retail (Min)\t",
+          "lots": 1,
+          "shares": 31
+        },
+        {
+          "amount": 193440,
+          "application": "Retail (Max)",
+          "lots": 13,
+          "shares": 403
+        },
+        {
+          "amount": 208320,
+          "application": "S-HNI (Min)",
+          "lots": 14,
+          "shares": 434
+        },
+        {
+          "amount": 996960,
+          "application": "S-HNI (Max)",
+          "lots": 67,
+          "shares": 2077
+        },
+        {
+          "amount": 1011840,
+          "application": "B-HNI (Min)",
+          "lots": 68,
+          "shares": 2108
+        }
+      ],
+      "freshIssue": 850,
+      "fromPrice": 456,
+      "id": "y3tc8s1PBHXHwWfxRwnl",
+      "issueSize": 1100,
+      "issueType": "Book Built Issue IPO",
+      "leadManagerName": [
+        {
+          "name": "Motilal Oswal Investment Advisors Limited"
+        },
+        {
+          "name": "Nuvama Wealth Management Limited"
+        },
+        {
+          "name": "Bob Capital Markets Limited"
+        }
+      ],
+      "listingAt": [
+        "BSE",
+        "NSE"
+      ],
+      "listingDate": "2024-09-16",
+      "lotSize": 31,
+      "nilQuota": 15,
+      "nonInstitutionalBuyers": 3.29,
+      "offerForSale": 250,
+      "postIssueShareHolding": "",
+      "preIssueShareHolding": 100,
+      "promotersName": [
+        {
+          "name": "Saurabh Vidyadhar Gadgil"
+        },
+        {
+          "name": "Radhika Saurabh Gadgil"
+        },
+        {
+          "name": "VG Business Trust"
+        }
+      ],
+      "qibQuota": 50,
+      "qualifiedInstitutions": 0.01,
+      "reatailQuota": 35,
+      "registerEmail": "ipo@bigshareonline.com",
+      "registerName": "Bigshare Services Pvt Ltd",
+      "registerPhone": [
+        {
+          "phone": "+91-22-6263 8200"
+        }
+      ],
+      "registerWebsite": "https://ipo.bigshareonline.com/ipo_status.html",
+      "retailApp": 258737,
+      "retailInvestors": 2.71,
+      "sNII": 4.12,
+      "shortText": "",
+      "slug": "p-n-gadgil-jewellers-limited",
+      "subscriptionDateAndTime": "Wed Sep 11 2024 09:57:45 GMT+0530 (India Standard Time)",
+      "toPrice": 480,
+      "toolTipData": [
+        "",
+        "#ff0000"
+      ],
+      "total": 2.06,
+      "website": "https://www.pngjewellers.com/"
+    }
+  ]
+}

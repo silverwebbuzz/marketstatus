@@ -40,7 +40,7 @@ const PaymentGateways = () => {
         <div className="card_tbl">
           <div className="card_header_gateways" onClick={() => toggleExpand(0)}>
             <div className="img_name">
-              <img src={images["CASHFREE.png"]}/>
+              <img src={images["CASHFREE.png"]} alt="image"/>
               <div className="gateway_name">Cashfree Payment Gateway</div>
             </div>
             <FontAwesomeIcon icon={faChevronDown} size="1x" />

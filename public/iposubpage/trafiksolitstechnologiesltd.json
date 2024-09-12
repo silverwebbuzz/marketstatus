@@ -1,0 +1,128 @@
+{
+   "company_name": "Trafiksol ITS Technologies Ltd",
+   "schemes":[
+      {
+        "AnchorInvestors": "",
+        "BHNI": "",
+        "CategoryForIPOS": "SmeIPO",
+        "DRHPDraft": "https://www.bsesme.com/download/351970/Trafiksol_DRHP__31052024__20240603162853.pdf",
+        "GMP": "85",
+        "IPOAllotmentDate": "2024-09-13",
+        "IPOCloseDate": "2024-09-12",
+        "IPODematTransfer": "2024-09-16",
+        "IPOListingDate": "2024-09-17",
+        "IPOOpenDate": "2024-09-10",
+        "IPORefundsInitiation": "2024-09-16",
+        "IPOstatus": "Live",
+        "ObjectOfIssue": "<p>The Company proposes to utilize the Net Proceeds from the Issue towards funding the following objects:</p><ol><li>Purchase of Software;</li><li>Repayment/prepayment, in part or full, of certain borrowings;</li><li>To Meet Working Capital Requirements; and</li><li>General Corporate Purpose.</li></ol>",
+        "RHPDraft": "https://www.ekadrisht.com/_files/ugd/3740ef_29351cf1357244a584a65feb0e6fd945.pdf",
+        "Risk": [],
+        "SHNI": "",
+        "Strength": [],
+        "address": "2nd Floor, B 68, Sector 63,\nNoida, Gautam Buddha Nagar,\nNoida - 201 301",
+        "allotmentLink": "https://maashitla.com/allotment-status/public-issues",
+        "checkAllotment": "https://maashitla.com/allotment-status/public-issues",
+        "checkLiveSubscriptionUrl": "https://www.bseindia.com/markets/publicIssues/BSEDemandSchedule_FPO.aspx?Scripcode=6750",
+        "companyDescription": "<p>Founded in 2018, TrafikSol ITS Technologies Limited provides a wide range of intelligent transportation systems (ITS) and automation solutions, including software development, consulting, and delivery services.**</p><p><br></p><p>The company offers both ready-made and customized software solutions, including operating systems, business applications, and computer games across various platforms. TrafikSol specializes in analyzing user needs to deliver bespoke software solutions, including tailored software and ongoing maintenance.</p><p><br></p><p>As a specialized EPC (Engineering, Procurement, and Construction) firm, TrafikSol undertakes projects in areas such as Advanced Traffic Management Systems (ATMS), Toll Management Systems (TMS), and Tunnel Management Systems (TNMS).</p><p><br></p><p>The company's service offerings include:</p><p><br></p><p>Advanced Traffic Management System (ATMS):** Traffic monitoring and control, data processing and analysis, traffic optimization, incident management, integrated communication, and travel information services.</p><p>Toll Management System (TMS):** Toll collection devices, electronic toll collection (ETC), manual toll collection, and toll station operations.</p><p>Tunnel Management System (TNMS):** Advanced sensor technologies, emergency response, ventilation control, and smoke control systems.</p><p>Highway Lighting:** Energy-efficient LED lighting solutions for improved safety and sustainability.</p><p>Transmission and Distribution Services**</p><p>Solar Energy Solutions:** Comprehensive services for solar projects from start to finish.</p><p>Speeding Detection Systems**</p><p>Integrated Command and Control Centers (ICCC)**</p><p>Defense Services:** Supply of aircraft spare parts, maritime support services, and ground-based maintenance.</p>",
+        "companyFinancials": [
+          {
+            "assets": 2284.01,
+            "period": "2022-03-30",
+            "profit": 205.19,
+            "revenue": 2801.92
+          },
+          {
+            "assets": 3363.17,
+            "period": "2023-03-30",
+            "profit": 477.85,
+            "revenue": 3675
+          },
+          {
+            "assets": 6215.52,
+            "period": "2024-03-30",
+            "profit": 1209.3,
+            "revenue": 6608.5
+          }
+        ],
+        "companyName": "Trafiksol ITS Technologies Limited",
+        "companyPhone": "+91- 87440 50058",
+        "disclaimer": "<p>No financial information published within this application, including but not limited to information regarding securities or IPOs, should be considered as advice to buy or sell securities or to invest in IPOs, or as a guide to doing so in any way whatsoever. All content published in this application is provided solely for educational and informational purposes, and under no circumstances should it be used for making investment decisions. We are not a SEBI registered analyst.Readers must consult a qualified financial advisor before making any actual investment decisions based on information published in this application. The information in this application is based on information available as of the date of publication, along with market perceptions, and may be subject to change without notice.</p>",
+        "earningPerShare": 6.77,
+        "email": "info@trafiksol.com",
+        "faceValue": 10,
+        "file": "https://firebasestorage.googleapis.com/v0/b/ipodekho-19fc1.appspot.com/o/4aaff5abf8d68704fb1568cc6b578d40.png?alt=media&token=11c648b5-a554-401c-bc4e-ba9155f29744",
+        "financialLotsize": [
+          {
+            "amount": 140000,
+            "application": "Retail (Min)\t",
+            "lots": 1,
+            "shares": 2000
+          },
+          {
+            "amount": 140000,
+            "application": "Retail (Max)",
+            "lots": 1,
+            "shares": 2000
+          },
+          {
+            "amount": 280000,
+            "application": "HNI (Min)",
+            "lots": 2,
+            "shares": 4000
+          }
+        ],
+        "freshIssue": 44.87,
+        "fromPrice": 66,
+        "id": "w51LxRbE5Ggyze3V4kzP",
+        "issueSize": 44.87,
+        "issueType": "Book Built Issue IPO",
+        "leadManagerName": [
+          {
+            "name": "Ekadrisht Capital Private Limited"
+          }
+        ],
+        "listingAt": [
+          "BSE"
+        ],
+        "listingDate": "2024-09-16",
+        "lotSize": 2000,
+        "netAssetValue": 6.77,
+        "nilQuota": "",
+        "nonInstitutionalBuyers": 71.49,
+        "offerForSale": "",
+        "postIssueShareHolding": 60.71,
+        "preIssueShareHolding": 60.71,
+        "promotersName": [
+          {
+            "name": "Jitendra Narayan Das"
+          },
+          {
+            "name": "Poonam Das"
+          }
+        ],
+        "qibQuota": "",
+        "reatailQuota": "",
+        "registerEmail": "ipo@maashitla.com",
+        "registerName": "Maashitla Securities Private Limited",
+        "registerPhone": [
+          {
+            "phone": "+91-11-45121795-96"
+          }
+        ],
+        "registerWebsite": "https://maashitla.com/allotment-status/public-issues",
+        "retailApp": "",
+        "retailInvestors": 116.29,
+        "returnonNetWorth": 35.44,
+        "shortText": "",
+        "slug": "trafiksol-its-technologies-limited",
+        "subscriptionDateAndTime": "Wed Sep 11 2024 17:25:49 GMT+0530 (India Standard Time)",
+        "toPrice": 70,
+        "toolTipData": [
+          "",
+          "#ff0000"
+        ],
+        "total": 73.49,
+        "website": "http://www.trafiksol.com/"
+      }
+    ]
+}
