@@ -6,11 +6,14 @@
 .keypoints_box {
    margin: 15px;
    width: calc(100% / 2 - 30px);
-   border: 1px solid;
+   border: 1px solid #9F9F9F;
    border-radius: 15px;
    padding: 20px;
+   transition: all 0.4s ease;
 }
-
+.keypoints_box:hover {
+   box-shadow: 7px 4px 6.8px 0px #00000040;
+}
 .keypoints h3 {
    text-align: center;
    font-size: 35px;
@@ -92,3 +95,161 @@ span.status {
    font-size: 20px;
    color: #f4f4f4;
 }
+thead.detailpage_table_thead {
+   border-spacing: 0px 10px;
+}
+p.disclimer p {
+   line-height: 25px;
+   text-align: justify;
+   font-size: 16px;
+}
+.subpage_informatic {
+   display: flex;
+   flex-flow: wrap;
+   margin: 0-20px;
+}
+
+.informatic_box {
+   width: calc(100% / 3 - 40px);
+   margin: 20px;
+   border: 1px solid #9f9f9f;
+   padding: 15px;
+   border-radius: 18px;
+   text-align: center;
+   transition: all 0.4s ease;
+}
+
+.informatic_box ul {
+   display: block;
+}
+.informatic_box:hover {
+   box-shadow: 7px 4px 6.8px 0px #00000040;
+}
+
+
+
+@media (max-width: 991px){
+   .header_box h2 {
+      font-size: 30px;
+   }
+   
+   span.status {
+      font-size: 16px;
+   }
+   
+   .subpage_header {
+      padding: 15px;
+   }
+   
+   .header_box {
+      gap: 30px;
+   }
+   
+   .time_line div span {
+      font-size: 16px;
+   }
+   
+   .time_line div {
+      font-size: 14px;
+      margin: 5px;
+      width: calc(100% / 6 - 10px);
+   }
+   
+   .keypoints h3 {
+      font-size: 25px;
+   }
+   
+   .keypoints_box h4 {
+      font-size: 20px;
+   }
+   
+   .keypoints_box ul li {
+      font-size: 16px;
+   }
+   
+   .detailpage_table_heading h3 {
+      font-size: 20px;
+   }
+   
+   .detailpage_table.subpage_discription h3 {
+      font-size: 20px;
+   }
+   
+   p.disclimer p {
+      font-size: 14px;
+      line-height: 15px;
+   }
+   
+   .informatic_box {
+      margin: 10px;
+      width: calc(100% / 3 - 20px);
+   }
+}
+
+@media (max-width: 767px){
+   .time_line div {
+      width: 100%;
+      flex-flow: column-reverse;
+      gap: 8px;
+      align-items: center;
+  }
+  
+  .time_line div span {
+      font-size: 14px;
+      padding: 5px 15px;
+  }
+  
+  .subpage_header {
+      padding: 12px;
+  }
+  
+  .header_box h2 {
+      font-size: 20px;
+  }
+  
+  .header_box img {
+      width: 54px;
+  }
+  
+  .header_box {
+      gap: 15px;
+      /* justify-content: center; */
+      width: 100%;
+  }
+  
+  .keypoints_box {
+      width: 100%;
+      padding: 15px;
+      margin: 10px;
+  }
+  
+  .keypoints_box h4 {
+      margin-bottom: 10px;
+  }
+  
+  .detailpage_table {
+      margin: 10px;
+      width: 100%;
+  }
+  
+  thead.detailpage_table_thead tr th:first-child {
+      width: 82px;
+  }
+  tbody.detailpage_table_thead tr td:first-child {
+   width: 82px;
+}
+
+.informatic_box {
+   width: 100%;
+}
+}
+
+
+
+
+
+
+
+
+
+

@@ -19,6 +19,10 @@ function Iposubpage() {
   const images = importAll(
     require.context("../assets/ipo", false, /\.(png|jpe?g|svg)$/)
   );
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-GB"); // 'en-GB' format is dd/mm/yyyy
+  };
 
   useEffect(() => {
     // Fetching JSON data dynamically from the public directory
@@ -59,35 +63,35 @@ function Iposubpage() {
                     className="logo"
                   />
                   <h2>{ipoData.company_name}</h2>
-                <span className="status"> {scheme.IPOstatus}</span>
+                  <span className="status"> {scheme.IPOstatus}</span>
                 </div>
                 <div className="time_line">
                   <div>
-                      <span>{scheme.IPOOpenDate}</span>
-                      Open
+                    <span>{formatDate(scheme.IPOOpenDate)}</span>
+                    Open
                   </div>
                   <div>
-                    <span>{scheme.IPOCloseDate}</span>
-                    close
+                    <span>{formatDate(scheme.IPOCloseDate)}</span>
+                    Close
                   </div>
                   <div>
-                    <span>{scheme.IPOAllotmentDate}</span>
+                    <span>{formatDate(scheme.IPOAllotmentDate)}</span>
                     Finalisation of Basis of Allotment
                   </div>
                   <div>
-                    <span>{scheme.IPORefundsInitiation}</span>
+                    <span>{formatDate(scheme.IPORefundsInitiation)}</span>
                     Initiation of Refunds
                   </div>
                   <div>
-                    <span>{scheme.IPODematTransfer}</span>
+                    <span>{formatDate(scheme.IPODematTransfer)}</span>
                     Transfer of Shares to Demat Account
                   </div>
                   <div>
-                    <span>{scheme.IPOListingDate}</span>
+                    <span>{formatDate(scheme.IPOListingDate)}</span>
                     Listing Date
                   </div>
                 </div>
-                
+
                 {/* <div>Issue Size: {scheme.issueSize} Cr</div>
                 <p>Category: {scheme.CategoryForIPOS}</p>
                 <div>
@@ -120,36 +124,11 @@ function Iposubpage() {
               <div className="detaipage_table_row">
                 <div className="detailpage_table">
                   <div className="detailpage_table_heading">
-                    <h3>Lot Sizes</h3>
-                  </div>
-                  <table className="lotsize">
-                    <thead>
-                      <tr>
-                        <th>Application</th>
-                        <th>Lots</th>
-                        <th>Shares</th>
-                        <th>Amount</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {scheme.financialLotsize &&
-                        scheme.financialLotsize.map((lot, lotIndex) => (
-                          <tr key={lotIndex}>
-                            <td>{lot.application}</td>
-                            <td>{lot.lots}</td>
-                            <td>{lot.shares}</td>
-                            <td>{lot.amount}</td>
-                          </tr>
-                        ))}
-                    </tbody>
-                  </table>
-                </div>
-                <div className="detailpage_table">
-                  <div className="detailpage_table_heading">
                     <h3>IPO Financials</h3>
                   </div>
+                  <div className="table_ind">
                   <table>
-                    <thead>
+                    <thead className="detailpage_table_thead">
                       <tr>
                         <th>Period</th>
                         <th>Assets (Cr)</th>
@@ -157,7 +136,7 @@ function Iposubpage() {
                         <th>Profit (Cr)</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="detailpage_table_thead">
                       {scheme.companyFinancials.map((financial, i) => (
                         <tr key={i}>
                           <td>
@@ -170,40 +149,82 @@ function Iposubpage() {
                       ))}
                     </tbody>
                   </table>
+                  </div>
+                 
+                </div>
+                <div className="detailpage_table subpage_discription">
+                  <h3>Disclaimer</h3>
+                  <p
+                    className="disclimer"
+                    dangerouslySetInnerHTML={{ __html: scheme.disclaimer }}
+                  ></p>
+                </div>
+                <div className="detailpage_table subpage_discription">
+                  <h3>About {ipoData.companyName}</h3>
+                  <p
+                    className="disclimer"
+                    dangerouslySetInnerHTML={{
+                      __html: scheme.companyDescription,
+                    }}
+                  ></p>
+                </div>
+                <div className="detailpage_table">
+                  <div className="detailpage_table_heading">
+                    <h3>Lot Sizes</h3>
+                  </div>
+                  <div className="table_ind">
+                  <table className="lotsize">
+                    <thead className="detailpage_table_thead">
+                      <tr>
+                        <th>Application</th>
+                        <th>Lots</th>
+                        <th>Shares</th>
+                        <th>Amount</th>
+                      </tr>
+                    </thead>
+                    <tbody className="detailpage_table_thead">
+                      {scheme.financialLotsize &&
+                        scheme.financialLotsize.map((lot, lotIndex) => (
+                          <tr key={lotIndex}>
+                            <td>{lot.application}</td>
+                            <td>{lot.lots}</td>
+                            <td>{lot.shares}</td>
+                            <td>{lot.amount}</td>
+                          </tr>
+                        ))}
+                    </tbody>
+                  </table>
+                  </div>
                 </div>
               </div>
-              <h3>Promoters</h3>
-              <ul>
-                {scheme.promotersName.map((promoter, i) => (
-                  <li key={i}>{promoter.name}</li>
-                ))}
-              </ul>
-
-              <h3>Contact Information</h3>
-              <p>Address: {scheme.address}</p>
-              <p>Email: {scheme.email}</p>
-              <p>Phone: {scheme.companyPhone}</p>
-
-              <h3>IPO Allotment Status</h3>
-              <p>
-                <a
-                  href={scheme.allotmentLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Check Allotment
-                </a>
-              </p>
-
-              <h3>About {ipoData.companyName}</h3>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: scheme.companyDescription,
-                }}
-              ></p>
-
-              <h3>Disclaimer</h3>
-              <p dangerouslySetInnerHTML={{ __html: scheme.disclaimer }}></p>
+              <div className="subpage_informatic">
+                <div className="informatic_box">
+                  <h3>Promoters</h3>
+                  <ul>
+                    {scheme.promotersName.map((promoter, i) => (
+                      <li key={i}>{promoter.name}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="informatic_box">
+                  <h3>Contact Information</h3>
+                  <p>Address: {scheme.address}</p>
+                  <p>Email: {scheme.email}</p>
+                  <p>Phone: {scheme.companyPhone}</p>
+                </div>
+                <div className="informatic_box">
+                  <h3>IPO Allotment Status</h3>
+                  <p>
+                    <a
+                      href={scheme.allotmentLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Check Allotment
+                    </a>
+                  </p>
+                </div>
+              </div>
             </div>
           ))}
       </section>
@@ -212,4 +233,3 @@ function Iposubpage() {
 }
 
 export default Iposubpage;
-
