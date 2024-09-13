@@ -1,0 +1,132 @@
+{
+   "company_name": "Popular Foundations Ltd",
+   "schemes":[
+      {
+        "AnchorInvestors": "",
+        "BHNI": "",
+        "CategoryForIPOS": "SmeIPO",
+        "DRHPDraft": "https://www.bsesme.com/download/371101/AddendumwithDRHPPopular_20240820111919.pdf",
+        "IPOAllotmentDate": "2024-09-19",
+        "IPOCloseDate": "2024-09-18",
+        "IPODematTransfer": "2024-09-20",
+        "IPOListingDate": "2024-09-23",
+        "IPOOpenDate": "2024-09-13",
+        "IPORefundsInitiation": "2024-09-20",
+        "IPOstatus": "Upcoming",
+        "ObjectOfIssue": "<p>The Company proposes to utilize the Net Proceeds towards funding the following objects:</p><ol><li>Prepayment or repayment of all or a portion of certain outstanding borrowings availed by the Company;</li><li>Funding the working capital requirements of the Company; and</li><li>General corporate purposes.</li></ol>",
+        "RHPDraft": "https://www.grouppopular.com/pdf/PopularFoundationsLimitedProspectusfiledwithROC.pdf",
+        "Risk": [],
+        "SHNI": "",
+        "Strength": [],
+        "address": "New No. 32/1, 32/2, Old No. 9/1, 9/2,\nKamatchi Apartment, 10th Avenue,\nAshok Nagar, Chennai - 600083",
+        "allotmentLink": "https://ipo.bigshareonline.com/ipo_status.html",
+        "checkAllotment": "https://ipo.bigshareonline.com/ipo_status.html",
+        "checkLiveSubscriptionUrl": "",
+        "companyDescription": "<p>Founded in 1998, Popular Foundations Limited is a prominent player in engineering and construction services, providing comprehensive end-to-end solutions across the construction sector.</p><p>The company specializes in constructing a variety of facilities, including factories, educational institutions, and commercial and residential buildings. While it undertakes a wide range of projects, Popular Foundations Limited strategically focuses on non-residential and non-government construction projects primarily in and around Chennai. Additionally, the company has successfully completed projects in Pondicherry, Tanjore, Bangalore, Trichy, Madurai, Vizhuppuram, and Coimbatore.</p>",
+        "companyFinancials": [
+          {
+            "assets": 4929.49,
+            "period": "2022-03-30",
+            "profit": 48.08,
+            "revenue": 2630.17
+          },
+          {
+            "assets": 4864.7,
+            "period": "2023-03-30",
+            "profit": 119.61,
+            "revenue": 4866.89
+          },
+          {
+            "assets": 6354.87,
+            "period": "2024-03-30",
+            "profit": 347.76,
+            "revenue": 5191
+          }
+        ],
+        "companyName": "Popular Foundations Limited",
+        "companyPhone": "+91 941498731",
+        "disclaimer": "<p>No financial information published within this application, including but not limited to information regarding securities or IPOs, should be considered as advice to buy or sell securities or to invest in IPOs, or as a guide to doing so in any way whatsoever. All content published in this application is provided solely for educational and informational purposes, and under no circumstances should it be used for making investment decisions. We are not a SEBI registered analyst.Readers must consult a qualified financial advisor before making any actual investment decisions based on information published in this application. The information in this application is based on information available as of the date of publication, along with market perceptions, and may be subject to change without notice.</p>",
+        "earningPERatio": 15.35,
+        "earningPerShare": 2.41,
+        "email": "info@grouppopular.com",
+        "faceValue": 10,
+        "file": "https://firebasestorage.googleapis.com/v0/b/ipodekho-19fc1.appspot.com/o/e189da604c014042eb71b9d841d3a57d.png?alt=media&token=11c648b5-a554-401c-bc4e-ba9155f29744",
+        "financialLotsize": [
+          {
+            "amount": 111000,
+            "application": "Retail (Min)\t",
+            "lots": 1,
+            "shares": 3000
+          },
+          {
+            "amount": 111000,
+            "application": "Retail (Max)",
+            "lots": 1,
+            "shares": 3000
+          },
+          {
+            "amount": 222000,
+            "application": "HNI (Min)",
+            "lots": 2,
+            "shares": 6000
+          }
+        ],
+        "freshIssue": 19.87,
+        "fromPrice": 37,
+        "id": "mJ5C6B4qUqyBqwWbHmPb",
+        "issueSize": 19.87,
+        "issueType": "Fixed Price Issue IPO",
+        "leadManagerName": [
+          {
+            "name": "Srujan Alpha Capital Advisors Llp"
+          }
+        ],
+        "listingAt": [
+          "BSE"
+        ],
+        "listingDate": "2024-09-22",
+        "lotSize": 3000,
+        "netAssetValue": 16.06,
+        "nilQuota": 50,
+        "offerForSale": "",
+        "peersComparison": [
+          {
+            "company_name": "NCC Limited\t"
+          },
+          {
+            "company_name": "Hindustan Construction Company Limited\t"
+          }
+        ],
+        "postIssueShareHolding": 61.39,
+        "preIssueShareHolding": 83.36,
+        "promotersName": [
+          {
+            "name": "Mr. Ananthanarayanan Sankaralingam Venkatesh"
+          },
+          {
+            "name": "Mrs. Vinita Venkatesh"
+          }
+        ],
+        "qibQuota": "",
+        "reatailQuota": 50,
+        "registerEmail": "ipo@bigshareonline.com",
+        "registerName": "Bigshare Services Pvt Ltd",
+        "registerPhone": [
+          {
+            "phone": "+91-22-6263 8200"
+          }
+        ],
+        "registerWebsite": "https://ipo.bigshareonline.com/ipo_status.html",
+        "retailApp": "",
+        "returnonNetWorth": 15.03,
+        "shortText": "",
+        "slug": "popular-foundations-limited",
+        "toPrice": 37,
+        "toolTipData": [
+          "",
+          "#ff0000"
+        ],
+        "website": "http://www.grouppopular.com/"
+      }
+    ]
+}
