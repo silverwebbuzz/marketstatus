@@ -52,38 +52,38 @@ function Iposubpage() {
           ipoData.schemes.map((scheme, index) => (
             <div className="container" key={index}>
               <div className="subpage_header">
-                <div>
+                <div className="header_box">
                   <img
                     src={images[ipo.logo]}
                     alt={`${ipo.amc_name} logo`}
                     className="logo"
                   />
                   <h2>{ipoData.company_name}</h2>
-                  <span className="status"> {scheme.IPOstatus}</span>
+                <span className="status"> {scheme.IPOstatus}</span>
                 </div>
                 <div className="time_line">
                   <div>
-                      <span>{scheme.IPOOpenDate}</span><br/>
+                      <span>{scheme.IPOOpenDate}</span>
                       Open
                   </div>
                   <div>
-                    <span>{scheme.IPOCloseDate}</span><br/>
+                    <span>{scheme.IPOCloseDate}</span>
                     close
                   </div>
                   <div>
-                    <span>{scheme.IPOAllotmentDate}</span><br/>
+                    <span>{scheme.IPOAllotmentDate}</span>
                     Finalisation of Basis of Allotment
                   </div>
                   <div>
-                    <span>{scheme.IPORefundsInitiation}</span><br/>
+                    <span>{scheme.IPORefundsInitiation}</span>
                     Initiation of Refunds
                   </div>
                   <div>
-                    <span>{scheme.IPODematTransfer}</span><br/>
+                    <span>{scheme.IPODematTransfer}</span>
                     Transfer of Shares to Demat Account
                   </div>
                   <div>
-                    <span>{scheme.IPOListingDate}</span><br/>
+                    <span>{scheme.IPOListingDate}</span>
                     Listing Date
                   </div>
                 </div>
@@ -121,13 +121,6 @@ function Iposubpage() {
                 <div className="detailpage_table">
                   <div className="detailpage_table_heading">
                     <h3>Lot Sizes</h3>
-                    <p>
-                      The P N Gadgil Jewellers Limited IPO minimum market lot is
-                      31 shares with ₹14,880 application amount. The retail
-                      investors can apply up-to 13 lots with 403 shares or
-                      ₹1,93,440 amount. The HNIs can apply up-to 68 lots with
-                      2108 shares or ₹10,11,840 amount.
-                    </p>
                   </div>
                   <table className="lotsize">
                     <thead>
@@ -154,11 +147,6 @@ function Iposubpage() {
                 <div className="detailpage_table">
                   <div className="detailpage_table_heading">
                     <h3>IPO Financials</h3>
-                    <p>
-                      As of Sep 30, 2023 , P N Gadgil Jewellers Limited company
-                      reported assets of 1,265 Crore, revenue of 2,631.14 Crore,
-                      and a profit after tax of 43.75 Crore.
-                    </p>
                   </div>
                   <table>
                     <thead>

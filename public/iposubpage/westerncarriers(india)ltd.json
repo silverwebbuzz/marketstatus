@@ -1,0 +1,156 @@
+{
+   "company_name": "Western Carriers (India) Ltd",
+   "schemes":[
+      {
+        "AnchorInvestors": "",
+        "BHNI": "",
+        "CategoryForIPOS": "MainlineIPO",
+        "DRHPDraft": "https://www.sebi.gov.in/filings/public-issues/jun-2023/western-carriers-india-limited-drhp_72492.html",
+        "IPOAllotmentDate": "2024-09-19",
+        "IPOCloseDate": "2024-09-18",
+        "IPODematTransfer": "2024-09-20",
+        "IPOListingDate": "2024-09-23",
+        "IPOOpenDate": "2024-09-13",
+        "IPORefundsInitiation": "2024-09-20",
+        "IPOstatus": "Live",
+        "ObjectOfIssue": "<p>The net proceeds of the Fresh Issue, i.e., gross proceeds of the Fresh Issue less the Offer expenses apportioned to the Company (\u201cNet Proceeds\u201d) are proposed to be utilised in the following manner:</p><ol><li>Prepayment or scheduled re-payment of a portion of certain outstanding borrowings availed by the Company;</li><li>Funding of capital expenditure requirements of our Company towards purchase of:</li><li class=\"ql-indent-1\">commercial vehicles;</li><li class=\"ql-indent-1\">40 feet specialised containers and 20 feet normal shipping containers; and</li><li class=\"ql-indent-1\">reach stackers; and</li><li>General corporate purposes</li></ol>",
+        "RHPDraft": "http://western-carriers.com/assets/images/pdf/RHP.pdf",
+        "Risk": [
+          "Western Carriers may struggle to maintain past growth and plans.",
+          "Western Carriers might struggle to meet debt obligations and covenants."
+        ],
+        "SHNI": "",
+        "Strength": [
+          "The company\u2019s end-to-end logistics expertise offers a strong competitive edge.",
+          "Western Carriers' integrated solutions position it to benefit from industry trends."
+        ],
+        "address": "2/6 Sarat Bose Road\n2nd Floor,\nKolkata-700020",
+        "allotmentLink": "https://linkintime.co.in/initial_offer/public-issues.html",
+        "checkAllotment": "https://linkintime.co.in/initial_offer/public-issues.html",
+        "checkLiveSubscriptionUrl": "",
+        "companyDescription": "<p>Incorporated in March 2011, Western Carriers (India) Limited is a multi-modal, rail-focused 4PL asset-light logistics company. It offers fully customizable logistics solutions across road, rail, water, and air transportation, along with a range of value-added services.</p><p>The company serves various sectors, including metals, FMCG, pharmaceuticals, chemicals, engineering, oil and gas, and retail. Its clientele features prominent names such as Tata Steel, Hindalco, Jindal Stainless, JSW Steel Coated Products, BALCO, Vedanta, Hindustan Unilever, Coca Cola India, Tata Consumer Products, Wagh Bakri, CG Foods, Cipla, MCPI, Haldia Petrochemicals, GHCL, BCPL, Sheela Foam, and DHL Logistics.</p><p>Western Carriers provides chartering services to international destinations, stevedoring services at Indian ports, and coastal cargo movement within India. The company specializes in integrating rail and road transport through an asset-light model, managing supply chains to support increased imports, exports, and production for a leading metals and resources group.</p><p>As of December 31, 2022, the company served over 1,100 customers and employed 1,350 staff members across various departments.</p>",
+        "companyFinancials": [
+          {
+            "assets": 490.33,
+            "period": "2022-03-30",
+            "profit": 61.13,
+            "revenue": 1475.79
+          },
+          {
+            "assets": 604.14,
+            "period": "2023-03-30",
+            "profit": 71.57,
+            "revenue": 1637.84
+          },
+          {
+            "assets": 754.01,
+            "period": "2024-03-30",
+            "profit": 80.35,
+            "revenue": 1691.41
+          }
+        ],
+        "companyName": "Western Carriers (India) Limited",
+        "companyPhone": "+91 33 2485 8519",
+        "disclaimer": "<p>No financial information published within this application, including but not limited to information regarding securities or IPOs, should be considered as advice to buy or sell securities or to invest in IPOs, or as a guide to doing so in any way whatsoever. All content published in this application is provided solely for educational and informational purposes, and under no circumstances should it be used for making investment decisions. We are not a SEBI registered analyst.Readers must consult a qualified financial advisor before making any actual investment decisions based on information published in this application. The information in this application is based on information available as of the date of publication, along with market perceptions, and may be subject to change without notice.</p>",
+        "earningPerShare": 10.21,
+        "email": "investors@westcong.com",
+        "faceValue": 5,
+        "file": "https://firebasestorage.googleapis.com/v0/b/ipodekho-19fc1.appspot.com/o/9ad814e38944b5f43f0825d6404be30d.png?alt=media&token=11c648b5-a554-401c-bc4e-ba9155f29744",
+        "financialLotsize": [
+          {
+            "amount": 14964,
+            "application": "Retail (Min)",
+            "lots": 1,
+            "shares": 87
+          },
+          {
+            "amount": 194532,
+            "application": "Retail (Max)",
+            "lots": 13,
+            "shares": 1131
+          },
+          {
+            "amount": 209496,
+            "application": "S-HNI (Min)",
+            "lots": 14,
+            "shares": 1218
+          },
+          {
+            "amount": 987624,
+            "application": "S-HNI (Max)",
+            "lots": 66,
+            "shares": 5742
+          },
+          {
+            "amount": 1002588,
+            "application": "B-HNI (Min)",
+            "lots": 67,
+            "shares": 5829
+          }
+        ],
+        "freshIssue": 400,
+        "fromPrice": 163,
+        "id": "bTo4iPXkY6m1LAehkqB4",
+        "issueSize": 492.88,
+        "issueType": "Book Built Issue IPO",
+        "leadManagerName": [
+          {
+            "name": "Jm Financial Limited"
+          },
+          {
+            "name": "Kotak Mahindra Capital Company Limited"
+          }
+        ],
+        "listingAt": [
+          "BSE",
+          "NSE"
+        ],
+        "listingDate": "2024-09-22",
+        "lotSize": 87,
+        "netAssetValue": 50.62,
+        "nilQuota": 15,
+        "offerForSale": 92.88,
+        "peersComparison": [
+          {
+            "company_name": "Container Corporation of India Limited"
+          },
+          {
+            "company_name": "Mahindra Logistics Limited"
+          },
+          {
+            "company_name": "TCI Express Limited"
+          }
+        ],
+        "postIssueShareHolding": "",
+        "preIssueShareHolding": 99.99,
+        "promotersName": [
+          {
+            "name": "Rajendra Sethia"
+          },
+          {
+            "name": "Kanishka Sethia"
+          }
+        ],
+        "qibQuota": 50,
+        "reatailQuota": 35,
+        "registerEmail": "westerncarriers.ipo@linkintime.co.in",
+        "registerName": "Link Intime India Private Ltd",
+        "registerPhone": [
+          {
+            "phone": "+91-22-4918 6270"
+          }
+        ],
+        "registerWebsite": "https://linkintime.co.in/initial_offer/public-issues.html",
+        "retailApp": "",
+        "returnonNetWorth": 20.17,
+        "shortText": "",
+        "slug": "western-carriers-india-limited",
+        "toPrice": 172,
+        "toolTipData": [
+          "",
+          "#ff0000"
+        ],
+        "website": "https://western-carriers.com/"
+      }
+    ]
+}

@@ -1,0 +1,141 @@
+{
+   "company_name": "Deccan Transcon Leasing Ltd",
+   "schemes":[
+      {
+        "AnchorInvestors": "",
+        "BHNI": "",
+        "CategoryForIPOS": "SmeIPO",
+        "DRHPDraft": "https://nsearchives.nseindia.com/emerge/corporates/content/DeccanTransconLeasingLtd_DRHP.pdf",
+        "GMP": "30",
+        "IPOAllotmentDate": "2024-09-19",
+        "IPOCloseDate": "2024-09-18",
+        "IPODematTransfer": "2024-09-20",
+        "IPOListingDate": "2024-09-23",
+        "IPOOpenDate": "2024-09-13",
+        "IPORefundsInitiation": "2024-09-20",
+        "IPOstatus": "Upcoming",
+        "ObjectOfIssue": "<p>The Company proposes to utilize the net proceeds from the Offer towards funding the following objects and achieve the benefits of listing on the NSE Emerge platform of the National Stock Exchange of India Limited:</p><ol><li>Funding capital expenditure requirements towards procurement of Tank Containers.</li><li>Funding working capital requirements of the Company; and</li><li>General corporate purposes</li></ol>",
+        "RHPDraft": "https://cdn.prod.website-files.com/5f7d81a83a09e211f824b26a/66db132fe2bedb7c8a033395_Red%20Herring%20Prospectus_Deccan%20Transcon.pdf",
+        "Risk": [],
+        "SHNI": "",
+        "Strength": [],
+        "address": "Suite No 507, 5th floor\nImage Capital Park, Image Garden Road\nMadhapur, Shaikpet, Hyderabad- 500081",
+        "allotmentLink": "https://linkintime.co.in/initial_offer/public-issues.html",
+        "checkAllotment": "https://linkintime.co.in/initial_offer/public-issues.html",
+        "checkLiveSubscriptionUrl": "",
+        "companyDescription": "<p>Incorporated in February 2007, Deccan Transcon Leasing Limited specializes in leasing tank containers and providing logistics and supply chain solutions to clients across a variety of sectors. The company offers a wide range of freight and shipping services, including domestic tank container logistics, tank fleet management, customs clearance, transportation, and Non-Vessel Operating Common Carriers (NVOCC) services.</p><p>As of July 31, 2024, Deccan Transcon Leasing had over 100 long-term customers, each associated with the company for more than three years, and had served more than 884 customers in the past year. Over the years, the company has built a strong track record, serving more than 5,000 customers.</p><p>The company's services are divided into two main categories:</p><p>1. **Leasing of Containers**</p><p>2. **Shipping &amp; Freight Forwarding**</p><p>Deccan Transcon primarily caters to industries such as chemicals, pharmaceuticals, FMCG, agriculture, and others, with a particular focus on specialty chemicals and petrochemicals. It operates in 40 countries worldwide.</p><p>The company has a network of agencies in regions such as Europe, Asia, Oceania, South America, Africa, and the USA. These agencies manage logistics operations under an agency relationship for both inbound and outbound cargo, handling all necessary operations and documentation for the seamless movement of goods across these regions.</p>",
+        "companyFinancials": [
+          {
+            "assets": 3924.64,
+            "period": "2022-03-30",
+            "profit": 519.1,
+            "revenue": 15319.4
+          },
+          {
+            "assets": 5407.72,
+            "period": "2023-03-30",
+            "profit": 855.7,
+            "revenue": 18061.76
+          },
+          {
+            "assets": 7721.58,
+            "period": "2024-03-30",
+            "profit": 1181.89,
+            "revenue": 15363.76
+          }
+        ],
+        "companyName": "Deccan Transcon Leasing Limited",
+        "companyPhone": "040-40146828",
+        "disclaimer": "<p>No financial information published within this application, including but not limited to information regarding securities or IPOs, should be considered as advice to buy or sell securities or to invest in IPOs, or as a guide to doing so in any way whatsoever. All content published in this application is provided solely for educational and informational purposes, and under no circumstances should it be used for making investment decisions. We are not a SEBI registered analyst.Readers must consult a qualified financial advisor before making any actual investment decisions based on information published in this application. The information in this application is based on information available as of the date of publication, along with market perceptions, and may be subject to change without notice.</p>",
+        "earningPerShare": 6.87,
+        "email": "compliance@deccantrans.c",
+        "faceValue": 10,
+        "file": "https://firebasestorage.googleapis.com/v0/b/ipodekho-19fc1.appspot.com/o/e0dc1256d659cd066f0eb032e8535074.png?alt=media&token=11c648b5-a554-401c-bc4e-ba9155f29744",
+        "financialLotsize": [
+          {
+            "amount": 129600,
+            "application": "Retail (Min)\t",
+            "lots": 1,
+            "shares": 1200
+          },
+          {
+            "amount": 129600,
+            "application": "Retail (Max)",
+            "lots": 1,
+            "shares": 1200
+          },
+          {
+            "amount": 259200,
+            "application": "HNI (Min)",
+            "lots": 2,
+            "shares": 2400
+          }
+        ],
+        "freshIssue": 59.66,
+        "fromPrice": 102,
+        "id": "lEDjGLFiFO7yBaCR1PfX",
+        "issueSize": 65.06,
+        "issueType": "Book Built Issue IPO",
+        "leadManagerName": [
+          {
+            "name": "Unistone Capital Pvt Ltd"
+          }
+        ],
+        "listingAt": [
+          "NSE"
+        ],
+        "listingDate": "2024-09-22",
+        "lotSize": 1200,
+        "netAssetValue": 18.73,
+        "nilQuota": 15,
+        "offerForSale": 5.4,
+        "peersComparison": [
+          {
+            "company_name": "Lancer Container Lines Ltd"
+          },
+          {
+            "company_name": "S J Logistics (India) Ltd"
+          }
+        ],
+        "postIssueShareHolding": "",
+        "preIssueShareHolding": 87.17,
+        "promotersName": [
+          {
+            "name": "Jaidev Menon Parath"
+          },
+          {
+            "name": "Karthika Menon"
+          },
+          {
+            "name": "Miriyala Shekhar"
+          },
+          {
+            "name": "Pranav Jaidev"
+          },
+          {
+            "name": "Navaneeth Jaidev"
+          }
+        ],
+        "qibQuota": 50,
+        "reatailQuota": 35,
+        "registerEmail": "deccantranscon.ipo@linkintime.co.in",
+        "registerName": "Link Intime India Private Ltd",
+        "registerPhone": [
+          {
+            "phone": "+91-22-4918 6270"
+          }
+        ],
+        "registerWebsite": "https://linkintime.co.in/initial_offer/public-issues.html",
+        "retailApp": "",
+        "returnonNetWorth": 36.69,
+        "shortText": "",
+        "slug": "deccan-transcon-leasing-limited",
+        "toPrice": 108,
+        "toolTipData": [
+          "",
+          "#ff0000"
+        ],
+        "website": "https://www.deccantrans.com/"
+      }
+    ]
+}

@@ -1,0 +1,123 @@
+{
+   "company_name": "Envirotech Systems Ltd",
+   "schemes":[
+      {
+        "AnchorInvestors": "",
+        "BHNI": "",
+        "CategoryForIPOS": "SmeIPO",
+        "DRHPDraft": "https://nsearchives.nseindia.com/emerge/corporates/content/EnvirotechSystems_DRHP",
+        "IPOAllotmentDate": "2024-09-18",
+        "IPOCloseDate": "2024-09-17",
+        "IPODematTransfer": "2024-09-19",
+        "IPOListingDate": "2024-09-20",
+        "IPOOpenDate": "2024-09-13",
+        "IPORefundsInitiation": "2024-09-19",
+        "IPOstatus": "Upcoming",
+        "ObjectOfIssue": "<p>The Company proposes to utilize the funds which are being raised towards funding the following objects and achieve the benefits of listing on the Emerge Platform of NSE:</p><ol><li>Purchase Land and Building for setting up factory</li><li>Funding of working capital requirements of the Company</li><li>General Corporate Expenses</li><li>Issue Expenses</li></ol>",
+        "RHPDraft": "https://www.envirotechltd.com/assets/images/investor/RHP_ENV_Merged_3.50_QR.pdf",
+        "Risk": [],
+        "SHNI": "",
+        "Strength": [],
+        "address": "A-29, Block-A,\nShyam Vihar Phase-I,\nNew Delhi - 110043",
+        "allotmentLink": "https://ipo.bigshareonline.com/ipo_status.html",
+        "checkAllotment": "https://ipo.bigshareonline.com/ipo_status.html",
+        "checkLiveSubscriptionUrl": "",
+        "companyDescription": "<p>**Founded in 2007, Envirotech Systems Limited is a leading manufacturer of noise measurement and control solutions for both industrial and commercial applications.**</p><p>The company specializes in designing and supplying custom enclosures that reduce noise in machinery and mechanical equipment, suited for both indoor and outdoor environments. Its extensive product portfolio includes Noise Test Booths, Engine Test Room Acoustics, Anechoic and Semi-Anechoic Chambers, Acoustic Enclosures, Noise Barriers (Envirotech, Polycarbonate, Metallic), Echo Barriers, Acoustic Louvers, and Envirotech Metal Doors.</p><p>Envirotech Systems serves clients across India and has a proven track record of successful projects across industries such as oil and gas, manufacturing, power generation, cement, steel, automotive, and construction.</p>",
+        "companyFinancials": [
+          {
+            "assets": 1386.51,
+            "period": "2022-03-30",
+            "profit": 105.73,
+            "revenue": 1849.54
+          },
+          {
+            "assets": 2275.73,
+            "period": "2023-03-30",
+            "profit": 257.34,
+            "revenue": 2874.78
+          },
+          {
+            "assets": 3867.47,
+            "period": "2024-03-30",
+            "profit": 1142.88,
+            "revenue": 4687.95
+          }
+        ],
+        "companyName": "Envirotech Systems Limited",
+        "companyPhone": "+0120-4337633",
+        "disclaimer": "<p>No financial information published within this application, including but not limited to information regarding securities or IPOs, should be considered as advice to buy or sell securities or to invest in IPOs, or as a guide to doing so in any way whatsoever. All content published in this application is provided solely for educational and informational purposes, and under no circumstances should it be used for making investment decisions. We are not a SEBI registered analyst.Readers must consult a qualified financial advisor before making any actual investment decisions based on information published in this application. The information in this application is based on information available as of the date of publication, along with market perceptions, and may be subject to change without notice.</p>",
+        "earningPerShare": 128.41,
+        "email": "cs@envirotechltd.com",
+        "faceValue": 10,
+        "file": "https://firebasestorage.googleapis.com/v0/b/ipodekho-19fc1.appspot.com/o/5f75e36b8eda59994901f2e3f8b22764.png?alt=media&token=11c648b5-a554-401c-bc4e-ba9155f29744",
+        "financialLotsize": [
+          {
+            "amount": 112000,
+            "application": "Retail (Min)",
+            "lots": 1,
+            "shares": 2000
+          },
+          {
+            "amount": 112000,
+            "application": "Retail (Max)",
+            "lots": 1,
+            "shares": 2000
+          },
+          {
+            "amount": 224000,
+            "application": "HNI (Min)",
+            "lots": 2,
+            "shares": 4000
+          }
+        ],
+        "freshIssue": 30.24,
+        "fromPrice": 53,
+        "id": "Mu92rHbRJuRnkmE24mxx",
+        "issueSize": 30.24,
+        "issueType": "Book Built Issue IPO",
+        "leadManagerName": [
+          {
+            "name": "Share India Capital Services Private Limited"
+          }
+        ],
+        "listingAt": [
+          "NSE"
+        ],
+        "listingDate": "2024-09-19",
+        "lotSize": 2000,
+        "netAssetValue": 220.29,
+        "nilQuota": 15,
+        "offerForSale": "",
+        "postIssueShareHolding": 68.75,
+        "preIssueShareHolding": 96.48,
+        "promotersName": [
+          {
+            "name": "Mr. Manoj Kumar Gupta"
+          },
+          {
+            "name": "Mrs. Sindhu Gupta"
+          }
+        ],
+        "qibQuota": 50,
+        "reatailQuota": 35,
+        "registerEmail": "ipo@bigshareonline.com",
+        "registerName": "Bigshare Services Pvt Ltd",
+        "registerPhone": [
+          {
+            "phone": "+91-22-6263 8200"
+          }
+        ],
+        "registerWebsite": "https://ipo.bigshareonline.com/ipo_status.html",
+        "retailApp": "",
+        "returnonNetWorth": 58.29,
+        "shortText": "",
+        "slug": "envirotech-systems-limited",
+        "toPrice": 56,
+        "toolTipData": [
+          "",
+          "#ff0000"
+        ],
+        "website": "https://www.envirotechltd.com/"
+      }
+    ]
+}
