@@ -1,0 +1,121 @@
+{
+   "company_name": "OSEL Devices Ltd",
+   "schemes":[
+      {
+        "AnchorInvestors": "",
+        "BHNI": "",
+        "CategoryForIPOS": "SmeIPO",
+        "DRHPDraft": "https://nsearchives.nseindia.com/emerge/corporates/content/OselDevicesLimited_DRHP.pdf",
+        "GMP": "100",
+        "IPOAllotmentDate": "2024-09-19T00:00:00+05:30",
+        "IPOCloseDate": "2024-09-18T00:00:00+05:30",
+        "IPODematTransfer": "2024-09-20T00:00:00+05:30",
+        "IPOListingDate": "2024-09-23T00:00:00+05:30",
+        "IPOOpenDate": "2024-09-16T00:00:00+05:30",
+        "IPORefundsInitiation": "2024-09-20T00:00:00+05:30",
+        "IPOstatus": "Live",
+        "ObjectOfIssue": "<p>The Company proposes to utilize the Net Proceeds from the Issue towards the following objects:</p><ol><li>Prepayment or repayment of certain loans availed by the Company;</li><li>Funding of working capital requirements of the Company; and</li><li>General Corporate Purposes.</li></ol>",
+        "RHPDraft": "https://archives.nseindia.com/content/ipo/RHP_OSELDEVICE.zip",
+        "Risk": [],
+        "SHNI": "",
+        "Strength": [],
+        "address": "Office No.- 712, Naurang House K.G. Marg,\nConnaught Place, Central Delhi,\nNew Delhi - 110 001",
+        "allotmentLink": "https://www.masserv.com/opt.asp",
+        "checkAllotment": "https://www.masserv.com/opt.asp",
+        "checkLiveSubscriptionUrl": "https://www.nseindia.com/market-data/issue-information?symbol=OSELDEVICE&series=SME&type=Active",
+        "companyDescription": "<p>Osel Devices Limited, formerly Innovative Infratech Solutions Private Limited, was established in 2006 and specializes in manufacturing a diverse range of LED display systems and hearing aids.</p><p>The company offers an extensive selection of LED display systems designed for various commercial applications, including advertising media, billboards, corporate boardrooms, presentations, display promotions, command centers, and front signs. These systems feature an integrated content management system that enables seamless connectivity to phones or computers for screen display.</p><p>In addition to LED displays, Osel Devices Limited produces hearing aids to support individuals with hearing impairments, including the elderly and those with chronic conditions. The company's hearing aids, both digitally programmable and non-programmable, are primarily supplied to the Artificial Limbs Manufacturing Corporation of India.</p><p>Osel\u2019s manufacturing facility in Greater Noida, inaugurated by former Union Minister Shri Pratap Sarangi, boasts an annual production capacity of 15,000 square feet for LED displays and 400,000 units of hearing aids.</p>",
+        "companyFinancials": [
+          {
+            "assets": 3312.17,
+            "period": "2022-03-30T18:30:00.000Z",
+            "profit": 212.31,
+            "revenue": 6555.49
+          },
+          {
+            "assets": 4902.09,
+            "period": "2023-03-30T18:30:00.000Z",
+            "profit": 466,
+            "revenue": 8195.58
+          },
+          {
+            "assets": 9864.2,
+            "period": "2024-03-30T18:30:00.000Z",
+            "profit": 1305.21,
+            "revenue": 13268.52
+          }
+        ],
+        "companyName": "Osel Devices Limited",
+        "companyPhone": "+91 120 635 1600",
+        "disclaimer": "<p>No financial information published within this application, including but not limited to information regarding securities or IPOs, should be considered as advice to buy or sell securities or to invest in IPOs, or as a guide to doing so in any way whatsoever. All content published in this application is provided solely for educational and informational purposes, and under no circumstances should it be used for making investment decisions. We are not a SEBI registered analyst.Readers must consult a qualified financial advisor before making any actual investment decisions based on information published in this application. The information in this application is based on information available as of the date of publication, along with market perceptions, and may be subject to change without notice.</p>",
+        "email": "info@oseldevices.com",
+        "faceValue": 10,
+        "file": "https://firebasestorage.googleapis.com/v0/b/ipodekho-19fc1.appspot.com/o/d9c4cf2d1a26a640457b3011e4ccb3a4.png?alt=media&token=11c648b5-a554-401c-bc4e-ba9155f29744",
+        "financialLotsize": [
+          {
+            "amount": 128000,
+            "application": "Retail (Min)",
+            "lots": 1,
+            "shares": 800
+          },
+          {
+            "amount": 128000,
+            "application": "Retail (Max)",
+            "lots": 1,
+            "shares": 800
+          },
+          {
+            "amount": 256000,
+            "application": "HNI (Min)",
+            "lots": 2,
+            "shares": 1600
+          }
+        ],
+        "freshIssue": 70.66,
+        "fromPrice": 155,
+        "id": "nOT3pcxMh4qxDR0iQrPm",
+        "issueSize": 70.66,
+        "issueType": "Book Built Issue IPO",
+        "leadManagerName": [
+          {
+            "name": "Horizon Management Private Limited (Past IPO Performance)"
+          }
+        ],
+        "listingAt": [
+          "NSE"
+        ],
+        "listingDate": "2024-09-22T18:30:00.000Z",
+        "lotSize": 800,
+        "nilQuota": 15,
+        "offerForSale": "",
+        "postIssueShareHolding": 71.53,
+        "preIssueShareHolding": 98.5,
+        "promotersName": [
+          {
+            "name": "Rajendra Ravi Shanker Mishra"
+          },
+          {
+            "name": "Jyotsna Jawahar"
+          }
+        ],
+        "qibQuota": 50,
+        "reatailQuota": 35,
+        "registerEmail": "ipo@masserv.com",
+        "registerName": "Mas Services Limited",
+        "registerPhone": [
+          {
+            "phone": "(011) 2610 4142"
+          }
+        ],
+        "registerWebsite": "https://www.masserv.com/opt.asp",
+        "retailApp": "",
+        "shortText": "",
+        "slug": "osel-devices-limited",
+        "toPrice": 160,
+        "toolTipData": [
+          "",
+          "#ff0000"
+        ],
+        "website": "http://www.oseldevices.com/"
+      }
+    ]
+}

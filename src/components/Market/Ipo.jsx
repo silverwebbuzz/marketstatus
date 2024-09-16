@@ -8,6 +8,15 @@ const IPO = () => {
   const [faqOpen, setFaqOpen] = useState(null); // State to manage open FAQ
   const navigate = useNavigate(); // Initialize useNavigate
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are 0-based
+    const year = date.getFullYear();
+
+    return `${day}/${month}/${year}`;
+  };
+
   useEffect(() => {
     fetch("/ipoData.json")
       .then((response) => {
@@ -66,7 +75,7 @@ const IPO = () => {
   const handleFaqToggle = (index) => {
     setFaqOpen(faqOpen === index ? null : index);
   };
-  
+
   const handleNavigateToSubpage = (ipo) => {
     // Navigate to the subpage and pass IPO details using state
     navigate(`/ipo/${ipo.company_name}`, { state: { ipo } });
@@ -105,13 +114,15 @@ const IPO = () => {
       <div className="ipo-dashboard">
         <div className="ipo-list">
           <h2>Open & Upcoming IPOs</h2>
-          <p>Open IPOs are initial public offerings recently available
-             for investors to apply for shares at the offer price before
-              they are listed on the stock exchange. This period Frequently
-               lasts for a some days and Considering the high level of interest,
-                Upcoming IPOs are expected to lead to such levels of participation
-                 from them. You can also take a look at the tentative dates of IPOs 
-                 lined up on this site.</p>
+          <p>
+            Open IPOs are initial public offerings recently available for
+            investors to apply for shares at the offer price before they are
+            listed on the stock exchange. This period Frequently lasts for a
+            some days and Considering the high level of interest, Upcoming IPOs
+            are expected to lead to such levels of participation from them. You
+            can also take a look at the tentative dates of IPOs lined up on this
+            site.
+          </p>
           <div className="table_ind">
             <table className="ipo_table">
               <thead className="ipo_thead">
@@ -125,26 +136,30 @@ const IPO = () => {
                 </tr>
               </thead>
               <tbody className="ipo_tablebody">
-              {ipos.map((ipo, index) => (
-                 <tr key={index} onClick={() => handleNavigateToSubpage(ipo)}>
+                {ipos.map((ipo, index) => (
+                  <tr key={index} onClick={() => handleNavigateToSubpage(ipo)}>
                     <td>
-                        <div className="company-logo">
-                            <div className="companylogo_inner">
-                                <span>{ipo.company_name}</span>
-                                <p>{ipo.ipo_switch}</p>
-                            </div>
-                            <div className="exchange-tags">
-                                <img src={images[ipo.logo]} alt={`${ipo.amc_name} logo`} className="amc-logo" />
-                            </div>
+                      <div className="company-logo">
+                        <div className="companylogo_inner">
+                          <span>{ipo.company_name}</span>
+                          <p>{ipo.ipo_switch}</p>
                         </div>
+                        <div className="exchange-tags">
+                          <img
+                            src={images[ipo.logo]}
+                            alt={`${ipo.amc_name} logo`}
+                            className="amc-logo"
+                          />
+                        </div>
+                      </div>
                     </td>
                     <td>{ipo.open_date}</td>
                     <td>{ipo.close_date}</td>
-                    <td className='text-right'>₹ {ipo.issue_size}</td>
-                    <td className='text-right'>₹ {ipo.price_band}</td>
-                    <td className='text-right'>₹ {ipo.min_investment}</td>
-                </tr>
-            ))}
+                    <td className="text-right">₹ {ipo.issue_size}</td>
+                    <td className="text-right">₹ {ipo.price_band}</td>
+                    <td className="text-right">₹ {ipo.min_investment}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
@@ -152,12 +167,11 @@ const IPO = () => {
         <div className="listed-ipo">
           <h2>Listed IPOs</h2>
           <p>
-          Listed IPOs refer to initial public offerings that have
-           finished the subscription phase and are now available
-            for trading on the stock exchange. Once the IPO shares
-             are distributed to investors, the company's stock starts
-              trading publicly, enabling investors to buy and sell 
-              shares on the open market.
+            Listed IPOs refer to initial public offerings that have finished the
+            subscription phase and are now available for trading on the stock
+            exchange. Once the IPO shares are distributed to investors, the
+            company's stock starts trading publicly, enabling investors to buy
+            and sell shares on the open market.
           </p>
           {listedIpos.length > 0 ? (
             <div className="table_main">
@@ -179,7 +193,8 @@ const IPO = () => {
                       <td>
                         <span>{ipo.company_name}</span>
                       </td>
-                      <td>{ipo.listing_date}</td>
+                      <td>{formatDate(ipo.listing_date)}</td>{" "}
+                      {/* Format the date here */}
                       <td className="text-right">₹ {ipo.offer_price}</td>
                       <td className="text-right">₹ {ipo.listing_price}</td>
                       <td className="text-right">₹ {ipo.ltp}</td>
@@ -206,6 +221,7 @@ const IPO = () => {
             <div className="no-listed-ipos">No listed IPOs</div>
           )}
         </div>
+
         <div className="faq-section">
           <h2>Frequently Asked Questions (FAQ)</h2>
           {faqData.map((faq, index) => (
