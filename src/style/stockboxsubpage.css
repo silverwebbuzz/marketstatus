@@ -4,3 +4,6 @@
     display: flex;
     justify-content: right;
 }
+.chart_container.subpage_chart {
+    width: 100%;
+}
