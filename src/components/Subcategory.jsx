@@ -47,38 +47,40 @@ const Subcategory = () => {
           ""
         )}
       </div>
-      <table className="subcat_table">
-        <thead className="subcat_thead">
-          <tr className="subcat_thead_tr">
-            <th>Scheme Name</th>
-            <th>Min. Investment</th>
-            <th>AUM in Cr.</th>
-            <th>Rating</th>
-            <th>1Y Returns</th>
-            <th>3Y Returns</th>
-            <th>5Y Returns</th>
-          </tr>
-        </thead>
-        <tbody className="subcat_tbody">
-          {data[subcategory].map((item, index) => (
-            <tr key={index} className="subcat_tbody_tr">
-              <td>{item.scheme_name}</td>
-              <td>₹{parseFloat(item.lumsum_minimum_amt).toFixed(2)}</td>
-              <td>₹{parseFloat(item.scheme_aum).toFixed(2)}</td>
-              <td>{item.ms_rating}⭐</td>
-              <td style={{ color: getColor(item.scheme_1_year_return) }}>
-                {parseFloat(item.scheme_1_year_return).toFixed(2)}%
-              </td>
-              <td style={{ color: getColor(item.scheme_3_year_return) }}>
-                {parseFloat(item.scheme_3_year_return).toFixed(2)}%
-              </td>
-              <td style={{ color: getColor(item.scheme_5_year_return) }}>
-                {parseFloat(item.scheme_5_year_return).toFixed(2)}%
-              </td>
+      <div className="table_ind">
+        <table className="subcat_table">
+          <thead className="subcat_thead">
+            <tr className="subcat_thead_tr">
+              <th>Scheme Name</th>
+              <th>Min. Investment</th>
+              <th>AUM in Cr.</th>
+              <th>Rating</th>
+              <th>1Y Returns</th>
+              <th>3Y Returns</th>
+              <th>5Y Returns</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody className="subcat_tbody">
+            {data[subcategory].map((item, index) => (
+              <tr key={index} className="subcat_tbody_tr">
+                <td>{item.scheme_name}</td>
+                <td>₹{parseFloat(item.lumsum_minimum_amt).toFixed(2)}</td>
+                <td>₹{parseFloat(item.scheme_aum).toFixed(2)}</td>
+                <td>{item.ms_rating}⭐</td>
+                <td style={{ color: getColor(item.scheme_1_year_return) }}>
+                  {parseFloat(item.scheme_1_year_return).toFixed(2)}%
+                </td>
+                <td style={{ color: getColor(item.scheme_3_year_return) }}>
+                  {parseFloat(item.scheme_3_year_return).toFixed(2)}%
+                </td>
+                <td style={{ color: getColor(item.scheme_5_year_return) }}>
+                  {parseFloat(item.scheme_5_year_return).toFixed(2)}%
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

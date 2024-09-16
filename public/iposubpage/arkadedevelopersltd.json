@@ -1,0 +1,162 @@
+{
+   "company_name": "Arkade Developers Ltd",
+   "schemes":[
+      {
+        "AnchorInvestors": "https://www.bseindia.com/markets/MarketInfo/DownloadAttach.aspx?id=20240913-38&attachedId=bfb9a81c-5f6d-48a2-9dae-b4717e3f59c6",
+        "BHNI": 1932,
+        "CategoryForIPOS": "MainlineIPO",
+        "DRHPDraft": "https://nsearchives.nseindia.com/corporate/Arkade_DRHP.pdf",
+        "GMP": "80",
+        "IPOAllotmentDate": "2024-09-20T00:00:00+05:30",
+        "IPOCloseDate": "2024-09-19T00:00:00+05:30",
+        "IPODematTransfer": "2024-09-23T00:00:00+05:30",
+        "IPOListingDate": "2024-09-24T00:00:00+05:30",
+        "IPOOpenDate": "2024-09-16T00:00:00+05:30",
+        "IPORefundsInitiation": "2024-09-23T00:00:00+05:30",
+        "IPOstatus": "Live",
+        "ObjectOfIssue": "<p>The Company proposes to utilize the Net Proceeds from the Issue towards the following objects:</p><ol><li>Funding is part of the costs to be incurred in developing the Ongoing Projects (viz. Arkade Nest, Prachi CHSL, and C-Unit) (Funding Development Expenses); and</li><li>Funding acquisition of yet-to-be-identified land for real estate projects and general corporate purposes.</li></ol>",
+        "RHPDraft": "https://arkade.in/wp-content/uploads/2024/09/Arkade-Developers-RHP-for-sharing.pdf",
+        "Risk": [
+          "Delayed project completion risks price volatility, reputation damage, and penalties.",
+          "Lack of long-term agreements risks price hikes and material shortages.",
+          "The company had witnessed negative net cash flows in the financial years of 2022 and 2021."
+        ],
+        "SHNI": 966,
+        "Strength": [
+          "The company excels in premium real estate in a high-value market.",
+          "The promoter is a second-generation real estate expert with 20 years' experience.",
+          "They have developed key in-house teams for legal, sales, and marketing."
+        ],
+        "address": "Arkade House, Opp. Bhoomi Arkade,\nNear Children\ufffds Academy, A S Marg, Ashok Nagar,\nKandivali (East), Mumbai - 400101",
+        "allotmentLink": "https://ipo.bigshareonline.com/ipo_status.html",
+        "bNII": 0.17,
+        "checkAllotment": "https://ipo.bigshareonline.com/ipo_status.html",
+        "checkLiveSubscriptionUrl": "https://www.nseindia.com/market-data/issue-information?symbol=ARKADE&series=EQ&type=Active",
+        "companyDescription": "<p>Arkade Developers Limited is a prominent real estate development company specializing in high-end, sophisticated residential projects in Mumbai, Maharashtra.</p><p>The company operates in two main areas:</p><p>1. **Development and Construction:** This involves creating new residential buildings on land acquired by the company.</p><p>2. **Redevelopment Projects:** This focuses on redeveloping existing buildings.</p><p>From 2017 through Q1 2024, Arkade Developers launched 1,220 residential units and sold 1,045 units across various markets in the Mumbai Metropolitan Region (MMR). As of June 30, 2024, the company has developed 2.20 million square feet of residential properties. Since CY 2003 up to March 2024, the company has completed the redevelopment of 11 projects in the western suburbs of Mumbai and 1 project in south-central Mumbai (through a partnership firm in which it held a majority stake), totaling approximately 1,000,000 square feet of built-up area.</p><p>Over the past two decades, Arkade Developers has successfully completed 28 projects. This includes 11 standalone projects (2 of which were executed through partnership firms where the company held a majority stake), 8 projects through the promoter\u2019s proprietorship, M/s Arkade Creations, and 9 projects via joint development agreements with third parties. These projects have delivered over 4.5 million square meters of built-up area to more than 4,000 customers.</p><p>As of June 30, 2024, the company employs 201 permanent staff members and an additional 850 employees on a contract basis.</p>",
+        "companyFinancials": [
+          {
+            "assets": 369.97,
+            "period": "2022-03-30T18:30:00.000Z",
+            "profit": 50.84,
+            "revenue": 237.18
+          },
+          {
+            "assets": 555.41,
+            "period": "2023-03-30T18:30:00.000Z",
+            "profit": 50.77,
+            "revenue": 224.01
+          },
+          {
+            "assets": 575.01,
+            "period": "2024-03-30T18:30:00.000Z",
+            "profit": 122.81,
+            "revenue": 635.71
+          }
+        ],
+        "companyName": "Arkade Developers Limited",
+        "companyPhone": "+91 22 2887474",
+        "disclaimer": "<p>No financial information published within this application, including but not limited to information regarding securities or IPOs, should be considered as advice to buy or sell securities or to invest in IPOs, or as a guide to doing so in any way whatsoever. All content published in this application is provided solely for educational and informational purposes, and under no circumstances should it be used for making investment decisions. We are not a SEBI registered analyst.Readers must consult a qualified financial advisor before making any actual investment decisions based on information published in this application. The information in this application is based on information available as of the date of publication, along with market perceptions, and may be subject to change without notice.</p>",
+        "earningPerShare": 8.08,
+        "email": "cs@arkade.in",
+        "faceValue": 10,
+        "file": "https://firebasestorage.googleapis.com/v0/b/ipodekho-19fc1.appspot.com/o/bf66474aa8dbf9917b204bd3941bb235.png?alt=media&token=11c648b5-a554-401c-bc4e-ba9155f29744",
+        "financialLotsize": [
+          {
+            "amount": 14080,
+            "application": "Retail (Min)",
+            "lots": 1,
+            "shares": 110
+          },
+          {
+            "amount": 197120,
+            "application": "Retail (Max)",
+            "lots": 14,
+            "shares": 1540
+          },
+          {
+            "amount": 211200,
+            "application": "S-HNI (Min)",
+            "lots": 15,
+            "shares": 1650
+          },
+          {
+            "amount": 999680,
+            "application": "S-HNI (Max)",
+            "lots": 71,
+            "shares": 7810
+          },
+          {
+            "amount": 1013760,
+            "application": "B-HNI (Min)",
+            "lots": 72,
+            "shares": 7920
+          }
+        ],
+        "freshIssue": 410,
+        "fromPrice": 121,
+        "id": "sm9VmDcnO6NsVYZgGPJS",
+        "issueSize": 410,
+        "issueType": "Book Built Issue IPO",
+        "leadManagerName": [
+          {
+            "name": "Unistone Capital Pvt Ltd"
+          }
+        ],
+        "listingAt": [
+          "BSE",
+          "NSE"
+        ],
+        "listingDate": "2024-09-23T18:30:00.000Z",
+        "lotSize": 110,
+        "netAssetValue": 21.28,
+        "nilQuota": 15,
+        "nonInstitutionalBuyers": 0.4,
+        "offerForSale": "",
+        "peersComparison": [
+          {
+            "company_name": "Keystone Realtors Limited"
+          },
+          {
+            "company_name": "Godrej Properties Limited"
+          },
+          {
+            "company_name": "Macrotech Developers Limite"
+          },
+          {
+            "company_name": "Suraj Estate Developers Limited"
+          }
+        ],
+        "postIssueShareHolding": "",
+        "preIssueShareHolding": 85.58,
+        "promotersName": [
+          {
+            "name": "Mr. Amit Mangilal Jain"
+          }
+        ],
+        "qibQuota": 50,
+        "reatailQuota": 35,
+        "registerEmail": "ipo@bigshareonline.com",
+        "registerName": "Bigshare Services Pvt Ltd",
+        "registerPhone": [
+          {
+            "phone": "+91-22-6263 8200"
+          }
+        ],
+        "registerWebsite": "https://ipo.bigshareonline.com/ipo_status.html",
+        "retailApp": 101420,
+        "retailInvestors": 0.84,
+        "returnonNetWorth": 46.9,
+        "sNII": 0.86,
+        "shortText": "",
+        "slug": "arkade-developers-limited",
+        "subscriptionDateAndTime": "Mon Sep 16 2024 10:46:40 GMT+0530 (India Standard Time)",
+        "toPrice": 128,
+        "toolTipData": [
+          "",
+          "#ff0000"
+        ],
+        "total": 0.51,
+        "website": "http://www.arkade.in/"
+      }
+    ]
+}
