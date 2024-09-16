@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Chart from "react-apexcharts";
 import '../style/StockBox.css';
+import withNavigate from './withNavigate'; // Import the HOC for navigation
 
 class StockBox extends Component {
   constructor(props) {
@@ -38,6 +39,11 @@ class StockBox extends Component {
         dataLabels: {
           enabled: false,
         },
+        grid: { show: false },
+        stroke: { curve: 'smooth', width: 2 },
+        xaxis: { type: 'datetime', labels: { show: true, format: 'HH:mm' } },
+        yaxis: { show: true },
+        dataLabels: { enabled: false },
         fill: {
           type: 'gradient',
           gradient: {
@@ -48,26 +54,17 @@ class StockBox extends Component {
             inverseColors: false,
             opacityFrom: 0.8,
             opacityTo: 0,
-            stops: [0, 90, 100]
+            stops: [0, 90, 100],
           },
         },
         colors: ['rgb(16, 145, 33)'],
         tooltip: {
-          x: {
-            format: 'HH:mm',
-          },
-          y: {
-            formatter: (value) => value.toFixed(2),
-          },
+          x: { format: 'HH:mm' },
+          y: { formatter: (value) => value.toFixed(2) },
           theme: 'dark',
         },
       },
-      series: [
-        {
-          name: 'Market Price',
-          data: [],
-        },
-      ],
+      series: [{ name: 'Market Price', data: [] }],
     };
   }
 
@@ -145,6 +142,11 @@ class StockBox extends Component {
     return parseFloat(num).toFixed(2);
   };
 
+  // Handle navigation when the entire stock-box is clicked
+  handleClick = () => {
+    this.props.navigate(`/stock/${this.props.title}`); // Navigate dynamically based on the title
+  };
+
   render() {
     const { marketSentiment, loading, error } = this.state;
     const isMarketUp = marketSentiment && parseFloat(marketSentiment.indiceSnapData.price_change) >= 0;
@@ -156,50 +158,53 @@ class StockBox extends Component {
     if (error) return <div>Error: {error.message}</div>;
 
     return (
-      <div className="stock-box">
-        <div>
-          <h4 className='updated'>Updated: {new Date().toLocaleString()}</h4>
-        </div>
-        <div className='box_top'>
-          <h2>{this.props.title}</h2>
-        </div>
-        <div className='box_middle'>
-          <div className='graph_ahead'>
-            <ul>
-              <li className='d-value fc'>
-                <span>
-                  <span className='value'>{this.formatNumber(marketSentiment.indiceSnapData.ltp)}</span>
-                  <span className={arrowClass}></span>
-                </span>
-                <span className='change_perc' style={textColor}>{this.formatNumber(marketSentiment.indiceSnapData.price_change)} ({this.formatNumber(marketSentiment.indiceSnapData.price_change_per)}%)</span>
-              </li>
-              <li className='open fc'>
-                <span className='Open'>Open</span>
-                <span className='d_open'>{this.formatNumber(marketSentiment.indiceSnapData.today_open)}</span>
-              </li>
-              <li className='high fc'>
-                <span className='High'>High</span>
-                <span className='d_high'>{this.formatNumber(marketSentiment.indiceSnapData.day_high)}</span>
-              </li>
-              <li className='low fc'>
-                <span className='Low'>Low</span>
-                <span className='d_low'>{this.formatNumber(marketSentiment.indiceSnapData.day_low)}</span>
-              </li>
-            </ul>
+      <>
+        {/* Clickable StockBox */}
+        <div className="stock-box" onClick={this.handleClick}> {/* Dynamically navigates on click */}
+          <div>
+            <h4 className='updated'>Updated: {new Date().toLocaleString()}</h4>
+          </div>
+          <div className='box_top'>
+            <h2>{this.props.title}</h2> {/* The title is displayed dynamically */}
+          </div>
+          <div className='box_middle'>
+            <div className='graph_ahead'>
+              <ul>
+                <li className='d-value fc'>
+                  <span>
+                    <span className='value'>{this.formatNumber(marketSentiment.indiceSnapData.ltp)}</span>
+                    <span className={arrowClass}></span>
+                  </span>
+                  <span className='change_perc' style={textColor}>{this.formatNumber(marketSentiment.indiceSnapData.price_change)} ({this.formatNumber(marketSentiment.indiceSnapData.price_change_per)}%)</span>
+                </li>
+                <li className='open fc'>
+                  <span className='Open'>Open</span>
+                  <span className='d_open'>{this.formatNumber(marketSentiment.indiceSnapData.today_open)}</span>
+                </li>
+                <li className='high fc'>
+                  <span className='High'>High</span>
+                  <span className='d_high'>{this.formatNumber(marketSentiment.indiceSnapData.day_high)}</span>
+                </li>
+                <li className='low fc'>
+                  <span className='Low'>Low</span>
+                  <span className='d_low'>{this.formatNumber(marketSentiment.indiceSnapData.day_low)}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="chart-container">
+            <Chart
+              options={this.state.options}
+              series={this.state.series}
+              type="area"
+              height='100%'
+              width='100%'
+            />
           </div>
         </div>
-        <div className="chart-container">
-          <Chart
-            options={this.state.options}
-            series={this.state.series}
-            type="area"
-            height='100%'
-            width='100%'
-          />
-        </div>
-      </div>
+      </>
     );
   }
 }
 
-export default StockBox;
+export default withNavigate(StockBox); // Use withNavigate instead of withRouter

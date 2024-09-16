@@ -68,6 +68,7 @@ import PaymentGateways from './components/FinanceCompanies/Payment_gateways';
 import Preloader from './components/PreLoader';
 import AMCsubPage from './components/MutualFunds/AMCsubPage';
 import Iposubpage from './components/Iposubpage';
+import Stockboxsubpage from './components/Stockboxsubpage';
 
 const usePageTracking = () => {
   const location = useLocation();
@@ -123,6 +124,8 @@ const AppContent = () => {
 
         <Route path="/mutual-funds/amc" element={<AMC />} />
       <Route path="/amc/:amc_name" element={<AMCsubPage />} />
+      <Route path="/stock/:title" element={<Stockboxsubpage />} />
+
         <Route
           path="/mutualfunds/:category/:subcategory"
           element={<Subcategory />}
