@@ -69,6 +69,7 @@ import Preloader from './components/PreLoader';
 import AMCsubPage from './components/MutualFunds/AMCsubPage';
 import Iposubpage from './components/Iposubpage';
 import Stockboxsubpage from './components/Stockboxsubpage';
+import Blog from './components/Blog';
 
 const usePageTracking = () => {
   const location = useLocation();
@@ -222,6 +223,7 @@ const AppContent = () => {
           path="/finance-companies/insurance-companies"
           element={<Insurance_companies />}
         />
+        <Route path="/blog" element={<Blog/>} />
       </Routes>
       <Footer />
       </div>

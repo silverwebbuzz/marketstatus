@@ -738,6 +738,17 @@ const Navbar = () => {
                     </li>
                   </ul>
                 </li>
+                <li className="dropdown">
+                  <NavLink
+                    to="/blog"
+                    onClick={() => {
+                      setShowMenu(!showMenu);
+                      closeMenuOnClick();
+                    }}
+                  >
+                    Blog
+                  </NavLink>
+                </li>
               </ul>
             </nav>
           </div>
