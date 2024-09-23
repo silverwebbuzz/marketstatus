@@ -131,7 +131,7 @@ const AppContent = () => {
           path="/mutualfunds/:category/:subcategory"
           element={<Subcategory />}
         />
-        <Route path="/index/:indexSymbol" element={<StockData />} />
+        <Route path="/indices/:indexSymbol" element={<StockData />} />
         <Route path="/holidays" element={<NseHolidays />} />
         <Route
           path="/finance-companies/analysis-companies"
