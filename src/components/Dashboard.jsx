@@ -1,28 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import StockBox from './StockBox';
-import '../style/Dashboard.css';
-import advImg from '../images/YFOBS.png'
-import sticker1 from '../images/sticker1.png';
-import TopMF from './TopMF';
-import Equity from './MutualFunds/Equity';
-import Debt from './MutualFunds/Debt';
-import Hybrid from './MutualFunds/Hybrid';
-import Index from './MutualFunds/Index';
-import ELSS from './MutualFunds/ELSS';
-import CalculatorCard from './Calculators/CalculatorCard';
-
+import React, { useEffect, useState } from "react";
+import StockBox from "./StockBox";
+import "../style/Dashboard.css";
+import advImg from "../images/YFOBS.png";
+import sticker1 from "../images/sticker1.png";
+import TopMF from "./TopMF";
+import Equity from "./MutualFunds/Equity";
+import Debt from "./MutualFunds/Debt";
+import Hybrid from "./MutualFunds/Hybrid";
+import Index from "./MutualFunds/Index";
+import ELSS from "./MutualFunds/ELSS";
+import CalculatorCard from "./Calculators/CalculatorCard";
+import { Helmet } from "react-helmet";
 
 const Dashboard = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [faqOpen, setFaqOpen] = useState(null);
-  
+
   useEffect(() => {
     const fetchMutualFundsData = async () => {
       try {
-        const response = await fetch('/topMD.json');
+        const response = await fetch("/topMD.json");
         const mutualFundsData = await response.json();
-        setData((prevState) => ({ ...prevState, mutualFunds: mutualFundsData }));
+        setData((prevState) => ({
+          ...prevState,
+          mutualFunds: mutualFundsData,
+        }));
       } catch (error) {
         console.error("Error fetching mutual funds data:", error);
       }
@@ -67,12 +70,18 @@ const Dashboard = () => {
         "Stock prices change because of things like company performance, news, the economy, and how people feel about the market. It’s all about supply and demand.",
     },
   ];
-  
 
   if (!data) return <div>Loading...</div>;
 
   return (
     <>
+      <Helmet>
+        <title>Market Status | Stay Updated on the Indian Stock Market |</title>
+        <meta
+          name="description"
+          content="Get real-time updates on the Indian stock market with Market Status. Track stock prices, indices, and trends instantly. Stay informed with us."
+        />
+      </Helmet>
       <section className="section_gap">
         <div className="container">
           <div className="dashboard_row">
@@ -83,13 +92,15 @@ const Dashboard = () => {
                 <StockBox title="SENSEX" />
                 <div className="stock-box adv_box">
                   <div className="adverstiment">
-                    <img src={advImg} alt='adv'></img>
+                    <img src={advImg} alt="adv"></img>
                   </div>
-                  <a href='https://yfobs.in' target='/'>yfobs</a>
+                  <a href="https://yfobs.in" target="/">
+                    yfobs
+                  </a>
                 </div>
               </div>
             </div>
-            <div className='adv'>
+            <div className="adv">
               <div>
                 <h4>Top Ranked Mutual Funds</h4>
               </div>
@@ -100,7 +111,7 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="stick">
-          <img src={sticker1} alt="sticker" className='sticker1' />
+          <img src={sticker1} alt="sticker" className="sticker1" />
         </div>
       </section>
       <Equity />
@@ -108,9 +119,9 @@ const Dashboard = () => {
       <Hybrid />
       <Index />
       <ELSS />
-      <CalculatorCard/>
-      <div className='container'>
-      <div className="faq-section">
+      <CalculatorCard />
+      <div className="container">
+        <div className="faq-section">
           <h2>Frequently Asked Questions (FAQ)</h2>
           {faqData.map((faq, index) => (
             <div key={index} className="faq-item">
@@ -129,7 +140,7 @@ const Dashboard = () => {
             </div>
           ))}
         </div>
-        </div>  
+      </div>
     </>
   );
 };

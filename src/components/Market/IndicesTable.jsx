@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../../style/IndicesTable.css";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const IndicesTable = () => {
   const [data, setData] = useState([]);
@@ -53,57 +54,68 @@ const IndicesTable = () => {
   if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <section className="Indices">
-      <div className="container">
-        <div className="Indices_row">
-          <div className="heading_row">
-            <h1 className="heading">MAJOR INDICES</h1>
-            <p>
-              Last Updated:{" "}
-              {unixTimestamp
-                ? new Date(unixTimestamp * 1000).toLocaleString()
-                : "Fetching..."}
-            </p>
-          </div>
-          <div className="table_ind">
-            <table>
-              <thead>
-                <tr>
-                  <th>Index</th>
-                  <th>Current</th>
-                  <th>% Change</th>
-                  <th>Open</th>
-                  <th>High</th>
-                  <th>Low</th>
-                  <th>Prev close</th>
-                  <th>52W H</th>
-                  <th>52W L</th>
-                </tr>
-              </thead>
-              <tbody>
-                {data.map((item, index) => (
-                  <tr key={index}>
-                    <td>
-                      <Link to={`/indices/${item.name}`}>{item.name}</Link>
-                    </td>
-                    <td>{item.price}</td>
-                    <td style={{ color: getColor(item.Change) }}>
-                      {item.Change}
-                    </td>
-                    <td>{item.open}</td>
-                    <td>{item.high}</td>
-                    <td>{item.low}</td>
-                    <td>{item.close}</td>
-                    <td>{item.yearHigh}</td>
-                    <td>{item.yearLow}</td>
+    <>
+      <Helmet>
+        <title>
+          Track India's Leading Stock Indices in Real Time | Market Status
+        </title>
+        <meta
+          name="description"
+          content="Stay updated with live stock indices from the Indian market. Follow real-time data on top indices for smarter investment decisions."
+        />
+      </Helmet>
+      <section className="Indices">
+        <div className="container">
+          <div className="Indices_row">
+            <div className="heading_row">
+              <h1 className="heading">MAJOR INDICES</h1>
+              <p>
+                Last Updated:{" "}
+                {unixTimestamp
+                  ? new Date(unixTimestamp * 1000).toLocaleString()
+                  : "Fetching..."}
+              </p>
+            </div>
+            <div className="table_ind">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Index</th>
+                    <th>Current</th>
+                    <th>% Change</th>
+                    <th>Open</th>
+                    <th>High</th>
+                    <th>Low</th>
+                    <th>Prev close</th>
+                    <th>52W H</th>
+                    <th>52W L</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {data.map((item, index) => (
+                    <tr key={index}>
+                      <td>
+                        <Link to={`/indices/${item.name}`}>{item.name}</Link>
+                      </td>
+                      <td>{item.price}</td>
+                      <td style={{ color: getColor(item.Change) }}>
+                        {item.Change}
+                      </td>
+                      <td>{item.open}</td>
+                      <td>{item.high}</td>
+                      <td>{item.low}</td>
+                      <td>{item.close}</td>
+                      <td>{item.yearHigh}</td>
+                      <td>{item.yearLow}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
