@@ -84,7 +84,7 @@ const IndicesTable = () => {
                 {data.map((item, index) => (
                   <tr key={index}>
                     <td>
-                      <Link to={`/indices/${item.name}`}>{item.name}</Link>
+                      <Link to={`/index/${item.name}`}>{item.name}</Link>
                     </td>
                     <td>{item.price}</td>
                     <td style={{ color: getColor(item.Change) }}>

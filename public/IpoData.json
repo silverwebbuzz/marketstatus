@@ -1,38 +1,8 @@
 [
-  {
-    "close_date": "Thu, 19 Sep 2024 ",
-    "company_name": "Northern ARC Capital Ltd",
-    "id": 1,
-    "ipo_switch": "IPO",
-    "issue_size": "777 Cr",
-    "min_investment": "14991",
-    "open_date": "Mon, 16 Sep 2024 ",
-    "price_band": "249 - 263",
-    "times_subscribed": "-"
-  },
-  {
-    "close_date": "Thu, 19 Sep 2024",
-    "company_name": "Arkade Developers Ltd",
-    "id": 2,
-    "ipo_switch": "IPO",
-    "issue_size": "410 Cr",
-    "min_investment": "14080",
-    "open_date": "Mon, 16 Sep 2024 ",
-    "price_band": "121 - 128",
-    "times_subscribed": "-"
-  },
-  {
-    "close_date": "Thu, 19 Sep 2024 ",
-    "company_name": "Western Carriers (India) Ltd",
-    "id": 3,
-    "ipo_switch": "IPO",
-    "issue_size": "492.88 Cr",
-    "min_investment": "14964",
-    "open_date": "Fri, 13 Sep 2024 ",
-    "price_band": "163 - 172",
-    "times_subscribed": "0.79x"
-  },
-  {
+
+
+
+  {"logo": "manba.png",
     "close_date": "Wed, 25 Sep 2024 ",
     "company_name": "Manba Finance Ltd",
     "id": 4,
@@ -116,6 +86,7 @@
     "times_subscribed": "-"
   },
   {
+    "logo": "wol.png",
     "close_date": "Wed, 25 Sep 2024 ",
     "company_name": "WOL 3D India Ltd",
     "id": 11,
@@ -127,6 +98,7 @@
     "times_subscribed": "-"
   },
   {
+    "logo": "rappid.png",
     "close_date": "Wed, 25 Sep 2024",
     "company_name": "Rappid Valves India Ltd",
     "id": 12,
@@ -138,6 +110,7 @@
     "times_subscribed": "-"
   },
   {
+    "logo": "unilex.png",
     "close_date": "Fri, 27 Sep 2024 ",
     "company_name": "Unilex Colour & Chemical Ltd",
     "id": 13,
@@ -149,6 +122,7 @@
     "times_subscribed": "-"
   },
   {
+    "logo": "techera.png",
     "close_date": "Fri, 27 Sep 2024 ",
     "company_name": "Techera Engineering India Ltd",
     "id": 14,
@@ -160,6 +134,7 @@
     "times_subscribed": "-"
   },
   {
+    "logo": "thinking.png",
     "close_date": "Fri, 27 Sep 2024 ",
     "company_name": "Thinking Hats Entertainment Solutions Ltd",
     "id": 15,
@@ -171,6 +146,7 @@
     "times_subscribed": "-"
   },
   {
+    "logo": "DIRL.png",
     "close_date": "Mon, 30 Sep 2024 ",
     "company_name": "Divyadhan Recycling Industries Ltd",
     "id": 16,
