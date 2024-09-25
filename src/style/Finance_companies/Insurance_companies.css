@@ -1,35 +1,47 @@
 tr.Insurance_com_td td:first-child {
-    width: 65px;
-  }
-  
-  tr.Insurance_com_tr th:first-child {
-    width: 65px;
-  }
+  width: 65px;
+}
 
-  .gateway-name {
-    font-size: 12px;
+tr.Insurance_com_tr th:first-child {
+  width: 65px;
+}
+
+.gateway-name {
+  font-size: 12px;
 }
 
 
-    /* / ----------------MICRO CSS START  ---------------  / */
+/* / ----------------  CSS START  ---------------  / */
 
-
-
-  img.microfinanceheaderimg {
-    width: 100%;
-    display: block;
+.banks_list {
+  display: flex;
+  flex-flow: wrap;
+  margin: 0-10px;
+  align-items: center;
 }
+.bank_item {
+  margin: 10px;
+  width: calc(100% / 4 - 20px);
+}
+
+img.microfinanceheaderimg {
+  width: 100%;
+  display: block;
+}
+
 .img-name {
-    display: flex;
-    flex-flow: wrap;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  flex-flow: wrap;
+  align-items: center;
+  gap: 10px;
 }
+
 .card-header-gateways {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
 img.mfc-logo {
   width: 68px;
   height: 33px;
@@ -40,191 +52,208 @@ img.mfc-logo {
 tbody.gateways-tbody tr td {
   text-align: left;
 }
+
 @media (max-width: 767px) {
 
-.micro_finance_company h1 {
-  font-size: 20px;
-}
-
-.micro_finance_company p {
-font-size: 12px;
-}
-
-.micro_finance_company h2 {
-font-size: 17px;
-}
-}
-
-  
-  /* / ----------------BROKER CSS START  ---------------  / */
-  .broker_header p {
-    font-size: 14px;
-    color: #323232;
+  .micro_finance_company h1 {
+    font-size: 20px;
   }
-  .broker_card {
-    border: 1px solid #e6e6e6;
-    border-radius: 12px;
-    margin: 15px 0px;
-    padding: 20px;
-    box-shadow: 0 0 10px #0000001a;
+
+  .micro_finance_company p {
+    font-size: 12px;
+  }
+
+  .micro_finance_company h2 {
+    font-size: 17px;
+  }
+}
+
+
+/* / ----------------BROKER CSS START  ---------------  / */
+.broker_header p {
+  font-size: 14px;
+  color: #323232;
+}
+
+.broker_card {
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+  margin: 15px 0px;
+  padding: 20px;
+  box-shadow: 0 0 10px #0000001a;
 }
 
 .broker_card_top {
-    display: flex;
-    flex-flow: wrap;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  flex-flow: wrap;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .broker_company_img {
-    display: flex;
-    flex-flow: wrap;
-    align-items: center;
+  display: flex;
+  flex-flow: wrap;
+  align-items: center;
 }
 
 .broker_company_img img {
-    display: block;
+  display: block;
 }
 
 .broker_card_bottom {
-    display: flex;
-    flex-flow: wrap;
-    padding-top: 20px;
-    justify-content: space-between;
+  display: flex;
+  flex-flow: wrap;
+  padding-top: 20px;
+  justify-content: space-between;
 }
 
 .broker_card_details {
-    font-size: 14px;
-}
-  .broker-logo {
-    width: 45px;
-    display: block;
-    margin-right: 10px;
-
-  }
-  .broker-name {
-    font-size: 20px;
-    font-weight: bold;
-    color: #302c2c;
-  }
-  .ranks {
-    display: flex;
-    flex-flow: wrap;
-    align-items: center;
-    gap: 10px;
-  }
- 
-  .stars {
-    color: gold;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .card_tbl {
-    width: 100%;
-    border: 1px solid;
-    margin: 10px;
-    padding: 15px;
-    border-radius: 10px;
-    border: 1px solid rgb(230, 230, 230);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.4s ease;
-  }
-  /*----------------- BROKER CSS END ----------------*/
-  
-  
-  
-  /* / ----------------PAYMENT GATEWAYS CSS START  ---------------  / */
-  .card_row_pty {
-    display: flex;
-    flex-flow: wrap;
-  }
-.img_name img {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-    display: block;
-}
-
-  .gateway_header p {
-    font-size: 14px;
-    color: #323232;
-  }
-  .card_header_gateways {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-  }
-  .img_name {
-    display: flex;
-    align-items: center;
-  }
-  .gateway_name {
-    margin-left: 10px;
-  }
-  
-  .td_left {
-    text-align: left !important;
-  }
-
-  @media (max-width: 767px) {
-  .gateway_header h2 {
-    font-size: 17px;
-}
-
-.gateway_header p {
-  font-size: 12px;
-  padding-bottom: 8px;
-}
-
-.img_name {
   font-size: 14px;
 }
 
-.img_name img {
+.broker-logo {
   width: 45px;
-  height: 45px;
+  display: block;
+  margin-right: 10px;
+
+}
+
+.broker-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #302c2c;
+}
+
+.ranks {
+  display: flex;
+  flex-flow: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.stars {
+  color: gold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card_tbl {
+  width: 100%;
+  border: 1px solid;
+  margin: 10px;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid rgb(230, 230, 230);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+}
+
+/*----------------- BROKER CSS END ----------------*/
+
+
+
+/* / ----------------PAYMENT GATEWAYS CSS START  ---------------  / */
+.card_row_pty {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.img_name img {
+  width: 60px;
+  height: 60px;
   object-fit: contain;
   display: block;
 }
-  }
-  /* / ----------------PAYMENT GATEWAYS CSS END  ---------------  / */
-  
-/* / ----------------International Money Transfer Companies CSS START  ---------------  / */
-.card_row_imtc {
-    display: flex;
-    flex-flow: wrap;
-  }
-.img_name img {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-    display: block;
+
+.gateway_header p {
+  font-size: 14px;
+  color: #323232;
 }
-.card_body_imtc p{
-  padding-top: 20px;
+
+.card_header_gateways {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
 }
-  .imtc_header p {
-    font-size: 14px;
-    color: #323232;
-  }
-  .card_header_imtc {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-  }
-  .img_name {
-    display: flex;
-    align-items: center;
-  }
-  .imtc_name {
-    margin-left: 10px;
+
+.img_name {
+  display: flex;
+  align-items: center;
+}
+
+.gateway_name {
+  margin-left: 10px;
+}
+
+.td_left {
+  text-align: left !important;
+}
+
+@media (max-width: 767px) {
+  .gateway_header h2 {
+    font-size: 17px;
   }
 
- @media (max-width: 767px) {
+  .gateway_header p {
+    font-size: 12px;
+    padding-bottom: 8px;
+  }
+
+  .img_name {
+    font-size: 14px;
+  }
+
+  .img_name img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    display: block;
+  }
+}
+
+/* / ----------------PAYMENT GATEWAYS CSS END  ---------------  / */
+
+/* / ----------------International Money Transfer Companies CSS START  ---------------  / */
+.card_row_imtc {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.img_name img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  display: block;
+}
+
+.card_body_imtc p {
+  padding-top: 20px;
+}
+
+.imtc_header p {
+  font-size: 14px;
+  color: #323232;
+}
+
+.card_header_imtc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.img_name {
+  display: flex;
+  align-items: center;
+}
+
+.imtc_name {
+  margin-left: 10px;
+}
+
+@media (max-width: 767px) {
   .card_body_imtc p {
     font-size: 12px;
   }
@@ -234,75 +263,105 @@ font-size: 17px;
 
 
 
-  @media (max-width: 767px) {
-    tr.Insurance_com_td td:first-child {
-      width: 26px;
-    }
-
-    .card_body_gateways table {
-      width: 256px;
+@media (max-width: 767px) {
+  tr.Insurance_com_td td:first-child {
+    width: 26px;
   }
-  
-    tr.Insurance_com_tr th:first-child {
-      width: 26px;
-    }
-  
-    .fintech_companies p {
-      padding-bottom: 12px;
-      font-size: 12px;
-    }
 
-    
+  .card_body_gateways table {
+    width: 256px;
+  }
+
+  tr.Insurance_com_tr th:first-child {
+    width: 26px;
+  }
+
+  .fintech_companies p {
+    padding-bottom: 12px;
+    font-size: 12px;
+  }
+
+
   .fintech_companies h2 {
     font-size: 17px;
-}
+  }
 
-    .insurance_companies h2 {
-      font-size: 17px;
+  .insurance_companies h2 {
+    font-size: 17px;
   }
 
   .insurance_companies p {
     font-size: 12px;
     padding-bottom: 8px;
-}
-    /* micro insurance */
+  }
 
-    table.details-table-gateways {
-      width: 256px;
+  /* micro insurance */
+
+  table.details-table-gateways {
+    width: 256px;
   }
-  
+
   tbody.gateways-tbody tr td:first-child {
-      width: 90px;
+    width: 90px;
   }
-  
+
   .card_tbl {
-      margin: 0 0 10px 0;
+    margin: 0 0 10px 0;
   }
-  
- 
+
+
   .card_row h1 {
-      font-size: 16px;
+    font-size: 16px;
   }
-  
+
   tbody.gateways-tbody tr td li {
-      padding-top: 5px;
+    padding-top: 5px;
   }
+
   /* end micro */
 
 
   /* broker company */
-  .broker_card { padding: 10px;}
-  .broker_card_top { flex-flow: nowrap;}
-  .broker_company_img { flex-flow: column;}
-  .ranks { font-size: 12px; gap: 5px;}
-  .stars { gap: 5px;}
-  .broker_card_bottom { padding-top: 10px; margin: 0-5px;}
-  .broker_card_details { width: calc(100% / 2 - 10px); font-size: 10px; margin: 5px;}
-  .broker-name { font-size: 16px; padding-top: 10px;}
+  .broker_card {
+    padding: 10px;
+  }
+
+  .broker_card_top {
+    flex-flow: nowrap;
+  }
+
+  .broker_company_img {
+    flex-flow: column;
+  }
+
+  .ranks {
+    font-size: 12px;
+    gap: 5px;
+  }
+
+  .stars {
+    gap: 5px;
+  }
+
+  .broker_card_bottom {
+    padding-top: 10px;
+    margin: 0-5px;
+  }
+
+  .broker_card_details {
+    width: calc(100% / 2 - 10px);
+    font-size: 10px;
+    margin: 5px;
+  }
+
+  .broker-name {
+    font-size: 16px;
+    padding-top: 10px;
+  }
+
   /* end broker company */
 
   .card_body_gateways table {
     width: 250px;
-}
   }
-  
+}

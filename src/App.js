@@ -26,7 +26,7 @@ import NseHolidays from './components/NseHolidays';
 import Analysis_companies from './components/FinanceCompanies/Analysis_companies';
 import Fintech_company from './components/FinanceCompanies/Fintech_company';
 import Broker_Companies from './components/FinanceCompanies/Broker_Companies';
-import Crypto_currency from './components/FinanceCompanies/Crypto_currency_companies';
+import Crypto_currency from './components/Market/Crypto_currency';
 import Bank from './components/FinanceCompanies/Banks';
 import Investment_management_companies from './components/FinanceCompanies/Investment_management_companies';
 import Funding_Companies from './components/FinanceCompanies/Funding_Companies';
