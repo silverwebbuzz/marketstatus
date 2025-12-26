@@ -116,19 +116,44 @@ if (!$success) {
 }
 
 // Method 3: Use existing fnO.json (always ensure data exists)
-if (!$success && file_exists($fnOFile)) {
-    echo "Using existing fnO.json data...\n";
-    include __DIR__ . '/convert_fnO_to_futures.php';
-    
-    if (file_exists($outputFile)) {
-        echo "✓ Success: Using existing fnO.json data\n";
-        echo "Note: This is existing data, not freshly fetched\n";
-        $success = true;
+if (!$success) {
+    if (file_exists($fnOFile)) {
+        echo "\nUsing existing fnO.json data as fallback...\n";
+        
+        // Run converter script
+        $converter_command = '/usr/bin/php ' . escapeshellarg(__DIR__ . '/convert_fnO_to_futures.php');
+        $output = [];
+        $exitCode = 1;
+        exec($converter_command . ' 2>&1', $output, $exitCode);
+        
+        if ($exitCode === 0 && file_exists($outputFile)) {
+            $data = loadJsonData('futures_margins.json');
+            if ($data && isset($data['data']) && count($data['data']) > 0) {
+                echo "✓ Success: Using existing fnO.json data\n";
+                echo "  Source: " . ($data['source'] ?? 'fnO.json (converted)') . "\n";
+                echo "  Contracts: " . count($data['data']) . "\n";
+                echo "  Note: This is existing data, not freshly fetched from Zerodha\n";
+                echo "  To get fresh data: Wait for rate limit to reset or update fnO.json manually\n";
+                $success = true;
+            } else {
+                echo "⚠ Converter ran but output file is invalid\n";
+            }
+        } else {
+            echo "⚠ Failed to convert fnO.json\n";
+            if (!empty($output)) {
+                echo "  Error: " . implode("\n  ", array_slice($output, 0, 3)) . "\n";
+            }
+        }
+    } else {
+        echo "\n⚠ No fnO.json file found for fallback\n";
     }
 }
 
 if (!$success) {
-    echo "✗ ERROR: Could not update futures data\n";
+    echo "\n✗ ERROR: Could not update futures data\n";
+    echo "  - Zerodha rate limited (HTTP 429)\n";
+    echo "  - No fnO.json available for fallback\n";
+    echo "  - Please wait and try again later, or provide fnO.json file\n";
     exit(1);
 }
 
