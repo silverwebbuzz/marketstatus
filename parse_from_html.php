@@ -40,26 +40,45 @@ $rows = $xpath->query("//table//tr[td]");
 
 echo "Found " . $rows->length . " rows\n";
 
+$rowCount = 0;
 foreach ($rows as $row) {
     $cells = $xpath->query(".//td", $row);
     
     if ($cells->length >= 4) {
         $contractText = trim($cells->item(0)->textContent);
         
-        // Extract symbol and expiry: **SYMBOL** DD-MMM-YYYY
-        if (preg_match('/\*\*([^*]+)\*\*/', $contractText, $symbolMatch) &&
-            preg_match('/(\d{2}-\w{3}-\d{4})/', $contractText, $expiryMatch)) {
+        // Debug first few rows
+        if ($rowCount < 3) {
+            echo "Row " . ($rowCount + 1) . " contract text: " . substr($contractText, 0, 100) . "\n";
+        }
+        
+        // Extract symbol - try with ** first, then without
+        $symbolMatch = null;
+        $expiryMatch = null;
+        
+        if (preg_match('/\*\*([^*]+)\*\*/', $contractText, $symbolMatch)) {
+            // Found with **
+        } elseif (preg_match('/^([A-Z0-9]+)/', $contractText, $symbolMatch)) {
+            // Found without **
+        }
+        
+        // Date format: 30-DEC-2025 (1-2 digits, 3 letters, 4 digits)
+        if (preg_match('/(\d{1,2}-[A-Z]{3}-\d{4})/i', $contractText, $expiryMatch)) {
+            // Found expiry
+        }
+        
+        if ($symbolMatch && $expiryMatch) {
             
             $symbol = trim($symbolMatch[1]);
             $expiry = trim($expiryMatch[1]);
             
-            // Extract lot size and MWPL
+            // Extract lot size and MWPL (case insensitive)
             $lotSize = null;
             $mwpl = null;
-            if (preg_match('/Lot size\s+(\d+)/', $contractText, $lotMatch)) {
+            if (preg_match('/Lot size\s+(\d+)/i', $contractText, $lotMatch)) {
                 $lotSize = (int)$lotMatch[1];
             }
-            if (preg_match('/MWPL\s+([\d.]+)%/', $contractText, $mwplMatch)) {
+            if (preg_match('/MWPL\s+([\d.]+)%/i', $contractText, $mwplMatch)) {
                 $mwpl = (float)$mwplMatch[1];
             }
             
@@ -83,10 +102,13 @@ foreach ($rows as $row) {
                     'nrml_margin_rate' => $nrmlMarginRate > 0 ? $nrmlMarginRate : null,
                     'price' => $price > 0 ? $price : null,
                 ];
+                $rowCount++;
             }
         }
     }
 }
+
+echo "Successfully parsed $rowCount contracts\n";
 
 if (empty($futuresData)) {
     echo "ERROR: No data extracted from HTML\n";

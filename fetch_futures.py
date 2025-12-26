@@ -120,24 +120,43 @@ def parse_futures_data(html):
     
     print(f"Found {len(tables)} table(s) in HTML")
     
-    for table in tables:
+    for table_idx, table in enumerate(tables):
         rows = table.find_all('tr')
-        print(f"Processing table with {len(rows)} rows...")
+        print(f"Processing table {table_idx + 1} with {len(rows)} rows...")
         
-        for row in rows:
+        # Skip first row if it's a header
+        start_idx = 0
+        if rows:
+            first_row_cells = rows[0].find_all(['td', 'th'])
+            first_cell_text = first_row_cells[0].get_text(strip=True).lower() if first_row_cells else ''
+            if 'contract' in first_cell_text or 'nrml' in first_cell_text:
+                start_idx = 1
+                print(f"  Skipping header row, starting from row {start_idx + 1}")
+        
+        for row_idx, row in enumerate(rows[start_idx:], start=start_idx):
             cells = row.find_all(['td', 'th'])
             
-            # Skip header rows
+            # Skip rows with insufficient cells
             if len(cells) < 4:
                 continue
                 
-            # Check if first cell contains contract info (has ** symbol **)
+            # Get contract text from first cell
             contract_cell = cells[0]
-            contract_text = contract_cell.get_text(strip=True)
+            contract_text = contract_cell.get_text(separator=' ', strip=True)
             
-            # Look for pattern: **SYMBOL** DD-MMM-YYYY Lot size XXX MWPL XX.XX%
+            # Debug: Show first few rows
+            if row_idx < 3:
+                print(f"  Row {row_idx + 1} contract text: {contract_text[:100]}")
+            
+            # Look for pattern: **SYMBOL** DD-MMM-YYYY or DD-MMM-YYYY
+            # Try multiple patterns
             symbol_match = re.search(r'\*\*([^*]+)\*\*', contract_text)
-            expiry_match = re.search(r'(\d{2}-\w{3}-\d{4})', contract_text)
+            if not symbol_match:
+                # Try without **
+                symbol_match = re.search(r'^([A-Z0-9]+)', contract_text)
+            
+            # Date format: 30-DEC-2025 or 30-DEC-2025
+            expiry_match = re.search(r'(\d{1,2}-[A-Z]{3}-\d{4})', contract_text, re.IGNORECASE)
             
             if symbol_match and expiry_match:
                 symbol = symbol_match.group(1).strip()
@@ -146,8 +165,8 @@ def parse_futures_data(html):
                 # Extract lot size and MWPL from contract text
                 lot_size = None
                 mwpl = None
-                lot_match = re.search(r'Lot size\s+(\d+)', contract_text)
-                mwpl_match = re.search(r'MWPL\s+([\d.]+)%', contract_text)
+                lot_match = re.search(r'Lot size\s+(\d+)', contract_text, re.IGNORECASE)
+                mwpl_match = re.search(r'MWPL\s+([\d.]+)%', contract_text, re.IGNORECASE)
                 
                 if lot_match:
                     lot_size = int(lot_match.group(1))
