@@ -2,10 +2,33 @@
 
 ## Quick Setup
 
+### Step 0: Find Your Full Path
+
+First, find the absolute path to your `ms` directory:
+```bash
+cd /path/to/your/ms/directory
+pwd
+```
+
+This will show something like: `/home/username/public_html/ms` or `/var/www/html/ms`
+
 ### Step 1: Test the Script
 
+**Important:** Make sure you're in the correct directory!
+
 ```bash
+cd /path/to/your/ms/directory
 php fetch_futures_data.php
+```
+
+**OR use absolute path:**
+```bash
+php /full/path/to/fetch_futures_data.php
+```
+
+**OR use the test script:**
+```bash
+php test_fetch.php
 ```
 
 This will:
@@ -27,6 +50,11 @@ This will:
    - **Weekday**: `*`
    - **Command**:
      ```bash
+     cd /home/username/public_html/ms && /usr/bin/php fetch_futures_data.php >> cron_log.txt 2>&1
+     ```
+     
+     **OR use absolute path:**
+     ```bash
      /usr/bin/php /home/username/public_html/ms/fetch_futures_data.php >> /home/username/public_html/ms/cron_log.txt 2>&1
      ```
 
@@ -36,9 +64,14 @@ This will:
 crontab -e
 ```
 
-Add:
+Add (use absolute paths):
 ```
-0 8 * * * /usr/bin/php /path/to/fetch_futures_data.php >> /path/to/cron_log.txt 2>&1
+0 8 * * * cd /full/path/to/ms && /usr/bin/php fetch_futures_data.php >> /full/path/to/ms/cron_log.txt 2>&1
+```
+
+**OR:**
+```
+0 8 * * * /usr/bin/php /full/path/to/ms/fetch_futures_data.php >> /full/path/to/ms/cron_log.txt 2>&1
 ```
 
 **Option C: External Cron Service**
@@ -79,6 +112,22 @@ php fetch_futures_data.php
 ```bash
 which php
 ```
+
+### Use Wrapper Script (Easier):
+
+You can also use the provided wrapper script:
+```bash
+./run_fetch.sh
+```
+
+For cron:
+```bash
+0 8 * * * /full/path/to/ms/run_fetch.sh >> /full/path/to/ms/cron_log.txt 2>&1
+```
+
+### About the monarxprotect Warning:
+
+The warning about `monarxprotect-php83.so` is harmless - it's a server security extension. You can ignore it. The script will still work.
 
 ## Important Notes
 
