@@ -94,7 +94,6 @@ foreach ($symbols as $symbol) {
     $high = 0;
     $low = 0;
     $close = $currentPrice;
-    $volume = 0;
     
     for ($i = count($opens) - 1; $i >= 0; $i--) {
         if ($opens[$i] !== null) { $open = $opens[$i]; break; }
@@ -108,8 +107,18 @@ foreach ($symbols as $symbol) {
     for ($i = count($closes) - 1; $i >= 0; $i--) {
         if ($closes[$i] !== null) { $close = $closes[$i]; break; }
     }
-    for ($i = count($volumes) - 1; $i >= 0; $i--) {
-        if ($volumes[$i] !== null) { $volume = $volumes[$i]; break; }
+    
+    // Get volume from meta (regularMarketVolume) - this is the daily total volume
+    $volume = $meta['regularMarketVolume'] ?? 0;
+    
+    // Fallback to quote volume array if meta volume not available
+    if ($volume == 0 && !empty($volumes)) {
+        for ($i = count($volumes) - 1; $i >= 0; $i--) {
+            if ($volumes[$i] !== null && $volumes[$i] > 0) { 
+                $volume = $volumes[$i]; 
+                break; 
+            }
+        }
     }
     
     // Get 52-week high/low
