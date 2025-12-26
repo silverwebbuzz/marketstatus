@@ -31,8 +31,8 @@ if (shell_exec('which python3 2>/dev/null')) {
     echo "Trying Python script...\n";
     
     // Run Python script and capture output
-    $output = shell_exec('python3 ' . __DIR__ . '/fetch_futures.py 2>&1');
-    $exitCode = shell_exec('python3 ' . __DIR__ . '/fetch_futures.py > /dev/null 2>&1; echo $?');
+    $output = shell_exec('cd ' . escapeshellarg(__DIR__) . ' && python3 fetch_futures.py 2>&1');
+    $exitCode = shell_exec('cd ' . escapeshellarg(__DIR__) . ' && python3 fetch_futures.py > /dev/null 2>&1; echo $?');
     $exitCode = trim($exitCode);
     
     // Check if file was updated and contains valid Zerodha data
@@ -51,9 +51,12 @@ if (shell_exec('which python3 2>/dev/null')) {
                     echo "✓ Success: Fetched new data with Python\n";
                     echo "  Source: " . $source . "\n";
                     echo "  Contracts: " . count($data['data']) . "\n";
+                    echo "  Last updated: " . ($data['last_updated'] ?? 'N/A') . "\n";
                     $success = true;
                 } else {
                     echo "⚠ Python ran but file wasn't updated (may have failed silently)\n";
+                    echo "  Original timestamp: " . date('Y-m-d H:i:s', $originalTimestamp) . "\n";
+                    echo "  New timestamp: " . date('Y-m-d H:i:s', $newTimestamp) . "\n";
                 }
             } else {
                 echo "⚠ Python ran but data source is: " . $source . " (not from Zerodha)\n";
@@ -65,7 +68,16 @@ if (shell_exec('which python3 2>/dev/null')) {
     if (!$success && $exitCode != '0') {
         echo "  Python script exit code: $exitCode\n";
         if (!empty($output)) {
-            echo "  Output: " . substr($output, 0, 200) . "\n";
+            $outputLines = explode("\n", $output);
+            $relevantLines = array_filter($outputLines, function($line) {
+                return stripos($line, 'error') !== false || 
+                       stripos($line, 'failed') !== false || 
+                       stripos($line, '429') !== false ||
+                       stripos($line, 'rate') !== false;
+            });
+            if (!empty($relevantLines)) {
+                echo "  Error output: " . implode(" | ", array_slice($relevantLines, 0, 3)) . "\n";
+            }
         }
     }
 }
