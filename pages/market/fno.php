@@ -121,30 +121,30 @@ includeHeader($pageTitle, $pageDescription);
                         <th class="sortable" data-sort="expiry">
                             Expiry <span class="sort-indicator">↕</span>
                         </th>
+                        <th>OHLC + 52 Week Range</th>
                         <th class="sortable" data-sort="current_price">
                             Current Price <span class="sort-indicator">↕</span>
-                        </th>
-                        <th>OHLC</th>
-                        <th class="sortable" data-sort="volume">
-                            Volume <span class="sort-indicator">↕</span>
-                        </th>
-                        <th class="sortable" data-sort="lot_size">
-                            Lot Size <span class="sort-indicator">↕</span>
-                        </th>
-                        <th class="sortable" data-sort="mwpl">
-                            MWPL <span class="sort-indicator">↕</span>
-                        </th>
-                        <th class="sortable" data-sort="nrml_margin">
-                            NRML Margin <span class="sort-indicator">↕</span>
-                        </th>
-                        <th class="sortable" data-sort="nrml_margin_rate">
-                            Margin Rate <span class="sort-indicator">↕</span>
                         </th>
                         <th class="sortable" data-sort="price">
                             Futures Price <span class="sort-indicator">↕</span>
                         </th>
+                        <th class="sortable" data-sort="lot_size">
+                            Lot Size <span class="sort-indicator">↕</span>
+                        </th>
                         <th class="sortable" data-sort="contract_value">
                             Contract Value <span class="sort-indicator">↕</span>
+                        </th>
+                        <th class="sortable" data-sort="nrml_margin_rate">
+                            Margin Rate <span class="sort-indicator">↕</span>
+                        </th>
+                        <th class="sortable" data-sort="nrml_margin">
+                            NRML Margin <span class="sort-indicator">↕</span>
+                        </th>
+                        <th class="sortable" data-sort="mwpl">
+                            MWPL <span class="sort-indicator">↕</span>
+                        </th>
+                        <th class="sortable" data-sort="volume">
+                            Volume <span class="sort-indicator">↕</span>
                         </th>
                         <th>Indicators</th>
                     </tr>
@@ -175,6 +175,24 @@ includeHeader($pageTitle, $pageDescription);
                                     <span class="more-expiries" title="Click button to see all expiries">+<?php echo ($contractCount - 1); ?> more</span>
                                 <?php endif; ?>
                             </td>
+                            <td class="ohlc-range-cell">
+                                <?php if ($stockInfo): ?>
+                                    <div class="ohlc-range-compact">
+                                        <div class="ohlc-section">
+                                            <div><strong>O:</strong> ₹<?php echo formatNumber($stockInfo['open'] ?? 0, 2); ?></div>
+                                            <div><strong>H:</strong> ₹<?php echo formatNumber($stockInfo['high'] ?? 0, 2); ?></div>
+                                            <div><strong>L:</strong> ₹<?php echo formatNumber($stockInfo['low'] ?? 0, 2); ?></div>
+                                            <div><strong>C:</strong> ₹<?php echo formatNumber($stockInfo['close'] ?? 0, 2); ?></div>
+                                        </div>
+                                        <div class="range-section">
+                                            <div><strong>52W H:</strong> ₹<?php echo formatNumber($stockInfo['fifty_two_week_high'] ?? 0, 2); ?></div>
+                                            <div><strong>52W L:</strong> ₹<?php echo formatNumber($stockInfo['fifty_two_week_low'] ?? 0, 2); ?></div>
+                                        </div>
+                                    </div>
+                                <?php else: ?>
+                                    <span class="no-data-badge">N/A</span>
+                                <?php endif; ?>
+                            </td>
                             <td class="price-cell">
                                 <?php if ($stockInfo && isset($stockInfo['current_price'])): ?>
                                     ₹<?php echo formatNumber($stockInfo['current_price'], 2); ?>
@@ -182,30 +200,8 @@ includeHeader($pageTitle, $pageDescription);
                                     <span class="no-data-badge">N/A</span>
                                 <?php endif; ?>
                             </td>
-                            <td class="ohlc-cell">
-                                <?php if ($stockInfo): ?>
-                                    <div class="ohlc-compact">
-                                        <span>O: ₹<?php echo formatNumber($stockInfo['open'] ?? 0, 2); ?></span>
-                                        <span>H: ₹<?php echo formatNumber($stockInfo['high'] ?? 0, 2); ?></span>
-                                        <span>L: ₹<?php echo formatNumber($stockInfo['low'] ?? 0, 2); ?></span>
-                                        <span>C: ₹<?php echo formatNumber($stockInfo['close'] ?? 0, 2); ?></span>
-                                    </div>
-                                <?php else: ?>
-                                    <span class="no-data-badge">N/A</span>
-                                <?php endif; ?>
-                            </td>
-                            <td>
-                                <?php if ($stockInfo && isset($stockInfo['volume'])): ?>
-                                    <?php echo formatNumber($stockInfo['volume'], 0); ?>
-                                <?php else: ?>
-                                    <span class="no-data-badge">N/A</span>
-                                <?php endif; ?>
-                            </td>
-                            <td><?php echo isset($firstContract['lot_size']) ? number_format($firstContract['lot_size']) : 'N/A'; ?></td>
-                            <td><?php echo isset($firstContract['mwpl']) && $firstContract['mwpl'] ? formatPercentage($firstContract['mwpl'], 2) : 'N/A'; ?></td>
-                            <td>₹<?php echo isset($firstContract['nrml_margin']) && $firstContract['nrml_margin'] ? formatNumber($firstContract['nrml_margin'], 0) : 'N/A'; ?></td>
-                            <td><?php echo isset($firstContract['nrml_margin_rate']) && $firstContract['nrml_margin_rate'] ? formatPercentage($firstContract['nrml_margin_rate'], 2) : 'N/A'; ?></td>
                             <td>₹<?php echo isset($firstContract['price']) && $firstContract['price'] ? formatNumber($firstContract['price'], 2) : 'N/A'; ?></td>
+                            <td><?php echo isset($firstContract['lot_size']) ? number_format($firstContract['lot_size']) : 'N/A'; ?></td>
                             <td>
                                 <?php 
                                 $lotSize = $firstContract['lot_size'] ?? 0;
@@ -213,6 +209,16 @@ includeHeader($pageTitle, $pageDescription);
                                 $contractValue = $lotSize * $price;
                                 echo $contractValue > 0 ? '₹' . formatNumber($contractValue, 2) : 'N/A';
                                 ?>
+                            </td>
+                            <td><?php echo isset($firstContract['nrml_margin_rate']) && $firstContract['nrml_margin_rate'] ? formatPercentage($firstContract['nrml_margin_rate'], 2) : 'N/A'; ?></td>
+                            <td>₹<?php echo isset($firstContract['nrml_margin']) && $firstContract['nrml_margin'] ? formatNumber($firstContract['nrml_margin'], 0) : 'N/A'; ?></td>
+                            <td><?php echo isset($firstContract['mwpl']) && $firstContract['mwpl'] ? formatPercentage($firstContract['mwpl'], 2) : 'N/A'; ?></td>
+                            <td>
+                                <?php if ($stockInfo && isset($stockInfo['volume'])): ?>
+                                    <?php echo formatNumber($stockInfo['volume'], 0); ?>
+                                <?php else: ?>
+                                    <span class="no-data-badge">N/A</span>
+                                <?php endif; ?>
                             </td>
                             <td>
                                 <?php if ($stockInfo): ?>
@@ -229,12 +235,10 @@ includeHeader($pageTitle, $pageDescription);
                                 <tr class="detail-row hidden" data-parent-symbol="<?php echo e($symbol); ?>" data-expiry="<?php echo e($contract['expiry'] ?? ''); ?>" data-margin-rate="<?php echo e($contract['nrml_margin_rate'] ?? 0); ?>">
                                     <td class="indented">↳ <?php echo e($symbol); ?></td>
                                     <td><?php echo e($contract['expiry'] ?? 'N/A'); ?></td>
-                                    <td colspan="3"></td>
-                                    <td><?php echo isset($contract['lot_size']) ? number_format($contract['lot_size']) : 'N/A'; ?></td>
-                                    <td><?php echo isset($contract['mwpl']) && $contract['mwpl'] ? formatPercentage($contract['mwpl'], 2) : 'N/A'; ?></td>
-                                    <td>₹<?php echo isset($contract['nrml_margin']) && $contract['nrml_margin'] ? formatNumber($contract['nrml_margin'], 0) : 'N/A'; ?></td>
-                                    <td><?php echo isset($contract['nrml_margin_rate']) && $contract['nrml_margin_rate'] ? formatPercentage($contract['nrml_margin_rate'], 2) : 'N/A'; ?></td>
+                                    <td colspan="1"></td>
+                                    <td colspan="1"></td>
                                     <td>₹<?php echo isset($contract['price']) && $contract['price'] ? formatNumber($contract['price'], 2) : 'N/A'; ?></td>
+                                    <td><?php echo isset($contract['lot_size']) ? number_format($contract['lot_size']) : 'N/A'; ?></td>
                                     <td>
                                         <?php 
                                         $lotSize = $contract['lot_size'] ?? 0;
@@ -243,6 +247,10 @@ includeHeader($pageTitle, $pageDescription);
                                         echo $contractValue > 0 ? '₹' . formatNumber($contractValue, 2) : 'N/A';
                                         ?>
                                     </td>
+                                    <td><?php echo isset($contract['nrml_margin_rate']) && $contract['nrml_margin_rate'] ? formatPercentage($contract['nrml_margin_rate'], 2) : 'N/A'; ?></td>
+                                    <td>₹<?php echo isset($contract['nrml_margin']) && $contract['nrml_margin'] ? formatNumber($contract['nrml_margin'], 0) : 'N/A'; ?></td>
+                                    <td><?php echo isset($contract['mwpl']) && $contract['mwpl'] ? formatPercentage($contract['mwpl'], 2) : 'N/A'; ?></td>
+                                    <td colspan="1"></td>
                                     <td></td>
                                 </tr>
                             <?php endforeach; ?>
@@ -371,15 +379,40 @@ includeHeader($pageTitle, $pageDescription);
     color: #666;
 }
 
-.ohlc-compact {
+.ohlc-range-cell {
+    min-width: 200px;
+}
+
+.ohlc-range-compact {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 8px;
     font-size: 11px;
 }
 
-.ohlc-compact span {
+.ohlc-section, .range-section {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.ohlc-section {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.range-section {
+    padding-top: 3px;
+}
+
+.ohlc-range-compact div div {
     white-space: nowrap;
+}
+
+.ohlc-range-compact strong {
+    display: inline-block;
+    width: 35px;
+    color: #666;
 }
 
 .price-cell {
@@ -766,14 +799,14 @@ includeHeader($pageTitle, $pageDescription);
                     bVal = parseFloat(b.dataset.volume) || 0;
                     break;
                 case 'price':
-                    const aPrice = a.querySelector('td:nth-child(10)')?.textContent.replace(/[₹,]/g, '') || '0';
-                    const bPrice = b.querySelector('td:nth-child(10)')?.textContent.replace(/[₹,]/g, '') || '0';
+                    const aPrice = a.querySelector('td:nth-child(5)')?.textContent.replace(/[₹,]/g, '') || '0';
+                    const bPrice = b.querySelector('td:nth-child(5)')?.textContent.replace(/[₹,]/g, '') || '0';
                     aVal = parseFloat(aPrice) || 0;
                     bVal = parseFloat(bPrice) || 0;
                     break;
                 case 'contract_value':
-                    const aValue = a.querySelector('td:nth-child(11)')?.textContent.replace(/[₹,]/g, '') || '0';
-                    const bValue = b.querySelector('td:nth-child(11)')?.textContent.replace(/[₹,]/g, '') || '0';
+                    const aValue = a.querySelector('td:nth-child(7)')?.textContent.replace(/[₹,]/g, '') || '0';
+                    const bValue = b.querySelector('td:nth-child(7)')?.textContent.replace(/[₹,]/g, '') || '0';
                     aVal = parseFloat(aValue) || 0;
                     bVal = parseFloat(bValue) || 0;
                     break;
