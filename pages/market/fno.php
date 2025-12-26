@@ -170,9 +170,9 @@ includeHeader($pageTitle, $pageDescription);
                                 <?php endif; ?>
                             </td>
                             <td>
-                                <?php echo e($firstContract['expiry'] ?? 'N/A'); ?>
+                                <div><?php echo e($firstContract['expiry'] ?? 'N/A'); ?></div>
                                 <?php if ($contractCount > 1): ?>
-                                    <span class="more-expiries" title="Click button to see all expiries">+<?php echo ($contractCount - 1); ?> more</span>
+                                    <div class="more-expiries" title="Click button to see all expiries">+<?php echo ($contractCount - 1); ?> more</div>
                                 <?php endif; ?>
                             </td>
                             <td class="ohlc-range-cell">
@@ -293,6 +293,8 @@ includeHeader($pageTitle, $pageDescription);
 .futures-table-container {
     overflow-x: auto;
     margin: 20px 0;
+    max-height: calc(100vh - 300px);
+    overflow-y: auto;
 }
 
 .futures-table {
@@ -307,17 +309,20 @@ includeHeader($pageTitle, $pageDescription);
     background: #f5f5f5;
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .futures-table th {
-    padding: 12px;
+    padding: 8px 6px;
     text-align: left;
     font-weight: 600;
+    font-size: 12px;
     border-bottom: 2px solid #ddd;
     cursor: pointer;
     user-select: none;
     position: relative;
+    white-space: nowrap;
 }
 
 .futures-table th.sortable:hover {
@@ -349,13 +354,16 @@ includeHeader($pageTitle, $pageDescription);
 }
 
 .futures-table td {
-    padding: 10px 12px;
+    padding: 6px 6px;
     border-bottom: 1px solid #eee;
+    font-size: 12px;
+    line-height: 1.4;
 }
 
 .futures-table tbody tr.symbol-row {
     background: #fafafa;
     font-weight: 500;
+    font-size: 12px;
 }
 
 .futures-table tbody tr.symbol-row:hover {
@@ -380,29 +388,30 @@ includeHeader($pageTitle, $pageDescription);
 }
 
 .ohlc-range-cell {
-    min-width: 200px;
+    min-width: 180px;
+    max-width: 200px;
 }
 
 .ohlc-range-compact {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    font-size: 11px;
+    gap: 4px;
+    font-size: 10px;
 }
 
 .ohlc-section, .range-section {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 2px;
 }
 
 .ohlc-section {
     border-bottom: 1px solid #eee;
-    padding-bottom: 5px;
+    padding-bottom: 3px;
 }
 
 .range-section {
-    padding-top: 3px;
+    padding-top: 2px;
 }
 
 .ohlc-range-compact div div {
@@ -411,13 +420,16 @@ includeHeader($pageTitle, $pageDescription);
 
 .ohlc-range-compact strong {
     display: inline-block;
-    width: 35px;
+    width: 30px;
     color: #666;
+    font-size: 10px;
 }
 
 .price-cell {
     font-weight: 600;
     color: #0066cc;
+    font-size: 12px;
+    white-space: nowrap;
 }
 
 .no-data-badge {
@@ -431,9 +443,10 @@ includeHeader($pageTitle, $pageDescription);
     color: white;
     border: none;
     border-radius: 3px;
-    padding: 5px 12px;
+    padding: 4px 10px;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 11px;
+    white-space: nowrap;
 }
 
 .btn-indicators:hover {
@@ -538,10 +551,11 @@ includeHeader($pageTitle, $pageDescription);
 }
 
 .more-expiries {
-    font-size: 11px;
+    font-size: 10px;
     color: #0066cc;
     font-weight: normal;
-    margin-left: 5px;
+    margin-top: 2px;
+    line-height: 1.2;
 }
 
 .toggle-details {
@@ -549,10 +563,10 @@ includeHeader($pageTitle, $pageDescription);
     color: white;
     border: none;
     border-radius: 3px;
-    padding: 2px 8px;
-    margin-left: 8px;
+    padding: 2px 6px;
+    margin-left: 5px;
     cursor: pointer;
-    font-size: 10px;
+    font-size: 9px;
     vertical-align: middle;
 }
 
