@@ -1,118 +1,88 @@
-# Market Status - PHP Version
+# Market Status - Futures & Options Data
 
-This is the PHP conversion of the Market Status React application.
+## Data Source
 
-## Project Structure
+The page at `https://silverwebbuzz.com/ms/futures-margins` reads data from:
+- **Primary:** `data/futures_margins.json` (632 contracts)
+- **Fallback:** `data/fnO.json` (if primary not available)
 
-```
-MS/
-├── index.php              # Main entry point and router
-├── config.php             # Configuration file
-├── functions.php          # Helper functions
-├── setup.php              # Setup script to copy assets
-├── .htaccess              # Apache URL rewriting rules
-├── includes/              # Shared components
-│   ├── header.php
-│   ├── footer.php
-│   └── navbar.php
-├── pages/                 # Page templates
-│   ├── dashboard.php
-│   ├── market/
-│   ├── calculators/
-│   ├── mutualfunds/
-│   ├── financecompanies/
-│   ├── insurance/
-│   ├── loans/
-│   └── news/
-├── components/            # Reusable components
-├── assets/                # CSS, JS, images
-│   ├── css/
-│   ├── js/
-│   └── images/
-└── data/                  # JSON data files
+## Daily Updates
+
+### Automatic (Recommended)
+
+**Cron job handles everything automatically:**
+
+```bash
+0 8 * * * cd /path/to/ms && /usr/bin/php update_futures_smart.php >> cron_log.txt 2>&1
 ```
 
-## Setup Instructions
+**What it does:**
+1. ✅ Fetches fresh HTML from Zerodha (Python script)
+2. ✅ Saves HTML to `data/zerodha_temp.html`
+3. ✅ Parses and saves to `data/futures_margins.json`
+4. ✅ Falls back to cached HTML if fetch fails
+5. ✅ Uses existing `fnO.json` if all else fails
 
-1. **Run the setup script** to copy assets and data files:
+**You don't need to manually download anything!** The cron job does it all.
+
+### Manual Update (If Needed)
+
+If cron fails or you want to update manually:
+
+```bash
+# Option 1: Run Python script (fetches and parses)
+python3 fetch_futures.py
+
+# Option 2: If you manually downloaded HTML
+# 1. Save page as HTML to: data/zerodha_temp.html
+# 2. Run:
+php parse_from_html.php data/zerodha_temp.html
+```
+
+## Files
+
+### Essential Files (Keep These)
+- `update_futures_smart.php` - Main updater (use in cron)
+- `fetch_futures.py` - Python fetcher/parser
+- `parse_from_html.php` - PHP parser (backup)
+- `convert_fnO_to_futures.php` - Converter (fallback)
+- `run_fetch.sh` - Bash wrapper (alternative)
+- `config.php` - Configuration
+- `functions.php` - Helper functions
+- `pages/market/fno.php` - Display page
+
+### Data Files
+- `data/futures_margins.json` - Main data file (used by page)
+- `data/zerodha_temp.html` - Cached HTML (auto-generated)
+- `data/fnO.json` - Legacy data (fallback)
+
+## Setup
+
+1. **Install Python dependencies:**
    ```bash
-   php setup.php
+   pip3 install requests beautifulsoup4
    ```
 
-2. **Configure your web server**:
-   - Point your document root to the `MS` directory
-   - Ensure mod_rewrite is enabled (for Apache)
-   - For Nginx, configure URL rewriting accordingly
-
-3. **Update configuration**:
-   - Edit `config.php` and update `BASE_URL` if needed
-   - Adjust paths if your installation is in a subdirectory
-
-4. **File Permissions**:
-   - Ensure PHP has read access to all files
-   - Data directory should be readable
-
-## URL Structure
-
-The application uses clean URLs:
-- `/` - Dashboard
-- `/indices` - Stock Indices
-- `/sip-calculator` - SIP Calculator
-- `/mutual-funds/amc` - AMC Funds
-- etc.
-
-All routes are handled by `index.php` through URL rewriting.
-
-## Converting Components
-
-To convert a React component to PHP:
-
-1. Create a PHP file in the appropriate `pages/` subdirectory
-2. Set `$pageTitle` and `$pageDescription` variables
-3. Include header: `includeHeader($pageTitle, $pageDescription);`
-4. Add your page content
-5. Include footer: `includeFooter();`
-6. Add the route to `index.php`
-
-## Helper Functions
-
-- `loadJsonData($filename)` - Load JSON data from data directory
-- `e($string)` - Escape HTML output
-- `asset($path)` - Generate asset URL
-- `url($path)` - Generate page URL
-- `formatNumber($number, $decimals)` - Format numbers
-- `formatCurrency($amount, $symbol)` - Format currency
-- `formatPercentage($value, $decimals)` - Format percentages
-
-## Notes
-
-- All React state management is replaced with PHP variables
-- API calls can be made using `file_get_contents()` or cURL
-- JavaScript for interactivity should be added in script tags
-- CSS files are copied from the React project and can be used as-is
-
-## Development
-
-1. Start a local PHP server:
+2. **Set up cron (daily at 8 AM):**
    ```bash
-   php -S localhost:8000 -t MS
+   crontab -e
+   ```
+   Add:
+   ```
+   0 8 * * * cd /path/to/ms && /usr/bin/php update_futures_smart.php >> cron_log.txt 2>&1
    ```
 
-2. Access the application at `http://localhost:8000`
+3. **Test it:**
+   ```bash
+   php update_futures_smart.php
+   ```
 
-## Production Deployment
+## How It Works
 
-1. Ensure all files are uploaded
-2. Set `DEBUG_MODE` to `false` in `config.php`
-3. Configure proper error handling
-4. Set up SSL certificate if needed
-5. Configure caching headers in `.htaccess`
+1. **Cron runs** `update_futures_smart.php` at 8 AM daily
+2. **Python script** fetches HTML from Zerodha
+3. **HTML saved** to `data/zerodha_temp.html`
+4. **Data parsed** and saved to `data/futures_margins.json`
+5. **Page displays** data from `futures_margins.json`
 
-## Differences from React Version
-
-- No client-side routing (all server-side)
-- No React state management
-- Components are PHP includes instead of React components
-- Data fetching is server-side
-- JavaScript is used only for interactivity, not for rendering
-
+**No manual work needed!** Everything is automated.
