@@ -211,6 +211,14 @@ includeHeader($pageTitle, $pageDescription);
                         <th class="sortable" data-sort="market_cap">
                             Market Cap <span class="sort-indicator">↕</span>
                         </th>
+                        <th>Company Name</th>
+                        <th>Industry</th>
+                        <th class="sortable" data-sort="div_yield">
+                            Div Yield <span class="sort-indicator">↕</span>
+                        </th>
+                        <th class="sortable" data-sort="total_traded_value">
+                            Traded Value <span class="sort-indicator">↕</span>
+                        </th>
                         <th>Indicators</th>
                     </tr>
                 </thead>
@@ -769,6 +777,26 @@ includeHeader($pageTitle, $pageDescription);
     text-align: center;
 }
 
+.company-name {
+    font-size: 11px;
+    color: #555;
+    max-width: 200px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.industry-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    background: #e3f2fd;
+    color: #1976d2;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
 .unchanged-item strong {
     color: #6c757d;
 }
@@ -1113,9 +1141,15 @@ includeHeader($pageTitle, $pageDescription);
                     }
                 }
                 
-                // Industry filter
-                if (industryValue && industry !== industryValue) {
-                    show = false;
+                // Industry filter - check both data attribute and cell content
+                if (industryValue) {
+                    // Try to find industry badge in the row
+                    const industryBadge = row.querySelector('.industry-badge');
+                    const cellIndustry = industryBadge ? industryBadge.textContent.trim() : '';
+                    // Check both data attribute and cell content
+                    if (industry !== industryValue && cellIndustry !== industryValue) {
+                        show = false;
+                    }
                 }
                 
                 if (show) {
