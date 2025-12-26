@@ -18,10 +18,34 @@
     </script>
     
     <!-- CSS Files -->
-    <link rel="stylesheet" href="<?php echo asset('css/style.css'); ?>">
-    <link rel="stylesheet" href="<?php echo asset('css/header.css'); ?>">
-    <link rel="stylesheet" href="<?php echo asset('css/footer.css'); ?>">
-    <link rel="stylesheet" href="<?php echo asset('css/dashboard.css'); ?>">
+    <link rel="stylesheet" href="<?php echo asset('css/Header.css'); ?>">
+    <link rel="stylesheet" href="<?php echo asset('css/Footer.css'); ?>">
+    <link rel="stylesheet" href="<?php echo asset('css/Dashboard.css'); ?>">
+    <link rel="stylesheet" href="<?php echo asset('css/StockBox.css'); ?>">
+    <link rel="stylesheet" href="<?php echo asset('css/TopMF.css'); ?>">
+    <link rel="stylesheet" href="<?php echo asset('css/IndicesTable.css'); ?>">
+    <link rel="stylesheet" href="<?php echo asset('css/FnO.css'); ?>">
+    <link rel="stylesheet" href="<?php echo asset('css/Ipo.css'); ?>">
+    <link rel="stylesheet" href="<?php echo asset('css/NseHolidays.css'); ?>">
+    <link rel="stylesheet" href="<?php echo asset('css/WorldIndices.css'); ?>">
+    <link rel="stylesheet" href="<?php echo asset('css/PreLoader.css'); ?>">
+    <?php
+    // Load additional CSS based on current page
+    $current_route = getCurrentRoute();
+    if (strpos($current_route, '/calculators/') !== false) {
+        echo '<link rel="stylesheet" href="' . asset('css/calculators/calculatorComan.css') . '">';
+        echo '<link rel="stylesheet" href="' . asset('css/calculators/calculatorcard.css') . '">';
+    }
+    if (strpos($current_route, '/mutualfunds/') !== false || strpos($current_route, '/mutual-funds/') !== false) {
+        echo '<link rel="stylesheet" href="' . asset('css/mutualfunds/comanMutualfunds.css') . '">';
+    }
+    if (strpos($current_route, '/Insurance/') !== false) {
+        echo '<link rel="stylesheet" href="' . asset('css/Insurance/general_insurance.css') . '">';
+    }
+    if (strpos($current_route, '/loans/') !== false) {
+        echo '<link rel="stylesheet" href="' . asset('css/Loans/PersonalLoan.css') . '">';
+    }
+    ?>
 </head>
 <body>
     <header class="header">

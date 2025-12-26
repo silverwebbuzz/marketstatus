@@ -138,4 +138,7 @@ document.querySelectorAll('.nav_ul a').forEach(link => {
     });
 });
 </script>
+<?php
+// Ensure no output after script
+?>
 
