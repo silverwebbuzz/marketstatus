@@ -43,14 +43,20 @@ if ($futuresData && isset($futuresData['data'])) {
     }
 }
 
-// Load stock data (OHLC, Volume, Indicators)
+// Load stock data (OHLC, Volume, Indicators) from NSE
 $stockData = loadJsonData('stock_data.json');
 $stockDataMap = [];
+$industries = [];
 if ($stockData && isset($stockData['data'])) {
     foreach ($stockData['data'] as $symbol => $data) {
         $stockDataMap[strtoupper($symbol)] = $data;
+        // Collect industries for filter
+        if (isset($data['industry']) && $data['industry']) {
+            $industries[$data['industry']] = true;
+        }
     }
 }
+ksort($industries);
 
 includeHeader($pageTitle, $pageDescription);
 ?>
@@ -70,6 +76,28 @@ includeHeader($pageTitle, $pageDescription);
                 Total Contracts: <?php echo count($futuresData['data']); ?> | 
                 Unique Symbols: <span id="visible-symbols-count"><?php echo count($groupedData); ?></span>
             </p>
+            <?php if ($stockData && isset($stockData['advance_decline'])): 
+                $advDec = $stockData['advance_decline'];
+            ?>
+                <div class="advance-decline">
+                    <span class="advance-item">
+                        <strong>Advances:</strong> <span class="advance-count"><?php echo number_format($advDec['advances'] ?? 0); ?></span>
+                    </span>
+                    <span class="decline-item">
+                        <strong>Declines:</strong> <span class="decline-count"><?php echo number_format($advDec['declines'] ?? 0); ?></span>
+                    </span>
+                    <?php if (isset($advDec['unchanged']) && $advDec['unchanged'] > 0): ?>
+                        <span class="unchanged-item">
+                            <strong>Unchanged:</strong> <?php echo number_format($advDec['unchanged']); ?>
+                        </span>
+                    <?php endif; ?>
+                    <?php if (isset($advDec['last_updated'])): ?>
+                        <span class="adv-dec-time">
+                            (Updated: <?php echo e($advDec['last_updated']); ?>)
+                        </span>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
         </div>
 
         <!-- Search and Filter Section -->
@@ -105,6 +133,14 @@ includeHeader($pageTitle, $pageDescription);
                         <option value="20-25">20% - 25%</option>
                         <option value="25-30">25% - 30%</option>
                         <option value="30+">Above 30%</option>
+                    </select>
+                </div>
+                <div class="filter-box">
+                    <select id="industry-filter">
+                        <option value="">All Industries</option>
+                        <?php foreach ($industries as $industry => $val): ?>
+                            <option value="<?php echo e($industry); ?>"><?php echo e($industry); ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
                 <button id="clear-filters" class="btn-clear">Clear Filters</button>
@@ -595,6 +631,50 @@ includeHeader($pageTitle, $pageDescription);
     color: #666;
 }
 
+.advance-decline {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+.advance-item, .decline-item, .unchanged-item {
+    font-size: 13px;
+}
+
+.advance-item strong {
+    color: #28a745;
+}
+
+.decline-item strong {
+    color: #dc3545;
+}
+
+.unchanged-item strong {
+    color: #6c757d;
+}
+
+.advance-count {
+    color: #28a745;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.decline-count {
+    color: #dc3545;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.adv-dec-time {
+    font-size: 11px;
+    color: #999;
+    margin-left: auto;
+}
+
 .futures-controls {
     margin: 20px 0;
     padding: 15px;
@@ -860,6 +940,7 @@ includeHeader($pageTitle, $pageDescription);
         const searchTerm = searchInput.value.toUpperCase();
         const expiryValue = expiryFilter.value;
         const marginRateValue = marginRateFilter.value;
+        const industryValue = industryFilter.value;
         
         let visibleSymbols = 0;
         
@@ -868,6 +949,7 @@ includeHeader($pageTitle, $pageDescription);
                 const symbol = row.dataset.symbol || '';
                 const expiry = row.dataset.expiry || '';
                 const marginRate = parseFloat(row.dataset.marginRate) || 0;
+                const industry = row.dataset.industry || '';
                 
                 let show = true;
                 
@@ -889,6 +971,11 @@ includeHeader($pageTitle, $pageDescription);
                     if (marginRate < min || (max && marginRate > max)) {
                         show = false;
                     }
+                }
+                
+                // Industry filter
+                if (industryValue && industry !== industryValue) {
+                    show = false;
                 }
                 
                 if (show) {
@@ -924,11 +1011,13 @@ includeHeader($pageTitle, $pageDescription);
     searchInput.addEventListener('input', filterTable);
     expiryFilter.addEventListener('change', filterTable);
     marginRateFilter.addEventListener('change', filterTable);
+    industryFilter.addEventListener('change', filterTable);
     
     clearBtn.addEventListener('click', function() {
         searchInput.value = '';
         expiryFilter.value = '';
         marginRateFilter.value = '';
+        industryFilter.value = '';
         filterTable();
     });
     
