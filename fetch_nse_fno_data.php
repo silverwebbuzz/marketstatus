@@ -195,6 +195,7 @@ foreach ($nseData['data'] as $stock) {
     
     // Build comprehensive stock data
     // Use cleaned symbol (no spaces) as key for better matching with futures data
+    // Also store with original format as fallback
     $stockData[$symbolClean] = [
         'symbol' => $symbolOriginal, // Keep original symbol for display
         'current_price' => round($currentPrice, 2),
@@ -236,6 +237,11 @@ foreach ($nseData['data'] as $stock) {
             'price' => $futuresContract['price'] ?? null,
         ] : null,
     ];
+    
+    // Also store with original symbol format (if different) for fallback matching
+    if ($symbolOriginal !== $symbolClean && !isset($stockData[$symbolOriginal])) {
+        $stockData[$symbolOriginal] = $stockData[$symbolClean];
+    }
 }
 
 // Save data with advance/decline

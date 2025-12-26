@@ -47,6 +47,7 @@ if ($futuresData && isset($futuresData['data'])) {
 $stockData = loadJsonData('stock_data.json');
 $stockDataMap = [];
 $industries = [];
+$debugSymbols = []; // For debugging
 if ($stockData && isset($stockData['data'])) {
     foreach ($stockData['data'] as $symbol => $data) {
         // Normalize symbol key (remove spaces, uppercase)
@@ -57,6 +58,10 @@ if ($stockData && isset($stockData['data'])) {
         // Collect industries for filter
         if (isset($data['industry']) && $data['industry']) {
             $industries[$data['industry']] = true;
+        }
+        // Debug: Store first 10 symbols
+        if (count($debugSymbols) < 10) {
+            $debugSymbols[] = ['original' => $symbol, 'normalized' => $normalizedSymbol];
         }
     }
 }
