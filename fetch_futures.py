@@ -33,25 +33,38 @@ def fetch_with_retry(url, max_retries=3, initial_delay=5):
     """Fetch URL with retry logic for rate limiting - simulates real browser"""
     delay = initial_delay
     
-    # More realistic browser headers
+    # Exact browser headers from Firefox (matching user's browser)
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
-        'Accept-Language': 'en-US,en;q=0.9',
-        'Accept-Encoding': 'gzip, deflate, br',
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:146.0) Gecko/20100101 Firefox/146.0',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.5',
+        'Accept-Encoding': 'gzip, deflate, br, zstd',
+        'Referer': 'https://zerodha.com/margin-calculator/SPAN/',
         'Connection': 'keep-alive',
         'Upgrade-Insecure-Requests': '1',
         'Sec-Fetch-Dest': 'document',
         'Sec-Fetch-Mode': 'navigate',
-        'Sec-Fetch-Site': 'none',
+        'Sec-Fetch-Site': 'same-origin',
         'Sec-Fetch-User': '?1',
-        'Cache-Control': 'max-age=0',
-        'DNT': '1',
-        'Referer': 'https://zerodha.com/',
+        'Priority': 'u=0, i',
+        'TE': 'trailers',
     }
     
-    # Create session with retry strategy
+    # Create session with cookie handling
     session = requests.Session()
+    
+    # First, visit main page to get Cloudflare cookies (like a real browser)
+    try:
+        print("Initializing session (visiting main page for cookies)...")
+        main_headers = headers.copy()
+        main_headers['Referer'] = 'https://zerodha.com/'
+        main_headers['Sec-Fetch-Site'] = 'none'
+        session.get('https://zerodha.com/', headers=main_headers, timeout=10)
+        time.sleep(1)  # Let cookies settle
+    except Exception as e:
+        print(f"Warning: Could not initialize session: {e}")
+        # Continue anyway
+    
     retry_strategy = Retry(
         total=max_retries,
         backoff_factor=1,
@@ -66,24 +79,44 @@ def fetch_with_retry(url, max_retries=3, initial_delay=5):
             print(f"Rate limited (HTTP 429). Waiting {delay} seconds before retry {attempt}/{max_retries}...")
             time.sleep(delay)
             delay *= 2  # Exponential backoff
+            # Try to refresh cookies
+            try:
+                session.get('https://zerodha.com/', timeout=5)
+                time.sleep(1)
+            except:
+                pass
         
         try:
             # Add delay before request to be respectful
             if attempt == 1:
-                time.sleep(3)  # Longer initial delay
+                time.sleep(2)  # Initial delay
             
             print(f"Fetching page (attempt {attempt}/{max_retries})...")
             response = session.get(url, headers=headers, timeout=60, allow_redirects=True)
             
             if response.status_code == 200:
-                # Save HTML to temp file
-                os.makedirs(os.path.dirname(TEMP_HTML_FILE), exist_ok=True)
-                with open(TEMP_HTML_FILE, 'w', encoding='utf-8') as f:
-                    f.write(response.text)
-                print(f"✓ HTML saved to {TEMP_HTML_FILE}")
-                return response.text
+                # Check if we got valid HTML (not a rate limit page)
+                if 'margin-calculator' in response.url.lower() and len(response.text) > 10000:
+                    # Save HTML to temp file
+                    os.makedirs(os.path.dirname(TEMP_HTML_FILE), exist_ok=True)
+                    with open(TEMP_HTML_FILE, 'w', encoding='utf-8') as f:
+                        f.write(response.text)
+                    print(f"✓ HTML saved to {TEMP_HTML_FILE}")
+                    return response.text
+                else:
+                    print(f"⚠ Got HTTP 200 but response seems invalid (may be rate limit page)")
+                    continue
             elif response.status_code == 429:
                 print(f"HTTP 429 (Rate Limited) on attempt {attempt}")
+                continue
+            elif response.status_code == 403:
+                print(f"HTTP 403 (Cloudflare challenge) on attempt {attempt}")
+                # Try to refresh session
+                try:
+                    session.get('https://zerodha.com/', timeout=10)
+                    time.sleep(2)
+                except:
+                    pass
                 continue
             else:
                 print(f"Attempt {attempt} failed: HTTP {response.status_code}")

@@ -75,21 +75,49 @@ if (empty($futuresData)) {
             $retryDelay *= 2; // Exponential backoff
         }
         
+        // First visit main page to get cookies (on first attempt only)
+        if ($attempt == 1) {
+            $cookieFile = sys_get_temp_dir() . '/zerodha_cookies_' . uniqid() . '.txt';
+            $chMain = curl_init();
+            curl_setopt_array($chMain, [
+                CURLOPT_URL => 'https://zerodha.com/',
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_FOLLOWLOCATION => true,
+                CURLOPT_SSL_VERIFYPEER => false,
+                CURLOPT_COOKIEFILE => $cookieFile,
+                CURLOPT_COOKIEJAR => $cookieFile,
+                CURLOPT_USERAGENT => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:146.0) Gecko/20100101 Firefox/146.0',
+                CURLOPT_TIMEOUT => 10,
+            ]);
+            curl_exec($chMain);
+            curl_close($chMain);
+            usleep(500000); // 0.5 second
+        }
+        
         $ch = curl_init();
         curl_setopt_array($ch, [
             CURLOPT_URL => $url,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_SSL_VERIFYPEER => false,
-            CURLOPT_USERAGENT => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            CURLOPT_COOKIEFILE => $cookieFile ?? '',
+            CURLOPT_COOKIEJAR => $cookieFile ?? '',
+            CURLOPT_USERAGENT => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:146.0) Gecko/20100101 Firefox/146.0',
             CURLOPT_HTTPHEADER => [
                 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-                'Accept-Language: en-US,en;q=0.9',
-                'Accept-Encoding: gzip, deflate, br',
+                'Accept-Language: en-US,en;q=0.5',
+                'Accept-Encoding: gzip, deflate, br, zstd',
+                'Referer: https://zerodha.com/margin-calculator/SPAN/',
                 'Connection: keep-alive',
-                'Cache-Control: no-cache',
+                'Upgrade-Insecure-Requests: 1',
+                'Sec-Fetch-Dest: document',
+                'Sec-Fetch-Mode: navigate',
+                'Sec-Fetch-Site: same-origin',
+                'Sec-Fetch-User: ?1',
+                'Priority: u=0, i',
+                'TE: trailers',
             ],
-            CURLOPT_ENCODING => '',
+            CURLOPT_ENCODING => 'gzip, deflate, br',
             CURLOPT_TIMEOUT => 60,
             CURLOPT_CONNECTTIMEOUT => 30,
         ]);
