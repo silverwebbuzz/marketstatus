@@ -34,11 +34,12 @@ def fetch_with_retry(url, max_retries=3, initial_delay=5):
     delay = initial_delay
     
     # Exact browser headers from Firefox (matching user's browser)
+    # Note: requests library handles decompression automatically, but we'll verify
     headers = {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:146.0) Gecko/20100101 Firefox/146.0',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
         'Accept-Language': 'en-US,en;q=0.5',
-        'Accept-Encoding': 'gzip, deflate, br, zstd',
+        'Accept-Encoding': 'gzip, deflate, br',  # Removed zstd (not commonly supported)
         'Referer': 'https://zerodha.com/margin-calculator/SPAN/',
         'Connection': 'keep-alive',
         'Upgrade-Insecure-Requests': '1',
@@ -92,52 +93,98 @@ def fetch_with_retry(url, max_retries=3, initial_delay=5):
                 time.sleep(2)  # Initial delay
             
             print(f"Fetching page (attempt {attempt}/{max_retries})...")
-            response = session.get(url, headers=headers, timeout=60, allow_redirects=True)
+            # Disable automatic decompression to handle it manually
+            response = session.get(url, headers=headers, timeout=60, allow_redirects=True, stream=False)
             
             if response.status_code == 200:
-                # requests library should automatically decompress, but verify
-                html_content = response.text
-                
-                # Check if content looks like binary/compressed data
-                # If response.text is very short or contains binary chars, try manual decompression
+                # Get raw content (compressed)
                 raw_content = response.content
                 
-                # Check if raw content is compressed
-                is_compressed = False
-                if raw_content[:2] == b'\x1f\x8b':  # Gzip magic number
-                    is_compressed = True
+                # Check Content-Encoding header
+                content_encoding = response.headers.get('Content-Encoding', '').lower()
+                print(f"  Content-Encoding: {content_encoding or 'none'}")
+                print(f"  Raw content size: {len(raw_content)} bytes")
+                
+                # Try to decompress based on Content-Encoding or magic numbers
+                html_content = None
+                
+                # Method 1: Check Content-Encoding header
+                if 'gzip' in content_encoding or raw_content[:2] == b'\x1f\x8b':
                     import gzip
                     try:
                         html_content = gzip.decompress(raw_content).decode('utf-8')
                         print("  ✓ Decompressed gzip content")
                     except Exception as e:
                         print(f"  ⚠ Failed to decompress gzip: {e}")
-                elif len(raw_content) > 4 and raw_content[:4] in [b'\xce\xb2\xcf\x81', b'BrS\x01']:  # Brotli magic
-                    is_compressed = True
+                
+                elif 'br' in content_encoding or 'brotli' in content_encoding:
                     try:
                         import brotli
                         html_content = brotli.decompress(raw_content).decode('utf-8')
                         print("  ✓ Decompressed brotli content")
                     except ImportError:
-                        print("  ⚠ Brotli not installed, trying requests default")
-                        html_content = response.text
+                        print("  ⚠ Brotli library not installed. Install with: pip install brotli")
+                        # Try requests default (might work)
+                        try:
+                            html_content = response.text
+                        except:
+                            pass
                     except Exception as e:
                         print(f"  ⚠ Failed to decompress brotli: {e}")
                 
+                elif 'deflate' in content_encoding:
+                    import zlib
+                    try:
+                        html_content = zlib.decompress(raw_content).decode('utf-8')
+                        print("  ✓ Decompressed deflate content")
+                    except Exception as e:
+                        print(f"  ⚠ Failed to decompress deflate: {e}")
+                
+                # Method 2: Try requests.text (should auto-decompress)
+                if not html_content:
+                    try:
+                        html_content = response.text
+                        print("  ✓ Using response.text (auto-decompressed)")
+                    except Exception as e:
+                        print(f"  ⚠ response.text failed: {e}")
+                
+                # Method 3: Try to detect and decompress by magic numbers
+                if not html_content and len(raw_content) > 2:
+                    if raw_content[:2] == b'\x1f\x8b':  # Gzip
+                        import gzip
+                        try:
+                            html_content = gzip.decompress(raw_content).decode('utf-8')
+                            print("  ✓ Detected and decompressed gzip (by magic number)")
+                        except:
+                            pass
+                    else:
+                        # Try brotli (various magic numbers)
+                        try:
+                            import brotli
+                            html_content = brotli.decompress(raw_content).decode('utf-8')
+                            print("  ✓ Detected and decompressed brotli (by magic number)")
+                        except:
+                            pass
+                
+                if not html_content:
+                    print(f"  ✗ Could not decompress content")
+                    print(f"  First 50 bytes (hex): {raw_content[:50].hex()}")
+                    if attempt < max_retries:
+                        continue
+                    else:
+                        raise Exception("Failed to decompress response content")
+                
                 # Verify it's actually HTML text (not binary)
-                if len(html_content) > 0:
-                    # Check for HTML indicators
-                    has_html_tags = '<html' in html_content.lower() or '<!doctype' in html_content.lower() or '<body' in html_content.lower()
-                    has_symbols = '360ONE' in html_content or 'ABB' in html_content or 'ABCAPITAL' in html_content
-                    has_table = '<table' in html_content.lower() or '<tbody' in html_content.lower()
-                    
-                    if not has_html_tags and not has_symbols:
-                        # Might be binary or wrong encoding
-                        print(f"  ⚠ Content doesn't look like HTML")
-                        print(f"  First 200 bytes (hex): {raw_content[:200].hex()[:400]}")
-                        print(f"  First 200 chars (text): {html_content[:200]}")
-                        if attempt < max_retries:
-                            continue
+                has_html_tags = '<html' in html_content.lower() or '<!doctype' in html_content.lower() or '<body' in html_content.lower()
+                has_symbols = '360ONE' in html_content or 'ABB' in html_content or 'ABCAPITAL' in html_content
+                has_table = '<table' in html_content.lower() or '<tbody' in html_content.lower()
+                
+                if not has_html_tags and not has_symbols:
+                    # Might still be binary or wrong encoding
+                    print(f"  ⚠ Content doesn't look like HTML after decompression")
+                    print(f"  First 500 chars: {html_content[:500]}")
+                    if attempt < max_retries:
+                        continue
                 
                 # Check if we got valid HTML (not a rate limit page)
                 if 'margin-calculator' in response.url.lower() and len(html_content) > 10000:
@@ -156,6 +203,7 @@ def fetch_with_retry(url, max_retries=3, initial_delay=5):
                         print(f"  Has HTML tags: {has_html_tags}")
                         print(f"  Has symbols: {has_symbols}")
                         print(f"  Has table: {has_table}")
+                        print(f"  Content preview: {html_content[:300]}")
                         if attempt < max_retries:
                             continue
                 else:
