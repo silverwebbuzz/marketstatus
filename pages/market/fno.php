@@ -32,14 +32,22 @@ if (!$futuresData || !isset($futuresData['data'])) {
 }
 
 // Group contracts by symbol
+// Extract base symbol (remove expiry suffix like " 30", " 27", " 24")
 $groupedData = [];
 if ($futuresData && isset($futuresData['data'])) {
     foreach ($futuresData['data'] as $contract) {
         $symbol = $contract['symbol'] ?? 'UNKNOWN';
-        if (!isset($groupedData[$symbol])) {
-            $groupedData[$symbol] = [];
+        
+        // Extract base symbol by removing expiry suffix (e.g., "360ONE 30" -> "360ONE")
+        // Pattern: symbol followed by space and 1-2 digits (expiry day)
+        $baseSymbol = preg_replace('/\s+\d{1,2}$/', '', $symbol);
+        $baseSymbol = trim($baseSymbol);
+        
+        // Use base symbol for grouping
+        if (!isset($groupedData[$baseSymbol])) {
+            $groupedData[$baseSymbol] = [];
         }
-        $groupedData[$symbol][] = $contract;
+        $groupedData[$baseSymbol][] = $contract;
     }
 }
 
@@ -202,10 +210,11 @@ includeHeader($pageTitle, $pageDescription);
                         });
                         $firstContract = $contracts[0];
                         $contractCount = count($contracts);
+                        // $symbol is already the base symbol (expiry suffix removed during grouping)
                         $symbolUpper = strtoupper(trim($symbol));
                         
-                        // Normalize symbol for matching (remove spaces)
-                        $symbolNormalized = str_replace(' ', '', $symbolUpper);
+                        // Normalize symbol for matching (remove spaces, dashes, etc.)
+                        $symbolNormalized = str_replace([' ', '-', '_'], '', $symbolUpper);
                         
                         // Try multiple symbol formats for matching
                         $stockInfo = $stockDataMap[$symbolNormalized] ?? $stockDataMap[$symbolUpper] ?? null;
@@ -216,6 +225,7 @@ includeHeader($pageTitle, $pageDescription);
                                 $symbolNormalized,
                                 $symbolUpper,
                                 str_replace('-', '', $symbolUpper),
+                                str_replace(' ', '', $symbolUpper),
                                 trim($symbolUpper),
                             ];
                             foreach ($symbolVariants as $variant) {
