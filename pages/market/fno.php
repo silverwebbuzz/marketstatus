@@ -413,8 +413,8 @@ includeHeader($pageTitle, $pageDescription);
                                 <tr class="detail-row hidden" data-parent-symbol="<?php echo e($symbol); ?>" data-expiry="<?php echo e($contract['expiry'] ?? ''); ?>" data-margin-rate="<?php echo e($contract['nrml_margin_rate'] ?? 0); ?>">
                                     <td class="indented">↳ <?php echo e($symbol); ?></td>
                                     <td><?php echo e($contract['expiry'] ?? 'N/A'); ?></td>
-                                    <td colspan="3"></td>
-                                    <td colspan="1"></td>
+                                    <td></td>
+                                    <td></td>
                                     <td>₹<?php echo isset($contract['price']) && $contract['price'] ? formatNumber($contract['price'], 2) : 'N/A'; ?></td>
                                     <td><?php echo isset($contract['lot_size']) ? number_format($contract['lot_size']) : 'N/A'; ?></td>
                                     <td>
@@ -428,8 +428,6 @@ includeHeader($pageTitle, $pageDescription);
                                     <td><?php echo isset($contract['nrml_margin_rate']) && $contract['nrml_margin_rate'] ? formatPercentage($contract['nrml_margin_rate'], 2) : 'N/A'; ?></td>
                                     <td>₹<?php echo isset($contract['nrml_margin']) && $contract['nrml_margin'] ? formatNumber($contract['nrml_margin'], 0) : 'N/A'; ?></td>
                                     <td><?php echo isset($contract['mwpl']) && $contract['mwpl'] ? formatPercentage($contract['mwpl'], 2) : 'N/A'; ?></td>
-                                    <td></td>
-                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -985,6 +983,7 @@ includeHeader($pageTitle, $pageDescription);
     const searchInput = document.getElementById('symbol-search');
     const expiryFilter = document.getElementById('expiry-filter');
     const marginRateFilter = document.getElementById('margin-rate-filter');
+    const industryFilter = document.getElementById('industry-filter');
     const clearBtn = document.getElementById('clear-filters');
     const visibleCount = document.getElementById('visible-symbols-count');
     
@@ -1089,20 +1088,23 @@ includeHeader($pageTitle, $pageDescription);
                     bVal = parseFloat(bChangeCell?.dataset.sortValue || bChangeCell?.textContent.replace(/[+%,\s]/g, '')) || 0;
                     break;
                 case 'pe':
-                    const aPeCell = a.cells[10];
-                    const bPeCell = b.cells[10];
+                    // P/E is column 13 (index 12): Symbol(0), Expiry(1), OHLC(2), Current(3), Futures(4), Lot(5), Contract(6), MarginRate(7), NRML(8), MWPL(9), Volume(10), Change%(11), P/E(12)
+                    const aPeCell = a.cells[12];
+                    const bPeCell = b.cells[12];
                     aVal = parseFloat(aPeCell?.dataset.sortValue || aPeCell?.textContent.replace(/[,\s]/g, '')) || 0;
                     bVal = parseFloat(bPeCell?.dataset.sortValue || bPeCell?.textContent.replace(/[,\s]/g, '')) || 0;
                     break;
                 case 'pb':
-                    const aPbCell = a.cells[11];
-                    const bPbCell = b.cells[11];
+                    // P/B is column 14 (index 13)
+                    const aPbCell = a.cells[13];
+                    const bPbCell = b.cells[13];
                     aVal = parseFloat(aPbCell?.dataset.sortValue || aPbCell?.textContent.replace(/[,\s]/g, '')) || 0;
                     bVal = parseFloat(bPbCell?.dataset.sortValue || bPbCell?.textContent.replace(/[,\s]/g, '')) || 0;
                     break;
                 case 'market_cap':
-                    const aMcCell = a.cells[12];
-                    const bMcCell = b.cells[12];
+                    // Market Cap is column 15 (index 14)
+                    const aMcCell = a.cells[14];
+                    const bMcCell = b.cells[14];
                     aVal = parseFloat(aMcCell?.dataset.sortValue || 0);
                     bVal = parseFloat(bMcCell?.dataset.sortValue || 0);
                     break;
@@ -1117,6 +1119,28 @@ includeHeader($pageTitle, $pageDescription);
                     const bValue = b.querySelector('td:nth-child(7)')?.textContent.replace(/[₹,]/g, '') || '0';
                     aVal = parseFloat(aValue) || 0;
                     bVal = parseFloat(bValue) || 0;
+                    break;
+                case 'div_yield':
+                    // Div Yield is column 18 (index 17)
+                    const aDivCell = a.cells[17];
+                    const bDivCell = b.cells[17];
+                    aVal = parseFloat(aDivCell?.textContent.replace(/[%,\s]/g, '')) || 0;
+                    bVal = parseFloat(bDivCell?.textContent.replace(/[%,\s]/g, '')) || 0;
+                    break;
+                case 'total_traded_value':
+                    // Traded Value is column 19 (index 18)
+                    const aTvCell = a.cells[18];
+                    const bTvCell = b.cells[18];
+                    // Parse formatted value (Cr/L)
+                    const aTvText = aTvCell?.textContent.replace(/[₹,\s]/g, '') || '0';
+                    const bTvText = bTvCell?.textContent.replace(/[₹,\s]/g, '') || '0';
+                    aVal = parseFloat(aTvText.replace(/[CrL]/g, '')) || 0;
+                    bVal = parseFloat(bTvText.replace(/[CrL]/g, '')) || 0;
+                    // Handle Cr/L multipliers
+                    if (aTvText.includes('Cr')) aVal *= 10000000;
+                    else if (aTvText.includes('L')) aVal *= 100000;
+                    if (bTvText.includes('Cr')) bVal *= 10000000;
+                    else if (bTvText.includes('L')) bVal *= 100000;
                     break;
                 default:
                     return 0;
