@@ -5,7 +5,7 @@
  * Runs every 30 minutes via cron
  * 
  * Cron: 0,30 * * * * /usr/bin/php /path/to/fetch_stock_data.php >> cron_stock.log 2>&1
- * Or: */30 * * * * (but use 0,30 format in comments to avoid parse errors)
+ * Note: Use 0,30 format instead of */30 to avoid PHP parse errors in comments
  */
 
 require_once __DIR__ . '/config.php';
