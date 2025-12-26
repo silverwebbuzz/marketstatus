@@ -250,32 +250,37 @@ def parse_futures_data(html):
 def main():
     print("Fetching futures data from Zerodha...")
     
-    # Try to load from temp file first (if exists and recent)
-    html = None
+    # Check if cached file exists and is valid
     if os.path.exists(TEMP_HTML_FILE):
-        file_age = time.time() - os.path.getmtime(TEMP_HTML_FILE)
-        if file_age < 3600:  # Less than 1 hour old
-            print(f"Loading from cached HTML file ({TEMP_HTML_FILE})...")
-            with open(TEMP_HTML_FILE, 'r', encoding='utf-8') as f:
-                html = f.read()
-        else:
-            print(f"Temp file is old ({int(file_age/60)} minutes), fetching fresh data...")
+        file_size = os.path.getsize(TEMP_HTML_FILE)
+        if file_size < 10000:  # Too small, likely invalid
+            print(f"⚠ Removing invalid cached file ({file_size} bytes)...")
+            os.remove(TEMP_HTML_FILE)
     
-    # Fetch HTML if not loaded from cache
+    # Always fetch fresh data (don't use cache)
+    print("Fetching fresh data from Zerodha...")
+    html = fetch_with_retry(URL, MAX_RETRIES, RETRY_DELAY)
+    
     if not html:
-        html = fetch_with_retry(URL, MAX_RETRIES, RETRY_DELAY)
-        
-        if not html:
-            # Try to use cached file as fallback
-            if os.path.exists(TEMP_HTML_FILE):
-                print("⚠ Using cached HTML file as fallback...")
+        # Try to use cached file as fallback only if fetch completely fails
+        if os.path.exists(TEMP_HTML_FILE):
+            file_size = os.path.getsize(TEMP_HTML_FILE)
+            if file_size > 10000:  # Only use if substantial
+                print("⚠ Fetch failed. Using cached HTML file as fallback...")
                 with open(TEMP_HTML_FILE, 'r', encoding='utf-8') as f:
                     html = f.read()
+                # Check if cached HTML is valid
+                if len(html) < 1000 or 'margin-calculator' not in html.lower():
+                    print("ERROR: Cached HTML file is invalid or too small")
+                    sys.exit(1)
             else:
-                print("ERROR: Failed to fetch data after multiple attempts.")
-                print("Zerodha may be rate-limiting requests.")
-                print("Please try again later or check if they have an API endpoint.")
+                print(f"ERROR: Cached file too small ({file_size} bytes)")
                 sys.exit(1)
+        else:
+            print("ERROR: Failed to fetch data after multiple attempts.")
+            print("Zerodha may be rate-limiting requests.")
+            print("Please try again later or check if they have an API endpoint.")
+            sys.exit(1)
     
     # Parse data
     print("Parsing data from HTML...")
