@@ -103,18 +103,6 @@ $response = curl_exec($ch);
 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
 
-// Debug: Log first stock to see available fields
-if ($httpCode === 200 && $response) {
-    $debugData = json_decode($response, true);
-    if (isset($debugData['data'][0])) {
-        $firstStock = $debugData['data'][0];
-        error_log("NSE API Sample Fields: " . implode(', ', array_keys($firstStock)));
-        if (isset($firstStock['meta'])) {
-            error_log("NSE API Meta Fields: " . implode(', ', array_keys($firstStock['meta'])));
-        }
-    }
-}
-
 if ($httpCode !== 200 || !$response) {
     echo "ERROR: Failed to fetch NSE data. HTTP Code: $httpCode\n";
     exit(1);
@@ -182,20 +170,7 @@ foreach ($nseData['data'] as $stock) {
     // ISIN
     $isin = $meta['isin'] ?? $stock['isin'] ?? '';
     
-    // Additional NSE fields - check both main and meta
-    // Market Cap: try multiple field names (ffmc = free float market cap)
-    $marketCap = (float)($stock['marketCap'] ?? $stock['ffmc'] ?? $stock['mcap'] ?? $meta['marketCap'] ?? $meta['ffmc'] ?? 0);
-    
-    // PE Ratio: try multiple field names
-    $pe = (float)($stock['pe'] ?? $stock['peRatio'] ?? $stock['pE'] ?? $meta['pe'] ?? $meta['peRatio'] ?? 0);
-    
-    // PB Ratio: try multiple field names
-    $pb = (float)($stock['pb'] ?? $stock['pbRatio'] ?? $stock['pB'] ?? $meta['pb'] ?? $meta['pbRatio'] ?? 0);
-    
-    // Dividend Yield: try multiple field names
-    $divYield = (float)($stock['divYield'] ?? $stock['dividendYield'] ?? $stock['divYld'] ?? $meta['divYield'] ?? $meta['dividendYield'] ?? 0);
-    
-    // Face Value
+    // Face Value (keeping for potential future use, but not displayed)
     $faceValue = (float)($stock['faceValue'] ?? $meta['faceValue'] ?? 0);
     
     // Additional fields from meta
@@ -262,10 +237,6 @@ foreach ($nseData['data'] as $stock) {
         'per_change_365d' => $perChange365d !== null ? round($perChange365d, 2) : null,
         'per_change_30d' => $perChange30d !== null ? round($perChange30d, 2) : null,
         'industry' => $industry,
-        'market_cap' => $marketCap > 0 ? round($marketCap, 2) : null,
-        'pe' => $pe > 0 ? round($pe, 2) : null,
-        'pb' => $pb > 0 ? round($pb, 2) : null,
-        'div_yield' => $divYield > 0 ? round($divYield, 2) : null,
         'face_value' => $faceValue > 0 ? round($faceValue, 2) : null,
         'active_series' => $activeSeries,
         'is_fno_sec' => $isFNOSec,

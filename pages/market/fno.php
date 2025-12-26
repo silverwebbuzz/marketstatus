@@ -205,20 +205,8 @@ includeHeader($pageTitle, $pageDescription);
                         <th class="sortable" data-sort="change_percent">
                             Change % <span class="sort-indicator">↕</span>
                         </th>
-                        <th class="sortable" data-sort="pe">
-                            P/E <span class="sort-indicator">↕</span>
-                        </th>
-                        <th class="sortable" data-sort="pb">
-                            P/B <span class="sort-indicator">↕</span>
-                        </th>
-                        <th class="sortable" data-sort="market_cap">
-                            Market Cap <span class="sort-indicator">↕</span>
-                        </th>
                         <th>Company Name</th>
                         <th>Industry</th>
-                        <th class="sortable" data-sort="div_yield">
-                            Div Yield <span class="sort-indicator">↕</span>
-                        </th>
                         <th class="sortable" data-sort="total_traded_value">
                             Traded Value <span class="sort-indicator">↕</span>
                         </th>
@@ -345,36 +333,6 @@ includeHeader($pageTitle, $pageDescription);
                                     <span class="no-data-badge">N/A</span>
                                 <?php endif; ?>
                             </td>
-                            <td data-sort-value="<?php echo $stockInfo['pe'] ?? 0; ?>">
-                                <?php if ($stockInfo && isset($stockInfo['pe']) && $stockInfo['pe'] > 0): ?>
-                                    <?php echo formatNumber($stockInfo['pe'], 2); ?>
-                                <?php else: ?>
-                                    <span class="no-data-badge">N/A</span>
-                                <?php endif; ?>
-                            </td>
-                            <td data-sort-value="<?php echo $stockInfo['pb'] ?? 0; ?>">
-                                <?php if ($stockInfo && isset($stockInfo['pb']) && $stockInfo['pb'] > 0): ?>
-                                    <?php echo formatNumber($stockInfo['pb'], 2); ?>
-                                <?php else: ?>
-                                    <span class="no-data-badge">N/A</span>
-                                <?php endif; ?>
-                            </td>
-                            <td data-sort-value="<?php echo $stockInfo['market_cap'] ?? 0; ?>">
-                                <?php if ($stockInfo && isset($stockInfo['market_cap']) && $stockInfo['market_cap'] > 0): ?>
-                                    <?php 
-                                    $marketCap = $stockInfo['market_cap'];
-                                    if ($marketCap >= 10000000) {
-                                        echo '₹' . formatNumber($marketCap / 10000000, 2) . ' Cr';
-                                    } elseif ($marketCap >= 100000) {
-                                        echo '₹' . formatNumber($marketCap / 100000, 2) . ' L';
-                                    } else {
-                                        echo '₹' . formatNumber($marketCap, 2);
-                                    }
-                                    ?>
-                                <?php else: ?>
-                                    <span class="no-data-badge">N/A</span>
-                                <?php endif; ?>
-                            </td>
                             <td>
                                 <?php if ($stockInfo && isset($stockInfo['company_name']) && $stockInfo['company_name']): ?>
                                     <span class="company-name" title="<?php echo e($stockInfo['company_name']); ?>">
@@ -387,13 +345,6 @@ includeHeader($pageTitle, $pageDescription);
                             <td>
                                 <?php if ($stockInfo && isset($stockInfo['industry']) && $stockInfo['industry']): ?>
                                     <span class="industry-badge"><?php echo e($stockInfo['industry']); ?></span>
-                                <?php else: ?>
-                                    <span class="no-data-badge">N/A</span>
-                                <?php endif; ?>
-                            </td>
-                            <td>
-                                <?php if ($stockInfo && isset($stockInfo['div_yield']) && $stockInfo['div_yield'] > 0): ?>
-                                    <?php echo formatNumber($stockInfo['div_yield'], 2); ?>%
                                 <?php else: ?>
                                     <span class="no-data-badge">N/A</span>
                                 <?php endif; ?>
@@ -1112,27 +1063,6 @@ includeHeader($pageTitle, $pageDescription);
                     aVal = parseFloat(aChangePercentCell?.dataset.sortValue || aChangePercentCell?.textContent.replace(/[+%,\s]/g, '')) || 0;
                     bVal = parseFloat(bChangePercentCell?.dataset.sortValue || bChangePercentCell?.textContent.replace(/[+%,\s]/g, '')) || 0;
                     break;
-                case 'pe':
-                    // P/E is column 14 (index 13): Symbol(0), Expiry(1), OHLC(2), Current(3), Futures(4), Lot(5), Contract(6), MarginRate(7), NRML(8), MWPL(9), Volume(10), Change(11), Change%(12), P/E(13)
-                    const aPeCell = a.cells[13];
-                    const bPeCell = b.cells[13];
-                    aVal = parseFloat(aPeCell?.dataset.sortValue || aPeCell?.textContent.replace(/[,\s]/g, '')) || 0;
-                    bVal = parseFloat(bPeCell?.dataset.sortValue || bPeCell?.textContent.replace(/[,\s]/g, '')) || 0;
-                    break;
-                case 'pb':
-                    // P/B is column 15 (index 14)
-                    const aPbCell = a.cells[14];
-                    const bPbCell = b.cells[14];
-                    aVal = parseFloat(aPbCell?.dataset.sortValue || aPbCell?.textContent.replace(/[,\s]/g, '')) || 0;
-                    bVal = parseFloat(bPbCell?.dataset.sortValue || bPbCell?.textContent.replace(/[,\s]/g, '')) || 0;
-                    break;
-                case 'market_cap':
-                    // Market Cap is column 16 (index 15)
-                    const aMcCell = a.cells[15];
-                    const bMcCell = b.cells[15];
-                    aVal = parseFloat(aMcCell?.dataset.sortValue || 0);
-                    bVal = parseFloat(bMcCell?.dataset.sortValue || 0);
-                    break;
                 case 'price':
                     const aPrice = a.querySelector('td:nth-child(5)')?.textContent.replace(/[₹,]/g, '') || '0';
                     const bPrice = b.querySelector('td:nth-child(5)')?.textContent.replace(/[₹,]/g, '') || '0';
@@ -1145,17 +1075,10 @@ includeHeader($pageTitle, $pageDescription);
                     aVal = parseFloat(aValue) || 0;
                     bVal = parseFloat(bValue) || 0;
                     break;
-                case 'div_yield':
-                    // Div Yield is column 19 (index 18): after Company(16), Industry(17), DivYield(18)
-                    const aDivCell = a.cells[18];
-                    const bDivCell = b.cells[18];
-                    aVal = parseFloat(aDivCell?.textContent.replace(/[%,\s]/g, '')) || 0;
-                    bVal = parseFloat(bDivCell?.textContent.replace(/[%,\s]/g, '')) || 0;
-                    break;
                 case 'total_traded_value':
-                    // Traded Value is column 20 (index 19)
-                    const aTvCell = a.cells[19];
-                    const bTvCell = b.cells[19];
+                    // Traded Value is column 17 (index 16): after Company(14), Industry(15), TradedValue(16)
+                    const aTvCell = a.cells[16];
+                    const bTvCell = b.cells[16];
                     // Parse formatted value (Cr/L)
                     const aTvText = aTvCell?.textContent.replace(/[₹,\s]/g, '') || '0';
                     const bTvText = bTvCell?.textContent.replace(/[₹,\s]/g, '') || '0';
