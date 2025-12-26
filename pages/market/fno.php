@@ -43,6 +43,15 @@ if ($futuresData && isset($futuresData['data'])) {
     }
 }
 
+// Load stock data (OHLC, Volume, Indicators)
+$stockData = loadJsonData('stock_data.json');
+$stockDataMap = [];
+if ($stockData && isset($stockData['data'])) {
+    foreach ($stockData['data'] as $symbol => $data) {
+        $stockDataMap[strtoupper($symbol)] = $data;
+    }
+}
+
 includeHeader($pageTitle, $pageDescription);
 ?>
 
@@ -112,6 +121,13 @@ includeHeader($pageTitle, $pageDescription);
                         <th class="sortable" data-sort="expiry">
                             Expiry <span class="sort-indicator">↕</span>
                         </th>
+                        <th class="sortable" data-sort="current_price">
+                            Current Price <span class="sort-indicator">↕</span>
+                        </th>
+                        <th>OHLC</th>
+                        <th class="sortable" data-sort="volume">
+                            Volume <span class="sort-indicator">↕</span>
+                        </th>
                         <th class="sortable" data-sort="lot_size">
                             Lot Size <span class="sort-indicator">↕</span>
                         </th>
@@ -125,11 +141,12 @@ includeHeader($pageTitle, $pageDescription);
                             Margin Rate <span class="sort-indicator">↕</span>
                         </th>
                         <th class="sortable" data-sort="price">
-                            Price <span class="sort-indicator">↕</span>
+                            Futures Price <span class="sort-indicator">↕</span>
                         </th>
                         <th class="sortable" data-sort="contract_value">
                             Contract Value <span class="sort-indicator">↕</span>
                         </th>
+                        <th>Indicators</th>
                     </tr>
                 </thead>
                 <tbody id="futures-tbody">
@@ -140,12 +157,13 @@ includeHeader($pageTitle, $pageDescription);
                         });
                         $firstContract = $contracts[0];
                         $contractCount = count($contracts);
+                        $symbolUpper = strtoupper($symbol);
+                        $stockInfo = $stockDataMap[$symbolUpper] ?? null;
                     ?>
-                        <tr class="symbol-row" data-symbol="<?php echo e(strtoupper($symbol)); ?>" data-expiry="<?php echo e($firstContract['expiry'] ?? ''); ?>" data-margin-rate="<?php echo e($firstContract['nrml_margin_rate'] ?? 0); ?>">
+                        <tr class="symbol-row" data-symbol="<?php echo e($symbolUpper); ?>" data-expiry="<?php echo e($firstContract['expiry'] ?? ''); ?>" data-margin-rate="<?php echo e($firstContract['nrml_margin_rate'] ?? 0); ?>" data-current-price="<?php echo e($stockInfo['current_price'] ?? 0); ?>" data-volume="<?php echo e($stockInfo['volume'] ?? 0); ?>">
                             <td>
                                 <strong><?php echo e($symbol); ?></strong>
                                 <?php if ($contractCount > 1): ?>
-                                    <span class="contract-count">(<?php echo $contractCount; ?> contracts)</span>
                                     <button class="toggle-details" data-symbol="<?php echo e($symbol); ?>" title="Click to show/hide all contracts">
                                         <span class="toggle-icon">▼</span>
                                     </button>
@@ -155,6 +173,32 @@ includeHeader($pageTitle, $pageDescription);
                                 <?php echo e($firstContract['expiry'] ?? 'N/A'); ?>
                                 <?php if ($contractCount > 1): ?>
                                     <span class="more-expiries" title="Click button to see all expiries">+<?php echo ($contractCount - 1); ?> more</span>
+                                <?php endif; ?>
+                            </td>
+                            <td class="price-cell">
+                                <?php if ($stockInfo && isset($stockInfo['current_price'])): ?>
+                                    ₹<?php echo formatNumber($stockInfo['current_price'], 2); ?>
+                                <?php else: ?>
+                                    <span class="no-data-badge">N/A</span>
+                                <?php endif; ?>
+                            </td>
+                            <td class="ohlc-cell">
+                                <?php if ($stockInfo): ?>
+                                    <div class="ohlc-compact">
+                                        <span>O: ₹<?php echo formatNumber($stockInfo['open'] ?? 0, 2); ?></span>
+                                        <span>H: ₹<?php echo formatNumber($stockInfo['high'] ?? 0, 2); ?></span>
+                                        <span>L: ₹<?php echo formatNumber($stockInfo['low'] ?? 0, 2); ?></span>
+                                        <span>C: ₹<?php echo formatNumber($stockInfo['close'] ?? 0, 2); ?></span>
+                                    </div>
+                                <?php else: ?>
+                                    <span class="no-data-badge">N/A</span>
+                                <?php endif; ?>
+                            </td>
+                            <td>
+                                <?php if ($stockInfo && isset($stockInfo['volume'])): ?>
+                                    <?php echo formatNumber($stockInfo['volume'], 0); ?>
+                                <?php else: ?>
+                                    <span class="no-data-badge">N/A</span>
                                 <?php endif; ?>
                             </td>
                             <td><?php echo isset($firstContract['lot_size']) ? number_format($firstContract['lot_size']) : 'N/A'; ?></td>
@@ -170,12 +214,22 @@ includeHeader($pageTitle, $pageDescription);
                                 echo $contractValue > 0 ? '₹' . formatNumber($contractValue, 2) : 'N/A';
                                 ?>
                             </td>
+                            <td>
+                                <?php if ($stockInfo): ?>
+                                    <button class="btn-indicators" data-symbol="<?php echo e($symbol); ?>" onclick="showIndicators('<?php echo e($symbol); ?>')">
+                                        View
+                                    </button>
+                                <?php else: ?>
+                                    <span class="no-data-badge">N/A</span>
+                                <?php endif; ?>
+                            </td>
                         </tr>
                         <?php if ($contractCount > 1): ?>
                             <?php foreach (array_slice($contracts, 1) as $contract): ?>
                                 <tr class="detail-row hidden" data-parent-symbol="<?php echo e($symbol); ?>" data-expiry="<?php echo e($contract['expiry'] ?? ''); ?>" data-margin-rate="<?php echo e($contract['nrml_margin_rate'] ?? 0); ?>">
                                     <td class="indented">↳ <?php echo e($symbol); ?></td>
                                     <td><?php echo e($contract['expiry'] ?? 'N/A'); ?></td>
+                                    <td colspan="3"></td>
                                     <td><?php echo isset($contract['lot_size']) ? number_format($contract['lot_size']) : 'N/A'; ?></td>
                                     <td><?php echo isset($contract['mwpl']) && $contract['mwpl'] ? formatPercentage($contract['mwpl'], 2) : 'N/A'; ?></td>
                                     <td>₹<?php echo isset($contract['nrml_margin']) && $contract['nrml_margin'] ? formatNumber($contract['nrml_margin'], 0) : 'N/A'; ?></td>
@@ -189,6 +243,7 @@ includeHeader($pageTitle, $pageDescription);
                                         echo $contractValue > 0 ? '₹' . formatNumber($contractValue, 2) : 'N/A';
                                         ?>
                                     </td>
+                                    <td></td>
                                 </tr>
                             <?php endforeach; ?>
                         <?php endif; ?>
@@ -214,6 +269,15 @@ includeHeader($pageTitle, $pageDescription);
             <li>Data source: Zerodha Margin Calculator</li>
             <li>Please verify margins with your broker before trading</li>
         </ul>
+    </div>
+</div>
+
+<!-- Indicators Modal -->
+<div id="indicators-modal" class="modal">
+    <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <h2 id="modal-symbol">Symbol Indicators</h2>
+        <div id="indicators-content"></div>
     </div>
 </div>
 
@@ -307,11 +371,137 @@ includeHeader($pageTitle, $pageDescription);
     color: #666;
 }
 
-.contract-count {
+.ohlc-compact {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
     font-size: 11px;
+}
+
+.ohlc-compact span {
+    white-space: nowrap;
+}
+
+.price-cell {
+    font-weight: 600;
+    color: #0066cc;
+}
+
+.no-data-badge {
+    font-size: 11px;
+    color: #999;
+    font-style: italic;
+}
+
+.btn-indicators {
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.btn-indicators:hover {
+    background: #218838;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 8px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    color: #000;
+}
+
+.indicators-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.indicator-card {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    border-left: 4px solid #0066cc;
+}
+
+.indicator-card h4 {
+    margin: 0 0 10px 0;
+    color: #0066cc;
+    font-size: 14px;
+}
+
+.indicator-card .value {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.indicator-card .label {
+    font-size: 12px;
     color: #666;
-    font-weight: normal;
-    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.crash-signals {
+    background: #fff3cd;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.crash-signals.high {
+    background: #f8d7da;
+    border-left: 4px solid #dc3545;
+}
+
+.crash-signals.medium {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+}
+
+.crash-signals.low {
+    background: #d1ecf1;
+    border-left: 4px solid #17a2b8;
+}
+
+.signal-item {
+    padding: 5px 0;
+    font-size: 13px;
 }
 
 .more-expiries {
@@ -567,15 +757,23 @@ includeHeader($pageTitle, $pageDescription);
                     aVal = parseFloat(a.dataset.marginRate) || 0;
                     bVal = parseFloat(b.dataset.marginRate) || 0;
                     break;
+                case 'current_price':
+                    aVal = parseFloat(a.dataset.currentPrice) || 0;
+                    bVal = parseFloat(b.dataset.currentPrice) || 0;
+                    break;
+                case 'volume':
+                    aVal = parseFloat(a.dataset.volume) || 0;
+                    bVal = parseFloat(b.dataset.volume) || 0;
+                    break;
                 case 'price':
-                    const aPrice = a.querySelector('td:nth-child(7)')?.textContent.replace(/[₹,]/g, '') || '0';
-                    const bPrice = b.querySelector('td:nth-child(7)')?.textContent.replace(/[₹,]/g, '') || '0';
+                    const aPrice = a.querySelector('td:nth-child(10)')?.textContent.replace(/[₹,]/g, '') || '0';
+                    const bPrice = b.querySelector('td:nth-child(10)')?.textContent.replace(/[₹,]/g, '') || '0';
                     aVal = parseFloat(aPrice) || 0;
                     bVal = parseFloat(bPrice) || 0;
                     break;
                 case 'contract_value':
-                    const aValue = a.querySelector('td:nth-child(8)')?.textContent.replace(/[₹,]/g, '') || '0';
-                    const bValue = b.querySelector('td:nth-child(8)')?.textContent.replace(/[₹,]/g, '') || '0';
+                    const aValue = a.querySelector('td:nth-child(11)')?.textContent.replace(/[₹,]/g, '') || '0';
+                    const bValue = b.querySelector('td:nth-child(11)')?.textContent.replace(/[₹,]/g, '') || '0';
                     aVal = parseFloat(aValue) || 0;
                     bVal = parseFloat(bValue) || 0;
                     break;
@@ -697,6 +895,154 @@ includeHeader($pageTitle, $pageDescription);
     // Initial count
     updateVisibleCount();
 })();
+
+// Stock data for indicators
+const stockData = <?php echo json_encode($stockDataMap, JSON_UNESCAPED_UNICODE); ?>;
+
+// Show indicators modal
+function showIndicators(symbol) {
+    const modal = document.getElementById('indicators-modal');
+    const modalSymbol = document.getElementById('modal-symbol');
+    const content = document.getElementById('indicators-content');
+    
+    const data = stockData[symbol.toUpperCase()];
+    if (!data) {
+        content.innerHTML = '<p>No data available for ' + symbol + '</p>';
+        modal.style.display = 'block';
+        return;
+    }
+    
+    modalSymbol.textContent = symbol + ' - Technical Indicators';
+    
+    let html = '<div class="indicators-grid">';
+    
+    // OHLC Data
+    html += '<div class="indicator-card">';
+    html += '<h4>OHLC Data</h4>';
+    html += '<div class="value">Open: ₹' + (data.open || 0).toFixed(2) + '</div>';
+    html += '<div class="value">High: ₹' + (data.high || 0).toFixed(2) + '</div>';
+    html += '<div class="value">Low: ₹' + (data.low || 0).toFixed(2) + '</div>';
+    html += '<div class="value">Close: ₹' + (data.close || 0).toFixed(2) + '</div>';
+    html += '<div class="value">Current: ₹' + (data.current_price || 0).toFixed(2) + '</div>';
+    html += '<div class="label">Volume: ' + (data.volume || 0).toLocaleString() + '</div>';
+    html += '</div>';
+    
+    // 52-Week High/Low
+    html += '<div class="indicator-card">';
+    html += '<h4>52-Week Range</h4>';
+    html += '<div class="value">High: ₹' + (data.fifty_two_week_high || 0).toFixed(2) + '</div>';
+    html += '<div class="value">Low: ₹' + (data.fifty_two_week_low || 0).toFixed(2) + '</div>';
+    const range = (data.fifty_two_week_high || 0) - (data.fifty_two_week_low || 0);
+    html += '<div class="label">Range: ₹' + range.toFixed(2) + '</div>';
+    html += '</div>';
+    
+    // DMA
+    if (data.dma) {
+        html += '<div class="indicator-card">';
+        html += '<h4>Daily Moving Averages (DMA)</h4>';
+        html += '<div class="value">5 DMA: ₹' + (data.dma.dma5 || 0).toFixed(2) + '</div>';
+        html += '<div class="value">10 DMA: ₹' + (data.dma.dma10 || 0).toFixed(2) + '</div>';
+        html += '<div class="value">20 DMA: ₹' + (data.dma.dma20 || 0).toFixed(2) + '</div>';
+        html += '<div class="value">50 DMA: ₹' + (data.dma.dma50 || 0).toFixed(2) + '</div>';
+        html += '<div class="value">100 DMA: ₹' + (data.dma.dma100 || 0).toFixed(2) + '</div>';
+        html += '<div class="value">200 DMA: ₹' + (data.dma.dma200 || 0).toFixed(2) + '</div>';
+        
+        // Trend bias
+        const price = data.current_price || 0;
+        const dma20 = data.dma.dma20 || 0;
+        const dma50 = data.dma.dma50 || 0;
+        let trend = 'Neutral';
+        if (price > dma20 && price > dma50) {
+            trend = '<span style="color: green;">Bullish</span>';
+        } else if (price < dma20 && price < dma50) {
+            trend = '<span style="color: red;">Bearish</span>';
+        }
+        html += '<div class="label" style="margin-top: 10px;">Trend: ' + trend + '</div>';
+        html += '</div>';
+    }
+    
+    // Pivot Points
+    if (data.pivot_points) {
+        html += '<div class="indicator-card">';
+        html += '<h4>Pivot Points</h4>';
+        html += '<div class="value">Pivot (P): ₹' + (data.pivot_points.pivot || 0).toFixed(2) + '</div>';
+        html += '<div class="label">Resistance Levels:</div>';
+        html += '<div>R1: ₹' + (data.pivot_points.r1 || 0).toFixed(2) + '</div>';
+        html += '<div>R2: ₹' + (data.pivot_points.r2 || 0).toFixed(2) + '</div>';
+        html += '<div>R3: ₹' + (data.pivot_points.r3 || 0).toFixed(2) + '</div>';
+        html += '<div class="label" style="margin-top: 10px;">Support Levels:</div>';
+        html += '<div>S1: ₹' + (data.pivot_points.s1 || 0).toFixed(2) + '</div>';
+        html += '<div>S2: ₹' + (data.pivot_points.s2 || 0).toFixed(2) + '</div>';
+        html += '<div>S3: ₹' + (data.pivot_points.s3 || 0).toFixed(2) + '</div>';
+        
+        // Pivot bias
+        const price = data.current_price || 0;
+        const pivot = data.pivot_points.pivot || 0;
+        let bias = price > pivot ? '<span style="color: green;">Above Pivot (Bullish)</span>' : '<span style="color: red;">Below Pivot (Bearish)</span>';
+        html += '<div class="label" style="margin-top: 10px;">Bias: ' + bias + '</div>';
+        html += '</div>';
+    }
+    
+    // Fibonacci Levels
+    if (data.fibonacci) {
+        html += '<div class="indicator-card">';
+        html += '<h4>Fibonacci Levels</h4>';
+        html += '<div>0% (High): ₹' + (data.fibonacci.fib_0 || 0).toFixed(2) + '</div>';
+        html += '<div>23.6%: ₹' + (data.fibonacci['fib_23.6'] || 0).toFixed(2) + '</div>';
+        html += '<div>38.2%: ₹' + (data.fibonacci['fib_38.2'] || 0).toFixed(2) + '</div>';
+        html += '<div>50%: ₹' + (data.fibonacci.fib_50 || 0).toFixed(2) + '</div>';
+        html += '<div>61.8%: ₹' + (data.fibonacci['fib_61.8'] || 0).toFixed(2) + '</div>';
+        html += '<div>100% (Low): ₹' + (data.fibonacci.fib_100 || 0).toFixed(2) + '</div>';
+        html += '</div>';
+    }
+    
+    // Target Prices
+    if (data.targets) {
+        html += '<div class="indicator-card">';
+        html += '<h4>Target Prices</h4>';
+        html += '<div class="value">Target 1: ₹' + (data.targets.target_1 || 0).toFixed(2) + '</div>';
+        html += '<div class="value">Fib 127%: ₹' + (data.targets.target_fib_127 || 0).toFixed(2) + '</div>';
+        html += '<div class="value">Fib 162%: ₹' + (data.targets.target_fib_162 || 0).toFixed(2) + '</div>';
+        html += '</div>';
+    }
+    
+    html += '</div>';
+    
+    // Crash Signals
+    if (data.crash_signals) {
+        const riskLevel = data.crash_signals.risk_level || 'LOW';
+        const signalCount = data.crash_signals.signal_count || 0;
+        html += '<div class="crash-signals ' + riskLevel.toLowerCase() + '">';
+        html += '<h4>Crash Probability Signals</h4>';
+        html += '<div class="value">Risk Level: <strong>' + riskLevel + '</strong> (' + signalCount + ' signals)</div>';
+        if (data.crash_signals.signals && data.crash_signals.signals.length > 0) {
+            html += '<div style="margin-top: 10px;">';
+            data.crash_signals.signals.forEach(signal => {
+                html += '<div class="signal-item">⚠ ' + signal + '</div>';
+            });
+            html += '</div>';
+        }
+        if (signalCount >= 3) {
+            html += '<div style="margin-top: 10px; color: #dc3545; font-weight: bold;">⚠️ HIGH CRASH PROBABILITY - 3+ signals detected</div>';
+        }
+        html += '</div>';
+    }
+    
+    content.innerHTML = html;
+    modal.style.display = 'block';
+}
+
+// Close modal
+document.querySelector('.modal-close').addEventListener('click', function() {
+    document.getElementById('indicators-modal').style.display = 'none';
+});
+
+window.onclick = function(event) {
+    const modal = document.getElementById('indicators-modal');
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}
 </script>
 
 <?php includeFooter(); ?>
