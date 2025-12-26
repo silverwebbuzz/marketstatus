@@ -199,6 +199,18 @@ includeHeader($pageTitle, $pageDescription);
                         <th class="sortable" data-sort="volume">
                             Volume <span class="sort-indicator">↕</span>
                         </th>
+                        <th class="sortable" data-sort="change_percent">
+                            Change % <span class="sort-indicator">↕</span>
+                        </th>
+                        <th class="sortable" data-sort="pe">
+                            P/E <span class="sort-indicator">↕</span>
+                        </th>
+                        <th class="sortable" data-sort="pb">
+                            P/B <span class="sort-indicator">↕</span>
+                        </th>
+                        <th class="sortable" data-sort="market_cap">
+                            Market Cap <span class="sort-indicator">↕</span>
+                        </th>
                         <th>Indicators</th>
                     </tr>
                 </thead>
@@ -236,7 +248,7 @@ includeHeader($pageTitle, $pageDescription);
                             }
                         }
                     ?>
-                        <tr class="symbol-row" data-symbol="<?php echo e($symbolUpper); ?>" data-expiry="<?php echo e($firstContract['expiry'] ?? ''); ?>" data-margin-rate="<?php echo e($firstContract['nrml_margin_rate'] ?? 0); ?>" data-current-price="<?php echo e($stockInfo['current_price'] ?? 0); ?>" data-volume="<?php echo e($stockInfo['volume'] ?? 0); ?>">
+                        <tr class="symbol-row" data-symbol="<?php echo e($symbolUpper); ?>" data-expiry="<?php echo e($firstContract['expiry'] ?? ''); ?>" data-margin-rate="<?php echo e($firstContract['nrml_margin_rate'] ?? 0); ?>" data-current-price="<?php echo e($stockInfo['current_price'] ?? 0); ?>" data-volume="<?php echo e($stockInfo['volume'] ?? 0); ?>" data-industry="<?php echo e($stockInfo['industry'] ?? ''); ?>">
                             <td>
                                 <strong><?php echo e($symbol); ?></strong>
                                 <?php if ($contractCount > 1): ?>
@@ -296,6 +308,49 @@ includeHeader($pageTitle, $pageDescription);
                                     <span class="no-data-badge">N/A</span>
                                 <?php endif; ?>
                             </td>
+                            <td class="change-cell" data-sort-value="<?php echo $stockInfo['change_percent'] ?? 0; ?>">
+                                <?php if ($stockInfo && isset($stockInfo['change_percent'])): ?>
+                                    <?php 
+                                    $changePercent = $stockInfo['change_percent'];
+                                    $changeClass = $changePercent > 0 ? 'positive' : ($changePercent < 0 ? 'negative' : '');
+                                    ?>
+                                    <span class="change-percent <?php echo $changeClass; ?>">
+                                        <?php echo ($changePercent > 0 ? '+' : '') . formatNumber($changePercent, 2); ?>%
+                                    </span>
+                                <?php else: ?>
+                                    <span class="no-data-badge">N/A</span>
+                                <?php endif; ?>
+                            </td>
+                            <td data-sort-value="<?php echo $stockInfo['pe'] ?? 0; ?>">
+                                <?php if ($stockInfo && isset($stockInfo['pe']) && $stockInfo['pe'] > 0): ?>
+                                    <?php echo formatNumber($stockInfo['pe'], 2); ?>
+                                <?php else: ?>
+                                    <span class="no-data-badge">N/A</span>
+                                <?php endif; ?>
+                            </td>
+                            <td data-sort-value="<?php echo $stockInfo['pb'] ?? 0; ?>">
+                                <?php if ($stockInfo && isset($stockInfo['pb']) && $stockInfo['pb'] > 0): ?>
+                                    <?php echo formatNumber($stockInfo['pb'], 2); ?>
+                                <?php else: ?>
+                                    <span class="no-data-badge">N/A</span>
+                                <?php endif; ?>
+                            </td>
+                            <td data-sort-value="<?php echo $stockInfo['market_cap'] ?? 0; ?>">
+                                <?php if ($stockInfo && isset($stockInfo['market_cap']) && $stockInfo['market_cap'] > 0): ?>
+                                    <?php 
+                                    $marketCap = $stockInfo['market_cap'];
+                                    if ($marketCap >= 10000000) {
+                                        echo '₹' . formatNumber($marketCap / 10000000, 2) . ' Cr';
+                                    } elseif ($marketCap >= 100000) {
+                                        echo '₹' . formatNumber($marketCap / 100000, 2) . ' L';
+                                    } else {
+                                        echo '₹' . formatNumber($marketCap, 2);
+                                    }
+                                    ?>
+                                <?php else: ?>
+                                    <span class="no-data-badge">N/A</span>
+                                <?php endif; ?>
+                            </td>
                             <td>
                                 <?php if ($stockInfo): ?>
                                     <button class="btn-indicators" data-symbol="<?php echo e($symbol); ?>" onclick="showIndicators('<?php echo e($symbol); ?>')">
@@ -311,7 +366,7 @@ includeHeader($pageTitle, $pageDescription);
                                 <tr class="detail-row hidden" data-parent-symbol="<?php echo e($symbol); ?>" data-expiry="<?php echo e($contract['expiry'] ?? ''); ?>" data-margin-rate="<?php echo e($contract['nrml_margin_rate'] ?? 0); ?>">
                                     <td class="indented">↳ <?php echo e($symbol); ?></td>
                                     <td><?php echo e($contract['expiry'] ?? 'N/A'); ?></td>
-                                    <td colspan="1"></td>
+                                    <td colspan="3"></td>
                                     <td colspan="1"></td>
                                     <td>₹<?php echo isset($contract['price']) && $contract['price'] ? formatNumber($contract['price'], 2) : 'N/A'; ?></td>
                                     <td><?php echo isset($contract['lot_size']) ? number_format($contract['lot_size']) : 'N/A'; ?></td>
@@ -326,7 +381,11 @@ includeHeader($pageTitle, $pageDescription);
                                     <td><?php echo isset($contract['nrml_margin_rate']) && $contract['nrml_margin_rate'] ? formatPercentage($contract['nrml_margin_rate'], 2) : 'N/A'; ?></td>
                                     <td>₹<?php echo isset($contract['nrml_margin']) && $contract['nrml_margin'] ? formatNumber($contract['nrml_margin'], 0) : 'N/A'; ?></td>
                                     <td><?php echo isset($contract['mwpl']) && $contract['mwpl'] ? formatPercentage($contract['mwpl'], 2) : 'N/A'; ?></td>
-                                    <td colspan="1"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td></td>
                                 </tr>
                             <?php endforeach; ?>
@@ -693,6 +752,23 @@ includeHeader($pageTitle, $pageDescription);
     color: #dc3545;
 }
 
+.change-percent {
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.change-percent.positive {
+    color: #28a745;
+}
+
+.change-percent.negative {
+    color: #dc3545;
+}
+
+.change-cell {
+    text-align: center;
+}
+
 .unchanged-item strong {
     color: #6c757d;
 }
@@ -931,6 +1007,30 @@ includeHeader($pageTitle, $pageDescription);
                 case 'volume':
                     aVal = parseFloat(a.dataset.volume) || 0;
                     bVal = parseFloat(b.dataset.volume) || 0;
+                    break;
+                case 'change_percent':
+                    const aChangeCell = a.querySelector('td.change-cell');
+                    const bChangeCell = b.querySelector('td.change-cell');
+                    aVal = parseFloat(aChangeCell?.dataset.sortValue || aChangeCell?.textContent.replace(/[+%,\s]/g, '')) || 0;
+                    bVal = parseFloat(bChangeCell?.dataset.sortValue || bChangeCell?.textContent.replace(/[+%,\s]/g, '')) || 0;
+                    break;
+                case 'pe':
+                    const aPeCell = a.cells[10];
+                    const bPeCell = b.cells[10];
+                    aVal = parseFloat(aPeCell?.dataset.sortValue || aPeCell?.textContent.replace(/[,\s]/g, '')) || 0;
+                    bVal = parseFloat(bPeCell?.dataset.sortValue || bPeCell?.textContent.replace(/[,\s]/g, '')) || 0;
+                    break;
+                case 'pb':
+                    const aPbCell = a.cells[11];
+                    const bPbCell = b.cells[11];
+                    aVal = parseFloat(aPbCell?.dataset.sortValue || aPbCell?.textContent.replace(/[,\s]/g, '')) || 0;
+                    bVal = parseFloat(bPbCell?.dataset.sortValue || bPbCell?.textContent.replace(/[,\s]/g, '')) || 0;
+                    break;
+                case 'market_cap':
+                    const aMcCell = a.cells[12];
+                    const bMcCell = b.cells[12];
+                    aVal = parseFloat(aMcCell?.dataset.sortValue || 0);
+                    bVal = parseFloat(bMcCell?.dataset.sortValue || 0);
                     break;
                 case 'price':
                     const aPrice = a.querySelector('td:nth-child(5)')?.textContent.replace(/[₹,]/g, '') || '0';
