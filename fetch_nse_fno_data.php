@@ -132,13 +132,17 @@ foreach ($nseData['data'] as $stock) {
     $symbolClean = preg_replace('/\s+/', '', $symbol); // Remove all spaces for key matching
     $symbolOriginal = $symbol; // Keep original for display
     
-    // Extract all available fields from NSE
+    // Extract meta object if available
+    $meta = $stock['meta'] ?? [];
+    
+    // Extract all available fields from NSE (check both main object and meta)
     $currentPrice = (float)($stock['lastPrice'] ?? $stock['ltp'] ?? 0);
     $open = (float)($stock['open'] ?? 0);
     $high = (float)($stock['dayHigh'] ?? $stock['high'] ?? 0);
     $low = (float)($stock['dayLow'] ?? $stock['low'] ?? 0);
     $close = (float)($stock['previousClose'] ?? $currentPrice);
     $volume = (int)($stock['totalTradedVolume'] ?? $stock['volume'] ?? 0);
+    $totalTradedValue = (float)($stock['totalTradedValue'] ?? 0);
     
     // 52-week high/low
     $fiftyTwoWeekHigh = (float)($stock['yearHigh'] ?? $stock['52WeekHigh'] ?? $high);
@@ -157,15 +161,36 @@ foreach ($nseData['data'] as $stock) {
         $advanceDecline['unchanged']++;
     }
     
-    // Industry
-    $industry = $stock['industry'] ?? $stock['industryName'] ?? '';
+    // Industry - check both main object and meta
+    $industry = $stock['industry'] ?? $meta['industry'] ?? $stock['industryName'] ?? '';
     
-    // Additional NSE fields
-    $marketCap = (float)($stock['marketCap'] ?? 0);
+    // Company name from meta
+    $companyName = $meta['companyName'] ?? $stock['companyName'] ?? '';
+    
+    // ISIN
+    $isin = $meta['isin'] ?? $stock['isin'] ?? '';
+    
+    // Additional NSE fields - check both main and meta
+    $marketCap = (float)($stock['marketCap'] ?? $stock['ffmc'] ?? 0);
     $pe = (float)($stock['pe'] ?? 0);
     $pb = (float)($stock['pb'] ?? 0);
     $divYield = (float)($stock['divYield'] ?? 0);
     $faceValue = (float)($stock['faceValue'] ?? 0);
+    
+    // Additional fields from meta
+    $activeSeries = $meta['activeSeries'] ?? [];
+    $isFNOSec = $meta['isFNOSec'] ?? false;
+    $isSLBSec = $meta['isSLBSec'] ?? false;
+    $isCASec = $meta['isCASec'] ?? false;
+    $isETFSec = $meta['isETFSec'] ?? false;
+    $isSuspended = $meta['isSuspended'] ?? false;
+    $isDelisted = $meta['isDelisted'] ?? false;
+    
+    // Additional price fields
+    $nearWKH = isset($stock['nearWKH']) ? (float)$stock['nearWKH'] : null;
+    $nearWKL = isset($stock['nearWKL']) ? (float)$stock['nearWKL'] : null;
+    $perChange365d = isset($stock['perChange365d']) ? (float)$stock['perChange365d'] : null;
+    $perChange30d = isset($stock['perChange30d']) ? (float)$stock['perChange30d'] : null;
     
     // Get futures contract data if available (use cleaned symbol for matching)
     $futuresContract = $futuresSymbolMap[$symbolClean] ?? $futuresSymbolMap[$symbolOriginal] ?? null;
@@ -193,11 +218,13 @@ foreach ($nseData['data'] as $stock) {
     // Calculate target prices
     $targets = calculateTargets($high, $low, $close);
     
-    // Build comprehensive stock data
+    // Build comprehensive stock data - include ALL available fields
     // Use cleaned symbol (no spaces) as key for better matching with futures data
     // Also store with original format as fallback
     $stockData[$symbolClean] = [
         'symbol' => $symbolOriginal, // Keep original symbol for display
+        'company_name' => $companyName,
+        'isin' => $isin,
         'current_price' => round($currentPrice, 2),
         'open' => round($open, 2),
         'high' => round($high, 2),
@@ -206,14 +233,26 @@ foreach ($nseData['data'] as $stock) {
         'change' => round($change, 2),
         'change_percent' => round($changePercent, 2),
         'volume' => $volume,
+        'total_traded_value' => $totalTradedValue > 0 ? round($totalTradedValue, 2) : null,
         'fifty_two_week_high' => round($fiftyTwoWeekHigh, 2),
         'fifty_two_week_low' => round($fiftyTwoWeekLow, 2),
+        'near_52w_high' => $nearWKH !== null ? round($nearWKH, 2) : null,
+        'near_52w_low' => $nearWKL !== null ? round($nearWKL, 2) : null,
+        'per_change_365d' => $perChange365d !== null ? round($perChange365d, 2) : null,
+        'per_change_30d' => $perChange30d !== null ? round($perChange30d, 2) : null,
         'industry' => $industry,
         'market_cap' => $marketCap > 0 ? round($marketCap, 2) : null,
         'pe' => $pe > 0 ? round($pe, 2) : null,
         'pb' => $pb > 0 ? round($pb, 2) : null,
         'div_yield' => $divYield > 0 ? round($divYield, 2) : null,
         'face_value' => $faceValue > 0 ? round($faceValue, 2) : null,
+        'active_series' => $activeSeries,
+        'is_fno_sec' => $isFNOSec,
+        'is_slb_sec' => $isSLBSec,
+        'is_ca_sec' => $isCASec,
+        'is_etf_sec' => $isETFSec,
+        'is_suspended' => $isSuspended,
+        'is_delisted' => $isDelisted,
         'dma' => [
             'dma5' => round($dma5, 2),
             'dma10' => round($dma10, 2),
