@@ -95,17 +95,75 @@ def fetch_with_retry(url, max_retries=3, initial_delay=5):
             response = session.get(url, headers=headers, timeout=60, allow_redirects=True)
             
             if response.status_code == 200:
+                # requests library should automatically decompress, but verify
+                html_content = response.text
+                
+                # Check if content looks like binary/compressed data
+                # If response.text is very short or contains binary chars, try manual decompression
+                raw_content = response.content
+                
+                # Check if raw content is compressed
+                is_compressed = False
+                if raw_content[:2] == b'\x1f\x8b':  # Gzip magic number
+                    is_compressed = True
+                    import gzip
+                    try:
+                        html_content = gzip.decompress(raw_content).decode('utf-8')
+                        print("  ✓ Decompressed gzip content")
+                    except Exception as e:
+                        print(f"  ⚠ Failed to decompress gzip: {e}")
+                elif len(raw_content) > 4 and raw_content[:4] in [b'\xce\xb2\xcf\x81', b'BrS\x01']:  # Brotli magic
+                    is_compressed = True
+                    try:
+                        import brotli
+                        html_content = brotli.decompress(raw_content).decode('utf-8')
+                        print("  ✓ Decompressed brotli content")
+                    except ImportError:
+                        print("  ⚠ Brotli not installed, trying requests default")
+                        html_content = response.text
+                    except Exception as e:
+                        print(f"  ⚠ Failed to decompress brotli: {e}")
+                
+                # Verify it's actually HTML text (not binary)
+                if len(html_content) > 0:
+                    # Check for HTML indicators
+                    has_html_tags = '<html' in html_content.lower() or '<!doctype' in html_content.lower() or '<body' in html_content.lower()
+                    has_symbols = '360ONE' in html_content or 'ABB' in html_content or 'ABCAPITAL' in html_content
+                    has_table = '<table' in html_content.lower() or '<tbody' in html_content.lower()
+                    
+                    if not has_html_tags and not has_symbols:
+                        # Might be binary or wrong encoding
+                        print(f"  ⚠ Content doesn't look like HTML")
+                        print(f"  First 200 bytes (hex): {raw_content[:200].hex()[:400]}")
+                        print(f"  First 200 chars (text): {html_content[:200]}")
+                        if attempt < max_retries:
+                            continue
+                
                 # Check if we got valid HTML (not a rate limit page)
-                if 'margin-calculator' in response.url.lower() and len(response.text) > 10000:
-                    # Save HTML to temp file
-                    os.makedirs(os.path.dirname(TEMP_HTML_FILE), exist_ok=True)
-                    with open(TEMP_HTML_FILE, 'w', encoding='utf-8') as f:
-                        f.write(response.text)
-                    print(f"✓ HTML saved to {TEMP_HTML_FILE}")
-                    return response.text
+                if 'margin-calculator' in response.url.lower() and len(html_content) > 10000:
+                    # Verify it's actually HTML text with expected content
+                    if has_html_tags or has_symbols or has_table:
+                        # Save HTML to temp file
+                        os.makedirs(os.path.dirname(TEMP_HTML_FILE), exist_ok=True)
+                        with open(TEMP_HTML_FILE, 'w', encoding='utf-8') as f:
+                            f.write(html_content)
+                        print(f"✓ HTML saved to {TEMP_HTML_FILE} ({len(html_content)} characters)")
+                        if has_symbols:
+                            print(f"✓ Found expected symbols in HTML")
+                        return html_content
+                    else:
+                        print(f"⚠ Got HTTP 200 but content doesn't look like valid HTML")
+                        print(f"  Has HTML tags: {has_html_tags}")
+                        print(f"  Has symbols: {has_symbols}")
+                        print(f"  Has table: {has_table}")
+                        if attempt < max_retries:
+                            continue
                 else:
-                    print(f"⚠ Got HTTP 200 but response seems invalid (may be rate limit page)")
-                    continue
+                    print(f"⚠ Got HTTP 200 but response seems invalid")
+                    print(f"  URL: {response.url}")
+                    print(f"  Content length: {len(html_content)}")
+                    if attempt < max_retries:
+                        continue
             elif response.status_code == 429:
                 print(f"HTTP 429 (Rate Limited) on attempt {attempt}")
                 continue
@@ -147,9 +205,99 @@ def parse_futures_data(html):
             except:
                 pass
     
+    # Debug: Check HTML content
+    print(f"HTML length: {len(html)} characters")
+    has_symbols = '360ONE' in html or 'ABB' in html or 'ABCAPITAL' in html
+    has_margin = 'NRML Margin' in html or 'nrml' in html.lower()
+    has_table_tag = '<table' in html.lower()
+    has_tbody_tag = '<tbody' in html.lower()
+    has_tr_tag = '<tr' in html.lower()
+    
+    print(f"  Contains symbols: {has_symbols}")
+    print(f"  Contains margin text: {has_margin}")
+    print(f"  Contains <table>: {has_table_tag}")
+    print(f"  Contains <tbody>: {has_tbody_tag}")
+    print(f"  Contains <tr>: {has_tr_tag}")
+    
     # Parse HTML table using BeautifulSoup
     soup = BeautifulSoup(html, 'html.parser')
+    
+    # Try multiple ways to find the table
     tables = soup.find_all('table')
+    
+    # Also try finding by class or id
+    if not tables:
+        tables = soup.find_all('table', class_=re.compile('table|margin|futures', re.I))
+    
+    # Try finding tbody directly (even without table tag)
+    if not tables and has_tbody_tag:
+        tbody = soup.find('tbody')
+        if tbody:
+            # Create a fake table structure
+            table = soup.new_tag('table')
+            table.append(tbody)
+            tables = [table]
+            print("  Found tbody without table tag, creating wrapper")
+    
+    # Try finding rows directly (maybe table structure is different)
+    if not tables and has_tr_tag:
+        # Look for rows that contain our symbols
+        all_rows = soup.find_all('tr')
+        if all_rows and len(all_rows) > 5:
+            # Check if any row contains expected data
+            for row in all_rows[:10]:
+                row_text = row.get_text()
+                if '360ONE' in row_text or 'ABB' in row_text or 'Lot size' in row_text:
+                    print(f"  Found {len(all_rows)} rows with data, creating table wrapper")
+                    # Create a fake table with all rows
+                    table = soup.new_tag('table')
+                    for r in all_rows:
+                        table.append(r)
+                    tables = [table]
+                    break
+    
+    # If still no tables, try regex parsing directly from HTML
+    if not tables and has_symbols:
+        print("  No table structure found, trying regex parsing from HTML...")
+        # Extract data using regex patterns directly from HTML
+        # Pattern: **SYMBOL** DD-MMM-YYYY Lot size XXX MWPL XX.XX%
+        pattern = r'\*\*([A-Z0-9&]+(?:\s[A-Z0-9&]+)*)\*\*\s+(\d{1,2}-[A-Z]{3}-\d{4})\s+Lot\s+size\s+(\d+)\s+MWPL\s+([\d.]+)%'
+        matches = re.finditer(pattern, html, re.IGNORECASE)
+        
+        for match in matches:
+            symbol = match.group(1).strip()
+            expiry = match.group(2).upper()
+            lot_size = int(match.group(3))
+            mwpl = float(match.group(4))
+            
+            # Find the values after this match (NRML Margin, Rate, Price)
+            # Look for numbers after the match in the same line/context
+            match_end = match.end()
+            context = html[match_end:match_end+200]  # Next 200 chars
+            
+            # Extract NRML Margin, Rate, Price using regex
+            nrml_match = re.search(r'(\d{1,3}(?:,\d{3})*)', context)
+            rate_match = re.search(r'(\d+\.?\d*)%', context)
+            price_match = re.search(r'(\d+\.?\d*)', context[50:])  # Price usually comes later
+            
+            nrml_margin = float(nrml_match.group(1).replace(',', '')) if nrml_match else None
+            nrml_margin_rate = float(rate_match.group(1)) if rate_match else None
+            price = float(price_match.group(1)) if price_match else None
+            
+            if symbol and expiry and nrml_margin:
+                futures_data.append({
+                    'symbol': symbol,
+                    'expiry': expiry,
+                    'lot_size': lot_size,
+                    'mwpl': mwpl,
+                    'nrml_margin': nrml_margin,
+                    'nrml_margin_rate': nrml_margin_rate,
+                    'price': price,
+                })
+        
+        if futures_data:
+            print(f"  Extracted {len(futures_data)} contracts using regex")
+            return futures_data
     
     print(f"Found {len(tables)} table(s) in HTML")
     
@@ -157,12 +305,19 @@ def parse_futures_data(html):
         rows = table.find_all('tr')
         print(f"Processing table {table_idx + 1} with {len(rows)} rows...")
         
+        if len(rows) == 0:
+            # Try to find rows in tbody
+            tbody = table.find('tbody')
+            if tbody:
+                rows = tbody.find_all('tr')
+                print(f"  Found {len(rows)} rows in tbody")
+        
         # Skip first row if it's a header
         start_idx = 0
         if rows:
             first_row_cells = rows[0].find_all(['td', 'th'])
             first_cell_text = first_row_cells[0].get_text(strip=True).lower() if first_row_cells else ''
-            if 'contract' in first_cell_text or 'nrml' in first_cell_text:
+            if 'contract' in first_cell_text or 'nrml' in first_cell_text or len(first_row_cells) < 2:
                 start_idx = 1
                 print(f"  Skipping header row, starting from row {start_idx + 1}")
         
@@ -178,27 +333,27 @@ def parse_futures_data(html):
             contract_text = contract_cell.get_text(separator=' ', strip=True)
             
             # Debug: Show first few rows
-            if row_idx < 3:
-                print(f"  Row {row_idx + 1} contract text: {contract_text[:100]}")
+            if row_idx < 5:
+                print(f"  Row {row_idx + 1} contract text: {contract_text[:150]}")
             
-            # Look for pattern: **SYMBOL** DD-MMM-YYYY or DD-MMM-YYYY
-            # Try multiple patterns
-            symbol_match = re.search(r'\*\*([^*]+)\*\*', contract_text)
+            # Look for pattern: SYMBOL DD-MMM-YYYY (with or without **)
+            # Try with ** first
+            symbol_match = re.search(r'\*\*([A-Z0-9&]+(?:\s[A-Z0-9&]+)*)\*\*', contract_text)
             if not symbol_match:
-                # Try without **
-                symbol_match = re.search(r'^([A-Z0-9]+)', contract_text)
+                # Try without ** - match symbol at start (uppercase letters/numbers)
+                symbol_match = re.search(r'^([A-Z0-9&]+(?:\s[A-Z0-9&]+)*)', contract_text)
             
-            # Date format: 30-DEC-2025 or 30-DEC-2025
+            # Date format: 30-DEC-2025 (1-2 digits, 3 letters, 4 digits)
             expiry_match = re.search(r'(\d{1,2}-[A-Z]{3}-\d{4})', contract_text, re.IGNORECASE)
             
             if symbol_match and expiry_match:
                 symbol = symbol_match.group(1).strip()
-                expiry = expiry_match.group(1)
+                expiry = expiry_match.group(1).upper()  # Normalize to uppercase
                 
                 # Extract lot size and MWPL from contract text
                 lot_size = None
                 mwpl = None
-                lot_match = re.search(r'Lot size\s+(\d+)', contract_text, re.IGNORECASE)
+                lot_match = re.search(r'Lot\s+size\s+(\d+)', contract_text, re.IGNORECASE)
                 mwpl_match = re.search(r'MWPL\s+([\d.]+)%', contract_text, re.IGNORECASE)
                 
                 if lot_match:
@@ -243,6 +398,8 @@ def parse_futures_data(html):
                         'nrml_margin_rate': nrml_margin_rate if nrml_margin_rate else None,
                         'price': price if price else None,
                     })
+            elif row_idx < 10:  # Debug first 10 rows that don't match
+                print(f"  ⚠ Row {row_idx + 1} didn't match pattern. Text: {contract_text[:80]}")
     
     print(f"Parsed {len(futures_data)} contracts from HTML")
     return futures_data
