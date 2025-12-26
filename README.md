@@ -1,70 +1,118 @@
-# Getting Started with Create React App
+# Market Status - PHP Version
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the PHP conversion of the Market Status React application.
 
-## Available Scripts
+## Project Structure
 
-In the project directory, you can run:
+```
+MS/
+├── index.php              # Main entry point and router
+├── config.php             # Configuration file
+├── functions.php          # Helper functions
+├── setup.php              # Setup script to copy assets
+├── .htaccess              # Apache URL rewriting rules
+├── includes/              # Shared components
+│   ├── header.php
+│   ├── footer.php
+│   └── navbar.php
+├── pages/                 # Page templates
+│   ├── dashboard.php
+│   ├── market/
+│   ├── calculators/
+│   ├── mutualfunds/
+│   ├── financecompanies/
+│   ├── insurance/
+│   ├── loans/
+│   └── news/
+├── components/            # Reusable components
+├── assets/                # CSS, JS, images
+│   ├── css/
+│   ├── js/
+│   └── images/
+└── data/                  # JSON data files
+```
 
-### `npm start`
+## Setup Instructions
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. **Run the setup script** to copy assets and data files:
+   ```bash
+   php setup.php
+   ```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2. **Configure your web server**:
+   - Point your document root to the `MS` directory
+   - Ensure mod_rewrite is enabled (for Apache)
+   - For Nginx, configure URL rewriting accordingly
 
-### `npm test`
+3. **Update configuration**:
+   - Edit `config.php` and update `BASE_URL` if needed
+   - Adjust paths if your installation is in a subdirectory
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+4. **File Permissions**:
+   - Ensure PHP has read access to all files
+   - Data directory should be readable
 
-### `npm run build`
+## URL Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The application uses clean URLs:
+- `/` - Dashboard
+- `/indices` - Stock Indices
+- `/sip-calculator` - SIP Calculator
+- `/mutual-funds/amc` - AMC Funds
+- etc.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+All routes are handled by `index.php` through URL rewriting.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Converting Components
 
-### `npm run eject`
+To convert a React component to PHP:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Create a PHP file in the appropriate `pages/` subdirectory
+2. Set `$pageTitle` and `$pageDescription` variables
+3. Include header: `includeHeader($pageTitle, $pageDescription);`
+4. Add your page content
+5. Include footer: `includeFooter();`
+6. Add the route to `index.php`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Helper Functions
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- `loadJsonData($filename)` - Load JSON data from data directory
+- `e($string)` - Escape HTML output
+- `asset($path)` - Generate asset URL
+- `url($path)` - Generate page URL
+- `formatNumber($number, $decimals)` - Format numbers
+- `formatCurrency($amount, $symbol)` - Format currency
+- `formatPercentage($value, $decimals)` - Format percentages
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Notes
 
-## Learn More
+- All React state management is replaced with PHP variables
+- API calls can be made using `file_get_contents()` or cURL
+- JavaScript for interactivity should be added in script tags
+- CSS files are copied from the React project and can be used as-is
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Development
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Start a local PHP server:
+   ```bash
+   php -S localhost:8000 -t MS
+   ```
 
-### Code Splitting
+2. Access the application at `http://localhost:8000`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Production Deployment
 
-### Analyzing the Bundle Size
+1. Ensure all files are uploaded
+2. Set `DEBUG_MODE` to `false` in `config.php`
+3. Configure proper error handling
+4. Set up SSL certificate if needed
+5. Configure caching headers in `.htaccess`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Differences from React Version
 
-### Making a Progressive Web App
+- No client-side routing (all server-side)
+- No React state management
+- Components are PHP includes instead of React components
+- Data fetching is server-side
+- JavaScript is used only for interactivity, not for rendering
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

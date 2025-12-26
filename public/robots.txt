@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: /private/
-Disallow: /temp/
-Sitemap: https://marketstatus.in/sitemap.xml
