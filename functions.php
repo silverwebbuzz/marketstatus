@@ -19,9 +19,19 @@ function getCurrentRoute() {
         $request_uri = str_replace($base_path, '', $request_uri);
     }
     
+    // Remove /ms prefix if present
+    if (strpos($request_uri, '/ms') === 0) {
+        $request_uri = substr($request_uri, 3); // Remove '/ms'
+    }
+    
     // Ensure route starts with /
     if (substr($request_uri, 0, 1) !== '/') {
         $request_uri = '/' . $request_uri;
+    }
+    
+    // Handle root route
+    if ($request_uri === '/ms' || $request_uri === '/ms/') {
+        $request_uri = '/';
     }
     
     return $request_uri;

@@ -4,7 +4,7 @@
  */
 
 // Base URL
-define('BASE_URL', '');
+define('BASE_URL', '/ms');
 
 // Paths
 define('ROOT_PATH', __DIR__);
