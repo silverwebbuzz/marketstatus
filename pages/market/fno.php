@@ -360,6 +360,45 @@ includeHeader($pageTitle, $pageDescription);
                                 <?php endif; ?>
                             </td>
                             <td>
+                                <?php if ($stockInfo && isset($stockInfo['company_name']) && $stockInfo['company_name']): ?>
+                                    <span class="company-name" title="<?php echo e($stockInfo['company_name']); ?>">
+                                        <?php echo e(strlen($stockInfo['company_name']) > 30 ? substr($stockInfo['company_name'], 0, 30) . '...' : $stockInfo['company_name']); ?>
+                                    </span>
+                                <?php else: ?>
+                                    <span class="no-data-badge">N/A</span>
+                                <?php endif; ?>
+                            </td>
+                            <td>
+                                <?php if ($stockInfo && isset($stockInfo['industry']) && $stockInfo['industry']): ?>
+                                    <span class="industry-badge"><?php echo e($stockInfo['industry']); ?></span>
+                                <?php else: ?>
+                                    <span class="no-data-badge">N/A</span>
+                                <?php endif; ?>
+                            </td>
+                            <td>
+                                <?php if ($stockInfo && isset($stockInfo['div_yield']) && $stockInfo['div_yield'] > 0): ?>
+                                    <?php echo formatNumber($stockInfo['div_yield'], 2); ?>%
+                                <?php else: ?>
+                                    <span class="no-data-badge">N/A</span>
+                                <?php endif; ?>
+                            </td>
+                            <td>
+                                <?php if ($stockInfo && isset($stockInfo['total_traded_value']) && $stockInfo['total_traded_value'] > 0): ?>
+                                    <?php 
+                                    $tradedValue = $stockInfo['total_traded_value'];
+                                    if ($tradedValue >= 10000000) {
+                                        echo '₹' . formatNumber($tradedValue / 10000000, 2) . ' Cr';
+                                    } elseif ($tradedValue >= 100000) {
+                                        echo '₹' . formatNumber($tradedValue / 100000, 2) . ' L';
+                                    } else {
+                                        echo '₹' . formatNumber($tradedValue, 2);
+                                    }
+                                    ?>
+                                <?php else: ?>
+                                    <span class="no-data-badge">N/A</span>
+                                <?php endif; ?>
+                            </td>
+                            <td>
                                 <?php if ($stockInfo): ?>
                                     <button class="btn-indicators" data-symbol="<?php echo e($symbol); ?>" onclick="showIndicators('<?php echo e($symbol); ?>')">
                                         View
@@ -389,6 +428,13 @@ includeHeader($pageTitle, $pageDescription);
                                     <td><?php echo isset($contract['nrml_margin_rate']) && $contract['nrml_margin_rate'] ? formatPercentage($contract['nrml_margin_rate'], 2) : 'N/A'; ?></td>
                                     <td>₹<?php echo isset($contract['nrml_margin']) && $contract['nrml_margin'] ? formatNumber($contract['nrml_margin'], 0) : 'N/A'; ?></td>
                                     <td><?php echo isset($contract['mwpl']) && $contract['mwpl'] ? formatPercentage($contract['mwpl'], 2) : 'N/A'; ?></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
