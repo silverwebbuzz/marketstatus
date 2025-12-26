@@ -54,33 +54,75 @@ foreach ($apiEndpoints as $endpoint) {
             break;
         }
     }
+    
+    // Small delay between API attempts to avoid rate limiting
+    if ($httpCode === 429) {
+        sleep(2);
+    }
 }
 
-// Method 2: Fetch HTML and parse
+// Method 2: Fetch HTML and parse (with retry logic for rate limiting)
 if (empty($futuresData)) {
-    $ch = curl_init();
-    curl_setopt_array($ch, [
-        CURLOPT_URL => $url,
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_FOLLOWLOCATION => true,
-        CURLOPT_SSL_VERIFYPEER => false,
-        CURLOPT_USERAGENT => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        CURLOPT_HTTPHEADER => [
-            'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Accept-Language: en-US,en;q=0.9',
-            'Accept-Encoding: gzip, deflate, br',
-            'Connection: keep-alive',
-        ],
-        CURLOPT_ENCODING => '',
-        CURLOPT_TIMEOUT => 60,
-    ]);
+    $html = null;
+    $httpCode = 0;
+    $maxRetries = 3;
+    $retryDelay = 5; // seconds
     
-    $html = curl_exec($ch);
-    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
+    for ($attempt = 1; $attempt <= $maxRetries; $attempt++) {
+        if ($attempt > 1) {
+            echo "Rate limited (HTTP 429). Waiting {$retryDelay} seconds before retry {$attempt}/{$maxRetries}...\n";
+            sleep($retryDelay);
+            $retryDelay *= 2; // Exponential backoff
+        }
+        
+        $ch = curl_init();
+        curl_setopt_array($ch, [
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_USERAGENT => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            CURLOPT_HTTPHEADER => [
+                'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                'Accept-Language: en-US,en;q=0.9',
+                'Accept-Encoding: gzip, deflate, br',
+                'Connection: keep-alive',
+                'Cache-Control: no-cache',
+            ],
+            CURLOPT_ENCODING => '',
+            CURLOPT_TIMEOUT => 60,
+            CURLOPT_CONNECTTIMEOUT => 30,
+        ]);
+        
+        $html = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $curlError = curl_error($ch);
+        curl_close($ch);
+        
+        // If we got 200, break out of retry loop
+        if ($httpCode === 200 && !empty($html)) {
+            break;
+        }
+        
+        // If 429 (rate limit), retry
+        if ($httpCode === 429) {
+            continue;
+        }
+        
+        // For other errors, log and continue retry
+        if ($httpCode !== 200) {
+            error_log("Attempt $attempt failed: HTTP $httpCode - $curlError");
+        }
+    }
     
     if ($httpCode !== 200 || empty($html)) {
-        error_log("Failed to fetch HTML: HTTP $httpCode");
+        error_log("Failed to fetch HTML after $maxRetries attempts: HTTP $httpCode");
+        echo "ERROR: Could not fetch data. HTTP $httpCode\n";
+        echo "Possible reasons:\n";
+        echo "1. Rate limited by Zerodha (try again later)\n";
+        echo "2. Network issues\n";
+        echo "3. Zerodha blocked the request\n\n";
+        echo "Solution: Wait a few minutes and try again, or check if Zerodha has an API endpoint.\n";
         exit(1);
     }
     

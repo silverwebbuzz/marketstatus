@@ -21,6 +21,11 @@ cd /path/to/your/ms/directory
 php fetch_futures_data.php
 ```
 
+**If you get HTTP 429 (rate limited), use the safe version:**
+```bash
+php fetch_futures_data_safe.php
+```
+
 **OR use absolute path:**
 ```bash
 php /full/path/to/fetch_futures_data.php
@@ -92,6 +97,15 @@ The script tries 4 methods in order:
 4. **Regex Extraction** - Last resort pattern matching
 
 ## Troubleshooting
+
+### HTTP 429 (Rate Limited) Error
+
+If you get "HTTP 429" error, Zerodha is rate-limiting your requests. Solutions:
+
+1. **Wait and retry**: The script now has automatic retry with delays
+2. **Run less frequently**: Change cron to run every 2-3 hours instead of daily
+3. **Use alternative script**: Try `fetch_futures_data_safe.php` which has better rate limit handling
+4. **Find API endpoint**: Check Zerodha's Network tab for API calls
 
 ### Check if script ran:
 ```bash
