@@ -12,19 +12,29 @@ pwd
 
 This will show something like: `/home/username/public_html/ms` or `/var/www/html/ms`
 
-### Step 1: Test the Script
+### Step 1: Quick Setup (Use Existing Data)
 
-**Important:** Make sure you're in the correct directory!
+Since Zerodha rate-limits requests, the easiest solution is to use your existing data:
 
 ```bash
-cd /path/to/your/ms/directory
-php fetch_futures_data.php
+php convert_fnO_to_futures.php
 ```
 
-**If you get HTTP 429 (rate limited), use the safe version:**
+This converts your existing `fnO.json` to `futures_margins.json` format. Your page will work immediately!
+
+### Step 2: Set Up Smart Updater (Recommended)
+
+Use the smart updater that tries to fetch new data but falls back to existing data:
+
 ```bash
-php fetch_futures_data_safe.php
+# Test it:
+php update_futures_smart.php
+
+# OR use the wrapper:
+./run_fetch.sh
 ```
+
+This ensures your page always has data, even if fetching fails.
 
 **OR use absolute path:**
 ```bash
@@ -41,7 +51,7 @@ This will:
 - If not found, fetch HTML and parse it
 - Save data to `data/futures_margins.json`
 
-### Step 2: Set Up Daily Cron at 8 AM
+### Step 3: Set Up Daily Cron at 8 AM
 
 **Option A: cPanel Cron Jobs**
 
@@ -53,14 +63,19 @@ This will:
    - **Day**: `*`
    - **Month**: `*`
    - **Weekday**: `*`
-   - **Command**:
+   - **Command** (Recommended - Smart Updater):
      ```bash
-     cd /home/username/public_html/ms && /usr/bin/php fetch_futures_data.php >> cron_log.txt 2>&1
+     cd /home/username/public_html/ms && /usr/bin/php update_futures_smart.php >> cron_log.txt 2>&1
+     ```
+     
+     **OR use wrapper script:**
+     ```bash
+     /home/username/public_html/ms/run_fetch.sh >> /home/username/public_html/ms/cron_log.txt 2>&1
      ```
      
      **OR use absolute path:**
      ```bash
-     /usr/bin/php /home/username/public_html/ms/fetch_futures_data.php >> /home/username/public_html/ms/cron_log.txt 2>&1
+     /usr/bin/php /home/username/public_html/ms/update_futures_smart.php >> /home/username/public_html/ms/cron_log.txt 2>&1
      ```
 
 **Option B: SSH Crontab**
@@ -71,12 +86,12 @@ crontab -e
 
 Add (use absolute paths):
 ```
-0 8 * * * cd /full/path/to/ms && /usr/bin/php fetch_futures_data.php >> /full/path/to/ms/cron_log.txt 2>&1
+0 8 * * * cd /full/path/to/ms && /usr/bin/php update_futures_smart.php >> /full/path/to/ms/cron_log.txt 2>&1
 ```
 
-**OR:**
+**OR use wrapper (tries Python, PHP, then existing data):**
 ```
-0 8 * * * /usr/bin/php /full/path/to/ms/fetch_futures_data.php >> /full/path/to/ms/cron_log.txt 2>&1
+0 8 * * * /full/path/to/ms/run_fetch.sh >> /full/path/to/ms/cron_log.txt 2>&1
 ```
 
 **Option C: External Cron Service**
