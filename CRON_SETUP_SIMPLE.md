@@ -1,0 +1,96 @@
+# Simple PHP Cron Setup
+
+## Quick Setup
+
+### Step 1: Test the Script
+
+```bash
+php fetch_futures_data.php
+```
+
+This will:
+- Try to find Zerodha's API endpoint
+- If not found, fetch HTML and parse it
+- Save data to `data/futures_margins.json`
+
+### Step 2: Set Up Daily Cron at 8 AM
+
+**Option A: cPanel Cron Jobs**
+
+1. Login to cPanel
+2. Go to "Cron Jobs"
+3. Add:
+   - **Minute**: `0`
+   - **Hour**: `8`
+   - **Day**: `*`
+   - **Month**: `*`
+   - **Weekday**: `*`
+   - **Command**:
+     ```bash
+     /usr/bin/php /home/username/public_html/ms/fetch_futures_data.php >> /home/username/public_html/ms/cron_log.txt 2>&1
+     ```
+
+**Option B: SSH Crontab**
+
+```bash
+crontab -e
+```
+
+Add:
+```
+0 8 * * * /usr/bin/php /path/to/fetch_futures_data.php >> /path/to/cron_log.txt 2>&1
+```
+
+**Option C: External Cron Service**
+
+Use services like:
+- https://cron-job.org
+- https://www.easycron.com
+
+Set URL: `https://silverwebbuzz.com/ms/cron_endpoint.php?key=your-secret`
+
+## How It Works
+
+The script tries 4 methods in order:
+
+1. **API Endpoint** - Checks if Zerodha has a public API
+2. **JSON in Script Tags** - Extracts embedded JSON data
+3. **HTML Table Parsing** - Parses the HTML table directly
+4. **Regex Extraction** - Last resort pattern matching
+
+## Troubleshooting
+
+### Check if script ran:
+```bash
+cat cron_log.txt
+```
+
+### Check if data file exists:
+```bash
+ls -la data/futures_margins.json
+```
+
+### Test manually:
+```bash
+php fetch_futures_data.php
+```
+
+### Verify PHP path:
+```bash
+which php
+```
+
+## Important Notes
+
+- **JavaScript Content**: If Zerodha loads data via JavaScript, this simple method may not work
+- **API Endpoint**: Best solution is to find Zerodha's actual API endpoint
+- **Manual Update**: You can always manually update `data/futures_margins.json`
+
+## Finding API Endpoint
+
+1. Open Zerodha's page: https://zerodha.com/margin-calculator/Futures/
+2. Press F12 → Network tab
+3. Filter by XHR or Fetch
+4. Look for API calls that return JSON data
+5. Update `$apiEndpoints` array in `fetch_futures_data.php`
+
