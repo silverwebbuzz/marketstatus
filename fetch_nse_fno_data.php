@@ -25,11 +25,20 @@ if (!$futuresData || !isset($futuresData['data'])) {
 }
 
 // Create symbol map from futures data for merging
+// Normalize symbols (remove spaces) for better matching
 $futuresSymbolMap = [];
 foreach ($futuresData['data'] as $contract) {
-    $symbol = strtoupper($contract['symbol'] ?? '');
-    if ($symbol && !isset($futuresSymbolMap[$symbol])) {
-        $futuresSymbolMap[$symbol] = $contract;
+    $symbol = strtoupper(trim($contract['symbol'] ?? ''));
+    if ($symbol) {
+        // Store with normalized key (no spaces)
+        $symbolNormalized = str_replace(' ', '', $symbol);
+        if (!isset($futuresSymbolMap[$symbolNormalized])) {
+            $futuresSymbolMap[$symbolNormalized] = $contract;
+        }
+        // Also store with original format for fallback
+        if (!isset($futuresSymbolMap[$symbol])) {
+            $futuresSymbolMap[$symbol] = $contract;
+        }
     }
 }
 
@@ -120,7 +129,8 @@ foreach ($nseData['data'] as $stock) {
     }
     
     // Clean symbol (remove any extra spaces, special chars that might cause mismatch)
-    $symbol = preg_replace('/\s+/', '', $symbol); // Remove all spaces
+    $symbolClean = preg_replace('/\s+/', '', $symbol); // Remove all spaces for key matching
+    $symbolOriginal = $symbol; // Keep original for display
     
     // Extract all available fields from NSE
     $currentPrice = (float)($stock['lastPrice'] ?? $stock['ltp'] ?? 0);
@@ -157,8 +167,8 @@ foreach ($nseData['data'] as $stock) {
     $divYield = (float)($stock['divYield'] ?? 0);
     $faceValue = (float)($stock['faceValue'] ?? 0);
     
-    // Get futures contract data if available
-    $futuresContract = $futuresSymbolMap[$symbol] ?? null;
+    // Get futures contract data if available (use cleaned symbol for matching)
+    $futuresContract = $futuresSymbolMap[$symbolClean] ?? $futuresSymbolMap[$symbolOriginal] ?? null;
     
     // Calculate technical indicators (simplified - using available data)
     $historicalCloses = $close > 0 ? [$close] : [];
@@ -184,8 +194,9 @@ foreach ($nseData['data'] as $stock) {
     $targets = calculateTargets($high, $low, $close);
     
     // Build comprehensive stock data
-    $stockData[$symbol] = [
-        'symbol' => $symbol,
+    // Use cleaned symbol (no spaces) as key for better matching with futures data
+    $stockData[$symbolClean] = [
+        'symbol' => $symbolOriginal, // Keep original symbol for display
         'current_price' => round($currentPrice, 2),
         'open' => round($open, 2),
         'high' => round($high, 2),
