@@ -49,7 +49,11 @@ $stockDataMap = [];
 $industries = [];
 if ($stockData && isset($stockData['data'])) {
     foreach ($stockData['data'] as $symbol => $data) {
-        $stockDataMap[strtoupper($symbol)] = $data;
+        // Normalize symbol key (remove spaces, uppercase)
+        $normalizedSymbol = strtoupper(trim(str_replace(' ', '', $symbol)));
+        $stockDataMap[$normalizedSymbol] = $data;
+        // Also store with original symbol format for fallback
+        $stockDataMap[strtoupper(trim($symbol))] = $data;
         // Collect industries for filter
         if (isset($data['industry']) && $data['industry']) {
             $industries[$data['industry']] = true;
@@ -193,8 +197,29 @@ includeHeader($pageTitle, $pageDescription);
                         });
                         $firstContract = $contracts[0];
                         $contractCount = count($contracts);
-                        $symbolUpper = strtoupper($symbol);
-                        $stockInfo = $stockDataMap[$symbolUpper] ?? null;
+                        $symbolUpper = strtoupper(trim($symbol));
+                        
+                        // Normalize symbol for matching (remove spaces)
+                        $symbolNormalized = str_replace(' ', '', $symbolUpper);
+                        
+                        // Try multiple symbol formats for matching
+                        $stockInfo = $stockDataMap[$symbolNormalized] ?? $stockDataMap[$symbolUpper] ?? null;
+                        
+                        // If still not found, try other variants
+                        if (!$stockInfo) {
+                            $symbolVariants = [
+                                $symbolNormalized,
+                                $symbolUpper,
+                                str_replace('-', '', $symbolUpper),
+                                trim($symbolUpper),
+                            ];
+                            foreach ($symbolVariants as $variant) {
+                                if (isset($stockDataMap[$variant])) {
+                                    $stockInfo = $stockDataMap[$variant];
+                                    break;
+                                }
+                            }
+                        }
                     ?>
                         <tr class="symbol-row" data-symbol="<?php echo e($symbolUpper); ?>" data-expiry="<?php echo e($firstContract['expiry'] ?? ''); ?>" data-margin-rate="<?php echo e($firstContract['nrml_margin_rate'] ?? 0); ?>" data-current-price="<?php echo e($stockInfo['current_price'] ?? 0); ?>" data-volume="<?php echo e($stockInfo['volume'] ?? 0); ?>">
                             <td>

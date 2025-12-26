@@ -114,10 +114,13 @@ $processed = 0;
 foreach ($nseData['data'] as $stock) {
     $processed++;
     
-    $symbol = strtoupper($stock['symbol'] ?? '');
+    $symbol = strtoupper(trim($stock['symbol'] ?? ''));
     if (!$symbol) {
         continue;
     }
+    
+    // Clean symbol (remove any extra spaces, special chars that might cause mismatch)
+    $symbol = preg_replace('/\s+/', '', $symbol); // Remove all spaces
     
     // Extract all available fields from NSE
     $currentPrice = (float)($stock['lastPrice'] ?? $stock['ltp'] ?? 0);
