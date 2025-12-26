@@ -103,6 +103,18 @@ $response = curl_exec($ch);
 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
 
+// Debug: Log first stock to see available fields
+if ($httpCode === 200 && $response) {
+    $debugData = json_decode($response, true);
+    if (isset($debugData['data'][0])) {
+        $firstStock = $debugData['data'][0];
+        error_log("NSE API Sample Fields: " . implode(', ', array_keys($firstStock)));
+        if (isset($firstStock['meta'])) {
+            error_log("NSE API Meta Fields: " . implode(', ', array_keys($firstStock['meta'])));
+        }
+    }
+}
+
 if ($httpCode !== 200 || !$response) {
     echo "ERROR: Failed to fetch NSE data. HTTP Code: $httpCode\n";
     exit(1);
@@ -171,11 +183,20 @@ foreach ($nseData['data'] as $stock) {
     $isin = $meta['isin'] ?? $stock['isin'] ?? '';
     
     // Additional NSE fields - check both main and meta
-    $marketCap = (float)($stock['marketCap'] ?? $stock['ffmc'] ?? 0);
-    $pe = (float)($stock['pe'] ?? 0);
-    $pb = (float)($stock['pb'] ?? 0);
-    $divYield = (float)($stock['divYield'] ?? 0);
-    $faceValue = (float)($stock['faceValue'] ?? 0);
+    // Market Cap: try multiple field names (ffmc = free float market cap)
+    $marketCap = (float)($stock['marketCap'] ?? $stock['ffmc'] ?? $stock['mcap'] ?? $meta['marketCap'] ?? $meta['ffmc'] ?? 0);
+    
+    // PE Ratio: try multiple field names
+    $pe = (float)($stock['pe'] ?? $stock['peRatio'] ?? $stock['pE'] ?? $meta['pe'] ?? $meta['peRatio'] ?? 0);
+    
+    // PB Ratio: try multiple field names
+    $pb = (float)($stock['pb'] ?? $stock['pbRatio'] ?? $stock['pB'] ?? $meta['pb'] ?? $meta['pbRatio'] ?? 0);
+    
+    // Dividend Yield: try multiple field names
+    $divYield = (float)($stock['divYield'] ?? $stock['dividendYield'] ?? $stock['divYld'] ?? $meta['divYield'] ?? $meta['dividendYield'] ?? 0);
+    
+    // Face Value
+    $faceValue = (float)($stock['faceValue'] ?? $meta['faceValue'] ?? 0);
     
     // Additional fields from meta
     $activeSeries = $meta['activeSeries'] ?? [];

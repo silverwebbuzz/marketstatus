@@ -199,6 +199,9 @@ includeHeader($pageTitle, $pageDescription);
                         <th class="sortable" data-sort="volume">
                             Volume <span class="sort-indicator">↕</span>
                         </th>
+                        <th class="sortable" data-sort="change">
+                            Change <span class="sort-indicator">↕</span>
+                        </th>
                         <th class="sortable" data-sort="change_percent">
                             Change % <span class="sort-indicator">↕</span>
                         </th>
@@ -312,6 +315,19 @@ includeHeader($pageTitle, $pageDescription);
                             <td>
                                 <?php if ($stockInfo && isset($stockInfo['volume'])): ?>
                                     <?php echo formatNumber($stockInfo['volume'], 0); ?>
+                                <?php else: ?>
+                                    <span class="no-data-badge">N/A</span>
+                                <?php endif; ?>
+                            </td>
+                            <td class="change-cell" data-sort-value="<?php echo $stockInfo['change'] ?? 0; ?>">
+                                <?php if ($stockInfo && isset($stockInfo['change'])): ?>
+                                    <?php 
+                                    $change = $stockInfo['change'];
+                                    $changeClass = $change > 0 ? 'positive' : ($change < 0 ? 'negative' : '');
+                                    ?>
+                                    <span class="change-amount <?php echo $changeClass; ?>">
+                                        <?php echo ($change > 0 ? '+' : '') . '₹' . formatNumber($change, 2); ?>
+                                    </span>
                                 <?php else: ?>
                                     <span class="no-data-badge">N/A</span>
                                 <?php endif; ?>
@@ -1081,30 +1097,39 @@ includeHeader($pageTitle, $pageDescription);
                     aVal = parseFloat(a.dataset.volume) || 0;
                     bVal = parseFloat(b.dataset.volume) || 0;
                     break;
+                case 'change':
+                    const aChangeAmountCell = a.querySelector('td.change-cell .change-amount');
+                    const bChangeAmountCell = b.querySelector('td.change-cell .change-amount');
+                    aVal = parseFloat(aChangeAmountCell?.textContent.replace(/[₹+,\s]/g, '')) || 0;
+                    bVal = parseFloat(bChangeAmountCell?.textContent.replace(/[₹+,\s]/g, '')) || 0;
+                    break;
                 case 'change_percent':
-                    const aChangeCell = a.querySelector('td.change-cell');
-                    const bChangeCell = b.querySelector('td.change-cell');
-                    aVal = parseFloat(aChangeCell?.dataset.sortValue || aChangeCell?.textContent.replace(/[+%,\s]/g, '')) || 0;
-                    bVal = parseFloat(bChangeCell?.dataset.sortValue || bChangeCell?.textContent.replace(/[+%,\s]/g, '')) || 0;
+                    // Find the second change-cell (Change % is after Change)
+                    const changeCells = a.querySelectorAll('td.change-cell');
+                    const aChangePercentCell = changeCells.length > 1 ? changeCells[1] : changeCells[0];
+                    const bChangePercentCells = b.querySelectorAll('td.change-cell');
+                    const bChangePercentCell = bChangePercentCells.length > 1 ? bChangePercentCells[1] : bChangePercentCells[0];
+                    aVal = parseFloat(aChangePercentCell?.dataset.sortValue || aChangePercentCell?.textContent.replace(/[+%,\s]/g, '')) || 0;
+                    bVal = parseFloat(bChangePercentCell?.dataset.sortValue || bChangePercentCell?.textContent.replace(/[+%,\s]/g, '')) || 0;
                     break;
                 case 'pe':
-                    // P/E is column 13 (index 12): Symbol(0), Expiry(1), OHLC(2), Current(3), Futures(4), Lot(5), Contract(6), MarginRate(7), NRML(8), MWPL(9), Volume(10), Change%(11), P/E(12)
-                    const aPeCell = a.cells[12];
-                    const bPeCell = b.cells[12];
+                    // P/E is column 14 (index 13): Symbol(0), Expiry(1), OHLC(2), Current(3), Futures(4), Lot(5), Contract(6), MarginRate(7), NRML(8), MWPL(9), Volume(10), Change(11), Change%(12), P/E(13)
+                    const aPeCell = a.cells[13];
+                    const bPeCell = b.cells[13];
                     aVal = parseFloat(aPeCell?.dataset.sortValue || aPeCell?.textContent.replace(/[,\s]/g, '')) || 0;
                     bVal = parseFloat(bPeCell?.dataset.sortValue || bPeCell?.textContent.replace(/[,\s]/g, '')) || 0;
                     break;
                 case 'pb':
-                    // P/B is column 14 (index 13)
-                    const aPbCell = a.cells[13];
-                    const bPbCell = b.cells[13];
+                    // P/B is column 15 (index 14)
+                    const aPbCell = a.cells[14];
+                    const bPbCell = b.cells[14];
                     aVal = parseFloat(aPbCell?.dataset.sortValue || aPbCell?.textContent.replace(/[,\s]/g, '')) || 0;
                     bVal = parseFloat(bPbCell?.dataset.sortValue || bPbCell?.textContent.replace(/[,\s]/g, '')) || 0;
                     break;
                 case 'market_cap':
-                    // Market Cap is column 15 (index 14)
-                    const aMcCell = a.cells[14];
-                    const bMcCell = b.cells[14];
+                    // Market Cap is column 16 (index 15)
+                    const aMcCell = a.cells[15];
+                    const bMcCell = b.cells[15];
                     aVal = parseFloat(aMcCell?.dataset.sortValue || 0);
                     bVal = parseFloat(bMcCell?.dataset.sortValue || 0);
                     break;
@@ -1121,16 +1146,16 @@ includeHeader($pageTitle, $pageDescription);
                     bVal = parseFloat(bValue) || 0;
                     break;
                 case 'div_yield':
-                    // Div Yield is column 18 (index 17)
-                    const aDivCell = a.cells[17];
-                    const bDivCell = b.cells[17];
+                    // Div Yield is column 19 (index 18): after Company(16), Industry(17), DivYield(18)
+                    const aDivCell = a.cells[18];
+                    const bDivCell = b.cells[18];
                     aVal = parseFloat(aDivCell?.textContent.replace(/[%,\s]/g, '')) || 0;
                     bVal = parseFloat(bDivCell?.textContent.replace(/[%,\s]/g, '')) || 0;
                     break;
                 case 'total_traded_value':
-                    // Traded Value is column 19 (index 18)
-                    const aTvCell = a.cells[18];
-                    const bTvCell = b.cells[18];
+                    // Traded Value is column 20 (index 19)
+                    const aTvCell = a.cells[19];
+                    const bTvCell = b.cells[19];
                     // Parse formatted value (Cr/L)
                     const aTvText = aTvCell?.textContent.replace(/[₹,\s]/g, '') || '0';
                     const bTvText = bTvCell?.textContent.replace(/[₹,\s]/g, '') || '0';
