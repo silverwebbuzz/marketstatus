@@ -510,14 +510,14 @@ includeHeader($pageTitle, $pageDescription);
 .futures-table td {
     padding: 6px 6px;
     border-bottom: 1px solid #eee;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.4;
 }
 
 .futures-table tbody tr.symbol-row {
     background: #fafafa;
     font-weight: 500;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .futures-table tbody tr.symbol-row:hover {
@@ -789,18 +789,20 @@ includeHeader($pageTitle, $pageDescription);
 }
 
 .symbol-cell {
-    margin-bottom: 4px;
+    margin-bottom: 6px;
 }
 
 .company-name-inline {
-    font-size: 11px;
+    font-size: 12px;
     color: #555;
-    margin-top: 2px;
-    line-height: 1.3;
+    margin-top: 4px;
+    line-height: 1.4;
+    display: block;
 }
 
 .industry-inline {
     margin-top: 4px;
+    display: block;
 }
 
 .industry-badge {
