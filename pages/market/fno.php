@@ -115,6 +115,14 @@ includeHeader($pageTitle, $pageDescription);
                     <?php endif; ?>
                 </div>
             <?php endif; ?>
+            <div class="futures-note-compact">
+                <span class="note-item">Margins updated daily at 8:00 AM IST</span> | 
+                <span class="note-item">NRML = Normal Margin (overnight positions)</span> | 
+                <span class="note-item">MWPL = Maximum Weighted Position Limit</span> | 
+                <span class="note-item">Contract Value = Lot Size × Price</span> | 
+                <span class="note-item">Data source: Zerodha Margin Calculator</span> | 
+                <span class="note-item">Please verify margins with your broker before trading</span>
+            </div>
         </div>
 
         <!-- Search and Filter Section -->
@@ -420,18 +428,6 @@ includeHeader($pageTitle, $pageDescription);
             <p><small>If this issue persists, please contact support.</small></p>
         </div>
     <?php endif; ?>
-    
-    <div class="futures-note">
-        <h3>Note:</h3>
-        <ul>
-            <li>Margins are updated daily at 8:00 AM IST</li>
-            <li>NRML = Normal Margin (overnight positions)</li>
-            <li>MWPL = Maximum Weighted Position Limit</li>
-            <li><strong>Contract Value</strong> = Lot Size × Price (total value of one contract)</li>
-            <li>Data source: Zerodha Margin Calculator</li>
-            <li>Please verify margins with your broker before trading</li>
-        </ul>
-    </div>
 </div>
 
 <!-- Indicators Modal -->
@@ -841,6 +837,23 @@ includeHeader($pageTitle, $pageDescription);
     margin-left: auto;
 }
 
+.futures-note-compact {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+    font-size: 11px;
+    color: #666;
+    line-height: 1.6;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.futures-note-compact .note-item {
+    white-space: nowrap;
+}
+
 .futures-controls {
     margin: 20px 0;
     padding: 15px;
@@ -904,27 +917,6 @@ includeHeader($pageTitle, $pageDescription);
     background: #c82333;
 }
 
-.futures-note {
-    margin-top: 30px;
-    padding: 20px;
-    background: #fff9e6;
-    border-radius: 5px;
-}
-
-.futures-note h3 {
-    margin-top: 0;
-    color: #d97706;
-}
-
-.futures-note ul {
-    margin: 10px 0;
-    padding-left: 20px;
-}
-
-.futures-note li {
-    margin: 8px 0;
-    color: #666;
-}
 
 .no-data {
     text-align: center;
