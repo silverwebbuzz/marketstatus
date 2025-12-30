@@ -213,6 +213,9 @@ includeHeader($pageTitle, $pageDescription);
                         <th class="sortable" data-sort="change_percent">
                             Change % <span class="sort-indicator">↕</span>
                         </th>
+                        <th class="sortable" data-sort="today_pl">
+                            Today P/L <span class="sort-indicator">↕</span>
+                        </th>
                         <th class="sortable" data-sort="total_traded_value">
                             Traded Value <span class="sort-indicator">↕</span>
                         </th>
@@ -351,6 +354,25 @@ includeHeader($pageTitle, $pageDescription);
                                     <span class="no-data-badge">N/A</span>
                                 <?php endif; ?>
                             </td>
+                            <td class="pl-cell" data-sort-value="<?php 
+                                $change = $stockInfo['change'] ?? 0;
+                                $lotSize = $firstContract['lot_size'] ?? 0;
+                                echo $change * $lotSize;
+                            ?>">
+                                <?php 
+                                $change = $stockInfo['change'] ?? 0;
+                                $lotSize = $firstContract['lot_size'] ?? 0;
+                                $todayPL = $change * $lotSize;
+                                if ($stockInfo && isset($stockInfo['change']) && $lotSize > 0):
+                                    $plClass = $todayPL > 0 ? 'positive' : ($todayPL < 0 ? 'negative' : '');
+                                ?>
+                                    <span class="pl-amount <?php echo $plClass; ?>">
+                                        <?php echo ($todayPL > 0 ? '+' : '') . '₹' . formatNumber($todayPL, 2); ?>
+                                    </span>
+                                <?php else: ?>
+                                    <span class="no-data-badge">N/A</span>
+                                <?php endif; ?>
+                            </td>
                             <td>
                                 <?php if ($stockInfo && isset($stockInfo['total_traded_value']) && $stockInfo['total_traded_value'] > 0): ?>
                                     <?php 
@@ -397,6 +419,7 @@ includeHeader($pageTitle, $pageDescription);
                                     <td><?php echo isset($contract['nrml_margin_rate']) && $contract['nrml_margin_rate'] ? formatPercentage($contract['nrml_margin_rate'], 2) : 'N/A'; ?></td>
                                     <td>₹<?php echo isset($contract['nrml_margin']) && $contract['nrml_margin'] ? formatNumber($contract['nrml_margin'], 0) : 'N/A'; ?></td>
                                     <td><?php echo isset($contract['mwpl']) && $contract['mwpl'] ? formatPercentage($contract['mwpl'], 2) : 'N/A'; ?></td>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -790,6 +813,24 @@ includeHeader($pageTitle, $pageDescription);
     text-align: center;
 }
 
+.pl-cell {
+    text-align: center;
+    font-weight: 600;
+}
+
+.pl-amount {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.pl-amount.positive {
+    color: #28a745;
+}
+
+.pl-amount.negative {
+    color: #dc3545;
+}
+
 .symbol-cell {
     margin-bottom: 6px;
 }
@@ -1067,6 +1108,12 @@ includeHeader($pageTitle, $pageDescription);
                     aVal = parseFloat(aChangePercentCell?.dataset.sortValue || aChangePercentCell?.textContent.replace(/[+%,\s]/g, '')) || 0;
                     bVal = parseFloat(bChangePercentCell?.dataset.sortValue || bChangePercentCell?.textContent.replace(/[+%,\s]/g, '')) || 0;
                     break;
+                case 'today_pl':
+                    const aPlCell = a.querySelector('td.pl-cell');
+                    const bPlCell = b.querySelector('td.pl-cell');
+                    aVal = parseFloat(aPlCell?.dataset.sortValue || aPlCell?.textContent.replace(/[₹+,\s]/g, '')) || 0;
+                    bVal = parseFloat(bPlCell?.dataset.sortValue || bPlCell?.textContent.replace(/[₹+,\s]/g, '')) || 0;
+                    break;
                 case 'price':
                     const aPrice = a.querySelector('td:nth-child(5)')?.textContent.replace(/[₹,]/g, '') || '0';
                     const bPrice = b.querySelector('td:nth-child(5)')?.textContent.replace(/[₹,]/g, '') || '0';
@@ -1080,9 +1127,9 @@ includeHeader($pageTitle, $pageDescription);
                     bVal = parseFloat(bValue) || 0;
                     break;
                 case 'total_traded_value':
-                    // Traded Value is column 15 (index 14)
-                    const aTvCell = a.cells[14];
-                    const bTvCell = b.cells[14];
+                    // Traded Value is column 16 (index 15) - after Today P/L
+                    const aTvCell = a.cells[15];
+                    const bTvCell = b.cells[15];
                     // Parse formatted value (Cr/L)
                     const aTvText = aTvCell?.textContent.replace(/[₹,\s]/g, '') || '0';
                     const bTvText = bTvCell?.textContent.replace(/[₹,\s]/g, '') || '0';
