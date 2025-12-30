@@ -213,8 +213,6 @@ includeHeader($pageTitle, $pageDescription);
                         <th class="sortable" data-sort="change_percent">
                             Change % <span class="sort-indicator">↕</span>
                         </th>
-                        <th>Company Name</th>
-                        <th>Industry</th>
                         <th class="sortable" data-sort="total_traded_value">
                             Traded Value <span class="sort-indicator">↕</span>
                         </th>
@@ -257,11 +255,23 @@ includeHeader($pageTitle, $pageDescription);
                     ?>
                         <tr class="symbol-row" data-symbol="<?php echo e($symbolUpper); ?>" data-expiry="<?php echo e($firstContract['expiry'] ?? ''); ?>" data-margin-rate="<?php echo e($firstContract['nrml_margin_rate'] ?? 0); ?>" data-current-price="<?php echo e($stockInfo['current_price'] ?? 0); ?>" data-volume="<?php echo e($stockInfo['volume'] ?? 0); ?>" data-industry="<?php echo e($stockInfo['industry'] ?? ''); ?>">
                             <td>
-                                <strong><?php echo e($symbol); ?></strong>
-                                <?php if ($contractCount > 1): ?>
-                                    <button class="toggle-details" data-symbol="<?php echo e($symbol); ?>" title="Click to show/hide all contracts">
-                                        <span class="toggle-icon">▼</span>
-                                    </button>
+                                <div class="symbol-cell">
+                                    <strong><?php echo e($symbol); ?></strong>
+                                    <?php if ($contractCount > 1): ?>
+                                        <button class="toggle-details" data-symbol="<?php echo e($symbol); ?>" title="Click to show/hide all contracts">
+                                            <span class="toggle-icon">▼</span>
+                                        </button>
+                                    <?php endif; ?>
+                                </div>
+                                <?php if ($stockInfo && isset($stockInfo['company_name']) && $stockInfo['company_name']): ?>
+                                    <div class="company-name-inline" title="<?php echo e($stockInfo['company_name']); ?>">
+                                        <?php echo e($stockInfo['company_name']); ?>
+                                    </div>
+                                <?php endif; ?>
+                                <?php if ($stockInfo && isset($stockInfo['industry']) && $stockInfo['industry']): ?>
+                                    <div class="industry-inline">
+                                        <span class="industry-badge"><?php echo e($stockInfo['industry']); ?></span>
+                                    </div>
                                 <?php endif; ?>
                             </td>
                             <td>
@@ -342,22 +352,6 @@ includeHeader($pageTitle, $pageDescription);
                                 <?php endif; ?>
                             </td>
                             <td>
-                                <?php if ($stockInfo && isset($stockInfo['company_name']) && $stockInfo['company_name']): ?>
-                                    <span class="company-name" title="<?php echo e($stockInfo['company_name']); ?>">
-                                        <?php echo e(strlen($stockInfo['company_name']) > 30 ? substr($stockInfo['company_name'], 0, 30) . '...' : $stockInfo['company_name']); ?>
-                                    </span>
-                                <?php else: ?>
-                                    <span class="no-data-badge">N/A</span>
-                                <?php endif; ?>
-                            </td>
-                            <td>
-                                <?php if ($stockInfo && isset($stockInfo['industry']) && $stockInfo['industry']): ?>
-                                    <span class="industry-badge"><?php echo e($stockInfo['industry']); ?></span>
-                                <?php else: ?>
-                                    <span class="no-data-badge">N/A</span>
-                                <?php endif; ?>
-                            </td>
-                            <td>
                                 <?php if ($stockInfo && isset($stockInfo['total_traded_value']) && $stockInfo['total_traded_value'] > 0): ?>
                                     <?php 
                                     $tradedValue = $stockInfo['total_traded_value'];
@@ -373,7 +367,6 @@ includeHeader($pageTitle, $pageDescription);
                                     <span class="no-data-badge">N/A</span>
                                 <?php endif; ?>
                             </td>
-                            <td>
                                 <?php if ($stockInfo): ?>
                                     <button class="btn-indicators" data-symbol="<?php echo e($symbol); ?>" onclick="showIndicators('<?php echo e($symbol); ?>')">
                                         View
@@ -795,14 +788,19 @@ includeHeader($pageTitle, $pageDescription);
     text-align: center;
 }
 
-.company-name {
+.symbol-cell {
+    margin-bottom: 4px;
+}
+
+.company-name-inline {
     font-size: 11px;
     color: #555;
-    max-width: 200px;
-    display: inline-block;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    margin-top: 2px;
+    line-height: 1.3;
+}
+
+.industry-inline {
+    margin-top: 4px;
 }
 
 .industry-badge {
@@ -814,7 +812,6 @@ includeHeader($pageTitle, $pageDescription);
     font-size: 11px;
     font-weight: 500;
 }
-
 .unchanged-item strong {
     color: #6c757d;
 }
@@ -1079,9 +1076,9 @@ includeHeader($pageTitle, $pageDescription);
                     bVal = parseFloat(bValue) || 0;
                     break;
                 case 'total_traded_value':
-                    // Traded Value is column 17 (index 16): after Company(14), Industry(15), TradedValue(16)
-                    const aTvCell = a.cells[16];
-                    const bTvCell = b.cells[16];
+                    // Traded Value is column 15 (index 14)
+                    const aTvCell = a.cells[14];
+                    const bTvCell = b.cells[14];
                     // Parse formatted value (Cr/L)
                     const aTvText = aTvCell?.textContent.replace(/[₹,\s]/g, '') || '0';
                     const bTvText = bTvCell?.textContent.replace(/[₹,\s]/g, '') || '0';
