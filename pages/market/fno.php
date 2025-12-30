@@ -367,6 +367,7 @@ includeHeader($pageTitle, $pageDescription);
                                     <span class="no-data-badge">N/A</span>
                                 <?php endif; ?>
                             </td>
+                            <td>
                                 <?php if ($stockInfo): ?>
                                     <button class="btn-indicators" data-symbol="<?php echo e($symbol); ?>" onclick="showIndicators('<?php echo e($symbol); ?>')">
                                         View
@@ -591,21 +592,22 @@ includeHeader($pageTitle, $pageDescription);
     color: #999;
     font-style: italic;
 }
-
 .btn-indicators {
     background: #28a745;
     color: white;
     border: none;
     border-radius: 3px;
-    padding: 4px 10px;
+    padding: 6px 12px;
     cursor: pointer;
-    font-size: 11px;
+    font-size: 12px;
     white-space: nowrap;
+    display: inline-block;
+    width: auto;
 }
 
 .btn-indicators:hover {
     background: #218838;
-}
+}}
 
 /* Modal Styles */
 .modal {
