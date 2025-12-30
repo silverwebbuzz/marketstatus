@@ -444,6 +444,17 @@ includeHeader($pageTitle, $pageDescription);
 </div>
 
 <style>
+/* Hide navbar for futures-margins page */
+.Navbar1,
+.Nav_toggle {
+    display: none !important;
+}
+
+/* Set td font size to 14px */
+.futures-table td {
+    font-size: 14px !important;
+}
+
 .futures-table-container {
     overflow-x: auto;
     margin: 20px 0;
