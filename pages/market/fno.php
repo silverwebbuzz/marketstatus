@@ -842,16 +842,22 @@ includeHeader($pageTitle, $pageDescription);
     color: #dc3545;
 }
 
-.change-percent {
+.change-percent,
+.profit-loss-cell,
+.roi-cell {
     font-weight: 600;
     font-size: 12px;
 }
 
-.change-percent.positive {
+.change-percent.positive,
+.profit-loss-cell.positive,
+.roi-cell.positive {
     color: #28a745;
 }
 
-.change-percent.negative {
+.change-percent.negative,
+.profit-loss-cell.negative,
+.roi-cell.negative {
     color: #dc3545;
 }
 
