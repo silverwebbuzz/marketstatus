@@ -353,7 +353,7 @@ includeHeader($pageTitle, $pageDescription);
                             </td>
                             <td class="roi-cell positive" data-sort-value="<?php  echo ($profitLoss / $firstContract['nrml_margin']) * 100;?>">
                                 <b><?php 
-                                $roi = ($profitLoss / $firstContract['nrml_margin']) * 100;   echo ($roi > 0 ? '+' : '') . formatNumber($roi, 2);
+                                $roi = ($profitLoss / $firstContract['nrml_margin']) * 100;   echo formatNumber($roi, 2) . '%';
                                 ?></b>
                             </td>
                             <td>₹<?php echo isset($firstContract['price']) && $firstContract['price'] ? formatNumber($firstContract['price'], 2) : 'N/A'; ?></td>
