@@ -189,6 +189,9 @@ includeHeader($pageTitle, $pageDescription);
                         <th class="sortable" data-sort="current_price">
                             <b>Traget Price</b>
                         </th>
+                        <th class="sortable" data-sort="current_price">
+                            <b>Difference</b>
+                        </th>
                         <th class="sortable" data-sort="price">
                             Futures Price <span class="sort-indicator">↕</span>
                         </th>
@@ -311,7 +314,28 @@ includeHeader($pageTitle, $pageDescription);
                                     <span class="no-data-badge">N/A</span>
                                 <?php endif; ?>
                             </td>
-                            <td>₹<?php echo isset($stockInfo['current_price']) && $stockInfo['current_price'] ? formatNumber($stockInfo['current_price']+(10*($stockInfo['current_price']/100)), 2) : 'N/A'; ?></td>
+                            <td>
+                                <?php 
+                                    if (isset($stockInfo['current_price']) && $stockInfo['current_price']) {
+                                        $futurePrice = $stockInfo['current_price'] + (10 * ($stockInfo['current_price'] / 100));
+                                        echo '₹<b>' . formatNumber($futurePrice, 2) . '</b>';
+                                    } else {
+                                        echo '<span class="no-data-badge">N/A</span>';
+                                    }
+                                ?>
+                            </td>
+                            <?php if ($stockInfo && isset($stockInfo['current_price']) && $stockInfo['current_price']): ?>
+                                <?php 
+                                    $futurePrice = $stockInfo['current_price'] + (10 * ($stockInfo['current_price'] / 100));
+                                    $change = $futurePrice - $stockInfo['current_price'];
+                                    $changeClass = $change > 0 ? 'positive' : ($change < 0 ? 'negative' : '');
+                                ?>
+                                    <span class="change-amount <?php echo $changeClass; ?>">
+                                        <?php echo ($change > 0 ? '+' : '') . '₹' . formatNumber($change, 2); ?>
+                                    </span>
+                                <?php else: ?>
+                                    <span class="no-data-badge">N/A</span>
+                                <?php endif; ?>
                             <td>₹<?php echo isset($firstContract['price']) && $firstContract['price'] ? formatNumber($firstContract['price'], 2) : 'N/A'; ?></td>
                             <td><?php echo isset($firstContract['lot_size']) ? number_format($firstContract['lot_size']) : 'N/A'; ?></td>
                             <td>
