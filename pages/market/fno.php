@@ -341,7 +341,7 @@ includeHeader($pageTitle, $pageDescription);
                                     <span class="no-data-badge">N/A</span>
                                 <?php endif; ?>
                             </td>
-                            <td>₹<?php echo isset($firstContract['price']) && $firstContract['price'] ? formatNumber($firstContract['price'], 2) : 'N/A'; ?></td>
+                            <td>₹<?php echo isset($firstContract['nrml_margin']) && $firstContract['nrml_margin'] ? formatNumber($firstContract['nrml_margin'], 0) : 'N/A'; ?></td>
                             <td><?php echo isset($firstContract['lot_size']) ? number_format($firstContract['lot_size']) : 'N/A'; ?></td>
                             <td>
                                 <?php 
@@ -351,8 +351,8 @@ includeHeader($pageTitle, $pageDescription);
                                 echo $contractValue > 0 ? '₹' . formatNumber($contractValue, 2) : 'N/A';
                                 ?>
                             </td>
+                            <td>₹<?php echo isset($firstContract['price']) && $firstContract['price'] ? formatNumber($firstContract['price'], 2) : 'N/A'; ?></td>
                             <td><?php echo isset($firstContract['nrml_margin_rate']) && $firstContract['nrml_margin_rate'] ? formatPercentage($firstContract['nrml_margin_rate'], 2) : 'N/A'; ?></td>
-                            <td>₹<?php echo isset($firstContract['nrml_margin']) && $firstContract['nrml_margin'] ? formatNumber($firstContract['nrml_margin'], 0) : 'N/A'; ?></td>
                             <td class="profit-loss-cell" data-sort-value="<?php 
                                 $change = $stockInfo['change'] ?? 0;
                                 $lotSize = $firstContract['lot_size'] ?? 0;
