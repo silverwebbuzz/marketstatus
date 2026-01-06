@@ -201,6 +201,9 @@ includeHeader($pageTitle, $pageDescription);
                         <th class="sortable" data-sort="profit_loss">
                             Profit/Loss <span class="sort-indicator">↕</span>
                         </th>
+                        <th class="sortable" data-sort="roi">
+                            ROI <span class="sort-indicator">↕</span>
+                        </th>
                         <th class="sortable" data-sort="price">
                             Futures Price <span class="sort-indicator">↕</span>
                         </th>
@@ -348,6 +351,12 @@ includeHeader($pageTitle, $pageDescription);
                                 $profitLoss = $change * $firstContract['lot_size'];   echo ($profitLoss > 0 ? '+' : '') . '₹' . formatNumber($profitLoss, 2);
                                 ?></b>
                             </td>
+                            <td class="roi-cell" data-sort-value="<?php  echo ($profitLoss / $firstContract['nrml_margin']) * 100;?>">
+                                <b><?php 
+                                $roi = ($profitLoss / $firstContract['nrml_margin']) * 100;   echo ($roi > 0 ? '+' : '') . formatNumber($roi, 2);
+                                ?></b>
+                            </td>
+                            <td>₹<?php echo isset($firstContract['price']) && $firstContract['price'] ? formatNumber($firstContract['price'], 2) : 'N/A'; ?></td>
                             <td>
                                 <?php 
                                 $lotSize = $firstContract['lot_size'] ?? 0;
@@ -356,7 +365,6 @@ includeHeader($pageTitle, $pageDescription);
                                 echo $contractValue > 0 ? '₹' . formatNumber($contractValue, 2) : 'N/A';
                                 ?>
                             </td>
-                            <td>₹<?php echo isset($firstContract['price']) && $firstContract['price'] ? formatNumber($firstContract['price'], 2) : 'N/A'; ?></td>
                             <td><?php echo isset($firstContract['nrml_margin_rate']) && $firstContract['nrml_margin_rate'] ? formatPercentage($firstContract['nrml_margin_rate'], 2) : 'N/A'; ?></td>
                             <td><?php echo isset($firstContract['mwpl']) && $firstContract['mwpl'] ? formatPercentage($firstContract['mwpl'], 2) : 'N/A'; ?></td>
                             <td class="volume-cell" data-sort-value="<?php echo $stockInfo['volume'] ?? 0; ?>">
@@ -1091,7 +1099,7 @@ includeHeader($pageTitle, $pageDescription);
         
         symbolRows.sort((a, b) => {
             let aVal, bVal;
-            
+
             switch(currentSort.column) {
                 case 'symbol':
                     aVal = a.dataset.symbol || '';
@@ -1101,99 +1109,152 @@ includeHeader($pageTitle, $pageDescription);
                     aVal = a.dataset.expiry || '';
                     bVal = b.dataset.expiry || '';
                     break;
-                case 'lot_size':
-                    const aLot = a.querySelector('td:nth-child(3)')?.textContent.replace(/,/g, '') || '0';
-                    const bLot = b.querySelector('td:nth-child(3)')?.textContent.replace(/,/g, '') || '0';
-                    aVal = parseFloat(aLot) || 0;
-                    bVal = parseFloat(bLot) || 0;
+                case 'ohlc_range':
+                    // OHLC + 52 Week Range is the 3rd td (2)
+                    aVal = (a.cells[2]?.textContent || '').trim();
+                    bVal = (b.cells[2]?.textContent || '').trim();
                     break;
-                case 'mwpl':
-                    const aMwpl = a.querySelector('td:nth-child(4)')?.textContent.replace(/[%,]/g, '') || '0';
-                    const bMwpl = b.querySelector('td:nth-child(4)')?.textContent.replace(/[%,]/g, '') || '0';
-                    aVal = parseFloat(aMwpl) || 0;
-                    bVal = parseFloat(bMwpl) || 0;
+                case 'current_price':
+                    // Current Price is 4th td (3)
+                    aVal = parseFloat((a.cells[3]?.textContent || '').replace(/[₹,]/g, '')) || 0;
+                    bVal = parseFloat((b.cells[3]?.textContent || '').replace(/[₹,]/g, '')) || 0;
+                    break;
+                case 'target_price':
+                    // Target Price is 5th td (4)
+                    aVal = parseFloat((a.cells[4]?.textContent || '').replace(/[₹,]/g, '')) || 0;
+                    bVal = parseFloat((b.cells[4]?.textContent || '').replace(/[₹,]/g, '')) || 0;
+                    break;
+                case 'difference':
+                    // Difference is 6th td (5)
+                    {
+                        const getDiffVal = cell =>
+                            parseFloat(
+                                (cell?.querySelector('span.change-amount')?.textContent || cell?.textContent || '0')
+                                .replace(/[₹+,\s]/g, '')
+                            ) || 0;
+                        aVal = getDiffVal(a.cells[5]);
+                        bVal = getDiffVal(b.cells[5]);
+                    }
                     break;
                 case 'nrml_margin':
-                    const aMargin = a.querySelector('td:nth-child(5)')?.textContent.replace(/[₹,]/g, '') || '0';
-                    const bMargin = b.querySelector('td:nth-child(5)')?.textContent.replace(/[₹,]/g, '') || '0';
-                    aVal = parseFloat(aMargin) || 0;
-                    bVal = parseFloat(bMargin) || 0;
+                    // NRML Margin is 7th td (6)
+                    aVal = parseFloat((a.cells[6]?.textContent || '').replace(/[₹,]/g, '')) || 0;
+                    bVal = parseFloat((b.cells[6]?.textContent || '').replace(/[₹,]/g, '')) || 0;
+                    break;
+                case 'lot_size':
+                    // Lot Size is 8th td (7)
+                    aVal = parseFloat((a.cells[7]?.textContent || '').replace(/,/g, '')) || 0;
+                    bVal = parseFloat((b.cells[7]?.textContent || '').replace(/,/g, '')) || 0;
+                    break;
+                case 'profit_loss':
+                    // Profit/Loss is 9th td (8)
+                    {
+                        const getPLVal = cell =>
+                            parseFloat(
+                                (cell?.textContent || '')
+                                .replace(/[₹+,\s]/g, '')
+                            ) || 0;
+                        aVal = getPLVal(a.cells[8]);
+                        bVal = getPLVal(b.cells[8]);
+                    }
+                    break;
+                case 'roi':
+                    // ROI is 10th td (9)
+                    aVal = parseFloat((a.cells[9]?.textContent || '').replace(/[+,%\s]/g, '')) || 0;
+                    bVal = parseFloat((b.cells[9]?.textContent || '').replace(/[+,%\s]/g, '')) || 0;
+                    break;
+                case 'price':
+                    // Futures Price is 11th td (10)
+                    aVal = parseFloat((a.cells[10]?.textContent || '').replace(/[₹,]/g, '')) || 0;
+                    bVal = parseFloat((b.cells[10]?.textContent || '').replace(/[₹,]/g, '')) || 0;
+                    break;
+                case 'contract_value':
+                    // Contract Value is 12th td (11)
+                    aVal = parseFloat((a.cells[11]?.textContent || '').replace(/[₹,]/g, '')) || 0;
+                    bVal = parseFloat((b.cells[11]?.textContent || '').replace(/[₹,]/g, '')) || 0;
                     break;
                 case 'nrml_margin_rate':
+                    // Margin Rate is 13th td (12)
                     aVal = parseFloat(a.dataset.marginRate) || 0;
                     bVal = parseFloat(b.dataset.marginRate) || 0;
                     break;
-                case 'current_price':
-                    aVal = parseFloat(a.dataset.currentPrice) || 0;
-                    bVal = parseFloat(b.dataset.currentPrice) || 0;
+                case 'mwpl':
+                    // MWPL is 14th td (13)
+                    aVal = parseFloat((a.cells[13]?.textContent || '').replace(/[%,]/g, '')) || 0;
+                    bVal = parseFloat((b.cells[13]?.textContent || '').replace(/[%,]/g, '')) || 0;
                     break;
                 case 'volume':
+                    // Volume is 15th td (14)
                     aVal = parseFloat(a.dataset.volume) || 0;
                     bVal = parseFloat(b.dataset.volume) || 0;
                     break;
                 case 'change':
-                    const aChangeAmountCell = a.querySelector('td.change-cell .change-amount');
-                    const bChangeAmountCell = b.querySelector('td.change-cell .change-amount');
-                    aVal = parseFloat(aChangeAmountCell?.textContent.replace(/[₹+,\s]/g, '')) || 0;
-                    bVal = parseFloat(bChangeAmountCell?.textContent.replace(/[₹+,\s]/g, '')) || 0;
+                    // Change is 16th td (15)
+                    {
+                        const getChangeVal = cell =>
+                            parseFloat(
+                                (cell?.querySelector('.change-amount')?.textContent ||
+                                 cell?.textContent ||
+                                 '0').replace(/[₹+,\s]/g, '')
+                            ) || 0;
+                        aVal = getChangeVal(a.cells[15]);
+                        bVal = getChangeVal(b.cells[15]);
+                    }
                     break;
                 case 'change_percent':
-                    // Find the second change-cell (Change % is after Change)
-                    const changeCells = a.querySelectorAll('td.change-cell');
-                    const aChangePercentCell = changeCells.length > 1 ? changeCells[1] : changeCells[0];
-                    const bChangePercentCells = b.querySelectorAll('td.change-cell');
-                    const bChangePercentCell = bChangePercentCells.length > 1 ? bChangePercentCells[1] : bChangePercentCells[0];
-                    aVal = parseFloat(aChangePercentCell?.dataset.sortValue || aChangePercentCell?.textContent.replace(/[+%,\s]/g, '')) || 0;
-                    bVal = parseFloat(bChangePercentCell?.dataset.sortValue || bChangePercentCell?.textContent.replace(/[+%,\s]/g, '')) || 0;
+                    // Change % is 17th td (16)
+                    {
+                        const getChangePercentVal = cell =>
+                            parseFloat(
+                                (cell?.querySelector('.change-percent')?.textContent ||
+                                 cell?.textContent ||
+                                 '0').replace(/[+%,\s]/g, '')
+                            ) || 0;
+                        aVal = getChangePercentVal(a.cells[16]);
+                        bVal = getChangePercentVal(b.cells[16]);
+                    }
                     break;
                 case 'today_pl':
-                    const aPlCell = a.querySelector('td.pl-cell');
-                    const bPlCell = b.querySelector('td.pl-cell');
-                    aVal = parseFloat(aPlCell?.dataset.sortValue || aPlCell?.textContent.replace(/[₹+,\s]/g, '')) || 0;
-                    bVal = parseFloat(bPlCell?.dataset.sortValue || bPlCell?.textContent.replace(/[₹+,\s]/g, '')) || 0;
-                    break;
-                case 'price':
-                    const aPrice = a.querySelector('td:nth-child(5)')?.textContent.replace(/[₹,]/g, '') || '0';
-                    const bPrice = b.querySelector('td:nth-child(5)')?.textContent.replace(/[₹,]/g, '') || '0';
-                    aVal = parseFloat(aPrice) || 0;
-                    bVal = parseFloat(bPrice) || 0;
-                    break;
-                case 'contract_value':
-                    const aValue = a.querySelector('td:nth-child(7)')?.textContent.replace(/[₹,]/g, '') || '0';
-                    const bValue = b.querySelector('td:nth-child(7)')?.textContent.replace(/[₹,]/g, '') || '0';
-                    aVal = parseFloat(aValue) || 0;
-                    bVal = parseFloat(bValue) || 0;
+                    // Today P/L is 18th td (17)
+                    aVal = parseFloat(
+                        (a.cells[17]?.dataset.sortValue) ||
+                        (a.cells[17]?.textContent || '').replace(/[₹+,\s]/g, '')
+                    ) || 0;
+                    bVal = parseFloat(
+                        (b.cells[17]?.dataset.sortValue) ||
+                        (b.cells[17]?.textContent || '').replace(/[₹+,\s]/g, '')
+                    ) || 0;
                     break;
                 case 'total_traded_value':
-                    // Traded Value is column 16 (index 15) - after Today P/L
-                    const aTvCell = a.cells[15];
-                    const bTvCell = b.cells[15];
-                    // Parse formatted value (Cr/L)
-                    const aTvText = aTvCell?.textContent.replace(/[₹,\s]/g, '') || '0';
-                    const bTvText = bTvCell?.textContent.replace(/[₹,\s]/g, '') || '0';
-                    aVal = parseFloat(aTvText.replace(/[CrL]/g, '')) || 0;
-                    bVal = parseFloat(bTvText.replace(/[CrL]/g, '')) || 0;
-                    // Handle Cr/L multipliers
-                    if (aTvText.includes('Cr')) aVal *= 10000000;
-                    else if (aTvText.includes('L')) aVal *= 100000;
-                    if (bTvText.includes('Cr')) bVal *= 10000000;
-                    else if (bTvText.includes('L')) bVal *= 100000;
+                    // Traded Value is 19th td (18); may be Cr/L formatting
+                    {
+                        const parseTradedValue = cell => {
+                            if (!cell) return 0;
+                            const txt = cell.textContent.replace(/[₹,\s]/g, '') || '0';
+                            let val = parseFloat(txt.replace(/[CrL]/g, '')) || 0;
+                            if (txt.includes('Cr')) val *= 10000000;
+                            else if (txt.includes('L')) val *= 100000;
+                            return val;
+                        };
+                        aVal = parseTradedValue(a.cells[18]);
+                        bVal = parseTradedValue(b.cells[18]);
+                    }
                     break;
                 default:
                     return 0;
             }
-            
+
             if (typeof aVal === 'string') {
-                return currentSort.direction === 'asc' 
+                return currentSort.direction === 'asc'
                     ? aVal.localeCompare(bVal)
                     : bVal.localeCompare(aVal);
             } else {
-                return currentSort.direction === 'asc' 
+                return currentSort.direction === 'asc'
                     ? aVal - bVal
                     : bVal - aVal;
             }
         });
-        
+
         // Re-insert sorted rows with their detail rows
         symbolRows.forEach(symbolRow => {
             const symbol = symbolRow.dataset.symbol;
