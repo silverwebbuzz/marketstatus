@@ -343,16 +343,6 @@ includeHeader($pageTitle, $pageDescription);
                             </td>
                             <td>₹<?php echo isset($firstContract['nrml_margin']) && $firstContract['nrml_margin'] ? formatNumber($firstContract['nrml_margin'], 0) : 'N/A'; ?></td>
                             <td><?php echo isset($firstContract['lot_size']) ? number_format($firstContract['lot_size']) : 'N/A'; ?></td>
-                            <td>
-                                <?php 
-                                $lotSize = $firstContract['lot_size'] ?? 0;
-                                $price = $firstContract['price'] ?? 0;
-                                $contractValue = $lotSize * $price;
-                                echo $contractValue > 0 ? '₹' . formatNumber($contractValue, 2) : 'N/A';
-                                ?>
-                            </td>
-                            <td>₹<?php echo isset($firstContract['price']) && $firstContract['price'] ? formatNumber($firstContract['price'], 2) : 'N/A'; ?></td>
-                            <td><?php echo isset($firstContract['nrml_margin_rate']) && $firstContract['nrml_margin_rate'] ? formatPercentage($firstContract['nrml_margin_rate'], 2) : 'N/A'; ?></td>
                             <td class="profit-loss-cell" data-sort-value="<?php 
                                 $change = $stockInfo['change'] ?? 0;
                                 $lotSize = $firstContract['lot_size'] ?? 0;
@@ -364,6 +354,16 @@ includeHeader($pageTitle, $pageDescription);
                                 $profitLoss = $change * $lotSize;   echo ($profitLoss > 0 ? '+' : '') . '₹' . formatNumber($profitLoss, 2);
                                 ?>
                             </td>
+                            <td>
+                                <?php 
+                                $lotSize = $firstContract['lot_size'] ?? 0;
+                                $price = $firstContract['price'] ?? 0;
+                                $contractValue = $lotSize * $price;
+                                echo $contractValue > 0 ? '₹' . formatNumber($contractValue, 2) : 'N/A';
+                                ?>
+                            </td>
+                            <td>₹<?php echo isset($firstContract['price']) && $firstContract['price'] ? formatNumber($firstContract['price'], 2) : 'N/A'; ?></td>
+                            <td><?php echo isset($firstContract['nrml_margin_rate']) && $firstContract['nrml_margin_rate'] ? formatPercentage($firstContract['nrml_margin_rate'], 2) : 'N/A'; ?></td>
                             <td><?php echo isset($firstContract['mwpl']) && $firstContract['mwpl'] ? formatPercentage($firstContract['mwpl'], 2) : 'N/A'; ?></td>
                             <td class="volume-cell" data-sort-value="<?php echo $stockInfo['volume'] ?? 0; ?>">
                                 <?php if ($stockInfo && isset($stockInfo['volume'])): ?>
