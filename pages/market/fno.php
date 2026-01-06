@@ -346,12 +346,12 @@ includeHeader($pageTitle, $pageDescription);
                             </td>
                             <td>₹<?php echo isset($firstContract['nrml_margin']) && $firstContract['nrml_margin'] ? formatNumber($firstContract['nrml_margin'], 0) : 'N/A'; ?></td>
                             <td><?php echo isset($firstContract['lot_size']) ? number_format($firstContract['lot_size']) : 'N/A'; ?></td>
-                            <td class="profit-loss-cell" data-sort-value="<?php  echo $change * $firstContract['lot_size'];?>">
+                            <td class="profit-loss-cell positive" data-sort-value="<?php  echo $change * $firstContract['lot_size'];?>">
                                 <b><?php 
                                 $profitLoss = $change * $firstContract['lot_size'];   echo ($profitLoss > 0 ? '+' : '') . '₹' . formatNumber($profitLoss, 2);
                                 ?></b>
                             </td>
-                            <td class="roi-cell" data-sort-value="<?php  echo ($profitLoss / $firstContract['nrml_margin']) * 100;?>">
+                            <td class="roi-cell positive" data-sort-value="<?php  echo ($profitLoss / $firstContract['nrml_margin']) * 100;?>">
                                 <b><?php 
                                 $roi = ($profitLoss / $firstContract['nrml_margin']) * 100;   echo ($roi > 0 ? '+' : '') . formatNumber($roi, 2);
                                 ?></b>
