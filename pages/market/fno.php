@@ -323,7 +323,7 @@ includeHeader($pageTitle, $pageDescription);
                             <td>
                                 <?php 
                                     if (isset($stockInfo['current_price']) && $stockInfo['current_price']) {
-                                        $futurePrice = $stockInfo['current_price'] + (10 * ($stockInfo['current_price'] / 100));
+                                        $futurePrice = $stockInfo['current_price'] + (5 * ($stockInfo['current_price'] / 100));
                                         echo '₹<b>' . formatNumber($futurePrice, 2) . '</b>';
                                     } else {
                                         echo '<span class="no-data-badge">N/A</span>';
@@ -333,7 +333,7 @@ includeHeader($pageTitle, $pageDescription);
                             <td>
                             <?php if ($stockInfo && isset($stockInfo['current_price']) && $stockInfo['current_price']): ?>
                                 <?php 
-                                    $futurePrice = $stockInfo['current_price'] + (10 * ($stockInfo['current_price'] / 100));
+                                    $futurePrice = $stockInfo['current_price'] + (5 * ($stockInfo['current_price'] / 100));
                                     $change = $futurePrice - $stockInfo['current_price'];
                                     $changeClass = $change > 0 ? 'positive' : ($change < 0 ? 'negative' : '');
                                 ?>
