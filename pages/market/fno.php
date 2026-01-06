@@ -844,20 +844,23 @@ includeHeader($pageTitle, $pageDescription);
 
 .change-percent,
 .profit-loss-cell,
-.roi-cell {
+.roi-cell, .pl-amount ,.change-amount,.change-percent{
     font-weight: 600;
     font-size: 12px;
 }
 
 .change-percent.positive,
 .profit-loss-cell.positive,
-.roi-cell.positive {
+.roi-cell.positive,
+.positive {
+    {
     color: #28a745;
 }
 
 .change-percent.negative,
 .profit-loss-cell.negative,
-.roi-cell.negative {
+.roi-cell.negative,
+.negative {
     color: #dc3545;
 }
 
