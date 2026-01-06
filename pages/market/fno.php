@@ -324,6 +324,7 @@ includeHeader($pageTitle, $pageDescription);
                                     }
                                 ?>
                             </td>
+                            <td>
                             <?php if ($stockInfo && isset($stockInfo['current_price']) && $stockInfo['current_price']): ?>
                                 <?php 
                                     $futurePrice = $stockInfo['current_price'] + (10 * ($stockInfo['current_price'] / 100));
@@ -336,6 +337,7 @@ includeHeader($pageTitle, $pageDescription);
                                 <?php else: ?>
                                     <span class="no-data-badge">N/A</span>
                                 <?php endif; ?>
+                            </td>
                             <td>₹<?php echo isset($firstContract['price']) && $firstContract['price'] ? formatNumber($firstContract['price'], 2) : 'N/A'; ?></td>
                             <td><?php echo isset($firstContract['lot_size']) ? number_format($firstContract['lot_size']) : 'N/A'; ?></td>
                             <td>
