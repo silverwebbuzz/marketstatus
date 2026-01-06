@@ -343,14 +343,8 @@ includeHeader($pageTitle, $pageDescription);
                             </td>
                             <td>₹<?php echo isset($firstContract['nrml_margin']) && $firstContract['nrml_margin'] ? formatNumber($firstContract['nrml_margin'], 0) : 'N/A'; ?></td>
                             <td><?php echo isset($firstContract['lot_size']) ? number_format($firstContract['lot_size']) : 'N/A'; ?></td>
-                            <td class="profit-loss-cell" data-sort-value="<?php 
-                                $change = $stockInfo['change'] ?? 0;
-                                $lotSize = $firstContract['lot_size'] ?? 0;
-                                echo $change * $lotSize;
-                            ?>">
+                            <td class="profit-loss-cell" data-sort-value="<?php  echo $change * $lotSize;?>">
                                 <?php 
-                                $change = $stockInfo['change'] ?? 0;
-                                $lotSize = $firstContract['lot_size'] ?? 0;
                                 $profitLoss = $change * $lotSize;   echo ($profitLoss > 0 ? '+' : '') . '₹' . formatNumber($profitLoss, 2);
                                 ?>
                             </td>
