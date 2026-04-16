@@ -12,97 +12,122 @@ $user = authRequire();
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/ms/assets/css/style.css">
     <style>
-        .wl-controls { padding:12px 20px; display:flex; gap:10px; flex-wrap:wrap; align-items:center; background:var(--bg2); border-bottom:1px solid var(--border); }
-        .btn-add { background:var(--accent); color:#fff; border:none; border-radius:var(--radius); padding:7px 16px; font-size:13px; font-weight:600; cursor:pointer; }
-        .filter-tabs { display:flex; gap:6px; }
-        .filter-tab { background:var(--bg3); border:1px solid var(--border); border-radius:var(--radius); padding:5px 14px; font-size:12px; cursor:pointer; color:var(--text2); }
-        .filter-tab.active { background:var(--accent); border-color:var(--accent); color:#fff; }
+        /* ── Controls ── */
+        .wl-controls { padding:10px 20px; display:flex; gap:10px; flex-wrap:wrap; align-items:center; background:var(--bg2); border-bottom:1px solid var(--border); }
+        .btn-add { background:var(--accent); color:#fff; border:none; border-radius:6px; padding:8px 18px; font-size:13px; font-weight:600; cursor:pointer; letter-spacing:.2px; transition:opacity .15s; }
+        .btn-add:hover { opacity:.85; }
+        .filter-tabs { display:flex; gap:4px; }
+        .filter-tab { background:transparent; border:1px solid var(--border); border-radius:6px; padding:5px 14px; font-size:12px; cursor:pointer; color:#7a8fa6; transition:all .15s; }
+        .filter-tab:hover { color:#e2e8f0; border-color:#4a5568; }
+        .filter-tab.active { background:rgba(79,142,247,.15); border-color:var(--accent); color:var(--accent); font-weight:600; }
 
-        /* Summary strip */
+        /* ── Summary strip ── */
         .summary-row { display:flex; gap:1px; background:var(--border); border-bottom:1px solid var(--border); }
-        .summary-box { flex:1; background:var(--bg2); padding:10px 16px; min-width:110px; }
-        .summary-box .lbl { font-size:11px; color:#7a8fa6; text-transform:uppercase; letter-spacing:.4px; }
-        .summary-box .val { font-size:17px; font-weight:700; margin-top:3px; color:#e2e8f0; }
+        .summary-box { flex:1; background:var(--bg2); padding:12px 18px; min-width:110px; }
+        .summary-box .lbl { font-size:10px; font-weight:600; color:#556070; text-transform:uppercase; letter-spacing:.6px; }
+        .summary-box .val { font-size:18px; font-weight:700; margin-top:4px; color:#f1f5f9; }
+        .summary-box .val.green { color:#4ade80; }
+        .summary-box .val.red   { color:#f87171; }
+        .summary-box .val.blue  { color:#60a5fa; }
 
-        /* Brighter text for dark screen readability */
-        .wl-table-wrap { --text2:#b8c5d6; --text3:#7a8fa6; }
+        /* ── Table wrap ── */
+        .wl-table-wrap { overflow-x:auto; background:var(--bg); }
+        .wl-table { width:100%; border-collapse:collapse; }
 
-        /* Table */
-        .wl-table-wrap { overflow-x:auto; }
-        .wl-table { width:100%; border-collapse:collapse; table-layout:auto; }
+        /* ── Header ── */
+        .wl-table thead tr { border-bottom:1px solid #2a3040; }
         .wl-table thead th {
-            background:var(--bg2); padding:10px 14px;
-            font-size:11px; font-weight:600; text-transform:uppercase;
-            letter-spacing:.5px; color:#7a8fa6;
-            border-bottom:2px solid var(--border); white-space:nowrap;
-            text-align:left;
+            padding:11px 16px; font-size:10px; font-weight:700;
+            text-transform:uppercase; letter-spacing:.7px; color:#4a5568;
+            background:var(--bg); white-space:nowrap; text-align:left;
         }
-        .wl-table thead th.num  { text-align:right; }
-        .wl-table thead th.ctr  { text-align:center; }
-        .wl-table tbody td { padding:10px 14px; border-bottom:1px solid var(--border); font-size:13px; vertical-align:top; white-space:nowrap; color:#cbd5e1; }
-        .wl-table tbody td.num  { text-align:right; }
-        .wl-table tbody td.ctr  { text-align:center; }
-        .wl-table tbody tr:hover { background:rgba(255,255,255,.04); }
-        .wl-table tbody tr.closed-row { opacity:.65; }
-        /* Totals row */
-        .wl-table tfoot td { padding:10px 14px; font-size:13px; font-weight:700; border-top:2px solid var(--border); background:var(--bg2); white-space:nowrap; color:#cbd5e1; }
-        .wl-table tfoot td.num { text-align:right; }
+        .wl-table thead th.r { text-align:right; }
+        .wl-table thead th.c { text-align:center; }
 
-        /* Name cell */
-        .sym-name { font-weight:700; font-size:14px; color:#e2e8f0; }
-        .sym-meta { font-size:10px; color:#7a8fa6; margin-top:3px; display:flex; gap:8px; flex-wrap:wrap; }
-        .sym-meta .tgt  { color:#4ade80; }
-        .sym-meta .sl   { color:#f87171; }
-        .sym-meta .note { color:#7a8fa6; font-style:italic; }
+        /* ── Body rows ── */
+        .wl-table tbody tr {
+            border-bottom:1px solid #1e2333;
+            transition:background .12s;
+        }
+        .wl-table tbody tr:hover { background:#1a1f2e; }
+        .wl-table tbody tr.closed-row { opacity:.55; }
+        .wl-table tbody td {
+            padding:13px 16px; font-size:13px;
+            vertical-align:middle; white-space:nowrap; color:#c8d3e0;
+        }
+        .wl-table tbody td.r { text-align:right; }
+        .wl-table tbody td.c { text-align:center; }
 
-        /* Product badge */
-        .badge-buy  { background:rgba(34,197,94,.15);  color:var(--green); padding:2px 10px; border-radius:20px; font-size:11px; font-weight:700; display:inline-block; }
-        .badge-sell { background:rgba(239,68,68,.15);   color:var(--red);   padding:2px 10px; border-radius:20px; font-size:11px; font-weight:700; display:inline-block; }
-        .badge-closed-sm { background:rgba(100,116,139,.12); color:var(--text3); padding:2px 10px; border-radius:20px; font-size:11px; display:inline-block; }
+        /* ── Instrument cell ── */
+        .sym-name { font-weight:700; font-size:14px; color:#f1f5f9; letter-spacing:-.1px; }
+        .sym-expiry { display:inline-block; margin-left:6px; font-size:10px; font-weight:500; color:#4a5568; background:#1e2333; border-radius:4px; padding:1px 6px; vertical-align:middle; }
+        .sym-note { font-size:11px; color:#4a5568; margin-top:3px; font-style:italic; }
 
-        /* Qty cell — show sign like Zerodha */
-        .qty-positive { color:var(--green); font-weight:600; }
-        .qty-negative { color:var(--red);   font-weight:600; }
+        /* ── Qty ── */
+        .qty-val { font-size:13px; font-weight:700; }
+        .qty-val.buy  { color:#4ade80; }
+        .qty-val.sell { color:#f87171; }
+        .qty-shares { font-size:10px; color:#4a5568; margin-top:2px; }
 
-        /* P&L cells */
-        .pl-cell { font-weight:700; }
-        .pl-label { font-size:10px; font-weight:400; color:var(--text3); margin-top:1px; }
+        /* ── Price cells ── */
+        .price-main { font-size:14px; font-weight:600; color:#f1f5f9; }
+        .price-sub  { font-size:11px; margin-top:2px; }
 
-        /* Status badges */
-        .hit-target { color:var(--green); font-weight:700; font-size:11px; }
-        .hit-sl     { color:var(--red);   font-weight:700; font-size:11px; }
+        /* ── P&L ── */
+        .pl-main { font-size:14px; font-weight:700; }
+        .pl-sub  { font-size:11px; margin-top:2px; opacity:.8; }
+        .pl-main.up, .pl-sub.up { color:#4ade80; }
+        .pl-main.dn, .pl-sub.dn { color:#f87171; }
+        .pl-main.fl, .pl-sub.fl { color:#94a3b8; }
 
-        /* Trade bar */
-        .trade-bar-wrap { min-width:140px; }
-        .trade-bar-track { position:relative; height:5px; border-radius:3px; background:var(--bg3); margin:5px 0 4px; }
-        .trade-bar-zone  { position:absolute; height:100%; }
-        .trade-bar-pin   { position:absolute; width:2px; height:11px; top:-3px; border-radius:2px; transform:translateX(-50%); }
-        .trade-bar-curr-pin { position:absolute; width:3px; height:13px; top:-4px; border-radius:2px; transform:translateX(-50%); box-shadow:0 0 4px rgba(0,0,0,.6); }
-        .trade-bar-ltp   { font-size:10px; font-weight:600; }
-        .trade-bar-axis  { display:flex; justify-content:space-between; font-size:9px; color:var(--text3); }
+        /* ── SL / Target ── */
+        .sl-price  { font-size:13px; font-weight:600; color:#f87171; }
+        .sl-pct    { font-size:10px; color:#7a3535; margin-top:2px; }
+        .tgt-price { font-size:13px; font-weight:600; color:#4ade80; }
+        .tgt-pct   { font-size:10px; color:#2d6a40; margin-top:2px; }
 
-        /* Action buttons */
-        .btn-sm { background:transparent; border:1px solid var(--border); color:var(--text2); border-radius:4px; padding:3px 9px; font-size:11px; cursor:pointer; }
-        .btn-sm:hover { border-color:var(--accent); color:var(--accent); }
-        .btn-sm-close { border-color:rgba(34,197,94,.4); color:var(--green); }
-        .btn-sm-close:hover { border-color:var(--green); background:rgba(34,197,94,.08); }
-        .btn-sm-del { border-color:rgba(239,68,68,.3); color:var(--red); }
-        .btn-sm-del:hover { border-color:var(--red); background:rgba(239,68,68,.08); }
-        .actions-wrap { display:flex; gap:5px; flex-wrap:wrap; }
+        /* ── Status chips ── */
+        .chip { display:inline-flex; align-items:center; gap:4px; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; }
+        .chip-open   { background:rgba(74,222,128,.1);  color:#4ade80; border:1px solid rgba(74,222,128,.2); }
+        .chip-closed { background:rgba(100,116,139,.1); color:#64748b; border:1px solid rgba(100,116,139,.2); }
+        .chip-target { background:rgba(74,222,128,.15); color:#4ade80; border:1px solid rgba(74,222,128,.3); }
+        .chip-sl     { background:rgba(248,113,113,.12); color:#f87171; border:1px solid rgba(248,113,113,.25); }
 
-        .empty-wl { text-align:center; padding:60px 20px; color:var(--text3); font-size:14px; }
+        /* ── Trade bar ── */
+        .tbar-wrap { min-width:160px; }
+        .tbar-ltp  { font-size:11px; font-weight:700; margin-bottom:4px; }
+        .tbar-track { position:relative; height:5px; border-radius:3px; background:#1e2333; }
+        .tbar-zone  { position:absolute; top:0; height:100%; }
+        .tbar-pin   { position:absolute; top:50%; transform:translate(-50%,-50%); width:2px; height:12px; border-radius:2px; }
+        .tbar-curr  { position:absolute; top:50%; transform:translate(-50%,-50%); width:10px; height:10px; border-radius:50%; border:2px solid #0d0f14; box-shadow:0 0 6px rgba(0,0,0,.6); }
+        .tbar-labels { display:flex; justify-content:space-between; margin-top:5px; font-size:9px; color:#374151; }
 
-        /* Close modal */
-        .close-modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.75); z-index:600; align-items:center; justify-content:center; }
+        /* ── Actions ── */
+        .act-wrap { display:flex; gap:5px; }
+        .btn-act { border:none; border-radius:5px; padding:5px 11px; font-size:11px; font-weight:600; cursor:pointer; transition:opacity .15s; }
+        .btn-act:hover { opacity:.8; }
+        .btn-act-edit  { background:#1e2e4a; color:#60a5fa; }
+        .btn-act-close { background:#1a3328; color:#4ade80; }
+        .btn-act-del   { background:#2d1a1a; color:#f87171; }
+
+        .empty-wl { text-align:center; padding:80px 20px; color:#374151; font-size:14px; }
+
+        /* ── Totals footer ── */
+        .wl-table tfoot td { padding:12px 16px; font-size:13px; font-weight:700; border-top:2px solid #2a3040; background:var(--bg2); white-space:nowrap; color:#c8d3e0; }
+        .wl-table tfoot td.r { text-align:right; }
+
+        /* ── Close modal ── */
+        .close-modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.8); z-index:600; align-items:center; justify-content:center; }
         .close-modal-overlay.open { display:flex; }
-        .close-modal-box { background:var(--bg2); border:1px solid var(--border); border-radius:12px; width:90%; max-width:400px; padding:28px; }
-        .close-modal-box h3 { font-size:16px; font-weight:700; margin-bottom:6px; }
-        .close-modal-box .close-subtitle { font-size:12px; color:var(--text3); margin-bottom:20px; }
+        .close-modal-box { background:#161920; border:1px solid #2a3040; border-radius:14px; width:90%; max-width:400px; padding:28px; }
+        .close-modal-box h3 { font-size:17px; font-weight:700; color:#f1f5f9; margin-bottom:4px; }
+        .close-modal-box .close-subtitle { font-size:12px; color:#4a5568; margin-bottom:20px; }
         .close-form-group { margin-bottom:14px; }
-        .close-form-group label { display:block; font-size:12px; color:var(--text3); margin-bottom:5px; }
-        .close-form-group input { width:100%; background:var(--bg3); border:1px solid var(--border); border-radius:var(--radius); padding:9px 12px; color:var(--text); font-size:14px; font-weight:600; outline:none; box-sizing:border-box; }
+        .close-form-group label { display:block; font-size:11px; font-weight:600; color:#4a5568; text-transform:uppercase; letter-spacing:.4px; margin-bottom:6px; }
+        .close-form-group input { width:100%; background:#1e2333; border:1px solid #2a3040; border-radius:8px; padding:10px 14px; color:#f1f5f9; font-size:16px; font-weight:700; outline:none; box-sizing:border-box; transition:border-color .15s; }
         .close-form-group input:focus { border-color:var(--accent); }
-        .close-pl-preview { background:var(--bg3); border-radius:8px; padding:12px 14px; margin-bottom:16px; font-size:13px; }
+        .close-pl-preview { background:#1e2333; border-radius:10px; padding:14px 16px; margin-bottom:16px; }
+        .close-pl-preview .lbl { font-size:10px; font-weight:600; color:#4a5568; text-transform:uppercase; letter-spacing:.5px; margin-bottom:4px; }
         .close-pl-preview .lbl { color:var(--text3); font-size:11px; margin-bottom:4px; }
         .close-pl-preview .val { font-size:18px; font-weight:700; }
         .close-modal-footer { display:flex; gap:10px; justify-content:flex-end; }
@@ -142,14 +167,14 @@ $user = authRequire();
         <thead>
             <tr>
                 <th>Instrument</th>
-                <th class="num">Qty</th>
-                <th class="num">Avg Price</th>
-                <th class="num">LTP / Change</th>
-                <th class="num">P&amp;L</th>
-                <th class="num">Stop Loss</th>
-                <th class="ctr">Position</th>
-                <th class="num">Target</th>
-                <th class="ctr">Status</th>
+                <th class="r">Qty</th>
+                <th class="r">Avg Price</th>
+                <th class="r">LTP / Change</th>
+                <th class="r">P&amp;L</th>
+                <th class="r">Stop Loss</th>
+                <th class="c">Position</th>
+                <th class="r">Target</th>
+                <th class="c">Status</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -279,120 +304,103 @@ function render() {
 
     let html = '';
     rows.forEach(d => {
-        const isClosed   = d.status === 'CLOSED';
-        const isBuy      = d.trade_type === 'BUY';
-        const plClass    = d.pl > 0 ? 'chg-up' : d.pl < 0 ? 'chg-down' : 'chg-flat';
-        const plSign     = d.pl > 0 ? '+' : d.pl < 0 ? '-' : '';
-        const pctSign    = d.pl_pct > 0 ? '+' : d.pl_pct < 0 ? '-' : '';
+        const isClosed = d.status === 'CLOSED';
+        const isBuy    = d.trade_type === 'BUY';
 
-        // LTP / Change cell — styled like FNO dashboard
+        // P&L
+        const plUp   = d.pl > 0, plDn = d.pl < 0;
+        const plMod  = plUp ? 'up' : plDn ? 'dn' : 'fl';
+        const plSign = plUp ? '+' : plDn ? '-' : '';
+        const pctSign= d.pl_pct > 0 ? '+' : d.pl_pct < 0 ? '-' : '';
+
+        // LTP
         const ltp        = isClosed && d.sell_price ? d.sell_price : (d.current_price || 0);
         const chgPct     = d.change_percent || 0;
         const chgAmt     = d.change_amount  || 0;
-        const chgClass   = chgPct > 0 ? 'chg-up' : chgPct < 0 ? 'chg-down' : 'chg-flat';
+        const chgMod     = chgPct > 0 ? 'up' : chgPct < 0 ? 'dn' : 'fl';
+        const chgColor   = chgPct > 0 ? '#4ade80' : chgPct < 0 ? '#f87171' : '#94a3b8';
         const chgSign    = chgPct > 0 ? '+' : '';
         const chgAmtSign = chgAmt > 0 ? '+' : '';
-        // Day range bar — built inline below LTP
-        const rangeLow  = d.low_price  || 0;
-        const rangeHigh = d.high_price || 0;
-        const rangeSpan = rangeHigh - rangeLow;
-        const rangePct  = rangeSpan > 0 ? Math.min(100, Math.max(0, ((ltp - rangeLow) / rangeSpan) * 100)) : 50;
-        const dayRangeBar = (rangeLow && rangeHigh && !isClosed)
-            ? `<div style="margin-top:6px;min-width:150px;">
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:#7a8fa6;margin-bottom:3px;">
-                    <span>₹${rangeLow.toLocaleString('en-IN',{minimumFractionDigits:2})}</span>
-                    <span>₹${rangeHigh.toLocaleString('en-IN',{minimumFractionDigits:2})}</span>
-                </div>
-                <div style="position:relative;height:4px;background:var(--bg3);border-radius:3px;">
-                    <div style="position:absolute;left:0;width:${rangePct}%;height:100%;background:linear-gradient(90deg,var(--red),var(--green));border-radius:3px;"></div>
-                    <div style="position:absolute;left:${rangePct}%;top:-3px;width:8px;height:8px;background:#fff;border-radius:50%;transform:translateX(-50%);box-shadow:0 0 4px rgba(0,0,0,.5);border:2px solid var(--accent);"></div>
-                </div>
-               </div>`
-            : '';
 
-        const ltpDisplay = isClosed && d.sell_price
-            ? `<div style="font-size:14px;font-weight:700;color:#cbd5e1;">${fmtPrice(d.sell_price)}</div><div style="font-size:11px;color:#7a8fa6;">Exit price</div>`
+        // Day range bar
+        const rLow = d.low_price || 0, rHigh = d.high_price || 0;
+        const rSpan = rHigh - rLow;
+        const rPct  = rSpan > 0 ? Math.min(100, Math.max(0, ((ltp - rLow) / rSpan) * 100)).toFixed(1) : 50;
+        const dayBar = (rLow && rHigh && !isClosed) ? `
+            <div style="margin-top:7px;min-width:160px;">
+                <div style="display:flex;justify-content:space-between;font-size:9px;color:#374151;margin-bottom:3px;">
+                    <span>₹${rLow.toLocaleString('en-IN',{minimumFractionDigits:2})}</span>
+                    <span>₹${rHigh.toLocaleString('en-IN',{minimumFractionDigits:2})}</span>
+                </div>
+                <div style="position:relative;height:3px;background:#1e2333;border-radius:3px;">
+                    <div style="position:absolute;left:0;width:${rPct}%;height:100%;background:linear-gradient(90deg,#f87171,#4ade80);border-radius:3px;opacity:.7;"></div>
+                    <div style="position:absolute;left:${rPct}%;top:50%;transform:translate(-50%,-50%);width:9px;height:9px;border-radius:50%;background:#f1f5f9;border:2px solid #4f8ef7;box-shadow:0 0 5px rgba(0,0,0,.7);"></div>
+                </div>
+            </div>` : '';
+
+        // LTP cell
+        const ltpCell = isClosed && d.sell_price
+            ? `<div class="price-main" style="color:#94a3b8;">${fmtPrice(d.sell_price)}</div>
+               <div class="price-sub" style="color:#374151;">Exit price</div>`
             : ltp > 0
-                ? `<div class="price-ltp">${fmtPrice(ltp)}</div>
-                   <div class="${chgClass}" style="font-size:11px;">${chgSign}${chgPct.toFixed(2)}% (${chgAmtSign}₹${Math.abs(chgAmt).toFixed(2)})</div>
-                   ${dayRangeBar}`
-                : `<div style="color:#7a8fa6;font-size:12px;">No price data</div>`;
+                ? `<div class="price-main">${fmtPrice(ltp)}</div>
+                   <div class="price-sub" style="color:${chgColor};">${chgSign}${chgPct.toFixed(2)}%&nbsp;&nbsp;${chgAmtSign}₹${Math.abs(chgAmt).toFixed(2)}</div>
+                   ${dayBar}`
+                : `<div class="price-sub" style="color:#374151;">No data</div>`;
 
-        // Qty with direction sign + lot size breakdown
-        const totalQty   = d.quantity * d.lot_size;
-        const qtyDisplay = isBuy
-            ? `<span class="qty-positive">+ ${d.quantity} lot${d.quantity > 1 ? 's' : ''}</span><div style="font-size:10px;color:var(--text3);">(${totalQty.toLocaleString('en-IN')} shares)</div>`
-            : `<span class="qty-negative">- ${d.quantity} lot${d.quantity > 1 ? 's' : ''}</span><div style="font-size:10px;color:var(--text3);">(${totalQty.toLocaleString('en-IN')} shares)</div>`;
+        // Qty
+        const totalQty = d.quantity * d.lot_size;
+        const qtyCell  = `<div class="qty-val ${isBuy ? 'buy' : 'sell'}">${isBuy ? '+' : '-'}${d.quantity} lot${d.quantity > 1 ? 's' : ''}</div>
+                          <div class="qty-shares">${totalQty.toLocaleString('en-IN')} shares</div>`;
 
-        // Target cell — colour-coded, show % from entry + % away from current
-        let targetCell = '<span class="na">—</span>';
-        if (d.target_price) {
-            const hitMark  = d.target_hit ? ' <span style="color:var(--green);font-size:10px;">✓</span>' : '';
-            const fromEntry = d.entry_price > 0 ? ((d.target_price - d.entry_price) / d.entry_price) * 100 : 0;
-            const fromEntrySign = fromEntry > 0 ? '+' : '';
-            const subLine = !isClosed
-                ? `<div style="font-size:10px;color:#4ade80;">${fromEntrySign}${Math.abs(fromEntry).toFixed(2)}% from avg</div>`
-                : '';
-            targetCell = `<div style="color:var(--green);font-weight:600;">${fmtPrice(d.target_price)}${hitMark}</div>${subLine}`;
-        }
-
-        // SL cell
-        let slCell = '<span class="na">—</span>';
+        // SL
+        let slCell = '<span style="color:#374151;">—</span>';
         if (d.stop_loss) {
-            const hitMark = d.sl_hit ? ' <span style="color:var(--red);font-size:10px;">⚠</span>' : '';
-            const slPct   = d.entry_price > 0 ? ((d.stop_loss - d.entry_price) / d.entry_price) * 100 : 0;
-            const slSign  = slPct > 0 ? '+' : '';
-            slCell = `<div style="color:var(--red);font-weight:600;">${fmtPrice(d.stop_loss)}${hitMark}</div>
-                      <div style="font-size:10px;color:#7a8fa6;">${slSign}${Math.abs(slPct).toFixed(2)}% from avg</div>`;
+            const slPct = d.entry_price > 0 ? ((d.stop_loss - d.entry_price) / d.entry_price * 100) : 0;
+            slCell = `<div class="sl-price">${fmtPrice(d.stop_loss)}${d.sl_hit ? ' <span style="font-size:10px;">⚠</span>' : ''}</div>
+                      <div class="sl-pct">${(slPct > 0 ? '+' : '')}${slPct.toFixed(2)}% from avg</div>`;
         }
 
-        // Status cell
-        let statusCell;
-        if (isClosed) {
-            statusCell = '<span class="badge-closed-sm">Closed</span>';
-        } else if (d.target_hit) {
-            statusCell = '<span class="hit-target">✓ Target Hit</span>';
-        } else if (d.sl_hit) {
-            statusCell = '<span class="hit-sl">⚠ SL Hit</span>';
-        } else {
-            statusCell = '<span style="color:var(--green);font-size:11px;font-weight:600;">● Open</span>';
+        // Target
+        let tgtCell = '<span style="color:#374151;">—</span>';
+        if (d.target_price) {
+            const tPct = d.entry_price > 0 ? ((d.target_price - d.entry_price) / d.entry_price * 100) : 0;
+            tgtCell = `<div class="tgt-price">${fmtPrice(d.target_price)}${d.target_hit ? ' <span style="font-size:10px;">✓</span>' : ''}</div>
+                       <div class="tgt-pct">${(tPct > 0 ? '+' : '')}${tPct.toFixed(2)}% from avg</div>`;
         }
 
-        // Product badge
-        const badge = isClosed
-            ? `<span class="badge-closed-sm">Closed</span>`
-            : `<span class="badge-${d.trade_type.toLowerCase()}">${d.trade_type}</span>`;
+        // Status
+        const statusCell = isClosed      ? `<span class="chip chip-closed">Closed</span>`
+                         : d.target_hit  ? `<span class="chip chip-target">✓ Target</span>`
+                         : d.sl_hit      ? `<span class="chip chip-sl">⚠ SL Hit</span>`
+                         : `<span class="chip chip-open">● Open</span>`;
 
-        // Sub-info: expiry + notes under instrument name
-        const metaParts = [];
-        if (d.expiry) metaParts.push(`<span>${d.expiry}</span>`);
-        if (d.notes)  metaParts.push(`<span class="note">${d.notes}</span>`);
+        // Instrument
+        const instrCell = `<div class="sym-name">${d.symbol}${d.expiry ? `<span class="sym-expiry">${d.expiry}</span>` : ''}</div>
+                           ${d.notes ? `<div class="sym-note">${d.notes}</div>` : ''}`;
 
         // Actions
         const actions = isClosed
-            ? `<div class="actions-wrap"><button class="btn-sm btn-sm-del" onclick="del(${d.id})">Delete</button></div>`
-            : `<div class="actions-wrap">
-                <button class="btn-sm" onclick="openEdit(${d.id})">Edit</button>
-                <button class="btn-sm btn-sm-close" onclick="openClose(${d.id}, ${d.current_price}, '${d.symbol}', '${d.trade_type}', ${d.entry_price}, ${d.quantity}, ${d.lot_size})">Close</button>
-                <button class="btn-sm btn-sm-del" onclick="del(${d.id})">Del</button>
+            ? `<div class="act-wrap"><button class="btn-act btn-act-del" onclick="del(${d.id})">Delete</button></div>`
+            : `<div class="act-wrap">
+                <button class="btn-act btn-act-edit"  onclick="openEdit(${d.id})">Edit</button>
+                <button class="btn-act btn-act-close" onclick="openClose(${d.id},${d.current_price},'${d.symbol}','${d.trade_type}',${d.entry_price},${d.quantity},${d.lot_size})">Close</button>
+                <button class="btn-act btn-act-del"   onclick="del(${d.id})">Del</button>
                </div>`;
 
         html += `<tr class="${isClosed ? 'closed-row' : ''}">
-            <td>
-                <div class="sym-name">${d.symbol}</div>
-                ${metaParts.length ? `<div class="sym-meta">${metaParts.join('')}</div>` : ''}
+            <td>${instrCell}</td>
+            <td class="r">${qtyCell}</td>
+            <td class="r"><div class="price-main">${fmtPrice(d.entry_price)}</div></td>
+            <td class="r">${ltpCell}</td>
+            <td class="r">
+                <div class="pl-main ${plMod}">${plSign}₹${Math.abs(d.pl).toLocaleString('en-IN',{minimumFractionDigits:2})}</div>
+                <div class="pl-sub  ${plMod}">${isClosed ? 'Realised' : (pctSign + Math.abs(d.pl_pct).toFixed(2) + '%')}</div>
             </td>
-            <td class="num">${qtyDisplay}</td>
-            <td class="num" style="font-size:14px;font-weight:600;color:#cbd5e1;">${fmtPrice(d.entry_price)}</td>
-            <td class="num">${ltpDisplay}</td>
-            <td class="num">
-                <div class="pl-cell ${plClass}" style="font-size:14px;">${plSign}₹${Math.abs(d.pl).toLocaleString('en-IN',{minimumFractionDigits:2})}</div>
-                <div class="${plClass}" style="font-size:10px;opacity:.85;">${isClosed ? 'Realised' : (pctSign + Math.abs(d.pl_pct).toFixed(2) + '%')}</div>
-            </td>
-            <td class="num">${slCell}</td>
-            <td class="ctr">${isClosed ? '<span style="color:#475569;">—</span>' : tradeBar(d)}</td>
-            <td class="num">${targetCell}</td>
-            <td class="ctr">${statusCell}</td>
+            <td class="r">${slCell}</td>
+            <td class="c">${isClosed ? '<span style="color:#374151;">—</span>' : tradeBar(d)}</td>
+            <td class="r">${tgtCell}</td>
+            <td class="c">${statusCell}</td>
             <td>${actions}</td>
         </tr>`;
     });
@@ -436,17 +444,21 @@ function updateSummary() {
     const openCount  = visibleRows.filter(d => d.status === 'OPEN').length;
     const closedCount= visibleRows.filter(d => d.status === 'CLOSED').length;
 
+    const visPLMod  = visPL > 0 ? 'up' : visPL < 0 ? 'dn' : 'fl';
+    const plColor   = visPL > 0 ? '#4ade80' : visPL < 0 ? '#f87171' : '#94a3b8';
+    const oPLColor  = openPL  > 0 ? '#4ade80' : openPL  < 0 ? '#f87171' : '#94a3b8';
+    const rPLColor  = realPL  > 0 ? '#4ade80' : realPL  < 0 ? '#f87171' : '#94a3b8';
     tfoot.innerHTML = `<tr>
-        <td colspan="4" style="color:var(--text3);font-size:12px;font-weight:500;">
-            Total — ${visibleRows.length} trade${visibleRows.length !== 1 ? 's' : ''}
-            ${openCount   ? `<span style="color:var(--green);margin-left:10px;">${openCount} open</span>`   : ''}
-            ${closedCount ? `<span style="color:var(--text3);margin-left:10px;">${closedCount} closed</span>` : ''}
+        <td colspan="4" style="color:#374151;font-size:12px;font-weight:500;">
+            ${visibleRows.length} trade${visibleRows.length !== 1 ? 's' : ''}
+            ${openCount   ? `<span style="color:#4ade80;margin-left:12px;">${openCount} open</span>`   : ''}
+            ${closedCount ? `<span style="color:#4a5568;margin-left:12px;">${closedCount} closed</span>` : ''}
         </td>
-        <td class="num ${visPLClass}" style="font-size:14px;">${visPLSign}₹${Math.abs(visPL).toLocaleString('en-IN',{minimumFractionDigits:2})}</td>
-        <td colspan="4" style="color:var(--text3);font-size:11px;text-align:right;">
-            Unrealised: <span class="${openPL > 0 ? 'chg-up' : openPL < 0 ? 'chg-down' : ''}">${openPL >= 0 ? '+' : ''}₹${Math.abs(openPL).toLocaleString('en-IN',{minimumFractionDigits:2})}</span>
-            &nbsp;·&nbsp;
-            Realised: <span class="${realPL > 0 ? 'chg-up' : realPL < 0 ? 'chg-down' : ''}">${realPL >= 0 ? '+' : ''}₹${Math.abs(realPL).toLocaleString('en-IN',{minimumFractionDigits:2})}</span>
+        <td class="r" style="font-size:15px;font-weight:700;color:${plColor};">${visPLSign}₹${Math.abs(visPL).toLocaleString('en-IN',{minimumFractionDigits:2})}</td>
+        <td colspan="5" style="font-size:11px;text-align:right;color:#374151;">
+            Unrealised:&nbsp;<span style="color:${oPLColor};font-weight:600;">${openPL >= 0 ? '+' : ''}₹${Math.abs(openPL).toLocaleString('en-IN',{minimumFractionDigits:2})}</span>
+            &nbsp;&nbsp;·&nbsp;&nbsp;
+            Realised:&nbsp;<span style="color:${rPLColor};font-weight:600;">${realPL >= 0 ? '+' : ''}₹${Math.abs(realPL).toLocaleString('en-IN',{minimumFractionDigits:2})}</span>
         </td>
     </tr>`;
 }
