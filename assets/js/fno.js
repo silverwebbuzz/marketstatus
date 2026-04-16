@@ -160,6 +160,8 @@
                 <td><span class="signal-badge signal-${signal.toLowerCase()}">${signal}</span></td>
                 <td>
                     <button class="btn-detail" onclick="showDetail('${d.symbol}')">Detail</button>
+                    <button class="btn-detail btn-ai" style="margin-top:4px;background:rgba(124,92,252,.15);color:#a78bfa;border-color:#7c5cfc;" onclick="showAI('${d.symbol}')">AI</button>
+                    ${window.IS_LOGGED_IN ? `<button class="btn-detail" style="margin-top:4px;" onclick="addToPortfolio('${d.symbol}', ${d.current_price})">+ Port</button>` : ''}
                     ${d.contracts.length > 1 ? `<button class="btn-detail" style="margin-top:4px;" onclick="toggleSub('${d.symbol}')">+${d.contracts.length - 1}</button>` : ''}
                 </td>
             </tr>`;
@@ -490,6 +492,103 @@
             renderTable();
         });
     });
+
+    // ── AI Report ─────────────────────────────────────
+    window.showAI = function(symbol) {
+        if (!window.IS_LOGGED_IN) {
+            if (confirm('Login required to use AI reports. Go to login page?')) {
+                window.location.href = (window.APP_BASE || '') + '/pages/login.php';
+            }
+            return;
+        }
+        const modal    = document.getElementById('ai-modal');
+        const body     = document.getElementById('ai-modal-body');
+        const title    = document.getElementById('ai-modal-title');
+        title.textContent = 'AI Report — ' + symbol;
+        body.innerHTML = `<div class="ai-generating"><span class="spinner"></span>Generating AI analysis for ${symbol}...<br><small style="color:var(--text3);margin-top:8px;display:block;">This may take 10-20 seconds</small></div>`;
+        modal.classList.add('open');
+
+        fetch(BASE + '/ai_report.php?symbol=' + encodeURIComponent(symbol))
+            .then(r => r.json())
+            .then(res => {
+                if (!res.success) {
+                    body.innerHTML = `<div style="color:var(--red);padding:20px;">${res.error}</div>`;
+                    return;
+                }
+                renderAIReport(res, symbol, body);
+            })
+            .catch(() => {
+                body.innerHTML = '<div style="color:var(--red);padding:20px;">Failed to connect to AI service.</div>';
+            });
+    };
+
+    function renderAIReport(res, symbol, body) {
+        const r          = res.report;
+        const biasClass  = r.bias === 'BULLISH' ? 'ai-bias-bullish' : r.bias === 'BEARISH' ? 'ai-bias-bearish' : 'ai-bias-neutral';
+        const fillColor  = r.bias === 'BULLISH' ? 'var(--green)' : r.bias === 'BEARISH' ? 'var(--red)' : 'var(--yellow)';
+        const ageText    = res.cached ? `Cached report · ${res.age_hours}h ago` : 'Just generated';
+        // Convert markdown-style bold to <strong>
+        const formatted  = (r.report_text || '')
+            .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+            .replace(/^(\d+\.\s)/gm, '<br><strong>$1</strong>');
+
+        body.innerHTML = `
+            <div class="ai-meta">
+                <span>${ageText} · ${r.model_used}</span>
+                <button class="btn-ai-refresh" onclick="refreshAI('${symbol}')">↻ Regenerate</button>
+            </div>
+            <div style="text-align:center;margin-bottom:4px;">
+                <span class="${biasClass}" style="font-size:20px;">${r.bias}</span>
+                <span style="font-size:14px;color:var(--text3);margin-left:8px;">${r.confidence}% confidence</span>
+            </div>
+            <div class="confidence-bar">
+                <div class="confidence-fill" style="width:${r.confidence}%;background:${fillColor};"></div>
+            </div>
+            <div class="ai-report-text">${formatted}</div>
+        `;
+    }
+
+    window.refreshAI = function(symbol) {
+        const body  = document.getElementById('ai-modal-body');
+        const title = document.getElementById('ai-modal-title');
+        title.textContent = 'AI Report — ' + symbol;
+        body.innerHTML = `<div class="ai-generating"><span class="spinner"></span>Regenerating...<br><small style="color:var(--text3);margin-top:8px;display:block;">Fetching fresh AI analysis</small></div>`;
+        fetch(BASE + '/ai_report.php?symbol=' + encodeURIComponent(symbol) + '&refresh=1')
+            .then(r => r.json())
+            .then(res => {
+                if (!res.success) { body.innerHTML = `<div style="color:var(--red);padding:20px;">${res.error}</div>`; return; }
+                renderAIReport(res, symbol, body);
+            });
+    };
+
+    document.getElementById('ai-modal-close').addEventListener('click', () => {
+        document.getElementById('ai-modal').classList.remove('open');
+    });
+    document.getElementById('ai-modal').addEventListener('click', function(e) {
+        if (e.target === this) this.classList.remove('open');
+    });
+
+    // ── Add to Portfolio (quick-add from table) ────────
+    window.addToPortfolio = function(symbol, currentPrice) {
+        const price = prompt(`Add ${symbol} to portfolio\nEnter your entry price:`, currentPrice);
+        if (!price) return;
+        const type = confirm('Click OK for BUY, Cancel for SELL') ? 'BUY' : 'SELL';
+        const fd   = new FormData();
+        fd.append('action',      'add');
+        fd.append('symbol',      symbol);
+        fd.append('trade_type',  type);
+        fd.append('entry_price', price);
+        fd.append('quantity',    '1');
+        fd.append('target_price', '');
+        fd.append('stop_loss',    '');
+        fd.append('notes',        '');
+        fetch(BASE + '/watchlist.php', { method:'POST', body:fd })
+            .then(r => r.json())
+            .then(res => {
+                if (res.success) alert(`${symbol} added to your portfolio!`);
+                else alert('Error: ' + res.error);
+            });
+    };
 
     loadData();
 })();
