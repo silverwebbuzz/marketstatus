@@ -5,6 +5,9 @@
  * Browser: https://silverwebbuzz.com/ms/api/fetch_margins.php?key=SilverMS2024
  */
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 require_once __DIR__ . '/../config.php';
 require_once __DIR__ . '/../db.php';
 require_once __DIR__ . '/nse_helper.php';
