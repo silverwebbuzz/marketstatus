@@ -598,11 +598,21 @@
     };
 
     window.syncFromPct = function(field) {
-        const entry   = parseFloat(document.getElementById('port-entry').value) || 0;
-        const pct     = parseFloat(document.getElementById('port-' + field + '-pct').value);
+        const entry  = parseFloat(document.getElementById('port-entry').value) || 0;
+        const pctEl  = document.getElementById('port-' + field + '-pct');
+        let pct      = parseFloat(pctEl.value);
         const priceEl = document.getElementById('port-' + field);
         const hint    = document.getElementById('port-' + field + '-hint');
+
         if (entry > 0 && !isNaN(pct)) {
+            // Auto-correct sign: always take absolute value, then apply correct sign
+            // BUY  target → positive, BUY  SL → negative
+            // SELL target → negative, SELL SL → positive
+            const absPct   = Math.abs(pct);
+            const goodSign = _isGoodDir(field, 1) ? 1 : -1; // pass pct=1 to check what positive means
+            pct = absPct * goodSign;
+            pctEl.value = pct.toFixed(2);
+
             const price   = entry * (1 + pct / 100);
             priceEl.value = price.toFixed(2);
             hint.textContent = _buildHint(field, price, pct);
@@ -656,8 +666,10 @@
         if (!modal) return;
         document.getElementById('port-edit-id').value           = '';
         document.getElementById('port-type').value              = 'BUY';
+        document.getElementById('port-type').disabled           = false;
         document.getElementById('port-qty').value               = '1';
         document.getElementById('port-entry').value             = prefillPrice ? Number(prefillPrice).toFixed(2) : '';
+        document.getElementById('port-entry').disabled          = false;
         document.getElementById('port-target').value            = '';
         document.getElementById('port-target-pct').value        = '';
         document.getElementById('port-target-hint').textContent = '';
@@ -666,6 +678,7 @@
         document.getElementById('port-sl-hint').textContent     = '';
         document.getElementById('port-notes').value             = '';
         document.getElementById('port-expiry').innerHTML        = '<option value="">Select expiry</option>';
+        document.getElementById('port-expiry').disabled         = false;
         document.getElementById('port-modal-title').textContent = 'Add to Portfolio';
         const symInput    = document.getElementById('port-symbol');
         symInput.value    = symbol || '';

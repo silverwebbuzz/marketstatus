@@ -21,31 +21,39 @@ $user = authRequire();
         /* Summary strip */
         .summary-row { display:flex; gap:1px; background:var(--border); border-bottom:1px solid var(--border); }
         .summary-box { flex:1; background:var(--bg2); padding:10px 16px; min-width:110px; }
-        .summary-box .lbl { font-size:11px; color:var(--text3); text-transform:uppercase; letter-spacing:.3px; }
-        .summary-box .val { font-size:16px; font-weight:700; margin-top:2px; }
+        .summary-box .lbl { font-size:11px; color:#7a8fa6; text-transform:uppercase; letter-spacing:.4px; }
+        .summary-box .val { font-size:17px; font-weight:700; margin-top:3px; color:#e2e8f0; }
+
+        /* Brighter text for dark screen readability */
+        .wl-table-wrap { --text2:#b8c5d6; --text3:#7a8fa6; }
 
         /* Table */
         .wl-table-wrap { overflow-x:auto; }
-        .wl-table { width:100%; border-collapse:collapse; }
+        .wl-table { width:100%; border-collapse:collapse; table-layout:auto; }
         .wl-table thead th {
             background:var(--bg2); padding:10px 14px;
             font-size:11px; font-weight:600; text-transform:uppercase;
-            letter-spacing:.4px; color:var(--text3);
+            letter-spacing:.5px; color:#7a8fa6;
             border-bottom:2px solid var(--border); white-space:nowrap;
             text-align:left;
         }
-        .wl-table thead th.num { text-align:right; }
-        .wl-table tbody td { padding:12px 14px; border-bottom:1px solid var(--border); font-size:13px; vertical-align:middle; white-space:nowrap; }
-        .wl-table tbody td.num { text-align:right; }
-        .wl-table tbody tr:hover { background:rgba(255,255,255,.03); }
-        .wl-table tbody tr.closed-row { opacity:.7; }
+        .wl-table thead th.num  { text-align:right; }
+        .wl-table thead th.ctr  { text-align:center; }
+        .wl-table tbody td { padding:10px 14px; border-bottom:1px solid var(--border); font-size:13px; vertical-align:top; white-space:nowrap; color:#cbd5e1; }
+        .wl-table tbody td.num  { text-align:right; }
+        .wl-table tbody td.ctr  { text-align:center; }
+        .wl-table tbody tr:hover { background:rgba(255,255,255,.04); }
+        .wl-table tbody tr.closed-row { opacity:.65; }
+        /* Totals row */
+        .wl-table tfoot td { padding:10px 14px; font-size:13px; font-weight:700; border-top:2px solid var(--border); background:var(--bg2); white-space:nowrap; color:#cbd5e1; }
+        .wl-table tfoot td.num { text-align:right; }
 
         /* Name cell */
-        .sym-name { font-weight:600; font-size:13px; }
-        .sym-meta { font-size:10px; color:var(--text3); margin-top:2px; display:flex; gap:8px; flex-wrap:wrap; }
+        .sym-name { font-weight:700; font-size:14px; color:#e2e8f0; }
+        .sym-meta { font-size:10px; color:#7a8fa6; margin-top:3px; display:flex; gap:8px; flex-wrap:wrap; }
         .sym-meta .tgt  { color:#4ade80; }
         .sym-meta .sl   { color:#f87171; }
-        .sym-meta .note { color:var(--text3); font-style:italic; }
+        .sym-meta .note { color:#7a8fa6; font-style:italic; }
 
         /* Product badge */
         .badge-buy  { background:rgba(34,197,94,.15);  color:var(--green); padding:2px 10px; border-radius:20px; font-size:11px; font-weight:700; display:inline-block; }
@@ -134,22 +142,22 @@ $user = authRequire();
         <thead>
             <tr>
                 <th>Instrument</th>
-                <th>Product</th>
                 <th class="num">Qty</th>
                 <th class="num">Avg Price</th>
-                <th class="num">LTP</th>
+                <th class="num">LTP / Change</th>
+                <th>Day Range</th>
                 <th class="num">Target</th>
                 <th class="num">Stop Loss</th>
                 <th class="num">P&amp;L</th>
-                <th class="num">% Change</th>
-                <th>Position</th>
-                <th>Status</th>
+                <th class="ctr">Position</th>
+                <th class="ctr">Status</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody id="wl-tbody">
-            <tr><td colspan="12" class="empty-wl">Loading...</td></tr>
+            <tr><td colspan="11" class="empty-wl">Loading...</td></tr>
         </tbody>
+        <tfoot id="wl-tfoot"></tfoot>
     </table>
 </div>
 
@@ -200,6 +208,7 @@ function setFilter(el, f) {
     document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
     el.classList.add('active');
     render();
+    updateSummary();
 }
 
 // ── Trade position bar ──────────────────────────────
@@ -265,7 +274,7 @@ function tradeBar(d) {
 function render() {
     const rows = allData.filter(d => filter === 'ALL' || d.status === filter);
     if (!rows.length) {
-        document.getElementById('wl-tbody').innerHTML = `<tr><td colspan="12" class="empty-wl">No trades yet. Click "+ Add Trade" to start.</td></tr>`;
+        document.getElementById('wl-tbody').innerHTML = `<tr><td colspan="11" class="empty-wl">No trades yet. Click "+ Add Trade" to start.</td></tr>`;
         return;
     }
 
@@ -277,10 +286,33 @@ function render() {
         const plSign     = d.pl > 0 ? '+' : '';
         const pctSign    = d.pl_pct > 0 ? '+' : '';
 
-        // LTP: show exit price for closed, live price for open
+        // LTP / Change cell — styled like FNO dashboard
+        const ltp        = isClosed && d.sell_price ? d.sell_price : d.current_price;
+        const chgClass   = d.change_percent > 0 ? 'chg-up' : d.change_percent < 0 ? 'chg-down' : 'chg-flat';
+        const chgSign    = d.change_percent > 0 ? '+' : '';
+        const chgAmtSign = d.change_amount  > 0 ? '+' : '';
         const ltpDisplay = isClosed && d.sell_price
-            ? `<span style="color:var(--text3);">${fmtPrice(d.sell_price)}</span>`
-            : fmtPrice(d.current_price);
+            ? `<div style="font-size:14px;font-weight:700;color:#cbd5e1;">${fmtPrice(d.sell_price)}</div><div style="font-size:11px;color:var(--text3);">Exit price</div>`
+            : `<div class="price-ltp">${fmtPrice(ltp)}</div>
+               <div class="${chgClass}" style="font-size:11px;">${chgSign}${d.change_percent.toFixed(2)}% (${chgAmtSign}₹${Math.abs(d.change_amount).toFixed(2)})</div>`;
+
+        // Day Range bar
+        const rangeLow  = d.low_price  || 0;
+        const rangeHigh = d.high_price || 0;
+        const rangeSpan = rangeHigh - rangeLow;
+        const rangePct  = rangeSpan > 0 ? Math.min(100, Math.max(0, ((ltp - rangeLow) / rangeSpan) * 100)) : 50;
+        const dayRangeCell = (rangeLow && rangeHigh)
+            ? `<div style="min-width:140px;">
+                <div class="range-bar-labels" style="display:flex;justify-content:space-between;font-size:10px;color:#94a3b8;margin-bottom:3px;">
+                    <span>₹${rangeLow.toLocaleString('en-IN',{minimumFractionDigits:2})}</span>
+                    <span>₹${rangeHigh.toLocaleString('en-IN',{minimumFractionDigits:2})}</span>
+                </div>
+                <div class="range-bar-track" style="position:relative;height:4px;background:var(--bg3);border-radius:3px;">
+                    <div style="position:absolute;left:0;width:${rangePct}%;height:100%;background:linear-gradient(90deg,var(--red),var(--green));border-radius:3px;"></div>
+                    <div style="position:absolute;left:${rangePct}%;top:-3px;width:8px;height:8px;background:#fff;border-radius:50%;transform:translateX(-50%);box-shadow:0 0 4px rgba(0,0,0,.5);border:2px solid var(--accent);"></div>
+                </div>
+               </div>`
+            : '<span style="color:#475569;">—</span>';
 
         // Qty with direction sign + lot size breakdown
         const totalQty   = d.quantity * d.lot_size;
@@ -339,19 +371,18 @@ function render() {
                 <div class="sym-name">${d.symbol}</div>
                 ${metaParts.length ? `<div class="sym-meta">${metaParts.join('')}</div>` : ''}
             </td>
-            <td>${badge}</td>
             <td class="num">${qtyDisplay}</td>
-            <td class="num" style="color:var(--text2);">${fmtPrice(d.entry_price)}</td>
+            <td class="num" style="font-size:14px;font-weight:600;color:#cbd5e1;">${fmtPrice(d.entry_price)}</td>
             <td class="num">${ltpDisplay}</td>
+            <td>${dayRangeCell}</td>
             <td class="num">${targetCell}</td>
             <td class="num">${slCell}</td>
             <td class="num ${plClass}">
-                <div class="pl-cell">${plSign}₹${Math.abs(d.pl).toLocaleString('en-IN',{minimumFractionDigits:2})}</div>
-                ${isClosed ? '<div class="pl-label">Realised</div>' : ''}
+                <div class="pl-cell" style="font-size:14px;">${plSign}₹${Math.abs(d.pl).toLocaleString('en-IN',{minimumFractionDigits:2})}</div>
+                <div style="font-size:10px;color:#64748b;">${isClosed ? 'Realised' : (pctSign + d.pl_pct.toFixed(2) + '%')}</div>
             </td>
-            <td class="num ${plClass}">${pctSign}${d.pl_pct.toFixed(2)}%</td>
-            <td>${isClosed ? '—' : tradeBar(d)}</td>
-            <td>${statusCell}</td>
+            <td class="ctr">${isClosed ? '<span style="color:#475569;">—</span>' : tradeBar(d)}</td>
+            <td class="ctr">${statusCell}</td>
             <td>${actions}</td>
         </tr>`;
     });
@@ -369,6 +400,7 @@ function updateSummary() {
     const closed   = allData.filter(d => d.status === 'CLOSED');
     const openPL   = open.reduce((s,d) => s + d.pl, 0);
     const realPL   = closed.reduce((s,d) => s + d.pl, 0);
+    const totalPL  = openPL + realPL;
 
     document.getElementById('s-total').textContent    = allData.length;
     document.getElementById('s-open').textContent     = open.length;
@@ -382,6 +414,31 @@ function updateSummary() {
     const rEl = document.getElementById('s-realised');
     rEl.textContent = (realPL >= 0 ? '+' : '') + '₹' + Math.abs(realPL).toLocaleString('en-IN',{minimumFractionDigits:2});
     rEl.className   = 'val ' + (realPL > 0 ? 'green' : realPL < 0 ? 'red' : '');
+
+    // Totals footer row — only show when there are rows visible
+    const visibleRows = allData.filter(d => filter === 'ALL' || d.status === filter);
+    const visPL  = visibleRows.reduce((s,d) => s + d.pl, 0);
+    const tfoot  = document.getElementById('wl-tfoot');
+    if (!visibleRows.length) { tfoot.innerHTML = ''; return; }
+
+    const visPLClass = visPL > 0 ? 'chg-up' : visPL < 0 ? 'chg-down' : '';
+    const visPLSign  = visPL > 0 ? '+' : '';
+    const openCount  = visibleRows.filter(d => d.status === 'OPEN').length;
+    const closedCount= visibleRows.filter(d => d.status === 'CLOSED').length;
+
+    tfoot.innerHTML = `<tr>
+        <td colspan="7" style="color:var(--text3);font-size:12px;font-weight:500;">
+            Total — ${visibleRows.length} trade${visibleRows.length !== 1 ? 's' : ''}
+            ${openCount   ? `<span style="color:var(--green);margin-left:10px;">${openCount} open</span>`   : ''}
+            ${closedCount ? `<span style="color:var(--text3);margin-left:10px;">${closedCount} closed</span>` : ''}
+        </td>
+        <td class="num ${visPLClass}" style="font-size:14px;">${visPLSign}₹${Math.abs(visPL).toLocaleString('en-IN',{minimumFractionDigits:2})}</td>
+        <td colspan="4" style="color:var(--text3);font-size:11px;text-align:right;">
+            Unrealised: <span class="${openPL > 0 ? 'chg-up' : openPL < 0 ? 'chg-down' : ''}">${openPL >= 0 ? '+' : ''}₹${Math.abs(openPL).toLocaleString('en-IN',{minimumFractionDigits:2})}</span>
+            &nbsp;·&nbsp;
+            Realised: <span class="${realPL > 0 ? 'chg-up' : realPL < 0 ? 'chg-down' : ''}">${realPL >= 0 ? '+' : ''}₹${Math.abs(realPL).toLocaleString('en-IN',{minimumFractionDigits:2})}</span>
+        </td>
+    </tr>`;
 }
 
 // ── Edit trade ──────────────────────────────────────
@@ -389,27 +446,45 @@ function openEdit(id) {
     const d = allData.find(x => x.id === id);
     if (!d) return;
 
+    // Reset all fields and disabled states cleanly
     document.getElementById('port-modal-title').textContent  = 'Edit Trade — ' + d.symbol;
     document.getElementById('port-edit-id').value            = id;
-    document.getElementById('port-symbol').value             = d.symbol;
-    document.getElementById('port-symbol').disabled          = true;
-    document.getElementById('port-type').value               = d.trade_type;
-    document.getElementById('port-qty').value                = d.quantity;
-    document.getElementById('port-entry').value              = d.entry_price;
-    document.getElementById('port-notes').value              = d.notes || '';
+
+    const symEl = document.getElementById('port-symbol');
+    symEl.value    = d.symbol;
+    symEl.disabled = true;
+
+    const typeEl = document.getElementById('port-type');
+    typeEl.value    = d.trade_type;
+    typeEl.disabled = true;
+
+    const entryEl = document.getElementById('port-entry');
+    entryEl.value    = d.entry_price;
+    entryEl.disabled = true;
+
+    document.getElementById('port-qty').value   = d.quantity;
+    document.getElementById('port-notes').value = d.notes || '';
 
     const sel = document.getElementById('port-expiry');
     sel.innerHTML = `<option value="${d.expiry||''}">${d.expiry||'—'}</option>`;
+    sel.disabled = true;
 
-    document.getElementById('port-target').value            = d.target_price || '';
+    // Clear pct fields first, then set price and sync
+    document.getElementById('port-target').value            = '';
     document.getElementById('port-target-pct').value        = '';
     document.getElementById('port-target-hint').textContent = '';
-    if (d.target_price) syncFromPrice('target');
+    document.getElementById('port-sl').value                = '';
+    document.getElementById('port-sl-pct').value            = '';
+    document.getElementById('port-sl-hint').textContent     = '';
 
-    document.getElementById('port-sl').value            = d.stop_loss || '';
-    document.getElementById('port-sl-pct').value        = '';
-    document.getElementById('port-sl-hint').textContent = '';
-    if (d.stop_loss) syncFromPrice('sl');
+    if (d.target_price) {
+        document.getElementById('port-target').value = d.target_price;
+        syncFromPrice('target');
+    }
+    if (d.stop_loss) {
+        document.getElementById('port-sl').value = d.stop_loss;
+        syncFromPrice('sl');
+    }
 
     document.getElementById('port-sym-results').innerHTML = '';
     document.getElementById('port-modal').classList.add('open');
@@ -473,6 +548,6 @@ document.getElementById('close-modal').addEventListener('click', function(e) {
 
 load();
 </script>
-<script src="/ms/assets/js/fno.js?v=8"></script>
+<script src="/ms/assets/js/fno.js?v=9"></script>
 </body>
 </html>

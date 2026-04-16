@@ -119,6 +119,6 @@ $user = authUser();
 window.APP_BASE   = '/ms';
 window.IS_LOGGED_IN = <?= $user ? 'true' : 'false' ?>;
 </script>
-<script src="/ms/assets/js/fno.js?v=8"></script>
+<script src="/ms/assets/js/fno.js?v=9"></script>
 </body>
 </html>
