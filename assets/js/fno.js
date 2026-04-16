@@ -136,8 +136,8 @@
                     </div>
                 </td>
                 <td>
-                    <div style="font-size:11px;color:var(--text3);">52W H: ${fmt(d.week52_high)}</div>
-                    <div style="font-size:11px;color:var(--text3);">52W L: ${fmt(d.week52_low)}</div>
+                    <div style="font-size:11px;color:var(--green);">52W H: ${fmt(d.week52_high)}</div>
+                    <div style="font-size:11px;color:var(--red);">52W L: ${fmt(d.week52_low)}</div>
                     <div style="font-size:10px;color:var(--text3);">O:${fmt(d.open_price)} PC:${fmt(d.prev_close)}</div>
                 </td>
                 <td>
