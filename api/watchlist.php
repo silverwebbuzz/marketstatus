@@ -29,12 +29,12 @@ if ($action === 'list') {
         SELECT w.*,
                p.current_price, p.change_amount, p.change_percent,
                p.high_price, p.low_price, p.prev_close,
-               m.lot_size, m.nrml_margin, m.futures_price,
-               m.expiry
+               m.lot_size, m.nrml_margin, m.futures_price
         FROM user_watchlist w
         LEFT JOIN fno_prices  p ON p.symbol = w.symbol
         LEFT JOIN fno_margins m ON m.symbol = w.symbol
-                               AND m.fetched_date = (SELECT MAX(fetched_date) FROM fno_margins)
+                               AND (w.expiry IS NOT NULL AND m.expiry = w.expiry
+                                    OR w.expiry IS NULL AND m.fetched_date = (SELECT MAX(fetched_date) FROM fno_margins))
         WHERE w.user_id = ?
         ORDER BY w.status ASC, w.created_at DESC
     ");
@@ -44,7 +44,7 @@ if ($action === 'list') {
 
     foreach ($rows->fetchAll() as $r) {
         $id = $r['id'];
-        // Only take first (nearest expiry) contract per watchlist entry
+        // Deduplicate — when expiry IS NULL the OR clause may still match multiple rows
         if (isset($seen[$id])) continue;
         $seen[$id] = true;
 
@@ -76,27 +76,32 @@ if ($action === 'list') {
         $slHit     = $sl     && ($isBuy ? $curr <= $sl     : $curr >= $sl);
 
         $entries[] = [
-            'id'           => $id,
-            'symbol'       => $r['symbol'],
-            'trade_type'   => $r['trade_type'],
-            'entry_price'  => $entry,
-            'sell_price'   => $r['sell_price']   ? (float)$r['sell_price']   : null,
-            'target_price' => $target,
-            'stop_loss'    => $sl,
-            'quantity'     => $qty,
-            'lot_size'     => $lotSize,
-            'notes'        => $r['notes'],
-            'status'       => $r['status'],
-            'current_price'=> $curr,
-            'futures_price'=> (float)$r['futures_price'],
-            'expiry'       => $r['expiry'],
-            'nrml_margin'  => (float)$r['nrml_margin'],
-            'pl'           => round($pl, 2),
-            'pl_pct'       => round($plPct, 2),
-            'to_target_pct'=> $toTarget !== null ? round($toTarget, 2) : null,
-            'target_hit'   => $targetHit,
-            'sl_hit'       => $slHit,
-            'created_at'   => $r['created_at'],
+            'id'             => $id,
+            'symbol'         => $r['symbol'],
+            'trade_type'     => $r['trade_type'],
+            'entry_price'    => $entry,
+            'sell_price'     => $r['sell_price']   ? (float)$r['sell_price']   : null,
+            'target_price'   => $target,
+            'stop_loss'      => $sl,
+            'quantity'       => $qty,
+            'lot_size'       => $lotSize,
+            'notes'          => $r['notes'],
+            'status'         => $r['status'],
+            'current_price'  => $curr,
+            'change_percent' => (float)($r['change_percent'] ?? 0),
+            'change_amount'  => (float)($r['change_amount']  ?? 0),
+            'high_price'     => (float)($r['high_price']     ?? 0),
+            'low_price'      => (float)($r['low_price']      ?? 0),
+            'prev_close'     => (float)($r['prev_close']     ?? 0),
+            'futures_price'  => (float)$r['futures_price'],
+            'expiry'         => $r['expiry'],
+            'nrml_margin'    => (float)$r['nrml_margin'],
+            'pl'             => round($pl, 2),
+            'pl_pct'         => round($plPct, 2),
+            'to_target_pct'  => $toTarget !== null ? round($toTarget, 2) : null,
+            'target_hit'     => $targetHit,
+            'sl_hit'         => $slHit,
+            'created_at'     => $r['created_at'],
         ];
     }
     echo json_encode(['success' => true, 'data' => $entries]); exit;
@@ -118,9 +123,9 @@ if ($action === 'add') {
     }
 
     $db->prepare("
-        INSERT INTO user_watchlist (user_id, symbol, trade_type, entry_price, target_price, stop_loss, quantity, notes)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-    ")->execute([$uid, $symbol, $type, $entry, $target, $sl, $qty, $notes]);
+        INSERT INTO user_watchlist (user_id, symbol, expiry, trade_type, entry_price, target_price, stop_loss, quantity, notes)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ")->execute([$uid, $symbol, $expiry ?: null, $type, $entry, $target, $sl, $qty, $notes]);
 
     echo json_encode(['success' => true, 'id' => $db->lastInsertId()]); exit;
 }

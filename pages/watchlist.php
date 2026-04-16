@@ -287,14 +287,18 @@ function render() {
         const pctSign    = d.pl_pct > 0 ? '+' : '';
 
         // LTP / Change cell — styled like FNO dashboard
-        const ltp        = isClosed && d.sell_price ? d.sell_price : d.current_price;
-        const chgClass   = d.change_percent > 0 ? 'chg-up' : d.change_percent < 0 ? 'chg-down' : 'chg-flat';
-        const chgSign    = d.change_percent > 0 ? '+' : '';
-        const chgAmtSign = d.change_amount  > 0 ? '+' : '';
+        const ltp        = isClosed && d.sell_price ? d.sell_price : (d.current_price || 0);
+        const chgPct     = d.change_percent || 0;
+        const chgAmt     = d.change_amount  || 0;
+        const chgClass   = chgPct > 0 ? 'chg-up' : chgPct < 0 ? 'chg-down' : 'chg-flat';
+        const chgSign    = chgPct > 0 ? '+' : '';
+        const chgAmtSign = chgAmt > 0 ? '+' : '';
         const ltpDisplay = isClosed && d.sell_price
-            ? `<div style="font-size:14px;font-weight:700;color:#cbd5e1;">${fmtPrice(d.sell_price)}</div><div style="font-size:11px;color:var(--text3);">Exit price</div>`
-            : `<div class="price-ltp">${fmtPrice(ltp)}</div>
-               <div class="${chgClass}" style="font-size:11px;">${chgSign}${d.change_percent.toFixed(2)}% (${chgAmtSign}₹${Math.abs(d.change_amount).toFixed(2)})</div>`;
+            ? `<div style="font-size:14px;font-weight:700;color:#cbd5e1;">${fmtPrice(d.sell_price)}</div><div style="font-size:11px;color:#7a8fa6;">Exit price</div>`
+            : ltp > 0
+                ? `<div class="price-ltp">${fmtPrice(ltp)}</div>
+                   <div class="${chgClass}" style="font-size:11px;">${chgSign}${chgPct.toFixed(2)}% (${chgAmtSign}₹${Math.abs(chgAmt).toFixed(2)})</div>`
+                : `<div style="color:#7a8fa6;font-size:12px;">No price data</div>`;
 
         // Day Range bar
         const rangeLow  = d.low_price  || 0;
