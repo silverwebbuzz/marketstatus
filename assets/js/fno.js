@@ -34,17 +34,16 @@
                 updateStats();
             })
             .catch(() => {
-                tbody.innerHTML = '<tr class="empty-row"><td colspan="13">Failed to load data. Check DB connection or run margin fetch first.</td></tr>';
+                tbody.innerHTML = '<tr class="empty-row"><td colspan="13">Failed to load data. Run fetch scripts first.</td></tr>';
             })
             .finally(() => setLoading(false));
     }
 
-    // ── Refresh Prices ────────────────────────────────
+    // ── Refresh Prices (calls step1 — single NSE call, fast) ──
     function refreshPrices() {
         refreshBtn.disabled    = true;
         refreshBtn.textContent = 'Refreshing...';
-        fetch(BASE + '/fetch_prices.php')
-            .then(r => r.json())
+        fetch(BASE + '/step1_fetch_symbols.php')
             .then(() => loadData())
             .catch(() => alert('Price refresh failed.'))
             .finally(() => {
@@ -95,20 +94,26 @@
             const chgSign  = d.change_percent > 0 ? '+' : '';
             const chgAmt   = d.change_amount  > 0 ? '+' : '';
 
-            const range    = d.high_price - d.low_price;
-            const pct      = range > 0 ? Math.min(100, Math.max(0, ((d.current_price - d.low_price) / range) * 100)) : 50;
+            // Day range bar
+            const range = d.high_price - d.low_price;
+            const pct   = range > 0 ? Math.min(100, Math.max(0, ((d.current_price - d.low_price) / range) * 100)) : 50;
 
+            // P/L & ROI based on nearest expiry
             const todayPL  = d.change_amount * c0.lot_size;
             const plClass  = todayPL > 0 ? 'chg-up' : todayPL < 0 ? 'chg-down' : 'chg-flat';
             const plSign   = todayPL > 0 ? '+' : '';
-
             const roi      = c0.nrml_margin > 0 ? (todayPL / c0.nrml_margin) * 100 : 0;
             const roiClass = roi > 0 ? 'chg-up' : roi < 0 ? 'chg-down' : 'chg-flat';
             const roiSign  = roi > 0 ? '+' : '';
 
-            const signal   = getSignal(d);
-            const delPct   = d.delivery_pct > 0 ? d.delivery_pct.toFixed(1) + '%' : '<span class="na">—</span>';
-            const cval     = c0.lot_size * (d.current_price || c0.futures_price);
+            const signal = getSignal(d);
+            const delPct = d.delivery_pct > 0 ? d.delivery_pct.toFixed(1) + '%' : '<span class="na">—</span>';
+            const cval   = c0.lot_size * (c0.futures_price || d.current_price);
+
+            // Futures premium = futures_price - current_price
+            const premium     = c0.futures_price > 0 && d.current_price > 0 ? c0.futures_price - d.current_price : 0;
+            const premiumClass = premium > 0 ? 'chg-up' : premium < 0 ? 'chg-down' : 'chg-flat';
+            const premiumSign  = premium > 0 ? '+' : '';
 
             html += `
             <tr class="main-row" data-symbol="${d.symbol}">
@@ -119,7 +124,7 @@
                 </td>
                 <td>
                     <div class="price-ltp">${fmt(d.current_price)}</div>
-                    <div class="${chgClass}" style="font-size:11px;">${chgAmt}${fmt(d.change_amount)} (${chgSign}${fmtPct(d.change_percent)})</div>
+                    <div class="${chgClass}" style="font-size:11px;">${chgSign}${fmtPct(d.change_percent)} (${chgAmt}${fmtInr(d.change_amount)})</div>
                 </td>
                 <td>
                     <div class="range-bar-wrap">
@@ -131,17 +136,22 @@
                     </div>
                 </td>
                 <td>
-                    <div style="font-size:11px;color:var(--text3);">52W: ${fmt(d.week52_low)} – ${fmt(d.week52_high)}</div>
-                    <div style="font-size:11px;">O:${fmt(d.open_price)} C:${fmt(d.close_price)}</div>
+                    <div style="font-size:11px;color:var(--text3);">52W H: ${fmt(d.week52_high)}</div>
+                    <div style="font-size:11px;color:var(--text3);">52W L: ${fmt(d.week52_low)}</div>
+                    <div style="font-size:10px;color:var(--text3);">O:${fmt(d.open_price)} PC:${fmt(d.prev_close)}</div>
                 </td>
                 <td>
                     <div class="margin-val">${fmtInr(c0.nrml_margin)}</div>
-                    <div class="margin-rate">${c0.nrml_margin_rate ? c0.nrml_margin_rate.toFixed(1) + '%' : ''}</div>
+                    <div class="margin-rate">NRML ${c0.nrml_margin_rate ? c0.nrml_margin_rate.toFixed(1) + '%' : ''}</div>
+                    ${c0.mis_margin ? `<div class="margin-rate">MIS ${fmtInr(c0.mis_margin)}</div>` : ''}
                 </td>
-                <td class="lot-size">${c0.lot_size ? c0.lot_size.toLocaleString() : '<span class="na">—</span>'}</td>
+                <td>
+                    <div>${c0.lot_size ? c0.lot_size.toLocaleString() : '<span class="na">—</span>'}</div>
+                    <div style="font-size:11px;color:var(--text3);">${c0.expiry || ''}</div>
+                </td>
                 <td>
                     <div>${fmtInr(cval)}</div>
-                    <div style="font-size:11px;color:var(--text3);">${c0.expiry || ''}</div>
+                    ${premium !== 0 ? `<div class="${premiumClass}" style="font-size:11px;">${premiumSign}${fmtInr(premium)} premium</div>` : ''}
                 </td>
                 <td class="${plClass}">${c0.lot_size ? plSign + fmtInr(todayPL) : '<span class="na">—</span>'}</td>
                 <td class="${roiClass}">${c0.nrml_margin > 0 ? roiSign + roi.toFixed(2) + '%' : '<span class="na">—</span>'}</td>
@@ -150,19 +160,29 @@
                 <td><span class="signal-badge signal-${signal.toLowerCase()}">${signal}</span></td>
                 <td>
                     <button class="btn-detail" onclick="showDetail('${d.symbol}')">Detail</button>
-                    ${d.contracts.length > 1 ? `<button class="btn-detail" style="margin-top:4px;" onclick="toggleSub('${d.symbol}')">+${d.contracts.length - 1} exp</button>` : ''}
+                    ${d.contracts.length > 1 ? `<button class="btn-detail" style="margin-top:4px;" onclick="toggleSub('${d.symbol}')">+${d.contracts.length - 1}</button>` : ''}
                 </td>
             </tr>`;
 
+            // Sub rows — extra expiries
             if (d.contracts.length > 1) {
                 d.contracts.slice(1).forEach(ct => {
+                    const ctPremium = ct.futures_price > 0 && d.current_price > 0 ? ct.futures_price - d.current_price : 0;
+                    const ctPremClass = ctPremium > 0 ? 'chg-up' : 'chg-down';
                     html += `
                     <tr class="sub-row hidden" data-parent="${d.symbol}">
                         <td colspan="2" style="padding-left:28px;color:var(--text3);">↳ ${d.symbol} — ${ct.expiry}</td>
                         <td colspan="2"></td>
-                        <td><div class="margin-val">${fmtInr(ct.nrml_margin)}</div><div class="margin-rate">${ct.nrml_margin_rate ? ct.nrml_margin_rate.toFixed(1) + '%' : ''}</div></td>
+                        <td>
+                            <div class="margin-val">${fmtInr(ct.nrml_margin)}</div>
+                            <div class="margin-rate">NRML ${ct.nrml_margin_rate ? ct.nrml_margin_rate.toFixed(1) + '%' : ''}</div>
+                            ${ct.mis_margin ? `<div class="margin-rate">MIS ${fmtInr(ct.mis_margin)}</div>` : ''}
+                        </td>
                         <td>${ct.lot_size ? ct.lot_size.toLocaleString() : '—'}</td>
-                        <td>${fmtInr(ct.lot_size * (d.current_price || ct.futures_price))}</td>
+                        <td>
+                            <div>${fmtInr(ct.lot_size * (ct.futures_price || d.current_price))}</div>
+                            ${ctPremium !== 0 ? `<div class="${ctPremClass}" style="font-size:11px;">${ctPremium > 0 ? '+' : ''}${fmtInr(ctPremium)} premium</div>` : ''}
+                        </td>
                         <td colspan="6"></td>
                     </tr>`;
                 });
@@ -181,7 +201,7 @@
         if (d.change_percent < -1) score--;
         if (d.change_percent < -2) score--;
         if (d.delivery_pct > 50)   score++;
-        if (d.delivery_pct < 20)   score--;
+        if (d.delivery_pct < 20 && d.delivery_pct > 0) score--;
         if (d.current_price > 0 && d.week52_high > 0) {
             const fromHigh = (d.week52_high - d.current_price) / d.week52_high;
             if (fromHigh < 0.05) score--;
@@ -206,7 +226,6 @@
             case 'symbol':         return d.symbol;
             case 'current_price':  return d.current_price;
             case 'change_percent': return d.change_percent;
-            case 'change_amount':  return d.change_amount;
             case 'nrml_margin':    return c0.nrml_margin;
             case 'lot_size':       return c0.lot_size;
             case 'volume':         return d.volume;
@@ -234,16 +253,20 @@
     window.showDetail = function (symbol) {
         const d = allData.find(x => x.symbol === symbol);
         if (!d) return;
-        const c0     = d.contracts[0] || {};
-        const pivot  = calcPivot(d.high_price, d.low_price, d.close_price);
-        const fib    = calcFib(d.week52_high, d.week52_low);
-        const signal = getSignal(d);
+        const c0 = d.contracts[0] || {};
+
+        // Use prev_close as fallback for pivot (close is 0 during market hours)
+        const closeForPivot = d.close_price > 0 ? d.close_price : d.prev_close;
+        const pivot   = calcPivot(d.high_price, d.low_price, closeForPivot);
+        const fib     = calcFib(d.week52_high, d.week52_low);
+        const signal  = getSignal(d);
         const todayPL = d.change_amount * c0.lot_size;
         const roi     = c0.nrml_margin > 0 ? ((todayPL / c0.nrml_margin) * 100).toFixed(2) : '—';
         const fromHigh = d.week52_high > 0 ? ((d.week52_high - d.current_price) / d.week52_high * 100).toFixed(1) : 0;
         const fromLow  = d.week52_low  > 0 ? ((d.current_price - d.week52_low)  / d.week52_low  * 100).toFixed(1) : 0;
+        const premium  = c0.futures_price > 0 ? c0.futures_price - d.current_price : 0;
 
-        document.getElementById('modal-symbol').textContent = `${symbol}  ${d.company_name ? '— ' + d.company_name : ''}`;
+        document.getElementById('modal-symbol').textContent = `${symbol}${d.company_name ? ' — ' + d.company_name : ''}`;
 
         let html = `<div style="text-align:center;margin-bottom:16px;">
             <span class="signal-badge signal-${signal.toLowerCase()}" style="font-size:14px;padding:6px 20px;">${signal} SIGNAL</span>
@@ -259,10 +282,10 @@
         ]);
 
         html += card('52-Week Range', [
-            ['High',      fmt(d.week52_high)],
-            ['Low',       fmt(d.week52_low)],
-            ['From High', `<span class="chg-down">-${fromHigh}%</span>`],
-            ['From Low',  `<span class="chg-up">+${fromLow}%</span>`],
+            ['52W High',   fmt(d.week52_high)],
+            ['52W Low',    fmt(d.week52_low)],
+            ['From High',  `<span class="chg-down">-${fromHigh}%</span>`],
+            ['From Low',   `<span class="chg-up">+${fromLow}%</span>`],
         ]);
 
         html += card('Volume & Delivery', [
@@ -275,9 +298,13 @@
         html += card('Margin & Contract', [
             ['Expiry',         c0.expiry || '—'],
             ['Lot Size',       c0.lot_size ? c0.lot_size.toLocaleString() : '—'],
+            ['Futures Price',  fmt(c0.futures_price)],
+            ['Premium',        `<span class="${premium >= 0 ? 'chg-up' : 'chg-down'}">${premium >= 0 ? '+' : ''}${fmtInr(premium)}</span>`],
             ['NRML Margin',    fmtInr(c0.nrml_margin)],
+            ['MIS Margin',     fmtInr(c0.mis_margin)],
             ['Margin Rate',    c0.nrml_margin_rate ? c0.nrml_margin_rate.toFixed(2) + '%' : '—'],
-            ['Contract Value', fmtInr(c0.lot_size * d.current_price)],
+            ['MWPL',           c0.mwpl ? c0.mwpl.toFixed(2) + '%' : '—'],
+            ['Contract Value', fmtInr(c0.lot_size * (c0.futures_price || d.current_price))],
             ['Today P/L',      `<span class="${todayPL >= 0 ? 'chg-up' : 'chg-down'}">${todayPL >= 0 ? '+' : ''}${fmtInr(todayPL)}</span>`],
             ['ROI Today',      `<span class="${parseFloat(roi) >= 0 ? 'chg-up' : 'chg-down'}">${roi}%</span>`],
         ]);
@@ -304,16 +331,23 @@
             ['100% (Low)', fmt(fib[100])],
         ]);
 
-        // All contracts
+        // All contracts table
         if (d.contracts.length > 0) {
-            let ctHtml = d.contracts.map(c => `
-                <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);font-size:12px;">
+            let ctHtml = `<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;font-size:11px;font-weight:600;color:var(--text3);padding:4px 0;border-bottom:1px solid var(--border);">
+                <span>Expiry</span><span>Lot</span><span>Fut Price</span><span>NRML</span><span>MIS</span>
+            </div>`;
+            ctHtml += d.contracts.map(c => {
+                const p = c.futures_price > 0 ? c.futures_price - d.current_price : 0;
+                const pc = p > 0 ? 'chg-up' : 'chg-down';
+                return `<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;font-size:12px;padding:5px 0;border-bottom:1px solid var(--border);">
                     <span>${c.expiry}</span>
-                    <span>Lot: ${c.lot_size?.toLocaleString()}</span>
-                    <span>NRML: ${fmtInr(c.nrml_margin)}</span>
-                    <span>${c.nrml_margin_rate ? c.nrml_margin_rate.toFixed(1) + '%' : ''}</span>
-                </div>`).join('');
-            html += `<div class="modal-card" style="grid-column:1/-1"><h4>All Contracts</h4>${ctHtml}</div>`;
+                    <span>${c.lot_size?.toLocaleString()}</span>
+                    <span>${fmt(c.futures_price)} <span class="${pc}" style="font-size:10px;">(${p >= 0 ? '+' : ''}${fmtInr(p)})</span></span>
+                    <span>${fmtInr(c.nrml_margin)}</span>
+                    <span>${fmtInr(c.mis_margin)}</span>
+                </div>`;
+            }).join('');
+            html += `<div class="modal-card" style="grid-column:1/-1"><h4>All Expiry Contracts</h4>${ctHtml}</div>`;
         }
 
         html += '</div>';
@@ -322,7 +356,7 @@
     };
 
     function card(title, rows) {
-        const inner = rows.map(([l, v]) => `<div class="mval">${l}: <span class="mlbl">${v}</span></div>`).join('');
+        const inner = rows.map(([l, v]) => `<div class="mval"><span class="mlbl">${l}:</span> ${v}</div>`).join('');
         return `<div class="modal-card"><h4>${title}</h4>${inner}</div>`;
     }
 
@@ -341,9 +375,7 @@
         if (!n && n !== 0) return '<span class="na">—</span>';
         return '₹' + parseFloat(n).toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
-    function fmtPct(n) {
-        return parseFloat(n).toFixed(2) + '%';
-    }
+    function fmtPct(n) { return parseFloat(n).toFixed(2) + '%'; }
     function fmtInr(n) {
         if (!n && n !== 0) return '<span class="na">—</span>';
         const abs = Math.abs(n), sign = n < 0 ? '-' : '';

@@ -12,7 +12,7 @@ $db = getDB();
 
 $sql = "
     SELECT
-        m.symbol, m.expiry, m.lot_size, m.nrml_margin, m.nrml_margin_rate, m.futures_price, m.mwpl,
+        m.symbol, m.expiry, m.lot_size, m.nrml_margin, m.mis_margin, m.nrml_margin_rate, m.futures_price, m.mwpl,
         p.company_name, p.industry,
         p.current_price, p.open_price, p.high_price, p.low_price, p.close_price,
         p.prev_close, p.change_amount, p.change_percent,
@@ -58,6 +58,7 @@ foreach ($rows as $row) {
         'expiry'           => $row['expiry'],
         'lot_size'         => (int)$row['lot_size'],
         'nrml_margin'      => (float)$row['nrml_margin'],
+        'mis_margin'       => (float)$row['mis_margin'],
         'nrml_margin_rate' => (float)$row['nrml_margin_rate'],
         'futures_price'    => (float)$row['futures_price'],
         'mwpl'             => (float)$row['mwpl'],

@@ -69,16 +69,11 @@ out("HTTP: $status | Size: " . number_format(strlen($html ?? '')) . " bytes");
 if ($err) { out("cURL error: $err"); die(); }
 if ($status !== 200 || strlen($html) < 50000) { out("ERROR: Could not fetch page."); die(); }
 
-// ── Step 2: Parse <tr> data attributes ────────────
+// ── Step 2: Parse <tr> blocks ─────────────────────
 out("Step 2: Parsing margin data...");
 
-// Match all <tr> rows with data-scrip attribute
-preg_match_all(
-    '/<tr[^>]+data-scrip="([^"]+)"[^>]+data-expiry="([^"]+)"[^>]+data-margin="([^"]+)"[^>]+data-lot_size="([^"]+)"[^>]+data-nrml_margin="([^"]+)"[^>]+data-mis_margin="([^"]+)"[^>]+data-price="([^"]+)"[^>]*/i',
-    $html,
-    $matches,
-    PREG_SET_ORDER
-);
+// Match each full <tr>...</tr> block
+preg_match_all('/<tr[^>]+data-scrip="([^"]+)"[^>]+data-expiry="([^"]+)"[^>]+data-margin="([^"]+)"[^>]+data-lot_size="([^"]+)"[^>]+data-nrml_margin="([^"]+)"[^>]+data-mis_margin="([^"]+)"[^>]+data-price="([^"]+)"[^>]*>(.*?)<\/tr>/is', $html, $matches, PREG_SET_ORDER);
 
 out("Found " . count($matches) . " contracts.");
 
@@ -99,26 +94,34 @@ $db->prepare("DELETE FROM fno_margins WHERE fetched_date = ?")->execute([$today]
 
 $stmt = $db->prepare("
     INSERT INTO fno_margins
-        (symbol, expiry, lot_size, nrml_margin, mis_margin, nrml_margin_rate, futures_price, fetched_date)
+        (symbol, expiry, lot_size, nrml_margin, mis_margin, nrml_margin_rate, futures_price, mwpl, fetched_date)
     VALUES
-        (:symbol, :expiry, :lot_size, :nrml_margin, :mis_margin, :nrml_margin_rate, :futures_price, :fetched_date)
+        (:symbol, :expiry, :lot_size, :nrml_margin, :mis_margin, :nrml_margin_rate, :futures_price, :mwpl, :fetched_date)
     ON DUPLICATE KEY UPDATE
         lot_size         = VALUES(lot_size),
         nrml_margin      = VALUES(nrml_margin),
         mis_margin       = VALUES(mis_margin),
         nrml_margin_rate = VALUES(nrml_margin_rate),
         futures_price    = VALUES(futures_price),
+        mwpl             = VALUES(mwpl),
         updated_at       = CURRENT_TIMESTAMP
 ");
 
 foreach ($matches as $m) {
     $symbol    = trim($m[1]);
-    $expiry    = trim($m[2]);   // e.g. 28-APR-2026
-    $marginPct = (float)$m[3]; // e.g. 22.26
+    $expiry    = trim($m[2]);
+    $marginPct = (float)$m[3];
     $lotSize   = (int)$m[4];
-    $nrml      = (float)$m[5]; // absolute margin in ₹
+    $nrml      = (float)$m[5];
     $mis       = (float)$m[6];
     $price     = (float)$m[7];
+    $tdHtml    = $m[8] ?? '';
+
+    // Extract MWPL from inside the <td> block
+    $mwpl = 0;
+    if (preg_match('/MWPL.*?<span[^>]*>\s*([\d.]+)%\s*<\/span>/is', $tdHtml, $mwplMatch)) {
+        $mwpl = (float)$mwplMatch[1];
+    }
 
     $stmt->execute([
         ':symbol'           => $symbol,
@@ -129,9 +132,10 @@ foreach ($matches as $m) {
         ':nrml_margin_rate' => $marginPct,
         ':futures_price'    => $price,
         ':fetched_date'     => $today,
+        ':mwpl'             => $mwpl,
     ]);
 
-    out("$symbol | $expiry | Lot: $lotSize | NRML: ₹" . number_format($nrml) . " ($marginPct%) | Price: ₹$price");
+    out("$symbol | $expiry | Lot: $lotSize | NRML: ₹" . number_format($nrml) . " ($marginPct%) | Price: ₹$price | MWPL: $mwpl%");
     $saved++;
 }
 
