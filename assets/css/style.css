@@ -28,8 +28,8 @@
     /* Text hierarchy — bright enough for dark screens */
     --text:        #f1f5f9;   /* primary — headings, prices, symbols */
     --text2:       #c8d3e0;   /* secondary — regular cell text        */
-    --text3:       #8899aa;   /* tertiary — sub-labels, hints          */
-    --text4:       #556070;   /* quaternary — column headers, metadata */
+    --text3:       #ccc;   /* tertiary — sub-labels, hints          */
+    --text4:       #bbb;   /* quaternary — column headers, metadata */
 
     --radius:      8px;
     --font:        'Inter', system-ui, -apple-system, sans-serif;
