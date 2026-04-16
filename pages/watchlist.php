@@ -145,17 +145,16 @@ $user = authRequire();
                 <th class="num">Qty</th>
                 <th class="num">Avg Price</th>
                 <th class="num">LTP / Change</th>
-                <th>Day Range</th>
-                <th class="num">Target</th>
-                <th class="num">Stop Loss</th>
                 <th class="num">P&amp;L</th>
+                <th class="num">Stop Loss</th>
                 <th class="ctr">Position</th>
+                <th class="num">Target</th>
                 <th class="ctr">Status</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody id="wl-tbody">
-            <tr><td colspan="11" class="empty-wl">Loading...</td></tr>
+            <tr><td colspan="10" class="empty-wl">Loading...</td></tr>
         </tbody>
         <tfoot id="wl-tfoot"></tfoot>
     </table>
@@ -274,7 +273,7 @@ function tradeBar(d) {
 function render() {
     const rows = allData.filter(d => filter === 'ALL' || d.status === filter);
     if (!rows.length) {
-        document.getElementById('wl-tbody').innerHTML = `<tr><td colspan="11" class="empty-wl">No trades yet. Click "+ Add Trade" to start.</td></tr>`;
+        document.getElementById('wl-tbody').innerHTML = `<tr><td colspan="10" class="empty-wl">No trades yet. Click "+ Add Trade" to start.</td></tr>`;
         return;
     }
 
@@ -293,30 +292,31 @@ function render() {
         const chgClass   = chgPct > 0 ? 'chg-up' : chgPct < 0 ? 'chg-down' : 'chg-flat';
         const chgSign    = chgPct > 0 ? '+' : '';
         const chgAmtSign = chgAmt > 0 ? '+' : '';
-        const ltpDisplay = isClosed && d.sell_price
-            ? `<div style="font-size:14px;font-weight:700;color:#cbd5e1;">${fmtPrice(d.sell_price)}</div><div style="font-size:11px;color:#7a8fa6;">Exit price</div>`
-            : ltp > 0
-                ? `<div class="price-ltp">${fmtPrice(ltp)}</div>
-                   <div class="${chgClass}" style="font-size:11px;">${chgSign}${chgPct.toFixed(2)}% (${chgAmtSign}₹${Math.abs(chgAmt).toFixed(2)})</div>`
-                : `<div style="color:#7a8fa6;font-size:12px;">No price data</div>`;
-
-        // Day Range bar
+        // Day range bar — built inline below LTP
         const rangeLow  = d.low_price  || 0;
         const rangeHigh = d.high_price || 0;
         const rangeSpan = rangeHigh - rangeLow;
         const rangePct  = rangeSpan > 0 ? Math.min(100, Math.max(0, ((ltp - rangeLow) / rangeSpan) * 100)) : 50;
-        const dayRangeCell = (rangeLow && rangeHigh)
-            ? `<div style="min-width:140px;">
-                <div class="range-bar-labels" style="display:flex;justify-content:space-between;font-size:10px;color:#94a3b8;margin-bottom:3px;">
+        const dayRangeBar = (rangeLow && rangeHigh && !isClosed)
+            ? `<div style="margin-top:6px;min-width:150px;">
+                <div style="display:flex;justify-content:space-between;font-size:9px;color:#7a8fa6;margin-bottom:3px;">
                     <span>₹${rangeLow.toLocaleString('en-IN',{minimumFractionDigits:2})}</span>
                     <span>₹${rangeHigh.toLocaleString('en-IN',{minimumFractionDigits:2})}</span>
                 </div>
-                <div class="range-bar-track" style="position:relative;height:4px;background:var(--bg3);border-radius:3px;">
+                <div style="position:relative;height:4px;background:var(--bg3);border-radius:3px;">
                     <div style="position:absolute;left:0;width:${rangePct}%;height:100%;background:linear-gradient(90deg,var(--red),var(--green));border-radius:3px;"></div>
                     <div style="position:absolute;left:${rangePct}%;top:-3px;width:8px;height:8px;background:#fff;border-radius:50%;transform:translateX(-50%);box-shadow:0 0 4px rgba(0,0,0,.5);border:2px solid var(--accent);"></div>
                 </div>
                </div>`
-            : '<span style="color:#475569;">—</span>';
+            : '';
+
+        const ltpDisplay = isClosed && d.sell_price
+            ? `<div style="font-size:14px;font-weight:700;color:#cbd5e1;">${fmtPrice(d.sell_price)}</div><div style="font-size:11px;color:#7a8fa6;">Exit price</div>`
+            : ltp > 0
+                ? `<div class="price-ltp">${fmtPrice(ltp)}</div>
+                   <div class="${chgClass}" style="font-size:11px;">${chgSign}${chgPct.toFixed(2)}% (${chgAmtSign}₹${Math.abs(chgAmt).toFixed(2)})</div>
+                   ${dayRangeBar}`
+                : `<div style="color:#7a8fa6;font-size:12px;">No price data</div>`;
 
         // Qty with direction sign + lot size breakdown
         const totalQty   = d.quantity * d.lot_size;
@@ -378,14 +378,13 @@ function render() {
             <td class="num">${qtyDisplay}</td>
             <td class="num" style="font-size:14px;font-weight:600;color:#cbd5e1;">${fmtPrice(d.entry_price)}</td>
             <td class="num">${ltpDisplay}</td>
-            <td>${dayRangeCell}</td>
-            <td class="num">${targetCell}</td>
-            <td class="num">${slCell}</td>
             <td class="num ${plClass}">
                 <div class="pl-cell" style="font-size:14px;">${plSign}₹${Math.abs(d.pl).toLocaleString('en-IN',{minimumFractionDigits:2})}</div>
                 <div style="font-size:10px;color:#64748b;">${isClosed ? 'Realised' : (pctSign + d.pl_pct.toFixed(2) + '%')}</div>
             </td>
+            <td class="num">${slCell}</td>
             <td class="ctr">${isClosed ? '<span style="color:#475569;">—</span>' : tradeBar(d)}</td>
+            <td class="num">${targetCell}</td>
             <td class="ctr">${statusCell}</td>
             <td>${actions}</td>
         </tr>`;
@@ -431,7 +430,7 @@ function updateSummary() {
     const closedCount= visibleRows.filter(d => d.status === 'CLOSED').length;
 
     tfoot.innerHTML = `<tr>
-        <td colspan="7" style="color:var(--text3);font-size:12px;font-weight:500;">
+        <td colspan="4" style="color:var(--text3);font-size:12px;font-weight:500;">
             Total — ${visibleRows.length} trade${visibleRows.length !== 1 ? 's' : ''}
             ${openCount   ? `<span style="color:var(--green);margin-left:10px;">${openCount} open</span>`   : ''}
             ${closedCount ? `<span style="color:var(--text3);margin-left:10px;">${closedCount} closed</span>` : ''}
