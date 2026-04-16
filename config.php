@@ -7,7 +7,7 @@ define('DB_CHARSET', 'utf8mb4');
 
 define('SITE_NAME', 'MarketStatus FNO');
 define('BASE_URL', '/ms');
-define('DEBUG_MODE', true);
+define('DEBUG_MODE', true); // set false in production
 
 if (DEBUG_MODE) {
     error_reporting(E_ALL);

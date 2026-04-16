@@ -16,8 +16,11 @@ if ($isBrowser) {
         http_response_code(403);
         die('Forbidden');
     }
-    header('Content-Type: text/plain');
-    set_time_limit(300); // 5 min max
+    header('Content-Type: text/plain; charset=utf-8');
+    header('X-Accel-Buffering: no'); // disable nginx buffering
+    set_time_limit(300);
+    ob_implicit_flush(true);
+    if (ob_get_level()) ob_end_flush();
 }
 
 $today = date('Y-m-d');
