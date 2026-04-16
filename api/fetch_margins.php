@@ -1,12 +1,24 @@
 <?php
 /**
  * Fetch FNO Margins from NSE
- * Cron: 0 9 * * 1-5 php /path/to/api/fetch_margins.php
+ * Cron:    0 9 * * 1-5 php /path/to/api/fetch_margins.php
+ * Browser: https://silverwebbuzz.com/ms/api/fetch_margins.php?key=SilverMS2024
  */
 
 require_once __DIR__ . '/../config.php';
 require_once __DIR__ . '/../db.php';
 require_once __DIR__ . '/nse_helper.php';
+
+// Allow browser trigger with secret key
+$isBrowser = php_sapi_name() !== 'cli';
+if ($isBrowser) {
+    if (($_GET['key'] ?? '') !== 'SilverMS2024') {
+        http_response_code(403);
+        die('Forbidden');
+    }
+    header('Content-Type: text/plain');
+    set_time_limit(300); // 5 min max
+}
 
 $today = date('Y-m-d');
 

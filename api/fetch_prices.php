@@ -1,15 +1,22 @@
 <?php
 /**
  * Fetch live prices for FNO stocks from NSE.
- * Called via AJAX from dashboard or run directly for bulk fetch.
- *
- * ?symbol=RELIANCE  → single symbol
- * (no param)        → all symbols from DB
+ * Browser bulk: https://silverwebbuzz.com/ms/api/fetch_prices.php?key=SilverMS2024
+ * Single:       https://silverwebbuzz.com/ms/api/fetch_prices.php?symbol=RELIANCE
+ * Dashboard AJAX calls this without key (single symbol only from JS).
  */
 
 require_once __DIR__ . '/../config.php';
 require_once __DIR__ . '/../db.php';
 require_once __DIR__ . '/nse_helper.php';
+
+// Bulk browser trigger requires key; single symbol (from dashboard JS) does not
+$isBulk = !isset($_GET['symbol']);
+if ($isBulk && ($_GET['key'] ?? '') !== 'SilverMS2024') {
+    http_response_code(403);
+    die(json_encode(['success' => false, 'error' => 'Forbidden']));
+}
+if ($isBulk) set_time_limit(300);
 
 header('Content-Type: application/json');
 
