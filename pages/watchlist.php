@@ -282,8 +282,8 @@ function render() {
         const isClosed   = d.status === 'CLOSED';
         const isBuy      = d.trade_type === 'BUY';
         const plClass    = d.pl > 0 ? 'chg-up' : d.pl < 0 ? 'chg-down' : 'chg-flat';
-        const plSign     = d.pl > 0 ? '+' : '';
-        const pctSign    = d.pl_pct > 0 ? '+' : '';
+        const plSign     = d.pl > 0 ? '+' : d.pl < 0 ? '-' : '';
+        const pctSign    = d.pl_pct > 0 ? '+' : d.pl_pct < 0 ? '-' : '';
 
         // LTP / Change cell — styled like FNO dashboard
         const ltp        = isClosed && d.sell_price ? d.sell_price : (d.current_price || 0);
@@ -324,19 +324,26 @@ function render() {
             ? `<span class="qty-positive">+ ${d.quantity} lot${d.quantity > 1 ? 's' : ''}</span><div style="font-size:10px;color:var(--text3);">(${totalQty.toLocaleString('en-IN')} shares)</div>`
             : `<span class="qty-negative">- ${d.quantity} lot${d.quantity > 1 ? 's' : ''}</span><div style="font-size:10px;color:var(--text3);">(${totalQty.toLocaleString('en-IN')} shares)</div>`;
 
-        // Target cell — colour-coded, show % away for open trades
+        // Target cell — colour-coded, show % from entry + % away from current
         let targetCell = '<span class="na">—</span>';
         if (d.target_price) {
-            const toPct = d.to_target_pct !== null ? `<div style="font-size:10px;color:var(--green);">${d.to_target_pct > 0 ? '+' : ''}${d.to_target_pct.toFixed(1)}% away</div>` : '';
-            const hitMark = d.target_hit ? ' <span style="color:var(--green);font-size:10px;">✓</span>' : '';
-            targetCell = `<div style="color:var(--green);font-weight:600;">${fmtPrice(d.target_price)}${hitMark}</div>${!isClosed ? toPct : ''}`;
+            const hitMark  = d.target_hit ? ' <span style="color:var(--green);font-size:10px;">✓</span>' : '';
+            const fromEntry = d.entry_price > 0 ? ((d.target_price - d.entry_price) / d.entry_price) * 100 : 0;
+            const fromEntrySign = fromEntry > 0 ? '+' : '';
+            const subLine = !isClosed
+                ? `<div style="font-size:10px;color:#4ade80;">${fromEntrySign}${Math.abs(fromEntry).toFixed(2)}% from avg</div>`
+                : '';
+            targetCell = `<div style="color:var(--green);font-weight:600;">${fmtPrice(d.target_price)}${hitMark}</div>${subLine}`;
         }
 
         // SL cell
         let slCell = '<span class="na">—</span>';
         if (d.stop_loss) {
             const hitMark = d.sl_hit ? ' <span style="color:var(--red);font-size:10px;">⚠</span>' : '';
-            slCell = `<div style="color:var(--red);font-weight:600;">${fmtPrice(d.stop_loss)}${hitMark}</div>`;
+            const slPct   = d.entry_price > 0 ? ((d.stop_loss - d.entry_price) / d.entry_price) * 100 : 0;
+            const slSign  = slPct > 0 ? '+' : '';
+            slCell = `<div style="color:var(--red);font-weight:600;">${fmtPrice(d.stop_loss)}${hitMark}</div>
+                      <div style="font-size:10px;color:#7a8fa6;">${slSign}${Math.abs(slPct).toFixed(2)}% from avg</div>`;
         }
 
         // Status cell
@@ -380,7 +387,7 @@ function render() {
             <td class="num">${ltpDisplay}</td>
             <td class="num ${plClass}">
                 <div class="pl-cell" style="font-size:14px;">${plSign}₹${Math.abs(d.pl).toLocaleString('en-IN',{minimumFractionDigits:2})}</div>
-                <div style="font-size:10px;color:#64748b;">${isClosed ? 'Realised' : (pctSign + d.pl_pct.toFixed(2) + '%')}</div>
+                <div style="font-size:10px;color:#64748b;">${isClosed ? 'Realised' : (pctSign + Math.abs(d.pl_pct).toFixed(2) + '%')}</div>
             </td>
             <td class="num">${slCell}</td>
             <td class="ctr">${isClosed ? '<span style="color:#475569;">—</span>' : tradeBar(d)}</td>
