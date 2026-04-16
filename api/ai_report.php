@@ -173,6 +173,29 @@ Based on ALL the above data, provide:
 5. **SHORT-TERM OUTLOOK (1-5 days)**: One concise paragraph
 
 Keep the entire response under 400 words. Be specific, use the actual numbers provided. Do not add disclaimers.
+
+OUTPUT FORMAT (STRICT):
+- Return ONLY valid JSON.
+- Do not wrap in markdown fences.
+- Do not include any extra keys outside the schema.
+- If a field is unknown / missing / 0 because data is not available, use null (not 0) and mention that in key_reasons.
+
+JSON SCHEMA:
+{
+  "bias": "BULLISH" | "BEARISH" | "NEUTRAL",
+  "confidence": 0-100,
+  "key_reasons": [
+    {"reason": "string", "numbers_used": ["string", "..."]}
+  ],
+  "levels": {
+    "strong_support": {"label": "string", "price": number|null},
+    "strong_resistance": {"label": "string", "price": number|null},
+    "stop_loss": {"label": "string", "price": number|null},
+    "target": {"label": "string", "price": number|null}
+  },
+  "risk_factors": ["string", "..."],
+  "outlook_1_5d": "string"
+}
 PROMPT;
 
 // ── Call Anthropic API ────────────────────────────────
@@ -184,6 +207,13 @@ if (!defined('ANTHROPIC_API_KEY') || ANTHROPIC_API_KEY === '<Key here>') {
 $payload = json_encode([
     'model'      => ANTHROPIC_MODEL,
     'max_tokens' => 1024,
+    'temperature'=> 0,
+    'top_p'      => 1,
+    'system'     => "You must follow these rules strictly:\n"
+        . "1) Output ONLY valid JSON matching the provided schema. No markdown, no extra text.\n"
+        . "2) Use ONLY the numbers in the prompt. If a value is missing or unreliable (e.g. 0 for delivery), set the JSON value to null and state that in key_reasons.\n"
+        . "3) Do not invent support/resistance outside the provided pivot/fib levels and prices.\n"
+        . "4) Keep it concise; prefer concrete numeric references in numbers_used.",
     'messages'   => [
         ['role' => 'user', 'content' => $prompt]
     ]
@@ -221,17 +251,89 @@ if (!$text) {
     echo json_encode(['success' => false, 'error' => 'Empty response from AI']); exit;
 }
 
-// ── Parse bias + confidence from response ─────────────
-$bias       = 'NEUTRAL';
-$confidence = 50;
-if (preg_match('/\b(BULLISH|BEARISH|NEUTRAL)\b.*?(\d{1,3})\s*%/i', $text, $bm)) {
-    $bias       = strtoupper($bm[1]);
-    $confidence = (int)$bm[2];
-} elseif (preg_match('/\b(BULLISH)\b/i', $text)) {
-    $bias = 'BULLISH';
-} elseif (preg_match('/\b(BEARISH)\b/i', $text)) {
-    $bias = 'BEARISH';
+// ── Parse JSON response safely ────────────────────────
+$jsonText = trim($text);
+// If the model accidentally wrapped in fences, strip them.
+$jsonText = preg_replace('/^\s*```(?:json)?\s*/i', '', $jsonText);
+$jsonText = preg_replace('/\s*```\s*$/', '', $jsonText);
+
+$parsed = json_decode($jsonText, true);
+if (!is_array($parsed)) {
+    echo json_encode([
+        'success' => false,
+        'error'   => 'AI returned invalid JSON. Try refresh.',
+        'debug'   => substr($text, 0, 400),
+    ]);
+    exit;
 }
+
+// Normalize + validate minimal fields
+$biasRaw = strtoupper(trim((string)($parsed['bias'] ?? 'NEUTRAL')));
+$bias    = in_array($biasRaw, ['BULLISH','BEARISH','NEUTRAL'], true) ? $biasRaw : 'NEUTRAL';
+$confidence = (int)($parsed['confidence'] ?? 50);
+if ($confidence < 0) $confidence = 0;
+if ($confidence > 100) $confidence = 100;
+
+// Build a readable report text (keep UI-friendly markdown-ish formatting)
+$reasons = $parsed['key_reasons'] ?? [];
+$risk    = $parsed['risk_factors'] ?? [];
+$levels  = $parsed['levels'] ?? [];
+
+$fmtLevel = function($obj) {
+    if (!is_array($obj)) return 'N/A';
+    $label = trim((string)($obj['label'] ?? ''));
+    $price = $obj['price'] ?? null;
+    if ($price === null || $price === '') return $label ? ($label . ' (N/A)') : 'N/A';
+    $p = is_numeric($price) ? (float)$price : null;
+    if ($p === null) return $label ? ($label . ' (N/A)') : 'N/A';
+    return ($label ? ($label . ': ') : '') . '₹' . rtrim(rtrim(number_format($p, 2, '.', ''), '0'), '.');
+};
+
+$reportLines = [];
+$reportLines[] = "# {$symbol} - TRADING REPORT";
+$reportLines[] = "";
+$reportLines[] = "## 1. BIAS";
+$reportLines[] = "**{$bias} {$confidence}%**";
+$reportLines[] = "";
+$reportLines[] = "## 2. KEY REASONS";
+if (is_array($reasons) && count($reasons) > 0) {
+    foreach (array_slice($reasons, 0, 6) as $r) {
+        if (!is_array($r)) continue;
+        $reason = trim((string)($r['reason'] ?? ''));
+        if ($reason === '') continue;
+        $nums = $r['numbers_used'] ?? [];
+        $numsTxt = '';
+        if (is_array($nums) && count($nums) > 0) {
+            $numsTxt = ' (data: ' . implode(', ', array_map('strval', array_slice($nums, 0, 6))) . ')';
+        }
+        $reportLines[] = "- **{$reason}**{$numsTxt}";
+    }
+} else {
+    $reportLines[] = "- **N/A**";
+}
+$reportLines[] = "";
+$reportLines[] = "## 3. KEY LEVELS TO WATCH";
+$reportLines[] = "- **Strong Support**: " . $fmtLevel($levels['strong_support'] ?? null);
+$reportLines[] = "- **Strong Resistance**: " . $fmtLevel($levels['strong_resistance'] ?? null);
+$reportLines[] = "- **Stop Loss**: " . $fmtLevel($levels['stop_loss'] ?? null);
+$reportLines[] = "- **Target**: " . $fmtLevel($levels['target'] ?? null);
+$reportLines[] = "";
+$reportLines[] = "## 4. RISK FACTORS";
+if (is_array($risk) && count($risk) > 0) {
+    foreach (array_slice($risk, 0, 6) as $rf) {
+        $t = trim((string)$rf);
+        if ($t === '') continue;
+        $reportLines[] = "- **{$t}**";
+    }
+} else {
+    $reportLines[] = "- **N/A**";
+}
+$reportLines[] = "";
+$reportLines[] = "## 5. SHORT-TERM OUTLOOK (1-5 DAYS)";
+$outlook = trim((string)($parsed['outlook_1_5d'] ?? ''));
+$reportLines[] = $outlook !== '' ? $outlook : 'N/A';
+
+$text = implode("\n", $reportLines);
 
 // ── Save to DB ────────────────────────────────────────
 $db->prepare("
