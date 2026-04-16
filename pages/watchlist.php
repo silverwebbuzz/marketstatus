@@ -385,9 +385,9 @@ function render() {
             <td class="num">${qtyDisplay}</td>
             <td class="num" style="font-size:14px;font-weight:600;color:#cbd5e1;">${fmtPrice(d.entry_price)}</td>
             <td class="num">${ltpDisplay}</td>
-            <td class="num ${plClass}">
-                <div class="pl-cell" style="font-size:14px;">${plSign}₹${Math.abs(d.pl).toLocaleString('en-IN',{minimumFractionDigits:2})}</div>
-                <div style="font-size:10px;color:#64748b;">${isClosed ? 'Realised' : (pctSign + Math.abs(d.pl_pct).toFixed(2) + '%')}</div>
+            <td class="num">
+                <div class="pl-cell ${plClass}" style="font-size:14px;">${plSign}₹${Math.abs(d.pl).toLocaleString('en-IN',{minimumFractionDigits:2})}</div>
+                <div class="${plClass}" style="font-size:10px;opacity:.85;">${isClosed ? 'Realised' : (pctSign + Math.abs(d.pl_pct).toFixed(2) + '%')}</div>
             </td>
             <td class="num">${slCell}</td>
             <td class="ctr">${isClosed ? '<span style="color:#475569;">—</span>' : tradeBar(d)}</td>
