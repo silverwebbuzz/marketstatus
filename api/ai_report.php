@@ -11,6 +11,25 @@ require_once __DIR__ . '/../db.php';
 
 header('Content-Type: application/json');
 
+function _ms_model_label(string $key): string {
+    return $key === 'sonnet' ? 'Sonnet' : 'Haiku';
+}
+
+function _ms_pick_model(string $key): array {
+    $key = strtolower(trim($key));
+    if ($key === 'sonnet') {
+        $m = defined('ANTHROPIC_MODEL_SONNET') ? ANTHROPIC_MODEL_SONNET : '';
+        return ['key' => 'sonnet', 'label' => _ms_model_label('sonnet'), 'model' => $m];
+    }
+    if ($key === 'haiku') {
+        $m = defined('ANTHROPIC_MODEL_HAIKU') ? ANTHROPIC_MODEL_HAIKU : (defined('ANTHROPIC_MODEL') ? ANTHROPIC_MODEL : '');
+        return ['key' => 'haiku', 'label' => _ms_model_label('haiku'), 'model' => $m];
+    }
+    // default
+    $m = defined('ANTHROPIC_MODEL') ? ANTHROPIC_MODEL : '';
+    return ['key' => 'default', 'label' => 'Default', 'model' => $m];
+}
+
 // Must be logged in
 $user = authUser();
 if (!$user) {
@@ -19,6 +38,12 @@ if (!$user) {
 
 $symbol  = strtoupper(trim($_GET['symbol'] ?? ''));
 $refresh = isset($_GET['refresh']);
+$all     = isset($_GET['all']);
+$modelKey = strtolower(trim($_GET['model'] ?? 'haiku'));
+$modelSel = _ms_pick_model($modelKey);
+$modelId  = $modelSel['model'];
+$maxTokens = ($modelSel['key'] === 'sonnet') ? 1800 : 1024;
+$temperature = 0; // deterministic; safer for finance-style outputs
 
 if (!$symbol) {
     echo json_encode(['success' => false, 'error' => 'Symbol required']); exit;
@@ -26,15 +51,29 @@ if (!$symbol) {
 
 $db = getDB();
 
+// ── Fetch cached reports (multi-model) ─────────────────
+if ($all) {
+    $rows = $db->prepare("SELECT * FROM ai_reports WHERE symbol = ? ORDER BY generated_at DESC");
+    $rows->execute([$symbol]);
+    $reports = $rows->fetchAll() ?: [];
+    echo json_encode(['success' => true, 'cached' => true, 'reports' => $reports]);
+    exit;
+}
+
 // ── Return cached report if fresh (< 24h) and not forced ─
 if (!$refresh) {
-    $cached = $db->prepare("SELECT * FROM ai_reports WHERE symbol = ? LIMIT 1");
-    $cached->execute([$symbol]);
+    $cached = $db->prepare("SELECT * FROM ai_reports WHERE symbol = ? AND model_used = ? LIMIT 1");
+    $cached->execute([$symbol, $modelId ?: (defined('ANTHROPIC_MODEL') ? ANTHROPIC_MODEL : '')]);
     $report = $cached->fetch();
     if ($report) {
         $age = time() - strtotime($report['generated_at']);
         if ($age < 86400) {
-            echo json_encode(['success' => true, 'cached' => true, 'age_hours' => round($age/3600, 1), 'report' => $report]);
+            echo json_encode([
+                'success'   => true,
+                'cached'    => true,
+                'age_hours' => round($age/3600, 1),
+                'report'    => $report,
+            ]);
             exit;
         }
     }
@@ -204,10 +243,16 @@ if (!defined('ANTHROPIC_API_KEY') || ANTHROPIC_API_KEY === '<Key here>') {
     exit;
 }
 
+if (!$modelId) {
+    $lbl = $modelSel['label'];
+    echo json_encode(['success' => false, 'error' => "$lbl model is not configured. Set ANTHROPIC_MODEL_" . strtoupper($modelSel['key']) . " in config.php."]);
+    exit;
+}
+
 $payload = json_encode([
-    'model'      => ANTHROPIC_MODEL,
-    'max_tokens' => 1024,
-    'temperature'=> 0,
+    'model'      => $modelId,
+    'max_tokens' => $maxTokens,
+    'temperature'=> $temperature,
     'system'     => "You must follow these rules strictly:\n"
         . "1) Output ONLY valid JSON matching the provided schema. No markdown, no extra text.\n"
         . "2) Use ONLY the numbers in the prompt. If a value is missing or unreliable (e.g. 0 for delivery), set the JSON value to null and state that in key_reasons.\n"
@@ -344,7 +389,7 @@ $db->prepare("
         report_text  = VALUES(report_text),
         model_used   = VALUES(model_used),
         generated_at = CURRENT_TIMESTAMP
-")->execute([$symbol, $bias, $confidence, $text, ANTHROPIC_MODEL]);
+")->execute([$symbol, $bias, $confidence, $text, $modelId]);
 
 echo json_encode([
     'success'    => true,
@@ -355,7 +400,7 @@ echo json_encode([
         'bias'         => $bias,
         'confidence'   => $confidence,
         'report_text'  => $text,
-        'model_used'   => ANTHROPIC_MODEL,
+        'model_used'   => $modelId,
         'generated_at' => date('Y-m-d H:i:s'),
     ]
 ]);

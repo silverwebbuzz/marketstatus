@@ -27,6 +27,15 @@ $user = authUser();
         .ai-generating .spinner { width:28px; height:28px; border-width:3px; display:block; margin:0 auto 12px; }
         .confidence-bar { height:6px; background:var(--bg3); border-radius:3px; margin:8px 0 16px; overflow:hidden; }
         .confidence-fill { height:100%; border-radius:3px; transition:width .6s; }
+        .ai-toolbar { display:flex; gap:8px; align-items:center; justify-content:space-between; margin-bottom:10px; flex-wrap:wrap; }
+        .ai-model-buttons { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+        .btn-ai-model { background:transparent; border:1px solid var(--border); color:var(--text2); border-radius:6px; padding:6px 10px; font-size:12px; cursor:pointer; font-weight:700; }
+        .btn-ai-model.active { border-color: var(--accent2); color: #c4b5fd; background: rgba(124,92,252,.10); }
+        .btn-ai-model:hover { border-color: var(--accent2); color: #c4b5fd; }
+        .ai-tabs { display:flex; gap:6px; border-bottom:1px solid var(--border); margin: 10px 0 12px; padding-bottom:10px; }
+        .ai-tab { background:transparent; border:1px solid var(--border); color:var(--text2); border-radius:999px; padding:4px 10px; font-size:11px; cursor:pointer; }
+        .ai-tab.active { border-color: var(--accent); color: var(--accent); }
+        .ai-tab small { color: var(--text3); font-weight:600; margin-left:6px; }
     </style>
 </head>
 <body>

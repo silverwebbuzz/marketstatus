@@ -566,38 +566,105 @@
         const modal    = document.getElementById('ai-modal');
         const body     = document.getElementById('ai-modal-body');
         const title    = document.getElementById('ai-modal-title');
-        title.textContent = 'AI Report — ' + symbol;
-        body.innerHTML = `<div class="ai-generating"><span class="spinner"></span>Generating AI analysis for ${symbol}...<br><small style="color:var(--text3);margin-top:8px;display:block;">This may take 10-20 seconds</small></div>`;
+        title.textContent = 'AI Reports — ' + symbol;
+        body.innerHTML = _aiShell(symbol);
         modal.classList.add('open');
 
-        fetch(BASE + '/ai_report.php?symbol=' + encodeURIComponent(symbol))
+        // Load cached reports for all models (if any), then auto-generate Haiku if missing.
+        _aiLoadAll(symbol);
+    };
+
+    function _aiShell(symbol) {
+        return `
+            <div class="ai-toolbar">
+                <div class="ai-model-buttons">
+                    <button class="btn-ai-model active" id="ai-btn-haiku" onclick="aiSelectModel('${symbol}','haiku')">Haiku</button>
+                    <button class="btn-ai-model" id="ai-btn-sonnet" onclick="aiSelectModel('${symbol}','sonnet')">Sonnet</button>
+                </div>
+                <button class="btn-ai-refresh" id="ai-btn-refresh" onclick="aiRefreshSelected('${symbol}')">↻ Regenerate</button>
+            </div>
+            <div class="ai-tabs" id="ai-tabs">
+                <button class="ai-tab active" id="ai-tab-haiku" onclick="aiSelectModel('${symbol}','haiku')">Haiku <small id="ai-tab-haiku-meta">—</small></button>
+                <button class="ai-tab" id="ai-tab-sonnet" onclick="aiSelectModel('${symbol}','sonnet')">Sonnet <small id="ai-tab-sonnet-meta">—</small></button>
+            </div>
+            <div id="ai-panel">
+                <div class="ai-generating"><span class="spinner"></span>Loading cached reports...<br><small style="color:var(--text3);margin-top:8px;display:block;">You can generate Haiku/Sonnet separately</small></div>
+            </div>
+        `;
+    }
+
+    const _aiState = { symbol: null, selected: 'haiku', reports: { haiku: null, sonnet: null } };
+
+    function _aiSetActive(key) {
+        _aiState.selected = key;
+        document.getElementById('ai-btn-haiku')?.classList.toggle('active', key === 'haiku');
+        document.getElementById('ai-btn-sonnet')?.classList.toggle('active', key === 'sonnet');
+        document.getElementById('ai-tab-haiku')?.classList.toggle('active', key === 'haiku');
+        document.getElementById('ai-tab-sonnet')?.classList.toggle('active', key === 'sonnet');
+        const r = _aiState.reports[key];
+        if (r) _aiRenderReport(r, { cached: true }, key);
+        else _aiRenderEmpty(key);
+    }
+
+    window.aiSelectModel = function(symbol, key) {
+        if (_aiState.symbol !== symbol) _aiState.symbol = symbol;
+        _aiSetActive(key);
+    };
+
+    function _aiLoadAll(symbol) {
+        _aiState.symbol = symbol;
+        _aiState.reports = { haiku: null, sonnet: null };
+        fetch(BASE + '/ai_report.php?symbol=' + encodeURIComponent(symbol) + '&all=1')
             .then(r => r.json())
             .then(res => {
                 if (!res.success) {
-                    body.innerHTML = `<div style="color:var(--red);padding:20px;">${res.error}</div>`;
+                    document.getElementById('ai-panel').innerHTML = `<div style="color:var(--red);padding:20px;">${res.error}</div>`;
                     return;
                 }
-                renderAIReport(res, symbol, body);
+                (res.reports || []).forEach(rep => {
+                    const m = (rep.model_used || '').toLowerCase();
+                    if (m.includes('sonnet')) _aiState.reports.sonnet = rep;
+                    else if (m.includes('haiku')) _aiState.reports.haiku = rep;
+                });
+                _aiUpdateTabMeta();
+                // auto generate haiku if missing
+                if (!_aiState.reports.haiku) return _aiFetchOne(symbol, 'haiku', false);
+                _aiSetActive(_aiState.selected || 'haiku');
             })
             .catch(() => {
-                body.innerHTML = '<div style="color:var(--red);padding:20px;">Failed to connect to AI service.</div>';
+                document.getElementById('ai-panel').innerHTML = '<div style="color:var(--red);padding:20px;">Failed to connect to AI service.</div>';
             });
-    };
+    }
 
-    function renderAIReport(res, symbol, body) {
-        const r          = res.report;
+    function _aiUpdateTabMeta() {
+        const h = _aiState.reports.haiku;
+        const s = _aiState.reports.sonnet;
+        document.getElementById('ai-tab-haiku-meta').textContent = h ? `${h.bias} ${h.confidence}%` : 'not generated';
+        document.getElementById('ai-tab-sonnet-meta').textContent = s ? `${s.bias} ${s.confidence}%` : 'not generated';
+    }
+
+    function _aiRenderEmpty(key) {
+        const panel = document.getElementById('ai-panel');
+        panel.innerHTML = `<div class="ai-generating" style="padding:28px 20px;">
+            <div style="font-weight:700;color:var(--text2);margin-bottom:6px;">${key === 'sonnet' ? 'Sonnet' : 'Haiku'} report not generated yet.</div>
+            <small style="color:var(--text3);display:block;">Click “↻ Regenerate” to generate this model.</small>
+        </div>`;
+    }
+
+    function _aiRenderReport(reportRow, resMeta, key) {
+        const body = document.getElementById('ai-panel');
+        const r = reportRow;
         const biasClass  = r.bias === 'BULLISH' ? 'ai-bias-bullish' : r.bias === 'BEARISH' ? 'ai-bias-bearish' : 'ai-bias-neutral';
         const fillColor  = r.bias === 'BULLISH' ? 'var(--green)' : r.bias === 'BEARISH' ? 'var(--red)' : 'var(--yellow)';
-        const ageText    = res.cached ? `Cached report · ${res.age_hours}h ago` : 'Just generated';
-        // Convert markdown-style bold to <strong>
+        const ageText    = resMeta.cached ? `Cached · ${resMeta.age_hours ?? '?'}h ago` : 'Just generated';
         const formatted  = (r.report_text || '')
             .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
             .replace(/^(\d+\.\s)/gm, '<br><strong>$1</strong>');
 
         body.innerHTML = `
             <div class="ai-meta">
-                <span>${ageText} · ${r.model_used}</span>
-                <button class="btn-ai-refresh" onclick="refreshAI('${symbol}')">↻ Regenerate</button>
+                <span>${key.toUpperCase()} · ${ageText} · ${r.model_used}</span>
+                <span></span>
             </div>
             <div style="text-align:center;margin-bottom:4px;">
                 <span class="${biasClass}" style="font-size:20px;">${r.bias}</span>
@@ -610,17 +677,29 @@
         `;
     }
 
-    window.refreshAI = function(symbol) {
-        const body  = document.getElementById('ai-modal-body');
-        const title = document.getElementById('ai-modal-title');
-        title.textContent = 'AI Report — ' + symbol;
-        body.innerHTML = `<div class="ai-generating"><span class="spinner"></span>Regenerating...<br><small style="color:var(--text3);margin-top:8px;display:block;">Fetching fresh AI analysis</small></div>`;
-        fetch(BASE + '/ai_report.php?symbol=' + encodeURIComponent(symbol) + '&refresh=1')
+    function _aiFetchOne(symbol, key, refresh) {
+        const panel = document.getElementById('ai-panel');
+        panel.innerHTML = `<div class="ai-generating"><span class="spinner"></span>${refresh ? 'Regenerating' : 'Generating'} ${key === 'sonnet' ? 'Sonnet' : 'Haiku'} report...<br><small style="color:var(--text3);margin-top:8px;display:block;">This may take 10-20 seconds</small></div>`;
+        const url = BASE + '/ai_report.php?symbol=' + encodeURIComponent(symbol) + '&model=' + encodeURIComponent(key) + (refresh ? '&refresh=1' : '');
+        return fetch(url)
             .then(r => r.json())
             .then(res => {
-                if (!res.success) { body.innerHTML = `<div style="color:var(--red);padding:20px;">${res.error}</div>`; return; }
-                renderAIReport(res, symbol, body);
+                if (!res.success) {
+                    panel.innerHTML = `<div style="color:var(--red);padding:20px;">${res.error}</div>`;
+                    return;
+                }
+                _aiState.reports[key] = res.report;
+                _aiUpdateTabMeta();
+                _aiSetActive(key);
+            })
+            .catch(() => {
+                panel.innerHTML = '<div style="color:var(--red);padding:20px;">Failed to connect to AI service.</div>';
             });
+    }
+
+    window.aiRefreshSelected = function(symbol) {
+        const key = _aiState.selected || 'haiku';
+        _aiFetchOne(symbol, key, true);
     };
 
     // ── AI modal close (dashboard only) ──────────────
