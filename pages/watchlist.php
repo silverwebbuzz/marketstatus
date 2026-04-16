@@ -246,6 +246,6 @@ document.getElementById('close-modal').addEventListener('click', function(e) {
 
 load();
 </script>
-<script src="/ms/assets/js/fno.js?v=4"></script>
+<script src="/ms/assets/js/fno.js?v=5"></script>
 </body>
 </html>

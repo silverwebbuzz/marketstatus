@@ -8,8 +8,7 @@
 .port-form-group { margin-bottom:14px; position:relative; }
 .port-form-group label { display:block; font-size:12px; color:var(--text3); margin-bottom:5px; font-weight:500; }
 .port-form-group input,
-.port-form-group select,
-.port-form-group textarea {
+.port-form-group select {
     width:100%; background:var(--bg3); border:1px solid var(--border);
     border-radius:var(--radius); padding:9px 12px; color:var(--text);
     font-size:13px; outline:none; font-family:var(--font);
@@ -24,12 +23,20 @@
 .port-btn-save   { background:var(--accent); color:#fff; border:none; border-radius:var(--radius); padding:9px 22px; font-size:13px; font-weight:600; cursor:pointer; transition:opacity .2s; }
 .port-btn-save:hover { opacity:.85; }
 
-/* Symbol search dropdown */
+/* Symbol search */
 .sym-search-wrap { position:relative; }
 .sym-result-list { position:absolute; top:100%; left:0; right:0; background:var(--bg3); border:1px solid var(--border); border-radius:var(--radius); z-index:700; max-height:200px; overflow-y:auto; margin-top:2px; }
 .sym-result-item { padding:8px 12px; cursor:pointer; font-size:13px; border-bottom:1px solid var(--border); }
 .sym-result-item:hover { background:var(--border); color:var(--accent); }
 .sym-result-item:last-child { border-bottom:none; }
+
+/* Price+% dual input */
+.dual-input-wrap { display:grid; grid-template-columns:1fr 80px; gap:6px; }
+.dual-input-wrap input { min-width:0; }
+.pct-input { text-align:center; }
+.pct-hint { font-size:10px; margin-top:3px; height:14px; }
+.pct-hint.up   { color:var(--green); }
+.pct-hint.down { color:var(--red); }
 </style>
 
 <div class="port-modal-overlay" id="port-modal">
@@ -48,9 +55,7 @@
 
         <div class="port-form-group">
             <label>Expiry</label>
-            <select id="port-expiry">
-                <option value="">Search a symbol first</option>
-            </select>
+            <select id="port-expiry"><option value="">Search a symbol first</option></select>
         </div>
 
         <div class="port-form-row">
@@ -67,31 +72,93 @@
             </div>
         </div>
 
-        <div class="port-form-row">
-            <div class="port-form-group">
-                <label>Entry Price ₹</label>
-                <input type="number" id="port-entry" step="0.05" placeholder="0.00">
-            </div>
-            <div class="port-form-group">
-                <label>Target Price ₹ <span style="color:var(--text3)">(optional)</span></label>
-                <input type="number" id="port-target" step="0.05" placeholder="0.00">
-            </div>
+        <div class="port-form-group">
+            <label>Entry Price ₹</label>
+            <input type="number" id="port-entry" step="0.05" placeholder="0.00">
         </div>
 
-        <div class="port-form-row">
-            <div class="port-form-group">
-                <label>Stop Loss ₹ <span style="color:var(--text3)">(optional)</span></label>
-                <input type="number" id="port-sl" step="0.05" placeholder="0.00">
+        <div class="port-form-group">
+            <label>Target <span style="color:var(--text3);font-weight:400;">— enter price or %</span></label>
+            <div class="dual-input-wrap">
+                <input type="number" id="port-target"     step="0.05" placeholder="Price ₹"  oninput="syncFromPrice('target')">
+                <input type="number" id="port-target-pct" step="0.01" placeholder="%" class="pct-input" oninput="syncFromPct('target')">
             </div>
-            <div class="port-form-group">
-                <label>Notes <span style="color:var(--text3)">(optional)</span></label>
-                <input type="text" id="port-notes" placeholder="e.g. Breakout trade">
+            <div class="pct-hint" id="port-target-hint"></div>
+        </div>
+
+        <div class="port-form-group">
+            <label>Stop Loss <span style="color:var(--text3);font-weight:400;">— enter price or %</span></label>
+            <div class="dual-input-wrap">
+                <input type="number" id="port-sl"     step="0.05" placeholder="Price ₹" oninput="syncFromPrice('sl')">
+                <input type="number" id="port-sl-pct" step="0.01" placeholder="%" class="pct-input" oninput="syncFromPct('sl')">
             </div>
+            <div class="pct-hint" id="port-sl-hint"></div>
+        </div>
+
+        <div class="port-form-group">
+            <label>Notes <span style="color:var(--text3);font-weight:400;">(optional)</span></label>
+            <input type="text" id="port-notes" placeholder="e.g. Breakout trade">
         </div>
 
         <div class="port-modal-footer">
             <button class="port-btn-cancel" id="port-cancel">Cancel</button>
-            <button class="port-btn-save"   onclick="savePortfolioEntry()">Save Trade</button>
+            <button class="port-btn-save" onclick="savePortfolioEntry()">Save Trade</button>
         </div>
     </div>
 </div>
+
+<script>
+function getPortEntry() {
+    return parseFloat(document.getElementById('port-entry').value) || 0;
+}
+
+// Price field changed → calculate %
+function syncFromPrice(field) {
+    const entry = getPortEntry();
+    const price = parseFloat(document.getElementById('port-' + field).value) || 0;
+    const pctEl = document.getElementById('port-' + field + '-pct');
+    const hint  = document.getElementById('port-' + field + '-hint');
+
+    if (entry > 0 && price > 0) {
+        const pct = ((price - entry) / entry) * 100;
+        pctEl.value = pct.toFixed(2);
+        const sign = pct > 0 ? '+' : '';
+        hint.textContent = sign + pct.toFixed(2) + '% from entry';
+        hint.className   = 'pct-hint ' + (pct > 0 ? 'up' : 'down');
+    } else {
+        pctEl.value      = '';
+        hint.textContent = '';
+        hint.className   = 'pct-hint';
+    }
+}
+
+// % field changed → calculate price
+function syncFromPct(field) {
+    const entry = getPortEntry();
+    const pct   = parseFloat(document.getElementById('port-' + field + '-pct').value);
+    const priceEl = document.getElementById('port-' + field);
+    const hint    = document.getElementById('port-' + field + '-hint');
+
+    if (entry > 0 && !isNaN(pct)) {
+        const price = entry * (1 + pct / 100);
+        priceEl.value    = price.toFixed(2);
+        const sign = pct > 0 ? '+' : '';
+        hint.textContent = '₹' + price.toFixed(2) + '  (' + sign + pct.toFixed(2) + '% from entry)';
+        hint.className   = 'pct-hint ' + (pct > 0 ? 'up' : 'down');
+    } else {
+        priceEl.value    = '';
+        hint.textContent = '';
+        hint.className   = 'pct-hint';
+    }
+}
+
+// Re-sync hints when entry price changes
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('port-entry')?.addEventListener('input', function() {
+        if (document.getElementById('port-target').value)     syncFromPrice('target');
+        else if (document.getElementById('port-target-pct').value) syncFromPct('target');
+        if (document.getElementById('port-sl').value)         syncFromPrice('sl');
+        else if (document.getElementById('port-sl-pct').value)     syncFromPct('sl');
+    });
+});
+</script>
