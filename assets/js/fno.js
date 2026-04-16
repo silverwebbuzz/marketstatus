@@ -568,27 +568,137 @@
         if (e.target === this) this.classList.remove('open');
     });
 
-    // ── Add to Portfolio (quick-add from table) ────────
+    // ── Add to Portfolio modal ─────────────────────────
     window.addToPortfolio = function(symbol, currentPrice) {
-        const price = prompt(`Add ${symbol} to portfolio\nEnter your entry price:`, currentPrice);
-        if (!price) return;
-        const type = confirm('Click OK for BUY, Cancel for SELL') ? 'BUY' : 'SELL';
-        const fd   = new FormData();
-        fd.append('action',      'add');
-        fd.append('symbol',      symbol);
-        fd.append('trade_type',  type);
-        fd.append('entry_price', price);
-        fd.append('quantity',    '1');
-        fd.append('target_price', '');
-        fd.append('stop_loss',    '');
-        fd.append('notes',        '');
+        openPortfolioModal(symbol, currentPrice);
+    };
+
+    window.openPortfolioModal = function(symbol, prefillPrice) {
+        const modal = document.getElementById('port-modal');
+        if (!modal) return;
+
+        // Reset form
+        document.getElementById('port-edit-id').value  = '';
+        document.getElementById('port-type').value     = 'BUY';
+        document.getElementById('port-qty').value      = '1';
+        document.getElementById('port-entry').value    = prefillPrice ? prefillPrice.toFixed(2) : '';
+        document.getElementById('port-target').value   = '';
+        document.getElementById('port-sl').value       = '';
+        document.getElementById('port-notes').value    = '';
+        document.getElementById('port-expiry').innerHTML = '<option value="">Select expiry</option>';
+        document.getElementById('port-modal-title').textContent = 'Add to Portfolio';
+
+        const symInput = document.getElementById('port-symbol');
+        symInput.value    = symbol || '';
+        symInput.disabled = !!symbol;
+        document.getElementById('port-sym-results').innerHTML = '';
+
+        if (symbol) loadPortfolioExpiries(symbol);
+
+        modal.classList.add('open');
+    };
+
+    function loadPortfolioExpiries(symbol) {
+        fetch(BASE + '/symbols.php?symbol=' + encodeURIComponent(symbol))
+            .then(r => r.json())
+            .then(res => {
+                const sel = document.getElementById('port-expiry');
+                sel.innerHTML = '<option value="">Select expiry</option>';
+                (res.expiries || []).forEach(e => {
+                    const o = document.createElement('option');
+                    o.value       = e.expiry;
+                    o.textContent = `${e.expiry}  (Lot: ${e.lot_size}  NRML: ₹${Number(e.nrml_margin).toLocaleString('en-IN')})`;
+                    sel.appendChild(o);
+                });
+                if (res.expiries?.length === 1) sel.selectedIndex = 1;
+            });
+    }
+
+    // Symbol search autocomplete
+    let symSearchTimer = null;
+    function initPortSymSearch() {
+        const input   = document.getElementById('port-symbol');
+        const results = document.getElementById('port-sym-results');
+        if (!input) return;
+
+        input.addEventListener('input', () => {
+            clearTimeout(symSearchTimer);
+            const q = input.value.trim();
+            if (!q) { results.innerHTML = ''; return; }
+            symSearchTimer = setTimeout(() => {
+                fetch(BASE + '/symbols.php?q=' + encodeURIComponent(q))
+                    .then(r => r.json())
+                    .then(res => {
+                        results.innerHTML = '';
+                        (res.symbols || []).forEach(s => {
+                            const div = document.createElement('div');
+                            div.className   = 'sym-result-item';
+                            div.textContent = s.symbol + (s.company_name ? '  —  ' + s.company_name : '');
+                            div.addEventListener('click', () => {
+                                input.value       = s.symbol;
+                                results.innerHTML = '';
+                                loadPortfolioExpiries(s.symbol);
+                            });
+                            results.appendChild(div);
+                        });
+                    });
+            }, 250);
+        });
+
+        // Hide results on outside click
+        document.addEventListener('click', e => {
+            if (!input.contains(e.target) && !results.contains(e.target)) {
+                results.innerHTML = '';
+            }
+        });
+    }
+
+    window.savePortfolioEntry = function() {
+        const id     = document.getElementById('port-edit-id').value;
+        const symbol = document.getElementById('port-symbol').value.trim().toUpperCase();
+        const entry  = document.getElementById('port-entry').value;
+        const expiry = document.getElementById('port-expiry').value;
+
+        if (!symbol)  { alert('Please select a symbol.'); return; }
+        if (!entry)   { alert('Entry price is required.'); return; }
+        if (!expiry && !id) { alert('Please select an expiry.'); return; }
+
+        const fd = new FormData();
+        fd.append('quantity',     document.getElementById('port-qty').value);
+        fd.append('target_price', document.getElementById('port-target').value);
+        fd.append('stop_loss',    document.getElementById('port-sl').value);
+        fd.append('notes',        document.getElementById('port-notes').value);
+
+        if (id) {
+            fd.append('action', 'edit');
+            fd.append('id', id);
+        } else {
+            fd.append('action',      'add');
+            fd.append('symbol',      symbol);
+            fd.append('expiry',      expiry);
+            fd.append('trade_type',  document.getElementById('port-type').value);
+            fd.append('entry_price', entry);
+        }
+
         fetch(BASE + '/watchlist.php', { method:'POST', body:fd })
             .then(r => r.json())
             .then(res => {
-                if (res.success) alert(`${symbol} added to your portfolio!`);
-                else alert('Error: ' + res.error);
+                if (!res.success) { alert(res.error || 'Error saving.'); return; }
+                document.getElementById('port-modal').classList.remove('open');
+                // If on watchlist page, reload — otherwise just close
+                if (typeof load === 'function') load();
+                else { const b = document.getElementById('port-save-msg'); if (b) b.textContent = symbol + ' added!'; }
             });
     };
+
+    // Init
+    document.getElementById('port-modal')?.addEventListener('click', function(e) {
+        if (e.target === this) this.classList.remove('open');
+    });
+    document.getElementById('port-modal-close')?.addEventListener('click', () => {
+        document.getElementById('port-modal').classList.remove('open');
+    });
+    initPortSymSearch();
 
     loadData();
 })();

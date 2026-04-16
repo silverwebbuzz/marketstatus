@@ -104,8 +104,9 @@ if ($action === 'add') {
     $symbol = strtoupper(trim($_POST['symbol'] ?? ''));
     $type   = strtoupper(trim($_POST['trade_type'] ?? 'BUY'));
     $entry  = (float)($_POST['entry_price']  ?? 0);
-    $target = $_POST['target_price'] !== '' ? (float)$_POST['target_price'] : null;
-    $sl     = $_POST['stop_loss']    !== '' ? (float)$_POST['stop_loss']    : null;
+    $expiry = trim($_POST['expiry'] ?? '');
+    $target = ($_POST['target_price'] ?? '') !== '' ? (float)$_POST['target_price'] : null;
+    $sl     = ($_POST['stop_loss']    ?? '') !== '' ? (float)$_POST['stop_loss']    : null;
     $qty    = max(1, (int)($_POST['quantity'] ?? 1));
     $notes  = trim($_POST['notes'] ?? '');
 
@@ -124,8 +125,8 @@ if ($action === 'add') {
 // ── EDIT ──────────────────────────────────────────────
 if ($action === 'edit') {
     $id     = (int)($_POST['id'] ?? 0);
-    $target = $_POST['target_price'] !== '' ? (float)$_POST['target_price'] : null;
-    $sl     = $_POST['stop_loss']    !== '' ? (float)$_POST['stop_loss']    : null;
+    $target = ($_POST['target_price'] ?? '') !== '' ? (float)$_POST['target_price'] : null;
+    $sl     = ($_POST['stop_loss']    ?? '') !== '' ? (float)$_POST['stop_loss']    : null;
     $qty    = max(1, (int)($_POST['quantity'] ?? 1));
     $notes  = trim($_POST['notes'] ?? '');
 

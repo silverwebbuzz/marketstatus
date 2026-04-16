@@ -101,6 +101,9 @@ $user = authUser();
     </div>
 </div>
 
+<!-- Portfolio Add Modal (shared) -->
+<?php require __DIR__ . '/../includes/portfolio_modal.php'; ?>
+
 <!-- AI Report Modal -->
 <div class="modal-overlay" id="ai-modal">
     <div class="modal-box" style="max-width:640px;">
