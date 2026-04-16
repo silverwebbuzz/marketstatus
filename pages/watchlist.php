@@ -236,16 +236,28 @@ function tradeBar(d) {
     const profitable = isBuy ? curr > entry : curr < entry;
     const currColor  = profitable ? 'var(--green)' : 'var(--red)';
 
-    const axisLeft  = sl     ? `<span style="color:#f87171;">SL ${sl.toLocaleString('en-IN')}</span>` : `<span>${Math.min(minP+pad, entry).toLocaleString('en-IN',{maximumFractionDigits:0})}</span>`;
-    const axisRight = target ? `<span style="color:#4ade80;">T ${target.toLocaleString('en-IN')}</span>` : `<span>${Math.max(maxP-pad, entry).toLocaleString('en-IN',{maximumFractionDigits:0})}</span>`;
+    const axisLeft  = sl     ? `<span style="color:#f87171;">SL ${sl.toLocaleString('en-IN')}</span>`     : `<span></span>`;
+    const axisRight = target ? `<span style="color:#4ade80;">T ${target.toLocaleString('en-IN')}</span>` : `<span></span>`;
+
+    // Current price label — floated above the current pin
+    const currLbl = `<div style="position:relative;height:16px;margin-bottom:1px;">
+        <span style="position:absolute;left:${cp}%;transform:translateX(-50%);font-size:10px;font-weight:700;color:${currColor};white-space:nowrap;">${d.current_price.toLocaleString('en-IN',{minimumFractionDigits:2})}</span>
+    </div>`;
+
+    // Entry label — floated below the entry pin
+    const entryLbl = `<div style="position:relative;height:14px;margin-top:1px;">
+        <span style="position:absolute;left:${ep}%;transform:translateX(-50%);font-size:9px;color:var(--accent);white-space:nowrap;">Avg ${entry.toLocaleString('en-IN',{minimumFractionDigits:2})}</span>
+    </div>`;
 
     return `<div class="trade-bar-wrap">
+        ${currLbl}
         <div class="trade-bar-track">
             ${zones}
             <div class="trade-bar-pin"      style="left:${ep}%;background:var(--accent);height:10px;top:-2.5px;"></div>
             <div class="trade-bar-curr-pin" style="left:${cp}%;background:${currColor};"></div>
         </div>
-        <div class="trade-bar-axis">${axisLeft}<span style="color:var(--accent)">Avg</span>${axisRight}</div>
+        ${entryLbl}
+        <div class="trade-bar-axis">${axisLeft}<span></span>${axisRight}</div>
     </div>`;
 }
 
@@ -270,10 +282,11 @@ function render() {
             ? `<span style="color:var(--text3);">${fmtPrice(d.sell_price)}</span>`
             : fmtPrice(d.current_price);
 
-        // Qty with direction sign
+        // Qty with direction sign + lot size breakdown
+        const totalQty   = d.quantity * d.lot_size;
         const qtyDisplay = isBuy
-            ? `<span class="qty-positive">+ ${d.quantity}</span>`
-            : `<span class="qty-negative">- ${d.quantity}</span>`;
+            ? `<span class="qty-positive">+ ${d.quantity} lot${d.quantity > 1 ? 's' : ''}</span><div style="font-size:10px;color:var(--text3);">(${totalQty.toLocaleString('en-IN')} shares)</div>`
+            : `<span class="qty-negative">- ${d.quantity} lot${d.quantity > 1 ? 's' : ''}</span><div style="font-size:10px;color:var(--text3);">(${totalQty.toLocaleString('en-IN')} shares)</div>`;
 
         // Target cell — colour-coded, show % away for open trades
         let targetCell = '<span class="na">—</span>';
@@ -460,6 +473,6 @@ document.getElementById('close-modal').addEventListener('click', function(e) {
 
 load();
 </script>
-<script src="/ms/assets/js/fno.js?v=7"></script>
+<script src="/ms/assets/js/fno.js?v=8"></script>
 </body>
 </html>

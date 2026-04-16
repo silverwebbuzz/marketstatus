@@ -613,16 +613,26 @@
     };
 
     function _isBuy()  { return (document.getElementById('port-type')?.value || 'BUY') === 'BUY'; }
+
+    // For BUY:    target must be > entry (pct > 0), SL must be < entry (pct < 0)
+    // For SELL:   target must be < entry (pct < 0), SL must be > entry (pct > 0)
+    function _isGoodDir(field, pct) {
+        const buy = _isBuy();
+        if (field === 'target') return buy ? pct > 0 : pct < 0;
+        if (field === 'sl')     return buy ? pct < 0 : pct > 0;
+        return true;
+    }
     function _hintClass(field, pct) {
-        if (field === 'sl') return 'down';
-        return (_isBuy() ? pct > 0 : pct < 0) ? 'up' : 'down';
+        return _isGoodDir(field, pct) ? (field === 'sl' ? 'down' : 'up') : 'down';
     }
     function _buildHint(field, price, pct) {
-        const sign    = pct > 0 ? '+' : '';
+        const sign = pct > 0 ? '+' : '';
+        const good = _isGoodDir(field, pct);
         let label;
-        if (field === 'target') {
-            const goodDir = _isBuy() ? pct > 0 : pct < 0;
-            label = goodDir ? 'profit' : '⚠ wrong direction for ' + (_isBuy() ? 'BUY' : 'SELL');
+        if (!good) {
+            label = '⚠ wrong direction for ' + (_isBuy() ? 'BUY' : 'SELL');
+        } else if (field === 'target') {
+            label = 'profit';
         } else {
             label = 'risk';
         }
