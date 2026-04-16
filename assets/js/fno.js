@@ -463,35 +463,37 @@
         if (on) tbody.innerHTML = '<tr class="loading-row"><td colspan="13"><span class="spinner"></span>Loading FNO data...</td></tr>';
     }
 
-    // ── Events ────────────────────────────────────────
-    searchInp.addEventListener('input',  () => { filterSym = searchInp.value.trim(); renderTable(); });
-    indFilter.addEventListener('change', () => { filterInd = indFilter.value; renderTable(); });
-    expFilter.addEventListener('change', () => { filterExp = expFilter.value; renderTable(); });
-    refreshBtn.addEventListener('click', refreshPrices);
+    // ── Dashboard-only events (guarded — these elements only exist on fno.php) ──
+    if (tbody) {
+        searchInp.addEventListener('input',  () => { filterSym = searchInp.value.trim(); renderTable(); });
+        indFilter.addEventListener('change', () => { filterInd = indFilter.value; renderTable(); });
+        expFilter.addEventListener('change', () => { filterExp = expFilter.value; renderTable(); });
+        refreshBtn.addEventListener('click', refreshPrices);
 
-    document.getElementById('btn-clear').addEventListener('click', () => {
-        searchInp.value = indFilter.value = expFilter.value = '';
-        filterSym = filterInd = filterExp = '';
-        renderTable();
-    });
-
-    document.getElementById('modal-close').addEventListener('click', () => {
-        document.getElementById('fno-modal').classList.remove('open');
-    });
-    document.getElementById('fno-modal').addEventListener('click', function (e) {
-        if (e.target === this) this.classList.remove('open');
-    });
-
-    document.querySelectorAll('th[data-sort]').forEach(th => {
-        th.addEventListener('click', () => {
-            const col = th.dataset.sort;
-            sortDir = (sortCol === col && sortDir === 'desc') ? 'asc' : 'desc';
-            sortCol = col;
-            document.querySelectorAll('th[data-sort]').forEach(h => h.classList.remove('asc', 'desc'));
-            th.classList.add(sortDir);
+        document.getElementById('btn-clear').addEventListener('click', () => {
+            searchInp.value = indFilter.value = expFilter.value = '';
+            filterSym = filterInd = filterExp = '';
             renderTable();
         });
-    });
+
+        document.getElementById('modal-close').addEventListener('click', () => {
+            document.getElementById('fno-modal').classList.remove('open');
+        });
+        document.getElementById('fno-modal').addEventListener('click', function (e) {
+            if (e.target === this) this.classList.remove('open');
+        });
+
+        document.querySelectorAll('th[data-sort]').forEach(th => {
+            th.addEventListener('click', () => {
+                const col = th.dataset.sort;
+                sortDir = (sortCol === col && sortDir === 'desc') ? 'asc' : 'desc';
+                sortCol = col;
+                document.querySelectorAll('th[data-sort]').forEach(h => h.classList.remove('asc', 'desc'));
+                th.classList.add(sortDir);
+                renderTable();
+            });
+        });
+    }
 
     // ── AI Report ─────────────────────────────────────
     window.showAI = function(symbol) {
@@ -561,48 +563,113 @@
             });
     };
 
-    document.getElementById('ai-modal-close').addEventListener('click', () => {
-        document.getElementById('ai-modal').classList.remove('open');
-    });
-    document.getElementById('ai-modal').addEventListener('click', function(e) {
-        if (e.target === this) this.classList.remove('open');
-    });
+    // ── AI modal close (dashboard only) ──────────────
+    const aiModalClose = document.getElementById('ai-modal-close');
+    const aiModal      = document.getElementById('ai-modal');
+    if (aiModalClose) {
+        aiModalClose.addEventListener('click', () => aiModal.classList.remove('open'));
+        aiModal.addEventListener('click', function(e) { if (e.target === this) this.classList.remove('open'); });
+    }
 
-    // ── Add to Portfolio modal ─────────────────────────
-    window.addToPortfolio = function(symbol, currentPrice) {
-        openPortfolioModal(symbol, currentPrice);
+    if (tbody) loadData();
+
+})();
+
+/* ── Portfolio Modal — global (runs on ALL pages) ──────────────────────── */
+(function() {
+    'use strict';
+
+    const BASE = (window.APP_BASE || '') + '/api';
+
+    // ── Sync functions (called from portfolio_modal.php inline oninput) ──
+    window.syncFromPrice = function(field) {
+        const entry = parseFloat(document.getElementById('port-entry').value) || 0;
+        const price = parseFloat(document.getElementById('port-' + field).value) || 0;
+        const pctEl = document.getElementById('port-' + field + '-pct');
+        const hint  = document.getElementById('port-' + field + '-hint');
+        if (entry > 0 && price > 0) {
+            const pct   = ((price - entry) / entry) * 100;
+            pctEl.value = pct.toFixed(2);
+            hint.textContent = _buildHint(field, price, pct);
+            hint.className   = 'pct-hint ' + _hintClass(field, pct);
+        } else {
+            pctEl.value = ''; hint.textContent = ''; hint.className = 'pct-hint';
+        }
     };
 
+    window.syncFromPct = function(field) {
+        const entry   = parseFloat(document.getElementById('port-entry').value) || 0;
+        const pct     = parseFloat(document.getElementById('port-' + field + '-pct').value);
+        const priceEl = document.getElementById('port-' + field);
+        const hint    = document.getElementById('port-' + field + '-hint');
+        if (entry > 0 && !isNaN(pct)) {
+            const price   = entry * (1 + pct / 100);
+            priceEl.value = price.toFixed(2);
+            hint.textContent = _buildHint(field, price, pct);
+            hint.className   = 'pct-hint ' + _hintClass(field, pct);
+        } else {
+            priceEl.value = ''; hint.textContent = ''; hint.className = 'pct-hint';
+        }
+    };
+
+    function _isBuy()  { return (document.getElementById('port-type')?.value || 'BUY') === 'BUY'; }
+    function _hintClass(field, pct) {
+        if (field === 'sl') return 'down';
+        return (_isBuy() ? pct > 0 : pct < 0) ? 'up' : 'down';
+    }
+    function _buildHint(field, price, pct) {
+        const sign    = pct > 0 ? '+' : '';
+        let label;
+        if (field === 'target') {
+            const goodDir = _isBuy() ? pct > 0 : pct < 0;
+            label = goodDir ? 'profit' : '⚠ wrong direction for ' + (_isBuy() ? 'BUY' : 'SELL');
+        } else {
+            label = 'risk';
+        }
+        return `₹${parseFloat(price).toFixed(2)}  (${sign}${pct.toFixed(2)}% — ${label})`;
+    }
+
+    function _resyncAll() {
+        const tgt    = document.getElementById('port-target');
+        const tgtPct = document.getElementById('port-target-pct');
+        const sl     = document.getElementById('port-sl');
+        const slPct  = document.getElementById('port-sl-pct');
+        if (tgt?.value)        window.syncFromPrice('target');
+        else if (tgtPct?.value) window.syncFromPct('target');
+        if (sl?.value)         window.syncFromPrice('sl');
+        else if (slPct?.value)  window.syncFromPct('sl');
+    }
+
+    // ── Open modal (add new) ──────────────────────────
     window.openPortfolioModal = function(symbol, prefillPrice) {
         const modal = document.getElementById('port-modal');
         if (!modal) return;
-
-        // Reset form
-        document.getElementById('port-edit-id').value      = '';
-        document.getElementById('port-type').value         = 'BUY';
-        document.getElementById('port-qty').value          = '1';
-        document.getElementById('port-entry').value        = prefillPrice ? prefillPrice.toFixed(2) : '';
-        document.getElementById('port-target').value       = '';
-        document.getElementById('port-target-pct').value   = '';
+        document.getElementById('port-edit-id').value           = '';
+        document.getElementById('port-type').value              = 'BUY';
+        document.getElementById('port-qty').value               = '1';
+        document.getElementById('port-entry').value             = prefillPrice ? Number(prefillPrice).toFixed(2) : '';
+        document.getElementById('port-target').value            = '';
+        document.getElementById('port-target-pct').value        = '';
         document.getElementById('port-target-hint').textContent = '';
-        document.getElementById('port-sl').value           = '';
-        document.getElementById('port-sl-pct').value       = '';
-        document.getElementById('port-sl-hint').textContent = '';
-        document.getElementById('port-notes').value        = '';
-        document.getElementById('port-expiry').innerHTML   = '<option value="">Select expiry</option>';
+        document.getElementById('port-sl').value                = '';
+        document.getElementById('port-sl-pct').value            = '';
+        document.getElementById('port-sl-hint').textContent     = '';
+        document.getElementById('port-notes').value             = '';
+        document.getElementById('port-expiry').innerHTML        = '<option value="">Select expiry</option>';
         document.getElementById('port-modal-title').textContent = 'Add to Portfolio';
-
-        const symInput = document.getElementById('port-symbol');
+        const symInput    = document.getElementById('port-symbol');
         symInput.value    = symbol || '';
         symInput.disabled = !!symbol;
-        document.getElementById('port-sym-results').innerHTML = '';
-
-        if (symbol) loadPortfolioExpiries(symbol);
-
+        document.getElementById('port-sym-results').innerHTML   = '';
+        if (symbol) _loadExpiries(symbol);
         modal.classList.add('open');
     };
 
-    function loadPortfolioExpiries(symbol) {
+    window.addToPortfolio = function(symbol, currentPrice) {
+        window.openPortfolioModal(symbol, currentPrice);
+    };
+
+    function _loadExpiries(symbol) {
         fetch(BASE + '/symbols.php?symbol=' + encodeURIComponent(symbol))
             .then(r => r.json())
             .then(res => {
@@ -610,7 +677,7 @@
                 sel.innerHTML = '<option value="">Select expiry</option>';
                 (res.expiries || []).forEach(e => {
                     const o = document.createElement('option');
-                    o.value       = e.expiry;
+                    o.value = e.expiry;
                     o.textContent = `${e.expiry}  (Lot: ${e.lot_size}  NRML: ₹${Number(e.nrml_margin).toLocaleString('en-IN')})`;
                     sel.appendChild(o);
                 });
@@ -618,53 +685,15 @@
             });
     }
 
-    // Symbol search autocomplete
-    let symSearchTimer = null;
-    function initPortSymSearch() {
-        const input   = document.getElementById('port-symbol');
-        const results = document.getElementById('port-sym-results');
-        if (!input) return;
-
-        input.addEventListener('input', () => {
-            clearTimeout(symSearchTimer);
-            const q = input.value.trim();
-            if (!q) { results.innerHTML = ''; return; }
-            symSearchTimer = setTimeout(() => {
-                fetch(BASE + '/symbols.php?q=' + encodeURIComponent(q))
-                    .then(r => r.json())
-                    .then(res => {
-                        results.innerHTML = '';
-                        (res.symbols || []).forEach(s => {
-                            const div = document.createElement('div');
-                            div.className   = 'sym-result-item';
-                            div.textContent = s.symbol + (s.company_name ? '  —  ' + s.company_name : '');
-                            div.addEventListener('click', () => {
-                                input.value       = s.symbol;
-                                results.innerHTML = '';
-                                loadPortfolioExpiries(s.symbol);
-                            });
-                            results.appendChild(div);
-                        });
-                    });
-            }, 250);
-        });
-
-        // Hide results on outside click
-        document.addEventListener('click', e => {
-            if (!input.contains(e.target) && !results.contains(e.target)) {
-                results.innerHTML = '';
-            }
-        });
-    }
-
+    // ── Save (add or edit) ────────────────────────────
     window.savePortfolioEntry = function() {
         const id     = document.getElementById('port-edit-id').value;
         const symbol = document.getElementById('port-symbol').value.trim().toUpperCase();
         const entry  = document.getElementById('port-entry').value;
         const expiry = document.getElementById('port-expiry').value;
 
-        if (!symbol)  { alert('Please select a symbol.'); return; }
-        if (!entry)   { alert('Entry price is required.'); return; }
+        if (!symbol) { alert('Please select a symbol.'); return; }
+        if (!entry)  { alert('Entry price is required.'); return; }
         if (!expiry && !id) { alert('Please select an expiry.'); return; }
 
         const fd = new FormData();
@@ -688,24 +717,59 @@
             .then(r => r.json())
             .then(res => {
                 if (!res.success) { alert(res.error || 'Error saving.'); return; }
-                document.getElementById('port-modal').classList.remove('open');
-                // If on watchlist page, reload — otherwise just close
+                _closePortModal();
                 if (typeof load === 'function') load();
-                else { const b = document.getElementById('port-save-msg'); if (b) b.textContent = symbol + ' added!'; }
             });
     };
 
-    function closePortModal() {
-        document.getElementById('port-modal').classList.remove('open');
+    function _closePortModal() {
+        document.getElementById('port-modal')?.classList.remove('open');
     }
 
-    // Cancel button
-    document.getElementById('port-cancel')?.addEventListener('click', closePortModal);
-    document.getElementById('port-modal-close')?.addEventListener('click', closePortModal);
-    document.getElementById('port-modal')?.addEventListener('click', function(e) {
-        if (e.target === this) closePortModal();
-    });
-    initPortSymSearch();
+    // ── Symbol autocomplete ───────────────────────────
+    let _symTimer = null;
+    function _initSymSearch() {
+        const input   = document.getElementById('port-symbol');
+        const results = document.getElementById('port-sym-results');
+        if (!input) return;
+        input.addEventListener('input', () => {
+            clearTimeout(_symTimer);
+            const q = input.value.trim();
+            if (!q) { results.innerHTML = ''; return; }
+            _symTimer = setTimeout(() => {
+                fetch(BASE + '/symbols.php?q=' + encodeURIComponent(q))
+                    .then(r => r.json())
+                    .then(res => {
+                        results.innerHTML = '';
+                        (res.symbols || []).forEach(s => {
+                            const div = document.createElement('div');
+                            div.className   = 'sym-result-item';
+                            div.textContent = s.symbol + (s.company_name ? '  —  ' + s.company_name : '');
+                            div.addEventListener('click', () => {
+                                input.value       = s.symbol;
+                                results.innerHTML = '';
+                                _loadExpiries(s.symbol);
+                            });
+                            results.appendChild(div);
+                        });
+                    });
+            }, 250);
+        });
+        document.addEventListener('click', e => {
+            if (!input.contains(e.target) && !results.contains(e.target))
+                results.innerHTML = '';
+        });
+    }
 
-    loadData();
+    // ── Wire up events ────────────────────────────────
+    document.getElementById('port-cancel')?.addEventListener('click', _closePortModal);
+    document.getElementById('port-modal-close')?.addEventListener('click', _closePortModal);
+    document.getElementById('port-modal')?.addEventListener('click', function(e) {
+        if (e.target === this) _closePortModal();
+    });
+    document.getElementById('port-entry')?.addEventListener('input', _resyncAll);
+    document.getElementById('port-type')?.addEventListener('change', _resyncAll);
+
+    _initSymSearch();
+
 })();

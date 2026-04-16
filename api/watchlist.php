@@ -50,16 +50,19 @@ if ($action === 'list') {
 
         $entry      = (float)$r['entry_price'];
         $curr       = (float)$r['current_price'];
+        $sellPrice  = $r['sell_price'] ? (float)$r['sell_price'] : null;
+        $isClosed   = $r['status'] === 'CLOSED';
         $target     = $r['target_price'] ? (float)$r['target_price'] : null;
         $sl         = $r['stop_loss']    ? (float)$r['stop_loss']    : null;
         $qty        = (int)$r['quantity'];
         $lotSize    = (int)($r['lot_size'] ?: 1);
         $isBuy      = $r['trade_type'] === 'BUY';
 
-        // Unrealised P/L
-        $pl         = $isBuy ? ($curr - $entry) * $qty * $lotSize
-                              : ($entry - $curr) * $qty * $lotSize;
-        $plPct      = $entry > 0 ? (($isBuy ? $curr - $entry : $entry - $curr) / $entry) * 100 : 0;
+        // For closed trades use sell_price; for open trades use current_price
+        $exitPrice  = ($isClosed && $sellPrice) ? $sellPrice : $curr;
+        $pl         = $isBuy ? ($exitPrice - $entry) * $qty * $lotSize
+                              : ($entry - $exitPrice) * $qty * $lotSize;
+        $plPct      = $entry > 0 ? (($isBuy ? $exitPrice - $entry : $entry - $exitPrice) / $entry) * 100 : 0;
 
         // % to target
         $toTarget   = null;
