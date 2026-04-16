@@ -84,6 +84,6 @@
 </div>
 
 <script>window.APP_BASE = '/ms';</script>
-<script src="/ms/assets/js/fno.js"></script>
+<script src="/ms/assets/js/fno.js?v=2"></script>
 </body>
 </html>
