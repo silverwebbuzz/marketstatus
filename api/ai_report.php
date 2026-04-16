@@ -287,28 +287,63 @@ $payload = json_encode([
     ]
 ]);
 
-$ch = curl_init();
-curl_setopt_array($ch, [
-    CURLOPT_URL            => 'https://api.anthropic.com/v1/messages',
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_POST           => true,
-    CURLOPT_POSTFIELDS     => $payload,
-    CURLOPT_TIMEOUT        => 60,
-    CURLOPT_SSL_VERIFYPEER => false,
-    CURLOPT_HTTPHEADER     => [
-        'Content-Type: application/json',
-        'x-api-key: ' . ANTHROPIC_API_KEY,
-        'anthropic-version: 2023-06-01',
-    ],
-]);
+// ── Call Anthropic with retry on 529 (overloaded) ─────
+$attempts = 0;
+$maxAttempts = 3;
+$body = '';
+$status = 0;
+$err = '';
 
-$body   = curl_exec($ch);
-$status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-$err    = curl_error($ch);
-curl_close($ch);
+while ($attempts < $maxAttempts) {
+    $attempts++;
+    $ch = curl_init();
+    curl_setopt_array($ch, [
+        CURLOPT_URL            => 'https://api.anthropic.com/v1/messages',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_POST           => true,
+        CURLOPT_POSTFIELDS     => $payload,
+        CURLOPT_TIMEOUT        => 60,
+        CURLOPT_SSL_VERIFYPEER => false,
+        CURLOPT_HTTPHEADER     => [
+            'Content-Type: application/json',
+            'x-api-key: ' . ANTHROPIC_API_KEY,
+            'anthropic-version: 2023-06-01',
+        ],
+    ]);
+
+    $body   = curl_exec($ch);
+    $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $err    = curl_error($ch);
+    curl_close($ch);
+
+    // Retry only on Anthropic overload
+    if (!$err && (int)$status === 529 && $attempts < $maxAttempts) {
+        // exponential backoff: 0.6s, 1.2s
+        $sleepMs = 600 * (2 ** ($attempts - 1));
+        usleep($sleepMs * 1000);
+        continue;
+    }
+    break;
+}
 
 if ($err || $status !== 200) {
-    echo json_encode(['success' => false, 'error' => "Anthropic API error: HTTP $status — $err — " . substr($body, 0, 200)]);
+    // Fallback: return most recent cached report for this model (even if stale)
+    $fallback = $db->prepare("SELECT * FROM ai_reports WHERE symbol = ? AND model_used = ? LIMIT 1");
+    $fallback->execute([$symbol, $modelId]);
+    $fb = $fallback->fetch();
+    if ($fb) {
+        $age = time() - strtotime($fb['generated_at']);
+        echo json_encode([
+            'success'   => true,
+            'cached'    => true,
+            'age_hours' => round($age/3600, 1),
+            'report'    => $fb,
+            'warning'   => "Anthropic overloaded (HTTP $status). Showing last cached report.",
+        ]);
+        exit;
+    }
+
+    echo json_encode(['success' => false, 'error' => "Anthropic API error: HTTP $status — $err — " . substr((string)$body, 0, 200)]);
     exit;
 }
 
