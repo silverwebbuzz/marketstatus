@@ -2,18 +2,35 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
+    /* Backgrounds */
     --bg:          #0d0f14;
     --bg2:         #161920;
     --bg3:         #1e2230;
-    --border:      #2a2e3d;
+    --bg-hover:    #1a1f2e;
+
+    /* Borders */
+    --border:      #2a3040;
+    --border2:     #1e2333;
+
+    /* Brand */
     --accent:      #4f8ef7;
     --accent2:     #7c5cfc;
-    --green:       #22c55e;
-    --red:         #ef4444;
-    --yellow:      #f59e0b;
-    --text:        #e2e8f0;
-    --text2:       #94a3b8;
-    --text3:       #64748b;
+
+    /* Semantic colours */
+    --green:       #4ade80;
+    --green-dim:   rgba(74,222,128,.12);
+    --green-border:rgba(74,222,128,.25);
+    --red:         #f87171;
+    --red-dim:     rgba(248,113,113,.12);
+    --red-border:  rgba(248,113,113,.25);
+    --yellow:      #fbbf24;
+
+    /* Text hierarchy — bright enough for dark screens */
+    --text:        #f1f5f9;   /* primary — headings, prices, symbols */
+    --text2:       #c8d3e0;   /* secondary — regular cell text        */
+    --text3:       #8899aa;   /* tertiary — sub-labels, hints          */
+    --text4:       #556070;   /* quaternary — column headers, metadata */
+
     --radius:      8px;
     --font:        'Inter', system-ui, -apple-system, sans-serif;
 }

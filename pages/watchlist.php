@@ -17,117 +17,106 @@ $user = authRequire();
         .btn-add { background:var(--accent); color:#fff; border:none; border-radius:6px; padding:8px 18px; font-size:13px; font-weight:600; cursor:pointer; letter-spacing:.2px; transition:opacity .15s; }
         .btn-add:hover { opacity:.85; }
         .filter-tabs { display:flex; gap:4px; }
-        .filter-tab { background:transparent; border:1px solid var(--border); border-radius:6px; padding:5px 14px; font-size:12px; cursor:pointer; color:#7a8fa6; transition:all .15s; }
-        .filter-tab:hover { color:#e2e8f0; border-color:#4a5568; }
+        .filter-tab { background:transparent; border:1px solid var(--border); border-radius:6px; padding:5px 14px; font-size:12px; cursor:pointer; color:var(--text3); transition:all .15s; }
+        .filter-tab:hover { color:var(--text); border-color:var(--text3); }
         .filter-tab.active { background:rgba(79,142,247,.15); border-color:var(--accent); color:var(--accent); font-weight:600; }
 
         /* ── Summary strip ── */
         .summary-row { display:flex; gap:1px; background:var(--border); border-bottom:1px solid var(--border); }
         .summary-box { flex:1; background:var(--bg2); padding:12px 18px; min-width:110px; }
-        .summary-box .lbl { font-size:10px; font-weight:600; color:#556070; text-transform:uppercase; letter-spacing:.6px; }
-        .summary-box .val { font-size:18px; font-weight:700; margin-top:4px; color:#f1f5f9; }
-        .summary-box .val.green { color:#4ade80; }
-        .summary-box .val.red   { color:#f87171; }
-        .summary-box .val.blue  { color:#60a5fa; }
+        .summary-box .lbl { font-size:10px; font-weight:600; color:var(--text4); text-transform:uppercase; letter-spacing:.6px; }
+        .summary-box .val { font-size:18px; font-weight:700; margin-top:4px; color:var(--text); }
+        .summary-box .val.green { color:var(--green); }
+        .summary-box .val.red   { color:var(--red); }
+        .summary-box .val.blue  { color:var(--accent); }
 
-        /* ── Table wrap ── */
+        /* ── Table ── */
         .wl-table-wrap { overflow-x:auto; background:var(--bg); }
         .wl-table { width:100%; border-collapse:collapse; }
-
-        /* ── Header ── */
-        .wl-table thead tr { border-bottom:1px solid #2a3040; }
+        .wl-table thead tr { border-bottom:1px solid var(--border); }
         .wl-table thead th {
             padding:11px 16px; font-size:10px; font-weight:700;
-            text-transform:uppercase; letter-spacing:.7px; color:#4a5568;
+            text-transform:uppercase; letter-spacing:.7px; color:var(--text4);
             background:var(--bg); white-space:nowrap; text-align:left;
         }
         .wl-table thead th.r { text-align:right; }
         .wl-table thead th.c { text-align:center; }
-
-        /* ── Body rows ── */
-        .wl-table tbody tr {
-            border-bottom:1px solid #1e2333;
-            transition:background .12s;
-        }
-        .wl-table tbody tr:hover { background:#1a1f2e; }
+        .wl-table tbody tr { border-bottom:1px solid var(--border2); transition:background .12s; }
+        .wl-table tbody tr:hover { background:var(--bg-hover); }
         .wl-table tbody tr.closed-row { opacity:.55; }
-        .wl-table tbody td {
-            padding:13px 16px; font-size:13px;
-            vertical-align:middle; white-space:nowrap; color:#c8d3e0;
-        }
+        .wl-table tbody td { padding:13px 16px; font-size:13px; vertical-align:middle; white-space:nowrap; color:var(--text2); }
         .wl-table tbody td.r { text-align:right; }
         .wl-table tbody td.c { text-align:center; }
+        .wl-table tfoot td { padding:12px 16px; font-size:13px; font-weight:700; border-top:2px solid var(--border); background:var(--bg2); white-space:nowrap; color:var(--text2); }
+        .wl-table tfoot td.r { text-align:right; }
 
-        /* ── Instrument cell ── */
-        .sym-name { font-weight:700; font-size:14px; color:#f1f5f9; letter-spacing:-.1px; }
-        .sym-expiry { display:inline-block; margin-left:6px; font-size:10px; font-weight:500; color:#4a5568; background:#1e2333; border-radius:4px; padding:1px 6px; vertical-align:middle; }
-        .sym-note { font-size:11px; color:#4a5568; margin-top:3px; font-style:italic; }
+        /* ── Instrument ── */
+        .sym-name { font-weight:700; font-size:14px; color:var(--text); letter-spacing:-.1px; }
+        .sym-expiry { display:inline-block; margin-left:7px; font-size:10px; font-weight:500; color:var(--text3); background:var(--bg3); border-radius:4px; padding:1px 6px; vertical-align:middle; }
+        .sym-note { font-size:11px; color:var(--text3); margin-top:3px; font-style:italic; }
 
         /* ── Qty ── */
         .qty-val { font-size:13px; font-weight:700; }
-        .qty-val.buy  { color:#4ade80; }
-        .qty-val.sell { color:#f87171; }
-        .qty-shares { font-size:10px; color:#4a5568; margin-top:2px; }
+        .qty-val.buy  { color:var(--green); }
+        .qty-val.sell { color:var(--red); }
+        .qty-shares { font-size:11px; color:var(--text3); margin-top:2px; }
 
-        /* ── Price cells ── */
-        .price-main { font-size:14px; font-weight:600; color:#f1f5f9; }
-        .price-sub  { font-size:11px; margin-top:2px; }
+        /* ── Price ── */
+        .price-main { font-size:14px; font-weight:600; color:var(--text); }
+        .price-sub  { font-size:11px; margin-top:2px; color:var(--text3); }
 
         /* ── P&L ── */
         .pl-main { font-size:14px; font-weight:700; }
-        .pl-sub  { font-size:11px; margin-top:2px; opacity:.8; }
-        .pl-main.up, .pl-sub.up { color:#4ade80; }
-        .pl-main.dn, .pl-sub.dn { color:#f87171; }
-        .pl-main.fl, .pl-sub.fl { color:#94a3b8; }
+        .pl-sub  { font-size:11px; margin-top:2px; }
+        .pl-main.up, .pl-sub.up { color:var(--green); }
+        .pl-main.dn, .pl-sub.dn { color:var(--red); }
+        .pl-main.fl, .pl-sub.fl { color:var(--text3); }
 
         /* ── SL / Target ── */
-        .sl-price  { font-size:13px; font-weight:600; color:#f87171; }
-        .sl-pct    { font-size:10px; color:#7a3535; margin-top:2px; }
-        .tgt-price { font-size:13px; font-weight:600; color:#4ade80; }
-        .tgt-pct   { font-size:10px; color:#2d6a40; margin-top:2px; }
+        .sl-price  { font-size:13px; font-weight:600; color:var(--red); }
+        .sl-pct    { font-size:11px; color:var(--text3); margin-top:2px; }
+        .tgt-price { font-size:13px; font-weight:600; color:var(--green); }
+        .tgt-pct   { font-size:11px; color:var(--text3); margin-top:2px; }
 
         /* ── Status chips ── */
         .chip { display:inline-flex; align-items:center; gap:4px; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; }
-        .chip-open   { background:rgba(74,222,128,.1);  color:#4ade80; border:1px solid rgba(74,222,128,.2); }
-        .chip-closed { background:rgba(100,116,139,.1); color:#64748b; border:1px solid rgba(100,116,139,.2); }
-        .chip-target { background:rgba(74,222,128,.15); color:#4ade80; border:1px solid rgba(74,222,128,.3); }
-        .chip-sl     { background:rgba(248,113,113,.12); color:#f87171; border:1px solid rgba(248,113,113,.25); }
+        .chip-open   { background:var(--green-dim);  color:var(--green); border:1px solid var(--green-border); }
+        .chip-closed { background:rgba(100,116,139,.1); color:var(--text3); border:1px solid var(--border); }
+        .chip-target { background:var(--green-dim);  color:var(--green); border:1px solid var(--green-border); }
+        .chip-sl     { background:var(--red-dim);    color:var(--red);   border:1px solid var(--red-border); }
 
         /* ── Trade bar ── */
         .tbar-wrap { min-width:160px; }
-        .tbar-ltp  { font-size:11px; font-weight:700; margin-bottom:4px; }
-        .tbar-track { position:relative; height:5px; border-radius:3px; background:#1e2333; }
+        .tbar-track { position:relative; height:5px; border-radius:3px; background:var(--bg3); }
         .tbar-zone  { position:absolute; top:0; height:100%; }
         .tbar-pin   { position:absolute; top:50%; transform:translate(-50%,-50%); width:2px; height:12px; border-radius:2px; }
-        .tbar-curr  { position:absolute; top:50%; transform:translate(-50%,-50%); width:10px; height:10px; border-radius:50%; border:2px solid #0d0f14; box-shadow:0 0 6px rgba(0,0,0,.6); }
-        .tbar-labels { display:flex; justify-content:space-between; margin-top:5px; font-size:9px; color:#374151; }
+        .tbar-curr  { position:absolute; top:50%; transform:translate(-50%,-50%); width:10px; height:10px; border-radius:50%; border:2px solid var(--bg); box-shadow:0 0 6px rgba(0,0,0,.6); }
+        .tbar-labels { display:flex; justify-content:space-between; margin-top:5px; font-size:9px; color:var(--text4); }
+        .trade-bar-zone.loss { background:var(--red-dim); border-radius:3px 0 0 3px; }
+        .trade-bar-zone.gain { background:var(--green-dim); border-radius:0 3px 3px 0; }
 
         /* ── Actions ── */
         .act-wrap { display:flex; gap:5px; }
         .btn-act { border:none; border-radius:5px; padding:5px 11px; font-size:11px; font-weight:600; cursor:pointer; transition:opacity .15s; }
         .btn-act:hover { opacity:.8; }
-        .btn-act-edit  { background:#1e2e4a; color:#60a5fa; }
-        .btn-act-close { background:#1a3328; color:#4ade80; }
-        .btn-act-del   { background:#2d1a1a; color:#f87171; }
+        .btn-act-edit  { background:rgba(79,142,247,.15); color:var(--accent); }
+        .btn-act-close { background:var(--green-dim); color:var(--green); }
+        .btn-act-del   { background:var(--red-dim);   color:var(--red); }
 
-        .empty-wl { text-align:center; padding:80px 20px; color:#374151; font-size:14px; }
-
-        /* ── Totals footer ── */
-        .wl-table tfoot td { padding:12px 16px; font-size:13px; font-weight:700; border-top:2px solid #2a3040; background:var(--bg2); white-space:nowrap; color:#c8d3e0; }
-        .wl-table tfoot td.r { text-align:right; }
+        .empty-wl { text-align:center; padding:80px 20px; color:var(--text3); font-size:14px; }
 
         /* ── Close modal ── */
         .close-modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.8); z-index:600; align-items:center; justify-content:center; }
         .close-modal-overlay.open { display:flex; }
-        .close-modal-box { background:#161920; border:1px solid #2a3040; border-radius:14px; width:90%; max-width:400px; padding:28px; }
-        .close-modal-box h3 { font-size:17px; font-weight:700; color:#f1f5f9; margin-bottom:4px; }
-        .close-modal-box .close-subtitle { font-size:12px; color:#4a5568; margin-bottom:20px; }
+        .close-modal-box { background:var(--bg2); border:1px solid var(--border); border-radius:14px; width:90%; max-width:400px; padding:28px; }
+        .close-modal-box h3 { font-size:17px; font-weight:700; color:var(--text); margin-bottom:4px; }
+        .close-modal-box .close-subtitle { font-size:12px; color:var(--text3); margin-bottom:20px; }
         .close-form-group { margin-bottom:14px; }
-        .close-form-group label { display:block; font-size:11px; font-weight:600; color:#4a5568; text-transform:uppercase; letter-spacing:.4px; margin-bottom:6px; }
-        .close-form-group input { width:100%; background:#1e2333; border:1px solid #2a3040; border-radius:8px; padding:10px 14px; color:#f1f5f9; font-size:16px; font-weight:700; outline:none; box-sizing:border-box; transition:border-color .15s; }
+        .close-form-group label { display:block; font-size:11px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:.4px; margin-bottom:6px; }
+        .close-form-group input { width:100%; background:var(--bg3); border:1px solid var(--border); border-radius:8px; padding:10px 14px; color:var(--text); font-size:16px; font-weight:700; outline:none; box-sizing:border-box; transition:border-color .15s; }
         .close-form-group input:focus { border-color:var(--accent); }
-        .close-pl-preview { background:#1e2333; border-radius:10px; padding:14px 16px; margin-bottom:16px; }
-        .close-pl-preview .lbl { font-size:10px; font-weight:600; color:#4a5568; text-transform:uppercase; letter-spacing:.5px; margin-bottom:4px; }
+        .close-pl-preview { background:var(--bg3); border-radius:10px; padding:14px 16px; margin-bottom:16px; }
+        .close-pl-preview .lbl { font-size:10px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:.5px; margin-bottom:4px; }
         .close-pl-preview .lbl { color:var(--text3); font-size:11px; margin-bottom:4px; }
         .close-pl-preview .val { font-size:18px; font-weight:700; }
         .close-modal-footer { display:flex; gap:10px; justify-content:flex-end; }
@@ -259,18 +248,18 @@ function tradeBar(d) {
     let zones = '';
     if (sp !== null) {
         const l = isBuy ? sp : ep, r = isBuy ? ep : sp;
-        zones += `<div class="trade-bar-zone" style="left:${l}%;width:${r-l}%;background:rgba(239,68,68,.3);border-radius:3px 0 0 3px;"></div>`;
+        zones += `<div class="trade-bar-zone loss" style="left:${l}%;width:${r-l}%;"></div>`;
     }
     if (tp !== null) {
         const l = isBuy ? ep : tp, r = isBuy ? tp : ep;
-        zones += `<div class="trade-bar-zone" style="left:${l}%;width:${r-l}%;background:rgba(34,197,94,.3);border-radius:0 3px 3px 0;"></div>`;
+        zones += `<div class="trade-bar-zone gain" style="left:${l}%;width:${r-l}%;"></div>`;
     }
 
     const profitable = isBuy ? curr > entry : curr < entry;
     const currColor  = profitable ? 'var(--green)' : 'var(--red)';
 
-    const axisLeft  = sl     ? `<span style="color:#f87171;">SL ${sl.toLocaleString('en-IN')}</span>`     : `<span></span>`;
-    const axisRight = target ? `<span style="color:#4ade80;">T ${target.toLocaleString('en-IN')}</span>` : `<span></span>`;
+    const axisLeft  = sl     ? `<span style="color:var(--red);">SL ${sl.toLocaleString('en-IN')}</span>`     : `<span></span>`;
+    const axisRight = target ? `<span style="color:var(--green);">T ${target.toLocaleString('en-IN')}</span>` : `<span></span>`;
 
     // Current price label — floated above the current pin
     const currLbl = `<div style="position:relative;height:16px;margin-bottom:1px;">
@@ -318,7 +307,7 @@ function render() {
         const chgPct     = d.change_percent || 0;
         const chgAmt     = d.change_amount  || 0;
         const chgMod     = chgPct > 0 ? 'up' : chgPct < 0 ? 'dn' : 'fl';
-        const chgColor   = chgPct > 0 ? '#4ade80' : chgPct < 0 ? '#f87171' : '#94a3b8';
+        const chgColor   = chgPct > 0 ? 'var(--green)' : chgPct < 0 ? 'var(--red)' : 'var(--text3)';
         const chgSign    = chgPct > 0 ? '+' : '';
         const chgAmtSign = chgAmt > 0 ? '+' : '';
 
@@ -328,25 +317,25 @@ function render() {
         const rPct  = rSpan > 0 ? Math.min(100, Math.max(0, ((ltp - rLow) / rSpan) * 100)).toFixed(1) : 50;
         const dayBar = (rLow && rHigh && !isClosed) ? `
             <div style="margin-top:7px;min-width:160px;">
-                <div style="display:flex;justify-content:space-between;font-size:9px;color:#374151;margin-bottom:3px;">
+                <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--text4);margin-bottom:3px;">
                     <span>₹${rLow.toLocaleString('en-IN',{minimumFractionDigits:2})}</span>
                     <span>₹${rHigh.toLocaleString('en-IN',{minimumFractionDigits:2})}</span>
                 </div>
-                <div style="position:relative;height:3px;background:#1e2333;border-radius:3px;">
-                    <div style="position:absolute;left:0;width:${rPct}%;height:100%;background:linear-gradient(90deg,#f87171,#4ade80);border-radius:3px;opacity:.7;"></div>
-                    <div style="position:absolute;left:${rPct}%;top:50%;transform:translate(-50%,-50%);width:9px;height:9px;border-radius:50%;background:#f1f5f9;border:2px solid #4f8ef7;box-shadow:0 0 5px rgba(0,0,0,.7);"></div>
+                <div style="position:relative;height:3px;background:var(--bg3);border-radius:3px;">
+                    <div style="position:absolute;left:0;width:${rPct}%;height:100%;background:linear-gradient(90deg,var(--red),var(--green));border-radius:3px;opacity:.7;"></div>
+                    <div style="position:absolute;left:${rPct}%;top:50%;transform:translate(-50%,-50%);width:9px;height:9px;border-radius:50%;background:var(--text);border:2px solid var(--accent);box-shadow:0 0 5px rgba(0,0,0,.7);"></div>
                 </div>
             </div>` : '';
 
         // LTP cell
         const ltpCell = isClosed && d.sell_price
-            ? `<div class="price-main" style="color:#94a3b8;">${fmtPrice(d.sell_price)}</div>
-               <div class="price-sub" style="color:#374151;">Exit price</div>`
+            ? `<div class="price-main" style="color:var(--text3);">${fmtPrice(d.sell_price)}</div>
+               <div class="price-sub">Exit price</div>`
             : ltp > 0
                 ? `<div class="price-main">${fmtPrice(ltp)}</div>
                    <div class="price-sub" style="color:${chgColor};">${chgSign}${chgPct.toFixed(2)}%&nbsp;&nbsp;${chgAmtSign}₹${Math.abs(chgAmt).toFixed(2)}</div>
                    ${dayBar}`
-                : `<div class="price-sub" style="color:#374151;">No data</div>`;
+                : `<div class="price-sub">No data</div>`;
 
         // Qty
         const totalQty = d.quantity * d.lot_size;
@@ -354,7 +343,7 @@ function render() {
                           <div class="qty-shares">${totalQty.toLocaleString('en-IN')} shares</div>`;
 
         // SL
-        let slCell = '<span style="color:#374151;">—</span>';
+        let slCell = '<span style="color:var(--text4);">—</span>';
         if (d.stop_loss) {
             const slPct = d.entry_price > 0 ? ((d.stop_loss - d.entry_price) / d.entry_price * 100) : 0;
             slCell = `<div class="sl-price">${fmtPrice(d.stop_loss)}${d.sl_hit ? ' <span style="font-size:10px;">⚠</span>' : ''}</div>
@@ -362,7 +351,7 @@ function render() {
         }
 
         // Target
-        let tgtCell = '<span style="color:#374151;">—</span>';
+        let tgtCell = '<span style="color:var(--text4);">—</span>';
         if (d.target_price) {
             const tPct = d.entry_price > 0 ? ((d.target_price - d.entry_price) / d.entry_price * 100) : 0;
             tgtCell = `<div class="tgt-price">${fmtPrice(d.target_price)}${d.target_hit ? ' <span style="font-size:10px;">✓</span>' : ''}</div>
@@ -398,7 +387,7 @@ function render() {
                 <div class="pl-sub  ${plMod}">${isClosed ? 'Realised' : (pctSign + Math.abs(d.pl_pct).toFixed(2) + '%')}</div>
             </td>
             <td class="r">${slCell}</td>
-            <td class="c">${isClosed ? '<span style="color:#374151;">—</span>' : tradeBar(d)}</td>
+            <td class="c">${isClosed ? '<span style="color:var(--text4);">—</span>' : tradeBar(d)}</td>
             <td class="r">${tgtCell}</td>
             <td class="c">${statusCell}</td>
             <td>${actions}</td>
@@ -444,18 +433,17 @@ function updateSummary() {
     const openCount  = visibleRows.filter(d => d.status === 'OPEN').length;
     const closedCount= visibleRows.filter(d => d.status === 'CLOSED').length;
 
-    const visPLMod  = visPL > 0 ? 'up' : visPL < 0 ? 'dn' : 'fl';
-    const plColor   = visPL > 0 ? '#4ade80' : visPL < 0 ? '#f87171' : '#94a3b8';
-    const oPLColor  = openPL  > 0 ? '#4ade80' : openPL  < 0 ? '#f87171' : '#94a3b8';
-    const rPLColor  = realPL  > 0 ? '#4ade80' : realPL  < 0 ? '#f87171' : '#94a3b8';
+    const plColor  = visPL > 0 ? 'var(--green)' : visPL < 0 ? 'var(--red)' : 'var(--text3)';
+    const oPLColor = openPL  > 0 ? 'var(--green)' : openPL  < 0 ? 'var(--red)' : 'var(--text3)';
+    const rPLColor = realPL  > 0 ? 'var(--green)' : realPL  < 0 ? 'var(--red)' : 'var(--text3)';
     tfoot.innerHTML = `<tr>
-        <td colspan="4" style="color:#374151;font-size:12px;font-weight:500;">
+        <td colspan="4" style="color:var(--text3);font-size:12px;font-weight:500;">
             ${visibleRows.length} trade${visibleRows.length !== 1 ? 's' : ''}
-            ${openCount   ? `<span style="color:#4ade80;margin-left:12px;">${openCount} open</span>`   : ''}
-            ${closedCount ? `<span style="color:#4a5568;margin-left:12px;">${closedCount} closed</span>` : ''}
+            ${openCount   ? `<span style="color:var(--green);margin-left:12px;">${openCount} open</span>`   : ''}
+            ${closedCount ? `<span style="color:var(--text3);margin-left:12px;">${closedCount} closed</span>` : ''}
         </td>
         <td class="r" style="font-size:15px;font-weight:700;color:${plColor};">${visPLSign}₹${Math.abs(visPL).toLocaleString('en-IN',{minimumFractionDigits:2})}</td>
-        <td colspan="5" style="font-size:11px;text-align:right;color:#374151;">
+        <td colspan="5" style="font-size:11px;text-align:right;color:var(--text3);">
             Unrealised:&nbsp;<span style="color:${oPLColor};font-weight:600;">${openPL >= 0 ? '+' : ''}₹${Math.abs(openPL).toLocaleString('en-IN',{minimumFractionDigits:2})}</span>
             &nbsp;&nbsp;·&nbsp;&nbsp;
             Realised:&nbsp;<span style="color:${rPLColor};font-weight:600;">${realPL >= 0 ? '+' : ''}₹${Math.abs(realPL).toLocaleString('en-IN',{minimumFractionDigits:2})}</span>
