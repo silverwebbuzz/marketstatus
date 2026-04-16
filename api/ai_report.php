@@ -128,6 +128,9 @@ $todayPL    = round((float)$d['change_amount'] * (int)$d['lot_size'], 2);
 $roi        = (float)$d['nrml_margin'] > 0 ? round($todayPL / (float)$d['nrml_margin'] * 100, 2) : 0;
 $pivotBias  = $curr > $pivot ? 'Above Pivot (Bullish bias)' : 'Below Pivot (Bearish bias)';
 $pctPos52w  = ($w52h - $w52l) > 0 ? round(($curr - $w52l) / ($w52h - $w52l) * 100, 1) : 0;
+$deliveryPctRaw = isset($d['delivery_pct']) ? (float)$d['delivery_pct'] : 0.0;
+// NSE delivery% is frequently 0 intraday / missing. Treat 0 as "unknown" for AI.
+$deliveryPctForAi = $deliveryPctRaw > 0 ? (string)$deliveryPctRaw : 'N/A';
 
 // Simple signal score
 $score = 0;
@@ -177,7 +180,7 @@ Today ROI:     {$roi}%
 
 === VOLUME & DELIVERY ===
 Volume:        {$d['volume']}
-Delivery %:    {$d['delivery_pct']}%
+Delivery %:    {$deliveryPctForAi}
 
 === TECHNICAL LEVELS ===
 Pivot (P):     ₹{$pivot}
@@ -217,7 +220,10 @@ OUTPUT FORMAT (STRICT):
 - Return ONLY valid JSON.
 - Do not wrap in markdown fences.
 - Do not include any extra keys outside the schema.
-- If a field is unknown / missing / 0 because data is not available, use null (not 0) and mention that in key_reasons.
+- If a field is unknown / missing / unreliable (example: Delivery % = N/A or 0.00 intraday), use null (not 0) and mention that in key_reasons.
+- Always incorporate MWPL % in KEY REASONS (not only risks). Interpret:
+  - > 50% as elevated concentration/crowding (can be bullish continuation OR risk; explain)
+  - < 20% as lower participation/conviction (explain)
 
 JSON SCHEMA:
 {
@@ -255,9 +261,10 @@ $payload = json_encode([
     'temperature'=> $temperature,
     'system'     => "You must follow these rules strictly:\n"
         . "1) Output ONLY valid JSON matching the provided schema. No markdown, no extra text.\n"
-        . "2) Use ONLY the numbers in the prompt. If a value is missing or unreliable (e.g. 0 for delivery), set the JSON value to null and state that in key_reasons.\n"
+        . "2) Use ONLY the numbers in the prompt. If a value is missing or unreliable (example: Delivery % is N/A or 0.00 intraday), set the JSON value to null and state that in key_reasons.\n"
         . "3) Do not invent support/resistance outside the provided pivot/fib levels and prices.\n"
-        . "4) Keep it concise; prefer concrete numeric references in numbers_used.",
+        . "4) Always incorporate MWPL % in KEY REASONS (not only risks). Treat >50% as crowding/concentration; treat <20% as lower participation. Explain which side it supports and why.\n"
+        . "5) Keep it concise; prefer concrete numeric references in numbers_used.",
     'messages'   => [
         ['role' => 'user', 'content' => $prompt]
     ]
