@@ -276,7 +276,7 @@ $payload = json_encode([
     'max_tokens' => $maxTokens,
     'temperature'=> $temperature,
     'system'     => "You must follow these rules strictly:\n"
-        . "1) Output ONLY valid JSON matching the provided schema. No markdown, no extra text.\n"
+        . "1) Output ONLY valid JSON matching the provided schema. The response MUST start with '{' and end with '}'. No markdown, no extra text.\n"
         . "2) Use ONLY the numbers in the prompt. If a value is missing or unreliable (example: Delivery % is N/A or 0.00 intraday), set the JSON value to null and state that in key_reasons.\n"
         . "3) Do not invent support/resistance outside the provided pivot/fib levels and prices.\n"
         . "4) Always incorporate MWPL % in KEY REASONS (not only risks). Treat >50% as crowding/concentration; treat <20% as lower participation. Explain which side it supports and why.\n"
@@ -359,6 +359,16 @@ $jsonText = trim($text);
 // If the model accidentally wrapped in fences, strip them.
 $jsonText = preg_replace('/^\s*```(?:json)?\s*/i', '', $jsonText);
 $jsonText = preg_replace('/\s*```\s*$/', '', $jsonText);
+
+// If the model added extra text before/after JSON, try to extract the JSON object.
+// This is common with smaller models (e.g. Haiku) when overloaded or when prompt has mixed instructions.
+if ($jsonText !== '' && ($jsonText[0] ?? '') !== '{') {
+    $start = strpos($jsonText, '{');
+    $end   = strrpos($jsonText, '}');
+    if ($start !== false && $end !== false && $end > $start) {
+        $jsonText = substr($jsonText, $start, $end - $start + 1);
+    }
+}
 
 $parsed = json_decode($jsonText, true);
 if (!is_array($parsed)) {
