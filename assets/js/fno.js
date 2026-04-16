@@ -223,15 +223,18 @@
     function sortVal(d) {
         const c0 = d.contracts[0] || {};
         switch (sortCol) {
-            case 'symbol':         return d.symbol;
-            case 'current_price':  return d.current_price;
-            case 'change_percent': return d.change_percent;
-            case 'nrml_margin':    return c0.nrml_margin;
-            case 'lot_size':       return c0.lot_size;
-            case 'volume':         return d.volume;
-            case 'delivery_pct':   return d.delivery_pct;
-            case 'week52_high':    return d.week52_high;
-            default:               return 0;
+            case 'symbol':          return d.symbol;
+            case 'current_price':   return d.current_price;
+            case 'change_percent':  return d.change_percent;
+            case 'nrml_margin':     return c0.nrml_margin;
+            case 'lot_size':        return c0.lot_size;
+            case 'volume':          return d.volume;
+            case 'delivery_pct':    return d.delivery_pct;
+            case 'week52_high':     return d.week52_high;
+            case 'contract_value':  return c0.lot_size * (c0.futures_price || d.current_price);
+            case 'today_pl':        return d.change_amount * c0.lot_size;
+            case 'roi':             return c0.nrml_margin > 0 ? (d.change_amount * c0.lot_size / c0.nrml_margin) * 100 : 0;
+            default:                return 0;
         }
     }
 

@@ -53,14 +53,14 @@
         <thead>
             <tr>
                 <th data-sort="symbol">Symbol</th>
-                <th data-sort="current_price">LTP / Change</th>
+                <th data-sort="change_percent">LTP / Change</th>
                 <th>Day Range</th>
                 <th data-sort="week52_high">52W &amp; OHLC</th>
                 <th data-sort="nrml_margin">NRML Margin</th>
                 <th data-sort="lot_size">Lot Size</th>
-                <th>Contract Value</th>
-                <th>Today P/L</th>
-                <th>ROI %</th>
+                <th data-sort="contract_value">Contract Value</th>
+                <th data-sort="today_pl">Today P/L</th>
+                <th data-sort="roi">ROI %</th>
                 <th data-sort="volume">Volume</th>
                 <th data-sort="delivery_pct">Delivery %</th>
                 <th>Signal</th>
