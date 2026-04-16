@@ -56,21 +56,62 @@ if ($debug) {
     curl_close($ch);
     @unlink($cookieFile);
 
+    $parsed = json_decode($body, true);
     echo json_encode([
-        'debug'        => true,
-        'homepage_http'=> $homeCode,
-        'api_http'     => $apiCode,
-        'curl_error'   => $err,
-        'response_len' => strlen($body),
-        'response_preview' => substr($body, 0, 300),
+        'debug'            => true,
+        'homepage_http'    => $homeCode,
+        'api_http'         => $apiCode,
+        'curl_error'       => $err,
+        'response_len'     => strlen($body),
+        'top_level_keys'   => $parsed ? array_keys($parsed) : [],
+        'stocks_count'     => isset($parsed['stocks']) ? count($parsed['stocks']) : 'missing',
+        'response_preview' => substr($body, 0, 500),
     ]);
     exit;
 }
 
-$data = nseGetWithSession('https://www.nseindia.com/api/quote-derivative?symbol=' . urlencode($symbol));
+$data = nseGet('https://www.nseindia.com/api/quote-derivative?symbol=' . urlencode($symbol));
 
-if (!$data || empty($data['stocks'])) {
-    echo json_encode(['success' => false, 'error' => 'Could not fetch OI data from NSE. Server may be blocked or NSE is down.']);
+if (!$data) {
+    echo json_encode(['success' => false, 'error' => 'Could not reach NSE API.']);
+    exit;
+}
+
+if (empty($data['stocks'])) {
+    // API responded but stocks empty — NSE returned partial data (no session)
+    // Try with a full browser-like request including more headers
+    $ch = curl_init();
+    curl_setopt_array($ch, [
+        CURLOPT_URL            => 'https://www.nseindia.com/api/quote-derivative?symbol=' . urlencode($symbol),
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING       => '',
+        CURLOPT_TIMEOUT        => 30,
+        CURLOPT_SSL_VERIFYPEER => false,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTPHEADER     => [
+            'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept: application/json, text/plain, */*',
+            'Accept-Language: en-US,en;q=0.9',
+            'Accept-Encoding: gzip, deflate, br',
+            'Referer: https://www.nseindia.com/get-quotes/derivatives?symbol=' . urlencode($symbol),
+            'Origin: https://www.nseindia.com',
+            'X-Requested-With: XMLHttpRequest',
+            'sec-ch-ua: "Chromium";v="120"',
+            'sec-ch-ua-mobile: ?0',
+            'sec-ch-ua-platform: "Windows"',
+            'Sec-Fetch-Dest: empty',
+            'Sec-Fetch-Mode: cors',
+            'Sec-Fetch-Site: same-origin',
+            'Connection: keep-alive',
+        ],
+    ]);
+    $body = curl_exec($ch);
+    curl_close($ch);
+    $data = json_decode($body, true) ?: $data;
+}
+
+if (empty($data['stocks'])) {
+    echo json_encode(['success' => false, 'error' => 'NSE returned no trade data. The server IP may need to be whitelisted or NSE is blocking this request.']);
     exit;
 }
 
