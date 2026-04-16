@@ -16,10 +16,61 @@ if (!$symbol) {
     exit;
 }
 
-$data = nseGet('https://www.nseindia.com/api/quote-derivative?symbol=' . urlencode($symbol));
+// Debug: test raw curl to see exact response
+$debug = isset($_GET['debug']);
+if ($debug) {
+    $cookieFile = sys_get_temp_dir() . '/nse_oi_debug.txt';
+    $ch = curl_init();
+    curl_setopt_array($ch, [
+        CURLOPT_URL            => 'https://www.nseindia.com/',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_TIMEOUT        => 15,
+        CURLOPT_SSL_VERIFYPEER => false,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_COOKIEJAR      => $cookieFile,
+        CURLOPT_COOKIEFILE     => $cookieFile,
+        CURLOPT_HTTPHEADER     => ['User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'],
+    ]);
+    curl_exec($ch);
+    $homeCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    $ch = curl_init();
+    curl_setopt_array($ch, [
+        CURLOPT_URL            => 'https://www.nseindia.com/api/quote-derivative?symbol=' . urlencode($symbol),
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_TIMEOUT        => 15,
+        CURLOPT_SSL_VERIFYPEER => false,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_COOKIEJAR      => $cookieFile,
+        CURLOPT_COOKIEFILE     => $cookieFile,
+        CURLOPT_HTTPHEADER     => [
+            'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+            'Accept: application/json, */*',
+            'Referer: https://www.nseindia.com/',
+        ],
+    ]);
+    $body    = curl_exec($ch);
+    $apiCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $err     = curl_error($ch);
+    curl_close($ch);
+    @unlink($cookieFile);
+
+    echo json_encode([
+        'debug'        => true,
+        'homepage_http'=> $homeCode,
+        'api_http'     => $apiCode,
+        'curl_error'   => $err,
+        'response_len' => strlen($body),
+        'response_preview' => substr($body, 0, 300),
+    ]);
+    exit;
+}
+
+$data = nseGetWithSession('https://www.nseindia.com/api/quote-derivative?symbol=' . urlencode($symbol));
 
 if (!$data || empty($data['stocks'])) {
-    echo json_encode(['success' => false, 'error' => 'Could not fetch OI data from NSE']);
+    echo json_encode(['success' => false, 'error' => 'Could not fetch OI data from NSE. Server may be blocked or NSE is down.']);
     exit;
 }
 
