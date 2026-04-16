@@ -106,7 +106,7 @@
             const roiClass = roi > 0 ? 'chg-up' : roi < 0 ? 'chg-down' : 'chg-flat';
             const roiSign  = roi > 0 ? '+' : '';
 
-            const signal = getSignal(d);
+            const sig = getSignal(d);
             const delPct = d.delivery_pct > 0 ? d.delivery_pct.toFixed(1) + '%' : '<span class="na">—</span>';
             const cval   = c0.lot_size * (c0.futures_price || d.current_price);
 
@@ -157,7 +157,7 @@
                 <td class="${roiClass}">${c0.nrml_margin > 0 ? roiSign + roi.toFixed(2) + '%' : '<span class="na">—</span>'}</td>
                 <td>${fmtVol(d.volume)}</td>
                 <td>${delPct}</td>
-                <td><span class="signal-badge signal-${signal.toLowerCase()}">${signal}</span></td>
+                <td><span class="signal-badge signal-${sig.label.toLowerCase()}" title="Signal score: ${sig.score}">${sig.label} ${sig.confidence}%</span></td>
                 <td>
                     <button class="btn-detail" onclick="showDetail('${d.symbol}')">Detail</button>
                     <button class="btn-detail btn-ai" style="margin-top:4px;background:rgba(124,92,252,.15);color:#a78bfa;border-color:#7c5cfc;" onclick="showAI('${d.symbol}')">AI</button>
@@ -195,23 +195,83 @@
         updateStats(rows);
     }
 
-    // ── Signal Logic ──────────────────────────────────
+    // ── Signal Logic (upgraded) ────────────────────────
+    // Rule-based signal derived from fields you already load in /api/fno_data.php.
+    // Returns an object so UI can display both label and confidence.
     function getSignal(d) {
+        const c0 = (d.contracts && d.contracts[0]) ? d.contracts[0] : {};
         let score = 0;
-        if (d.change_percent > 1)  score++;
-        if (d.change_percent > 2)  score++;
-        if (d.change_percent < -1) score--;
-        if (d.change_percent < -2) score--;
-        if (d.delivery_pct > 50)   score++;
-        if (d.delivery_pct < 20 && d.delivery_pct > 0) score--;
-        if (d.current_price > 0 && d.week52_high > 0) {
-            const fromHigh = (d.week52_high - d.current_price) / d.week52_high;
-            if (fromHigh < 0.05) score--;
-            if (fromHigh > 0.40) score++;
+
+        // 1) Intraday momentum (price change)
+        const chg = Number(d.change_percent || 0);
+        if (chg > 0.75) score += 1;
+        if (chg > 1.75) score += 1;
+        if (chg < -0.75) score -= 1;
+        if (chg < -1.75) score -= 1;
+
+        // 2) Delivery quality (cash-market participation)
+        const del = Number(d.delivery_pct || 0);
+        if (del >= 55) score += 1;
+        if (del > 0 && del <= 20) score -= 1;
+
+        // 3) 52W context
+        const cp = Number(d.current_price || 0);
+        const wH = Number(d.week52_high || 0);
+        const wL = Number(d.week52_low || 0);
+        if (cp > 0 && wH > 0) {
+            const fromHigh = (wH - cp) / wH; // 0.00 = at high
+            if (fromHigh >= 0.40) score += 1;                 // deeply off highs
+            if (fromHigh <= 0.05 && chg > 0.75) score += 1;   // near-high + strength
         }
-        if (score >= 2)  return 'BUY';
-        if (score <= -2) return 'SELL';
-        return 'NEUTRAL';
+        if (cp > 0 && wL > 0) {
+            const fromLow = (cp - wL) / wL;
+            if (fromLow <= 0.10) score += 1; // near 52W low zone
+        }
+
+        // 4) Futures premium/discount
+        const fut = Number(c0.futures_price || 0);
+        if (fut > 0 && cp > 0) {
+            const premPct = ((fut - cp) / cp) * 100;
+            if (premPct >= 0.25) score += 1;
+            if (premPct <= -0.25) score -= 1;
+        }
+
+        // 5) MWPL
+        const mwpl = Number(c0.mwpl || 0);
+        if (mwpl >= 80) score += 1;
+        if (mwpl > 0 && mwpl <= 30) score -= 1;
+
+        // 6) OI / PCR (only when available)
+        const oi = Number(c0.open_interest || 0);
+        const oiChgPct = Number(c0.oi_change_pct || 0);
+        if (oi > 0) {
+            if (oiChgPct >= 2 && chg >= 0.5) score += 1;
+            if (oiChgPct >= 2 && chg <= -0.5) score -= 1;
+
+            const pcr = Number(c0.pcr || 0);
+            if (pcr >= 1.2) score += 1;
+            if (pcr > 0 && pcr <= 0.8) score -= 1;
+        }
+
+        // 7) Pivot bias (same inputs as the detail modal uses)
+        const hp = Number(d.high_price || 0);
+        const lp = Number(d.low_price || 0);
+        const closeForPivot = Number(d.close_price || 0) > 0 ? Number(d.close_price) : Number(d.prev_close || 0);
+        if (hp > 0 && lp > 0 && closeForPivot > 0 && cp > 0) {
+            const pivP = calcPivot(hp, lp, closeForPivot).p;
+            if (cp > pivP) score += 1;
+            if (cp < pivP) score -= 1;
+        }
+
+        // Map score -> label + confidence
+        const maxAbs = 9;
+        const clamped = Math.max(-maxAbs, Math.min(maxAbs, score));
+        let label = 'NEUTRAL';
+        if (clamped >= 3) label = 'BUY';
+        else if (clamped <= -3) label = 'SELL';
+
+        const confidence = Math.round((Math.min(maxAbs, Math.abs(clamped)) / maxAbs) * 100);
+        return { label, score: clamped, confidence };
     }
 
     // ── Sort ──────────────────────────────────────────
@@ -264,7 +324,7 @@
         const closeForPivot = d.close_price > 0 ? d.close_price : d.prev_close;
         const pivot   = calcPivot(d.high_price, d.low_price, closeForPivot);
         const fib     = calcFib(d.week52_high, d.week52_low);
-        const signal  = getSignal(d);
+        const sig     = getSignal(d);
         const todayPL = d.change_amount * c0.lot_size;
         const roi     = c0.nrml_margin > 0 ? ((todayPL / c0.nrml_margin) * 100).toFixed(2) : '—';
         const fromHigh = d.week52_high > 0 ? ((d.week52_high - d.current_price) / d.week52_high * 100).toFixed(1) : 0;
@@ -274,7 +334,7 @@
         document.getElementById('modal-symbol').textContent = `${symbol}${d.company_name ? ' — ' + d.company_name : ''}`;
 
         let html = `<div style="text-align:center;margin-bottom:16px;">
-            <span class="signal-badge signal-${signal.toLowerCase()}" style="font-size:14px;padding:6px 20px;">${signal} SIGNAL</span>
+            <span class="signal-badge signal-${sig.label.toLowerCase()}" style="font-size:14px;padding:6px 20px;" title="Signal score: ${sig.score}">${sig.label} ${sig.confidence}%</span>
         </div><div class="modal-grid">`;
 
         html += card('Price Info', [
