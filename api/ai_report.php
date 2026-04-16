@@ -132,6 +132,18 @@ $deliveryPctRaw = isset($d['delivery_pct']) ? (float)$d['delivery_pct'] : 0.0;
 // NSE delivery% is frequently 0 intraday / missing. Treat 0 as "unknown" for AI.
 $deliveryPctForAi = $deliveryPctRaw > 0 ? (string)$deliveryPctRaw : 'N/A';
 
+// Days to expiry (helps interpret futures premium/discount correctly)
+$daysToExpiry = null;
+$expiryRaw = trim((string)($d['expiry'] ?? ''));
+if ($expiryRaw !== '') {
+    $ts = strtotime($expiryRaw);
+    if ($ts !== false) {
+        $daysToExpiry = (int)floor(($ts - time()) / 86400);
+        if ($daysToExpiry < 0) $daysToExpiry = 0;
+    }
+}
+$daysToExpiryForAi = $daysToExpiry === null ? 'N/A' : (string)$daysToExpiry;
+
 // Simple signal score
 $score = 0;
 if ((float)$d['change_percent'] > 1)  $score++;
@@ -169,6 +181,7 @@ Position:      {$pctPos52w}% of 52W range (0%=at low, 100%=at high)
 
 === F&O DATA ===
 Expiry:        {$d['expiry']}
+Days to Expiry: {$daysToExpiryForAi}
 Lot Size:      {$d['lot_size']}
 Futures Price: ₹{$d['futures_price']}
 Futures Premium: ₹{$premium}
@@ -224,6 +237,9 @@ OUTPUT FORMAT (STRICT):
 - Always incorporate MWPL % in KEY REASONS (not only risks). Interpret:
   - > 50% as elevated concentration/crowding (can be bullish continuation OR risk; explain)
   - < 20% as lower participation/conviction (explain)
+- When interpreting Futures Premium/Discount, ALWAYS consider Days to Expiry:
+  - near-expiry premium/discount may reflect roll/carry/calendar-spread dynamics, not a directional spot view
+  - explicitly state whether your interpretation is directional vs expiry/roll-related
 
 JSON SCHEMA:
 {
@@ -264,7 +280,8 @@ $payload = json_encode([
         . "2) Use ONLY the numbers in the prompt. If a value is missing or unreliable (example: Delivery % is N/A or 0.00 intraday), set the JSON value to null and state that in key_reasons.\n"
         . "3) Do not invent support/resistance outside the provided pivot/fib levels and prices.\n"
         . "4) Always incorporate MWPL % in KEY REASONS (not only risks). Treat >50% as crowding/concentration; treat <20% as lower participation. Explain which side it supports and why.\n"
-        . "5) Keep it concise; prefer concrete numeric references in numbers_used.",
+        . "5) When interpreting Futures Premium/Discount, ALWAYS consider Days to Expiry. Near-expiry premium/discount may be roll/carry/calendar-spread dynamics; explicitly state directional vs roll-related reasoning.\n"
+        . "6) Keep it concise; prefer concrete numeric references in numbers_used.",
     'messages'   => [
         ['role' => 'user', 'content' => $prompt]
     ]
