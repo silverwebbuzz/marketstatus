@@ -159,6 +159,7 @@
                 <td>${delPct}</td>
                 <td><span class="signal-badge signal-${sig.label.toLowerCase()}" title="Signal score: ${sig.score}">${sig.label} ${sig.confidence}%</span></td>
                 <td>
+                    <button class="btn-detail" onclick="fetchDelivery('${d.symbol}')">Del</button>
                     <button class="btn-detail" onclick="showDetail('${d.symbol}')">Detail</button>
                     <button class="btn-detail btn-ai" style="margin-top:4px;background:rgba(124,92,252,.15);color:#a78bfa;border-color:#7c5cfc;" onclick="showAI('${d.symbol}')">AI</button>
                     ${window.IS_LOGGED_IN ? `<button class="btn-detail" style="margin-top:4px;" onclick="addToPortfolio('${d.symbol}', ${d.current_price})">+ Port</button>` : ''}
@@ -486,6 +487,36 @@
             .catch(() => {
                 alert('OI fetch failed. Check NSE connectivity.');
                 if (btn) { btn.disabled = false; btn.textContent = 'Fetch OI from NSE'; }
+            });
+    };
+
+    // ── Delivery Fetch (Equity) ────────────────────────
+    window.fetchDelivery = function(symbol) {
+        const btn = document.querySelector(`button[onclick="fetchDelivery('${symbol}')"]`);
+        if (btn) { btn.disabled = true; btn.textContent = 'Del...'; }
+
+        fetch(BASE + '/fetch_delivery.php?symbol=' + encodeURIComponent(symbol))
+            .then(r => r.json())
+            .then(res => {
+                if (!res.success) {
+                    alert('Delivery fetch failed: ' + (res.error || 'Unknown error'));
+                    return;
+                }
+                const d = allData.find(x => x.symbol === symbol);
+                if (d && res.data) {
+                    d.delivery_qty = Number(res.data.delivery_qty || 0);
+                    d.delivery_pct = Number(res.data.delivery_pct || 0);
+                }
+                renderTable();
+                // If detail modal is open for the same symbol, refresh it
+                const modalTitle = document.getElementById('modal-symbol')?.textContent || '';
+                if (document.getElementById('fno-modal')?.classList.contains('open') && modalTitle.includes(symbol)) {
+                    showDetail(symbol);
+                }
+            })
+            .catch(() => alert('Delivery fetch failed. Check NSE connectivity.'))
+            .finally(() => {
+                if (btn) { btn.disabled = false; btn.textContent = 'Del'; }
             });
     };
 
