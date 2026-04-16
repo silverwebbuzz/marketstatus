@@ -1,3 +1,7 @@
+PLAN.md
+config.php
+schema.sql
+
 # Logs
 logs
 *.log

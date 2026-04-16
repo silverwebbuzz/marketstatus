@@ -19,9 +19,11 @@ $sql = "
         p.volume, p.total_traded_value,
         p.week52_high, p.week52_low,
         p.delivery_qty, p.delivery_pct,
-        p.fetched_at AS price_updated
+        p.fetched_at AS price_updated,
+        o.open_interest, o.oi_change, o.oi_change_pct, o.pcr, o.fetched_at AS oi_updated
     FROM fno_margins m
     LEFT JOIN fno_prices p ON p.symbol = m.symbol
+    LEFT JOIN fno_oi o ON o.symbol = m.symbol AND o.expiry = m.expiry
     WHERE m.fetched_date = (SELECT MAX(fetched_date) FROM fno_margins)
     ORDER BY m.symbol, m.expiry
 ";
@@ -62,6 +64,11 @@ foreach ($rows as $row) {
         'nrml_margin_rate' => (float)$row['nrml_margin_rate'],
         'futures_price'    => (float)$row['futures_price'],
         'mwpl'             => (float)$row['mwpl'],
+        'open_interest'    => (int)$row['open_interest'],
+        'oi_change'        => (int)$row['oi_change'],
+        'oi_change_pct'    => (float)$row['oi_change_pct'],
+        'pcr'              => (float)$row['pcr'],
+        'oi_updated'       => $row['oi_updated'],
     ];
 }
 

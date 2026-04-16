@@ -334,6 +334,9 @@
             ['100% (Low)', fmt(fib[100])],
         ]);
 
+        // OI card — show cached data or Fetch OI button
+        html += oiCard(d, symbol);
+
         // All contracts table
         if (d.contracts.length > 0) {
             let ctHtml = `<div style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;font-size:11px;font-weight:600;color:var(--text3);padding:4px 0;border-bottom:1px solid var(--border);">
@@ -362,6 +365,67 @@
         const inner = rows.map(([l, v]) => `<div class="mval"><span class="mlbl">${l}:</span> ${v}</div>`).join('');
         return `<div class="modal-card"><h4>${title}</h4>${inner}</div>`;
     }
+
+    function oiCard(d, symbol) {
+        const c0 = d.contracts[0] || {};
+        // Check if OI data exists for nearest expiry
+        if (c0.open_interest > 0) {
+            const oiChgClass = c0.oi_change >= 0 ? 'chg-up' : 'chg-down';
+            const oiChgSign  = c0.oi_change >= 0 ? '+' : '';
+            const pcrClass   = c0.pcr >= 1.2 ? 'chg-up' : c0.pcr <= 0.8 ? 'chg-down' : 'chg-flat';
+            const pcrBias    = c0.pcr >= 1.2 ? 'Bullish' : c0.pcr <= 0.8 ? 'Bearish' : 'Neutral';
+            const updatedAgo = c0.oi_updated ? `<span style="font-size:10px;color:var(--text3);">Updated: ${c0.oi_updated}</span>` : '';
+            return `<div class="modal-card">
+                <h4>Open Interest ${updatedAgo}</h4>
+                <div class="mval"><span class="mlbl">OI (Nearest):</span> ${fmtVol(c0.open_interest)}</div>
+                <div class="mval"><span class="mlbl">OI Change:</span> <span class="${oiChgClass}">${oiChgSign}${fmtVol(c0.oi_change)} (${oiChgSign}${c0.oi_change_pct.toFixed(2)}%)</span></div>
+                <div class="mval"><span class="mlbl">PCR:</span> <span class="${pcrClass}">${c0.pcr.toFixed(2)} — ${pcrBias}</span></div>
+                <button class="btn-detail" style="margin-top:10px;width:100%;" onclick="fetchOI('${symbol}')">↻ Refresh OI</button>
+            </div>`;
+        }
+        // No OI data yet — show fetch button
+        return `<div class="modal-card">
+            <h4>Open Interest</h4>
+            <div style="color:var(--text3);font-size:12px;margin-bottom:10px;">No OI data yet.</div>
+            <button class="btn-detail" style="width:100%;" id="btn-fetch-oi-${symbol}" onclick="fetchOI('${symbol}')">Fetch OI from NSE</button>
+        </div>`;
+    }
+
+    window.fetchOI = function(symbol) {
+        const btn = document.getElementById('btn-fetch-oi-' + symbol)
+                 || document.querySelector(`button[onclick="fetchOI('${symbol}')"]`);
+        if (btn) { btn.disabled = true; btn.textContent = 'Fetching...'; }
+
+        fetch(BASE + '/fetch_oi.php?symbol=' + encodeURIComponent(symbol))
+            .then(r => r.json())
+            .then(res => {
+                if (!res.success) {
+                    alert('OI fetch failed: ' + (res.error || 'Unknown error'));
+                    if (btn) { btn.disabled = false; btn.textContent = 'Fetch OI from NSE'; }
+                    return;
+                }
+                // Update allData with fresh OI for this symbol's contracts
+                const d = allData.find(x => x.symbol === symbol);
+                if (d) {
+                    res.data.forEach(oi => {
+                        const ct = d.contracts.find(c => c.expiry === oi.expiry);
+                        if (ct) {
+                            ct.open_interest  = oi.oi;
+                            ct.oi_change      = oi.oi_change;
+                            ct.oi_change_pct  = oi.oi_change_pct;
+                            ct.pcr            = oi.pcr;
+                            ct.oi_updated     = new Date().toLocaleString('en-IN');
+                        }
+                    });
+                }
+                // Re-open modal with fresh data
+                showDetail(symbol);
+            })
+            .catch(() => {
+                alert('OI fetch failed. Check NSE connectivity.');
+                if (btn) { btn.disabled = false; btn.textContent = 'Fetch OI from NSE'; }
+            });
+    };
 
     // ── Calculators ───────────────────────────────────
     function calcPivot(h, l, c) {
