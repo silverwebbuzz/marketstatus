@@ -208,7 +208,6 @@ $payload = json_encode([
     'model'      => ANTHROPIC_MODEL,
     'max_tokens' => 1024,
     'temperature'=> 0,
-    'top_p'      => 1,
     'system'     => "You must follow these rules strictly:\n"
         . "1) Output ONLY valid JSON matching the provided schema. No markdown, no extra text.\n"
         . "2) Use ONLY the numbers in the prompt. If a value is missing or unreliable (e.g. 0 for delivery), set the JSON value to null and state that in key_reasons.\n"
