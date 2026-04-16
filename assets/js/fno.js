@@ -578,14 +578,18 @@
         if (!modal) return;
 
         // Reset form
-        document.getElementById('port-edit-id').value  = '';
-        document.getElementById('port-type').value     = 'BUY';
-        document.getElementById('port-qty').value      = '1';
-        document.getElementById('port-entry').value    = prefillPrice ? prefillPrice.toFixed(2) : '';
-        document.getElementById('port-target').value   = '';
-        document.getElementById('port-sl').value       = '';
-        document.getElementById('port-notes').value    = '';
-        document.getElementById('port-expiry').innerHTML = '<option value="">Select expiry</option>';
+        document.getElementById('port-edit-id').value      = '';
+        document.getElementById('port-type').value         = 'BUY';
+        document.getElementById('port-qty').value          = '1';
+        document.getElementById('port-entry').value        = prefillPrice ? prefillPrice.toFixed(2) : '';
+        document.getElementById('port-target').value       = '';
+        document.getElementById('port-target-pct').value   = '';
+        document.getElementById('port-target-hint').textContent = '';
+        document.getElementById('port-sl').value           = '';
+        document.getElementById('port-sl-pct').value       = '';
+        document.getElementById('port-sl-hint').textContent = '';
+        document.getElementById('port-notes').value        = '';
+        document.getElementById('port-expiry').innerHTML   = '<option value="">Select expiry</option>';
         document.getElementById('port-modal-title').textContent = 'Add to Portfolio';
 
         const symInput = document.getElementById('port-symbol');
@@ -691,12 +695,15 @@
             });
     };
 
-    // Init
-    document.getElementById('port-modal')?.addEventListener('click', function(e) {
-        if (e.target === this) this.classList.remove('open');
-    });
-    document.getElementById('port-modal-close')?.addEventListener('click', () => {
+    function closePortModal() {
         document.getElementById('port-modal').classList.remove('open');
+    }
+
+    // Cancel button
+    document.getElementById('port-cancel')?.addEventListener('click', closePortModal);
+    document.getElementById('port-modal-close')?.addEventListener('click', closePortModal);
+    document.getElementById('port-modal')?.addEventListener('click', function(e) {
+        if (e.target === this) closePortModal();
     });
     initPortSymSearch();
 

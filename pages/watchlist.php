@@ -38,6 +38,16 @@ $user = authRequire();
         .summary-box .lbl { font-size:11px; color:var(--text3); text-transform:uppercase; }
         .summary-box .val { font-size:16px; font-weight:700; margin-top:2px; }
 
+        /* Trade bar */
+        .trade-bar-wrap { min-width:160px; padding:2px 0; }
+        .trade-bar-track { position:relative; height:6px; border-radius:3px; background:var(--bg3); margin:4px 0 6px; }
+        .trade-bar-sl-zone   { position:absolute; height:100%; border-radius:3px 0 0 3px; }
+        .trade-bar-tgt-zone  { position:absolute; height:100%; border-radius:0 3px 3px 0; }
+        .trade-bar-entry-pin { position:absolute; width:3px; height:12px; top:-3px; border-radius:2px; transform:translateX(-50%); }
+        .trade-bar-curr-pin  { position:absolute; width:3px; height:14px; top:-4px; border-radius:2px; transform:translateX(-50%); box-shadow:0 0 4px rgba(0,0,0,.5); }
+        .trade-bar-labels { display:flex; justify-content:space-between; font-size:9px; color:var(--text3); }
+        .trade-bar-curr-lbl { text-align:center; font-size:10px; font-weight:600; margin-bottom:2px; }
+
         /* Close modal */
         .close-modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.75); z-index:600; align-items:center; justify-content:center; }
         .close-modal-overlay.open { display:flex; }
@@ -84,7 +94,7 @@ $user = authRequire();
             <tr>
                 <th>Symbol</th><th>Type</th><th>Entry</th><th>Current</th>
                 <th>Target</th><th>Stop Loss</th><th>Lots</th>
-                <th>P/L</th><th>To Target</th><th>Status</th><th>Actions</th>
+                <th>P/L</th><th>Position</th><th>Status</th><th>Actions</th>
             </tr>
         </thead>
         <tbody id="wl-tbody">
@@ -136,6 +146,71 @@ function setFilter(el, f) {
     render();
 }
 
+function tradeBar(d) {
+    const curr    = d.current_price;
+    const entry   = d.entry_price;
+    const target  = d.target_price;
+    const sl      = d.stop_loss;
+    const isBuy   = d.trade_type === 'BUY';
+
+    // Need at least entry + one of target/sl to draw bar
+    if (!curr || !entry) return '<span class="na">—</span>';
+
+    // Determine bar range: min to max across all known prices
+    const prices  = [curr, entry, target, sl].filter(Boolean);
+    const pad     = (Math.max(...prices) - Math.min(...prices)) * 0.15 || entry * 0.01;
+    const minP    = Math.min(...prices) - pad;
+    const maxP    = Math.max(...prices) + pad;
+    const range   = maxP - minP;
+
+    const pct = v => Math.min(100, Math.max(0, ((v - minP) / range) * 100));
+
+    const entryPct  = pct(entry);
+    const currPct   = pct(curr);
+    const targetPct = target ? pct(target) : null;
+    const slPct     = sl     ? pct(sl)     : null;
+
+    // Colour zones
+    // BUY:  sl(left,red) → entry(blue pin) → target(right,green)
+    // SELL: target(left,green) → entry(blue pin) → sl(right,red)
+    let slZone = '', tgtZone = '';
+    if (slPct !== null) {
+        const left  = isBuy ? slPct  : entryPct;
+        const right = isBuy ? entryPct : slPct;
+        const w = right - left;
+        slZone = `<div class="trade-bar-sl-zone" style="left:${left}%;width:${w}%;background:rgba(239,68,68,.35);"></div>`;
+    }
+    if (targetPct !== null) {
+        const left  = isBuy ? entryPct : targetPct;
+        const right = isBuy ? targetPct : entryPct;
+        const w = right - left;
+        tgtZone = `<div class="trade-bar-tgt-zone" style="left:${left}%;width:${w}%;background:rgba(34,197,94,.35);"></div>`;
+    }
+
+    // Current price colour: green if profitable, red if not
+    const profitable = isBuy ? curr > entry : curr < entry;
+    const currColor  = profitable ? 'var(--green)' : 'var(--red)';
+    const currSign   = d.pl_pct >= 0 ? '+' : '';
+
+    const labels = [
+        sl     ? `<span style="color:var(--red)">SL ₹${sl.toLocaleString('en-IN')}</span>` : '',
+        `<span style="color:var(--accent)">Entry ₹${entry.toLocaleString('en-IN')}</span>`,
+        target ? `<span style="color:var(--green)">Tgt ₹${target.toLocaleString('en-IN')}</span>` : '',
+    ].filter(Boolean);
+
+    return `<div class="trade-bar-wrap">
+        <div class="trade-bar-curr-lbl" style="color:${currColor};">
+            ₹${curr.toLocaleString('en-IN',{minimumFractionDigits:2})} (${currSign}${d.pl_pct.toFixed(2)}%)
+        </div>
+        <div class="trade-bar-track">
+            ${slZone}${tgtZone}
+            <div class="trade-bar-entry-pin" style="left:${entryPct}%;background:var(--accent);"></div>
+            <div class="trade-bar-curr-pin"  style="left:${currPct}%;background:${currColor};"></div>
+        </div>
+        <div class="trade-bar-labels">${labels.join('<span>·</span>')}</div>
+    </div>`;
+}
+
 function render() {
     const rows = allData.filter(d => filter === 'ALL' || d.status === filter);
     if (!rows.length) {
@@ -149,16 +224,9 @@ function render() {
         const targetTxt = d.target_price ? '₹' + d.target_price.toLocaleString('en-IN') : '<span class="na">—</span>';
         const slTxt     = d.stop_loss    ? '₹' + d.stop_loss.toLocaleString('en-IN')    : '<span class="na">—</span>';
 
-        let toTargetTxt = '<span class="na">—</span>';
-        if (d.to_target_pct !== null) {
-            toTargetTxt = d.target_hit
-                ? '<span class="hit-target">✓ HIT</span>'
-                : `<span class="${d.to_target_pct > 0 ? 'chg-up' : 'chg-down'}">${d.to_target_pct > 0 ? '+' : ''}${d.to_target_pct.toFixed(2)}%</span>`;
-        }
-
         const statusBadge = d.status === 'CLOSED'
             ? '<span class="badge-closed">CLOSED</span>'
-            : (d.sl_hit ? '<span class="hit-sl">SL HIT</span>' : '<span style="color:var(--green);font-size:11px;font-weight:600;">OPEN</span>');
+            : (d.sl_hit ? '<span class="hit-sl">SL HIT</span>' : (d.target_hit ? '<span class="hit-target">✓ TARGET</span>' : '<span style="color:var(--green);font-size:11px;font-weight:600;">OPEN</span>'));
 
         const actions = d.status === 'OPEN'
             ? `<button class="btn-sm" onclick="openEdit(${d.id})">Edit</button>
@@ -170,14 +238,12 @@ function render() {
             <td><strong>${d.symbol}</strong><div style="font-size:10px;color:var(--text3);">${d.expiry || ''}</div></td>
             <td><span class="badge-${d.trade_type.toLowerCase()}">${d.trade_type}</span></td>
             <td>₹${d.entry_price.toLocaleString('en-IN',{minimumFractionDigits:2})}</td>
-            <td>₹${d.current_price.toLocaleString('en-IN',{minimumFractionDigits:2})}
-                <div class="${d.pl_pct>=0?'chg-up':'chg-down'}" style="font-size:10px;">${d.pl_pct>=0?'+':''}${d.pl_pct.toFixed(2)}%</div>
-            </td>
+            <td>₹${d.current_price.toLocaleString('en-IN',{minimumFractionDigits:2})}</td>
             <td>${targetTxt}</td>
             <td>${slTxt}</td>
             <td>${d.quantity}</td>
             <td class="${plClass}">${plSign}₹${Math.abs(d.pl).toLocaleString('en-IN',{minimumFractionDigits:2})}</td>
-            <td>${toTargetTxt}</td>
+            <td>${tradeBar(d)}</td>
             <td>${statusBadge}</td>
             <td>${actions}</td>
         </tr>`;
@@ -200,20 +266,33 @@ function updateSummary() {
 function openEdit(id) {
     const d = allData.find(x => x.id === id);
     if (!d) return;
-    // Pre-fill shared modal for edit
-    document.getElementById('port-modal-title').textContent = 'Edit Trade — ' + d.symbol;
-    document.getElementById('port-edit-id').value  = id;
-    document.getElementById('port-symbol').value   = d.symbol;
-    document.getElementById('port-symbol').disabled = true;
-    document.getElementById('port-type').value     = d.trade_type;
-    document.getElementById('port-qty').value      = d.quantity;
-    document.getElementById('port-entry').value    = d.entry_price;
-    document.getElementById('port-target').value   = d.target_price || '';
-    document.getElementById('port-sl').value       = d.stop_loss    || '';
-    document.getElementById('port-notes').value    = d.notes        || '';
-    // Show expiry as static text since it can't be changed
+
+    document.getElementById('port-modal-title').textContent  = 'Edit Trade — ' + d.symbol;
+    document.getElementById('port-edit-id').value            = id;
+    document.getElementById('port-symbol').value             = d.symbol;
+    document.getElementById('port-symbol').disabled          = true;
+    document.getElementById('port-type').value               = d.trade_type;
+    document.getElementById('port-qty').value                = d.quantity;
+    document.getElementById('port-entry').value              = d.entry_price;
+    document.getElementById('port-notes').value              = d.notes || '';
+
+    // Expiry static (can't change on edit)
     const sel = document.getElementById('port-expiry');
     sel.innerHTML = `<option value="${d.expiry||''}">${d.expiry||'—'}</option>`;
+
+    // Target — prefill price and sync pct
+    document.getElementById('port-target').value     = d.target_price || '';
+    document.getElementById('port-target-pct').value = '';
+    document.getElementById('port-target-hint').textContent = '';
+    if (d.target_price) syncFromPrice('target');
+
+    // Stop loss — prefill price and sync pct
+    document.getElementById('port-sl').value         = d.stop_loss || '';
+    document.getElementById('port-sl-pct').value     = '';
+    document.getElementById('port-sl-hint').textContent = '';
+    if (d.stop_loss) syncFromPrice('sl');
+
+    document.getElementById('port-sym-results').innerHTML = '';
     document.getElementById('port-modal').classList.add('open');
 }
 
@@ -246,6 +325,6 @@ document.getElementById('close-modal').addEventListener('click', function(e) {
 
 load();
 </script>
-<script src="/ms/assets/js/fno.js?v=5"></script>
+<script src="/ms/assets/js/fno.js?v=6"></script>
 </body>
 </html>
